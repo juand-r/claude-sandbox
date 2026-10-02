@@ -149,8 +149,10 @@ def check(row_rec, gap=40):
     return res
 
 
-def main(table, per_kind, seed=1):
+def main(table, per_kind, seed=1, side=None):
     rows = [json.loads(l) for l in open(table)]
+    if side:
+        rows = [r for r in rows if r["side"] == side]
     by = {}
     for r in rows:
         by.setdefault(r["kind"], []).append(r)
@@ -177,4 +179,5 @@ def main(table, per_kind, seed=1):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]) if len(sys.argv) > 3 else 1)
+    main(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]) if len(sys.argv) > 3 else 1,
+         sys.argv[4] if len(sys.argv) > 4 else None)

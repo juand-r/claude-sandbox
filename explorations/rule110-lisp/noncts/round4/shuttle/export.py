@@ -7,10 +7,11 @@ One JSON line per (head, wall) pair:
   head      {p, d, bits, pR}   (copied from the list)
   wall      {bits, pR}         (copied from the list)
   kind      reflect | pass | absorbed | dirty | unsettled
-            reflect = exactly one stationary product + movers going back
+            reflect = stationary product(s) (= the new wall, possibly several
+                      objects, n_objects) + movers going back
             pass    = one stationary product + movers continuing
             absorbed= one stationary product only
-            dirty   = anything else (0 or >= 2 stationary objects, movers
+            dirty   = anything else (no stationary object left, movers
                       of different speeds, or unparsed debris)
   wall_out  {bits, pR, dx}: the stationary product as a t = 0 row in LIST
             FORM (left ether phase 0, first non-ether cell in [0, 14),
@@ -85,15 +86,16 @@ def main(sides=("L", "R"), outname="bounce_table.jsonl"):
                 c = classify(rec, side)
                 row["kind"] = {"refl": "reflect", "pass": "pass", "absorb": "absorbed", "dirty": "dirty"}[c[0]]
                 if c[0] in ("refl", "pass", "absorb"):
-                    st = c[1]
-                    ck = (tuple(st["key"]), st["t0"])
+                    sts = c[1]
+                    xs0 = sts[0]["x"]
+                    ck = tuple((tuple(q["key"]), q["t0"], q["x"] - xs0) for q in sts)
                     if ck not in WCACHE:
-                        nm = name_of_key(st["key"])
-                        r_, lo = render([(nm, st["t0"], 0)], 0)
+                        mem = [(name_of_key(q["key"]), q["t0"], q["x"] - xs0) for q in sts]
+                        r_, lo = render(mem, 0)
                         bits, pR, origin = frame_form(r_, lo, 0)
                         WCACHE[ck] = (bits, pR, origin, canon_row(r_, lo, 0, 7))
                     bits, pR, origin, wcan = WCACHE[ck]
-                    row["wall_out"] = dict(bits=bits, pR=pR, dx=int(origin + st["x"]))
+                    row["wall_out"] = dict(bits=bits, pR=pR, dx=int(origin + xs0), n_objects=len(sts))
                     row["wall_out_j"] = wall_index.get((bits, pR))
                     row["wall_out_canon"] = wcan
                 if c[0] in ("refl", "pass"):

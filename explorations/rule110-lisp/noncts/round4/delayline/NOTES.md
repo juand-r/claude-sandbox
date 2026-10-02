@@ -108,3 +108,18 @@ A + B -> nothing, E^m + B -> E^(m+1), A + B^3 -> B^2, E^m + B^3 -> E^(m+3).
 - ds_fine.py 1200 53000 58000: 334 slots, 12 consecutive off-sequence
   (55,370..55,535 = the A arriving during a NOP collision); 8 walk with a
   shifted sequence, 4 park after one walk (switch fails). See THEORY_DL s.3.1.
+
+## 00:05 A-class dependence of the drift switch [sim]
+lscan control: A + E^2 -> E in all 3 classes, but the remaining E sits at
+shift 7.0 / 7.0 / 5.13 (class-dependent). ds_cls.py (R2 seed time 0/1/2
+moves the A's class at the window; exact CA, 18 runs): the window opens and
+walks in ALL three classes; class 0 starts from 3.33, classes 1, 2 from
+5.2 (1.87 = 28/15 further right) with the alternation phase shifted
+(final 182.53/137.73/72.4 vs 184.4/139.6/70.53). Controls v2 = 1: W = E^2
+unmoved. So the switch is on in every A class; the walk origin depends on
+the class (two variants), which a design must track (it is g mod 3 data).
+Earlier sweeps used gaps differing by multiples of 14 cells and P_E-quantised
+times, which preserve the A class (shown: (0,14) in <(3,2),(15,-4)>), so
+they could not see this.
+Started lscan.py (left window table: 6,398 A-lattice trains x {E, E^2} x 3
+classes), PID in lscan.pid.

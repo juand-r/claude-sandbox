@@ -46,16 +46,16 @@ The route table is in `ROUTES.md`; this file holds the reasoning behind it.
    - Both routes need a closed sub-table of a FIXED natural reaction map,
      so a universal program must be found, not imposed. The first
      milestone is a perpetual bouncer (graph search on shuttle's tables).
-4. **Route (a), two windows and two gaps (route 20, s.6b) is the most
-   advanced.** Delayline found (verified) that R2's zero switches the gap's
-   drift. With both counters as gaps and both modes as window states no
-   mode is owned. The worry was that transfers across unbounded gaps are
-   rate-matched and skewed. [model] gap2.py/gapvm.py: with a counter unit
-   commensurate with the stream period and signal delay, every transfer is
-   an exact x2, x3, /2 or /3 with the remainder visible at the receiving
-   window, and Minsky machines compile (79/79; incommensurate control
-   79/79 fail). What is missing is physical: inward walking, contact
-   reactions at M emitting start/stop signals, and a slot-dependent stop.
+4. **Route (a), two windows and two gaps (route 20, s.6b).** Delayline
+   found (verified) that R2's zero switches the gap's drift. With both
+   counters as gaps and both modes as window states no mode is owned.
+   Transfers across unbounded gaps are rate-matched, and [model] gap2.py
+   shows they are affine maps with residue-periodic offsets (the overshoot
+   law). My first claim that commensurate units make them EXACT (gapvm.py,
+   79/79) holds only in a geometry where the window jumps over packets in
+   flight, which glider windows cannot do (verify 00:02); with physical
+   steps the offsets are fractional and residue-periodic mod 5-34, so a
+   per-unit handshake (round 3) or a snapping mechanism is still needed.
 5. **Route (a), near-end lane: the abort can be replaced by a class shift
    (s.4)**, which turns an UNSAT target (an eater for register kicks) into
    an unsearched one, subject to a crossing-count balance (F6) that queue
@@ -469,7 +469,7 @@ runs left to right (R3's (L)).
   blocks to exchange information both ways every simulated step, so it
   inherits every transport problem at once. Lowest priority.
 
-## 6b. Route 20, two windows and two gaps: the overshoot law [arg + model]
+## 6b. Route 20, two windows and two gaps: the overshoot law [arg + model; exactness claim corrected]
 
 Layout (delayline's drift switch, made symmetric): W_L ~g1~ M ~g2~ W_R.
 W_L and W_R are short rods kept at value 0/1 ("windows"), each driven by
@@ -546,11 +546,28 @@ finite control and added back by r unit walks after the next multiply
 halting random Minsky runs (registers <= 3), 0 failures. Control: the
 same compiler on the incommensurate geometry fails 79/79 (the observed
 phase no longer determines the residue). So route 20 is universal in
-this idealised kinematics [model], given the physical items listed.
+this idealised kinematics [model] - BUT see the correction below.
 
-Design rule for route 20: choose the unit u (a number of window steps) so
-that u/vs and u/vp are multiples of the stream period, as Cook chose
-appendant lengths that are multiples of 6. Scope: one transfer type, an
+**Correction (00:06, after verify's review 00:02).** In the commensurate
+geometry above the window's step u = 4 exceeds the packet spacing
+vp*P = 2: every outward step jumps over a packet in flight (verify counts
+one per step), which a glider window cannot do (delayline's window steps
+24 cells against a NOP spacing of 476). Re-run with a step smaller than the
+spacing (step 1) and a unit of several steps chosen commensurate (u = 4, 6,
+12): every transfer is affine with FRACTIONAL residue-periodic offsets
+(slopes 3/5, 7/5, 3/17, 1/3; offset periods 5, 10, 17, 34), and the
+destination stops mid-unit. The Doppler effect of a window walking toward
+its own stream breaks commensurability. So the "no handshake needed"
+conclusion is withdrawn for physical windows; what stands is the overshoot
+law itself and gapvm.py as a statement about the idealised geometry.
+Verify also notes that the Minsky state lives in Python: physically each
+window needs several modes (masks) and a mode-transition table driven by
+the stop's slot. Open: a per-unit handshake, or a window that can stop
+only at unit boundaries plus reactions that read the remaining residues.
+
+(Superseded design rule: "choose the unit u so that u/vs and u/vp are
+multiples of the stream period" works only when u exceeds the packet
+spacing; see the correction above.) Scope: one transfer type, an
 idealised kinematics (point objects, instantaneous reactions); Rule 110's
 real reactions add offsets per event; if those are the same in every
 event (single-class or class-fixed reactions) they are constants and (ii)

@@ -21,7 +21,7 @@ Code (all imports of collider/, scholar/, round3/theory, shuttle/ are read-only)
 | `passraw.py` | all trains w <= 30 (A, D, B lattices) vs C1-C3: passes, fixpoints; controls | `python3 passraw.py 3 2 C1 controls`; `nice -n 10 python3 passraw.py 3 2 C1,C2,C3` |
 | `explore.py`, `explore2.py` | run the natural TM from library heads / from all trains on uniform tapes (bouncer and ratchet search) | `nice -n 10 python3 explore2.py 200` |
 | `gap2.py` | route 20: exact kinematics of one transfer (overshoot law, commensurability) | `python3 gap2.py` |
-| `gapvm.py` | route 20: full Minsky compile on gap2 transfers; incommensurate control | `python3 gapvm.py` (exit 0 = pass) |
+| `gapvm.py` | route 20: full Minsky compile on gap2 transfers, IDEALISED geometry only (windows jump packets; see THEORY s.6b correction); incommensurate control | `python3 gapvm.py` (exit 0 = pass) |
 | `cycles.py` | bouncer / ratchet graph search on reaction tables; synthetic controls | `python3 cycles.py test` |
 | `bounce.py` | bouncer search with library heads and walls (exact, on demand) | `nice -n 10 python3 bounce.py 60` |
 | `bscan.py` | one B (or A) vs every stationary object w <= 34 | `nice -n 10 python3 bscan.py B` |

@@ -19,6 +19,12 @@ Differential test vs scholar's Minsky interpreter on random programs.
 Control: an incommensurate geometry (u = 5, P = 7) calibrated the same
 way must fail.
 Run: python3 gapvm.py
+
+SCOPE (corrected 00:06): the "commensurate" geometry has window steps
+larger than the packet spacing, so windows jump over packets in flight,
+which glider windows cannot do (verify 00:02).  With physical steps
+(gap2.transfer(step=...)) the transfers are not exact.  This file shows
+what an idealised geometry would allow, not a physical design.
 """
 import random, sys, os
 from fractions import Fraction as Fr

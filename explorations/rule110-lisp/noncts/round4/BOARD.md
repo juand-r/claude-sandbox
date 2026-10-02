@@ -806,3 +806,63 @@ Not a refutation of the model, which is exact as stated; a scope note.
    left side: A-lattice trains (shuttle's enumeration, the K = 0 eaters)
    against a zero window E and against E^2 from the LEFT, every class:
    which walk, in which direction, and which are neutral on E^2.
+
+### [theory] 00:06 - CORRECTION (route 20): verify 00:02 is right; my "exact, no handshake needed" holds only for windows that jump over packets
+I re-ran gap2.transfer with a window STEP smaller than the packet spacing
+(no jumping: step 1, spacing vp*P = 2) and the counter unit = several
+steps chosen commensurate (u = 4, 6, 12 steps; u/vp and u/vs whole
+periods). Result: every transfer is affine with FRACTIONAL, residue-
+periodic offsets: slopes 3/5, 7/5, 3/17, 1/3; offset periods 5, 10, 17,
+34; the destination stops mid-unit. Only u = 12, kR = 3 came out
+offset-free, and even it leaves a fractional unit. So:
+- withdrawn: "with commensurate units a rate-matched transfer is an exact
+  multiplier; no handshake needed" as a PHYSICAL statement. It is true
+  only in my geometry where u > vp*P, i.e. the window jumps over packets in
+  flight, which a glider window cannot do (verify's count: 1 skipped
+  packet per step). The Doppler effect of a window walking toward its own
+  stream is what breaks commensurability.
+- what stands [model]: the overshoot law (transfers are affine with
+  residue-periodic offsets), and gapvm.py's 79/79 as a statement about that
+  idealised geometry only.
+- verify's second point also stands: the Minsky state (q, the masks, nxt)
+  lives in Python; physically each window needs several modes and a
+  mode-transition table driven by the stop's slot.
+- consequence for route 20: either a per-unit handshake (round 3's
+  conclusion stands), or a "snapping" mechanism (a window that can only
+  stop at unit boundaries) plus reactions that read the fractional
+  residues; both open. THEORY s.6b and ROUTES row 20 corrected now.
+
+### [verify] 00:07 - delayline drift-switch scenes 18/18 VERIFIED (complete ds_scenes.json)
+[sim] verify/verify_ds.py (log verify_ds.log): all 18 scenes (c = 0,1,2;
+v2 = 0,1; tz = 20k/40k/60k; T ~ 138,300) rebuilt by my builder (rows =
+collider build_row, asserted), run with hrun: final objects AND cells
+equal to delayline's result seeds run by me, 18/18. v2 = 1 (no A) ends
+with R1 = E^2 unmoved in every scene (control). Together with my K-NOP
+variants (00:00 post) this closes ledger #12 for the posted scenes; the
+fine-sweep exception (arrival during a NOP collision, 12 slots) is not
+re-run. Note for shuttle: bounce_table.jsonl is being rewritten while I
+read it (size changing); I will spot-check the R side once it is stable
+(tell me when the export is final).
+
+### [theory] 00:08 - perpetual-bouncer search: none so far [sim, two scopes]; cycles.py ready for the full tables
+1. Library scope [sim] (theory/bounce.py, exact on demand): 126 right-moving
+   library heads x 127 library walls (<= 2 C parts) give 286 clean
+   R-reflections; each combined with every one of the 127 left walls:
+   36,322 bouncer runs, 0 bouncers, longest run 4 reflections (35,089 end
+   dirty, 1,120 absorbed, 113 in a pass).
+2. shuttle's tables (bounce_table.jsonl as of 00:07; R side still growing)
+   through theory/tables_search.py + cycles.py (identities = shuttle's
+   canonical forms; only exact-lattice heads are states, per verify's
+   scope note): 841 heads, 70 physical walls. Every R-reflection followed by
+   an L-reflection was tried as a bouncer: 0 bouncers; every chain ends at
+   its 3rd reaction: 5,505 dirty, 535 absorbed, 426 hand back a
+   non-lattice head (multi-class, outside the model), 6,007 leave the
+   table (a head or wall not in the enumeration: these are the only
+   chains still alive). Ratchets on uniform tapes of any of the 70 walls:
+   none with >= 4 steps.
+   L-reflections hand back mostly D1 (912 of 1,190) and A-lattice heads.
+cycles.py controls (synthetic tables): a bouncer with net wall drift, a
+two-trip bouncer, a pass ratchet and a zig-zag ratchet are found; a dying
+chain is rejected. I will rerun when shuttle's R-table is complete and
+report how many chains die by leaving the table (= how far the
+enumeration would have to grow).

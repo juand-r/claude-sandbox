@@ -16,11 +16,11 @@ import sys
 GAP = 1200
 
 
-def scene(v2, tz, K=10, c=1, v1=1):
+def scene(v2, tz, K=10, c=1, v1=1, r2t0=0):
     items = r1_program("N" * K, [c] * K)
     sc = r1_scene(v1, items)
     pre = input_prefix(v1)
-    r2 = ("E",) + place_left_of(pre, "E", -GAP, 0)
+    r2 = ("E",) + place_left_of(pre, "E", -GAP, r2t0)
     ls = left_stream("i" * v2 + "z", r2[1:], t0=tz)
     T = 15 * (sc[-1][2] + 4000)
     return ls + [r2] + sc, T

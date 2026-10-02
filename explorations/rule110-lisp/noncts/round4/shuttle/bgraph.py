@@ -107,15 +107,17 @@ def classify(rec, side):
     st = [p for p in ps if p["p"] == 7 and p["d"] == 0]
     movers = [p for p in ps if not (p["p"] == 7 and p["d"] == 0)]
     vel = {Fraction(p["d"], p["p"]) for p in movers}
-    if len(st) != 1:
+    # all stationary products together form the new wall (the typer may
+    # name two nearby C's as one compound or as two objects)
+    if len(st) == 0:
         return ("dirty",)
     if not movers:
-        return ("absorb", st[0])
+        return ("absorb", st)
     if len(vel) != 1:
         return ("dirty",)
     v = vel.pop()
     back = (v < 0) if side == "R" else (v > 0)
-    return ("refl" if back else "pass", st[0], movers)
+    return ("refl" if back else "pass", st, movers)
 
 
 def load_canons():

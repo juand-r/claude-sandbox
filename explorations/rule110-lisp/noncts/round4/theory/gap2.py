@@ -33,7 +33,10 @@ def next_arrival(t, x, v_window_static, vp, P, direction, phase):
     return base + n * P
 
 
-def transfer(g1, u, vp, vs, P, kR, kL=1, phaseL=Fr(0), phaseR=Fr(0), maxev=10 ** 6):
+def transfer(g1, u, vp, vs, P, kR, kL=1, phaseL=Fr(0), phaseR=Fr(0), maxev=10 ** 6, step=None):
+    """step: window step size (default u: one step per counter unit).  With
+    step < vp*P the window never jumps over packets in flight (verify 00:02)."""
+    step = u if step is None else step
     a, b = Fr(-g1 * u), Fr(0)
     t = Fr(0)
     # start signal reaches W_L at time |a|/vs (W_L static until then)
@@ -60,14 +63,14 @@ def transfer(g1, u, vp, vs, P, kR, kL=1, phaseL=Fr(0), phaseR=Fr(0), maxev=10 **
             return b / u, t
         if ev == 'R':
             if iR % kR == 0:
-                b += u
+                b += step
             iR += 1
             tR = next_arrival(t + Fr(1, 10 ** 9), b, None, vp, P, -1, phaseR)
             tR = max(tR, t + Fr(1, 10 ** 9))
         else:
             L_open = True
             if iL % kL == 0:
-                a += u
+                a += step
             iL += 1
             if a == 0:
                 stop_emit = t

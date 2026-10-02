@@ -93,6 +93,13 @@ value 1); right stream: 10 identical NOPs (GB4) in one slot class c.
   and it falls as the A arrives later. So the result depends only on how
   many NOPs follow the arrival. Exception: one run (gap 1200, Z_L at 55,500)
   ended at 78.0, off the sequence (see s.3.1).
+- The A's own collision class at the window (3 classes; set by g mod a
+  lattice) does not matter for switching: ds_cls.py (R2 seeded at times
+  0, 1, 2) opens and walks the window in all three. But A + E^2 -> E leaves
+  the E 1.87 cells further right in two of the classes (7.0 / 7.0 / 5.13 in
+  isolation), so the walk starts from 3.33 or 5.2 with the alternation
+  phase shifted. The earlier sweeps could not see this: their gaps and
+  times differ by lattice vectors that keep the A class.
 - Slot class c = 1 parks the opened window instead (no walk at all). The
   window's phase relative to the stream is itself a two-state mode.
 - Controls: v2 = 1 at every gap (window unmoved), and the A arriving before

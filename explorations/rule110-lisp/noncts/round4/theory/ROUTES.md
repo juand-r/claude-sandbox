@@ -30,7 +30,7 @@ R4-* = this round's THEORY.md. "Needs" lists what the PHYSICS must supply.
 | 12 | **phase-free particle TM** (Lindgren-Nordahl / Durand-Lose TM signal machine; first noted by round-1 synth, "stalled"): stationary cells = tape symbols, head = rigid packet on the A or D lattice (moving right) or B lattice (moving left); NO streams; periodic blank tape | one clean reaction h_q + c_s -> c_s' + h_q' per used (state, symbol, arrival side); cell positions restored up to a potential (R4-L2); R-passes AND L-passes (R4-L4), closing into cycles of the full walk | R4-L1: every head-cell collision is single-class; R4-L4: passes both ways necessary | **open, hard**: [sim] every pass seen (library heads; all B trains <= 30; A trains <= 30 in progress) leaves one glider or a head that dies on the next cell; 0 fixpoints | theory (census) -> objects (SAT S1) |
 | 13 | finite seed version of 12 (no periodic background) | 12 + a border object that extends the tape | Durand-Lose 2013: rational 3-speed signal machines are cyclic; Rule 110 heads use 3 speeds (A or D, 0, B) but the TEMPLATE needs the border, i.e. a 4th signal, or a gun | **open**, strictly harder than 12 | - |
 | 14 | **bouncer machine** (signal-machine 2-counter, reflections only): W0 ~x~ W1 <-head-> W2 ~y~ W3, walls moved by +-u per reflection, zero = compound wall | L- and R-reflections with wall displacement in {-u,0,+u}; distinct reaction on the compound at x = 0; closure of head shapes (B1-B5, THEORY s.3.8) | no pass needed (L4 does not apply); 3 speeds from a FINITE seed, allowed by the offset loophole in Durand-Lose's 3-speed theorem [arg] | **open**; [model] bouncer.py compiles Minsky (197/197, controls fail); ~26 reflections per Minsky instruction; milestone = perpetual bouncer | theory (model, explore2) -> objects (SAT) |
-| 20 | **two-window gap machine**: W_L ~g1~ M ~g2~ W_R, both counters gaps, both modes window states (open/closed), contacts at M as zero tests | windows that walk only when open (delayline 23:33: E walks under NOPs, E^2 does not); contact reactions at M that signal both windows | no owned mode (short windows escape R3-T2); signals cross unbounded gaps, so R3-T1's (B), (Q) fail; rate-matched transfers overshoot by a linear function of the values | **open, promising**: delayline's one-direction drift switch VERIFIED; [model] gap2.py + gapvm.py: with commensurate units rate-matched transfers are EXACT x2, x3, /2, /3 with observable remainders; full Minsky compile 79/79, incommensurate control 79/79 fail; no handshake needed; missing: contacts at M that emit start/stop signals both ways | delayline |
+| 20 | **two-window gap machine**: W_L ~g1~ M ~g2~ W_R, both counters gaps, both modes window states (open/closed), contacts at M as zero tests | windows that walk only when open (delayline 23:33: E walks under NOPs, E^2 does not); contact reactions at M that signal both windows | no owned mode (short windows escape R3-T2); signals cross unbounded gaps, so R3-T1's (B), (Q) fail; rate-matched transfers overshoot by a linear function of the values | **open**: delayline's one-direction drift switch VERIFIED; [model] gap2.py: transfers are affine with residue-periodic offsets (overshoot law); exact only if windows jump over packets (unphysical, verify 00:02), so a per-unit handshake or a unit-snapping window is still needed; finite control (window modes) unplaced | delayline |
 | 22 | **unary transducers**: dump a counter into a B train (MERGE), process the count with stationary single-B processors (fan-out, toggle), re-fuse | U1 dump (exists), U2 B + O -> O + B + B and B toggles (single class, SAT-cheap), U3 fusion (exists), U4 a geometry where the same processors meet the register every round | generalized Collatz maps with state-dependent multipliers (Conway) | **open**; U2 never searched | objects (U2 SAT) |
 | 21 | MERGE (shuttle 23:24, verified): E^m D1 E^n -> E^(m+n+1) | re-creation of the consumed counter; a switchable second rate | unbounded step: R3-T1's (A1) fails; with blind streams it gives x -> lambda x + b(residue), one fixed lambda [arg] | **open**; useful only with a switchable rate | shuttle |
 | 15 | one register with multiplication (Minsky; FRACTRAN): a length scaled by speed ratios, residues read by collision class | marker-preserving reflections; exact scalings x2, x3 (or any 2 coprime); residue tests mod 2 and 3 | none closes it; residues are only those of the lattice | **open**, dominated by 12 | - |
@@ -41,14 +41,11 @@ R4-* = this round's THEORY.md. "Needs" lists what the PHYSICS must supply.
 
 ## 2. Ranking (theory's view, updated 23:58)
 
-1. **Row 20, the two-window gap machine (delayline).** Physics already
-   verified for one half (R2's zero switches the gap's drift on); the
-   arithmetic is validated in an exact kinematic model (gap2.py): with
-   commensurate units, rate-matched transfers across unbounded gaps are
-   exact x2, x3, /2, /3 with the remainder visible at the receiving
-   window, so the Goedel transfer machine compiles without any handshake.
-   Missing physics: contacts at M that emit start/stop signals both ways,
-   and a stop reaction that branches on its stream slot.
+1. **Row 20, the two-window gap machine (delayline).** One half of the
+   physics is verified (R2's zero switches the gap's drift). Its arithmetic
+   is NOT shown exact for physical windows (my 23:58 claim was corrected
+   at 00:06): it needs a per-unit handshake or unit-snapping, and window
+   modes that hold the finite control.
 2. **The perpetual-bouncer milestone** shared by rows 12 and 14 (graph
    search on shuttle's tables + objects' SAT). Rows 12/14 need no streams
    and no timing, but a universal program must be found inside the

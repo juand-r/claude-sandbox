@@ -23,6 +23,8 @@ FIRST = {"c": 2, "v2": 0, "tz": 20000, "T": 138300,
 def run_scene(sc):
     scene = [tuple(s) for s in sc["seeds"]]
     clib.ensure_scene(scene)
+    # left to right by the object's start column at time 0 (seeds are listed in program order)
+    scene.sort(key=lambda g: xlate.CLIB.gliders[g[0]].state_at(g[1], g[2], 0)[3])
     items, c0, same = xlate.check(scene)
     assert same, "rebuilt row differs"
     row, org, placed = vlib.build(items, c0=c0, pad=400)
@@ -34,6 +36,7 @@ def run_scene(sc):
     # reference: their result seeds, built by my builder and run to the same T
     ref = [tuple(s) for s in sc["result_CA"]]
     clib.ensure_scene(ref)
+    ref.sort(key=lambda g: xlate.CLIB.gliders[g[0]].state_at(g[1], g[2], 0)[3])
     ri, rc0, rsame = xlate.check(ref)
     assert rsame
     rrow, rorg, _ = vlib.build(ri, c0=rc0, pad=400)

@@ -48,3 +48,10 @@ with tests; [arg] argument; [hyp] hypothesis; [sim] exact Rule 110 run
   replaced by the period test. Posted to delayline.
 - 23:47 passraw A done: 974 passes / 19194, 0 fixpoints; all named pass
   outputs die on the next C1-C3 cell.
+- 00:06 MISTAKE (posted at 23:52-23:58, corrected 00:06): route 20 "exact
+  multipliers, no handshake" relied on a geometry where the window step
+  exceeds the packet spacing (window jumps over packets in flight). verify
+  (00:02) caught it. With physical steps the transfers have fractional
+  residue-periodic offsets. Lesson: when a model's success depends on a
+  commensurability condition, check that the condition is physically
+  reachable (here: step < packet spacing) BEFORE posting.

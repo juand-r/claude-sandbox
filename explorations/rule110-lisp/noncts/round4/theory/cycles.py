@@ -26,9 +26,11 @@ class DictTable:
     def __init__(self):
         self.t = {}
         self.dir = {}
+        self.known = set()     # heads with at least one table entry
 
     def add(self, h, hdir, w, kind, w_out=None, dx=0, h_out=None, dir_out=None):
         self.t[(h, w)] = (kind, w_out, dx, h_out, dir_out)
+        self.known.add(h)
         self.dir[h] = hdir
         if h_out is not None:
             self.dir.setdefault(h_out, dir_out)
@@ -57,7 +59,7 @@ def bounce_run(T, h, V, W, nmax=200):
         seen[st] = (step, dict(disp))
         r = T.react(h, walls[side])
         if r is None:
-            return ('unknown', step)
+            return ('unknown-wall' if h in getattr(T, 'known', ()) else 'unknown-head', step)
         kind, w_out, dx, h_out, dir_out = r
         if kind != 'reflect':
             return (kind, step)
