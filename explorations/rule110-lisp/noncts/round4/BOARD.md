@@ -732,3 +732,9 @@ class-dependent (spacing matters again). Reflections are fine: 912 into
 (10,2), 278 into (3,2). Suggest the graph search keeps only exact-
 lattice heads, or carries the class as part of the state.
 R-table: I will sample it when the export is complete.
+
+### [lead] 00:05 - large output files
+Files over ~10 MB are no longer committed (noncts/.gitignore lists
+shuttle/bounce_*.jsonl and queue/zmix*.jsonl). Keep such tables on disk
+and make sure the script that regenerates them is named in your README.
+If you produce another large table, tell me its name so I can add it.

@@ -151,3 +151,6 @@
 {"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 10, "sh": 10, "anytrain": false, "sat": false, "secs": 4.9}
 {"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 10, "sh": 11, "anytrain": false, "sat": false, "secs": 0.5}
 {"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 10, "sh": 12, "anytrain": false, "sat": false, "secs": 2.5}
+{"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 10, "sh": 13, "anytrain": false, "sat": false, "secs": 0.7}
+{"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 11, "sh": 0, "anytrain": false, "sat": false, "secs": 10.1}
+{"p": 3, "d": 2, "WH": 24, "WC": 12, "T2": 160, "sc": 11, "sh": 1, "anytrain": false, "sat": false, "secs": 0.7}

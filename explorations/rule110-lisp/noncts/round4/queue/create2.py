@@ -18,8 +18,12 @@ from lscene import *
 from engine import ETHER
 from create import open_gap, placements
 ETH = np.array([int(c) for c in ETHER], dtype=np.uint8)
+import os
+import encoder as enc
+VMULT = int(os.environ.get("VMULT", "2"))
+VV = enc._left_v(["YNNNNN"]) * VMULT
 TC, TA = 6000, 11400
-TIN, TB = 31500, 3000
+TIN, TB = (31500 if VMULT == 1 else 47460), 3000
 JS = range(-8, 9)
 RA = -345
 WR = 800
@@ -44,14 +48,14 @@ class Path:
     """One answer path: stage-A scene (tape_a) and two read scenes."""
     def __init__(self, D, tape_a, tapes_b, ra):
         self.D, self.RA = D, ra
-        m = Machine(tape_a, ["YNNNNN"], TC + TA + 500, left_periods=3, right_periods=2)
+        m = Machine(tape_a, ["YNNNNN"], TC + TA + 500, v=VV, left_periods=3, right_periods=2)
         self.K0 = K0 = [a for n, a, b in m.blocks if n == "K"][0]
         self.scA = Scene(m, m.row, TC, K0 - 1500, K0 + D + WR, TA + 50)
         self.gA = open_gap(self.scA, K0, D)
         self.refA = self.scA.run(self.gA, TA)
         self.B = {}
         for t in tapes_b:
-            mb = Machine(t, ["YNNNNN"], TIN + TB + 500, left_periods=3, right_periods=2)
+            mb = Machine(t, ["YNNNNN"], TIN + TB + 500, v=VV, left_periods=3, right_periods=2)
             K0b = [a for n, a, b in mb.blocks if n == "K"][0]
             assert K0b == K0
             sc = Scene(mb, mb.row, TIN, K0 - 400, K0 + D + WR, TB + 30 * 8 + 50)
