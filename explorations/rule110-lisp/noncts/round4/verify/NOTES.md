@@ -20,3 +20,4 @@
 - 00:23 verify_cstack.py (objects C-stacks).
 - 00:24 quality watch post: queue 3, shuttle 2 heavy processes.
 - 00:34 reproduced bouncer.py; posted direct-bouncer half result.
+- 00:35 reviewed route 22 (charge conservation kills U2 as stated).

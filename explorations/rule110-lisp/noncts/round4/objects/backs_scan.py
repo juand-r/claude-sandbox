@@ -90,7 +90,7 @@ if __name__ == "__main__":
         scene, x0, s_front, be, c_abs = rod_with_back(c, bk)
         # stability of the rod alone: (300,-80) periodic after 300 steps
         a = O.evolve(scene, 300); b2 = O.evolve(a, 300)
-        xs = np.arange(x0 + 300 + 320, x0 + 300 + len(a) - 320)
+        xs = np.arange(x0 + 300 + 420, x0 + 300 + len(a) - 420)   # b2 index must stay >= 0 (shift -80, 300 later)
         stable = bool(np.array_equal(a[xs - (x0 + 300)], b2[xs - 80 - (x0 + 600)]))
         jobs = [(n, k) for n in names for k in range(L[n]["p"])]
         hits = []

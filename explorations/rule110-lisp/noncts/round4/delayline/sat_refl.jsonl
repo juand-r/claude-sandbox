@@ -1,1 +1,4 @@
 {"target": "walk", "W": 30, "WZ": 30, "ca": 0, "cb": 2, "T": 360, "gap": 4, "moved": false, "sat": true, "secs": 123.7, "Y": "110010011000011000111110000011", "sim_ok": true, "rows0": ["11111000111000110101110011011111101101110001110011000100001100", "111110001110001101011111000100110011100011011100000111110101111111000"], "frames": [[0, 0, 1], [0, 0, 9]]}
+{"target": "refl", "W": 30, "WZ": 30, "ca": 0, "cb": 0, "T": 420, "gap": 4, "moved": false, "sat": false, "secs": 612.1}
+{"target": "refl", "W": 30, "WZ": 30, "ca": 0, "cb": 1, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 88.7}
+{"target": "refl", "W": 30, "WZ": 30, "ca": 0, "cb": 2, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 129.4}

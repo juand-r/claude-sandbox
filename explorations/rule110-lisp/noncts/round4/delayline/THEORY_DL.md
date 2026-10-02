@@ -217,6 +217,20 @@ all classes. Neutral on E^2 AND shooting on E: S43 only. No 7-unit shooter,
 no reusable reflector (E -> E^2 + B^6), no left walker, no packet that
 passes a value-1 window.
 
+### 4.1 Consequence for a per-unit handshake (lead item 3) [thm via s.4]
+
+A per-unit handshake at the right window means: the window rests closed
+(E^2, under a stream block that leaves it unchanged), an A opens it, it
+takes ONE step, closes again, and sends a signal back. The block is
+neutral on the closed state (w_c' = w_c) and takes the open state 0 to 1
+while emitting a left-mover, so by the lemma the left-mover carries
+k = 0 - 1 = 6 units (mod 7) of B-family charge (slip 8). So the handshake
+needs exactly the "reusable reflector" E^2 -> E^2, E -> E^2 + (6 units
+left), whatever stepping it also does. Library: none (s.4). SAT
+(sat_refl.py, two scenes sharing the packet Y, G lattice, slip 0):
+positive control "walk" (E^2 -> E^2 unmoved, E -> E) is SAT at W = 30 in
+124 s and re-simulates; results of the reflector search are in s.8.
+
 ## 5. Latency forces delay-insensitive control [arg]
 
 A signal crossing an unbounded gap arrives after an unbounded time. A blind
@@ -304,7 +318,15 @@ Any one of these would reopen the gap route; none is excluded by a theorem.
 2. **Repeatable contact switch**: a reaction when R2's back reaches the
    window (g = 0) that changes the window's mode and leaves both objects
    usable (s.6). Co-moving E's merge instead (no reaction); shuttle's D1
-   merge is a one-shot bulk transfer.
+   merge is a one-shot bulk transfer. Library scan s.3.3: none.
+   SAT spec (not run; one shared unknown, the left packet Q, A lattice,
+   slip 0): scene 1, Q + E -> E (any placement: a walker or a no-op);
+   scene 2, Q + [E, then marker X at a fixed contact spacing s] ->
+   [E-family W_L' unmoved or closed] + [X unchanged, any placement] +
+   [a right-moving A-lattice train beyond X]. X and s from the catalog
+   compounds E@(0,0)+E@(-k,x) / E@(0,0)+Ebar@(...); the right-moving
+   output must then cross X, which no single A does (A + E -> D1/C3), so
+   X should be an object A crosses (Ebar, classes 0, 3, 4, 5).
 3. **Value gate**: a right-stream packet neutral on E^2 that, on E, shoots
    7 units and leaves E (or shoots 6 and leaves E^2: a reusable reflector).
    Library: none (S43 shoots 3 and closes to value 4). Next: SAT with the

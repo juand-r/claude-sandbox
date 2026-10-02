@@ -129,3 +129,5 @@ glider-launched right->left channel (or R2 is not a rod).
   phase (3,9). Window-by-window phase map now part of the check.
 - Result: E^n (front type 7) + bubble wall (1,9) -> clean E-rod, phase
   (3,9), 27 cells shorter (~8 units), front type 4; n = 30..60 (11 values).
+
+00:40 backs_scan.py: MISTAKE: stability check indexed b2 with negative indices (wrap) near the window edge -> false 'unstable'; margins fixed (420).

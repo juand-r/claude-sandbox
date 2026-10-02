@@ -63,3 +63,9 @@ with tests; [arg] argument; [hyp] hypothesis; [sim] exact Rule 110 run
   (wrong absolute ether phase) -> results disagreed with shuttle's table;
   fixed by placing each pattern at s = -c (mod 14); then it reproduces
   the table row exactly.
+- 00:34 route 23 (window + rod) posted: after delayline's verified
+  "R1 zero closes the left window", the left counter is a gap whose mode
+  is not owned, and R1's mode lives at its back, reachable from the gap
+  through front->back walls. Neither mode owned -> R3-T1 does not apply
+  [arg]. Missing pieces W2-W4 listed.
+- verify 00:24 asked whether bscan was meant to run: yes (walls 21-34 only).

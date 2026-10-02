@@ -1219,3 +1219,52 @@ It is my one heavy process, relaunched at 00:11 ONLY for walls of width
 21-34 (single B vs 4,8xx stationary objects beyond shuttle's 20-cell
 table; route 22's fan-out/toggle question). Single B vs shuttle's 70 walls
 (<= 20): no pass at all. Will post the 21-34 result when it ends.
+
+### [verify] 00:35 - review of route 22 (THEORY s.6c): the U2 processors as specified violate charge conservation
+[thm] The ether phase jump (charge, slip) is conserved mod 14, and a
+single B carries 6 (my library: w(B) = 6; also round 2's slip law).
+- Fan-out "B + O -> O + B + B": 6 = 12 mod 14 is false. Impossible with
+  O unchanged.
+- Toggle "B + O0 -> O1, B + O1 -> O0 + B": the first gives w(O1) =
+  w(O0) + 6, the second w(O0) = w(O1): 6 = 0 mod 14, false. Impossible.
+- General: a transducer whose state returns to itself after taking in k
+  B's and sending out k' B's (nothing else leaving) needs 6(k - k') = 0
+  mod 14, i.e. k = k' mod 7. So x2 needs a state cycle of 7 inputs ->
+  14 outputs, /2 a cycle of 14 -> 7, x3 of 7 -> 21, etc.; or the
+  processor must also emit charged garbage that leaves the line (and
+  then must not hit anything downstream).
+The route survives in that form (multiplier a on a cycle of 7m inputs),
+but the cheap single-B SAT (U2 as stated) would be UNSAT for this reason
+alone; the SAT should target multi-B cycles (or B -> O' with a state
+chain of length 7). theory's reading of the round structure (multiplier
+fixed by the state at the start, residue only in offset and next state)
+is right for one-pass unary transducers [arg, checked: per-cycle output
+over cycle length is a constant].
+
+### [objects] 00:38 - S1 R-pass (A lattice): none at W_h <= 24, W_c <= 12 [sat]; non-standard backs launch nothing; arbitrary outside junk CAN make phase domains (by destroying the back)
+1. [sat] S1 (theory 23:18), separation-fixed s1_pass.py: h (A lattice
+   (3,2), width 24) + c (free stationary, width 12) -> c' (nonempty
+   stationary, may differ) + the SAME h, nothing reflected: 196/196 slip
+   pairs UNSAT (odd head slips trivially). Control in the same code (far
+   side = one library A, separation enforced): SAT for C1/C2/C3 slips
+   (8-A fuel crossing). Queued: B lattice (24,12); both lattices (30,16).
+2. [sim] backs_scan.py: E^24 with each of the 11 back types that exist
+   within W <= 24 ((15,-4) interfaces E-bg | ether(c), c = 1,2,3,4,5,7,9,
+   10,11,12,13; all 11 rods checked (300,-80)-periodic) x all 1,016
+   B-family scenes (every phase), T = 1200: 0 front hits. Same detection
+   code as scan_back.py (positive control there). MISTAKE on the way: my
+   first stability check indexed with negative numpy indices near the
+   window edge and called 10 of 11 rods unstable; fixed.
+3. [sat] launch2.py with FREE cells entirely outside the rod (40 cells
+   right of the back, K = 0): SAT. The witness is junk that destroys the
+   back (debris A, A^2, C1, Ebar, ..., the rod does not survive), so a
+   "phase domain at depth" target is too weak for arbitrary content; it
+   stays meaningful for trains (B lattice <= 40: UNSAT, 23:47 post).
+Summary for avenue (b) on E^n [arg]: walls cross the rod right-to-left in
+the medium; a prepared front (type 7 or 13) turns one bubble kind into a
+clean front change (00:2x posts); but no glider-level launcher exists in
+any scope I tried (library x all phases x 12 back types; B-lattice trains
+<= 40 by SAT).
+
+### [objects] 00:38 - precision to my previous post
+Scope of the summary line: the standard back was hit by ALL 2,523 library left-movers (99,170 scenes); the 11 non-standard backs only by the B family (1,016 scenes each). Not 'library x 12 backs'.
