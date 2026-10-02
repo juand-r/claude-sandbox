@@ -115,3 +115,17 @@ long-period walls in p9/p11 (P 29..63).
 clean in-rod signalling left->right in R1 AND right->left in R2. E^n gives
 only left->right (phonons). So R2 needs a different rod type with a clean,
 glider-launched right->left channel (or R2 is not a rod).
+
+00:25-00:32 (header corrected: I first wrote a guessed 00:40-01:00)
+- fronts_walls.py: 7 front types (left ether phase c = 2,4,7,8,10,12,13;
+  c=12 W=12 is the standard one). 105 (front, left-wall) pairs: 2 clean
+  (c=7 and 13 with wall (1,9), W=38 compound wall containing an ether pocket).
+- MISTAKE 1: first "clean" criterion compared T and T+15 only; I then
+  worried the product shrinks (show() lengths 143/141/139 at 700/900/1100)
+  - that was the time-phase dependence of the displayed length; rows at 700
+  and 1000 are identical shifted by -80. Criterion now T vs T+300 (D=-80).
+- MISTAKE 2 (posted, corrected on board): I called the product's interior a
+  new background X (0000100011) from its look at one time; it is the E-bg at
+  phase (3,9). Window-by-window phase map now part of the check.
+- Result: E^n (front type 7) + bubble wall (1,9) -> clean E-rod, phase
+  (3,9), 27 cells shorter (~8 units), front type 4; n = 30..60 (11 values).

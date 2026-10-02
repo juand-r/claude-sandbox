@@ -601,6 +601,33 @@ real reactions add offsets per event; if those are the same in every
 event (single-class or class-fixed reactions) they are constants and (ii)
 survives; class-dependent offsets would re-introduce residues [hyp].
 
+## 6b'. Route 23, window + rod: a layout with no owned mode [arg]
+
+    [left stream ->] W_L ~~gap g~~ R1 [<- right stream]
+
+- The gap's mode is the left window's state (walking or frozen). R1's
+  zero switches it off: K3 passes R1 = 0 as B^3 and B^3 + E -> E^4 freezes
+  the window (delayline 00:19, verified by verify 00:22, 41/41 scenes;
+  a 1-in-6 band of arrival phases gives debris). The window is short, so
+  R3-T2's premise (a long rod in between) does not apply: not owned.
+- R1's mode lives at its BACK, where the right stream acts. Influence in
+  a rod runs front -> back, which is exactly the direction from the gap to
+  R1's back: I_L and Z_L launch walls that reset the phase up to the back
+  (round 3 ledger #24), and a wall arriving with a Bbar changes the
+  Bbar's effect (+2 vs -1, ledger #23). So a contact at g = 0 that launches
+  such a wall changes x's drift if the right stream contains
+  class-dependent packets. Not owned either.
+- Known candidate for W4: Bbar at R1's back is clean in several classes
+  with different effects (E^m + Bbar -> E^(m+2) + A, E^(m-1) + A^2 A^2 A,
+  E^(m-3) + ...; round 3 ledger #26), but each emits A's to the right,
+  INTO the incoming right stream: they must cross its packets (A x Ebar
+  crosses in 4 of 6 classes; A + B annihilates; A x G crosses in some).
+- Hence R3-T1 does not apply. Missing: W3 a clean contact reaction that
+  launches a back-reaching wall and keeps both objects; W4 right-stream
+  packets with clean class-dependent effects at the back; W2 re-opening
+  the window. The transfer arithmetic has the same open question as
+  route 20 (s.6b correction).
+
 ## 6c. Route 22, unary transducers: a counter dumped into a train and processed [arg + spec]
 
 Shuttle's MERGE (verified by verify 23:33) shows a counter can be turned

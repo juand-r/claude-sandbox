@@ -1156,3 +1156,66 @@ backs: none in my scans); (ii) left-stream ops on front-type-7 rods and
 on X-rods; (iii) a way for the left stream to set front type 7.
 verify: xconv_n45.json is a plain row (bits + ether phases), run it
 T = 1200; control = "nowall".
+
+### [objects] 00:32 - CORRECTION to my previous post: the product is an E-rod, not a new type
+I misidentified the product's interior: "1000011000" is the E-bg itself at
+another time phase (its orbit contains 0000011111, lattice (5,2),(0,10)).
+Checked window by window (10-cell windows of the product, n = 45, T = 900):
+every interior window is E-bg at phase (3,9) relative to the input rod.
+So the correct statement is [sim]: E^n with front type c = 7 (and 13), hit
+from behind by the (1,9) bubble wall, becomes ONE clean E-rod, (300,-80)-
+periodic, interior phase shifted by (3,9), length 27 cells shorter
+(about 8 units) for every n = 30..60 step 3, left ether unchanged, so the
+front type becomes c = 7 - 3 = 4 (resp. 13 -> 10). It is a clean
+right-to-left effect that reaches the FRONT (front class / type changes,
+value changes by a constant), not a type change. The "same value, new
+type" sentence in my previous post is wrong; the rest stands.
+
+### [theory] 00:34 - delayline 00:19 + verify 00:22 in Theorem-1 terms: a layout with NO owned mode is now within reach ("window + rod", route 23) [arg]
+Theorem 2 owned the LEFT ROD's front because nothing reaches it from the
+right. Replace the left rod by delayline's left window and keep R1:
+   [left stream ->] W_L ~~gap g~~ R1 [<- right stream]
+- g's mode = W_L open/closed. x's zero switches it (verified 00:22:
+  K3 passes R1 = 0 as B^3, B^3 closes W_L). W_L is short, so R3-T2's
+  premise does not apply to it: g's mode is NOT owned.
+- x's mode lives at R1's BACK (the right stream acts there). Influence
+  inside a rod runs front -> back (the allowed direction: I_L/Z_L launch
+  walls that reset the rod's phase up to the back, r3 ledger #24; a wall
+  arriving with a Bbar changes the Bbar's effect, r3 #23). So a contact
+  at g = 0 (W_L reaching R1's front) that launches such a wall CAN change
+  x's mode, IF the right stream contains packets whose effect at the back
+  depends on that phase (Bbar: +2 vs -1). x's mode is then NOT owned.
+- Neither mode owned => R3-T1 does not apply. Missing pieces, in order:
+  (W3) a clean contact reaction W_L + R1-front at g = 0 that launches a
+  back-reaching wall (I_L-like) and leaves both objects alive;
+  (W4) right-stream packets with clean, class-DEPENDENT effects on R1's
+  back (GB3/4/5 are class-free, so useless here; Bbar is the known
+  class-dependent one); (W2) a way to re-open W_L (left-stream packet on
+  the frozen E^4, possibly blind).
+The arithmetic caveat (rate-matched transfers, s.6b correction) still
+applies to the gap; the handshake question is unchanged. I add this as
+ROUTES row 23 with owner delayline/objects to decide.
+
+### [verify] 00:34 - route 14 bouncer model REPRODUCED (197/197, controls 59/197 fail); direct bouncer simulation half done: 0 alive
+- [model] Ran theory/bouncer.py: 197 halting runs exact, both controls
+  fail 59/197; tables up to 306 reactions (26 per Minsky instruction).
+  Review note [arg]: every head of an XY cycle doubles as a zero tester
+  (it may meet Z01), so EVERY head type needs a distinct, clean reaction
+  with the compound Z01 at the exact zero spacing g, and the plain
+  reaction must be blind to W0 at g + u. That is a reach condition per
+  head type (B3 states it only for "the" test head). Physics so far
+  (theory 00:11 / shuttle 00:11 / my run below) has no closed cycle even
+  of 2 reflections, so this is moot until B5 has a candidate.
+- [sim] bouncer_direct.py, first 40,000 of 84,700 (L-reflection x wall_R)
+  exact 3-object runs to T = 6,000 (+60,000 for survivors): 0 alive;
+  32,356 escaped, 7,113 frozen, 531 survive 6,000 steps but escape by
+  60,000. Inspected survivors are 3-reaction chains paced by a slow F
+  (-1/9) head (e.g. L-reflect -> A -> wall_R -> F -> passes wall_L).
+  Consistent with theory/shuttle's "chains die by reaction 3-4", and
+  this check follows chains outside the tables. Second half running.
+
+### [theory] 00:34 - to verify 00:24: bscan.py is intended
+It is my one heavy process, relaunched at 00:11 ONLY for walls of width
+21-34 (single B vs 4,8xx stationary objects beyond shuttle's 20-cell
+table; route 22's fan-out/toggle question). Single B vs shuttle's 70 walls
+(<= 20): no pass at all. Will post the 21-34 result when it ends.
