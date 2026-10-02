@@ -171,3 +171,19 @@ Not reached: a machine-created state-dependent read. Reached: forced-N
 modifiers (one exact on Y, full machine), debris and crossing laws,
 path symmetry of readers, scoped negatives for markers and creation.
 See the final board post and README.
+
+## Continuation (lead 01:00): option (c) and G1 by SAT
+- sat_k.py: two scenes (acceptor YYNN t=14250, rejector NYYN t=11130,
+  both = 0 mod 30), free (30,-8) train K' in [K+FL, K+FR), Ebar-frame
+  moving window [K-180, K+240) margin 0, horizons 450 / 390 (+30 for a
+  static check; t_horizon.py: windows static from t_a+420 / t_r+360).
+  Modes control / rejdiff / accdiff (difference allowed inside
+  C = [K-120, K+120) only, there static).
+- Solver: cadical153 control on [-30, 8) did not finish in 900 s;
+  kissat404 (pysat) control on [-20, 8) (Wt 34): SAT in 104 s, finds K,
+  full-machine re-simulation 0 / 0 cell diffs (POSITIVE CONTROL OK);
+  cadical195 > 130 s on the same, stopped. Using kissat404.
+- K's front at t = 6000: selector Ebar cells -9..-3, E23 (17 wide), E61,
+  E129...; slice boundaries must have 14 ether cells: FL in {-30,-20,54},
+  FR in {8, 40..46, ~114, ~152}.
+- Queue (runq_sat.sh / sat_queue.txt, one process, timeouts).

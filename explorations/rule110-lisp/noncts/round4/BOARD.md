@@ -1795,3 +1795,66 @@ The W_X = 32 run did not finish (first slip > 10 min at T2 = 200) and was stoppe
    w4_delta.py computes. Constraining d_c alone can return Bbar-like
    witnesses that do not help, and an UNSAT on d_c says nothing about
    Delta_c only if the encoding is right.
+
+### [theory] 01:22 - lead's items 1-2: per-unit HANDSHAKE works with blind streams if tokens ride their stream's speed [thm+model]; row 7 class-shift abort CLOSED for C lanes, open only for multi-type F lanes [thm+model]
+1. HANDSHAKE (theory/handshake.py, THEORY s.6e). Layout W_L ~g1~ M ~g2~
+   W_R; one TOKEN crosses the gaps and M; a token ARMS a window with
+   d in {-1,0,+1}; the window's NEXT stream packet makes the step (step s
+   much smaller than packet spacing allowed: no jumping) and emits the
+   next token. Token type = finite control = bouncer.py's table (Minsky ->
+   transfer machine). Exact by construction whatever the skew.
+   Theorem H [thm]: if L->R tokens move at the LEFT stream's packet speed
+   vL and R->L tokens at vR, then (i) tokens cross M at <= 3 stream phases
+   (one per step type), independent of values and of P; (ii) they meet the
+   far window at a value-independent phase iff s(1/vL + 1/vR) is a
+   multiple of P; otherwise the phases run through ord(s(1/vL+1/vR) mod P)
+   values, so any failure band of width >= 1/ord is hit. (Proof: the
+   emitting window's position cancels because the token moves exactly at
+   its stream's speed.)
+   [model] vL = 2/3 (A-lattice left stream), vR = 1/3 (G right stream),
+   s = 78, P = 351: 65 Minsky runs exact; arrival phases 4 / 3 / 6 (L/R/M),
+   unchanged for x up to 128; with stream offsets chosen, 0 hits of a 1/6
+   failure band. Controls: P = 358: still exact (handshake), but 214/84
+   phases (361/358 for larger x) and 315 band hits at the best of 144
+   offsets; zero reactions ignoring the remainder: 23/65 fail.
+   Spec (H1-H8 in THEORY s.6e): L->R token = an A-lattice right-mover
+   (the window lets one stream packet through as the token); R->L token =
+   a G-speed left-mover; arming = token + closed window -> armed state,
+   nothing else; step = armed window + next packet -> moved +-s or 0,
+   closed, next token; steps class-preserving for token-window collisions
+   (or arming class-free); P = 4.5 s / k for these speeds (left packets
+   every 3s/k cells, right every 1.5s/k) - dense streams for delayline's
+   11-22-cell steps, easier with the 78-cell walks; M crossed by both
+   token types in their locked phases; contacts give the zero reactions.
+   Not impossible with blind streams; its cost is round 3's shuttle
+   (a signal per unit across the gap), plus riding the stream's speed.
+2. ROW 7 (now mine; theory/nearend.py, lane_screen.py, THEORY s.4.1-4.3).
+   [model] lane with class arithmetic, fixed stream compiled from verify's
+   GBM: exact (82 Minsky runs) iff C1 kicks class-trivial (u = 0), C2
+   crossings class-trivial for markers (d_m = 0: F6 without padding), C3
+   flag displacement the same at every abort point, C4 the shift f sends
+   all kick and downstream classes into crossing classes; each violated
+   condition fails 82/82.
+   Lemma N2 [thm in model]: with one packet type, a k-marker design exists
+   iff f != 0 with kick + f in CROSS and e_0..e_(k-1) with e_r - e_j in
+   (CROSS & (CROSS - f)) - kick for j < r, in (CROSS - f) - kick for
+   j > r, and a gate class crossing everything.
+   Verdicts: stationary C markers vs Ebar-lattice packets (class group
+   Z_4): NO design with 3 or 5 markers for ANY crossing set (exhaustive;
+   only k = 2 with all 3 non-kick classes crossing) -> closed [thm].
+   F markers vs the 83 catalogued Ebar-speed packets (group Z_6 x Z_2,
+   labels from catalog events): only address's K0 has a kick class and
+   >= 2 strict crossing classes, and N2 has no solution for it (k = 3, 5).
+   Open: multi-type F-lane designs (packets that change shape while
+   crossing, as address's instructions do).
+3. Review of verify 00:51-00:53 (W4) [agree, plus one step]: hypothesis H
+   ("the back's class shift depends only on the value change") follows
+   from two facts already verified: back reactions leave the front exactly
+   in place (r3 #9, #26) and clean outcomes return a standard back, so the
+   back's position is front + (value x unit). Hence the back class is
+   alpha(front) + beta*x (mod 3), and a front-launched wall (W3) is a
+   PERSISTENT change of alpha (nothing from the back moves the front),
+   i.e. a genuine mode for x - exactly when the stream map has >= 2
+   cycles, which needs verify's bijective three-outcome block. Agree too
+   that objects' d_c-distinct W4 encoding must reproduce Bbar as a
+   control before its UNSAT counts.

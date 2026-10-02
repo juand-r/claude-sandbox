@@ -457,6 +457,68 @@ abundance (Ebar pairs cross F in 7 of 12 classes). Whether some lane
 object Phi shifts every kick into a crossing class is a finite catalog
 question. Nobody owns route 7 in round 4; I flag it for the lead.
 
+### 4.1 Model [model] (`nearend.py`, owner: theory since 00:5x)
+
+An abstract lane with class arithmetic in one class group: markers
+X_0..X_{k-1} downstream of a control point (one per register), a fixed
+stream compiled from verify's guarded-block machine (GBM, 5 registers),
+launch offsets computed ONCE from the no-abort prediction (the compiler
+does not know the input). A packet kicks its target marker in the kick
+class, crosses in crossing classes (packet displaced by d_p, MARKER
+displaced by d_m), makes debris otherwise. A zero DEC creates a flag at
+the control point; every later packet of the block is shifted by f; the
+gate is absorbed by the flag. It is exact for every input iff
+- C1 u = 0 (mod the class group): register values do not change classes;
+- C2 d_m = 0: crossings do not change marker classes (F6 in its
+  padding-free form);
+- C3 the flag's own displacement by crossings is the same for every abort
+  point of a block (here d_f = 0);
+- C4 f moves every kick class and every downstream class into crossing
+  classes.
+Results: with C1-C4, 82 halting Minsky runs exact (via GBM); each control
+fails 82/82: u = 3; d_m = 7 (order 8, queue's value); d_m = 14 (order 4);
+d_f = 3; f = 0.
+
+### 4.2 Lemma N2 (what C4 asks of the crossing classes) [thm, in the model]
+
+Single packet type, crossing set CROSS and kick class kappa in the class
+group G, k markers. Put e_i = b_i - d_p i (b_i = marker class bases). The
+class-shift abort is realisable iff there are f != 0 with kappa + f in
+CROSS, e_0..e_{k-1} in G and a gate class g with
+- e_r - e_j in (CROSS & (CROSS - f)) - kappa for every j < r (the packet
+  crosses an upstream marker both unshifted and shifted);
+- e_r - e_j in (CROSS - f) - kappa for every j > r (shifted packets cross
+  downstream markers);
+- g - e_j in CROSS for every j (the gate crosses everything when there is
+  no flag).
+*Proof.* A packet aimed at r has class kappa + (b_r - b_j) - d_p (r - j)
+= kappa + e_r - e_j at marker j; read the three requirements of the model
+off this formula. ∎
+*Corollary N1.* If CROSS & (CROSS - f) is empty for every admissible f
+(e.g. a marker with a single crossing class), no design with k >= 2
+markers exists.
+
+### 4.3 Scoped verdicts [thm/sim]
+
+- **Stationary C markers with Ebar-lattice packets: impossible for k >= 3
+  [thm, exhaustive].** The class group is Lambda/<(7,0),(30,-8)> = Z_4.
+  For EVERY crossing set (all 7 nonempty subsets of the three non-kick
+  classes) there is no design with 3 or 5 markers (`nearend.feasible`);
+  only k = 2 with all three other classes crossing passes. Known physics is
+  far from that anyway (C2: 1 crossing class, C1: 2, C3: 0).
+- **F markers with catalogued Ebar-speed packets, single packet type, strict
+  crossings [sim, catalog].** Class group Z_6 x Z_2 (`lane_screen.py`, labels
+  from the catalog's events). Of 83 catalogued Ebar-speed packets, 2 have a
+  kick (absorption) class and only one (address's K0 =
+  Ebar@(0,0)+Ebar@(-9,29)) also crosses F in >= 2 classes (2); Lemma N2
+  has no solution for it with 3 or 5 markers. Scope: crossings that return
+  the same packet; designs where packets change shape while crossing (as
+  address's multi-packet instructions do) need a multi-type version of
+  N2, which I have not written.
+- So row 7's abort by class shift is closed for C lanes (k >= 3) and open
+  only for multi-type F-lane designs; the remaining spec is N2 with packet
+  types that change when crossing, plus C1-C3.
+
 ## 5. Rods in a line (k >= 3) [arg]
 
 Rods R_1 .. R_k from left to right, a left stream at R_1's front and a
@@ -627,6 +689,96 @@ survives; class-dependent offsets would re-introduce residues [hyp].
   packets with clean class-dependent effects at the back; W2 re-opening
   the window. The transfer arithmetic has the same open question as
   route 20 (s.6b correction).
+
+## 6e. The handshake question (lead, 00:4x): exact transfers by a per-unit handshake [thm + model]
+
+**Design.** Same layout as route 20, W_L ~g1~ M ~g2~ W_R, but no window
+walks on its own. A *token* (one signal) crosses the gaps and M. When a
+token reaches a window it ARMS it with a displacement d in {-1, 0, +1}
+(counter units) chosen by the token's type; the window's NEXT stream
+packet makes the step (step size s, possibly much smaller than the packet
+spacing: no jumping) and emits the next token toward the other window.
+The token's type is the finite control: it is exactly route 14's head,
+and the reaction table is bouncer.py's (Minsky -> transfer machine ->
+table). So every counter unit is moved by one token arrival, and the
+counter dynamics are exact by construction, whatever the skew.
+
+**What kinematics can still break: phases.** Physical arming and crossing
+reactions are multi-class and have failure bands (delayline's 1-in-6
+band). With values changing, token arrival times change, so a token could
+meet a window in a bad phase.
+
+**Theorem H (phase locking) [thm, in the model's kinematics].** Let the
+left stream's packets move right at vL, the right stream's move left at
+vR, both with period P; let W_R step by s_R and W_L by s_L. Let every
+L->R token move at vL and every R->L token at vR (a token "rides" its
+emitting stream). Then:
+1. A token crosses M at stream phase -cL/vL + d s_L/vL (mod P) (or the
+   mirror expression), where d is the step its emitting window just
+   took: at most 3 values, independent of g1, g2 and of P.
+2. A token emitted by W_L reaches W_R at right-stream phase
+   -cL/vL - cR/vR + d s_L/vL + b (1/vL + 1/vR) (mod P), b = (g2 + 1) s_R.
+   It is independent of the counter values iff s_R (1/vL + 1/vR) is a
+   multiple of P (and symmetrically s_L (1/vL + 1/vR) for W_L). Otherwise
+   the arrival phases run through ord(s_R(1/vL+1/vR) mod P) values, so any
+   failure band of relative width >= 1/ord is hit.
+*Proof.* The emitting step happens at a left-packet arrival
+t_s = mP + (a_old - cL)/vL; the token leaves the new position
+a_new = a_old - d s_L on the line x = a_new + vL (t - t_s). It reaches
+x = 0 at t_s - a_new/vL = mP - cL/vL + d s_L/vL (1), and x = b at
+mP - cL/vL + d s_L/vL + b/vL; right packets reach b at nP + (cR - b)/vR;
+subtracting gives (2). The window's old position a_old cancels because
+the token moves exactly at its stream's speed. ∎
+
+**Model check [model]** (`handshake.py`; vL = 2/3 (A-lattice left
+stream), vR = 1/3 (G-speed right stream), s = 78, P = s(1/vL + 1/vR) = 351):
+| case | Minsky runs (registers <= 3) | distinct arrival phases L / R / at M | hits of a 1/6 failure band (best stream offsets on a 12x12 grid) |
+|---|---|---|---|
+| locked (tokens at stream speed, P = 351) | 65, 0 failures | 4 / 3 / 6 | 0 (offsets 0, 2/12) |
+| control A: P = 358 | 65, 0 failures | 214 / 84 / 7 | 315 at the best offsets |
+| control C: zero reactions ignore the remainder | 65, 23 failures (must fail) | 4 / 3 / 6 | 0 |
+| value test: registers up to 7 (x up to 128), one long transfer | - | locked 4 / 3 / 6 (unchanged); P = 358: 361 / 358 / 7 | - |
+Exactness is the same in both cases (handshake); what the period condition
+buys is that every token meets every window and M in a bounded set of
+phases (unchanged when the values grow), which a stream offset can steer
+out of the failure band.
+
+**Physical spec (for delayline / objects).**
+- H1 L->R token: a right-mover at the LEFT stream's packet speed. With an
+  A-lattice left stream (delayline's train #499) the token is an A-lattice
+  train: the window lets one stream packet through (or emits a packet of
+  the same lattice). Single class against stationary objects (Lemma L1),
+  3 classes against an E rod.
+- H2 R->L token: a left-mover at the RIGHT stream's speed (G speed for a
+  GB stream).
+- H3 Arming: token + closed window -> armed window (a distinct window
+  state, e.g. a different rod value or face type), nothing else, in the
+  class(es) the locked phase gives. The closed window must absorb the
+  stream's other packets neutrally (E^2 + GB4 is neutral: known).
+- H4 Step: armed window + its next stream packet -> window moved by -s, 0
+  or +s per arming type, closed again, plus the next token (types chosen
+  by the arming).
+- H5 Steps must be class-preserving for the token-window collision
+  (the step vector lies in <P_token, P_window>) or arming must be
+  class-free; otherwise the token meets the moved window in another class.
+- H6 Periods: P_L = P_R = P with s_R (1/vL + 1/vR) and s_L (1/vL + 1/vR)
+  multiples of P. For vL = 2/3, vR = 1/3 and s_L = s_R = s: P = 4.5 s / k,
+  i.e. left packets every 3s/k cells and right packets every 1.5s/k cells.
+  delayline's measured steps (11.2 left, about 22 right per packet) would
+  need very dense streams; larger steps (walks of up to 78 cells exist in
+  delayline's table) relax this.
+- H7 M: both token types cross M cleanly in their (at most 3) locked
+  phases each; contacts at g = 0 give the zero reactions (Z01/Z23 in
+  bouncer.py's table).
+- H8 Finite control: the token types and arming types realise the bouncer
+  table: about 26 table entries per Minsky instruction for a direct
+  compile; a universal machine needs a fixed universal program inside the
+  physics' natural map (same caveat as route 14).
+
+Not impossible with blind streams: the streams only supply energy and a
+clock; all information is in the single token. The cost is the same as
+round 3's shuttle: a signal that crosses the gap once per unit, now with
+the extra requirement that it ride its stream's speed.
 
 ## 6c. Route 22, unary transducers: a counter dumped into a train and processed [arg + spec + sim]
 

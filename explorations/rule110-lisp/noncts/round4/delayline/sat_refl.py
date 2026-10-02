@@ -11,6 +11,9 @@ targets:
   pass2 : Z (B-lattice, slip 12 = 2 units) left + E right, with --only_b:
           POSITIVE CONTROL for the Z branch (library GB3@(0,0)+G@(-16,45),
           width 47, class 2, does it)
+  close4: Z (slip 4 = 3 units) left + E^5 right: S43 = GB3@(0,0)+GB5@(-14,54)
+          does it (width 84); with --fixY it controls the full two-scene
+          encoding including the Z branch
 Every SAT answer is re-simulated cell for cell (check_sat_vs_sim).
 Results appended to sat_refl.jsonl (this directory).
 Usage: python sat_refl.py --target refl --W 30 --ca 0 --cb 0 [--T 360] [--WZ 30]"""
@@ -22,7 +25,7 @@ sys.path.insert(0, SYNTH)
 _cwd = os.getcwd()
 os.chdir(SYNTH)
 from r110sat import CNF, make_window          # noqa: E402
-from react import TrainVar                    # noqa: E402
+from react import TrainVar, Fixed             # noqa: E402
 from scene import Scene                       # noqa: E402
 from classes import placements_by_class       # noqa: E402
 from en import en_item                        # noqa: E402
@@ -52,7 +55,7 @@ def scene_b(cnf, Y, Z, c, T, gap, target):
         return S
     mid = int(-4 * T / 15) - 2   # undisturbed E's left side: Z must be left of it, the rod (walks are rightward) right of it
     S.is_item(T, S.lo - T, mid, Z, far_left=S.p_left)
-    S.is_item(T, mid, S.hi + T, en_item(cnf, 2 if target == "refl" else 1), far_right=S.p_right)
+    S.is_item(T, mid, S.hi + T, en_item(cnf, {"refl": 2, "close4": 5}.get(target, 1)), far_right=S.p_right)
     return S
 
 
@@ -67,19 +70,32 @@ if __name__ == "__main__":
     ap.add_argument("--gap", type=int, default=4)
     ap.add_argument("--moved", action="store_true")
     ap.add_argument("--only_b", action="store_true", help="scene b alone (positive control for the Z branch)")
+    ap.add_argument("--fixY", default=None, help="library packet name: Y fixed (encoding control)")
     a = ap.parse_args()
     t0 = time.time()
     cnf = CNF()
-    Y = TrainVar(cnf, a.W, 42, -14, 0, name="Y")
+    if a.fixY:
+        # ENCODING CONTROL: Y fixed to a library packet (collider bits,
+        # re-framed so that its left ether has relative phase 0)
+        sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..", "collider")))
+        os.chdir(os.path.abspath(os.path.join(HERE, "..", "..", "collider")))
+        from library import Library
+        from r110lib import ETHER
+        os.chdir(_cwd)
+        b, lph, rph, off = Library.load().gliders[a.fixY].state_at(0, 0, 0)
+        bits = "".join(ETHER[(k) % 14] for k in range(lph % 14)) + b
+        Y = Fixed(cnf, bits, (rph - lph) % 14, (42, -14), name="Y")
+    else:
+        Y = TrainVar(cnf, a.W, 42, -14, 0, name="Y")
     Z = None
-    if a.target in ("refl", "shoot7", "pass2"):
-        Z = TrainVar(cnf, a.WZ, 4, -2, {"refl": 8, "shoot7": 0, "pass2": 12}[a.target], name="Z")
+    if a.target in ("refl", "shoot7", "pass2", "close4"):
+        Z = TrainVar(cnf, a.WZ, 4, -2, {"refl": 8, "shoot7": 0, "pass2": 12, "close4": 4}[a.target], name="Z")
     sb = scene_b(cnf, Y, Z, a.cb, a.T, a.gap, a.target)
     scenes = [sb] if a.only_b else [scene_a(cnf, Y, a.ca, a.T, a.gap, a.moved), sb]
     sol = cnf.solve()
     rec = dict(vars(a), sat=sol is not None, secs=round(time.time() - t0, 1))
     if sol is not None:
-        rec["Y"] = "".join(map(str, Y.decode(sol)))
+        rec["Y"] = a.fixY if a.fixY else "".join(map(str, Y.decode(sol)))
         if Z is not None:
             rec["Z"] = "".join(map(str, Z.decode(sol)))
         rec["sim_ok"] = all(S.check_sat_vs_sim(sol) for S in scenes)

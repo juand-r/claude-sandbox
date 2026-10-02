@@ -126,7 +126,7 @@ def differential(geo, n_random=120, seed=3, budget=60, regmax=3, variant='ok'):
         compared += 1
         Tb, h0 = compile_bouncer(prog, variant)
         try:
-            r = run_handshake(Tb, h0, 2 ** regs[0] * 3 ** regs[1], 0, geo)
+            r = run_handshake(Tb, h0, 2 ** regs[0] * 3 ** regs[1], 0, geo, max_events=300000)
             ok = r['halted'] and r['g2'] == 0 and decode(r['g1']) == (mreg, 1)
             for k in phases:
                 phases[k] |= r['ph'][k]

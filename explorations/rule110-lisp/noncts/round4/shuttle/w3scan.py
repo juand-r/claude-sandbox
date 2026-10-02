@@ -31,9 +31,10 @@ def find_shift(rT, span_lo, bg, xa, xb):
     out = []
     for dt in range(15):
         t = T - dt
+        row = bg.h[t]
         for dx in range(-60, 61):
-            ref = np.array([bg(t, x - dx) for x in range(xa, xb)], np.uint8)
-            if np.array_equal(seg, ref):
+            a = xa - dx - bg.lo
+            if np.array_equal(seg, row[a:a + (xb - xa)]):
                 out.append((dt, dx))
     return out
 

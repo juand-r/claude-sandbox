@@ -9,3 +9,23 @@
 {"target": "refl", "W": 30, "WZ": 30, "ca": 2, "cb": 1, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 39.3}
 {"target": "refl", "W": 30, "WZ": 30, "ca": 2, "cb": 2, "T": 420, "gap": 4, "moved": false, "only_b": false, "sat": false, "secs": 54.5}
 {"target": "pass2", "W": 48, "WZ": 30, "ca": 0, "cb": 2, "T": 420, "gap": 4, "moved": false, "only_b": true, "sat": false, "secs": 757.8}
+{"target": "pass2", "W": 30, "WZ": 30, "ca": 0, "cb": 0, "T": 700, "gap": 4, "moved": false, "only_b": true, "fixY": "GB3@(0,0)+G@(-16,45)", "sat": false, "secs": 2.9}
+{"target": "pass2", "W": 30, "WZ": 30, "ca": 0, "cb": 1, "T": 700, "gap": 4, "moved": false, "only_b": true, "fixY": "GB3@(0,0)+G@(-16,45)", "sat": false, "secs": 3.0}
+{"target": "pass2", "W": 30, "WZ": 30, "ca": 0, "cb": 2, "T": 700, "gap": 4, "moved": false, "only_b": true, "fixY": "GB3@(0,0)+G@(-16,45)", "sat": true, "secs": 3.4, "Y": "GB3@(0,0)+G@(-16,45)", "Z": "111110001001101110011000100110", "sim_ok": true, "rows0": ["11111000111000110101111100010011011111001111101000000011011100110001111100001000111000001"], "frames": [[0, 0, 7]]}
+{"target": "pass2", "W": 30, "WZ": 30, "ca": 0, "cb": 2, "T": 420, "gap": 4, "moved": false, "only_b": true, "fixY": "GB3@(0,0)+G@(-16,45)", "sat": false, "secs": 1.5}
+{"target": "walk", "W": 30, "WZ": 30, "ca": 0, "cb": 0, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB4", "sat": true, "secs": 4.2, "Y": "GB4", "sim_ok": true, "rows0": ["11111000111000110101110011011111000100110110001011111000011100110001111100", "11111000111000110101111100010011011111100111100010001101011100110001000"], "frames": [[0, 0, 1], [0, 0, 9]]}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 0, "cb": 0, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 3.9}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 0, "cb": 1, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 3.9}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 0, "cb": 2, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 4.5}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 1, "cb": 0, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 3.8}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 1, "cb": 1, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 4.5}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 1, "cb": 2, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 4.4}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 2, "cb": 0, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 4.7}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 2, "cb": 1, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 4.5}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 2, "cb": 2, "T": 700, "gap": 4, "moved": false, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 4.4}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 0, "cb": 0, "T": 700, "gap": 4, "moved": true, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 6.5}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 0, "cb": 1, "T": 700, "gap": 4, "moved": true, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 6.7}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 0, "cb": 2, "T": 700, "gap": 4, "moved": true, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 6.2}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 1, "cb": 0, "T": 700, "gap": 4, "moved": true, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 6.5}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 1, "cb": 1, "T": 700, "gap": 4, "moved": true, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 6.5}
+{"target": "close4", "W": 30, "WZ": 30, "ca": 1, "cb": 2, "T": 700, "gap": 4, "moved": true, "only_b": false, "fixY": "GB3@(0,0)+GB5@(-14,54)", "sat": false, "secs": 6.7}
