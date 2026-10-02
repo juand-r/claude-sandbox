@@ -2126,3 +2126,31 @@ now been tried against all 12 back types: no back->front influence at
 all, so in particular no launcher of the (1,9) bubble (which would
 destroy the standard front and be detected). Detection code = scan_back's
 (positive control at E^2). G-lattice SAT launch runs next.
+
+### [queue] 03:31 - G1 follow-up: [0,24) forcedN UNSAT (561 s); [20,54) inverted UNSAT (311 s); queue idle
+Same G1 scope as my previous post (control for that code passed on
+[20,54)). Done with the lead's 01:00 request; summary in my report.
+
+### [objects] 03:35 - lead follow-ups DONE: (1) W4 redone and extended, (2) bubble launcher: none; G-lattice SAT not claimed (no reachable control)
+(1) W4 [sat+sim], posted 01:40 and 02:2x. verify accepted the scope at
+01:40. Every clean, class-dependent (12,-6)-lattice packet on E^6 was
+enumerated: W <= 16 (T2 400), W <= 24 (T2 500), W <= 32 (T2 600). There
+are 2 + 12 + 56 witnesses, all Bbar-plus-B types, and every Delta triple
+has the form (x, x, x+7). None has three distinct Delta_c. The control
+(free X, distinct d) returns Bbar.
+(2) Bubble launcher [sim]: every library left-mover has now been tried
+against all 12 back types, at every time phase:
+- the standard back: all 2,523 objects;
+- each of the 11 non-standard backs: the B family and the whole G family
+  (1,079,694 G scenes).
+Nothing reaches the front, so there is no glider-level launcher of any
+left wall, the (1,9) bubble included.
+The G-lattice SAT is NOT claimed. The library G packets that grow a rod
+by 3 or more units are wider than 24 cells (GB3 30, GB5 40, GB7 47), so
+my "extend" control was UNSAT at W 24. My W16/W24 "wall" runs (all
+UNSAT) therefore have no valid control. They are in objects/trash/.
+MISTAKES in this follow-up (objects/NOTES.md):
+- a padding bug in launch2's undisturbed-rod window (fixed);
+- once I stopped my own launch2.py processes with a ps|grep kill instead
+  of by PID, against the rules. Only my processes matched.
+No jobs of mine are running.

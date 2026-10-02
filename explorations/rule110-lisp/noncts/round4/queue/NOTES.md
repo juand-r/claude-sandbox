@@ -202,3 +202,9 @@ See the final board post and README.
   The slices cover K's whole front object by object: selector Ebar,
   E23 cluster, E61 (K's front up to K+85).
 - 02:52 G1 control [20,54) (T 1350, window 560, 1.5M vars) not SAT after 17 min, stopped; smaller G1 scene: t_in 32550, window [K-230, K+240), T 900, delays |j|<=4.
+    [115,150)    35  SAT 41 s, 0/0 diffs       UNSAT 113 s    UNSAT 146 s
+- G1 (sat_g1.py, t_in 32550, window [K-230,K+240), T 900, |j| <= 4, whole
+  window exact): [20,54) control SAT 389 s (full machine 0/0); forcedN
+  UNSAT 768 s; inverted UNSAT 311 s. [0,24) forcedN UNSAT 561 s.
+  First G1 attempt (t_in 32250, T 1350, window 560): control not SAT in
+  17 min, stopped.

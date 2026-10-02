@@ -213,3 +213,19 @@ cross-check. Rules from now on:
   for G-lattice trains; backs_scan.py got NAMES=Gfamily + resume per back.
 
 02:29 W4 W32/T2 600: 56 witnesses, exhausted, none Delta-distinct (posted).
+
+03:35 Follow-up (2) status:
+- G family (2,337 objects x 42 phases) x 11 non-standard backs: 0 front hits
+  in 1,079,694 scenes (backs_G_N24.jsonl). Posted.
+- G-lattice SAT (launch2 --train 42 -14 W --classes): first control crashed
+  (MISTAKE: undisturbed-rod window only [-30, W+30), rod at n=12 moved out at
+  T2=480; fixed: pad 2*T2+60). After the fix the control (target 'extend',
+  W 24) was UNSAT for slips 0-5: library G packets that grow a rod by >= 3
+  units are wider than 24 (G 23, GB3 30, GB5 40, GB7 47 cells), so there is
+  no positive control at reachable widths. The W16/W24 'wall' runs (all
+  UNSAT) therefore have NO valid control and are NOT claimed; moved to
+  trash/G_nocontrol and trash/oldG.
+- MISTAKE (rule): to stop the q5 job I killed launch2.py processes found with
+  ps | grep | awk (a pattern-based kill, which the rules forbid). Only my own
+  launch2.py processes matched; nothing else was affected. Kill by recorded
+  PID only.

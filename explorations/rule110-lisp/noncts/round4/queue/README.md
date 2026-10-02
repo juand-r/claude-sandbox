@@ -39,5 +39,13 @@ Key reproduce commands
 - Creation searches: `VMULT=2 python create2.py 112 -10 102 out.jsonl`;
   `SPLITREL=25 VMULT=2 python selrep.py out.jsonl`.
 
+SAT (lead 01:00 request): sat_k.py (option (c): leader K' prepared
+differently by the two answers), sat_g1.py (G1 front marker). Queue runner
+runq_sat.sh + sat_queue.txt; solver SOLVER=kissat404. Results in
+sat_k.jsonl / sat_g1.jsonl, table in NOTES.md. Example:
+`SOLVER=kissat404 python sat_k.py control -20 8` (positive control, ~2 min),
+`SOLVER=kissat404 python sat_k.py rejdiff -20 8` (UNSAT, ~4 min),
+`SOLVER=kissat404 G1_TIN=32550 G1_WL=-230 python sat_g1.py forcedN 20 54 900 4`.
+
 Large regenerable tables (not committed): zmix*.jsonl (zmix.py runs listed
 in zmix_queue*.sh), zpairs_rej.jsonl (zscreen.py -200 0 150).

@@ -37,3 +37,6 @@
 {"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 2, 8], "sat": false, "secs": 23.6, "nphases": 49}
 {"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 2, 9], "sat": false, "secs": 28.2, "nphases": 49}
 {"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 2, 10], "sat": false, "secs": 25.1, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 2, 11], "sat": false, "secs": 22.9, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 2, 12], "sat": false, "secs": 23.6, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 2, 13], "sat": false, "secs": 23.7, "nphases": 49}
