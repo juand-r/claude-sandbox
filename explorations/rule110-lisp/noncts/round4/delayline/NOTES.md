@@ -97,3 +97,14 @@ A + B -> nothing, E^m + B -> E^(m+1), A + B^3 -> B^2, E^m + B^3 -> E^(m+3).
   annihilation (A + B^k -> B^(k-1)) the refill never reaches R2 (g = 100,
   600, 1200: y never refilled); a reflector that walks per reflection gives
   non-periodic gaps 200, 354, 376, ..., 2312 (control: constant gap).
+
+## 00:02 drift-switch sweeps [sim, exact CA]
+- ds_sweep.py (gaps 600/1200/2400, tz 15k..75k step 1.5k, 123 runs +
+  3 controls): all clean; positions on the walk sequence 27.6, 48.13, ...,
+  206.8 and non-increasing in tz, except gap 1200 tz 55,500 -> 78.0.
+  (My first "allowed" set assumed the 20.53-first alternation; the opened
+  window's first step is 24.27 here. The script's FAIL lines for gap 600
+  are that bookkeeping error, not physics; the printed positions are right.)
+- ds_fine.py 1200 53000 58000: 334 slots, 12 consecutive off-sequence
+  (55,370..55,535 = the A arriving during a NOP collision); 8 walk with a
+  shifted sequence, 4 park after one walk (switch fails). See THEORY_DL s.3.1.

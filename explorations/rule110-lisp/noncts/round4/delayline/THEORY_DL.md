@@ -106,7 +106,22 @@ not provided by anything found (s.4, s.8).
 
 ### 3.1 The coincidence window (fine sweep)
 
-(ds_fine.py; filled in below once the sweep is complete.)
+ds_fine.py swept every arrival slot (Z_L times are quantised to P_E = 15
+steps) from 53,000 to 58,000 at gap 1200: 334 runs, exact CA, all with
+clean products (R2 = E plus one lone E).
+- 322 runs: the window ends on the walk sequence (delay-insensitive).
+- 12 consecutive slots (55,370..55,535, i.e. 180 steps, where the A reaches
+  the window while a NOP is colliding with it) end off the sequence:
+  - 8 of them still walk, with the whole sequence shifted (e.g. 94.8,
+    87.33, 78.0 instead of 92.93 / 72.4);
+  - 4 of them (every third slot: 23.87, 18.27, 12.67, 7.07) walk once and
+    then PARK: the switch fails.
+So the drift switch is delay-insensitive except when the arrival coincides
+with a NOP collision, about 180 of the ~7,100 steps between NOPs (2.5%);
+the switch fails outright in about 1.2% of arrival phases. In a machine
+with an unbounded gap the arrival phase sweeps through all values, so a
+design must keep arrivals out of that window, e.g. by spacing NOPs so that
+the arrival phase is fixed mod the NOP period [hyp].
 
 ## 4. The slip lemma for windows [thm]
 

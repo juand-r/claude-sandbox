@@ -12,3 +12,4 @@
 - 23:41 pairscan.py (class-resolved pair scans, asserted per class), verify_window.py (delayline E/E^2 + GB4 exact), verify_cross.py (C x Ebar). ds_scenes.json truncated; wait.
 - 23:46 verified delayline drift switch (verify_ds*.py); clib.register_auto for collider auto-names of IL/ZL.
 - 23:59 rawscene.py (raw bits scenes) + spot_bounce.py: L-table sample 1,800/1,800 after fixing three of MY classification errors: (1) object span must be first-diff-from-left-ether .. last-diff-from-right-ether (not vlib defect bounds); (2) compound stationary walls (C1+C2 6 cells apart) appear as two defects; merge stationary defects < 20 apart; (3) B and Bbar have the same speed but different periods: compare speeds as fractions. Also velocity test by family periods (fixed 420-step shift fails for F (36), G (42)).
+- 00:02 reviewed route 20 (review_gap2.py): skipping + finite control.

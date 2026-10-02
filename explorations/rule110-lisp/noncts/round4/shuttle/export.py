@@ -35,6 +35,9 @@ from rod import TILE, ether_bit
 ETH = "11111000100110"
 
 
+WCACHE, HCACHE = {}, {}
+
+
 def frame_form(row, lo, t):
     """list form of the single object/train in row (time t, 4t = 0 mod 14
     assumed so frames are t = 0 rows): returns (bits, pR, origin_global)."""
@@ -83,13 +86,23 @@ def main(sides=("L", "R"), outname="bounce_table.jsonl"):
                 row["kind"] = {"refl": "reflect", "pass": "pass", "absorb": "absorbed", "dirty": "dirty"}[c[0]]
                 if c[0] in ("refl", "pass", "absorb"):
                     st = c[1]
-                    nm = name_of_key(st["key"])
-                    r_, lo = render([(nm, st["t0"], st["x"])], 0)
-                    bits, pR, origin = frame_form(r_, lo, 0)
-                    row["wall_out"] = dict(bits=bits, pR=pR, dx=int(origin))
+                    ck = (tuple(st["key"]), st["t0"])
+                    if ck not in WCACHE:
+                        nm = name_of_key(st["key"])
+                        r_, lo = render([(nm, st["t0"], 0)], 0)
+                        bits, pR, origin = frame_form(r_, lo, 0)
+                        WCACHE[ck] = (bits, pR, origin, canon_row(r_, lo, 0, 7))
+                    bits, pR, origin, wcan = WCACHE[ck]
+                    row["wall_out"] = dict(bits=bits, pR=pR, dx=int(origin + st["x"]))
                     row["wall_out_j"] = wall_index.get((bits, pR))
-                    row["wall_out_canon"] = canon_row(r_, lo, 0, 7)
+                    row["wall_out_canon"] = wcan
                 if c[0] in ("refl", "pass"):
+                    x00 = c[2][0]["x"]
+                    hk = tuple((tuple(p["key"]), p["t0"], p["x"] - x00) for p in c[2])
+                    if hk in HCACHE and side in HCACHE[hk]:
+                        row["head_out"], row["head_out_i"], row["head_out_canon"] = HCACHE[hk][side]
+                        out.write(json.dumps(row) + "\n")
+                        continue
                     mem = [(name_of_key(p["key"]), p["t0"], p["x"]) for p in c[2]]
                     P = 1
                     for nm2, _, _ in mem:
@@ -104,6 +117,7 @@ def main(sides=("L", "R"), outname="bounce_table.jsonl"):
                     other = "L" if side == "R" else "R"
                     row["head_out_i"] = head_index[other].get((bits, pR, pp, dd))
                     row["head_out_canon"] = canon_row(r_, lo, 0, P)
+                    HCACHE.setdefault(hk, {})[side] = (row["head_out"], row["head_out_i"], row["head_out_canon"])
             out.write(json.dumps(row) + "\n")
     out.close()
 

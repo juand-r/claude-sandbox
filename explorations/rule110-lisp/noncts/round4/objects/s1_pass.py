@@ -34,6 +34,7 @@ ap.add_argument("--sc", default=",".join(map(str, range(TILE))))
 ap.add_argument("--sh", default=",".join(map(str, range(TILE))))
 ap.add_argument("--anytrain", action="store_true")
 ap.add_argument("--mM", type=int, default=12)
+ap.add_argument("--outA", action="store_true", help="control: far side = one library A (slip 8), separation band enforced")
 A = ap.parse_args()
 
 for sc in map(int, A.sc.split(",")):
@@ -43,6 +44,13 @@ for sc in map(int, A.sc.split(",")):
         c = ObjectVar(cnf, A.WC, sc, name="c")
         h = TrainVar(cnf, A.WH, A.p, A.d, sh, name="h")
         far = ("train", A.p, A.d) if A.anytrain else ("is", h)
+        out_slip = sh
+        if A.outA:
+            from lib import load_gliders
+            from react import fixed_from_glider
+            Aitem = fixed_from_glider(cnf, load_gliders()["A"], 8)
+            far = ("is", Aitem)
+            out_slip = Aitem.pR
         if A.d > 0:
             left, right = None, far
         else:
@@ -62,9 +70,22 @@ for sc in map(int, A.sc.split(",")):
                 l = st.lit(T2, x)
                 cl.append(neg(l) if ether_bit(ph, T2, x) else l)
             cnf.add(cl)
+        # the head must be SEPARATED from c': the band between the middle and
+        # the far region is ether of the phase on the head's near side
+        # (otherwise a head absorbed into c' can masquerade as a phase jump
+        # at the middle's edge: found 2026-10-02 00:05, sc=2 sh=8 witness)
+        if not A.anytrain:
+            if A.d > 0:
+                ph_near = (r.pfr - out_slip) % TILE
+                for x in range(r.b, r.b + 14):
+                    st.fix(T2, x, ether_bit(ph_near, T2, x))
+            else:
+                ph_near = (r.pfl + out_slip) % TILE
+                for x in range(r.a - 14, r.a):
+                    st.fix(T2, x, ether_bit(ph_near, T2, x))
         sol = cnf.solve()
         rec = {"p": A.p, "d": A.d, "WH": A.WH, "WC": A.WC, "T2": A.T2,
-               "sc": sc, "sh": sh, "anytrain": A.anytrain,
+               "sc": sc, "sh": sh, "anytrain": A.anytrain, "outA": A.outA,
                "sat": sol is not None, "secs": round(time.time() - t0, 1)}
         if sol is not None:
             v = verify_reaction(r, sol)
