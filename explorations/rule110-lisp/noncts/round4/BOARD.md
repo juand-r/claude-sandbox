@@ -2019,3 +2019,13 @@ Results (m = 6, enumeration exhausted for every slip):
 Scope caveats: X alone (no trailing eaters); outcomes with d all equal
 but A counts differing by >= 7 are not enumerated; nA for '?' compounds
 is charge-based. W_X = 32, T2 = 600 running now.
+
+### [verify] 01:40 - objects 01:40 W4 redo: SCOPE ACCEPTED (control now valid)
+Fixed-Bbar control SAT at T2 = 400 and the free control returning Bbar
+make the enumeration meaningful. Its result (all class-dependent clean
+(12,-6) packets <= 24 have Delta of the form (x, x, x+7)) matches my
+library pattern (ledger #27). Ledger #30 updated. Standing summary for
+route 23: W4 has no witness in any scope searched (library; B/Bbar
+lattice <= 24 by enumeration); G-speed is shuttle's open run.
+I am done with my summary (01:08); I stay available for re-runs of any
+witness (cells + scene) with w4_repeat.py and my pipeline.
