@@ -15,3 +15,4 @@
 - 00:02 reviewed route 20 (review_gap2.py): skipping + finite control.
 - 00:07 verify_ds.py on all 18 scenes: equal. Mistake: seeds are in program order, not left-to-right -> sort by start column. Also: a spot_bounce R-side 'mismatch' hunt was confused by shuttle's table being rewritten during my reads (different line contents for the same (head_i, wall_j)); hashlife was suspected and cleared (engine vs hrun equal, pad 400 vs 2080).
 - 00:17 R-table checks; bouncer_direct.py started (PID 24285), chunk 40000; controls ok.
+- 00:18 verify_lstop.py: delayline reverse switch verified. Mistake: first intercept formula had the sign of 4tE/15 wrong (shift looked class-dependent within a class); fixed.

@@ -975,3 +975,55 @@ an exact 3-object simulation of every clean L-reflection (1,210) x every
 physical wall_R (70), T = 6,000 then 60,000; it follows chains beyond
 the tables. First 11,480: 0 alive; 140 survive 6,000 steps only
 because of slow heads (e.g. D1 -> wall_R -> F (-1/9) -> passes wall_L).
+
+### [verify] 00:18 - delayline 00:15 reverse switch VERIFIED: train #499 walks a zero left window 11.2/packet, a B^3 closes it to a frozen E^4
+[sim] verify/verify_lstop.py, my construction: Q = #499 registered in my
+library from its cells (period (3,2) checked), 10 copies 84 cells apart,
+E from my library at 15 seed times (3 classes), B^3 from the collider
+definition (period re-found), my builder + hrun + my typer, T = 12,000.
+(a) class 1: window moved exactly +112.00 = 10 x 11.2; classes 0/2 also
+    end as a lone E (moved 88.67 / 101.73: not uniform walks).
+(b) class 1 + B^3 started 60..690 cells behind the window (64 offsets):
+    46 end as ONE lone E^4 at 11.2 k (k = 1..9 walks before the B^3
+    arrived, then frozen under the remaining packets; k = 10 when it
+    arrives after the stream); 18 end in debris (F, C2+?, Ebar+...),
+    in pairs of adjacent offsets = arrivals during a packet collision.
+    delayline reported 12/75 debris; my coarser offset grid gives 18/64.
+So both gap-drift switches exist: on (A opens a right window) and off
+(B^3 closes a left window), each with a collision-timing failure band.
+Note: the failure band is a real obstacle for blind streams (arrival
+time is data-dependent), unless arrivals can be synchronised.
+
+### [queue] 00:18 - debris law: V-class (24 classes) decides; a forced-N read verified on one tape (+6 later reads); correction
+CORRECTION to my 23:30 post: the plain machine (program {YNNNNN}, Cook's
+default v) itself fails tape NNYY at read 3 (rejection runs need more
+ossifier spacing, REPORT s.3.5); I had not run that baseline. All my
+full-machine checks are now at v = 2x Cook (VMULT=2, t_in = 47460);
+baselines NYYN and NNYY are 8/8 there. The local-scene screens are
+unaffected (results identical at 1v and 2v, t_transfer.py).
+1. [sim] Exactly consumed modifier (positive control): the library pair
+   Ebar_8_Ebar at (phase 5, tile at K0-28) in front of the reader is
+   consumed with a cell-exact standard outcome; full machine NYYN 8/8.
+2. [sim] FORCED-N read, full machine, tape NYYN (2v): Z = Ebar (15, K0-36)
+   + E^3 (3, K0-12) written in front of P_1 at t = 47460: reads
+   (.)NYNYNNN = reference with read 1 forced (s_1 = Y read as N), and the
+   6 later reads correct, including reads of data appended after the
+   forced read. Reproduce: cd round4/queue; VMULT=2 python t_zfull.py
+   NYYN 8 "Ebar:15:-36;E^3:3:-12" KF. Negative control: same Z on NNYY
+   fails at read 2 ('!').
+3. [sim+arg] Why some modifiers work and others not: debris left between
+   the read front and the ossifiers is crossed by every later symbol and
+   then met by every ossifier. A single debris Ebar is harmless iff its
+   placement is standard modulo V = <(12,8),(30,-8)> (round 2's machine
+   symmetry lattice), i.e. (a mod 6, b mod 4) = (0,0) for its offset
+   a(7,0)+b(3,2): b = C-crossing class, a = ossifier (A4) class. Data
+   (rclass.py): compound family Ebar@(0,0)+Ebar@(-1,39) -> (5,0): later
+   initial symbols read fine, the first read of NEWLY APPENDED data breaks
+   (ossifier) - observed exactly so; E^3+Ebar on Y -> (0,0): all reads
+   fine; on N -> not standard: read 2 breaks. Plus: extra crossed Ebars
+   count mod 8.
+4. Status: ~150 forced-N front modifiers found (zscreen/zlib/zmix,
+   ~700k placements); remnant classes seen: (5,0), (3,0), and Y/N-split
+   cases; none is standard for BOTH symbols yet. Next: wider families,
+   and the joint search (table material X before K that one answer type
+   turns into a modifier, the other deletes exactly).
