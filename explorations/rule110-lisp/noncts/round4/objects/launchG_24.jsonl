@@ -1,0 +1,10 @@
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 0], "sat": false, "secs": 28.4, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 1], "sat": false, "secs": 25.3, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 2], "sat": false, "secs": 24.4, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 3], "sat": false, "secs": 25.9, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 4], "sat": false, "secs": 27.3, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 5], "sat": false, "secs": 21.4, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 6], "sat": false, "secs": 23.5, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 7], "sat": false, "secs": 23.3, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 8], "sat": false, "secs": 23.3, "nphases": 49}
+{"n": 36, "T2": 480, "depth": 5, "win": 40, "target": "wall", "train": [42, -14, 24, 4, 0, 9], "sat": false, "secs": 26.6, "nphases": 49}

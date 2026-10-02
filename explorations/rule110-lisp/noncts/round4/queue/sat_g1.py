@@ -22,8 +22,9 @@ from r110sat import CNF, Spacetime, make_window, ether_bit
 from react import TrainVar
 from sat_k import phase_glob
 
-T_IN = 32250
-WL, WR = -320, 240
+import os
+T_IN = int(os.environ.get("G1_TIN", "32250"))
+WL, WR = int(os.environ.get("G1_WL", "-320")), 240
 
 def cut(tape, T, JM):
     m = Machine(tape, ["YNNNNN"], T_IN + T + 30 * JM + 2000, left_periods=4, right_periods=3)

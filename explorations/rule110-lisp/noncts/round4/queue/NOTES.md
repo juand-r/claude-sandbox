@@ -201,3 +201,4 @@ See the final board post and README.
     [-30, 46)    86  not SAT after 27 min (stopped)
   The slices cover K's whole front object by object: selector Ebar,
   E23 cluster, E61 (K's front up to K+85).
+- 02:52 G1 control [20,54) (T 1350, window 560, 1.5M vars) not SAT after 17 min, stopped; smaller G1 scene: t_in 32550, window [K-230, K+240), T 900, delays |j|<=4.

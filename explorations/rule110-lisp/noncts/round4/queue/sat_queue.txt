@@ -1,12 +1,7 @@
-1500 SOLVER=kissat404 python sat_k.py control 12 46
-1500 SOLVER=kissat404 python sat_k.py rejdiff 12 46
-1500 SOLVER=kissat404 python sat_k.py accdiff 12 46
-1500 SOLVER=kissat404 python sat_k.py control 54 85
-1500 SOLVER=kissat404 python sat_k.py rejdiff 54 85
-1500 SOLVER=kissat404 python sat_k.py accdiff 54 85
-1500 SOLVER=kissat404 python sat_g1.py control 20 54
-1500 SOLVER=kissat404 python sat_g1.py forcedN 20 54
 1500 SOLVER=kissat404 python sat_k.py control 115 150
 1500 SOLVER=kissat404 python sat_k.py rejdiff 115 150
 1500 SOLVER=kissat404 python sat_k.py accdiff 115 150
-1500 SOLVER=kissat404 python sat_g1.py forcedN 0 24
+2400 SOLVER=kissat404 G1_TIN=32550 G1_WL=-230 python sat_g1.py control 20 54 900 4
+2400 SOLVER=kissat404 G1_TIN=32550 G1_WL=-230 python sat_g1.py forcedN 20 54 900 4
+2400 SOLVER=kissat404 G1_TIN=32550 G1_WL=-230 python sat_g1.py forcedN 0 24 900 4
+2400 SOLVER=kissat404 G1_TIN=32550 G1_WL=-230 python sat_g1.py inverted 20 54 900 4
