@@ -103,3 +103,8 @@ level, charge law, option (c) SAT).
   (E353 - E128 = 225 ~ 4*56).
 - Gap at K0+100 (between core and K tail) is NOT a symmetry (read 1 Y
   became N): K's tail takes part in the read/acceptor.
+- MISTAKE (process, 00:19): `cd X && nohup ... & echo $! > create2.pid`
+  wrote create2.pid into noncts/ (the caller's directory), exactly the
+  pattern the kickoff warns about. Removed that stray file at once (it
+  held only the PID 27041); PID now recorded in queue/create2.pid. Rule:
+  always `echo $! > /abs/path/queue/x.pid`.

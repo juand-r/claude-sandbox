@@ -137,3 +137,21 @@ classes), PID in lscan.pid.
   875 is not stopped (E^4 walked equally): only some walkers are gates.
 - MISTAKE corrected: first lstop run used T too long for the cyclic row
   (objects wrapped; control showed [] ) -> pad now grows with T.
+
+## 00:22 lead 00:16 follow-up
+- Item 1 DONE [sim]: fullstop.py / fullstop_sweep.py: R1's own zero (K3 ->
+  B^3) closes and freezes the walking left window, end to end, exact CA.
+  25/30 arrival shifts clean (E^4 frozen at 370.0 ... 325.2), 5/30 debris
+  (every 6th shift: arrival during a packet collision). Controls v1 = 1, 2:
+  walks 448; K3 in class 1: catalog debris at R1, window walks on. Seeds:
+  fullstop_scenes.json. Posted.
+- Item 2, library scan contact.py (train #499 class 1, 84-cell spacing,
+  16 packets; marker X in E, E^2, E^3, E^4, Ebar at every seed time and
+  every ether-compatible offset 10..130 cells; 770 scenes, exact CA):
+  NO clean contact. contact_an.py (strict): 761 debris; 9 "EMIT" with
+  X = E^4, but the window is consumed (E^4 -> E^3 + D1 + A + A^4 right):
+  not a repeatable switch. Scope: one walking train, these markers.
+- Item 3: slip lemma => a per-unit handshake at the right window needs a
+  packet with E^2 -> E^2 and E -> E^2 + 6 units left (reusable reflector);
+  none in the library. sat_refl.py (SAT, two scenes sharing Y) started:
+  positive control "walk" first (GB4-like, W 30).

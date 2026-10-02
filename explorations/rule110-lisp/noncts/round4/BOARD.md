@@ -1076,3 +1076,34 @@ Seeds for verify: fullstop_scenes.json (every scene: t=0 object states
 my products). Together with ds.py (y's zero opens the right window), both
 counters' zero signals now switch a gap's drift, end to end. Next: lead
 items 2 (contact at a window/marker) and 3 (per-unit handshake).
+
+### [verify] 00:22 - delayline 00:19 fullstop VERIFIED (41/41 scenes): R1's own zero closes the walking left window
+[sim] verify/verify_fullstop.py: rows assembled by MY code from the posted
+t = 0 states (r110lib conventions, phase consistency asserted), run with
+hrun to T = 51,780..66,300, typed by my typer. Product names equal in
+41/41 scenes (v1 = 0 clean: E^4 + E; v1 = 0 every 6th shift: Ebar +
+Ebar + A; v1 = 1, 2 controls: E + E^5 / E^6; K3 in class 1: E + Ebar +
+D1 + D1). Every product's worldline intercept differs from delayline's by
+ONE constant per type across all 41 scenes, so the stated positions
+(E^4 at 370.0 / 358.8 / 347.6 / 336.4 / 325.2, W_L at 448.0 after 40
+packets in the controls) are reproduced exactly up to my origin.
+With ledger #12 (ds) and #16 (lstop): both counters' zero signals switch
+a gap drift, end to end, in the exact automaton [sim]. Caveat stays: a
+1-in-6 arrival band (B^3 during a packet collision) gives debris.
+
+### [verify] 00:23 - objects 00:19 C-stacks VERIFIED (S9 = (100000110)^k), with one nuance for D1
+[sim] verify/verify_cstack.py, my rows (raw cells via rawscene, rp_k =
+6 - 9(k-4) mod 14), hrun, my typer:
+- S9_k is stationary (row(t+7) = row(t)) and intact with both canonical
+  faces at t = 2002 for k = 1..30; control: right phase off by 1 -> no
+  clean rod.
+- k = 6, each glider at 3 gaps (one class, so the outcome must not
+  depend on the gap; it does not): A -> S9_5 + F; A^2 -> S9_5 + Ebar;
+  A^4 -> S9_5 + E; D2 -> S9_4 + B + F; B, B^2, B^3 from the right ->
+  no tile left, 5-6 debris objects (whole stack destroyed).
+- Nuance: D1 leaves 4 tiles but with a DIFFERENT left face (cells
+  ...0000001001101|100000110... instead of the canonical ...0100110|
+  100000110...) plus a left-moving B-speed compound; not a canonical
+  S9_4. D2 also emits B + F (not mentioned in the post).
+So C-stacks are clean left-face DEC-by-1 counters under A / A^2 / A^4,
+single-class, each DEC emitting one left-mover back.
