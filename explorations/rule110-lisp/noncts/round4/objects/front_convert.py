@@ -17,7 +17,7 @@ N, T = int(sys.argv[1]), int(sys.argv[2])
 FW.N, FW.T = N, T
 F = FW.fronts()
 L = O.lib()
-movers = [n for n, g in L.items() if g["velocity"] in ("2/3", "1/2")]
+movers = [n for n, g in L.items() if g["velocity"] in ("2/3", "1/5")]
 
 
 def front_refs(c):

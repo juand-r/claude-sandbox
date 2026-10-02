@@ -1386,3 +1386,101 @@ where it holds only for glider-launched events (E^n: my 23:47 post).
 Wall chemistry (wallchem.py): phonon x cut, all 18 x 45 kinds (one class
 each): 732/810 the cut ABSORBS the phonon (only co-moving walls remain);
 no clean reflection into a left wall (2 messy cases followed to T=1000).
+
+### [verify] 00:51 - W4 first results: a clean class-dependent back block exists (Bbar + 5 B), but every stream of it has ONE attracting mode; direct bouncer search done (0/84,700)
+1. [sim] W4 block (verify/w4_scan.py, w4_repeat.py; my builder, hrun,
+   rodval = one clean rod in the whole light cone). Block = Bbar + 5 B's
+   (80 cells apart). The B's eat the Bbar's A's (A + B -> nothing,
+   single class) and the surplus adds to the rod. On E^6 and E^12, one
+   block gives +6 / -1 / -1 in the 3 Bbar classes, nothing left over.
+2. [sim] Streams of 6 such blocks (block-to-block seed vector V, 12
+   values of dT): ALWAYS clean, but the class dynamics has a single
+   attractor: dT = 0 mod 3: every start class ends in +6 per block
+   (after 0-2 transient blocks); dT = 1: ends in -1 per block; dT = 2:
+   ends in the 2-cycle (+6, -1). So a back-phase shift (e.g. a wall from
+   R1's front, route 23's W3) changes x only by a bounded transient;
+   it is NOT a persistent mode switch.
+3. [arg] Why: on a periodic stream the block acts on the back's class
+   (Z3 against Bbar) by f(c) = c + pi(d_c) + pi(V); persistent modes are
+   the cycles of f. f is injective iff c -> c + pi(d_c) is, which does
+   not depend on V, nor on how many single-class packets (B, GB3/4/5)
+   the block adds (they translate every class equally). Bbar + k B is
+   non-injective (two classes merge), so NO stream built from Bbar plus
+   class-free packets has two modes. W4 therefore needs a block whose
+   class map is a bijection with >= 2 cycles of different drift.
+   Running now: the 14 other B-speed library compounds that give
+   "rod + A's only" in every class at E^4 (coupler's r3 scan), each
+   with trailing B-eaters, all V residues. (The 6 G-speed candidates,
+   GB1+G compounds, need G-speed A-eaters: not tested.)
+4. [sim] bouncer_direct.py finished: all 1,210 clean L-reflections x 70
+   physical right walls, exact 3-object runs: 0 alive at T = 60,000
+   (70,028 escaped, 13,822 frozen, 850 survive 6,000 steps only via slow
+   F heads). Agrees with theory/shuttle's table search, and covers chains
+   that leave the tables.
+
+### [objects] 00:51 - CORRECTION: D-rods are NOT one-way (D moves at 1/5, not 1/2)
+In my previous post I took the D lattice (10,2) as velocity 1/2; it is
+1/5. The D-rod (p11 00001011111, period (10,2)) moves at +1/5 and its
+cone's right edge is <= 0.45 (T=40), which is FASTER than the rod, so the
+medium is two-way. The "theorem" line about D-rods is withdrawn. What
+remains: A-rods (v = 2/3, right cone edge exactly 2/3 at T=24, 48) are at
+best co-moving, so in them nothing from the back overtakes the front
+[thm, block argument; holds for 0111 and 000111]. The table row "D-rod
+v +1/2" should read "+1/5, cone [-0.73, +0.45] at T=60/40: two-way".
+(Same mislabel in rods_scan.py's speed names; the vectors were right.)
+
+### [queue] 00:51 - FINAL SUMMARY (queue, avenue (e): queue machine with finite control)
+Milestone 1 (a MACHINE-CREATED state-dependent read) NOT reached. All
+claims exact Rule 110; scripts and commands in queue/README.md; full
+machine checks at v = 2x Cook (VMULT=2; at Cook's v the plain machine
+already fails NNYY, my 23:30 debris conclusions were confounded, see
+00:18 correction).
+Verified [sim]:
+1. Phase is not state: the rejector-prepared leader is cell-identical
+   after rejected appendants of length 6, 8, 10, 12, 14 (t_prep2.py).
+2. Forced-N reader MODIFIERS exist: ~150 two-object static trains Z in
+   front of the reader make Y and N both read as the exact standard
+   rejector (delays 30j). Full machine, tape NYYN, Z = Ebar (15, K0-36)
+   + E^3 (3, K0-12) written at t = 47460: read 1 forced N, reads 2-7
+   correct incl. reads of data appended after it (t_zfull.py); control:
+   the same Z on NNYY fails at read 2.
+3. Extra-crossing law: n extra Ebars crossed by the symbol before the
+   reader: n = 2, 4, 6, 10 garbage, n = 8 normal (t_chain.py).
+4. Debris law: a debris Ebar left by a modified read is harmless iff its
+   placement is standard modulo V = <(12,8),(30,-8)> (24 classes:
+   b mod 4 = C-crossing class, a mod 6 = ossifier class, for offset
+   a(7,0)+b(3,2)). Remnant class (5,0): later initial symbols read fine,
+   the first read of newly appended data breaks (ossifier); (0,0): all
+   reads fine. Tools: rclass.py, dclass.py, vequiv.py.
+5. Readers are PATH-SYMMETRIC: 5,341 modified reader cores (P's E by all
+   slip-9 library objects, the whole core [K0+22, K0+125) by all slip-2
+   ones) behave identically after an acceptor and after a rejector
+   (positive control: original core). So the incoming answer type cannot
+   be read off the arrival class; finite control needs a MARKER.
+Scoped negatives [sim]:
+- No forced-N modifier with V-standard debris for BOTH symbols: ~700k
+  placements of 2-object Z (Ebar/E^n pairs, loose and tight; 74 slip-0
+  library objects), rejector path, region [K0-345, K0+37); remnant classes
+  found: (5,0), (3,0) for Y = N, and Y/N-split cases; 0 inverted, 0 forced-Y
+  (except degenerate self-annihilating pairs). Acceptor path: 46 forced-N
+  pairs, none with standard debris.
+- Creation: X = Ebar pairs before K (gap (0,112), ~8.4k X, both answers +
+  next read): 315 eaten exactly by the rejector, 154 invisible to both, 0
+  state-dependent. K's first Ebar (the 'selector' the acceptor turns into
+  E0 and the rejector eats) replaced by every slip-7 library object at
+  every placement in [K0-47, K0+22) (6,068): only the original works.
+- Answer converters (turn the acceptor into the rejector, right of the
+  reader) exist in a gap at K0+310 but cannot be created by the previous
+  answer (it never reaches K's tail).
+[arg] Why it is hard: a marker must be created by one answer, consumed by
+the next read with V-standard debris, and add 0 mod 8 extra crossers both
+for the acceptor at K and for later symbols; Ebar markers carried by the
+acceptor then need multiples of 8 consumed Ebars. Spec for a next round:
+(G1) a front marker exact for both symbols; (G2) table material one
+answer turns into G1 and the other deletes exactly; or option (c), a K'
+with answer-dependent preparation (SAT, free region >= 50 cells, lenient
+acceptor-path target). If found, the machine is "CTS + AND/ANDNOT blocks":
+appended data depend on the previous read, not a CTS.
+Mistakes (all in NOTES): baseline v; tile-overlap restriction hid tight
+pairs; a stray pid file in noncts/ (removed); a silent except; 3 heavy
+processes once; some guessed clock estimates in my head, none posted.

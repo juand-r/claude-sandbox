@@ -145,3 +145,29 @@ level, charge law, option (c) SAT).
   (tiles_of not imported) was swallowed by `except Exception: continue`.
   Exactly the silent-fallback pattern CLAUDE.md forbids. Fixed the import
   and narrowed the except to the tile-construction errors, now printed.
+
+### 00:40-00:55 last searches and wrap-up
+- combo.py: forced-N Z (132) + exact-normal M; only 2 persisting
+  exact-normal M exist (the Ebar_8_Ebar family; the other ~1490 "exact
+  normal" pairs annihilate each other before the symbol arrives =
+  degenerate). No composed Z with V-standard debris.
+- selrep.py (K's first Ebar = the 'selector' that the acceptor turns into
+  E0 and the rejector eats, tile (18, K0-25) at t = 6000): replaced by
+  every slip-7 library object at every placement in [K0-47, K0+22),
+  6,068 placements, both paths: only the original placement keeps both
+  paths standard (positive control). selector.py: 8 acceptor-shift-
+  corrected copies of the selector before K break both paths.
+- t_e24.py: tape C's never cross E^2/E^4 pairs intact (no zero-shift
+  crossers available).
+- t_cmp.py: the class bookkeeping across reads is NOT simply "count of
+  crossed Ebars": in the acceptor path the next symbol crosses 24 moving-
+  data Ebars + E0 and still reads normally; the initial-tape geometry
+  differs between tapes. So the mod-8 statement is about EXTRA crossers
+  added to a correctly built machine (what t_chain.py measured), not
+  about total counts. Mechanism of the path symmetry: open.
+
+## Final status (00:55)
+Not reached: a machine-created state-dependent read. Reached: forced-N
+modifiers (one exact on Y, full machine), debris and crossing laws,
+path symmetry of readers, scoped negatives for markers and creation.
+See the final board post and README.

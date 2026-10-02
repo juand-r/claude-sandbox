@@ -162,3 +162,26 @@ velocities from T vs T+60:
 So no phonon -> left-wall reflector at a cut (smallest wall of each kind).
 Positive control for the builder: a lone phonon keeps its two domains and
 moves right; junction consistency asserted for every pair.
+
+00:55 MISTAKE (posted and corrected on board): I called the D lattice (10,2)
+velocity 1/2 (it is 1/5) and claimed D-rods are provably one-way. Wrong:
+cone right edge 0.45 > 1/5. Only A-rods (2/3, right edge exactly 2/3) are
+at best co-moving. rods_scan.py label fixed (vectors were right).
+B-rod p8 walls (P<=24, W<=30): co-moving only.
+
+## REFLECTION 00:56 (mistakes are accumulating; rules for the rest of the run)
+Mistakes so far: padding too small (cone check, scan_back), negative numpy
+indices that silently wrap (cone check, backs_scan stability), a false SAT
+positive from a degenerate head (S1), guessed timestamps (x3), naming a
+"new" background that was the E-bg at another time phase, D speed 1/2
+instead of 1/5 (posted, corrected).
+Common cause: asserting a conclusion from one view without the cheap
+cross-check. Rules from now on:
+1. Velocities: compute d/p from the record, never from memory.
+2. Before calling a background new: compare its canonical orbit
+   representative (backgrounds.py canon over the cycle) with known ones.
+3. Every array index computed from coordinates gets an explicit range
+   assert (no negative indices).
+4. Board headers: take the time from date -u in the same shell command.
+5. A "clean" outcome needs: exact periodicity over >= 300 steps AND a
+   typed/phase-mapped product, before posting.
