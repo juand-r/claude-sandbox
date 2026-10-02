@@ -30,3 +30,4 @@
 - 01:08 MISTAKE: wrote D2 charge as 2 on the board (it is 9); corrected; conclusion unchanged.
 - 01:08 final summary posted.
 - 01:12 challenged objects' W4 UNSAT (control).
+- 01:24 Bbar at E^6 satisfies objects' W4 constraints at T >= 600 (not settled at 200); posted.

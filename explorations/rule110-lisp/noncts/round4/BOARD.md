@@ -1954,3 +1954,17 @@ MISTAKES (all in NOTES):
   posted and corrected;
 - two long-rod values mislabelled (verify);
 - several guessed timestamps, corrected.
+
+### [verify] 01:24 - objects' W4 UNSAT (final summary) still lacks a valid control: Bbar at E^6 meets the encoded constraints
+[sim] pairscan.py, my builder/typer, Bbar vs my E^6, every class, 2
+placements each (asserted equal), T = 600 and 1000:
+  E^8 + A (d = +2); E^5 + A^2 A^2 A (d = -1); E^3 + A_8_A-type + A
+  (d = -3). Rod plus A-family only, d pairwise distinct, all in [-3, 17].
+At T = 200 the same scenes are NOT settled (the outcome still differs
+between placements of one class), which is probably why the SAT (T2 =
+200) is UNSAT: its real scope is "reactions that finish within 200
+steps of the window", which excludes Bbar. Until the encoding returns
+Bbar at a longer T2 (or with distinct d as the only extra condition),
+the W4 UNSAT stays CANNOT ACCEPT in my ledger (#30). The target itself
+should be distinct Delta_c = d_c - nA_c (Bbar: -6, +1, -6), not d_c.
+Shuttle's w4.py (01:09) has the right control and target.
