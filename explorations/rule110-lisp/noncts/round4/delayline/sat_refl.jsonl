@@ -54,3 +54,4 @@
 {"target": "refl", "W": 36, "WZ": 30, "ca": 0, "cb": 0, "T": 1000, "gap": 4, "moved": false, "only_b": false, "fixY": null, "sat": false, "secs": 821.2}
 {"target": "refl", "W": 36, "WZ": 30, "ca": 0, "cb": 1, "T": 1000, "gap": 4, "moved": false, "only_b": false, "fixY": null, "sat": false, "secs": 607.1}
 {"target": "refl", "W": 36, "WZ": 30, "ca": 0, "cb": 2, "T": 1000, "gap": 4, "moved": false, "only_b": false, "fixY": null, "sat": false, "secs": 158.2}
+{"target": "refl", "W": 36, "WZ": 30, "ca": 1, "cb": 0, "T": 1000, "gap": 4, "moved": false, "only_b": false, "fixY": null, "sat": false, "secs": 841.3}

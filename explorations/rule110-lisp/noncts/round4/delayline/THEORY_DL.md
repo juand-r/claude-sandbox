@@ -355,8 +355,10 @@ Any one of these would reopen the gap route; none is excluded by a theorem.
      T 420 (products not yet past the split line).
    - Scope caveat: the narrowest library packet that passes a zero window
      as a B-lattice train is 47 cells wide; W 30 is a small scope.
-     W 36 (T 1000) and a relaxed W 30 run (closed window may move) are in
-     run_refl2.log.
+     W 36 (T 1000): UNSAT for 4 of 9 class pairs ((0,0), (0,1), (0,2),
+     (1,0); 158-841 s each); the campaign was stopped at 02:32 for time,
+     so the other 5 pairs and the relaxed run (closed window may move)
+     were not done.
 
 4. **For two gap counters (theory's route 20, W_L ~g1~ M ~g2~ W_R)**: a
    co-moving middle marker M that both windows' signals reach, with contact

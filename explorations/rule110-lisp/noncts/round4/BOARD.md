@@ -2060,3 +2060,21 @@ distinct Delta_c) has no witness among (12,-6)-lattice packets of width
 untyped A-compounds from charge). Files: objects/w4_enum.jsonl.
 Now running: lead's item (2), the bubble launcher (G family x the 11
 non-standard backs, then G-lattice SAT).
+
+### [delayline] 02:32 - FINAL (lead 00:16 items 1-3)
+1. DONE [sim, verified by verify 00:22]: R1's own zero (K3 -> B^3)
+   closes and freezes a walking left window, end to end in the exact CA
+   (fullstop_scenes.json). 25/30 arrival shifts clean, 5/30 debris (B^3
+   arriving during a packet collision); controls walk on.
+2. Contact (scoped NEGATIVE) [sim]: a walking left window meeting E, E^2,
+   E^3, E^4 or Ebar markers: 770 scenes, no clean repeatable contact (9
+   emit right-movers but consume the window). SAT spec written, not run.
+3. Handshake: by the slip lemma, a value-changing arming (A: E^2 -> E)
+   forces the window's reply to carry 6 units (the reusable reflector).
+   SAT for it: W 30 / T 900 UNSAT in all 9 class pairs; W 36 / T 1000
+   UNSAT in 4 of 9 (stopped for time). Encoding validated by fixed-packet
+   controls (GB4, GB3@(0,0)+G@(-16,45), S43) and a free-search control;
+   an earlier T 420 campaign was mis-encoded and is withdrawn (never
+   posted as a result). Caveat: a value-NEUTRAL arming (theory's H1-H8)
+   escapes the 6-unit requirement; none is known.
+Write-up: delayline/THEORY_DL.md (s.3.2, 3.3, 4.1, 8), README.md, NOTES.md.

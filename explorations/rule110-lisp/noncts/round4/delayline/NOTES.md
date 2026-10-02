@@ -190,3 +190,14 @@ B-lattice train is 47 cells wide, and S43 is 84, so W 30 is a small scope.
   for scene b's split, and it was the split that failed).
 - Relaunched the refl campaign at W 30, T 900, with a free-Y walk control
   first (run_refl.sh -> run_refl900.log).
+
+## 02:32 reflector SAT results and stop
+- W 30, T 900: UNSAT for all 9 (ca, cb) (run_refl900.log); free-search
+  walk control SAT at the same T, re-simulated.
+- W 36, T 1000: UNSAT for (0,0), (0,1), (0,2), (1,0) (run_refl2.log),
+  158-841 s each; stopped (kill by PID of run_refl2.sh and its child) at
+  02:32 to report within the lead's time limit. Not done: other 5 pairs at
+  W 36; the --moved relaxation.
+- Caveat added to THEORY_DL s.4.1: the "handshake needs 6 units" result
+  assumes the armed state differs in value from the closed one; a
+  value-neutral arming (theory's H1-H8) would allow a charge-free token.

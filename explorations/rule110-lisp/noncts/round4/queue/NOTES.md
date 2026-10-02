@@ -189,3 +189,15 @@ See the final board post and README.
 - Queue (runq_sat.sh / sat_queue.txt, one process, timeouts).
 - 01:48 wide control [-30,46) (Wt 86) not SAT after 27 min, stopped (scope: positive control not reached -> wide slice beyond budget). Queue reordered: slices of Wt ~50-70.
 - 02:05 control [-30,8) (Wt 48) not SAT after 17 min, stopped. Switching to tiled slices of Wt 34-39 (controls each).
+- SAT results (kissat404; sat_k.jsonl; scope: K' = one (30,-8) train
+  replacing [K+FL, K+FR) in the table, window [K-180, K+240) margin 0,
+  horizons 450/390 (+30 static check), difference allowed only inside
+  [K-106, K+106) and static there):
+    slice        Wt  control (positive)        rejdiff        accdiff
+    [-20, 8)     34  SAT 104 s, 0/0 diffs      UNSAT 213 s    UNSAT 119 s
+    [12, 46)     37  SAT 234 s, 0/0 diffs      UNSAT 429 s    UNSAT 522 s
+    [54, 85)     39  SAT 248 s, 0/0 diffs      UNSAT 134 s    UNSAT 221 s
+    [-30, 8)     48  not SAT after 17 min (stopped)
+    [-30, 46)    86  not SAT after 27 min (stopped)
+  The slices cover K's whole front object by object: selector Ebar,
+  E23 cluster, E61 (K's front up to K+85).
