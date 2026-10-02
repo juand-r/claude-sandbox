@@ -2029,3 +2029,21 @@ route 23: W4 has no witness in any scope searched (library; B/Bbar
 lattice <= 24 by enumeration); G-speed is shuttle's open run.
 I am done with my summary (01:08); I stay available for re-runs of any
 witness (cells + scene) with w4_repeat.py and my pipeline.
+
+### [delayline] 01:51 - item 3: reusable reflector SAT at W 30: UNSAT, all 9 class pairs, encoding controls pass
+delayline/sat_refl.py (synth r110sat, read-only). Unknown Y: G lattice
+(42,-14), slip 0, width 30. Scene a: E^2 + Y -> E^2 at the undisturbed
+place (class ca). Scene b: E + Y -> [Z: free (4,-2) train, slip 8 (6
+units), width <= 30] + E^2 (class cb), split at the undisturbed E's left
+side; T = 900. Result: UNSAT for all 9 (ca, cb), 37-893 s each
+(run_refl900.log; records in sat_refl.jsonl).
+Controls, same code: free search "walk" (E^2 unmoved, E -> E) SAT at
+T 900, re-simulated. Fixed packets (--fixY): GB4 (walk), GB3@(0,0)+
+G@(-16,45) (E -> B^2 + E, scene b), S43 (E^2 unmoved & E -> B^3 + E^5,
+both scenes, T 1400) all accepted and re-simulated.
+Scope: width 30 only; library pass-throughs of a zero window are >= 47
+wide, so this is a small scope. W 36 (T 1000) strict and W 30 with a
+movable closed window are running (run_refl2.log).
+With item 1 (verified) and item 2 (negative in scope), the handshake for
+gap transfers is blocked on this one reaction; by the slip lemma there is
+no way around it with a closed-neutral window.

@@ -327,10 +327,29 @@ Any one of these would reopen the gap route; none is excluded by a theorem.
    compounds E@(0,0)+E@(-k,x) / E@(0,0)+Ebar@(...); the right-moving
    output must then cross X, which no single A does (A + E -> D1/C3), so
    X should be an object A crosses (Ebar, classes 0, 3, 4, 5).
-3. **Value gate**: a right-stream packet neutral on E^2 that, on E, shoots
-   7 units and leaves E (or shoots 6 and leaves E^2: a reusable reflector).
-   Library: none (S43 shoots 3 and closes to value 4). Next: SAT with the
-   neutral case as one scene and the shot as the other.
+3. **Value gate / reusable reflector** (also the per-unit handshake, s.4.1):
+   a right-stream packet neutral on E^2 that, on E, shoots 6 units and
+   leaves E^2 (or shoots 7 and leaves E). Library: none (S43 shoots 3 and
+   closes to value 4).
+   SAT (sat_refl.py; logs run_refl900.log, run_refl2.log; records
+   sat_refl.jsonl): unknown Y on the G lattice, slip 0; scene a E^2 + Y ->
+   E^2 at the undisturbed place; scene b E + Y -> [B-lattice train Z of
+   slip 8, width <= 30] + E^2, split at the undisturbed E's left side.
+   - W 30, T 900: UNSAT for all 9 class pairs (37 s to 893 s each).
+   - Controls in the same code: free search, target walk (E^2 unmoved,
+     E -> E): SAT, re-simulated. Fixed known packets (--fixY): GB4 for
+     walk (T 700), GB3@(0,0)+G@(-16,45) for a B^2 pass-through (only
+     scene b, T 700, its class only), S43 for "E^2 unmoved, E -> B^3 +
+     E^5" (both scenes, T 1400, one class pair) are all accepted and
+     re-simulate, so the encoding (split line, output items, unmoved
+     constraint) is sound at sufficient T.
+   - Withdrawn: an earlier campaign at T 420 (all UNSAT) was mis-encoded;
+     the fixed-packet control showed the known pass-through rejected at
+     T 420 (products not yet past the split line).
+   - Scope caveat: the narrowest library packet that passes a zero window
+     as a B-lattice train is 47 cells wide; W 30 is a small scope.
+     W 36 (T 1000) and a relaxed W 30 run (closed window may move) are in
+     run_refl2.log.
 
 4. **For two gap counters (theory's route 20, W_L ~g1~ M ~g2~ W_R)**: a
    co-moving middle marker M that both windows' signals reach, with contact

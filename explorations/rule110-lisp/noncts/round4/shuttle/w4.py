@@ -84,12 +84,32 @@ def build(a, bg, phiR, cnf=None):
                     continue
                 cnf.add([-s, neg(l1), l2])
                 cnf.add([-s, l1, neg(l2)])
+        # Delta(d) = d - a(d), a(d) in [0,7) from the A-region's slip:
+        # 8 a = phiR - (ether phase right of the shifted rod)  (mod 14)
+        delta = {}
+        for d in ds:
+            bS = backk(T - 5 * d) + 2 * d
+            ps = [p for p in range(14) if all(bgk(T - 5 * d, x - 2 * d) == ether_bit(p, T, x)
+                                              for x in range(bS + 2, bS + 16))]
+            if len(ps) == 1:
+                aa = [q for q in range(7) if (8 * q - (phiR - ps[0])) % 14 == 0]
+                if aa:
+                    delta[d] = d - aa[0]
         cnf.add(list(sel.values()))
         for d1 in ds:
             for d2 in ds:
                 if d1 < d2:
                     cnf.add([-sel[d1], -sel[d2]])
-        scenes.append((S, sel))
+        scenes.append((S, sel, delta))
+    if a.distinct_delta:            # Delta pairwise distinct (if every a <= 6)
+        for i in range(3):
+            for j in range(i + 1, 3):
+                for d1 in ds:
+                    for d2 in ds:
+                        D1, D2 = scenes[i][2].get(d1), scenes[j][2].get(d2)
+                        if D1 is not None and D1 == D2:
+                            cnf.add([-scenes[i][1][d1], -scenes[j][1][d2]])
+    scenes = [(S, sel) for S, sel, _ in scenes]
     if a.dset:                      # optional: the three d's (any order) are this set
         want = sorted(a.dset)
         # each d in want used by exactly... simple: every scene's d in want, all distinct
@@ -163,6 +183,8 @@ if __name__ == "__main__":
     ap.add_argument("--distinct_d", action="store_true")
     ap.add_argument("--not_all_equal", action="store_true")
     ap.add_argument("--noA", action="store_true", help="pure outcome: nothing but the rod")
+    ap.add_argument("--distinct_delta", action="store_true",
+                    help="net effects Delta = d - #A pairwise distinct (assumes <= 6 A's per class)")
     ap.add_argument("--max", type=int, default=20)
     ap.add_argument("--out", default="w4_results.jsonl")
     a = ap.parse_args()

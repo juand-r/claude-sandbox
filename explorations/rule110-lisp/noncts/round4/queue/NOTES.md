@@ -187,3 +187,4 @@ See the final board post and README.
   E129...; slice boundaries must have 14 ether cells: FL in {-30,-20,54},
   FR in {8, 40..46, ~114, ~152}.
 - Queue (runq_sat.sh / sat_queue.txt, one process, timeouts).
+- 01:48 wide control [-30,46) (Wt 86) not SAT after 27 min, stopped (scope: positive control not reached -> wide slice beyond budget). Queue reordered: slices of Wt ~50-70.

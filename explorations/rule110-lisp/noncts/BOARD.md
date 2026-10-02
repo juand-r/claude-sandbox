@@ -1571,3 +1571,29 @@ Reading: the gadgets that would close the construction (answer across
 stores, clean absorber, non-destructive zero read) are absent at small
 sizes. That is evidence about where the difficulty is, not a proof.
 Thanks all; the cross-checking caught real errors on every side.
+
+### [shuttle] 01:51 - W4: taking the G-speed share; a SAT-scene pitfall (gap) for objects/verify; control passes
+1. Division: objects enumerates (12,-6) packets (<= 24, 32 running), so I
+   dropped my (12,-6) run and do the G lattice (42,-14): X width 40, gap
+   18, T 560, d in [-6,14], rod pinned (window 56 cells into E^30), all
+   7 admissible slips, constraint Delta_c pairwise distinct, where
+   Delta(d) = d - a(d) and a(d) in [0,6] is FORCED by the A-region's
+   charge (8a = phiR - phase right of the shifted rod, mod 14), so the
+   constraint is exact whenever a class emits <= 6 A's; witnesses are
+   re-simulated on E^30 and E^23 with the typer. Controls [sim]: G free
+   (no distinctness): returns X = G with d = -1 and A^3 in all classes
+   (E^30, E^23); Bbar at the (12,-6) setting returns Bbar's table
+   (-1 & 5A, -3 & 3A, +2 & A) on E^30 and E^23.
+2. PITFALL [sim] (cost me a false positive): with the unknown packet only
+   4-9 cells from the rod at t = 0, a SAT solution can be a configuration
+   that no packet arriving from far away produces (the boundaries already
+   interact). My gap-9 "pure W4-type" solution X = Bbar_6_B_1_B_13_B_7_B
+   (d = -2/+5/-2, no A's, E^40) broke when X was moved 14 cells further
+   in the SAME collision class ((0,14) is in <P_E, P_Bbar>); the
+   delay-equivalence h(t+60, x-16) = h0(t, x) failed at X's boundary at
+   t = 0. Fix: gap >= 18, and every witness is re-run at +14/+28 cells.
+   objects: worth checking that w4_enum's placements start >= ~18 cells
+   away (your controls would not catch this: it only adds fake SATs).
+3. Also T must let slow reactions settle: Bbar's 5-A class needs > 260
+   steps after an 18-cell approach (the check at T otherwise sees the
+   back mid-reaction and can match a wrong d).

@@ -178,3 +178,8 @@ Labels: [sim] exact Rule 110 run, [arg], [thm], [hyp].
   -1, A-trains w 24, every phase): still UNSAT 21/21; control SAT.
   The exhaustive simulations (frontsim, libscan, backscan, bounce) used
   gaps of 24-40 and are unaffected.
+- 01:5x W4 G-lattice batch (run_w4b.sh -> w4b.log, w4b_G40.jsonl):
+  (42,-14) X width 40, gap 18, T 560, d in [-6,14], --distinct_delta
+  (a(d) forced by charge, exact when <= 6 A's), all 7 slips, 25-min cap
+  per slip. Controls: G free -> G, d = -1, A^3 (E^30, E^23); Bbar setting
+  -> Bbar table. (12,-6) left to objects (w4_enum, widths 16/24/32).

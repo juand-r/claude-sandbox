@@ -30,7 +30,14 @@ Labels: [sim] exact Rule 110, [arg], [hyp].
    (all physical heads x the 291 walls that reflections produce).
    Large files, not committed: regenerate with run_bounce.sh, export.py,
    frontier.py, run_ext.sh. theory's search on them: 0 perpetual bouncers.
-5. Tools reusable by others: rod.py (E^n rows, crystal), pert.py (SAT
+5. Route 23 (after the final summary, lead 00:5x): W4 = w4.py (one
+   left-moving packet X vs R1's back, three classes jointly, rod pinned,
+   Delta = d - #A distinct; w4_delta.py, w4_verify.py for long rods);
+   W3 = w3scan.py / w3_contact.py (window objects E, E^2, E^4 at gaps
+   0..24 against R1's front; general back-shift test). Results in NOTES
+   and on the board. Pitfall found: SAT scenes need gap >= 18 between the
+   unknown packet and the rod, and T long enough to settle.
+6. Tools reusable by others: rod.py (E^n rows, crystal), pert.py (SAT
    around an exact background), trains.py (all (p,d)-trains of width <= W),
    frontsim.py / libscan.py / backscan.py (exhaustive exact face scans),
    fronts.py (crystal terminations), gun.py (periodic face structures),

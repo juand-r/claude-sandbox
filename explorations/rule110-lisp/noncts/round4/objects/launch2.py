@@ -30,6 +30,7 @@ import objlib as O   # noqa
 import cone          # noqa
 
 EBG = cone.Background(O.EBG)
+WIN_VR = float(os.environ.get('WIN_VR', str(-4 / 15)))   # window right-edge speed (2/3 lets A debris leave)
 SEG = 20
 
 
@@ -77,7 +78,7 @@ def build(n, T2, depth, overlap=None, train=None, window_margin=None, target='wa
     right_phase = None if overlap is not None else (4 * Ycnf[1] + Ycnf[3] - Ycnf[2]) % TILE
     win = None
     if window_margin is not None:
-        win = make_window(T2, lo, hi, -0.6, -4 / 15, margin=window_margin)
+        win = make_window(T2, lo, hi, -0.6, WIN_VR, margin=window_margin)
     st = Spacetime(cnf, T2, lo, hi, cl, right_phase, init=init, window=win)
     # undisturbed rod at T2
     seg_len = W + 2 * T2 + 60

@@ -20,6 +20,13 @@ NOTES.md.
   (+11.2 or -2.8 cells per packet); a B^3 (R1's K3 shot) closes a rightward
   walking left window and freezes it (63/75 arrival times; the rest are
   arrivals during a packet collision).
+- [sim] End to end: R1's own zero (K3 at R1 = 0 -> B^3) closes and
+  freezes the walking left window (25/30 arrival shifts; controls walk on).
+  Verified by verify (board 00:22, 41/41).
+- [sim] Contact of a walking window with E/E^2/E^3/E^4/Ebar markers: no
+  clean, repeatable contact (770 scenes).
+- [SAT] Reusable reflector (needed for a per-unit handshake): none at
+  width 30 (all 9 class pairs), encoding validated by fixed-packet controls.
 - [thm] Slip lemma for windows: closed-neutral gates shoot 0 mod 7 units
   (or 7 - d if the shot closes the window to d).
 - [sim] All 391 (4,-2) trains of width <= 30 are pure charge carriers: they
@@ -49,6 +56,9 @@ NOTES.md.
 | lgate4.py, lgate4.jsonl | walking left trains vs E^4 (window closed by B^3) | python lgate4.py |
 | lwalk.py, lwalk.log | uniform left streams on a zero window | python lwalk.py 10 6 |
 | lstop.py, lstop_*.log | B^3 stops a walking left window, arrival sweep | python lstop.py 499 1 5 20 100 400 4 |
+| fullstop.py, fullstop_sweep.py, fullstop_scenes.json | END-TO-END: R1's zero (K3 -> B^3) stops the walking left window; 30 shifts + controls; seeds | python fullstop_sweep.py |
+| contact.py, contact_an.py, contact_499_1.jsonl | walking left window into a marker (E..E^4, Ebar), 770 scenes | python contact.py 499 1 16 6; python contact_an.py contact_499_1.jsonl |
+| sat_refl.py, sat_refl.jsonl, run_refl.sh, run_refl900.log, run_refl2.sh, run_refl2.log, run_ctl2.sh | SAT for the reusable reflector, controls (--fixY) | ./run_refl.sh |
 | burst.py | A-burst vs R1 (first attempt, killed; superseded) | - |
 
 PID files (*.pid) are stale once the job ends. Inputs read (never written):
