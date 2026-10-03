@@ -33,8 +33,7 @@ import time
 
 from casim import Layout, TILE, _phase_const, ether_rotation, layout
 from census import MAX_DT
-from experiments import (FIRST_GAP, HASH_LOOKAHEAD, JUMP_MARGIN, READS_MARGIN,
-                         ReadWatch, component_regions, sample)
+from experiments import READS_MARGIN, ReadWatch, component_regions, sample
 import hashlife as hl
 from hashlife import (LEAF, HashRun, child_a, child_b, join, level,
                       node_from_layout, value)
@@ -221,6 +220,16 @@ def local_run(run, lo, hi):
     return temp
 
 
+# Between reads nothing is sampled: the next read is due one read interval
+# (the last two read starts apart; before that, a fraction of one ossifier
+# period, 30v) after the previous one, and sampling resumes JUMP_MARGIN
+# samples before that. A read that starts earlier is still caught by the
+# next sample (its region differs from its census taken long before), only
+# its start time is then late. Watching two regions suffices: region j+1's
+# census is taken while read j is under way, long before read j+1.
+JUMP_MARGIN = 3
+FIRST_GAP = 0.9 * 30       # x v: a safe underestimate of the first interval
+LOOKAHEAD = 2
 JUMP_GRID_PER_V = 1 / 16   # main-tree jumps land on multiples of 30 * 2^b,
                            # 2^b the largest power of two <= v / 16
 
@@ -251,7 +260,7 @@ class EpochReads:
         self.n_all = (n_reads + 3) * 32 // 30 + 3
         self.lay = layout(tape, apps, self.n_all, rp, v_override=v)
         self.regs = component_regions(tape, apps, rp)
-        self.watch = ReadWatch(self.regs[:n_reads], apps, lookahead=HASH_LOOKAHEAD)
+        self.watch = ReadWatch(self.regs[:n_reads], apps, lookahead=LOOKAHEAD)
         x_c = self.lay.segments[self.n_all][0]
         self.uni = self._universe(0, x_c, 0)
         left, right = self.uni.at(0)

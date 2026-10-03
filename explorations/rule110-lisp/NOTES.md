@@ -487,13 +487,15 @@ Measurements (scripts in the session scratchpad, numbers here):
   segments; A runs are placed in closed form (A attached to A keeps
   dy mod 3; each A row is 28 cells of ether). Equal to padded_row cell for
   cell on five configurations (tests/test_casim.py).
-- read_outcomes_hash: samples only near reads, jumps in between (the next
+- read_outcomes_hash (since superseded by epochrun.EpochReads, which
+  keeps its sampling rule): samples only near reads, jumps in between (the next
   read is predicted from the previous two starts). Full Collatz 556/556,
   every read's outcome and Ebar-cluster count identical to
   data/collatz_v12216.log, in 340 s (StreamRun: 13,919 s); the committed
-  version (watching 2 regions, `python experiments.py collatz-hash`) took
-  441 s, log in data/collatz_v12216_hash.log. Peak memory 11 GB (2.9e7
-  nodes at ~380 bytes): memory, not time, is now the limit.
+  version (watching 2 regions) took 441 s. Peak memory 11 GB (2.9e7
+  nodes at ~380 bytes): memory, not time, was then the limit. With the
+  epoch engine and the C core (below), `python experiments.py
+  collatz-hash` takes ~40 s at 0.3 GB; log in data/collatz_v12216_hash.log.
 - Read start times differ from the StreamRun log by up to ~3 samples:
   when the prediction is late the read is caught already under way.
   Outcomes and counts do not depend on this.
@@ -529,3 +531,35 @@ the next few appendants and ossifiers from the sparse layout (shifted to
 the epoch's time: left by (3,2), right by (30,-8); every ether phase
 constant becomes c + 4t), and clears the memo tables. Samples step a small
 local subtree (exact by light cone), never the root.
+
+### Epoch engine and C core (2026-10-03, later)
+
+- epochrun.EpochReads: the tree is rebuilt every 8 reads from (a) the
+  active region, carried as 2^16-cell blocks on a global grid, (b) the
+  next ossifiers and (c) the next appendants, both from the sparse layout
+  translated to the epoch's time. Memo tables are cleared at each
+  rebuild: ~15k nodes after a rebuild, 0.5 GB peak for the TM pilot.
+  Exactness: tests/test_casim.py compares the epoch run's row with a full
+  run on the active region after three rebuilds; Collatz reads 0-119
+  match data/collatz_v12216.log outcome for outcome and cluster count for
+  cluster count.
+- Mistake found while building it: HashRun's ether constants are t = 0
+  constants, but the rebuilt tree was first given the shifted layouts'
+  time-t constants, so the ether added on expansion had the wrong phase;
+  the next epoch's active region then spanned the whole tree (16M
+  cells). Fixed (rebuild subtracts 4t).
+- What the active region holds (one-move TM, read 96): 3,691 Ebar
+  clusters and 4 C (tape) gliders over 4.5e6 cells; most of the Ebars are
+  junk at its left end. Junk is permanent in Cook's machine and every
+  later ossifier crosses all of it, so the cost per read grows with the
+  number of reads so far (quadratic total). Python core: 1.6 s/read at
+  read 96, 2.1 s at 192.
+- hlc.c: the HashLife core in C (ctypes), same algorithm and API, node
+  ids instead of objects. With census labels vectorized, 200 TM reads
+  take 41 s (Python core: ~255 s). The remaining time is census and
+  local history (numpy) as much as HashLife itself.
+- Right side beyond one super-period: placing a period changes the
+  blocks' row phase dy by a fixed amount mod 30, so the t=0 row repeats
+  after m = 30 / gcd periods (m = 15 for {YYYYNN}, 1 for De Mol); the
+  layout tiles shared copies of one super-period (checked cell for cell
+  against the direct assembly, and the read regions likewise).

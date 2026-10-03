@@ -73,15 +73,6 @@ def test_hashlife_from_layout_and_local_history():
                           h.history(a, b, MAX_DT))
 
 
-def test_hashlife_read_check():
-    """The HashLife read check (sparse layout, jumps between reads) sees the
-    reference read sequence of the small {YYYYNN} program."""
-    from encoder import _left_v
-    from experiments import READS_APPS, READS_TAPE, read_outcomes_hash
-    v = 3 * _left_v(READS_APPS)
-    assert read_outcomes_hash(READS_TAPE, READS_APPS, v, 6, 8 * 32 * v, 600) == "YYYYNN"
-
-
 def test_epoch_run_is_exact():
     """After several epochs (each a rebuilt, truncated tree), the epoch
     engine's row equals the full run's row over the active region and a

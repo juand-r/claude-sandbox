@@ -239,49 +239,6 @@ def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True,
     return watch.outcome()
 
 
-# HashLife reads: the run's cost follows events, not generations, so a
-# large v is cheap, provided samples are sparse. Between reads nothing is
-# sampled: the next read is due one read interval (the last two read starts
-# apart; before that, a fraction of one ossifier period, 30v) after the
-# previous one, and sampling resumes JUMP_MARGIN samples before that. A
-# read that starts earlier is still caught by the next sample (its region
-# differs from its census taken long before), only its start time is then
-# late. Watching two regions suffices: region j+1's census is taken while
-# read j is under way, long before read j+1.
-JUMP_MARGIN = 3
-FIRST_GAP = 0.9 * 30          # x v: a safe underestimate of the first interval
-HASH_LOOKAHEAD = 2
-
-
-def read_outcomes_hash(tape, apps, v, n_reads, T, every):
-    """read_outcomes on HashLife: the run is built from a sparse layout
-    (casim.layout, any v) and sampled every `every` generations (a
-    multiple of 30) only while a read is due or in progress."""
-    from casim import layout
-    from hashlife import HashRun
-    if every % 30:
-        raise ValueError("every must be a multiple of 30 (Ebar phase)")
-    rp = n_reads // len(apps) + 3
-    run = HashRun.from_layout(layout(tape, apps, T // (30 * v) + 3, rp,
-                                     v_override=v))
-    watch = ReadWatch(component_regions(tape, apps, rp)[:n_reads], apps,
-                      lookahead=HASH_LOOKAHEAD)
-    starts = watch.read_at
-    while watch.pending() and run.t + every <= T:
-        pending = watch.pending()
-        j = pending[0]
-        target = run.t + every
-        if watch.state[j] == "." and j >= 1 and watch.state[j - 1] in "YN!":
-            if j >= 2 and starts[j - 2] is not None:
-                due = 2 * starts[j - 1] - starts[j - 2]
-            else:
-                due = starts[j - 1] + int(FIRST_GAP * v)
-            target = max(target, (due - JUMP_MARGIN * every) // 30 * 30)
-        run.step(target - MAX_DT - run.t)
-        sample(run, watch, pending)
-    return watch.outcome()
-
-
 def check(tape, apps, v, n_reads):
     """Observed read outcomes vs the reference CTS. Reads of empty
     appendants have no component region and show as '.' in both."""
@@ -312,17 +269,18 @@ def collatz(v, n_reads, per_read):
     print(f"{'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads})")
 
 
-def collatz_hash(v, n_reads, every):
-    """collatz() on HashLife (read_outcomes_hash): the same 556 reads in
-    minutes instead of hours, an independent check of the StreamRun run."""
+def collatz_hash(v, n_reads):
+    """collatz() on the HashLife epoch engine (epochrun.EpochReads): the
+    same 556 reads in under a minute instead of hours, an independent
+    check of the StreamRun run."""
+    from epochrun import EpochReads
     apps = fill_empty_appendants(DEMOL_APPS)
     t0 = time.time()
-    got = read_outcomes_hash(DEMOL_TAPE, apps, v, n_reads,
-                             n_reads * 32 * v + 30_000, every)
+    got = EpochReads(DEMOL_TAPE, apps, v, n_reads, sample_bits=14).run_reads()
     ref = "".join(t[0] for _, t, _ in cts_run(DEMOL_TAPE, apps, n_reads) if t)[:n_reads]
     same = sum(g == r for g, r in zip(got, ref))
     print(f"{'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads}) "
-          f"(v={v}, every={every}, {time.time() - t0:.0f}s)")
+          f"(v={v}, {time.time() - t0:.0f}s)")
 
 
 # Compiled Turing machines on gliders (REPORT.md 3.7): tests/machines.py
@@ -442,9 +400,9 @@ if __name__ == "__main__":
         collatz(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
                 int(sys.argv[3]) if len(sys.argv) > 3 else 556, 430_000)
     elif sys.argv[1:2] == ["collatz-hash"]:
-        # the same run on HashLife, sampled every 15,360 generations (~6 min)
+        # the same run on the HashLife epoch engine (~1 min)
         collatz_hash(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
-                     int(sys.argv[3]) if len(sys.argv) > 3 else 556, 15_360)
+                     int(sys.argv[3]) if len(sys.argv) > 3 else 556)
     elif sys.argv[1:2] == ["tm-gliders"]:
         tm_gliders(sys.argv[2] if len(sys.argv) > 2 else "one")
     elif sys.argv[1:2] == ["cost"]:
