@@ -6,7 +6,7 @@
     python experiments.py cost                # REPORT.md section 4 table
     python experiments.py collatz [V] [N]     # De Mol 3x+1 on gliders (3.6)
     python experiments.py collatz-hash [V] [N]  # the same on HashLife (5)
-    python experiments.py tm-gliders [one|three]  # compiled TM on gliders (3.7)
+    python experiments.py tm-gliders [one|three] [F]  # compiled TM on gliders, F x Cook's v (3.7)
 
 reads and lblock are the dynamic check of REPORT.md 3.3-3.4: they
 observe each read's outcome directly (see read_outcomes) and compare the
@@ -301,11 +301,12 @@ def tm_visits(heads, t):
     return out
 
 
-def tm_gliders(name, sample_bits=17, epoch=8):
-    """Run a compiled TM on gliders (epochrun.EpochReads at Cook's v) up to
-    the read that completes its halting visit, then decode the TM's visit
-    sequence from the observed reads alone and compare it with the TM.
-    Checkpoints to tm_{name}.ckpt (rerun the same command to resume)."""
+def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8):
+    """Run a compiled TM on gliders (epochrun.EpochReads at v_factor times
+    Cook's v) up to the read that completes its halting visit, then decode
+    the TM's visit sequence from the observed reads alone and compare it
+    with the TM. Checkpoints to tm_{name}_v{v_factor}.ckpt (rerun the same
+    command to resume)."""
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests"))
     import machines
     from epochrun import EpochReads
@@ -317,7 +318,7 @@ def tm_gliders(name, sample_bits=17, epoch=8):
     rules, ts_tape, s = tm_to_ts(tm, *cfg)
     tape, apps, order = ts_to_cts(rules, ts_tape, s)
     apps = fill_empty_appendants(apps)
-    v = _left_v(apps)
+    v = v_factor * _left_v(apps)
     # reference reads, long enough to contain the halting visit's word
     q, ref_reads, n = deque(tape), [], 0
     while True:
@@ -335,8 +336,9 @@ def tm_gliders(name, sample_bits=17, epoch=8):
     print(f"{make} {cfg}: visits {ref}; CTS {len(apps)} appendants, "
           f"{sum(map(len, apps))} symbols, v = {v}; {n_reads} reads", flush=True)
     t0 = time.time()
+    ckpt = f"tm_{name}_v{v_factor}.ckpt"
     er = EpochReads(tape, apps, v, n_reads, sample_bits=sample_bits, epoch=epoch,
-                    checkpoint=f"tm_{name}.ckpt")
+                    checkpoint=ckpt)
     got = er.run_reads()
     same = sum(g == r for g, r in zip(got, ref_reads))
     print(f"reads: {'MATCH' if got == ref_reads else 'DIFFER'} ({same}/{n_reads}), "
@@ -345,8 +347,8 @@ def tm_gliders(name, sample_bits=17, epoch=8):
     print(f"TM visits decoded from the glider reads: {visits}\n"
           f"TM visits (reference):                   {ref}\n"
           f"{'MATCH' if visits == ref else 'DIFFER'}")
-    if os.path.exists(f"tm_{name}.ckpt"):
-        os.remove(f"tm_{name}.ckpt")
+    if os.path.exists(ckpt):
+        os.remove(ckpt)
 
 
 def tower_cost(direct):
@@ -404,7 +406,8 @@ if __name__ == "__main__":
         collatz_hash(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
                      int(sys.argv[3]) if len(sys.argv) > 3 else 556)
     elif sys.argv[1:2] == ["tm-gliders"]:
-        tm_gliders(sys.argv[2] if len(sys.argv) > 2 else "one")
+        tm_gliders(sys.argv[2] if len(sys.argv) > 2 else "one",
+                   int(sys.argv[3]) if len(sys.argv) > 3 else 1)
     elif sys.argv[1:2] == ["cost"]:
         tower_cost(direct=False)
         tower_cost(direct=True)

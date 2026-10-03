@@ -563,3 +563,38 @@ local subtree (exact by light cone), never the root.
   after m = 30 / gcd periods (m = 15 for {YYYYNN}, 1 for De Mol); the
   layout tiles shared copies of one super-period (checked cell for cell
   against the direct assembly, and the read regions likewise).
+
+### One-move TM at Cook's v: a construction failure at read 3,269
+
+Run: `experiments.py tm-gliders one` (one_move_tm, Cook's v = 701,044,
+5,970 reads planned). Reads 0-3,268 equal the reference: 3,269 reads,
+including all 55 accepts, each accept leaving 4 Ebar clusters per symbol
+within +-1, and the TM's first visit (read 720). Then:
+- read 3,269 came ~6e7 generations late (three read intervals) and
+  reads 3,269-3,272 all within 3.4e6 generations; 3,270 and 3,272 came
+  out '!'.
+- In the checkpoint at read 3,272, an unread appendant region holds ~846
+  Ebar clusters; region 3,270's "843 clusters" is such an unread region
+  after a brief disturbance (the check took it for a read). Tape C
+  gliders sit inside the regions being read: the table has slid over
+  tape characters without reading them.
+- Afterwards the tree grew to 12.8 GB and the run died (out of memory):
+  debris spreading.
+- Reference CTS there: tape ~3,300 symbols (not dry); read 3,269 is the
+  197th of a 209-read rejection run; earlier runs of 215 and 216 passed.
+- Read times show no slow drift before it: residuals of a linear fit
+  stay within +-1e7 and are near 0 around read 3,100; the jump is abrupt.
+
+Engine or construction? Two variants:
+- same v, epoch 5 instead of 8, samples 2^16 instead of 2^17: the same
+  failure at the same generation (read 3,270 settles at
+  t~69,236,293,080 with 843 clusters in both). Truncation and sampling
+  choices differ, the result does not: not an epoch artifact.
+- 2 x Cook's v: reads 3,269-3,282 correct (3,282 an accept with 360
+  clusters).
+So it is the construction at Cook's spacing, as with De Mol below half
+of Cook's v (REPORT 3.6), and consistent with the encoder's caveat that
+Cook's formula assumes a nonempty append in every appendant cycle; the
+filled program's rejection runs are ~200 reads. The mechanism is not
+identified yet (diagnosis run stopped at read 3,265 to render it).
+Full runs at 2x and 4x Cook's v are going.
