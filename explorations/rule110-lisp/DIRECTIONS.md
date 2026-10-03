@@ -154,8 +154,13 @@ The options were pursued in this order. Outcomes (details in REPORT.md):
    capstone 66 states instead of 130 (~7x fewer generations); the SKI
    machine binarizes to 119,347 states instead of ~22M (REPORT 1, 4).
 4. Engines: a streaming window (exact, ~40x on De Mol, used for the
-   whole Collatz trajectory) and a HashLife prototype (exact, ~2x the
-   streaming window here) (REPORT 5).
+   whole Collatz trajectory) and HashLife (REPORT 5). HashLife's first
+   "~2x" came from sampling it every 600 generations; with jumps between
+   reads, a sparse layout of the initial row, epochs that keep the tree
+   small, and a C core, De Mol's 556 reads take ~40 s instead of 3.9 h,
+   and a compiled Turing machine at Cook's v runs on gliders (REPORT 3.7).
+   Its cost per read now grows with the junk Cook's machine leaves
+   behind; a glider-level simulator is the next step for that.
 5. More direct constructions (2.4): a first team round found no
    non-CTS computer but verified building blocks (REPORT 6,
    noncts/SUMMARY.md).

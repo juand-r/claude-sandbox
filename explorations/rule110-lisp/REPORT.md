@@ -1,6 +1,7 @@
 # A Lisp on Rule 110: what runs, what is verified, and what it costs
 
-Version 0.1.1 (2026-09-30; corrects v0.1.0, see CHANGELOG.md). This
+Version 0.2 (2026-10-03, unreleased; sections 3.7 and 5 are new, see
+CHANGELOG.md; v0.1.1 of 2026-09-30 corrected v0.1.0). This
 report supersedes the phase-1 report of
 2026-08-18; REVIEW.md lists every claim that changed and why.
 
@@ -45,25 +46,37 @@ The main claims, in decreasing order of the strength of their evidence:
    CTS reads observed and equal to the reference, 2.07e8 generations, at
    Cook's ossifier spacing (section 3.6). Below half of that spacing it
    fails.
-6. **Empty appendants are no longer a blocker.** Cook's block for them
+6. **A compiled Turing machine runs on Rule 110 gliders.** The
+   smallest machine that changes state and moves its head, compiled
+   through Cocke-Minsky and the cyclic tag system and assembled with
+   Cook's blocks, runs on the glider field for 2.5e11 generations at
+   twice Cook's spacing: all 5,970 CTS reads equal the reference, and its
+   visit sequence is recovered from the reads alone (section 3.7). At
+   Cook's own spacing it fails at read 3,269, during a long run of
+   rejections; that failure was reproduced with different engine
+   settings and disappears at twice the spacing. The new HashLife
+   engines (section 5) also re-ran the Collatz trajectory of claim 5
+   independently, read for read, in about 40 s instead of 3.9 hours.
+7. **Empty appendants are no longer a blocker.** Cook's block for them
    (the "raw short leader" L) breaks the machinery, for reasons still
    unknown. An exact rewrite of the CTS replaces each empty appendant by
    a run of N's one appendant-cycle long, so L is never needed. The
    minimal program that L broke now reads 12 of 12 correctly.
-7. **Cook's ossifier spacing is larger than needed.** For programs
+8. **Cook's ossifier spacing is larger than needed.** For programs
    with 2 and 4 appendants, spacing reduced to 1/2 and 1/4 of Cook's
    value still reads correctly (10 of 10 and 12 of 12), at the cadence of
    a one-appendant program, so the spacing is not set by the whole
    table, which is what Cook's formula scales with. But long runs of
    rejections need more: De Mol's program needs more than half of
-   Cook's value at one point. What the needed spacing depends on is
-   open, and the savings on real programs may be small.
-8. **Running the whole tower on gliders is out of reach by about 14
+   Cook's value at one point, and a compiled Turing machine needs more
+   than Cook's value itself (section 3.7). What the needed spacing
+   depends on is open, and the savings on real programs may be small.
+9. **Running the whole tower on gliders is out of reach by about 14
    orders of magnitude** (about 5e19 generations for the capstone with
    the direct binary construction, 3.6e20 with the old one; before any
    spacing reduction). The dominant cost grows with the cube of the tag
    alphabet.
-9. **A programmable Rule 110 computer that is not a cyclic tag system
+10. **A programmable Rule 110 computer that is not a cyclic tag system
    exists; a universal one was not found.** A one-counter machine driven
    by a fixed glider stream branches on zero and runs compiled loop
    programs (parity, mod k) exactly, cross-verified. Theory shows one
@@ -460,6 +473,80 @@ t = 2.8e7), so the region that must be simulated exactly grows linearly
 with time (to about 1e6 cells here) and the run time quadratically. A
 compiled stepping kernel (4x) and checkpointing made the run practical.
 
+*Independent re-run.* The same 556 reads on the HashLife engines of
+section 5, which share no stepping code with StreamRun, give the same
+outcome and the same Ebar-cluster count for every read
+(`data/collatz_v12216_hash.log`; `python experiments.py collatz-hash`,
+about 40 s).
+
+### 3.7 A compiled Turing machine on gliders
+
+*Setup.* The smallest Turing machine that changes state and moves its
+head: two states, one symbol; state 1 moves right into state 2, which
+halts (`tests/machines.py one_move_tm`, started on a blank tape). Its
+visit sequence is (1, 1), (2, 1). It goes down the tower's lower half:
+- Cocke-Minsky TM -> tag system (`tm.py`): deletion number 3, alphabet
+  of 30 symbols after padding;
+- tag -> CTS by the unary code (`tag.py`): 90 appendants, 67 of them
+  empty;
+- empty appendants filled (3.4): 8,700 table symbols, tape of 720;
+- Cook's blocks at spacing v (`casim.layout`).
+In the reference CTS the tag system's first head (the TM's first visit)
+is the code word that ends at read 750, and the halting visit (2, 1) the
+one that ends at read 5,970. Cook's formula gives v = 701,044, so the run
+is about 30v x 5,970 = 1.3e11 generations.
+
+*How it was run.* On the epoch engine (section 5), with every read
+checked as in 3.3, and the TM's visit sequence decoded from the observed
+Y/N reads alone (`tag.heads_from_reads`: split the reads into code
+words, drop the all-N words that the fill appends, take every third
+symbol as a tag head). `python experiments.py tm-gliders one F` runs it
+at F times Cook's v.
+
+*Result at 2v.* All 5,970 reads equal the reference CTS: 103 accepts,
+each leaving 4 Ebar clusters per symbol within one, and 5,867 rejections
+(`data/tm_one_v2.log`). Reads come every 30.08v generations; the last
+completes at generation 2.52e11. Decoded from those reads alone, the
+tag heads give the TM's visit sequence (1, 1), (2, 1), equal to the
+machine's own. The run took 2.4 hours, sharing four cores with two other
+runs.
+
+*Result at 4v.* (Running; this paragraph is updated when it finishes.)
+
+*Result at Cook's v: a failure at read 3,269.* Reads 0 to 3,268 equal
+the reference, including all 55 accepts (each leaves 4 Ebar clusters per
+symbol, within one) and the TM's first visit. Then the machinery fails:
+- Observation. Before each read a tape character (four C gliders)
+  arrives at the read point. For read 3,269 none arrives. For 3.8e7
+  generations, about two read intervals, nothing changes near the read
+  point. Then the table collapses: within one sample the Ebar clusters
+  in an 800,000-cell window around the read point drop from 4,257 to
+  1,668, with untyped debris throughout. The tree then grows without
+  bound (12.8 GB) and the run ends.
+- Not the engine. A second run with a different epoch length (5 instead
+  of 8) and sampling step (2^16 instead of 2^17) fails at the same read
+  and the same generation, with the same cluster counts. Truncation and
+  sampling choices differ, the result does not.
+- Spacing-dependent. At 2v the same reads are correct.
+- Where in the program. In the reference CTS the tape holds about 3,300
+  symbols at that point, so the queue is not empty; read 3,269 is the
+  197th of a run of 209 rejections. Earlier rejection runs of 215 and
+  216 reads passed. Read times show no slow drift before the failure.
+
+*Interpretation.* This is the construction failing at Cook's spacing,
+the same kind of failure as De Mol's program below half of Cook's v
+(3.6), and in line with the encoder's caveat that Cook's formula assumes
+a nonempty append in every appendant cycle; the filled program's
+rejection runs are about 200 reads long. Why the character is missing
+(an ossification that does not happen, or a character destroyed on its
+way to the read point) is not identified.
+
+*Scope.* One machine, one input, three spacings. The machine is the
+smallest possible; it shows the lower half of the tower working on
+gliders end to end, not that larger machines do. The checks are as in
+3.3 and 3.6: every read's outcome, and the TM's visits decoded from
+them; the tape itself is not decoded.
+
 ## 4. The cost of the tower
 
 For the capstone machine (6 two-way TM steps, then halt), with the old
@@ -518,13 +605,14 @@ realistic gain is smaller and unknown.
 
 ## 5. Simulating long runs
 
-Three engines are available, all exact and cross-checked cell for cell.
+Four engines are available, all exact and cross-checked cell for cell.
 
-| engine | module | idea | measured |
+| engine | module | idea | measured on De Mol's 556 reads (3.6) |
 |---|---|---|---|
-| packed cyclic array | `engine.py`, `casim.Run` | 64 cells per word; with a numba kernel, 17 us per step at 870k cells | reference; wrap-seam debris spreads from the array ends |
-| streaming window | `casim.StreamRun` | steps only where the state differs from the assembly's free evolution | 30x-40x on De Mol; the whole Collatz run (3.6) |
-| 1-D HashLife | `hashlife.py` | hash-consed quadtree in time | ~2x StreamRun on growing-tape runs; slow when sampled every few hundred steps |
+| packed cyclic array | `engine.py`, `casim.Run` | 64 cells per word; with a numba kernel, 17 us per step at 870k cells | reference only (wrap-seam debris spreads from the array ends) |
+| streaming window | `casim.StreamRun` | steps only where the state differs from the assembly's free evolution | 3.9 h |
+| HashLife | `hashlife.py`, `hlc.c` | hash-consed binary tree in space, memoized results in time | 340 s (Python core, 11 GB) |
+| HashLife in epochs | `epochrun.py` | HashLife on a tree rebuilt every few reads from the active region and the next few ossifiers and appendants | 41 s (C core, 0.3 GB) |
 
 *Why the streaming window works.* Far from the collisions, the left side
 (the ossifier train) and the right side (the unread table) evolve freely,
@@ -539,17 +627,79 @@ the right row overwrite the left one. That made the window grow without
 bound and, past the table's end, used a row that was not the truth;
 both were caught by a 200k-generation comparison with the full run.
 
-*What limits it.* Cook's machine leaves a permanent stream of
-left-moving Ebars that later ossifiers must cross, so the region that
-must be simulated exactly grows linearly with time and the run time
-quadratically. The next order-of-magnitude step would be a glider-level
-simulator that steps collisions instead of cells, using the verified
-collision catalog of `noncts/collider/`. It is not built.
+*Why HashLife needs long jumps.* HashLife stores the row as a binary tree
+of hash-consed blocks and memoizes, for each block, its centre half after
+2^j steps. Two observations decide how to use it here.
+- Its cost follows events, not generations. About 50 Collatz reads cost
+  6-7 s at v = 12,216, 24,432 and 48,864 alike, although the number of
+  generations quadruples: the ether between ossifiers is free.
+- Sampling must be sparse. Advanced in jumps of 2^20 to 2^24 generations,
+  the whole Collatz configuration (2.1e8 generations) runs in about 135 s
+  without any sampling. The first measurement ("about 2x StreamRun",
+  v0.1.1) came from the read check stepping it 600 generations at a time.
+  The read check now samples only near each read, at a time predicted
+  from the previous two reads, and jumps over the ~30v generations in
+  between.
 
-*Operational note.* Runs of hours need `read_outcomes(checkpoint=...)`:
-the cloud container running this project is reclaimed within minutes of
-the session going idle, and a checkpoint (a few KB: the constructor
-arguments and the live window) lets the same command resume.
+*Why epochs.* A tree that holds the whole table and every ossifier pays
+for all of them at every advance, because rigid motion moves each block
+to a new alignment that HashLife has not seen. For a compiled Turing
+machine at Cook's v (3.3e6) that cost about 6 s per read with three
+table periods in the tree, 10 s with nine, and 1.6 s with the table cut
+after the next 14 appendants. So `epochrun.EpochReads` rebuilds the tree
+every 8 reads from three parts:
+- the active region (every cell that differs from free evolution:
+  tape, moving data, junk, a read in progress), carried over from the
+  previous tree as aligned blocks;
+- left of it, only the next few ossifiers;
+- right of it, only the next few appendants.
+
+Both free sides move rigidly (the ossifier train by (3, 2), the table by
+(30, -8)), so their state at any time t = 0 mod 30 is the t = 0 layout
+translated. A cut made in clean ether between gliders evolves exactly
+like the same cells of the full row, so truncation changes nothing until
+an excluded glider could reach an included one. Each rebuild checks that
+the previous universe's cut edges still lie outside the active region and
+raises an error otherwise. The memo tables are cleared at each rebuild,
+so memory stays bounded (about 15,000 nodes just after a rebuild).
+
+Three supporting pieces make this possible:
+- `casim.layout` describes the t = 0 row without materializing it:
+  ossifiers as short segments, the A-block runs between them as ether
+  gaps placed in closed form, and a long table as shared copies of one
+  super-period (the blocks' row phase repeats after m periods; m = 15
+  for `{YYYYNN}`, 1 for De Mol). The left side of a compiled Turing
+  machine at Cook's v is about 6e12 cells; described this way it is a
+  few thousand segments.
+- Samples step a local copy of the tree around the watched regions
+  (exact by light cone), never the big tree.
+- The HashLife core is C (`hlc.c`, through ctypes). The pure-Python core
+  it replaced is about 4x slower on the same runs; most of the remaining
+  time is spent in numpy (census and local history).
+
+*Checks.* Tests compare the layout with the materialized row cell for
+cell, HashLife with the packed engine, and the epoch engine's row with a
+full run's row over the active region after three rebuilds. On De Mol's
+program all 556 reads match the StreamRun run read for read, Ebar-cluster
+count for cluster count (`data/collatz_v12216_hash.log`).
+
+*What still limits it: junk.* Cook's machine leaves every rejected
+appendant behind as Ebars that drift left forever, and every later
+ossifier must cross all of them. So the active region grows linearly
+with the number of reads (about 45,000 cells per read for the compiled
+machine of 3.7), and so does the cost of each read: the total is
+quadratic in the number of reads. For the machine of 3.7 at 2v the
+active region reached 2.6e8 cells by the last read, and the cost per read
+rose from about 0.5 s to about 2 s (three runs sharing four cores). A
+three-state machine that moves both ways (59,136 reads; NOTES.md, phase
+7) would cost roughly a hundred times as much. A glider-level
+simulator that steps each crossing as one event would remove most of
+this cost; it is not built.
+
+*Operational note.* Long runs checkpoint (StreamRun: the live window;
+EpochReads: the tree at each rebuild, a few MB). The cloud container
+running this project is reclaimed within minutes of the session going
+idle, and rerunning the same command resumes.
 
 ## 6. Beyond cyclic tag systems
 
@@ -618,34 +768,53 @@ Done in v0.1.1:
 - the streaming engine (section 5);
 - a whole Collatz trajectory on gliders (3.6).
 
+Done since (v0.2, unreleased):
+- HashLife engines: a sparse initial row, epochs, a C core (section 5);
+- an independent re-run of the Collatz trajectory (3.6);
+- a compiled Turing machine on gliders, and a construction failure at
+  Cook's own spacing (3.7).
+
 Open, roughly in order of value:
 
-- A glider-level simulator (section 5). A compiled Turing machine on
-  gliders is the next milestone: for the 3-state test machine through
-  the Cocke-Minsky route it needs about 9.6e4 reads at v ≈ 3.3e6, some
-  9e12 generations, about 45,000 times the Collatz run.
+- Why the one-move machine fails at Cook's v at read 3,269 (3.7): the
+  tape character for that read never arrives. A cell-level look at the
+  ossification before it is the next step, and it bears directly on the
+  spacing question below.
 - A model of the ossifier spacing a program really needs. Small programs
-  tolerate a quarter of Cook's value; De Mol needs more than half
-  (3.5-3.6).
+  tolerate a quarter of Cook's value; De Mol needs more than half, the
+  one-move machine more than all of it (3.5-3.7).
+- A glider-level simulator that steps each junk crossing as one event
+  (section 5). Without it the cost of a run grows with the square of its
+  reads; a three-state machine that moves both ways (59,136 reads) is
+  about a hundred times the one-move machine.
 - Why Cook's short-leader block fails (3.4), and why one control program
-  reads only every second ossifier period.
-- Non-CTS route: a shuttle, a right-to-left crossing, or the gap as a
-  register (section 6; noncts/round3/SUMMARY.md, section 6).
+  reads only every second ossifier period. Fixing the short leader would
+  also remove the fill rewrite, which triples the reads of a compiled
+  Turing machine.
+- Non-CTS route: the open routes are in noncts/round4/theory/ROUTES.md
+  (section 6).
 
 ## Reproduction
 
 All results are deterministic.
 
-- `pytest tests/` (about 15 s, 52 tests) covers every symbolic layer, the
-  encoder's local exactness, the glider census, and the equivalence of
-  the three engines.
+- `pytest tests/` (about 15 s, 58 tests) covers every symbolic layer, the
+  encoder's local exactness, the glider census, the sparse layout, the
+  equivalence of the engines (including the epoch engine after several
+  rebuilds), and the decoding of TM visits from CTS reads. hlc.c is
+  compiled on first import (needs a C compiler).
 - `python experiments.py reads 12` reproduces the 12/12 check in 3.3
   (about 3 minutes).
 - `python experiments.py lblock 0..4` reproduces the first table in 3.4;
   `python experiments.py lblock 3 12 fill` (and `1 12 fill`) the second.
 - `python experiments.py cost` reproduces the tables in section 4.
 - `python experiments.py collatz` reproduces section 3.6 (about 4 hours;
-  it checkpoints, so rerunning the same command resumes).
+  it checkpoints, so rerunning the same command resumes);
+  `python experiments.py collatz-hash` the same reads on HashLife (~40 s).
+- `python experiments.py tm-gliders one 2` reproduces the 2v run of 3.7
+  (about 2 hours; checkpoints and resumes); `... one 1` the failure at
+  Cook's v (it ends when the run's tree outgrows memory, after read
+  3,272), `... one 4` the 4v run.
 - `pytest tests/` includes the direct binary construction on the SKI
   machine (section 1).
 - `python tools/extract_blocks.py DIR` regenerates the block data from

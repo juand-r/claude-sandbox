@@ -598,3 +598,21 @@ Cook's formula assumes a nonempty append in every appendant cycle; the
 filled program's rejection runs are ~200 reads. The mechanism is not
 identified yet (diagnosis run stopped at read 3,265 to render it).
 Full runs at 2x and 4x Cook's v are going.
+
+### One-move TM at 2x Cook's v: complete (2026-10-03)
+
+`experiments.py tm-gliders one 2` (v = 1,402,088): 5,970/5,970 reads equal
+the reference, 103 accepts (cluster count minus 4 per symbol: +1 x45,
+0 x43, -1 x15), 5,867 rejections; read cadence 30.08v; last read at
+t = 2.52e11; 8,535 s with two other runs on the four cores. Visits
+decoded from the observed reads: [(1, 1), (2, 1)], equal to the TM's.
+Log: data/tm_one_v2.log. Active region at the end: 2.6e8 cells (~43,500
+cells per read); ~69k nodes after a rebuild; per read ~0.5 s early,
+~2 s late.
+
+Diagnosis of the Cook's-v failure (scratchpad render from the read-3,264
+epoch, 491,520-generation samples, window 800k cells around the read
+point): before each read a tape character (four C gliders) arrives at
+the read point; for read 3,269 none does; nothing at all changes in the
+window for ~3.8e7 generations; then the table collapses (Ebar clusters
+4,257 -> 1,668, debris everywhere).

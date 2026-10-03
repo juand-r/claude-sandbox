@@ -2,6 +2,27 @@
 
 ## Unreleased (after v0.1.1)
 
+Long runs and a compiled Turing machine on gliders (REPORT 3.7, 5)
+- A compiled Turing machine runs on Rule 110 gliders: the smallest
+  machine that changes state and moves (tests/machines.py one_move_tm),
+  through Cocke-Minsky, the filled CTS and Cook's blocks, at 2x Cook's
+  spacing: all 5,970 CTS reads equal the reference over 2.5e11
+  generations, and its visit sequence is decoded from the reads alone
+  (`experiments.py tm-gliders one 2`, data/tm_one_v2.log). At Cook's own
+  spacing the construction fails at read 3,269 (a tape character never
+  arrives); reproduced with different engine settings, gone at 2x.
+- HashLife made practical: casim.layout (the initial row as ossifier
+  segments, closed-form ether gaps and a repeated table super-period,
+  never materialized), epochrun.EpochReads (tree rebuilt every 8 reads
+  from the active region and the next ossifiers and appendants, memory
+  bounded, checkpoints), hlc.c (C core via ctypes). De Mol's 556 reads:
+  ~40 s and 0.3 GB, against 3.9 h for StreamRun; every read's outcome
+  and cluster count identical (data/collatz_v12216_hash.log).
+- tag.heads_from_reads: TM visits from a Y/N read sequence alone.
+- census(): all clusters typed at once (identical results, ~10x faster).
+- data/collatz_v12216.log was ignored by `*.log` and never committed;
+  it is now (force-added, like the other cited logs).
+
 - Non-CTS team, round 2 (noncts/round2/SUMMARY.md): a one-counter
   Rule 110 machine that is not a cyclic tag system, driven by a fixed
   glider stream, branches on zero and runs compiled loop programs

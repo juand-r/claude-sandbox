@@ -19,24 +19,30 @@ Starting measurements (scratchpad, 2026-10-03):
   would be ~6.5e12 cells (left side) plus ~7e9 (table).
 
 Steps:
-- [ ] 1. Engine: HashLife without a materialized row
+- [x] 1. Engine: HashLife without a materialized row
   - [x] a. sparse left side: ether plus ossifier chunks, exact positions and
         ether phases computed from the block lattice (no per-A-block work)
-  - [ ] b. right side: table materialized only as needed (decide after
-        measuring whether a long table costs anything per advance)
+  - [x] b. right side: only the next appendants in the tree (epochs);
+        long tables as a repeated super-period
   - [x] c. read check with sparse sampling: census history by stepping an
         extracted window locally (exact by light cone), not the root
-  - [ ] d. bounded memory: drop memo tables past a node budget
-  - [x] e. validation: Collatz 556/556 with read times and cluster counts
-        identical to data/collatz_v12216.log (an independent full-length
-        cross-check of REPORT 3.6)
-  - [ ] f. epoch engine (NOTES Phase 7): bounded tree content and memory
+  - [x] d. bounded memory: memo tables cleared at each epoch rebuild
+  - [x] e. validation: Collatz 556/556, every outcome and cluster count
+        identical to data/collatz_v12216.log (read times differ only by
+        the sampling; an independent full-length cross-check of REPORT 3.6)
+  - [x] f. epoch engine (NOTES Phase 7): bounded tree content and memory
+  - [x] g. C core (hlc.c): ~4x on the TM runs
 - [x] 2. Pilot: TM reads 0-19 correct; ~6 s/read with the table in the
       tree, ~1.6 s with it cut: full run needs the epoch engine (1f).
       Fill triples the reads (212,736 to halt); smaller machines sized
       in NOTES. First target: the 2-state machine (5,760 reads).
-- [ ] 3. Full TM run, if feasible; decode the TM's visits from the reads
-- [ ] 4. Report: REPORT 3.7 / 5, README, CHANGELOG
+- [x] 3. Full TM run: one_move_tm at 2x Cook's v, 5,970/5,970 reads,
+      visits decoded; at Cook's v it fails at read 3,269 (NOTES)
+  - [ ] the 4x run (confirmation)
+  - [ ] (open) mechanism of the Cook's-v failure
+  - [ ] (out of reach for now) three_state_tm right=[2]: 59,136 reads,
+        ~100x the cost (junk crossings are quadratic)
+- [x] 4. Report: REPORT 3.7 / 5 / 7, README, CHANGELOG, DIRECTIONS
 
 ## Phase 6: non-CTS team round 4, every remaining avenue (started 2026-10-01)
 
