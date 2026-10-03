@@ -50,11 +50,12 @@ The main claims, in decreasing order of the strength of their evidence:
    smallest machine that changes state and moves its head, compiled
    through Cocke-Minsky and the cyclic tag system and assembled with
    Cook's blocks, runs on the glider field for 2.5e11 generations at
-   twice Cook's spacing: all 5,970 CTS reads equal the reference, and its
-   visit sequence is recovered from the reads alone (section 3.7). At
+   twice Cook's spacing (and 5e11 at four times): all 5,970 CTS reads
+   equal the reference, and its visit sequence is recovered from the
+   reads alone (section 3.7). At
    Cook's own spacing it fails at read 3,269, during a long run of
-   rejections; that failure was reproduced with different engine
-   settings and disappears at twice the spacing. The new HashLife
+   rejections; that failure was reproduced with different epoch and
+   sampling settings and disappears at twice the spacing. The new HashLife
    engines (section 5) also re-ran the Collatz trajectory of claim 5
    independently, read for read, in about 40 s instead of 3.9 hours.
 7. **Empty appendants are no longer a blocker.** Cook's block for them
@@ -511,7 +512,10 @@ tag heads give the TM's visit sequence (1, 1), (2, 1), equal to the
 machine's own. The run took 2.4 hours, sharing four cores with two other
 runs.
 
-*Result at 4v.* (Running; this paragraph is updated when it finishes.)
+*Result at 4v.* The same: 5,970 of 5,970 reads, the same 103 accepts
+(each within one cluster of 4 per symbol), the visits (1, 1), (2, 1)
+decoded from the reads, the last read at generation 5.03e11
+(`data/tm_one_v4.log`; 3.0 hours, sharing the cores).
 
 *Result at Cook's v: a failure at read 3,269.* Reads 0 to 3,268 equal
 the reference, including all 55 accepts (each leaves 4 Ebar clusters per
@@ -523,26 +527,33 @@ symbol, within one) and the TM's first visit. Then the machinery fails:
   in an 800,000-cell window around the read point drop from 4,257 to
   1,668, with untyped debris throughout. The tree then grows without
   bound (12.8 GB) and the run ends.
-- Not the engine. A second run with a different epoch length (5 instead
-  of 8) and sampling step (2^16 instead of 2^17) fails at the same read
-  and the same generation, with the same cluster counts. Truncation and
-  sampling choices differ, the result does not.
+- Not the epochs or the sampling. A second run with a different epoch
+  length (5 instead of 8) and sampling step (2^16 instead of 2^17) fails
+  at the same read and the same generation, with the same cluster
+  counts. Both runs share the HashLife core and the layout code; those
+  are tested against the packed engine and the direct assembly, but not
+  at 7e10 generations. An independent engine cannot reach this point in
+  reasonable time (StreamRun's cost is quadratic in time).
 - Spacing-dependent. At 2v the same reads are correct.
 - Where in the program. In the reference CTS the tape holds about 3,300
   symbols at that point, so the queue is not empty; read 3,269 is the
   197th of a run of 209 rejections. Earlier rejection runs of 215 and
   216 reads passed. Read times show no slow drift before the failure.
 
-*Interpretation.* This is the construction failing at Cook's spacing,
-the same kind of failure as De Mol's program below half of Cook's v
-(3.6), and in line with the encoder's caveat that Cook's formula assumes
-a nonempty append in every appendant cycle; the filled program's
-rejection runs are about 200 reads long. Why the character is missing
-(an ossification that does not happen, or a character destroyed on its
-way to the read point) is not identified.
+*Interpretation.* The explanation most consistent with this is the
+construction itself failing at Cook's spacing. Like De Mol's program
+below half of Cook's v (3.6), it breaks during a long run of rejections,
+which fits the encoder's caveat that Cook's formula assumes a nonempty
+append in every appendant cycle; the filled program's rejection runs are
+about 200 reads long. An engine error is not excluded outright (see
+above), but it would have to depend on the spacing and not on the epoch
+and sampling choices. Why the character is missing (an ossification
+that does not happen, or a character destroyed on its way to the read
+point) is not identified.
 
-*Scope.* One machine, one input, three spacings. The machine is the
-smallest possible; it shows the lower half of the tower working on
+*Scope.* One machine, one input, three spacings. The machine is as
+small as a machine with a state change and a head move can be (two
+states, one symbol); it shows the lower half of the tower working on
 gliders end to end, not that larger machines do. The checks are as in
 3.3 and 3.6: every read's outcome, and the TM's visits decoded from
 them; the tape itself is not decoded.
@@ -611,7 +622,7 @@ Four engines are available, all exact and cross-checked cell for cell.
 |---|---|---|---|
 | packed cyclic array | `engine.py`, `casim.Run` | 64 cells per word; with a numba kernel, 17 us per step at 870k cells | reference only (wrap-seam debris spreads from the array ends) |
 | streaming window | `casim.StreamRun` | steps only where the state differs from the assembly's free evolution | 3.9 h |
-| HashLife | `hashlife.py`, `hlc.c` | hash-consed binary tree in space, memoized results in time | 340 s (Python core, 11 GB) |
+| HashLife | `hashlife.py`, `hlc.c` | hash-consed binary tree in space, memoized results in time | 340 s (one tree for the whole run, Python core, 11 GB; this read loop was retired for the next row) |
 | HashLife in epochs | `epochrun.py` | HashLife on a tree rebuilt every few reads from the active region and the next few ossifiers and appendants | 41 s (C core, 0.3 GB) |
 
 *Why the streaming window works.* Far from the collisions, the left side
@@ -646,7 +657,7 @@ for all of them at every advance, because rigid motion moves each block
 to a new alignment that HashLife has not seen. For a compiled Turing
 machine at Cook's v (3.3e6) that cost about 6 s per read with three
 table periods in the tree, 10 s with nine, and 1.6 s with the table cut
-after the next 14 appendants. So `epochrun.EpochReads` rebuilds the tree
+after the next 14 appendants (Python core). So `epochrun.EpochReads` rebuilds the tree
 every 8 reads from three parts:
 - the active region (every cell that differs from free evolution:
   tape, moving data, junk, a read in progress), carried over from the
@@ -661,7 +672,8 @@ like the same cells of the full row, so truncation changes nothing until
 an excluded glider could reach an included one. Each rebuild checks that
 the previous universe's cut edges still lie outside the active region and
 raises an error otherwise. The memo tables are cleared at each rebuild,
-so memory stays bounded (about 15,000 nodes just after a rebuild).
+so memory stays bounded (15,000 to 70,000 nodes just after a rebuild
+in the runs of 3.7).
 
 Three supporting pieces make this possible:
 - `casim.layout` describes the t = 0 row without materializing it:

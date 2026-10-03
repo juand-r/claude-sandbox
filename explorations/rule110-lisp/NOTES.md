@@ -616,3 +616,9 @@ point): before each read a tape character (four C gliders) arrives at
 the read point; for read 3,269 none does; nothing at all changes in the
 window for ~3.8e7 generations; then the table collapses (Ebar clusters
 4,257 -> 1,668, debris everywhere).
+
+### One-move TM at 4x Cook's v: complete
+
+`experiments.py tm-gliders one 4` (v = 2,804,176): 5,970/5,970 reads, the
+same outcome sequence, visits [(1, 1), (2, 1)]; last read at t = 5.03e11;
+10,757 s sharing the cores. Log: data/tm_one_v4.log.

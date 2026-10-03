@@ -8,7 +8,8 @@ Long runs and a compiled Turing machine on gliders (REPORT 3.7, 5)
   through Cocke-Minsky, the filled CTS and Cook's blocks, at 2x Cook's
   spacing: all 5,970 CTS reads equal the reference over 2.5e11
   generations, and its visit sequence is decoded from the reads alone
-  (`experiments.py tm-gliders one 2`, data/tm_one_v2.log). At Cook's own
+  (`experiments.py tm-gliders one 2`, data/tm_one_v2.log; the same at
+  4x, data/tm_one_v4.log). At Cook's own
   spacing the construction fails at read 3,269 (a tape character never
   arrives); reproduced with different engine settings, gone at 2x.
 - HashLife made practical: casim.layout (the initial row as ossifier

@@ -38,7 +38,7 @@ Steps:
       in NOTES. First target: the 2-state machine (5,760 reads).
 - [x] 3. Full TM run: one_move_tm at 2x Cook's v, 5,970/5,970 reads,
       visits decoded; at Cook's v it fails at read 3,269 (NOTES)
-  - [ ] the 4x run (confirmation)
+  - [x] the 4x run (confirmation): 5,970/5,970, visits decoded
   - [ ] (open) mechanism of the Cook's-v failure
   - [ ] (out of reach for now) three_state_tm right=[2]: 59,136 reads,
         ~100x the cost (junk crossings are quadratic)
