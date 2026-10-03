@@ -98,7 +98,30 @@ def classify(hist, a, b):
 
 
 def census(hist):
-    """-> list of (start, end, kind) for the clusters in the last row."""
+    """-> list of (start, end, kind) for the clusters in the last row.
+
+    Vectorized form of classify() over all clusters at once (same result):
+    per family, a prefix sum of the cells where row t differs from row
+    t - dt shifted by dx answers each cluster's invariance test in O(1)."""
     if len(hist) < MAX_DT + 1:
         raise ValueError(f"need at least {MAX_DT + 1} rows of history")
-    return [(a, b, classify(hist, a, b)) for a, b in clusters(hist[-1])]
+    cl = clusters(hist[-1])
+    if not cl:
+        return []
+    now, width = hist[-1], hist.shape[1]
+    a, b = np.array(cl).T
+    lo, hi = a - MARGIN, b + MARGIN
+    hits = []
+    for dt, dx in FAMILIES.values():
+        then = hist[-1 - dt]
+        inside = (lo >= 0) & (lo - dx >= 0) & (hi <= width) & (hi - dx <= width)
+        diff = np.ones(width, dtype=np.int64)
+        s, e = max(0, dx), min(width, width + dx)
+        diff[s:e] = now[s:e] != then[s - dx:e - dx]
+        cs = np.concatenate([[0], np.cumsum(diff)])
+        mism = cs[np.clip(hi, 0, width)] - cs[np.clip(lo, 0, width)]
+        hits.append(inside & (mism == 0))
+    hits = np.array(hits)
+    names = list(FAMILIES)
+    return [(int(x), int(y), names[int(np.argmax(h))] if h.sum() == 1 else "?")
+            for x, y, h in zip(a, b, hits.T)]

@@ -266,4 +266,4 @@ def assemble(tape, appendants, left_periods=1, right_periods=1,
     for a, b in zip(placed, placed[1:]):
         if a.gspan(0)[1] != b.gspan(0)[0]:
             raise AssertionError("non-contiguous t=0 row")
-    return np.array([int(ch) for ch in bits], dtype=np.uint8), placed
+    return np.frombuffer(bits.encode(), np.uint8) - ord("0"), placed

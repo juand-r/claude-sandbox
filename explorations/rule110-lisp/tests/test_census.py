@@ -50,3 +50,19 @@ def test_first_ossification_makes_stationary_gliders():
     cpos = [x for x, k in cs if k == "C"]
     assert 2 <= len(cpos) <= 6
     assert all(-500 < x < 1000 for x in cpos)
+
+
+def test_vectorized_census_equals_classify():
+    """census() types all clusters at once; it must agree with classify()
+    applied to each cluster (the definition)."""
+    from census import classify
+    row, origin = padded_row("YYYYNN", ["YYYYNN"], left_periods=2,
+                             right_periods=3, left_pad=14 * 800,
+                             right_pad=14 * 800)
+    run = Run(row, origin)
+    for T in (200, 4_000, 9_000):
+        run.step(T - MAX_DT - run.t)
+        H = run.history(origin - 4000, origin + 6000, MAX_DT)
+        got = census(H)
+        assert got == [(a, b, classify(H, a, b)) for a, b in clusters(H[-1])]
+        assert len(got) > 20

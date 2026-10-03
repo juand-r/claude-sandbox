@@ -68,6 +68,148 @@ def padded_row(tape, appendants, left_periods, right_periods, left_pad,
     return row, origin + len(left)
 
 
+# ---------------------------------------------------------------------------
+# Sparse layout (v0.2): the t=0 row without materializing the left side.
+#
+# The left side is ether except for the ossifiers. Every A block's t=0 row
+# is 28 cells of ether (two tiles), and attaching an A to an A keeps the row
+# phase dy mod 3 (encoder._FIT_CACHE), so the v A blocks between two
+# ossifiers are placed in closed form. A run with Cook's v for a compiled
+# Turing machine (v ~ 3e6, ~7e4 ossifiers) has a left side of ~6e12 cells;
+# described this way it is ~7e4 short segments.
+
+A_ROW_CELLS = 28              # t=0 width of one A block (checked below)
+
+
+class Layout:
+    """The t=0 row as non-ether segments and the ether between them.
+
+    segments: [(x, bits)] in global columns, left to right, not
+    overlapping. phases[i] is the ether phase constant of the gap left of
+    segment i (cell x reads ETHER[(phases[i] + x) % 14]); phases[-1] is the
+    ether right of the last segment. A gap of length 0 has phase None."""
+
+    def __init__(self, segments, phases):
+        if len(phases) != len(segments) + 1:
+            raise ValueError("need one phase per gap")
+        for (x0, b0), (x1, _), c in zip(segments, segments[1:], phases[1:]):
+            if x0 + len(b0) > x1:
+                raise ValueError(f"segments overlap at {x1}")
+            if (x0 + len(b0) < x1) != (c is not None):
+                raise ValueError(f"gap before {x1}: phase given iff nonempty")
+        self.segments, self.phases = segments, phases
+        self.starts = [x for x, _ in segments]
+        self.lo = segments[0][0]
+        self.hi = segments[-1][0] + len(segments[-1][1])
+
+    def _first_piece(self, lo):
+        """Index k such that lo lies in gap k or in segment k."""
+        from bisect import bisect_right
+        k = bisect_right(self.starts, lo) - 1     # segment k starts <= lo
+        if k >= 0 and lo < self.starts[k] + len(self.segments[k][1]):
+            return k
+        return k + 1
+
+    def cells(self, lo, hi):
+        """uint8 cells [lo, hi) of the t=0 row."""
+        out = np.empty(hi - lo, dtype=np.uint8)
+        n, k, x = len(self.segments), self._first_piece(lo), lo
+        while x < hi:
+            e = min(hi, self.starts[k]) if k < n else hi
+            if x < e:                                   # gap k
+                if self.phases[k] is None:
+                    raise AssertionError(f"empty gap {k} has cells")
+                out[x - lo:e - lo] = _ether_cells(self.phases[k], x, e)
+                x = e
+            if k < n and x < hi:                        # segment k
+                s, b = self.segments[k]
+                e = min(hi, s + len(b))
+                out[x - lo:e - lo] = b[x - s:e - s]
+                x = e
+            k += 1
+        return out
+
+    def gap_at(self, lo, hi):
+        """Ether phase constant if [lo, hi) lies inside one gap, else None."""
+        k = self._first_piece(lo)
+        if k < len(self.segments) and hi > self.starts[k]:
+            return None
+        return self.phases[k]
+
+
+def _ether_cells(c, lo, hi):
+    tile = np.array([int(ch) for ch in ETHER], dtype=np.uint8)
+    return tile[(c + np.arange(lo, hi)) % TILE]
+
+
+def _phase_const(bits, x):
+    """Ether phase constant c of cells starting at global column x."""
+    r = ether_rotation(bits[:TILE])
+    if r is None:
+        raise ValueError(f"not ether at column {x}")
+    return (r - x) % TILE
+
+
+def layout(tape, appendants, left_periods, right_periods, v_override=None):
+    """Sparse version of assemble(): same t=0 row, as a Layout.
+
+    The central and right sides are one materialized segment (trimmed to a
+    clean ether cut, as padded_row does); each ossifier (the OSSIFIER
+    blocks, B to B) is a segment; the v A blocks between ossifiers are
+    an ether gap whose placement is computed in closed form and checked
+    for ether at both ends."""
+    from encoder import OSSIFIER, Placed, _attach, _left_v, load_blocks
+    bits, placed = assemble(tape, appendants, 0, right_periods)
+    x_c = placed[0].gspan(0)[0]
+    bits = trim_right_to_ether(bits)
+    segs = [(x_c, bits)]
+    phases = [_phase_const(bits[-TILE:], x_c + len(bits) - TILE)]
+    blocks, _ = load_blocks()
+    a_blk = blocks["A"]
+    v = v_override if v_override is not None else _left_v(appendants)
+    run_step = {}             # row phase -> (ddy, ddx) of A attached to A
+    for p in range(3):
+        q = _attach(Placed(a_blk, p, 0), a_blk, "L")
+        run_step[p] = (q.dy - p, q.dx)
+    prev = placed[0]
+    gap_hi = None             # right end of the gap being closed
+    for _ in range(left_periods):
+        group = []
+        for name in OSSIFIER:
+            prev = _attach(prev, blocks[name], "L")
+            group.append(prev)
+        x0, x1 = group[-1].gspan(0)[0], group[0].gspan(0)[1]
+        if gap_hi is not None and x1 != gap_hi:
+            raise AssertionError("ossifier does not meet the A run")
+        chunk = "".join(p.gbits(0) for p in reversed(group))
+        if len(chunk) != x1 - x0:
+            raise AssertionError("non-contiguous ossifier row")
+        segs.append((x0, np.frombuffer(chunk.encode(), np.uint8) - ord("0")))
+        first = _attach(prev, a_blk, "L")
+        ddy, ddx = run_step[first.dy % 3]
+        last = Placed(a_blk, first.dy + (v - 1) * ddy, first.dx + (v - 1) * ddx)
+        f0, f1 = first.gspan(0)
+        l0, l1 = last.gspan(0)
+        if f1 != x0 or f1 - f0 != A_ROW_CELLS or l1 - l0 != A_ROW_CELLS:
+            raise AssertionError("A block row is not 28 cells")
+        if f1 - l0 != A_ROW_CELLS * v:
+            raise AssertionError("A run is not 28 cells per block")
+        c = _phase_const(np.frombuffer(first.gbits(0).encode(), np.uint8) - ord("0"), f0)
+        if _phase_const(np.frombuffer(last.gbits(0).encode(), np.uint8) - ord("0"), l0) != c:
+            raise AssertionError("A run changes the ether phase")
+        phases.append(c)
+        prev, gap_hi = last, l0
+    # collected right to left: [right, ossifier 0, 1, ...] with phases
+    # [right ether, gap left of ossifier 0, 1, ...]; the gap between
+    # ossifier 0 and block C is empty
+    segs.reverse()
+    if left_periods == 0:
+        left = [_phase_const(bits[:TILE], x_c)]
+    else:
+        left = phases[1:][::-1] + [None]
+    return Layout(segs, left + [phases[0]])
+
+
 class Run:
     """A packed simulation with windowed read-out."""
 

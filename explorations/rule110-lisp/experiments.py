@@ -5,6 +5,7 @@
     python experiments.py reads [N]           # outcomes of the first N reads
     python experiments.py cost                # REPORT.md section 4 table
     python experiments.py collatz [V] [N]     # De Mol 3x+1 on gliders (3.6)
+    python experiments.py collatz-hash [V] [N]  # the same on HashLife (5)
 
 reads and lblock are the dynamic check of REPORT.md 3.3-3.4: they
 observe each read's outcome directly (see read_outcomes) and compare the
@@ -103,12 +104,75 @@ def component_regions(tape, apps, right_periods):
     """Global column ranges (t = 0) of each appendant copy's components, in
     read order; (None, None) for empty appendants."""
     from encoder import assemble
-    _, placed = assemble(tape, apps, 1, right_periods)
+    _, placed = assemble(tape, apps, 0, right_periods)
     names = [p.block.name for p in placed]
     leaders = [i for i, n in enumerate(names) if n in "GKL"]
     return [(placed[a + 1].gspan(0)[0], placed[b - 1].gspan(0)[1])
             if b - a > 1 else (None, None)
             for a, b in zip(leaders, leaders[1:])]
+
+
+class ReadWatch:
+    """Bookkeeping of the decoder-free read check (see the comment above
+    READS_TAPE). regs[j] is read j's component region (global columns at
+    t = 0, which in the Ebar frame stay put until the read). state[j]: '.'
+    waiting, 'r' reading, then 'Y', 'N' or '!' once settled, '-' for an
+    empty appendant (no region)."""
+
+    def __init__(self, regs, apps, lookahead=READS_LOOKAHEAD):
+        self.regs, self.apps, self.lookahead = regs, apps, lookahead
+        self.before = [None] * len(regs)
+        self.state = ["." if a is not None else "-" for a, _ in regs]
+        self.read_at = [None] * len(regs)
+        self.last = [None] * len(regs)
+
+    def pending(self):
+        """Reads happen in order: watch only the next few pending regions."""
+        return [j for j, s in enumerate(self.state) if s in ".r"][:self.lookahead]
+
+    def span(self, pending):
+        return (min(self.regs[j][0] for j in pending) - READS_MARGIN,
+                max(self.regs[j][1] for j in pending) + READS_MARGIN)
+
+    def observe(self, t, pending, rel):
+        """rel: census [(x, kind)] at time t, x in Ebar-frame global columns
+        (the t = 0 column of a cell moving with Ebar velocity)."""
+        for j in pending:
+            a, b = self.regs[j]
+            inside = tuple(c for c in rel if a <= c[0] < b)
+            if self.before[j] is None:
+                self.before[j] = inside
+            elif self.state[j] == "." and inside != self.before[j]:
+                self.state[j], self.read_at[j] = "r", t
+            elif (self.state[j] == "r" and inside == self.last[j]
+                  and not any(k in "CA?" for _, k in inside)):
+                # settled: nothing sweeping or crossing, and unchanged since
+                # the previous sample (a sweep in progress changes it)
+                n_e = sum(1 for _, k in inside if k == "E")
+                expect = ACCEPT_CLUSTERS_PER_SYMBOL * len(self.apps[j % len(self.apps)])
+                if n_e == 0:
+                    self.state[j] = "N"
+                elif abs(n_e - expect) <= ACCEPT_TOLERANCE:
+                    self.state[j] = "Y"
+                else:
+                    self.state[j] = "!"
+                print(f"read {j}: at t~{self.read_at[j]}, {n_e} Ebar clusters "
+                      f"remain: {self.state[j]}", flush=True)
+            self.last[j] = inside
+
+    def outcome(self):
+        return "".join(s if s in "YN!" else "." for s in self.state)
+
+
+def sample(run, watch, pending):
+    """Census of the pending regions: the run advances by MAX_DT."""
+    lo_g, hi_g = watch.span(pending)
+    shift = run.ebar_frame() - run.origin
+    lo = run.origin + lo_g + shift
+    cs = census(run.history(lo, run.origin + hi_g + shift, MAX_DT))
+    shift = run.ebar_frame() - run.origin
+    rel = [(x0 + lo - run.origin - shift, k) for x0, _, k in cs]
+    watch.observe(run.t, pending, rel)
 
 
 def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True,
@@ -133,65 +197,71 @@ def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True,
         run = Run(*padded_row(tape, apps, left_periods=T // (30 * v) + 3,
                               right_periods=rp, left_pad=T + 50_000,
                               right_pad=T + 100_000, v_override=v))
-    regs = component_regions(tape, apps, rp)[:n_reads]
-    before = [None] * len(regs)
-    state = ["." if a is not None else "-" for a, _ in regs]
-    read_at = [None] * len(regs)
-    last = [None] * len(regs)
+    watch = ReadWatch(component_regions(tape, apps, rp)[:n_reads], apps)
     key = (tape, tuple(apps), v, n_reads, T)
     if checkpoint and os.path.exists(checkpoint):
         with open(checkpoint, "rb") as fh:
             saved = pickle.load(fh)
         if saved["key"] != key:
             raise ValueError(f"checkpoint {checkpoint} is for another run")
-        run, before, state, read_at, last = (saved[k] for k in
-                                             ("run", "before", "state", "read_at", "last"))
+        run, watch = saved["run"], saved["watch"]
         print(f"resumed from checkpoint at t={run.t}", flush=True)
-    origin = run.origin
     samples = 0
-    while run.t + READS_EVERY <= T and any(s in ".r" for s in state):
-        # reads happen in order: watch only the next few pending regions
-        pending = [j for j, s in enumerate(state) if s in ".r"][:READS_LOOKAHEAD]
-        lo_g = min(regs[j][0] for j in pending) - READS_MARGIN
-        hi_g = max(regs[j][1] for j in pending) + READS_MARGIN
+    while run.t + READS_EVERY <= T and watch.pending():
         run.step(READS_EVERY - MAX_DT)
-        shift = run.ebar_frame() - origin
-        lo = origin + lo_g + shift
-        cs = census(run.history(lo, origin + hi_g + shift, MAX_DT))
-        shift = run.ebar_frame() - origin
-        rel = [(x0 + lo - origin - shift, k) for x0, _, k in cs]
-        for j in pending:
-            a, b = regs[j]
-            inside = tuple(c for c in rel if a <= c[0] < b)
-            if before[j] is None:
-                before[j] = inside
-            elif state[j] == "." and inside != before[j]:
-                state[j], read_at[j] = "r", run.t
-            elif (state[j] == "r" and inside == last[j]
-                  and not any(k in "CA?" for _, k in inside)):
-                # settled: nothing sweeping or crossing, and unchanged since
-                # the previous sample (a sweep in progress changes it)
-                n_e = sum(1 for _, k in inside if k == "E")
-                expect = ACCEPT_CLUSTERS_PER_SYMBOL * len(apps[j % len(apps)])
-                if n_e == 0:
-                    state[j] = "N"
-                elif abs(n_e - expect) <= ACCEPT_TOLERANCE:
-                    state[j] = "Y"
-                else:
-                    state[j] = "!"
-                print(f"read {j}: at t~{read_at[j]}, {n_e} Ebar clusters "
-                      f"remain: {state[j]}", flush=True)
-            last[j] = inside
+        sample(run, watch, watch.pending())
         samples += 1
         if checkpoint and samples % CHECKPOINT_EVERY == 0:
             tmp = checkpoint + ".tmp"
             with open(tmp, "wb") as fh:
-                pickle.dump({"key": key, "run": run, "before": before,
-                             "state": state, "read_at": read_at, "last": last}, fh)
+                pickle.dump({"key": key, "run": run, "watch": watch}, fh)
             os.replace(tmp, checkpoint)
     if checkpoint and os.path.exists(checkpoint):
         os.remove(checkpoint)          # finished: a rerun starts fresh
-    return "".join(s if s in "YN!" else "." for s in state)
+    return watch.outcome()
+
+
+# HashLife reads: the run's cost follows events, not generations, so a
+# large v is cheap, provided samples are sparse. Between reads nothing is
+# sampled: the next read is due one read interval (the last two read starts
+# apart; before that, a fraction of one ossifier period, 30v) after the
+# previous one, and sampling resumes JUMP_MARGIN samples before that. A
+# read that starts earlier is still caught by the next sample (its region
+# differs from its census taken long before), only its start time is then
+# late. Watching two regions suffices: region j+1's census is taken while
+# read j is under way, long before read j+1.
+JUMP_MARGIN = 3
+FIRST_GAP = 0.9 * 30          # x v: a safe underestimate of the first interval
+HASH_LOOKAHEAD = 2
+
+
+def read_outcomes_hash(tape, apps, v, n_reads, T, every):
+    """read_outcomes on HashLife: the run is built from a sparse layout
+    (casim.layout, any v) and sampled every `every` generations (a
+    multiple of 30) only while a read is due or in progress."""
+    from casim import layout
+    from hashlife import HashRun
+    if every % 30:
+        raise ValueError("every must be a multiple of 30 (Ebar phase)")
+    rp = n_reads // len(apps) + 3
+    run = HashRun.from_layout(layout(tape, apps, T // (30 * v) + 3, rp,
+                                     v_override=v))
+    watch = ReadWatch(component_regions(tape, apps, rp)[:n_reads], apps,
+                      lookahead=HASH_LOOKAHEAD)
+    starts = watch.read_at
+    while watch.pending() and run.t + every <= T:
+        pending = watch.pending()
+        j = pending[0]
+        target = run.t + every
+        if watch.state[j] == "." and j >= 1 and watch.state[j - 1] in "YN!":
+            if j >= 2 and starts[j - 2] is not None:
+                due = 2 * starts[j - 1] - starts[j - 2]
+            else:
+                due = starts[j - 1] + int(FIRST_GAP * v)
+            target = max(target, (due - JUMP_MARGIN * every) // 30 * 30)
+        run.step(target - MAX_DT - run.t)
+        sample(run, watch, pending)
+    return watch.outcome()
 
 
 def check(tape, apps, v, n_reads):
@@ -222,6 +292,19 @@ def collatz(v, n_reads, per_read):
     ref = "".join(t[0] for _, t, _ in cts_run(DEMOL_TAPE, apps, n_reads) if t)[:n_reads]
     same = sum(g == r for g, r in zip(got, ref))
     print(f"{'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads})")
+
+
+def collatz_hash(v, n_reads, every):
+    """collatz() on HashLife (read_outcomes_hash): the same 556 reads in
+    minutes instead of hours, an independent check of the StreamRun run."""
+    apps = fill_empty_appendants(DEMOL_APPS)
+    t0 = time.time()
+    got = read_outcomes_hash(DEMOL_TAPE, apps, v, n_reads,
+                             n_reads * 32 * v + 30_000, every)
+    ref = "".join(t[0] for _, t, _ in cts_run(DEMOL_TAPE, apps, n_reads) if t)[:n_reads]
+    same = sum(g == r for g, r in zip(got, ref))
+    print(f"{'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads}) "
+          f"(v={v}, every={every}, {time.time() - t0:.0f}s)")
 
 
 def tower_cost(direct):
@@ -274,6 +357,10 @@ if __name__ == "__main__":
         # Cook's v = 12,216 and 556 reads reproduce REPORT.md 3.6 (~4 h)
         collatz(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
                 int(sys.argv[3]) if len(sys.argv) > 3 else 556, 430_000)
+    elif sys.argv[1:2] == ["collatz-hash"]:
+        # the same run on HashLife, sampled every 15,360 generations (~6 min)
+        collatz_hash(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
+                     int(sys.argv[3]) if len(sys.argv) > 3 else 556, 15_360)
     elif sys.argv[1:2] == ["cost"]:
         tower_cost(direct=False)
         tower_cost(direct=True)

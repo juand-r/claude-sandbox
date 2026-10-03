@@ -1,5 +1,43 @@
 # Plan
 
+## Phase 7: long exact runs with HashLife; a compiled Turing machine on gliders (started 2026-10-03)
+
+User: "take charge, no more agents". Lead's decision: return to the main
+project's first open item (REPORT section 7). Non-CTS work pauses: its open
+routes need either a new idea or agent-scale SAT compute.
+
+Starting measurements (scratchpad, 2026-10-03):
+- HashRun advanced in 2^20-2^24 jumps runs the whole Collatz configuration
+  (v = 12216, 2.1e8 generations) in ~135 s, against 3.9 h for StreamRun.
+  The old "~2x StreamRun" figure came from sampling every few hundred steps.
+- Cost is independent of v: ~50 reads take 6-7 s at v = 12216, 24432, 48864
+  (generations x4). So cost follows events (reads), not generations.
+- Target machine: tests/machines.py three_state_tm, short config
+  (right = [1, 2]): 5 TM steps, 373 tag steps, 192 CTS appendants (153
+  empty, filled), 40,752 table symbols, Cook v = 3.27e6, ~71,600 CTS reads,
+  ~7e12 generations. Plain HashRun cannot hold it: the initial row alone
+  would be ~6.5e12 cells (left side) plus ~7e9 (table).
+
+Steps:
+- [ ] 1. Engine: HashLife without a materialized row
+  - [x] a. sparse left side: ether plus ossifier chunks, exact positions and
+        ether phases computed from the block lattice (no per-A-block work)
+  - [ ] b. right side: table materialized only as needed (decide after
+        measuring whether a long table costs anything per advance)
+  - [x] c. read check with sparse sampling: census history by stepping an
+        extracted window locally (exact by light cone), not the root
+  - [ ] d. bounded memory: drop memo tables past a node budget
+  - [x] e. validation: Collatz 556/556 with read times and cluster counts
+        identical to data/collatz_v12216.log (an independent full-length
+        cross-check of REPORT 3.6)
+  - [ ] f. epoch engine (NOTES Phase 7): bounded tree content and memory
+- [x] 2. Pilot: TM reads 0-19 correct; ~6 s/read with the table in the
+      tree, ~1.6 s with it cut: full run needs the epoch engine (1f).
+      Fill triples the reads (212,736 to halt); smaller machines sized
+      in NOTES. First target: the 2-state machine (5,760 reads).
+- [ ] 3. Full TM run, if feasible; decode the TM's visits from the reads
+- [ ] 4. Report: REPORT 3.7 / 5, README, CHANGELOG
+
 ## Phase 6: non-CTS team round 4, every remaining avenue (started 2026-10-01)
 
 User: launch new agents exploring every avenue, orchestrated by the lead.

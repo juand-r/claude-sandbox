@@ -472,3 +472,60 @@ DONE: De Mol x=3 at Cook's v = 12,216, 556/556 reads correct, Collatz
 of compute across one checkpoint resume. Reads 0-204 agree with the
 earlier run 1 in time and cluster count. Moved the driver into
 experiments.py (collatz subcommand, checkpointed).
+
+## Phase 7: HashLife for long runs (2026-10-03)
+
+Measurements (scripts in the session scratchpad, numbers here):
+
+- HashRun advanced in 2^20-2^24 jumps runs the whole Collatz configuration
+  (v = 12,216, 2.1e8 generations, no sampling) in ~135 s; nodes grow about
+  linearly in t (1.4e7 at the end). The old "~2x StreamRun" figure in
+  REPORT 5 came from sampling every 600 generations.
+- Cost follows events, not generations: ~50 Collatz reads cost 6-7 s at
+  v = 12,216, 24,432 and 48,864 alike (generations x4).
+- Sparse layout (casim.layout): the left side is ether plus ossifier
+  segments; A runs are placed in closed form (A attached to A keeps
+  dy mod 3; each A row is 28 cells of ether). Equal to padded_row cell for
+  cell on five configurations (tests/test_casim.py).
+- read_outcomes_hash: samples only near reads, jumps in between (the next
+  read is predicted from the previous two starts). Full Collatz 556/556,
+  every read's outcome and Ebar-cluster count identical to
+  data/collatz_v12216.log, in 340 s (StreamRun: 13,919 s); the committed
+  version (watching 2 regions, `python experiments.py collatz-hash`) took
+  441 s, log in data/collatz_v12216_hash.log. Peak memory 11 GB (2.9e7
+  nodes at ~380 bytes): memory, not time, is now the limit.
+- Read start times differ from the StreamRun log by up to ~3 samples:
+  when the prediction is late the read is caught already under way.
+  Outcomes and counts do not depend on this.
+
+Compiled Turing machines (Cocke-Minsky, filled CTS), measured sizes:
+
+| TM (tests/machines.py) | visits | table symbols | Cook v | filled CTS reads to halt |
+|---|---|---|---|---|
+| three_state, right=[1,2] | 5 | 40,752 | 3.27e6 | 212,736 |
+| three_state, right=[2] | 4 | 40,752 | 3.27e6 | 59,136 |
+| 2 states, 2 symbols, one R move | 2 | 21,888 | 1.76e6 | 16,704 |
+| 2 states, 1 symbol, one R move | 2 | 8,700 | 7.0e5 | 5,760 |
+
+The fill rewrite roughly triples the reads (REPORT 4's 9.6e4 was the
+unfilled count).
+
+TM pilot (three_state, right=[1,2], v = 3,270,732): the first 20 reads
+match the reference CTS (YNNN...). Cost per read in steady state:
+- whole table in the tree (3 periods, 5.7e7 cells): ~6 s per read;
+  9 periods: ~10 s. Per-read cost grows with the table held in the tree,
+  because each advance moves the whole table to a new alignment and
+  HashLife cannot reuse those nodes.
+- table cut after the next 14 appendants: ~1.6 s per read, ~1.8e5 new
+  nodes per read (so ~70 MB per read without collection).
+- of a sample's cost, the census was 60% before vectorizing (census() now
+  types all clusters with prefix sums; identical output, test added) and
+  stepping the whole root for the sample's small steps most of the rest.
+
+Consequence (design of the next engine step, PLAN 7.1): rebuild the tree
+in epochs. Each epoch carries the active region over from the old tree
+(aligned subtrees, found by comparing against free evolution), adds only
+the next few appendants and ossifiers from the sparse layout (shifted to
+the epoch's time: left by (3,2), right by (30,-8); every ether phase
+constant becomes c + 4t), and clears the memo tables. Samples step a small
+local subtree (exact by light cone), never the root.

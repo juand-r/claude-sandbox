@@ -19,7 +19,7 @@ root's outer quarters.
 
 import numpy as np
 
-from engine import ETHER
+from engine import ETHER, pack, step_packed, unpack
 
 LEAF = 6                      # leaf level: 64 cells
 LEAF_CELLS = 1 << LEAF
@@ -140,13 +140,28 @@ def to_cells(n, lo, hi, out, x0):
     if a >= b:
         return
     if n.k == LEAF:
-        v = n.v
-        for x in range(a, b):
-            out[x - lo] = (v >> (x - x0)) & 1
+        bits = np.unpackbits(np.frombuffer(n.v.to_bytes(LEAF_CELLS // 8, "little"),
+                                           np.uint8), bitorder="little")
+        out[a - lo:b - lo] = bits[a - x0:b - x0]
         return
     half = size >> 1
     to_cells(n.a, lo, hi, out, x0)
     to_cells(n.b, lo, hi, out, x0 + half)
+
+
+DENSE_LEVEL = 16              # node_from_layout materializes blocks this small
+
+
+def node_from_layout(layout, x0, k):
+    """Node for cells [x0, x0 + 2^k) of a casim.Layout's t=0 row."""
+    c = layout.gap_at(x0, x0 + (1 << k))
+    if c is not None:
+        return ether_node(k, c + x0)
+    if k <= DENSE_LEVEL:
+        return from_cells(layout.cells(x0, x0 + (1 << k)))
+    h = 1 << (k - 1)
+    return join(node_from_layout(layout, x0, k - 1),
+                node_from_layout(layout, x0 + h, k - 1))
 
 
 class HashRun:
@@ -160,20 +175,35 @@ class HashRun:
     ether at (t, x) = ETHER[(c + x + 4t) mod 14]."""
 
     def __init__(self, row, origin):
-        self.origin = origin
-        self.t = 0
         n = len(row)
-        self.cL = _rotation(row[:TILE])
-        self.cR = _rotation(row[n - TILE:]) - (n - TILE)
+        cL = _rotation(row[:TILE])
+        cR = _rotation(row[n - TILE:]) - (n - TILE)
         k = max(LEAF + 2, int(np.ceil(np.log2(n))) + 2)
         size = 1 << k
         x0 = -((size - n) // 2)
         cells = np.empty(size, dtype=np.uint8)
-        cells[:-x0] = [int(ETHER[(self.cL + x) % TILE]) for x in range(x0, 0)]
+        cells[:-x0] = [int(ETHER[(cL + x) % TILE]) for x in range(x0, 0)]
         cells[-x0:-x0 + n] = row
-        cells[-x0 + n:] = [int(ETHER[(self.cR + x) % TILE])
+        cells[-x0 + n:] = [int(ETHER[(cR + x) % TILE])
                            for x in range(n, x0 + size)]
-        self.root, self.x0 = from_cells(cells), x0
+        self._start(from_cells(cells), x0, cL, cR, origin)
+
+    @classmethod
+    def from_layout(cls, layout):
+        """Run of a casim.Layout (global columns: origin 0). The tree is
+        built from the segments and ether gaps, never as one array."""
+        n = layout.hi - layout.lo
+        k = max(LEAF + 2, int(np.ceil(np.log2(n))) + 2)
+        x0 = layout.lo - ((1 << k) - n) // 2
+        run = cls.__new__(cls)
+        run._start(node_from_layout(layout, x0, k), x0, layout.phases[0],
+                   layout.phases[-1], 0)
+        return run
+
+    def _start(self, root, x0, cL, cR, origin):
+        self.root, self.x0, self.cL, self.cR = root, x0, cL, cR
+        self.origin = origin
+        self.t = 0
 
     def _ether(self, k, x, c):
         return ether_node(k, c + x + ETHER_SHIFT_PER_STEP * self.t)
@@ -208,11 +238,21 @@ class HashRun:
                 self.advance(j)
 
     def history(self, lo, hi, depth):
-        """Same contract as casim.Run.history."""
-        rows = [self.window(lo, hi)]
+        """Rows t..t+depth of cells [lo, hi); the run ends at t + depth (the
+        contract of casim.Run.history). The rows are stepped locally on a
+        window with depth extra cells on each side: the packed engine's
+        wrap garbage (and the zero padding to whole words) enters at most
+        one cell per step, so [lo, hi) stays exact. The tree then advances
+        by depth on its own; the two are compared at the end."""
+        width = hi - lo + 2 * depth
+        words = pack(self.window(lo - depth, hi + depth))
+        rows = [unpack(words, width)[depth:width - depth]]
         for _ in range(depth):
-            self.advance(0)
-            rows.append(self.window(lo, hi))
+            words = step_packed(words)
+            rows.append(unpack(words, width)[depth:width - depth])
+        self.step(depth)
+        if not np.array_equal(rows[-1], self.window(lo, hi)):
+            raise AssertionError(f"t={self.t}: local history disagrees with the tree")
         return np.array(rows)
 
     def ebar_frame(self, t=None):
@@ -222,10 +262,14 @@ class HashRun:
 
     def window(self, lo, hi):
         sh = ETHER_SHIFT_PER_STEP * self.t
-        out = np.array([int(ETHER[((self.cL if x < self.x0 else self.cR) + x + sh)
-                                  % TILE]) for x in range(lo, hi)], dtype=np.uint8)
+        xs = np.arange(lo, hi)
+        c = np.where(xs < self.x0, self.cL, self.cR)
+        out = _ETHER_BITS[(c + xs + sh) % TILE]
         to_cells(self.root, lo, hi, out, self.x0)
         return out
+
+
+_ETHER_BITS = np.array([int(ch) for ch in ETHER], dtype=np.uint8)
 
 
 def _rotation(chunk):
