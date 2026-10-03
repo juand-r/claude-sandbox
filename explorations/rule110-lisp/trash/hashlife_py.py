@@ -1,30 +1,21 @@
 """1-D HashLife for Rule 110 (Gosper's algorithm, one dimension).
 
 A node of level k stands for 2^k consecutive cells. Leaves are level 6:
-64 cells in a uint64 (bit i = cell i, left to right). Nodes are
-hash-consed, so equal subtrees are one node, and results are memoized:
+64 cells held as a Python int (bit i = cell i, left to right). Nodes are
+hash-consed, so equal subtrees are one object, and results are memoized:
 result(n, j) is the centre half of node n (level k) after 2^j steps,
 j <= k - 2. Rule 110 has radius 1, so after s steps a block of 2^k cells
 determines exactly its cells [s, 2^k - s), and the centre half is
 determined for s <= 2^(k-2).
 
-The core (node store, hash-consing, memoized result, garbage collection)
-is C, in hlc.c, compiled on first import and called through ctypes; here
-a node is its integer id, and equal ids mean equal content. (v0.2: the
-pure-Python core it replaced is trash/hashlife_py.py; ~50x slower.)
-
 The universe is a finite row embedded in ether. Ether moves by the
 lattice vector (1, -4): row(t+1)[x] = row(t)[x + 4] (checked with
 engine.step), so an ether block at any place and time is a phase shift of
-the ETHER tile and is itself one node per (level, phase). HashRun keeps a
-root node, expands it with ether nodes of the right phase before each
-advance, and fails loudly if non-ether content reaches the root's outer
-quarters.
+the ETHER tile and is itself one hash-consed node per (level, phase).
+HashRun keeps a root node, expands it with ether nodes of the right phase
+before each advance, and fails loudly if non-ether content reaches the
+root's outer quarters.
 """
-
-import ctypes
-import os
-import subprocess
 
 import numpy as np
 
@@ -32,71 +23,82 @@ from engine import ETHER, pack, step_packed, unpack
 
 LEAF = 6                      # leaf level: 64 cells
 LEAF_CELLS = 1 << LEAF
+_LEAF_MASK = (1 << LEAF_CELLS) - 1
+_HALF_MASK = (1 << (LEAF_CELLS // 2)) - 1
 TILE = len(ETHER)
 ETHER_SHIFT_PER_STEP = 4      # row(t+1)[x] = row(t)[x + 4]
-NONE = 0xFFFFFFFF
-
-_DIR = os.path.dirname(os.path.abspath(__file__))
-_SRC = os.path.join(_DIR, "hlc.c")
-_LIB = os.path.join(_DIR, "__pycache__", "hlc.so")
 
 
-def _load():
-    if not os.path.exists(_LIB) or os.path.getmtime(_LIB) < os.path.getmtime(_SRC):
-        os.makedirs(os.path.dirname(_LIB), exist_ok=True)
-        subprocess.run(["cc", "-O2", "-shared", "-fPIC", "-o", _LIB, _SRC], check=True)
-    lib = ctypes.CDLL(_LIB)
-    u32, u64, i32 = ctypes.c_uint32, ctypes.c_uint64, ctypes.c_int
-    for name, res, args in (
-            ("hl_reset", i32, []), ("hl_failed", i32, []),
-            ("hl_leaf", u32, [u64]), ("hl_join", u32, [u32, u32]),
-            ("hl_result", u32, [u32, i32]), ("hl_center", u32, [u32]),
-            ("hl_level", i32, [u32]), ("hl_a", u32, [u32]), ("hl_b", u32, [u32]),
-            ("hl_value", u64, [u32]), ("hl_count", u64, []), ("hl_results", u64, []),
-            ("hl_leaves", None, [u32, u64, u64, ctypes.c_void_p]),
-            ("hl_from_words", u32, [ctypes.c_void_p, u64]),
-            ("hl_gc", u32, [u32])):
-        f = getattr(lib, name)
-        f.restype, f.argtypes = res, args
-    if not lib.hl_reset():
-        raise MemoryError("hashlife core: initial allocation failed")
-    return lib
+class Node:
+    __slots__ = ("k", "a", "b", "v")
 
 
-_lib = _load()
-_ether = {}                   # (k, phase) -> node; cleared on collection
-
-
-def _check(n):
-    if n == NONE or _lib.hl_failed():
-        raise MemoryError("hashlife core failed (allocation, or a bad level)")
-    return n
+_leaves = {}                  # int -> leaf Node
+_nodes = {}                   # (id(a), id(b)) -> Node; nodes are never freed
+_results = {}                 # (id(node), j) -> Node
+_ether = {}                   # (k, phase) -> Node
 
 
 def leaf(v):
-    return _check(_lib.hl_leaf(v))
+    n = _leaves.get(v)
+    if n is None:
+        n = Node()
+        n.k, n.a, n.b, n.v = LEAF, None, None, v
+        _leaves[v] = n
+    return n
 
 
 def join(a, b):
-    return _check(_lib.hl_join(a, b))
+    key = (id(a), id(b))
+    n = _nodes.get(key)
+    if n is None:
+        n = Node()
+        n.k, n.a, n.b, n.v = a.k + 1, a, b, None
+        _nodes[key] = n
+    return n
 
 
-level = _lib.hl_level
-child_a = _lib.hl_a
-child_b = _lib.hl_b
-value = _lib.hl_value
+def _step_bits(x, nbits, steps):
+    """Rule 110 on an nbits-cell int (bit i = cell i), zero outside; only
+    cells [steps, nbits - steps) of the result are meaningful."""
+    mask = (1 << nbits) - 1
+    for _ in range(steps):
+        left = (x << 1) & mask        # value of cell i-1, at position i
+        right = x >> 1                # value of cell i+1, at position i
+        x = (x | right) & ~(left & x & right) & mask
+    return x
 
 
 def center(n):
     """Middle half of n (one level down), at the same time."""
-    return _check(_lib.hl_center(n))
+    if n.k == LEAF + 1:
+        return leaf((n.a.v >> (LEAF_CELLS // 2)) |
+                    ((n.b.v & _HALF_MASK) << (LEAF_CELLS // 2)))
+    return join(n.a.b, n.b.a)
 
 
 def result(n, j):
-    """Centre half of n after 2^j steps (j <= level(n) - 2)."""
-    if j > level(n) - 2:
-        raise ValueError(f"cannot advance a level-{level(n)} node by 2^{j}")
-    return _check(_lib.hl_result(n, j))
+    """Centre half of n after 2^j steps (j <= n.k - 2)."""
+    key = (id(n), j)
+    r = _results.get(key)
+    if r is not None:
+        return r
+    if j > n.k - 2:
+        raise ValueError(f"cannot advance a level-{n.k} node by 2^{j}")
+    if n.k == LEAF + 1:
+        x = _step_bits(n.a.v | (n.b.v << LEAF_CELLS), 2 * LEAF_CELLS, 1 << j)
+        r = leaf((x >> (LEAF_CELLS // 2)) & _LEAF_MASK)
+    else:
+        a, b = n.a, n.b
+        m = join(a.b, b.a)
+        if j == n.k - 2:
+            r1, r2, r3 = result(a, j - 1), result(m, j - 1), result(b, j - 1)
+            r = join(result(join(r1, r2), j - 1), result(join(r2, r3), j - 1))
+        else:
+            r1, r2, r3 = center(a), center(m), center(b)
+            r = join(result(join(r1, r2), j), result(join(r2, r3), j))
+    _results[key] = r
+    return r
 
 
 def ether_node(k, phase):
@@ -106,8 +108,9 @@ def ether_node(k, phase):
     n = _ether.get(key)
     if n is None:
         if k == LEAF:
-            n = leaf(sum(1 << i for i in range(LEAF_CELLS)
-                         if ETHER[(phase + i) % TILE] == "1"))
+            v = sum(1 << i for i in range(LEAF_CELLS)
+                    if ETHER[(phase + i) % TILE] == "1")
+            n = leaf(v)
         else:
             half = 1 << (k - 1)
             n = join(ether_node(k - 1, phase), ether_node(k - 1, phase + half))
@@ -120,25 +123,30 @@ def from_cells(cells):
     size = len(cells)
     if size < LEAF_CELLS or size & (size - 1):
         raise ValueError("length must be a power of two >= 64")
-    words = np.packbits(cells.astype(np.uint8), bitorder="little").view(np.uint64)
-    words = np.ascontiguousarray(words)
-    return _check(_lib.hl_from_words(words.ctypes.data, len(words)))
+    by = np.packbits(cells.astype(np.uint8), bitorder="little").tobytes()
+    step = LEAF_CELLS // 8
+    level = [leaf(int.from_bytes(by[i:i + step], "little"))
+             for i in range(0, len(by), step)]
+    while len(level) > 1:
+        level = [join(level[i], level[i + 1]) for i in range(0, len(level), 2)]
+    return level[0]
 
 
 def to_cells(n, lo, hi, out, x0):
     """Write cells [lo, hi) of node n (whose first cell is at x0) into out
     (out[0] is cell lo)."""
-    size = 1 << level(n)
+    size = 1 << n.k
     a, b = max(lo, x0), min(hi, x0 + size)
     if a >= b:
         return
-    first = (a - x0) // LEAF_CELLS
-    count = (b - x0 - 1) // LEAF_CELLS - first + 1
-    words = np.zeros(count, dtype=np.uint64)
-    _lib.hl_leaves(n, first, count, words.ctypes.data)
-    bits = np.unpackbits(words.view(np.uint8), bitorder="little")
-    s = x0 + first * LEAF_CELLS
-    out[a - lo:b - lo] = bits[a - s:b - s]
+    if n.k == LEAF:
+        bits = np.unpackbits(np.frombuffer(n.v.to_bytes(LEAF_CELLS // 8, "little"),
+                                           np.uint8), bitorder="little")
+        out[a - lo:b - lo] = bits[a - x0:b - x0]
+        return
+    half = size >> 1
+    to_cells(n.a, lo, hi, out, x0)
+    to_cells(n.b, lo, hi, out, x0 + half)
 
 
 DENSE_LEVEL = 16              # node_from_layout materializes blocks this small
@@ -203,24 +211,23 @@ class HashRun:
 
     def _expand(self):
         """Add a quarter of ether on each side: level k -> k + 1."""
-        k, x0 = level(self.root), self.x0
+        k, x0 = self.root.k, self.x0
         q = 1 << (k - 1)
-        self.root = join(join(self._ether(k - 1, x0 - q, self.cL), child_a(self.root)),
-                         join(child_b(self.root), self._ether(k - 1, x0 + (1 << k), self.cR)))
+        self.root = join(join(self._ether(k - 1, x0 - q, self.cL), self.root.a),
+                         join(self.root.b, self._ether(k - 1, x0 + (1 << k), self.cR)))
         self.x0 = x0 - q
 
     def advance(self, j):
         """Advance by 2^j steps."""
-        while level(self.root) < j + 3:
+        while self.root.k < j + 3:
             self._expand()
         # content must stay inside: the outer quarters must be ether now
-        k = level(self.root)
-        x0, q = self.x0, 1 << (k - 2)
-        if not (child_a(child_a(self.root)) == self._ether(k - 2, x0, self.cL) and
-                child_b(child_b(self.root)) == self._ether(k - 2, x0 + 3 * q, self.cR)):
+        x0, q = self.x0, 1 << (self.root.k - 2)
+        if not (self.root.a.a is self._ether(self.root.k - 2, x0, self.cL) and
+                self.root.b.b is self._ether(self.root.k - 2, x0 + 3 * q, self.cR)):
             self._expand()
         self._expand()
-        size = 1 << level(self.root)
+        size = 1 << self.root.k
         self.root = result(self.root, j)
         self.x0 += size >> 2
         self.t += 1 << j
@@ -277,10 +284,23 @@ def _rotation(chunk):
 
 
 def recanonicalize(root):
-    """Garbage collection: keep only root's nodes (they get new ids) and
-    drop every memo entry. Every other node id becomes invalid."""
+    """Clear every memo table and rebuild root's nodes from scratch, so
+    that nodes not reachable from root can be freed (garbage collection;
+    hash-consing stays exact because the tables are rebuilt together)."""
+    _leaves.clear()
+    _nodes.clear()
+    _results.clear()
     _ether.clear()
-    return _check(_lib.hl_gc(root))
+    memo = {}
+
+    def rec(n):
+        r = memo.get(id(n))
+        if r is None:
+            r = leaf(n.v) if n.k == LEAF else join(rec(n.a), rec(n.b))
+            memo[id(n)] = r
+        return r
+
+    return rec(root)
 
 
 def dump(root):
@@ -289,18 +309,18 @@ def dump(root):
     out, index = [], {}
 
     def rec(n):
-        i = index.get(n)
+        i = index.get(id(n))
         if i is None:
-            item = value(n) if level(n) == LEAF else (rec(child_a(n)), rec(child_b(n)))
+            item = n.v if n.k == LEAF else (rec(n.a), rec(n.b))
             out.append(item)
-            i = index[n] = len(out) - 1
+            i = index[id(n)] = len(out) - 1
         return i
     rec(root)
     return out
 
 
 def load(items):
-    """Inverse of dump."""
+    """Inverse of dump (hash-consed into the current tables)."""
     nodes = []
     for item in items:
         nodes.append(leaf(item) if isinstance(item, int) else
@@ -309,4 +329,4 @@ def load(items):
 
 
 def stats():
-    return {"nodes": _lib.hl_count(), "results": _lib.hl_results()}
+    return {"leaves": len(_leaves), "nodes": len(_nodes), "results": len(_results)}

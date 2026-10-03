@@ -166,12 +166,31 @@ def layout(tape, appendants, left_periods, right_periods, v_override=None):
     blocks, B to B) is a segment; the v A blocks between ossifiers are
     an ether gap whose placement is computed in closed form and checked
     for ether at both ends."""
-    from encoder import OSSIFIER, Placed, _attach, _left_v, load_blocks
-    bits, placed = assemble(tape, appendants, 0, right_periods)
-    x_c = placed[0].gspan(0)[0]
-    bits = trim_right_to_ether(bits)
-    segs = [(x_c, bits)]
-    phases = [_phase_const(bits[-TILE:], x_c + len(bits) - TILE)]
+    from encoder import (OSSIFIER, Placed, _attach, _left_v, _right_block_seq,
+                         load_blocks, right_super_period)
+    m, w = right_super_period(tape, appendants) if right_periods > 2 else (0, 0)
+    if not m or right_periods <= m + 1:
+        bits, placed = assemble(tape, appendants, 0, right_periods)
+        x_c = placed[0].gspan(0)[0]
+        bits = trim_right_to_ether(bits)
+        right = [(x_c, bits)]
+    else:
+        # one super-period of m periods, repeated (shared, not copied)
+        bits, placed = assemble(tape, appendants, 0, m + 1)
+        x_c = placed[0].gspan(0)[0]
+        nr = len(_right_block_seq(appendants))
+        s0 = placed[len(placed) - (m + 1) * nr].gspan(0)[0]
+        chunk = bits[s0 - x_c:s0 - x_c + w]
+        extra = bits[s0 - x_c + w:]
+        if not np.array_equal(extra, chunk[:len(extra)]):
+            raise AssertionError("right side does not repeat after m periods")
+        reps = -(-right_periods // m)
+        right = ([(x_c, bits[:s0 - x_c])] +
+                 [(s0 + i * w, chunk) for i in range(reps - 1)] +
+                 [(s0 + (reps - 1) * w, trim_right_to_ether(chunk))])
+    xe, be = right[-1]
+    segs = right[::-1]        # collected right to left, reversed below
+    phases = [_phase_const(be[-TILE:], xe + len(be) - TILE)] + [None] * (len(right) - 1)
     blocks, _ = load_blocks()
     a_blk = blocks["A"]
     v = v_override if v_override is not None else _left_v(appendants)
@@ -207,15 +226,16 @@ def layout(tape, appendants, left_periods, right_periods, v_override=None):
             raise AssertionError("A run changes the ether phase")
         phases.append(c)
         prev, gap_hi = last, l0
-    # collected right to left: [right, ossifier 0, 1, ...] with phases
-    # [right ether, gap left of ossifier 0, 1, ...]; the gap between
-    # ossifier 0 and block C is empty
+    # collected right to left: [right pieces..., ossifier 0, 1, ...] with
+    # phases [right ether, None (between right pieces)..., gap left of
+    # ossifier 0, 1, ...]; the gap between ossifier 0 and block C is empty
     segs.reverse()
+    k = len(right)
     if left_periods == 0:
         left = [_phase_const(bits[:TILE], x_c)]
     else:
-        left = phases[1:][::-1] + [None]
-    return Layout(segs, left + [phases[0]])
+        left = phases[k:][::-1] + [None]
+    return Layout(segs, left + phases[1:k][::-1] + [phases[0]])
 
 
 class Run:

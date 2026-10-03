@@ -36,7 +36,8 @@ from census import MAX_DT
 from experiments import (FIRST_GAP, HASH_LOOKAHEAD, JUMP_MARGIN, READS_MARGIN,
                          ReadWatch, component_regions, sample)
 import hashlife as hl
-from hashlife import LEAF, HashRun, ether_node, join, node_from_layout
+from hashlife import (LEAF, HashRun, child_a, child_b, join, level,
+                      node_from_layout, value)
 
 ALIGN = 16                 # carried blocks: 2^16 cells on a global grid
 GRID = 1 << ALIGN
@@ -76,9 +77,9 @@ def table_cut(x0, bits, x_end):
 
 class Universe:
     """Truncated free content in t = 0 coordinates: ossifiers 0..n_oss-1
-    (ossifier 0 is next to block C) and the right segment (central region
-    and table) cut at x_cut. lay is the full casim.layout; n_all its
-    number of ossifiers."""
+    (ossifier 0 is next to block C) and the right side (central region and
+    table, one or more adjacent segments) cut at x_cut. lay is the full
+    casim.layout; n_all its number of ossifiers."""
 
     def __init__(self, lay, n_all, n_oss, x_cut):
         if not 1 <= n_oss <= n_all:
@@ -87,9 +88,14 @@ class Universe:
         x_last, b_last = segs[n_all - 1]               # ossifier 0
         c_after = _phase_const(b_last[-TILE:], x_last + len(b_last) - TILE)
         self.left = Layout(segs[n_all - n_oss:n_all], ph[n_all - n_oss:n_all] + [c_after])
-        xr, br = segs[n_all]
-        cut, c_cut = table_cut(xr, br, min(x_cut, xr + len(br)))
-        self.right = Layout([(xr, br[:cut - xr])], [_phase_const(br[:TILE], xr), c_cut])
+        right = segs[n_all:]
+        x_cut = min(x_cut, lay.hi)
+        i = max(k for k, (x, _) in enumerate(right) if x < x_cut)
+        xi, bi = right[i]
+        cut, c_cut = table_cut(xi, bi, min(x_cut, xi + len(bi)))
+        xr, br = right[0]
+        self.right = Layout(right[:i] + [(xi, bi[:cut - xi])],
+                            [_phase_const(br[:TILE], xr)] + [None] * i + [c_cut])
         self.n_oss, self.x_cut = n_oss, cut
 
     def at(self, t):
@@ -103,19 +109,19 @@ class Universe:
 def subnode(run, x, k):
     """Node for cells [x, x + 2^k) of run's current row. Inside the tree x
     must be aligned to 2^k relative to run.x0; outside it, ether."""
-    size = 1 << run.root.k
+    size = 1 << level(run.root)
     if x + (1 << k) <= run.x0 or x >= run.x0 + size:
         c = run.cL if x < run.x0 else run.cR
         return run._ether(k, x, c)
     if not (run.x0 <= x and x + (1 << k) <= run.x0 + size) or (x - run.x0) % (1 << k):
         raise ValueError(f"block [{x}, +2^{k}) is not aligned inside the tree")
     n, pos = run.root, run.x0
-    while n.k > k:
-        half = 1 << (n.k - 1)
+    while level(n) > k:
+        half = 1 << (level(n) - 1)
         if x < pos + half:
-            n = n.a
+            n = child_a(n)
         else:
-            n, pos = n.b, pos + half
+            n, pos = child_b(n), pos + half
     return n
 
 
@@ -136,22 +142,24 @@ def _composite(left, right, split, x, k):
 
 
 def _leaf_diff(n, f, last):
-    d = n.v ^ f.v
+    d = value(n) ^ value(f)
     return (d.bit_length() - 1) if last else ((d & -d).bit_length() - 1)
 
 
 def diff_extent(run, left, right, split):
     """(a, b): the first and last cell where run's row differs from the
-    free rows (_composite). Nodes are hash-consed, so equal subtrees are
-    the same object and are skipped without descending."""
+    free rows (_composite). Nodes are hash-consed, so equal subtrees have
+    the same id and are skipped without descending."""
     def search(n, x, last):
-        f = _composite(left, right, split, x, n.k)
-        if f is n:
+        k = level(n)
+        f = _composite(left, right, split, x, k)
+        if f == n:
             return None
-        if n.k == LEAF:
+        if k == LEAF:
             return x + _leaf_diff(n, f, last)
-        h = 1 << (n.k - 1)
-        order = ((n.b, x + h), (n.a, x)) if last else ((n.a, x), (n.b, x + h))
+        h = 1 << (k - 1)
+        a, b = child_a(n), child_b(n)
+        order = ((b, x + h), (a, x)) if last else ((a, x), (b, x + h))
         for m, y in order:
             r = search(m, y, last)
             if r is not None:
@@ -249,7 +257,7 @@ class EpochReads:
         left, right = self.uni.at(0)
         # at t = 0 ossifier 0 touches block C: the gap between them is empty
         self.run = HashRun.from_layout(Layout(left.segments + right.segments,
-                                              left.phases[:-1] + [None, right.phases[-1]]),
+                                              left.phases[:-1] + [None] + right.phases[1:]),
                                        align=GRID)
         self.next_epoch = epoch
         self.t_wall = time.time()

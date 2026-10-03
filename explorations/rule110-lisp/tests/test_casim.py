@@ -103,3 +103,25 @@ def test_epoch_run_is_exact():
     a, b = diff_extent(run, left, right, er.regs[11][0] - 8 * run.t // 30)
     lo, hi = a - 2 * GRID, b + 2 * GRID
     assert np.array_equal(run.window(lo, hi), full.window(lo, hi))
+
+
+def test_periodic_right_side():
+    """Beyond one super-period the layout tiles the right side with shared
+    copies (encoder.right_super_period); cells and read regions equal the
+    direct assembly's."""
+    from casim import TILE, layout, trim_right_to_ether
+    from encoder import assemble, right_super_period
+    from experiments import component_regions
+    tape, apps, rp = "YYYYNN", ["YYYYNN"], 40
+    assert right_super_period(tape, apps)[0] == 15
+    bits, placed = assemble(tape, apps, 2, rp)
+    row, origin = padded_row(tape, apps, 2, rp, TILE * 5, TILE * 5)
+    end = len(trim_right_to_ether(bits)) + placed[0].gspan(0)[0]
+    lay = layout(tape, apps, 2, rp)
+    assert len(lay.segments) > 4 and lay.hi >= end
+    assert np.array_equal(lay.cells(-origin, end), row[:end + origin])
+    _, placed = assemble(tape, apps, 0, rp)
+    lead = [i for i, p in enumerate(placed) if p.block.name in "GKL"]
+    direct = [(placed[a + 1].gspan(0)[0], placed[b - 1].gspan(0)[1])
+              for a, b in zip(lead, lead[1:])]
+    assert component_regions(tape, apps, rp) == direct

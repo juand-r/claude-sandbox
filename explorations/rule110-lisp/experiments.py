@@ -104,14 +104,22 @@ ACCEPT_TOLERANCE = 2
 
 def component_regions(tape, apps, right_periods):
     """Global column ranges (t = 0) of each appendant copy's components, in
-    read order; (None, None) for empty appendants."""
-    from encoder import assemble
-    _, placed = assemble(tape, apps, 0, right_periods)
+    read order; (None, None) for empty appendants. Beyond one super-period
+    (encoder.right_super_period) the regions repeat, shifted."""
+    from encoder import assemble, right_super_period
+    m, w = right_super_period(tape, apps) if right_periods > 2 else (0, 0)
+    _, placed = assemble(tape, apps, 0, min(right_periods, m + 1) if m else right_periods)
     names = [p.block.name for p in placed]
     leaders = [i for i, n in enumerate(names) if n in "GKL"]
-    return [(placed[a + 1].gspan(0)[0], placed[b - 1].gspan(0)[1])
+    regs = [(placed[a + 1].gspan(0)[0], placed[b - 1].gspan(0)[1])
             if b - a > 1 else (None, None)
             for a, b in zip(leaders, leaders[1:])]
+    n = right_periods * len(apps)
+    per = m * len(apps)
+    while len(regs) < n:
+        a, b = regs[len(regs) - per]
+        regs.append((None, None) if a is None else (a + w, b + w))
+    return regs
 
 
 class ReadWatch:

@@ -122,6 +122,6 @@ def census(hist):
         mism = cs[np.clip(hi, 0, width)] - cs[np.clip(lo, 0, width)]
         hits.append(inside & (mism == 0))
     hits = np.array(hits)
-    names = list(FAMILIES)
-    return [(int(x), int(y), names[int(np.argmax(h))] if h.sum() == 1 else "?")
-            for x, y, h in zip(a, b, hits.T)]
+    names = np.array(list(FAMILIES) + ["?"])
+    label = np.where(hits.sum(axis=0) == 1, hits.argmax(axis=0), len(FAMILIES))
+    return list(zip(a.tolist(), b.tolist(), names[label].tolist()))

@@ -193,6 +193,22 @@ def _right_block_seq(appendants):
     return joined[1:] + "K"  # move the initial K to the very end
 
 
+def right_super_period(tape, appendants):
+    """-> (m, W): the right side's t=0 row repeats every m periods, shifted
+    by W columns. Placing a period changes the blocks' row phase dy by a
+    fixed amount mod 30 (their period), and seam offsets depend on that
+    phase, so the row repeats only once the phase returns: m = 30 / gcd.
+    (casim.layout checks the repetition cell for cell.)"""
+    from math import gcd
+    nr = len(_right_block_seq(appendants))
+    _, placed = assemble(tape, appendants, 0, 2)
+    d = (placed[-nr].dy - placed[-2 * nr].dy) % 30
+    m = 30 // gcd(d, 30)
+    _, placed = assemble(tape, appendants, 0, m + 1)
+    first = len(placed) - (m + 1) * nr
+    return m, placed[first + m * nr].gspan(0)[0] - placed[first].gspan(0)[0]
+
+
 def _left_v(appendants):
     """Paper's ossifier-spacing estimate. Valid only if at least one
     nonempty appendant is appended per appendant cycle; programs with
