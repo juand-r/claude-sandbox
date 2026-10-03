@@ -189,21 +189,22 @@ class HashRun:
         self._start(from_cells(cells), x0, cL, cR, origin)
 
     @classmethod
-    def from_layout(cls, layout):
+    def from_layout(cls, layout, align=1):
         """Run of a casim.Layout (global columns: origin 0). The tree is
-        built from the segments and ether gaps, never as one array."""
-        n = layout.hi - layout.lo
+        built from the segments and ether gaps, never as one array. align:
+        the tree's left edge is a multiple of it (a power of two)."""
+        n = layout.hi - layout.lo + align
         k = max(LEAF + 2, int(np.ceil(np.log2(n))) + 2)
-        x0 = layout.lo - ((1 << k) - n) // 2
+        x0 = (layout.lo - ((1 << k) - n) // 2) // align * align
         run = cls.__new__(cls)
         run._start(node_from_layout(layout, x0, k), x0, layout.phases[0],
                    layout.phases[-1], 0)
         return run
 
-    def _start(self, root, x0, cL, cR, origin):
+    def _start(self, root, x0, cL, cR, origin, t=0):
         self.root, self.x0, self.cL, self.cR = root, x0, cL, cR
         self.origin = origin
-        self.t = 0
+        self.t = t
 
     def _ether(self, k, x, c):
         return ether_node(k, c + x + ETHER_SHIFT_PER_STEP * self.t)
@@ -237,22 +238,24 @@ class HashRun:
             if n >> j & 1:
                 self.advance(j)
 
-    def history(self, lo, hi, depth):
-        """Rows t..t+depth of cells [lo, hi); the run ends at t + depth (the
-        contract of casim.Run.history). The rows are stepped locally on a
-        window with depth extra cells on each side: the packed engine's
-        wrap garbage (and the zero padding to whole words) enters at most
-        one cell per step, so [lo, hi) stays exact. The tree then advances
-        by depth on its own; the two are compared at the end."""
+    def history(self, lo, hi, depth, advance=True):
+        """Rows t..t+depth of cells [lo, hi). With advance (the contract of
+        casim.Run.history) the run ends at t + depth; otherwise it stays
+        at t. The rows are stepped locally on a window with depth extra
+        cells on each side: the packed engine's wrap garbage (and the zero
+        padding to whole words) enters at most one cell per step, so
+        [lo, hi) stays exact. With advance the tree then steps on its own
+        and the two are compared."""
         width = hi - lo + 2 * depth
         words = pack(self.window(lo - depth, hi + depth))
         rows = [unpack(words, width)[depth:width - depth]]
         for _ in range(depth):
             words = step_packed(words)
             rows.append(unpack(words, width)[depth:width - depth])
-        self.step(depth)
-        if not np.array_equal(rows[-1], self.window(lo, hi)):
-            raise AssertionError(f"t={self.t}: local history disagrees with the tree")
+        if advance:
+            self.step(depth)
+            if not np.array_equal(rows[-1], self.window(lo, hi)):
+                raise AssertionError(f"t={self.t}: local history disagrees with the tree")
         return np.array(rows)
 
     def ebar_frame(self, t=None):
@@ -278,6 +281,51 @@ def _rotation(chunk):
         if ETHER[r:] + ETHER[:r] == s:
             return r
     raise ValueError("row does not start/end in clean ether")
+
+
+def recanonicalize(root):
+    """Clear every memo table and rebuild root's nodes from scratch, so
+    that nodes not reachable from root can be freed (garbage collection;
+    hash-consing stays exact because the tables are rebuilt together)."""
+    _leaves.clear()
+    _nodes.clear()
+    _results.clear()
+    _ether.clear()
+    memo = {}
+
+    def rec(n):
+        r = memo.get(id(n))
+        if r is None:
+            r = leaf(n.v) if n.k == LEAF else join(rec(n.a), rec(n.b))
+            memo[id(n)] = r
+        return r
+
+    return rec(root)
+
+
+def dump(root):
+    """root's DAG as a list, children before parents: a leaf is its int
+    value, an inner node the pair of its children's indices."""
+    out, index = [], {}
+
+    def rec(n):
+        i = index.get(id(n))
+        if i is None:
+            item = n.v if n.k == LEAF else (rec(n.a), rec(n.b))
+            out.append(item)
+            i = index[id(n)] = len(out) - 1
+        return i
+    rec(root)
+    return out
+
+
+def load(items):
+    """Inverse of dump (hash-consed into the current tables)."""
+    nodes = []
+    for item in items:
+        nodes.append(leaf(item) if isinstance(item, int) else
+                     join(nodes[item[0]], nodes[item[1]]))
+    return nodes[-1]
 
 
 def stats():

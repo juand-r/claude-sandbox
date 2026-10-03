@@ -80,3 +80,26 @@ def test_hashlife_read_check():
     from experiments import READS_APPS, READS_TAPE, read_outcomes_hash
     v = 3 * _left_v(READS_APPS)
     assert read_outcomes_hash(READS_TAPE, READS_APPS, v, 6, 8 * 32 * v, 600) == "YYYYNN"
+
+
+def test_epoch_run_is_exact():
+    """After several epochs (each a rebuilt, truncated tree), the epoch
+    engine's row equals the full run's row over the active region and a
+    margin around it, and the read sequence is the reference."""
+    from casim import layout
+    from encoder import _left_v
+    from epochrun import GRID, EpochReads, diff_extent
+    from experiments import READS_APPS, READS_TAPE
+    from hashlife import HashRun
+    v = 3 * _left_v(READS_APPS)
+    er = EpochReads(READS_TAPE, READS_APPS, v, 12, sample_bits=9, epoch=3,
+                    log=lambda *a: None)
+    assert er.run_reads() == "YYYYNNYYYYNN"
+    run = er.run
+    full = HashRun.from_layout(layout(READS_TAPE, READS_APPS, er.n_all,
+                                      len(er.regs) // len(READS_APPS), v_override=v))
+    full.step(run.t)
+    left, right = er.uni.at(run.t)
+    a, b = diff_extent(run, left, right, er.regs[11][0] - 8 * run.t // 30)
+    lo, hi = a - 2 * GRID, b + 2 * GRID
+    assert np.array_equal(run.window(lo, hi), full.window(lo, hi))

@@ -4,3 +4,6 @@
 *.out
 # spacetime renders: kept out of git; regenerate with the run scripts
 *.png
+# run checkpoints (deleted when a run finishes)
+*.ckpt
+*.ckpt.tmp

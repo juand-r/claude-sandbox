@@ -103,3 +103,37 @@ def test_fill_empty_appendants_exact():
         got = _read_trace(cts_tape, filled, 20_000, junk_len=m)
         assert len(got) >= len(ref) >= 250
         assert got[:len(ref)] == ref
+
+
+def test_tm_visits_from_cts_reads():
+    """The TM's visit sequence is recoverable from nothing but the filled
+    CTS's Y/N read sequence (what the glider runs observe)."""
+    from cts import fill_empty_appendants
+    from machines import one_move_tm
+    from tag import heads_from_reads
+    for tm, cfg in ((three_state_tm(), (1, [1], [1], 1, [1, 2], [1])),
+                    (one_move_tm(), (1, [1], [1], 1, [1], [1]))):
+        ref = list(tm.run(*cfg, max_steps=50))
+        rules, ts_tape, s = tm_to_ts(tm, *cfg)
+        cts_tape, apps, order = ts_to_cts(rules, ts_tape, s)
+        filled = fill_empty_appendants(apps)
+        reads = _reads(cts_tape, filled, 260_000)
+        heads = heads_from_reads(reads, order, s)
+        visits = [tuple(map(int, h.split("_")[1:])) for h in heads
+                  if h.startswith("H_") and h.count("_") == 2
+                  and int(h.split("_")[2]) <= tm.t]
+        assert visits[:len(ref)] == ref
+
+
+def _reads(tape, apps, steps):
+    """The CTS's read sequence (cts.run without building tape strings)."""
+    from collections import deque
+    q, out = deque(tape), []
+    for n in range(steps):
+        if not q:
+            break
+        c = q.popleft()
+        out.append(c)
+        if c == "Y":
+            q.extend(apps[n % len(apps)])
+    return "".join(out)

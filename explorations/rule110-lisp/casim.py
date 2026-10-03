@@ -137,6 +137,14 @@ class Layout:
         return self.phases[k]
 
 
+    def shifted(self, s):
+        """The same row translated right by s cells (free evolution of a
+        side that moves rigidly: s = 2t/3 for the ossifier train at
+        t = 0 mod 3, s = -8t/30 for the table at t = 0 mod 30)."""
+        return Layout([(x + s, b) for x, b in self.segments],
+                      [None if c is None else (c - s) % TILE for c in self.phases])
+
+
 def _ether_cells(c, lo, hi):
     tile = np.array([int(ch) for ch in ETHER], dtype=np.uint8)
     return tile[(c + np.arange(lo, hi)) % TILE]

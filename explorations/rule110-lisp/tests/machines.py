@@ -25,3 +25,11 @@ def edge_walker_tm():
             (2, 2): "H", (3, 2): "H"}
     nxt = {(1, 1): 2, (2, 1): 3, (3, 1): 4, (4, 2): 4, (4, 1): 5}
     return TM(5, 2, write, move, nxt)
+
+
+def one_move_tm():
+    """2 states, 1 symbol: state 1 moves right into state 2, which halts.
+    The smallest machine with a state change and a head move; compiled
+    through Cocke-Minsky and the filled CTS it halts at CTS read 5,760
+    (NOTES.md, phase 7)."""
+    return TM(2, 1, {(1, 1): 1}, {(1, 1): "R", (2, 1): "H"}, {(1, 1): 2})

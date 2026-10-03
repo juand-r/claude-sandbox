@@ -91,3 +91,26 @@ def decode_cts_tape(cts_tape, order, skip_blank=False):
             return None
         out.append(order[word.index("Y")])
     return out
+
+
+def heads_from_reads(reads, order, s, ends=False):
+    """Tag symbols at the head of each tag step, recovered from the CTS's
+    read sequence alone ('Y'/'N' per read, e.g. observed on gliders).
+
+    The CTS tape is always a sequence of whole code words (appendants are
+    words, and fill_empty_appendants' junk is all-N words), so the reads
+    split into words of len(order); junk words are skipped, and every
+    s-th genuine symbol is a tag step's head. A trailing partial word is
+    ignored. Raises on a word that is neither one-hot nor all-N. ends:
+    also return, per head, the number of reads through its code word."""
+    n = len(order)
+    syms, stops = [], []
+    for i in range(0, len(reads) - n + 1, n):
+        word = reads[i:i + n]
+        if "Y" not in word:
+            continue
+        if word.count("Y") != 1:
+            raise ValueError(f"reads {i}..{i + n - 1}: not a code word: {word}")
+        syms.append(order[word.index("Y")])
+        stops.append(i + n)
+    return (syms[::s], stops[::s]) if ends else syms[::s]

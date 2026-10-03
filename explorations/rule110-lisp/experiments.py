@@ -6,6 +6,7 @@
     python experiments.py cost                # REPORT.md section 4 table
     python experiments.py collatz [V] [N]     # De Mol 3x+1 on gliders (3.6)
     python experiments.py collatz-hash [V] [N]  # the same on HashLife (5)
+    python experiments.py tm-gliders [one|three]  # compiled TM on gliders (3.7)
 
 reads and lblock are the dynamic check of REPORT.md 3.3-3.4: they
 observe each read's outcome directly (see read_outcomes) and compare the
@@ -18,6 +19,7 @@ import os
 import pickle
 import sys
 import time
+from collections import deque
 
 from casim import Run, StreamRun, padded_row
 from census import MAX_DT, census
@@ -164,15 +166,23 @@ class ReadWatch:
         return "".join(s if s in "YN!" else "." for s in self.state)
 
 
-def sample(run, watch, pending):
-    """Census of the pending regions: the run advances by MAX_DT."""
+def sample(run, watch, pending, depth=MAX_DT, advance=True):
+    """Census of the pending regions at time run.t + depth (which must be
+    0 mod 30, the phase the regions' censuses are compared at). With
+    advance the run steps there (Run.history's contract); otherwise
+    (HashRun only) it stays put."""
+    t = run.t + depth
+    if t % 30:
+        raise ValueError(f"census at t={t}: not 0 mod 30")
     lo_g, hi_g = watch.span(pending)
-    shift = run.ebar_frame() - run.origin
+    shift = run.ebar_frame(run.t) - run.origin
     lo = run.origin + lo_g + shift
-    cs = census(run.history(lo, run.origin + hi_g + shift, MAX_DT))
-    shift = run.ebar_frame() - run.origin
+    hist = (run.history(lo, run.origin + hi_g + shift, depth) if advance else
+            run.history(lo, run.origin + hi_g + shift, depth, advance=False))
+    cs = census(hist)
+    shift = run.ebar_frame(t) - run.origin
     rel = [(x0 + lo - run.origin - shift, k) for x0, _, k in cs]
-    watch.observe(run.t, pending, rel)
+    watch.observe(t, pending, rel)
 
 
 def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True,
@@ -307,6 +317,72 @@ def collatz_hash(v, n_reads, every):
           f"(v={v}, every={every}, {time.time() - t0:.0f}s)")
 
 
+# Compiled Turing machines on gliders (REPORT.md 3.7): tests/machines.py
+# machine and start configuration (state, left_bg, left, cur, right,
+# right_bg), compiled TM -> tag (Cocke-Minsky) -> CTS -> filled CTS.
+TM_RUNS = {"one": ("one_move_tm", (1, [1], [1], 1, [1], [1])),
+           "three": ("three_state_tm", (1, [1], [1], 1, [2], [1]))}
+
+
+def tm_visits(heads, t):
+    """Genuine (state, symbol) visits among tag heads H_i_j (j <= t)."""
+    out = []
+    for h in heads:
+        if h.startswith("H_") and h.count("_") == 2:
+            i, j = map(int, h.split("_")[1:])
+            if j <= t:
+                out.append((i, j))
+    return out
+
+
+def tm_gliders(name, sample_bits=17, epoch=8):
+    """Run a compiled TM on gliders (epochrun.EpochReads at Cook's v) up to
+    the read that completes its halting visit, then decode the TM's visit
+    sequence from the observed reads alone and compare it with the TM.
+    Checkpoints to tm_{name}.ckpt (rerun the same command to resume)."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests"))
+    import machines
+    from epochrun import EpochReads
+    from tag import heads_from_reads, ts_to_cts
+    from tm import tm_to_ts
+    make, cfg = TM_RUNS[name]
+    tm = getattr(machines, make)()
+    ref = list(tm.run(*cfg, max_steps=1000))
+    rules, ts_tape, s = tm_to_ts(tm, *cfg)
+    tape, apps, order = ts_to_cts(rules, ts_tape, s)
+    apps = fill_empty_appendants(apps)
+    v = _left_v(apps)
+    # reference reads, long enough to contain the halting visit's word
+    q, ref_reads, n = deque(tape), [], 0
+    while True:
+        c = q.popleft()
+        ref_reads.append(c)
+        if c == "Y":
+            q.extend(apps[n % len(apps)])
+        n += 1
+        if n % (s * len(order)) == 0:
+            heads, stops = heads_from_reads("".join(ref_reads), order, s, ends=True)
+            if len(tm_visits(heads, tm.t)) >= len(ref):
+                break
+    n_reads = max(e for h, e in zip(heads, stops) if h == f"H_{ref[-1][0]}_{ref[-1][1]}")
+    ref_reads = "".join(ref_reads[:n_reads])
+    print(f"{make} {cfg}: visits {ref}; CTS {len(apps)} appendants, "
+          f"{sum(map(len, apps))} symbols, v = {v}; {n_reads} reads", flush=True)
+    t0 = time.time()
+    er = EpochReads(tape, apps, v, n_reads, sample_bits=sample_bits, epoch=epoch,
+                    checkpoint=f"tm_{name}.ckpt")
+    got = er.run_reads()
+    same = sum(g == r for g, r in zip(got, ref_reads))
+    print(f"reads: {'MATCH' if got == ref_reads else 'DIFFER'} ({same}/{n_reads}), "
+          f"t = {er.run.t}, {time.time() - t0:.0f}s")
+    visits = tm_visits(heads_from_reads(got, order, s), tm.t)
+    print(f"TM visits decoded from the glider reads: {visits}\n"
+          f"TM visits (reference):                   {ref}\n"
+          f"{'MATCH' if visits == ref else 'DIFFER'}")
+    if os.path.exists(f"tm_{name}.ckpt"):
+        os.remove(f"tm_{name}.ckpt")
+
+
 def tower_cost(direct):
     """Sizes and step counts of the capstone machine (tests/machines.py
     three_state_tm on CAPSTONE_CFG) at every level of the tower, and the
@@ -361,6 +437,8 @@ if __name__ == "__main__":
         # the same run on HashLife, sampled every 15,360 generations (~6 min)
         collatz_hash(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
                      int(sys.argv[3]) if len(sys.argv) > 3 else 556, 15_360)
+    elif sys.argv[1:2] == ["tm-gliders"]:
+        tm_gliders(sys.argv[2] if len(sys.argv) > 2 else "one")
     elif sys.argv[1:2] == ["cost"]:
         tower_cost(direct=False)
         tower_cost(direct=True)
