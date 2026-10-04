@@ -35,9 +35,11 @@ initialization of the weights with a unit-scale address table; a lower learning
 rate; and finally damped Newton (Levenberg–Marquardt), which solves the quine
 equations directly. The best network (one hidden layer) reaches R² = 0.987,
 with normal-sized weights (RMS 0.41); the best two-layer network (the paper's
-architecture) reaches 0.971 and was still improving. Further damped Newton
-iterations stall near 0.985 for the one-layer network whether it minimizes SSE
-or 1 − R².
+architecture) reaches 0.971 and was still improving. Long damped Newton runs
+appeared to stall near 0.985, but that stall came from the damping schedule, not
+from the problem: restarting the method from the same network resumes progress
+(0.985 → 0.988 in 10 iterations), and a random change followed by repair
+reached 0.990 (section 14).
 
 ## 1. The setup
 
@@ -326,11 +328,21 @@ minimizing 1 − R² (which also keeps the weight RMS fixed at 0.391 instead of
 shrinking it to 0.390). Both stall, with the damping rising and the steps
 shrinking to 10⁻⁵ of the weights.
 
+Correction: this is not a local optimum. Restarting damped Newton on 1 − R²
+from the stalled network gives 0.9853 → 0.9884 in 10 iterations
+(`logs/diag_absorb.died-at-restart.log`, control run). The stall came from the
+damping schedule: μ is multiplied by 4 after a rejected step and divided by 3
+after an accepted one, so over a long run it ratchets up until the steps are
+too small to matter; a restart resets it. Also, changing the weights by a random
+1% and then repairing them reached 0.9901 in 9 iterations, better than the
+unchanged network over the same iterations (that network was lost in a
+container restart; the experiment is being rerun).
+
 Interpretation. Damped Newton is far more efficient than Adamax here (the gain
-from 0.96 to 0.98 took 20 iterations), but for this network it converges to a
-local optimum near 0.985; changing the objective does not move it. Running at
-the time of writing: the two-layer seed-0 run minimizing 1 − R², for comparison
-with the SSE run above.
+from 0.96 to 0.98 took 20 iterations). Changing the objective from SSE to
+1 − R² makes no difference for one layer or two (two layers, seed 0, 20
+iterations: 0.9713 on SSE, 0.9714 on 1 − R²). The ceiling, if there is one, is
+not yet known; the damping schedule should be fixed before looking for it.
 
 ## 15. The best network
 

@@ -221,9 +221,10 @@ Pure Newton fails: J − I has condition number ~5e6 and the linear model holds
 only for steps ~1e-6 of the Newton step (`diag_newton.py`). Damped Newton works.
 
 One layer, seed 0, 80 more damped Newton iterations from 0.9832:
-on SSE 0.98515; on 1 − R² 0.98526. Both stall at the same value, so the plateau
-is a local optimum of the fit, not weight shrinkage (the 1 − R² run keeps the
-weight RMS fixed at 0.391; the SSE run shrinks it to 0.390).
+on SSE 0.98515; on 1 − R² 0.98526. Both stall at the same value. (Correction,
+later: not a local optimum. A fresh damped Newton start from the stalled network
+reached 0.9884 in 10 iterations; the stall came from the damping μ ratcheting up
+over a long run. A random 1% change plus repair reached 0.9901. See NOTES.md.)
 
 Two layers, seed 0, damped Newton: 0.9545 → 0.9713 in 20 iterations (~2 min
 each), still rising ~0.0008 per iteration at the end, damping falling.
