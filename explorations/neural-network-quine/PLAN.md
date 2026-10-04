@@ -83,3 +83,8 @@ not report and which is the right check against the zero quine.
 - [x] REPORT.md draft; [ ] fill in E3, E4, literal-He 100 epochs
 
 Changes of direction: item 5 (init) resolved against the paper's text, see NOTES.md E0.
+
+## Focus (set by the user, 2026-10-05)
+
+Work only on the two-layer network (the paper's architecture, N = 20,100).
+No further one-layer runs unless the user asks.

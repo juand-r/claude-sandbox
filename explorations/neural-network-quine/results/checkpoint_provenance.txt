@@ -7,3 +7,6 @@ stage3_L1_seed1.pt <- opt_adamax_300ep_seed1_init-he_normal_proj1_L1_lr2e-05_ful
 stage2_L2_seed1.pt <- opt_adamax_300ep_seed1_he_lr2e-05_from-opt_adamax_300ep_seed1_he_lr0.0002_from-opt_adamax_1000ep_seed1_he.pt
 stage3_L1_seed2.pt <- opt_adamax_300ep_seed2_init-he_normal_proj1_L1_lr2e-05_fullgrad_from-stage2_L1_seed2.pt
 stage2_L2_seed2.pt <- opt_adamax_300ep_seed2_he_lr2e-05_from-opt_adamax_300ep_seed2_he_lr0.0002_from-opt_adamax_1000ep_seed2_he.pt
+stage1fn_L2_seed0.pt <- opt_adamax_1000ep_seed0_he_fullgrad_normalized.pt
+stage1fn_L2_seed1.pt <- opt_adamax_1000ep_seed1_he_fullgrad_normalized.pt
+stage1fn_L2_seed2.pt <- opt_adamax_1000ep_seed2_he_fullgrad_normalized.pt
