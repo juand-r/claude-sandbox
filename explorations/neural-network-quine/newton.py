@@ -88,20 +88,41 @@ def newton(model, max_steps):
 MU_UP, MU_DOWN, MAX_TRIES = 4.0, 3.0, 12
 
 
-def lm(model, max_steps, mu_rel=1e-3):
-    """Levenberg–Marquardt on r(θ) = f_θ(C) − θ. μ starts at mu_rel times the
-    mean diagonal of AᵀA; it is divided by MU_DOWN after an accepted step and
-    multiplied by MU_UP after a rejected one (up to MAX_TRIES per step)."""
+def objective(sse, theta, normalized):
+    """SSE, or SSE / Σ(θ − mean θ)² = 1 − R² when normalized."""
+    return sse / (theta - theta.mean()).pow(2).sum().item() if normalized else sse
+
+
+def residual_and_matrix(model, theta, r, normalized):
+    """The least-squares residual and its Jacobian.
+    Plain:      r,            A = J − I.
+    Normalized: r̃ = r / √S,   Ã = (A − r dᵀ / S) / √S,  d = θ − mean θ,  S = |d|²."""
+    A = jacobian(model, theta)
+    A.diagonal().sub_(1.0)
+    if not normalized:
+        return r, A
+    d = theta - theta.mean()
+    S = d.pow(2).sum()
+    A.sub_(torch.outer(r, d) / S)
+    A.div_(S.sqrt())
+    return r / S.sqrt(), A
+
+
+def lm(model, max_steps, mu_rel=1e-3, normalized=False):
+    """Levenberg–Marquardt (damped Newton) on r(θ) = f_θ(C) − θ, minimizing SSE,
+    or 1 − R² when normalized. μ starts at mu_rel times the mean diagonal of
+    AᵀA; it is divided by MU_DOWN after an accepted step and multiplied by MU_UP
+    after a rejected one (up to MAX_TRIES per step)."""
     theta = model.theta.detach().clone()
     r, sse, r2, rms = stats(model, theta)
+    obj = objective(sse, theta, normalized)
     log = [{"step": 0, "sse": sse, "r2": r2, "theta_rms": rms, "mu": None, "seconds": 0.0}]
     print(f"step 0: SSE {sse:.6g}  R² {r2:.6f}  weight rms {rms:.4f}", flush=True)
     mu = None
     for k in range(1, max_steps + 1):
         t0 = time.time()
-        A = jacobian(model, theta)
-        A.diagonal().sub_(1.0)                       # A = J − I
-        g = A.T @ r
+        res, A = residual_and_matrix(model, theta, r, normalized)
+        g = A.T @ res
         H = A.T @ A
         del A
         if mu is None:
@@ -114,13 +135,14 @@ def lm(model, max_steps, mu_rel=1e-3):
                 delta = -torch.cholesky_solve(g.unsqueeze(1), L).squeeze(1)
                 cand = theta + delta
                 r_c, sse_c, r2_c, rms_c = stats(model, cand)
-                if sse_c < sse:
+                obj_c = objective(sse_c, cand, normalized)
+                if obj_c < obj:
                     break
             mu *= MU_UP
         else:
             print(f"step {k}: no decrease after {MAX_TRIES} damping increases; stopping", flush=True)
             break
-        theta, r, sse, r2, rms = cand, r_c, sse_c, r2_c, rms_c
+        theta, r, sse, r2, rms, obj = cand, r_c, sse_c, r2_c, rms_c, obj_c
         log.append({"step": k, "sse": sse, "r2": r2, "theta_rms": rms, "mu": mu,
                     "step_norm_rel": delta.norm().item() / theta.norm().item(), "seconds": time.time() - t0})
         print(f"step {k}: SSE {sse:.6g}  R² {r2:.6f}  weight rms {rms:.4f}  mu {mu:.3g}  "
@@ -134,12 +156,13 @@ def lm(model, max_steps, mu_rel=1e-3):
 def main():
     start, n_layers, out = sys.argv[1], int(sys.argv[2]), sys.argv[3]
     max_steps = int(sys.argv[4]) if len(sys.argv) > 4 else 10
-    method = sys.argv[5] if len(sys.argv) > 5 else "lm"
+    method = sys.argv[5] if len(sys.argv) > 5 else "lm"     # lm, lm_normalized, or newton
     torch.set_num_threads(4)
     model = q.Quine(n_layers=n_layers, init="he_normal", proj_std=1.0)
     model.load_state_dict(torch.load(start))
     model.double()
-    log = {"lm": lm, "newton": newton}[method](model, max_steps)
+    methods = {"lm": lm, "newton": newton, "lm_normalized": lambda m, k: lm(m, k, normalized=True)}
+    log = methods[method](model, max_steps)
     res = Path(__file__).parent / "results"
     (res / f"{out}.json").write_text(json.dumps(
         {"config": {"start": start, "n_layers": n_layers, "method": method}, "log": log}, indent=1))

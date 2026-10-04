@@ -172,3 +172,31 @@ def test_lm_accepted_steps_decrease_sse():
     log = newton.lm(m, max_steps=8)
     sses = [row["sse"] for row in log]
     assert len(sses) > 1 and all(b < a for a, b in zip(sses, sses[1:]))
+
+
+def test_normalized_residual_jacobian_matches_finite_differences():
+    """Ã = ∂(r/√S)/∂θ with r = f_θ(C) − θ and S = Σ(θ − mean θ)²."""
+    import newton
+    m = q.Quine(hidden=3, n_layers=1, init="he_normal", proj_std=1.0, seed=10).double()
+    theta = m.theta.detach().clone()
+
+    def rt(th):
+        r = newton.predict(m, th) - th
+        return r / (th - th.mean()).pow(2).sum().sqrt()
+
+    r = newton.predict(m, theta) - theta
+    res, A = newton.residual_and_matrix(m, theta, r, normalized=True)
+    assert torch.allclose(res, rt(theta))
+    eps = 1e-6
+    for k in range(m.n_params):
+        e = torch.zeros_like(theta)
+        e[k] = eps
+        assert torch.allclose(A[:, k], (rt(theta + e) - rt(theta - e)) / (2 * eps), atol=1e-7), k
+
+
+def test_lm_normalized_decreases_one_minus_r2():
+    import newton
+    m = q.Quine(hidden=3, n_layers=1, init="he_normal", proj_std=1.0, seed=9).double()
+    log = newton.lm(m, max_steps=8, normalized=True)
+    r2 = [row["r2"] for row in log]
+    assert len(r2) > 1 and all(b > a for a, b in zip(r2, r2[1:]))
