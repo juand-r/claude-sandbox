@@ -10,6 +10,7 @@ from pathlib import Path
 
 import torch
 
+import export_weights
 import quine as q
 
 RESULTS = Path(__file__).parent / "results"
@@ -21,6 +22,7 @@ def save(name, config, log, model=None):
     (RESULTS / f"{name}.json").write_text(json.dumps({"config": config, "log": log}, indent=1))
     if model is not None:
         torch.save(model.state_dict(), RESULTS / f"{name}.pt")
+        print(f"compact copy: {export_weights.export_one(RESULTS / f'{name}.pt')}")
     print(f"wrote results/{name}.json")
 
 

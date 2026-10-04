@@ -22,6 +22,7 @@ from pathlib import Path
 import torch
 from torch.func import jacrev
 
+import export_weights
 import quine as q
 
 JAC_CHUNK = 512          # coordinates per Jacobian chunk
@@ -167,6 +168,7 @@ def main():
     (res / f"{out}.json").write_text(json.dumps(
         {"config": {"start": start, "n_layers": n_layers, "method": method}, "log": log}, indent=1))
     torch.save(model.float().state_dict(), res / f"{out}.pt")
+    print(f"compact copy: {export_weights.export_one(res / f'{out}.pt')}")
     print(f"wrote results/{out}.json")
 
 

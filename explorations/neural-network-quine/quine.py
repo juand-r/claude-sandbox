@@ -267,6 +267,38 @@ def regenerate(model, images=None):
     model.theta.copy_(predict_all(model, images))
 
 
+# -- compact checkpoints ------------------------------------------------------
+# A trained network is fully described by θ and the settings that regenerate P.
+# P itself (4-8 MB) is not stored; its SHA-256 fingerprint is, and loading fails
+# loudly if the regenerated P does not match.
+import hashlib
+import json as _json
+
+
+def p_fingerprint(model):
+    h = hashlib.sha256(model.P_coord.float().contiguous().numpy().tobytes())
+    if model.aux:
+        h.update(model.P_img.float().contiguous().numpy().tobytes())
+    return h.hexdigest()
+
+
+def save_weights(model, path, settings, extra=None):
+    """Save θ (float64) plus the constructor settings and P's fingerprint."""
+    torch.save({"theta": model.theta.detach().double().cpu(), "settings": settings,
+                "p_sha256": p_fingerprint(model), "extra": extra or {}}, path)
+
+
+def load_weights(path, dtype=torch.float32):
+    """Rebuild a saved network; raises if the regenerated P differs."""
+    ckpt = torch.load(path)
+    model = Quine(**ckpt["settings"])
+    if p_fingerprint(model) != ckpt["p_sha256"]:
+        raise ValueError(f"{path}: regenerated P does not match the saved fingerprint")
+    with torch.no_grad():
+        model.theta.copy_(ckpt["theta"].to(model.theta.dtype))
+    return model.to(dtype), ckpt
+
+
 # -- MNIST ------------------------------------------------------------------
 def _read_idx(path):
     with gzip.open(path, "rb") as f:
