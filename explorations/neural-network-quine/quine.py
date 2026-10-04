@@ -168,6 +168,7 @@ def replication_stats(model, images=None):
         "theta_rms": theta.pow(2).mean().sqrt().item(),
         "pred_rms": pred.pow(2).mean().sqrt().item(),
         "rel_error": L / theta.pow(2).sum().item(),   # L_SR / ||theta||^2
+        "r2": 1.0 - L / (theta - theta.mean()).pow(2).sum().item(),  # coefficient of determination
     }
 
 

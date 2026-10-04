@@ -17,6 +17,8 @@ jobs() {
   echo "hill --sigma 3e-5 --epochs 1000 --log-every 10 --start results/opt_adamax_100ep_seed0.pt --seed 0"
   echo "hill --sigma 1e-5 --epochs 1000 --log-every 10 --start results/opt_sgd_10ep_seed0.pt --seed 0"
   echo "hill --sigma 1e-5 --epochs 1000 --log-every 10 --start results/opt_adamax_100ep_seed0.pt --seed 0"
+  # Literal He init, Adamax, 1,000 epochs, 3 seeds: where does R^2 converge?
+  for s in $SEEDS; do echo "optimizer --optimizer adamax --epochs 1000 --seed $s --init-literal-he"; done
   # E2 under the paper's literal initialization (100 Adamax epochs)
   echo "optimizer --optimizer adamax --epochs 100 --seed 0 --init-literal-he"
   # Sensitivity to the two main unforced choices (PLAN.md items 3 and 5)
