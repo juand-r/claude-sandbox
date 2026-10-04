@@ -1,0 +1,110 @@
+{
+ "config": {
+  "experiment": "regen",
+  "seed": 2,
+  "epochs": 30,
+  "optimizer": "adamax",
+  "sigma": 0.001,
+  "start": null,
+  "log_every": 1,
+  "generations": 10,
+  "T": 0,
+  "task_only": false,
+  "out_selu": false,
+  "init_literal_he": false
+ },
+ "log": [
+  {
+   "epoch": 0,
+   "L_SR": 79.44170379638672,
+   "rms_error": 0.06286750807817611,
+   "mean_abs_error": 0.053098004311323166,
+   "srq_paper": 5.533451626952297,
+   "theta_rms": 0.05750619247555733,
+   "pred_rms": 0.025213023647665977,
+   "rel_error": 1.1951523286259915,
+   "phase": "init"
+  },
+  {
+   "epoch": 1,
+   "L_SR": 18.970060348510742,
+   "rms_error": 0.030721069267537433,
+   "mean_abs_error": 0.024609318003058434,
+   "srq_paper": 6.965613128844854,
+   "theta_rms": 0.025213023647665977,
+   "pred_rms": 0.011749854311347008,
+   "rel_error": 1.484645675755961,
+   "phase": "after_regen"
+  },
+  {
+   "epoch": 2,
+   "L_SR": 52.888179779052734,
+   "rms_error": 0.05129573788655357,
+   "mean_abs_error": 0.045330896973609924,
+   "srq_paper": 5.940295224780767,
+   "theta_rms": 0.011749854311347008,
+   "pred_rms": 0.03989609330892563,
+   "rel_error": 19.058891292655645,
+   "phase": "after_regen"
+  },
+  {
+   "epoch": 3,
+   "L_SR": 29714.986328125,
+   "rms_error": 1.215877267146005,
+   "mean_abs_error": 1.1014493703842163,
+   "srq_paper": -0.39093169365336955,
+   "theta_rms": 0.03989609330892563,
+   "pred_rms": 1.1760337352752686,
+   "rel_error": 928.7925092845205,
+   "phase": "after_regen"
+  },
+  {
+   "epoch": 4,
+   "L_SR": 13638621184.0,
+   "rms_error": 823.7344034111869,
+   "mean_abs_error": 272.1117248535156,
+   "srq_paper": -13.427696303987995,
+   "theta_rms": 1.1760337352752686,
+   "pred_rms": 823.4515991210938,
+   "rel_error": 490608.224811393,
+   "phase": "after_regen"
+  },
+  {
+   "epoch": 5,
+   "L_SR": 3.0759620042585626e+24,
+   "rms_error": 12370648145.317684,
+   "mean_abs_error": 11439367168.0,
+   "srq_paper": -46.47718483705537,
+   "theta_rms": 823.4515991210938,
+   "pred_rms": 12370647040.0,
+   "rel_error": 225688153063485.94,
+   "phase": "after_regen"
+  },
+  {
+   "epoch": 6,
+   "L_SR": Infinity,
+   "rms_error": Infinity,
+   "mean_abs_error": 1.3425195013796752e+27,
+   "srq_paper": -Infinity,
+   "theta_rms": 12370647040.0,
+   "pred_rms": Infinity,
+   "rel_error": Infinity,
+   "phase": "after_regen"
+  },
+  {
+   "epoch": 7,
+   "L_SR": Infinity,
+   "rms_error": Infinity,
+   "mean_abs_error": Infinity,
+   "srq_paper": -Infinity,
+   "theta_rms": Infinity,
+   "pred_rms": Infinity,
+   "rel_error": NaN,
+   "phase": "after_regen"
+  },
+  {
+   "epoch": 8,
+   "phase": "diverged"
+  }
+ ]
+}

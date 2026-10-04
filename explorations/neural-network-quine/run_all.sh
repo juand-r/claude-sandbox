@@ -8,6 +8,18 @@ mkdir -p logs
 SEEDS="0 1 2"
 
 jobs() {
+  # Batch 2. Long jobs first so they start immediately.
+  # E3 at full length (paper: 10,000 epochs), two noise levels from the sweep
+  echo "hill --sigma 3e-5 --epochs 10000 --log-every 50 --seed 0"
+  echo "hill --sigma 1e-5 --epochs 10000 --log-every 50 --seed 0"
+  # E4: hill-climbing from the SGD (10 epochs) and Adamax (100 epochs) solutions
+  echo "hill --sigma 3e-5 --epochs 1000 --log-every 10 --start results/opt_sgd_10ep_seed0.pt --seed 0"
+  echo "hill --sigma 3e-5 --epochs 1000 --log-every 10 --start results/opt_adamax_100ep_seed0.pt --seed 0"
+  # Sensitivity to the two main unforced choices (PLAN.md items 3 and 5)
+  for flag in --init-literal-he --out-selu; do
+    echo "optimizer --optimizer adamax --epochs 30 --seed 0 $flag"
+    echo "regen --T 1 --generations 10 --seed 0 $flag"
+  done
   for s in $SEEDS; do
     # E1 (30 epochs) and E2 (Adamax, 100 epochs; its first 30 epochs are E1's Adamax curve)
     for o in sgd sgd_momentum adam adagrad rmsprop; do echo "optimizer --optimizer $o --epochs 30 --seed $s"; done
@@ -26,7 +38,7 @@ jobs() {
 
 # A job whose log already ends in "wrote results/..." is skipped, so the script can be rerun
 # after an interruption. A failing job prints FAILED; the others still run.
-jobs | xargs -P 4 -I{} sh -c 'log=logs/$(echo "{}" | tr " " "_" | tr -d "-").log;
+jobs | xargs -P 4 -I{} sh -c 'log=logs/$(echo "{}" | tr " /" "__" | tr -d "-").log;
   grep -q "^wrote results" "$log" 2>/dev/null && exit 0;
   '"$PY"' experiments.py {} > "$log" 2>&1 || { echo "FAILED: {}"; exit 1; }' \
   || { echo "some jobs FAILED"; exit 1; }

@@ -1,0 +1,8 @@
+gen 2: |theta_R|^2 0.889  |delta|^2 0.810  |f - theta_R|^2/|theta_R|^2 0.023  |f - theta|^2/|theta|^2 0.461  corr(f, delta) 0.057
+        after regeneration: |theta_new - theta_R|^2/|theta_R|^2 0.023, new network's prediction RMS 6.98e-05
+gen 3: |theta_R|^2 0.882  |delta|^2 0.814  |f - theta_R|^2/|theta_R|^2 0.002  |f - theta|^2/|theta|^2 0.452  corr(f, delta) 0.059
+        after regeneration: |theta_new - theta_R|^2/|theta_R|^2 0.002, new network's prediction RMS 6.86e-05
+gen 4: |theta_R|^2 0.890  |delta|^2 1.497  |f - theta_R|^2/|theta_R|^2 0.003  |f - theta|^2/|theta|^2 0.591  corr(f, delta) 0.058
+        after regeneration: |theta_new - theta_R|^2/|theta_R|^2 0.003, new network's prediction RMS 7.15e-05
+gen 5: |theta_R|^2 0.901  |delta|^2 1.366  |f - theta_R|^2/|theta_R|^2 0.003  |f - theta|^2/|theta|^2 0.602  corr(f, delta) -0.007
+        after regeneration: |theta_new - theta_R|^2/|theta_R|^2 0.003, new network's prediction RMS 7.65e-05

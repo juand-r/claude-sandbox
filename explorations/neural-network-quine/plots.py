@@ -42,8 +42,8 @@ def finish(fig, name):
 
 def zero_line(ax):
     ax.axhline(1.0, color=INK2, lw=1, ls="--")
-    ax.annotate("predicting 0 everywhere", (0.98, 1.0), xycoords=("axes fraction", "data"),
-                ha="right", va="bottom", color=INK2, fontsize=8)
+    ax.annotate("L_SR of predicting 0 everywhere", (0.02, 1.0), xycoords=("axes fraction", "data"),
+                xytext=(0, -4), textcoords="offset points", ha="left", va="top", color=INK2, fontsize=8)
 
 
 def fig_optimizers(seed=0):
@@ -52,11 +52,13 @@ def fig_optimizers(seed=0):
     fig, axes = plt.subplots(1, 3, figsize=(13, 3.8))
     for i, (key, label, ep) in enumerate(names):
         log = load(f"opt_{key}_{ep}ep_seed{seed}")[:31]
-        for ax, k in zip(axes, ["L_SR", "theta_rms", "rel_error"]):
-            ax.plot(*col(log, k), color=C[i], label=label)
+        axes[0].plot(*col(log, "L_SR"), color=C[i], label=label)
+        if key != "rmsprop":       # diverges; omitted here as in the paper's Fig. 4
+            axes[1].plot(*col(log, "theta_rms"), color=C[i])
+            axes[2].plot(*col(log, "rel_error"), color=C[i])
     axes[0].set(title="Test loss L_SR (log scale)", xlabel="epoch", yscale="log")
-    axes[1].set(title="Weight RMS", xlabel="epoch")
-    axes[2].set(title="Relative error L_SR / Σθ²", xlabel="epoch", ylim=(0, 2))
+    axes[1].set(title="Weight RMS (RMSprop omitted)", xlabel="epoch")
+    axes[2].set(title="L_SR / Σθ² (RMSprop omitted)", xlabel="epoch", ylim=(0, 1.5))
     zero_line(axes[2])
     axes[0].legend(fontsize=8)
     fig.suptitle(f"E1: gradient-based optimizers, vanilla quine (seed {seed})")
@@ -65,18 +67,21 @@ def fig_optimizers(seed=0):
 
 def fig_regeneration(seeds=(0, 1, 2)):
     fig, axes = plt.subplots(1, 3, figsize=(13, 3.8))
-    for j, (T, label) in enumerate([(1, "T = 1 (Adamax epoch, then regenerate)"), (0, "T = 0 (regenerate only)")]):
+    series = [(1, "after_regen", "T = 1, after regeneration"),
+              (1, "after_opt", "T = 1, after the Adamax epoch"),
+              (0, "after_regen", "T = 0 (regeneration only)")]
+    for j, (T, phase, label) in enumerate(series):
         for s in seeds:
             log = load(f"regen_T{T}_G10_seed{s}")
             for ax, k in zip(axes, ["L_SR", "theta_rms", "rel_error"]):
-                ax.plot(*col(log, k, "after_regen"), color=C[j], alpha=0.85,
+                ax.plot(*col(log, k, phase), color=C[j], alpha=0.85,
                         label=label if s == seeds[0] else None, marker="o", ms=4)
     axes[0].set(title="Test loss L_SR (log scale)", xlabel="generation", yscale="log")
     axes[1].set(title="Weight RMS (log scale)", xlabel="generation", yscale="log")
     axes[2].set(title="Relative error L_SR / Σθ²", xlabel="generation", ylim=(0, 2))
     zero_line(axes[2])
-    axes[0].legend(fontsize=8)
-    fig.suptitle(f"E5/E6: regeneration, measured after each regeneration ({len(seeds)} seeds each)")
+    axes[2].legend(fontsize=8, loc="lower left")
+    fig.suptitle(f"E5/E6: regeneration ({len(seeds)} seeds per series; generation 0 is the initial network)")
     finish(fig, "e5_regeneration")
 
 
@@ -87,9 +92,10 @@ def fig_aux(seed=0):
         axes[0].plot(*col(q, k), color=C[i], label=label)
     axes[0].set(title="Auxiliary quine: test losses", xlabel="epoch")
     axes[0].legend(fontsize=8)
-    axes[1].plot(*col(q, "rel_error"), color=C[0])
-    axes[1].set(title="Auxiliary quine: L_SR / Σθ²", xlabel="epoch")
-    zero_line(axes[1])
+    for i, (log, label) in enumerate([(q, "quine"), (base, "classifier only")]):
+        axes[1].plot(*col(log, "L_SR"), color=C[i], label=label)
+    axes[1].set(title="Test L_SR", xlabel="epoch")
+    axes[1].legend(fontsize=8)
     for i, (log, label) in enumerate([(q, "quine (L_SR + λ·L_Task)"), (base, "classifier only (λ·L_Task)")]):
         axes[2].plot(*col(log, "accuracy"), color=C[i], label=label)
     axes[2].set(title="Test accuracy", xlabel="epoch", ylim=(0.6, 1.0))
