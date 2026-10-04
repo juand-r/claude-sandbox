@@ -71,12 +71,15 @@ not report and which is the right check against the zero quine.
 
 ## Steps
 
-- [ ] quine.py: model, coordinate indexing, losses, training loops
-- [ ] tests: param count, coordinate ↔ parameter mapping, regeneration
-      writes predictions into the right slots, loss matches a brute-force loop
-- [ ] E0 initialization diagnostic
-- [ ] E1, E2
-- [ ] E5, E6
-- [ ] E3, E4 (σ sweep first)
-- [ ] E7, E8
-- [ ] REPORT.md
+- [x] quine.py: model, coordinate indexing, losses, training loops
+- [x] tests (11, passing)
+- [x] E0 initialization diagnostic → PyTorch-default init (NOTES.md)
+- [x] E1, E2 (3 seeds)
+- [x] E5, E6 (3 seeds) + diagnostics: diag_regen_scale.py, diag_regen_cycle.py
+- [x] E3 σ sweep; [ ] E3 10,000 epochs (σ = 1e-5, 3e-5; running)
+- [ ] E4 from SGD and Adamax solutions (σ = 3e-5 running; σ = 1e-5 queued)
+- [x] E7, E8 (3 seeds)
+- [x] sensitivity: literal He init, SELU output; [ ] literal He, Adamax 100 epochs (running)
+- [x] REPORT.md draft; [ ] fill in E3, E4, literal-He 100 epochs
+
+Changes of direction: item 5 (init) resolved against the paper's text, see NOTES.md E0.
