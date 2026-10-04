@@ -38,8 +38,30 @@ the scale of P to what must be copied.
 Test. Fill the 2 × 2 grid: default weights with s = 1, and He weights with
 s = 0.058. Plain version, Adamax, 3 seeds each.
 
-Open decision (asked, not yet answered): run these at 1,000 epochs after the
-current He runs finish, or run 100 epochs now as a first look.
+Prediction made before running (from activation sizes at initialization:
+default setup h0..h2 RMS ~0.05-0.08, He setup ~1-1.6): the P scale matters more;
+default weights + large P should work, He weights + small P should fail.
+
+Result (two hidden layers, Adamax, 1,000 epochs, 3 seeds; `summarize.py`
+table_grid; R² averaged over epochs 901-1000):
+
+| | P scale 0.058 | P scale 1 |
+|---|---|---|
+| default weights | 0.39-0.43 | ≈ 0 (−0.03); weights collapse to RMS 0.02 |
+| He weights | 0.55-0.57 | 0.84-0.86 |
+
+The prediction was wrong. Default weights with large P is the one cell that
+stays trapped at the guess-zero state. Small P does not prevent learning.
+
+Second finding: the default/default cell, which is the setup that matches the
+paper, does learn when trained long enough. It shrinks its weights until epoch
+~50 (SSE minimum ~42, close to the paper's best of 32.10), then the weights grow
+and R² rises steadily: 0.01 at epoch 100, 0.20 at 400, 0.44 at 1,000 (seed 0),
+still rising. SSE rises at the same time (to ~1,290), because it grows with the
+weights. So the paper stopped at 100 epochs, inside the shrink phase, and
+selecting the lowest SSE picks the checkpoint just before learning starts.
+
+Open: why does small-weight + large-P collapse? Not yet investigated.
 
 ## 2. SELU on the embedding lookup
 

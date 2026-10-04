@@ -108,9 +108,35 @@ def table_sensitivity():
         print(f"| {label} | {opt[0]['L_SR']:.4g} | {b['L_SR']:.4g} | {b['rel_error']:.3f} | {out} |")
 
 
+def table_grid():
+    """IDEAS.md idea 1: weight init x P scale, Adamax 1,000 epochs, one and two hidden layers."""
+    cells = [("default weights, P 0.058", "", "_init-torch_default_proj0.057735"),
+             ("default weights, P 1", "_init-torch_default_proj1", "_init-torch_default_proj1"),
+             ("He weights, P 0.058", "_init-he_normal_proj0.057735", "_init-he_normal_proj0.057735"),
+             ("He weights, P 1", "_he", "_init-he_normal_proj1")]
+    print("\n### Grid: R² at epoch 1,000 (mean of last 100 epochs), per seed; weight RMS at the end\n")
+    print("| cell | two hidden layers | one hidden layer |")
+    print("|---|---|---|")
+    for label, suf2, suf1 in cells:
+        out = []
+        for suf, L in ((suf2, ""), (suf1, "_L1")):
+            vals = []
+            for sd in SEEDS:
+                f = RESULTS / f"opt_adamax_1000ep_seed{sd}{suf}{L}.json"
+                if not f.exists():
+                    vals.append("(running)")
+                    continue
+                log = json.loads(f.read_text())["log"]
+                r2 = st.mean(r["r2"] for r in log[-100:])
+                vals.append(f"{r2:.2f} (w {log[-1]['theta_rms']:.2f})")
+            out.append(", ".join(vals))
+        print(f"| {label} | {out[0]} | {out[1]} |")
+
+
 if __name__ == "__main__":
     table_optimizers()
     table_regeneration()
     table_aux()
     table_hill()
     table_sensitivity()
+    table_grid()
