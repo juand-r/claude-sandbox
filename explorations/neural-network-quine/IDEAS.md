@@ -203,3 +203,27 @@ Plan, in order (each step decided by the previous result):
 3. Full gradient through the target (idea 6), likely only safe together with 2,
    since pulling the weights toward the predictions also favours θ = 0.
 4. Architecture: width of the hidden layer; structured addresses (idea 4).
+
+### Section 9 results so far (one hidden layer unless stated; He weights, P scale 1)
+
+R² per seed (0 / 1 / 2) after each stage, each stage continuing from the previous:
+
+| stage | one layer | two layers |
+|---|---|---|
+| Adamax lr 2e-3, 1,000 epochs | 0.87 / 0.87 / 0.90 | 0.87 / 0.84 / 0.83 |
+| + 300 epochs at lr 2e-4 | 0.947 / 0.959 / 0.966 | 0.945 / 0.933 / 0.947 |
+| + 300 epochs at lr 2e-5 | 0.955 / 0.964 / 0.970 | 0.955 / 0.943 / 0.955 |
+| + 300 epochs, full gradient, lr 2e-5 | 0.960 / 0.967 / 0.973 | 0.962 / 0.952 / 0.962 |
+| (control: + 300 epochs, frozen targets) | 0.958 / 0.966 / 0.971 | 0.961 / 0.951 / 0.961 |
+| + 20 iterations of damped Newton (Levenberg–Marquardt) on SSE | 0.983 / 0.985 / 0.987 | 0.971 (seed 0 only) |
+
+Pure Newton fails: J − I has condition number ~5e6 and the linear model holds
+only for steps ~1e-6 of the Newton step (`diag_newton.py`). Damped Newton works.
+
+One layer, seed 0, 80 more damped Newton iterations from 0.9832:
+on SSE 0.98515; on 1 − R² 0.98526. Both stall at the same value, so the plateau
+is a local optimum of the fit, not weight shrinkage (the 1 − R² run keeps the
+weight RMS fixed at 0.391; the SSE run shrinks it to 0.390).
+
+Two layers, seed 0, damped Newton: 0.9545 → 0.9713 in 20 iterations (~2 min
+each), still rising ~0.0008 per iteration at the end, damping falling.
