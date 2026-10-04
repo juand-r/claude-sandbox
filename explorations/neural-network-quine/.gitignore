@@ -3,3 +3,4 @@ results/*.pt
 data/
 logs/
 __pycache__/
+logs_batch*.txt
