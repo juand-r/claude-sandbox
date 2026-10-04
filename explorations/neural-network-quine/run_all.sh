@@ -15,6 +15,8 @@ jobs() {
   # E4: hill-climbing from the SGD (10 epochs) and Adamax (100 epochs) solutions
   echo "hill --sigma 3e-5 --epochs 1000 --log-every 10 --start results/opt_sgd_10ep_seed0.pt --seed 0"
   echo "hill --sigma 3e-5 --epochs 1000 --log-every 10 --start results/opt_adamax_100ep_seed0.pt --seed 0"
+  # E2 under the paper's literal initialization (100 Adamax epochs)
+  echo "optimizer --optimizer adamax --epochs 100 --seed 0 --init-literal-he"
   # Sensitivity to the two main unforced choices (PLAN.md items 3 and 5)
   for flag in --init-literal-he --out-selu; do
     echo "optimizer --optimizer adamax --epochs 30 --seed 0 $flag"
