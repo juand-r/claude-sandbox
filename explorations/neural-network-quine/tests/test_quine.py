@@ -200,3 +200,12 @@ def test_lm_normalized_decreases_one_minus_r2():
     log = newton.lm(m, max_steps=8, normalized=True)
     r2 = [row["r2"] for row in log]
     assert len(r2) > 1 and all(b > a for a, b in zip(r2, r2[1:]))
+
+
+def test_lm_nielsen_damping_decreases_one_minus_r2():
+    """With the Nielsen damping rule, every accepted step still lowers 1 − R²."""
+    import newton
+    m = q.Quine(hidden=3, n_layers=2, init="he_normal", proj_std=1.0, seed=9).double()
+    log = newton.lm(m, max_steps=10, normalized=True, damping="nielsen")
+    r2 = [row["r2"] for row in log]
+    assert len(r2) > 1 and all(b > a for a, b in zip(r2, r2[1:]))

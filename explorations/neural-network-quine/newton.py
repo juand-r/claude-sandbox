@@ -109,11 +109,20 @@ def residual_and_matrix(model, theta, r, normalized):
     return r / S.sqrt(), A
 
 
-def lm(model, max_steps, mu_rel=1e-3, normalized=False):
+def lm(model, max_steps, mu_rel=1e-3, normalized=False, damping="ratchet"):
     """Levenberg–Marquardt (damped Newton) on r(θ) = f_θ(C) − θ, minimizing SSE,
-    or 1 − R² when normalized. μ starts at mu_rel times the mean diagonal of
-    AᵀA; it is divided by MU_DOWN after an accepted step and multiplied by MU_UP
-    after a rejected one (up to MAX_TRIES per step)."""
+    or 1 − R² when normalized. μ starts at mu_rel times the mean diagonal of AᵀA.
+
+    damping = "ratchet" (used for all runs up to 2026-10-05): μ is divided by
+    MU_DOWN after an accepted step and multiplied by MU_UP after a rejected one.
+    Over long runs μ ratchets up and progress stalls (NOTES.md).
+    damping = "nielsen": the standard rule (Nielsen 1999). After an accepted step
+    with gain ratio ρ = actual decrease / decrease predicted by the linear model,
+    μ ← μ · max(1/3, 1 − (2ρ − 1)³) and ν ← 2; after a rejected step μ ← μ ν,
+    ν ← 2ν."""
+    if damping not in ("ratchet", "nielsen"):
+        raise ValueError(f"unknown damping rule {damping!r}")
+    nu = 2.0
     theta = model.theta.detach().clone()
     r, sse, r2, rms = stats(model, theta)
     obj = objective(sse, theta, normalized)
@@ -141,8 +150,14 @@ def lm(model, max_steps, mu_rel=1e-3, normalized=False):
                 r_c, sse_c, r2_c, rms_c = stats(model, cand)
                 obj_c = objective(sse_c, cand, normalized)
                 if obj_c < obj:
+                    predicted = -(2 * (g @ delta) + delta @ (H @ delta)).item()
+                    rho = (obj - obj_c) / predicted if predicted > 0 else 0.0
                     break
-            mu *= MU_UP
+            if damping == "nielsen":
+                mu *= nu
+                nu *= 2
+            else:
+                mu *= MU_UP
         else:
             print(f"step {k}: no decrease after {MAX_TRIES} damping increases; stopping", flush=True)
             break
@@ -151,7 +166,11 @@ def lm(model, max_steps, mu_rel=1e-3, normalized=False):
                     "step_norm_rel": delta.norm().item() / theta.norm().item(), "seconds": time.time() - t0})
         print(f"step {k}: SSE {sse:.6g}  R² {r2:.6f}  weight rms {rms:.4f}  mu {mu:.3g}  "
               f"|Δ|/|θ| {log[-1]['step_norm_rel']:.2e}  ({time.time() - t0:.0f} s)", flush=True)
-        mu /= MU_DOWN
+        if damping == "nielsen":
+            mu *= max(1 / 3, 1 - (2 * rho - 1) ** 3)
+            nu = 2.0
+        else:
+            mu /= MU_DOWN
     with torch.no_grad():
         model.theta.copy_(theta)
     return log
@@ -165,7 +184,8 @@ def main():
     model = q.Quine(n_layers=n_layers, init="he_normal", proj_std=1.0)
     model.load_state_dict(torch.load(start))
     model.double()
-    methods = {"lm": lm, "newton": newton, "lm_normalized": lambda m, k: lm(m, k, normalized=True)}
+    methods = {"lm": lm, "newton": newton, "lm_normalized": lambda m, k: lm(m, k, normalized=True),
+               "lm_normalized_nielsen": lambda m, k: lm(m, k, normalized=True, damping="nielsen")}
     log = methods[method](model, max_steps)
     res = Path(__file__).parent / "results"
     (res / f"{out}.json").write_text(json.dumps(
