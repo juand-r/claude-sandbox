@@ -132,8 +132,11 @@ def lm(model, max_steps, mu_rel=1e-3, normalized=False):
             H.diagonal().add_(mu)
             L, info = torch.linalg.cholesky_ex(H)
             H.diagonal().sub_(mu)
-            if info.item() == 0:
+            ok = info.item() == 0
+            if ok:
                 delta = -torch.cholesky_solve(g.unsqueeze(1), L).squeeze(1)
+            del L                                     # free before any retry: at most two N × N matrices live
+            if ok:
                 cand = theta + delta
                 r_c, sse_c, r2_c, rms_c = stats(model, cand)
                 obj_c = objective(sse_c, cand, normalized)

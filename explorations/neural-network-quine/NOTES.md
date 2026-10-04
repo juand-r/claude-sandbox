@@ -175,3 +175,13 @@ normalized residual's rank-one correction `A.sub_(torch.outer(r, d) / S)`
 allocated two extra N × N temporaries (3.2 GB each for N = 20,100). Fixed with
 the in-place `A.addr_(r, d, alpha=-1/S)`; tests pass. Relaunched.
 Also: the container restarted at ~19:30, while nothing was running.
+
+### Third out-of-memory kill (2026-10-04, ~20:00)
+
+The relaunched two-layer 1 − R² damped Newton run died after one iteration at
+12.3 GB. Two causes: (1) a second code problem: on a damping retry the previous
+Cholesky factor stayed alive while the next was computed (three 3.2 GB matrices
+at once); fixed by `del L` before retrying, so at most two N × N matrices are
+live (~6.5 GB); (2) I ran the grounding diagnostic (its own Jacobian, ~1-2 GB)
+at the same time. Rule: nothing else heavy while a two-layer damped Newton run
+is active. Log kept as `logs/lmnorm_L2_seed0.oom-killed-3.log`. Relaunched.

@@ -1,0 +1,6 @@
+results/weights/lm_L1_seed2.pt: R² 0.9872, N = 10100
+  self-sensitivity ∂f(c)/∂θ_c: mean 0.0096, median 0.0000
+  own-weight share |J_cc| / |J_c,:|: median 0.00120
+  sensitivity of one report to all weights |J_c,:|: median 37.654
+  block W1    (10000 weights): mean ∂f(c)/∂θ_c 0.0001, median own-weight share 0.00118
+  block w_out (  100 weights): mean ∂f(c)/∂θ_c 0.9523, median own-weight share 0.04381
