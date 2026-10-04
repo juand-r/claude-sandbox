@@ -77,3 +77,50 @@ set, about 9.9 nats per image at temperature 0.01. My implementation sums.
   relative error L_SR/Σθ² = 1.007. The network learned to output ≈ 0.
 - One regeneration (T=1): L_SR 0.74, but weight RMS 0.056 → 0.0059 and
   relative error 1.07. The loss fell because the weights shrank tenfold.
+
+### Batch 1 (E1, E2, E5–E8, σ sweep): process notes
+
+- Regeneration with T=0, seed 1, diverged: L_SR overflowed to inf, and the
+  quotient's log(0) raised. Fixed: the run now logs a "diverged" row and
+  stops when θ is non-finite. The crash itself was correct behaviour.
+- xargs aborted the batch on that failure. `run_all.sh` now skips jobs whose
+  log already ends in "wrote results" and no longer aborts on one failure.
+- Mistakes of mine, to avoid repeating: (1) `pgrep -f experiments.py` inside a
+  waiting shell loop matches the loop itself, so it never ends; wait on a
+  log line instead. (2) A monitor grepping a log file that a later job will
+  overwrite fires on the stale content; write each batch to a new file.
+
+### Batch 1 first results (seed 0 and 1)
+
+- E1 reproduces Fig. 4 qualitatively: Adagrad turns upward after epoch 4;
+  RMSprop explodes from epoch 1; SGD plateaus near 65 (paper ~66);
+  Adamax lowest (best 41.9 at epoch 24, seed 0; paper ~33 at epoch 30).
+- In every run L_SR/Σθ² stays between 0.90 and 1.01. Adamax seed 0: L_SR
+  tracks Σθ² at every epoch (epoch 24: 41.87 vs 42.43), prediction RMS stays
+  ~0.006 while weight RMS is ~0.046. The loss falls because the weights
+  shrink, while the network keeps predicting roughly zero.
+- E5 (T=1, seed 0): L_SR after regeneration 0.88 at generation 1 (paper's
+  best: 0.86), but weight RMS 0.0067 (initial 0.058) and L_SR/Σθ² = 0.999.
+- E6 (T=0): seed 0 shrinks for two generations then explodes to NaN by
+  generation 6; seed 1 explodes from generation 1. The paper reports collapse
+  to the zero quine.
+
+### E6 mechanism: pure regeneration has a threshold in weight scale
+
+`diag_regen_scale.py` (output: results/diag_regen_scale.txt): pure regeneration
+(T=0) from the default initial weights multiplied by α, 15 generations.
+
+| seed | α=0.25 | 0.5 | 0.75 | 1.0 | 1.5 |
+|---|---|---|---|---|---|
+| 0 | zero | zero | zero | diverged | diverged |
+| 1 | zero | zero | diverged | diverged | diverged |
+| 2 | zero | zero | zero | diverged | diverged |
+
+Below threshold the RMS falls faster than geometrically
+(seed 0, α=0.25: 4.8e-4 → 7.2e-8 → 8.5e-18 → exactly 0). Interpretation:
+with every weight scaled by ε, the output w_out·selu(W2·selu(W1·h0)) is
+roughly cubic in ε (h0 does not scale), so θ = 0 is a superstable fixed point
+of θ ↦ f_θ(C) with a finite basin; outside the basin the map diverges.
+The paper's "rapidly converges to the zero quine" and my divergence are
+consistent with opposite sides of one boundary; which side the default
+initialization lands on depends on unstated details.
