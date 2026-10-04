@@ -103,7 +103,7 @@ read off its figures (marked ~).
 | Adamax, 30 epochs | ~33, best of the optimizers | best 41.8 (1.4), best of the optimizers | 0.985 |
 | Adamax, 100 epochs | best 32.10 at the end | best still 41.8 at epoch ~25; rises to 58.8 by epoch 100 | 0.985 at best |
 | hill-climbing, 10,000 epochs | 90 → ~64 | see section 6 | |
-| hill-climbing from SGD solution | improves it significantly | see section 6 | |
+| hill-climbing from SGD solution | improves it significantly | no improvement; worse after 1,000 epochs (65.7 → 67.7 at σ = 1e-5) | 0.99 |
 | regeneration, T=1, G=10 | best 0.86 | best 0.88, 0.61, 0.43 (three seeds) | 0.999, 1.010, 1.000 |
 | regeneration, T=0 | collapses to the zero quine | diverges, all three seeds | |
 | auxiliary quine, initial L_Aux | 1072.05 | 1063.9 (53.0) | |
@@ -217,7 +217,23 @@ the accepted steps are close to a random walk, and a random walk in weight
 space inflates Σθ², which raises the next epoch's loss. Small σ limits the
 damage. The paper does not state σ.
 
-[E3 full-length runs and E4: to be filled in when the runs finish.]
+Observation, hill-climbing from trained solutions (E4, seed 0, 1,000 epochs).
+The paper reports that hill-climbing improves the SGD solution significantly
+and does not improve the Adamax solution. In my runs it improves neither:
+
+| start | σ | start L_SR | best L_SR (epoch) | L_SR after 1,000 epochs | ρ after |
+|---|---|---|---|---|---|
+| SGD, 10 epochs | 1e-5 | 65.67 | 65.67 (0) | 67.65 | 0.992 |
+| SGD, 10 epochs | 3e-5 | 65.67 | 65.67 (0) | 84.04 | 1.002 |
+| Adamax, 100 epochs | 1e-5 | 53.74 | 53.69 (20) | 55.23 | 0.976 |
+| Adamax, 100 epochs | 3e-5 | 53.74 | 53.74 (0) | 70.71 | 0.986 |
+
+Interpretation. The same random-walk effect as in the sweep: accepted steps
+inflate Σθ², and with ρ ≈ 1 the loss follows Σθ². Smaller σ would slow the
+damage, but at an acceptance rate near 50% I see no mechanism by which it
+would turn into the improvement the paper reports. This is one seed.
+
+[E3 full-length (10,000-epoch) runs: to be filled in when they finish.]
 
 ## 7. The auxiliary quine (E7, E8)
 
