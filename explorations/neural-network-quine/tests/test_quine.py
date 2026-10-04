@@ -111,6 +111,28 @@ def test_grad_epoch_uses_snapshot_targets():
     assert torch.allclose(m.theta.detach(), expected, atol=1e-6)
 
 
+@pytest.mark.parametrize("normalized", [False, True])
+def test_grad_epoch_full_gradient(normalized):
+    """With one minibatch and plain SGD, a full-gradient epoch is one step on the
+    true SSE (gradient through the targets too), optionally divided by the
+    weights' mean squared deviation."""
+    m, ref = q.Quine(hidden=2, seed=7), q.Quine(hidden=2, seed=7)
+    opt = torch.optim.SGD(m.parameters(), lr=0.1)
+    q.grad_epoch(m, opt, torch.Generator().manual_seed(0), full_grad=True, normalized=normalized)
+    th = ref.theta
+    loss = q.sr_loss(ref(torch.arange(ref.n_params))[0], th)
+    if normalized:
+        loss = loss / (th - th.mean()).pow(2).mean()
+    loss.backward()
+    with torch.no_grad():
+        expected = th - 0.1 * th.grad
+    assert torch.allclose(m.theta.detach(), expected, atol=1e-6)
+    # and it differs from the frozen-target step
+    m2 = q.Quine(hidden=2, seed=7)
+    q.grad_epoch(m2, torch.optim.SGD(m2.parameters(), lr=0.1), torch.Generator().manual_seed(0))
+    assert not torch.allclose(m.theta.detach(), m2.theta.detach(), atol=1e-6)
+
+
 def test_mnist_loader():
     tx, ty, vx, vy = q.load_mnist()
     assert tx.shape == (60_000, 784) and vx.shape == (10_000, 784)

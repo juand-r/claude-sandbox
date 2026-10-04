@@ -198,14 +198,25 @@ def make_optimizer(name, params, lr=None):
     raise ValueError(f"unknown optimizer {name!r}")
 
 
-def grad_epoch(model, opt, gen, train_images=None, train_labels=None, task_only=False):
+def grad_epoch(model, opt, gen, train_images=None, train_labels=None, task_only=False,
+               full_grad=False, normalized=False):
     """One epoch of the paper's pseudo-code: snapshot targets, then a pass over
     all coordinates in random minibatches of 10.
+
+    Options beyond the paper (vanilla quine only; IDEAS.md section 9):
+    full_grad   targets are the live weights, so the gradient also pulls each
+                weight toward its prediction (the true gradient of SSE).
+    normalized  divide the minibatch loss by the mean squared deviation of the
+                weights, so the loss is (a minibatch estimate of) 1 - R² and
+                cannot be lowered by shrinking the weights. With frozen targets
+                this only rescales the loss by a per-epoch constant.
 
     Auxiliary quine: each coordinate is paired with a random training image,
     and the loss is L_SR + lambda * L_Task on the minibatch. With task_only
     the L_SR term is dropped (classification-only baseline).
     """
+    if model.aux and (full_grad or normalized):
+        raise ValueError("full_grad and normalized are implemented for the vanilla quine only")
     target = model.theta.detach().clone()
     perm = torch.randperm(model.n_params, generator=gen)
     if model.aux:
@@ -220,7 +231,10 @@ def grad_epoch(model, opt, gen, train_images=None, train_labels=None, task_only=
                 loss = loss + sr_loss(pred, target[coords])
         else:
             pred, _ = model(coords)
-            loss = sr_loss(pred, target[coords])
+            ref = model.theta if full_grad else target
+            loss = sr_loss(pred, ref[coords])
+            if normalized:
+                loss = loss / (ref - ref.mean()).pow(2).mean()
         opt.zero_grad()
         loss.backward()
         opt.step()

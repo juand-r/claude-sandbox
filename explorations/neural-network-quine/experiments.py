@@ -65,9 +65,10 @@ def optimizer_run(a):
     log = []
     record(log, 0, m)
     for t in range(1, a.epochs + 1):
-        q.grad_epoch(m, opt, gen)
+        q.grad_epoch(m, opt, gen, full_grad=a.full_grad, normalized=a.normalized)
         record(log, t, m)
     lr = f"_lr{a.lr:g}" if a.lr is not None else ""
+    lr += ("_fullgrad" if a.full_grad else "") + ("_normalized" if a.normalized else "")
     start = f"_from-{Path(a.start).stem}" if a.start else ""
     save(f"opt_{a.optimizer}_{a.epochs}ep_{tag(a)}{lr}{start}", vars(a), log, m)
 
@@ -139,6 +140,8 @@ def main():
     p.add_argument("--sigma", type=float, default=1e-3, help="hill-climbing noise std")
     p.add_argument("--start", default=None, help="hill-climbing or optimizer: .pt file to start from")
     p.add_argument("--lr", type=float, default=None, help="optimizer learning rate (default: torch default)")
+    p.add_argument("--full-grad", action="store_true", help="gradient also flows through the targets")
+    p.add_argument("--normalized", action="store_true", help="divide the loss by the weights' variance (1 - R²)")
     p.add_argument("--log-every", type=int, default=1)
     p.add_argument("--generations", type=int, default=10)
     p.add_argument("--T", type=int, default=1, help="optimization epochs per generation")
