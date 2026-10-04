@@ -295,9 +295,28 @@ frozen targets the divisor is exactly constant within an epoch, so no
 difference was expected, and none appears (two layers: identical to four
 decimal places on all three seeds).
 
-Running at the time of writing: the same four variants from random
-initialization (two layers, He, P scale 1, lr 2e-3, 1,000 epochs), where the
-choice of loss may matter more because shrinking happens early.
+From random initialization the picture changes. Same four variants, two
+layers, He initialization, P scale 1, Adamax at the default lr 2e-3, 1,000
+epochs (final R², seeds 0 / 1 / 2; weight RMS at the end):
+
+| variant | final R² | best R² during the run | weight RMS |
+|---|---|---|---|
+| frozen targets, SSE (baseline) | 0.874 / 0.837 / 0.834 | 0.876 / 0.855 / 0.877 | 0.39 |
+| frozen targets, 1 − R² | 0.875 / 0.852 / 0.860 | 0.875 / 0.854 / 0.873 | 0.39 to 0.40 |
+| full gradient, SSE | 0.847 / 0.848 / 0.833 | 0.868 / 0.867 / 0.865 | 0.19 to 0.20 |
+| full gradient, 1 − R² | 0.940 / 0.942 / 0.939 | 0.950 / 0.954 / 0.956 | 0.90 to 1.16 |
+
+Observation. The full gradient with 1 − R² as the loss beats the baseline by
+0.07 to 0.10 on every seed, with the same budget. Either change alone does not
+help: 1 − R² with frozen targets matches the baseline, and the full gradient
+with SSE is worse, because it shrinks the weights (RMS 0.19 against 0.39).
+
+Interpretation. The full gradient pulls each weight toward its own prediction;
+early in training the predictions are small, so with SSE this pull shrinks the
+weights, which SSE rewards. Dividing by the weights' spread removes that reward,
+and the same pull then helps: the weights grow (RMS ~1) and the copy improves.
+The two changes matter in combination and only early in training, which is why
+the continuation runs above showed no effect.
 
 ## 14. Solving the quine equations directly: Newton's method
 
