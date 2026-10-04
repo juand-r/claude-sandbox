@@ -5,7 +5,7 @@ index c into theta, and the matrices W1, W2, w_out (and W_cls for the
 auxiliary quine) are views into it. Layout, in order:
 
     W1     (H, H)   hidden layer 1 -> hidden layer 2
-    W2     (H, H)   hidden layer 2 -> hidden layer 3
+    W2     (H, H)   hidden layer 2 -> hidden layer 3   (only if n_layers = 2)
     w_out  (1, H)   hidden layer 3 -> weight prediction
     W_cls  (K, H)   hidden layer 3 -> class logits   (auxiliary quine only)
 
@@ -13,7 +13,8 @@ Network (no biases; see PLAN.md item 1):
 
     h0 = selu(P_coord[c])                      vanilla
     h0 = selu([P_coord[c], x @ P_img])         auxiliary (50 + 50 units)
-    h1 = selu(W1 h0);  h2 = selu(W2 h1)
+    h1 = selu(W1 h0);  h2 = selu(W2 h1)        (n_layers = 2, the paper's network)
+    h1 = selu(W1 h0)                           (n_layers = 1; h1 feeds the output)
     weight prediction = w_out h2   (optionally followed by selu)
     class logits      = W_cls h2
 
@@ -65,11 +66,15 @@ def init_weights_(w, scheme, gen):
 
 class Quine(nn.Module):
     def __init__(self, aux=False, hidden=HIDDEN, init=DEFAULT_INIT,
-                 proj_std=DEFAULT_PROJ_STD, out_selu=False, embed_selu=True, seed=0):
+                 proj_std=DEFAULT_PROJ_STD, out_selu=False, embed_selu=True, n_layers=2, seed=0):
         super().__init__()
         self.aux, self.hidden, self.out_selu = aux, hidden, out_selu
         self.embed_selu = embed_selu   # selu on the looked-up projection row (paper: "every layer")
-        shapes = {"W1": (hidden, hidden), "W2": (hidden, hidden), "w_out": (1, hidden)}
+        if n_layers not in (1, 2):
+            raise ValueError(f"n_layers must be 1 or 2, got {n_layers}")
+        self.n_layers = n_layers
+        shapes = {f"W{k}": (hidden, hidden) for k in range(1, n_layers + 1)}
+        shapes["w_out"] = (1, hidden)
         if aux:
             shapes["W_cls"] = (N_CLASSES, hidden)
         self.shapes = shapes
@@ -117,8 +122,8 @@ class Quine(nn.Module):
         touching the model's own parameters.
         """
         h = self.first_layer(coords, images)
-        h = F.selu(h @ self.view("W1", theta).T)
-        h = F.selu(h @ self.view("W2", theta).T)
+        for k in range(1, self.n_layers + 1):
+            h = F.selu(h @ self.view(f"W{k}", theta).T)
         w = (h @ self.view("w_out", theta).T).squeeze(1)
         if self.out_selu:
             w = F.selu(w)

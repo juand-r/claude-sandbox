@@ -15,6 +15,7 @@ SMALL = 8  # hidden size for brute-force checks
 def test_param_counts_match_paper():
     assert q.Quine().n_params == 20_100
     assert q.Quine(aux=True).n_params == 21_100
+    assert q.Quine(n_layers=1).n_params == 10_100
 
 
 def test_views_share_storage_row_major():
@@ -36,18 +37,19 @@ def explicit_forward(m, c, image=None):
     if m.aux:
         pre = torch.cat([pre, image @ m.P_img])
     h = F.selu(pre) if m.embed_selu else pre
-    h = F.selu(m.view("W1") @ h)
-    h = F.selu(m.view("W2") @ h)
+    for k in range(1, m.n_layers + 1):
+        h = F.selu(m.view(f"W{k}") @ h)
     w = m.view("w_out") @ h
     if m.out_selu:
         w = F.selu(w)
     return w.squeeze(), (m.view("W_cls") @ h if m.aux else None)
 
 
-@pytest.mark.parametrize("aux,out_selu,embed_selu",
-                         [(False, False, True), (False, True, True), (True, False, True), (False, False, False)])
-def test_forward_matches_one_hot_computation(aux, out_selu, embed_selu):
-    m = q.Quine(hidden=SMALL, aux=aux, out_selu=out_selu, embed_selu=embed_selu, seed=1)
+@pytest.mark.parametrize("aux,out_selu,embed_selu,n_layers",
+                         [(False, False, True, 2), (False, True, True, 2), (True, False, True, 2),
+                          (False, False, False, 2), (False, False, True, 1)])
+def test_forward_matches_one_hot_computation(aux, out_selu, embed_selu, n_layers):
+    m = q.Quine(hidden=SMALL, aux=aux, out_selu=out_selu, embed_selu=embed_selu, n_layers=n_layers, seed=1)
     coords = torch.tensor([0, 5, m.n_params - 1])
     images = torch.randn(3, q.IMG_DIM) if aux else None
     with torch.no_grad():
@@ -59,8 +61,9 @@ def test_forward_matches_one_hot_computation(aux, out_selu, embed_selu):
                 assert torch.allclose(logits[i], l_ref, atol=1e-5)
 
 
-def test_full_sr_loss_matches_brute_force_loop():
-    m = q.Quine(hidden=SMALL, seed=2)
+@pytest.mark.parametrize("n_layers", [1, 2])
+def test_full_sr_loss_matches_brute_force_loop(n_layers):
+    m = q.Quine(hidden=SMALL, n_layers=n_layers, seed=2)
     with torch.no_grad():
         brute = sum((explicit_forward(m, c)[0] - m.theta[c]).item() ** 2 for c in range(m.n_params))
     assert math.isclose(q.full_sr_loss(m), brute, rel_tol=1e-5)

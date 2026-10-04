@@ -26,6 +26,13 @@ jobs() {
     echo "optimizer --optimizer adamax --epochs 1000 --seed $s --init he_normal --proj-std 0.0577350269"
     echo "optimizer --optimizer adamax --epochs 1000 --seed $s"
   done
+  # One trainable hidden layer instead of two (N = 10,100): the same 2 x 2 grid
+  for s in $SEEDS; do
+    for cell in "--init torch_default --proj-std 0.0577350269" "--init torch_default --proj-std 1" \
+                "--init he_normal --proj-std 0.0577350269" "--init he_normal --proj-std 1"; do
+      echo "optimizer --optimizer adamax --epochs 1000 --seed $s --n-layers 1 $cell"
+    done
+  done
   # Same, with P treated as a plain embedding table (no SELU after the lookup)
   for s in $SEEDS; do echo "optimizer --optimizer adamax --epochs 1000 --seed $s --init-literal-he --no-embed-selu"; done
   # E2 under the paper's literal initialization (100 Adamax epochs)
