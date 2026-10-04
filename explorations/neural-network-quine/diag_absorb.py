@@ -12,9 +12,11 @@ unchanged network:
 Also report the singular values of J − I at the start: near-zero ones mark
 directions in which the outputs follow a change of the weights (J v ≈ v).
 
-Usage: python diag_absorb.py
+Usage: python diag_absorb.py [start.pt] [tag]
+  defaults: the one-layer network below; results/diag_absorb.json
 """
 import json
+import sys
 from pathlib import Path
 
 import torch
@@ -22,10 +24,11 @@ import torch
 import newton
 import quine as q
 
-START = "results/weights/lmnorm_L1_seed0_cont80.pt"
+START = sys.argv[1] if len(sys.argv) > 1 else "results/weights/lmnorm_L1_seed0_cont80.pt"
+TAG = sys.argv[2] if len(sys.argv) > 2 else ""
 ITERS = 10
 SIZES = (0.01, 0.10)          # |Δ| / |θ|
-OUT = Path(__file__).parent / "results" / "diag_absorb.json"
+OUT = Path(__file__).parent / "results" / f"diag_absorb{TAG}.json"
 WEIGHTS = Path(__file__).parent / "results" / "weights"
 
 
@@ -67,7 +70,7 @@ def main():
     save_progress(results)
 
     print("control (no change)", flush=True)
-    theta_ctrl, _, r2_ctrl = repair(torch.zeros_like(theta0), "absorb_control")
+    theta_ctrl, _, r2_ctrl = repair(torch.zeros_like(theta0), f"absorb{TAG}_control")
     results["control"] = {"r2": r2_ctrl, "moved": (theta_ctrl - theta0).norm().item() / theta0.norm().item()}
     save_progress(results)
 
@@ -77,7 +80,7 @@ def main():
         delta = torch.randn(len(theta0), generator=gen, dtype=torch.float64)
         delta *= size * theta0.norm() / delta.norm()
         print(f"change of size {size:.0%}", flush=True)
-        theta_f, r2_changed, r2_log = repair(delta, f"absorb_change{size:g}")
+        theta_f, r2_changed, r2_log = repair(delta, f"absorb{TAG}_change{size:g}")
         diff = theta_f - theta_ctrl
         r = (diff @ delta / (delta @ delta)).item()
         other = (diff - r * delta).norm().item() / delta.norm().item()
