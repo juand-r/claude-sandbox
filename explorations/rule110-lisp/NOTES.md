@@ -622,3 +622,98 @@ window for ~3.8e7 generations; then the table collapses (Ebar clusters
 `experiments.py tm-gliders one 4` (v = 2,804,176): 5,970/5,970 reads, the
 same outcome sequence, visits [(1, 1), (2, 1)]; last read at t = 5.03e11;
 10,757 s sharing the cores. Log: data/tm_one_v4.log.
+
+## Phase 8: why Cook's v fails, and engine efficiency (2026-10-04)
+
+### Mechanism of the read-3,269 failure
+
+Checkpoints of a Cook's-v run kept every epoch from read 3,152
+(scratchpad); tape characters (C groups) located by census over the
+whole active region (lab columns are stable for tape data, apart from a
+slow rightward drift, ~110k cells over 16 reads, from junk crossings).
+- read 3,152 .. 3,248: 19 complete characters buffered ahead of the read
+  point (four C gliders each, 5.6e6 cells apart).
+- read 3,264: the characters for 3,264-3,268 are complete; 3,269's is a
+  single C; then nothing where 3,270's should be; then ~15 scattered C's.
+- Watching 3,269's character from read 3,248 (samples every 2^21): it is
+  created complete (4 C) at t~6.8796e10; at t~6.8822e10 the next
+  ossifier arrives (AAAA entering the window) and three of the four C's
+  are destroyed. The ossifier hit the newest tape character instead of a
+  moving-data symbol.
+- Queue origins (reference CTS): reads 3,262-3,269 are the last symbols of
+  the copy appended at read 783; read 3,270 is the first symbol of the copy
+  appended at read 999. Between those copies' regions lie 216 rejected
+  appendant regions: a spatial gap of 9,449,496 cells. Every earlier
+  queue transition in the run crossed at most 1.8e6 cells.
+
+Model. Moving data are static in the Ebar frame; tape data drift right
+through it at 8/30 cell per generation. The next ossifier finds the next
+queued symbol only if that symbol has drifted past the newest character
+by then, roughly gap < (8/30) x (ossifier period ~30v) = 8v. Too large a
+gap and the ossifier hits the newest character.
+
+Test on De Mol's program (experiments.block_gaps lists the transitions
+and gaps; EpochReads runs, each stopped at its first wrong read):
+
+| v | first wrong read | gap there / v | earlier gaps / v (all passed) |
+|---|---|---|---|
+| 1,600 | 30 | 17.9 (read 29) | - |
+| 2,205 | 29 | 13.0 | - |
+| 2,389 | 29 | 12.0 | - |
+| 2,606 | 53 | 13.2 | 11.00, 11.05 |
+| 2,867 | 53 | 12.0 | 10.00, 10.04 |
+| 3,018 | 53 | 11.39 | 9.50, 9.54 |
+| 3,200 | 83 | 28.5 | 8.96 .. 10.74 |
+| 6,400 | 83 | 14.25 | 4.48 .. 5.37 |
+| 12,216 | none in 556 | - | max 8.39 |
+
+and the one-move TM: fails at 13.48 (Cook's v), passes everything up to
+6.83 (2v) and 3.41 (4v). One threshold fits every case: a gap G breaks the
+machine when G > c v with 11.05 < c < 11.39 (experiments.GAP_PER_V =
+11.2). The 8v estimate is the right order; the rest is geometry not
+modelled (where within a region the symbols sit, the drift from junk).
+The 1,600, 3,200 and 6,400 results reproduce the StreamRun ones of
+REPORT 3.6.
+
+Prediction being tested: the one-move TM's largest gap over its 5,970
+reads is 9.57e6, so it needs v > 8.55e5 (1.22x Cook's); a run at 1.25x
+(v = 876,305) should read all 5,970.
+
+Not explained by this: the small programs of REPORT 3.5 ({YYYYNN} failing
+below v ~ 500, {(YYYYNN)^3} at 532). Their queue gaps are tiny (<= 338
+cells), so a second constraint, apparently set by the appendant length,
+is at work there.
+
+### Engine bugs found on the way (small v)
+
+- Samples went back in time: after a read finished inside a local copy,
+  the next copy was built from the main tree at an earlier time, and a
+  read that had started meanwhile was seen unread again and settled as
+  '!' (De Mol, v = 3,200, read 54). Fixed: never sample before the last
+  sample; ReadWatch raises if sample times decrease. Large-v runs (reads
+  2e7 generations apart, copies reaching 1e6) cannot hit this.
+- The ossifier budget n_all assumed 32/30 periods per read; at small v
+  reads come ~37v apart and the run outlived its train (the epoch check
+  raised). Budget doubled.
+
+### Efficiency experiments (late benchmark: 24-48 reads from a checkpoint
+near read 1,150 of the one-move TM; early: reads 0-399)
+
+- Where the time goes (48 late reads, 35 s): main-tree advances 28 s,
+  samples 4 s, local copies 0.6 s, rebuilds 0.5 s. One advance of 2^24
+  generations per read costs 0.39 s; cost per advance is about linear in
+  its length (2^21: 0.046 s).
+- Ebar-frame HashLife (base step: 30 generations then a shift of 8 cells,
+  so table, junk and ether are static; implemented in C, exact against
+  the packed engine and against the lab frame on the 1.5e8-cell late
+  state): no gain. Lab frame, 4 successive 2^17-step advances: 0.66,
+  0.17, 0.24, 0.37 s; Ebar frame: 0.38, 0.40, 0.74, 0.29 s. The lab frame
+  already reuses most junk work; the cost is in real interactions
+  (ossifiers crossing junk). Kept in trash/ (hlc_ebar_frame.c).
+- Hash tables with key and value interleaved: 12% slower (16-byte
+  entries). Reverted.
+- Direct word-parallel stepping of nodes up to level 9/10/11 instead of
+  memoized recursion: 20%, 75%, 200% slower. The small-level memo hits are
+  cheap. Reverted.
+- Keeping memo tables across epochs (collect only above a node budget):
+  12-19% faster, ~5x memory. Available (max_nodes), off by default.

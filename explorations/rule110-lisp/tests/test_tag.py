@@ -137,3 +137,14 @@ def _reads(tape, apps, steps):
         if c == "Y":
             q.extend(apps[n % len(apps)])
     return "".join(out)
+
+
+def test_block_gaps_de_mol():
+    """The queue's block transitions for De Mol's filled program: the gaps
+    that set the spacing it needs (REPORT 3.7; the observed failures at
+    v = 1,600 and 6,400 are at reads 29-30 and 83)."""
+    from cts import fill_empty_appendants
+    from experiments import DEMOL_APPS, DEMOL_TAPE, block_gaps
+    g = block_gaps(DEMOL_TAPE, fill_empty_appendants(DEMOL_APPS), 200)
+    assert g[:2] == [(29, 0, 6, 28670), (41, 6, 12, 28790)]
+    assert (83, 26, 43, 91212) in g

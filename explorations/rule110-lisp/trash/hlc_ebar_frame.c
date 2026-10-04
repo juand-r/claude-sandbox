@@ -14,13 +14,9 @@
 #define LEAF 6
 #define NONE 0xFFFFFFFFu
 
-/* 12 bytes; a leaf's 64 cells live in vals[a] (inner nodes need no value) */
-typedef struct { uint32_t a, b; uint8_t k; } Node;
+typedef struct { uint64_t v; uint32_t a, b; uint8_t k; } Node;
 
 static Node *nodes = 0;
-static uint64_t *vals = 0;
-static uint64_t n_vals = 0, cap_vals = 0;
-#define VAL(n) (vals[nodes[n].a])
 static uint64_t n_nodes = 0, cap_nodes = 0;
 
 /* open-addressing tables: key -> id + 1 (0 = empty) */
@@ -67,7 +63,7 @@ static int table_grow(Table *t) {
 }
 
 static int table_put(Table *t, uint64_t key, uint32_t val) {
-    if (4 * (t->used + 1) > 3 * t->cap && !table_grow(t)) return 0;   /* load <= 3/4 */
+    if (2 * (t->used + 1) > t->cap && !table_grow(t)) return 0;
     uint64_t m = t->cap - 1, i = mix(key) & m;
     while (t->vals[i]) {
         if (t->keys[i] == key) { t->vals[i] = val + 1; return 1; }
@@ -79,7 +75,19 @@ static int table_put(Table *t, uint64_t key, uint32_t val) {
 
 static int failed = 0;     /* set on allocation failure; checked by Python */
 
-static uint32_t new_node(uint8_t k, uint32_t a, uint32_t b) {
+/* Frame. 0: the lab frame, one step = one Rule 110 step (radius 1).
+   1: the Ebar frame, one step = 30 Rule 110 steps followed by a shift of
+   8 cells to the right, F(row)[x] = R110^30(row)[x - 8]. Ebar-speed matter
+   (table, moving data, junk) and the ether are fixed points of F. F reads
+   cells x-38..x+22, so a level-k node determines its centre half for
+   2^(k-8) steps (BASE = 8) instead of 2^(k-2). */
+static int frame = 0;
+#define LAB_BASE (LEAF + 1)
+#define F_BASE (LEAF + 2)
+#define F_STEPS 30
+#define F_SHIFT 8
+
+static uint32_t new_node(uint8_t k, uint32_t a, uint32_t b, uint64_t v) {
     if (n_nodes == cap_nodes) {
         uint64_t c = cap_nodes ? 2 * cap_nodes : (1 << 16);
         Node *p = realloc(nodes, c * sizeof(Node));
@@ -87,23 +95,12 @@ static uint32_t new_node(uint8_t k, uint32_t a, uint32_t b) {
         nodes = p; cap_nodes = c;
     }
     nodes[n_nodes].k = k; nodes[n_nodes].a = a; nodes[n_nodes].b = b;
+    nodes[n_nodes].v = v;
     return (uint32_t)n_nodes++;
-}
-
-static uint32_t new_val(uint64_t v) {
-    if (n_vals == cap_vals) {
-        uint64_t c = cap_vals ? 2 * cap_vals : (1 << 12);
-        uint64_t *p = realloc(vals, c * sizeof(uint64_t));
-        if (!p) { failed = 1; return NONE; }
-        vals = p; cap_vals = c;
-    }
-    vals[n_vals] = v;
-    return (uint32_t)n_vals++;
 }
 
 int hl_reset(void) {
     free(nodes); nodes = 0; n_nodes = cap_nodes = 0;
-    free(vals); vals = 0; n_vals = cap_vals = 0;
     table_free(&t_leaf); table_free(&t_join); table_free(&t_res);
     failed = 0;
     return table_init(&t_leaf, 1 << 12) && table_init(&t_join, 1 << 16)
@@ -112,12 +109,14 @@ int hl_reset(void) {
 
 int hl_failed(void) { return failed; }
 
+int hl_set_frame(int f) { frame = f; return hl_reset(); }
+int hl_frame(void) { return frame; }
+int hl_max_j(int k) { return k - (frame ? F_BASE : 2); }
+
 uint32_t hl_leaf(uint64_t v) {
     uint32_t id = table_get(&t_leaf, v);
     if (id != NONE) return id;
-    uint32_t iv = new_val(v);
-    if (iv == NONE) return NONE;
-    id = new_node(LEAF, iv, NONE);
+    id = new_node(LEAF, NONE, NONE, v);
     if (id == NONE || !table_put(&t_leaf, v, id)) { failed = 1; return NONE; }
     return id;
 }
@@ -127,7 +126,7 @@ uint32_t hl_join(uint32_t a, uint32_t b) {
     uint32_t id = table_get(&t_join, key);
     if (id != NONE) return id;
     if (nodes[a].k != nodes[b].k) { failed = 1; return NONE; }
-    id = new_node(nodes[a].k + 1, a, b);
+    id = new_node(nodes[a].k + 1, a, b, 0);
     if (id == NONE || !table_put(&t_join, key, id)) { failed = 1; return NONE; }
     return id;
 }
@@ -135,14 +134,14 @@ uint32_t hl_join(uint32_t a, uint32_t b) {
 int hl_level(uint32_t n) { return nodes[n].k; }
 uint32_t hl_a(uint32_t n) { return nodes[n].a; }
 uint32_t hl_b(uint32_t n) { return nodes[n].b; }
-uint64_t hl_value(uint32_t n) { return VAL(n); }
+uint64_t hl_value(uint32_t n) { return nodes[n].v; }
 uint64_t hl_count(void) { return n_nodes; }
 uint64_t hl_results(void) { return t_res.used; }
 
 uint32_t hl_center(uint32_t n) {
     uint32_t a = nodes[n].a, b = nodes[n].b;
     if (nodes[n].k == LEAF + 1)
-        return hl_leaf((VAL(a) >> 32) | (VAL(b) << 32));
+        return hl_leaf((nodes[a].v >> 32) | (nodes[b].v << 32));
     return hl_join(nodes[a].b, nodes[b].a);
 }
 
@@ -156,21 +155,51 @@ static u128 step128(u128 x, int steps) {
     return x;
 }
 
+/* one F step on 256 cells held in 4 limbs (limb 0 = cells 0..63) */
+static void step256(uint64_t x[4], int steps) {
+    for (int s = 0; s < steps; s++) {
+        uint64_t l[4], r[4];
+        for (int i = 0; i < 4; i++) {
+            l[i] = (x[i] << 1) | (i ? x[i - 1] >> 63 : 0);   /* cell c-1 at c */
+            r[i] = (x[i] >> 1) | (i < 3 ? x[i + 1] << 63 : 0); /* cell c+1 at c */
+        }
+        for (int i = 0; i < 4; i++) x[i] = (x[i] | r[i]) & ~(l[i] & x[i] & r[i]);
+    }
+}
+
+static uint64_t bits64(const uint64_t x[4], int start) {   /* cells start..start+63 */
+    int i = start / 64, o = start % 64;
+    return o ? (x[i] >> o) | (x[i + 1] << (64 - o)) : x[i];
+}
+
+static uint32_t f_base(uint32_t n) {
+    /* level-8 node -> its centre half (cells 64..191) after one F step:
+       F(row)[64..191] = R110^30(row)[56..183] */
+    uint32_t a = nodes[n].a, b = nodes[n].b;
+    uint64_t x[4] = {nodes[nodes[a].a].v, nodes[nodes[a].b].v,
+                     nodes[nodes[b].a].v, nodes[nodes[b].b].v};
+    step256(x, F_STEPS);
+    int c = 64 - F_SHIFT;
+    return hl_join(hl_leaf(bits64(x, c)), hl_leaf(bits64(x, c + 64)));
+}
+
 uint32_t hl_result(uint32_t n, int j) {
     int k = nodes[n].k;
-    if (j < 0 || j > k - 2) { failed = 1; return NONE; }
+    if (j < 0 || j > hl_max_j(k)) { failed = 1; return NONE; }
     uint64_t key = ((uint64_t)n << 8) | (uint64_t)j;
     uint32_t r = table_get(&t_res, key);
     if (r != NONE) return r;
     uint32_t a = nodes[n].a, b = nodes[n].b;
-    if (k == LEAF + 1) {
-        u128 x = (u128)VAL(a) | ((u128)VAL(b) << 64);
+    if (frame && k == F_BASE) {
+        r = f_base(n);
+    } else if (!frame && k == LAB_BASE) {
+        u128 x = (u128)nodes[a].v | ((u128)nodes[b].v << 64);
         x = step128(x, 1 << j);
         r = hl_leaf((uint64_t)(x >> 32));
     } else {
         uint32_t m = hl_join(nodes[a].b, nodes[b].a);
         uint32_t r1, r2, r3;
-        if (j == k - 2) {
+        if (j == hl_max_j(k)) {
             r1 = hl_result(a, j - 1); r2 = hl_result(m, j - 1); r3 = hl_result(b, j - 1);
             uint32_t s1 = hl_result(hl_join(r1, r2), j - 1);
             uint32_t s2 = hl_result(hl_join(r2, r3), j - 1);
@@ -192,7 +221,7 @@ static void leaves(uint32_t n, uint64_t base, uint64_t first, uint64_t count,
     int k = nodes[n].k;
     uint64_t size = 1ULL << (k - LEAF);
     if (base + size <= first || base >= first + count) return;
-    if (k == LEAF) { out[base - first] = VAL(n); return; }
+    if (k == LEAF) { out[base - first] = nodes[n].v; return; }
     leaves(nodes[n].a, base, first, count, out);
     leaves(nodes[n].b, base + size / 2, first, count, out);
 }
@@ -217,11 +246,10 @@ uint32_t hl_from_words(const uint64_t *words, uint64_t count) {
 /* Garbage collection: keep only the DAG of root (ids are renumbered). */
 static uint32_t *remap;
 static Node *old;
-static uint64_t *old_vals;
 
 static uint32_t copy(uint32_t n) {
     if (remap[n] != NONE) return remap[n];
-    uint32_t r = old[n].k == LEAF ? hl_leaf(old_vals[old[n].a])
+    uint32_t r = old[n].k == LEAF ? hl_leaf(old[n].v)
                                   : hl_join(copy(old[n].a), copy(old[n].b));
     remap[n] = r;
     return r;
@@ -230,7 +258,6 @@ static uint32_t copy(uint32_t n) {
 uint32_t hl_gc(uint32_t root) {
     uint64_t n_old = n_nodes;
     old = nodes; nodes = 0; n_nodes = cap_nodes = 0;
-    old_vals = vals; vals = 0; n_vals = cap_vals = 0;
     remap = malloc(n_old * sizeof(uint32_t));
     if (!remap) { failed = 1; return NONE; }
     memset(remap, 0xFF, n_old * sizeof(uint32_t));
@@ -238,6 +265,6 @@ uint32_t hl_gc(uint32_t root) {
     if (!(table_init(&t_leaf, 1 << 12) && table_init(&t_join, 1 << 16)
           && table_init(&t_res, 1 << 16))) { failed = 1; return NONE; }
     uint32_t r = copy(root);
-    free(remap); free(old); free(old_vals);
+    free(remap); free(old);
     return failed ? NONE : r;
 }

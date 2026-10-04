@@ -199,6 +199,40 @@ def sample(run, watch, pending, depth=MAX_DT, advance=True):
     watch.observe(t, pending, rel)
 
 
+# Why long rejection runs need a larger v (REPORT 3.7). The symbols waiting
+# to become tape (moving data) are static in the Ebar frame; tape characters
+# drift right through it at 8/30 cell per generation. An ossifier turns the
+# next queued symbol into a character only if that symbol has already drifted
+# past the newest character, i.e. if the spatial gap from one queued symbol
+# to the next is small enough. Within an appendant copy it is one symbol; at
+# the boundary between two consecutively queued copies it is the whole width
+# of the appendant regions read (and rejected) in between. When the gap is
+# too large the ossifier hits the newest character instead and the machine
+# breaks. Measured threshold (De Mol, 13 spacings; one-move TM): a gap G
+# fails when G > GAP_PER_V * v, GAP_PER_V between 11.05 and 11.39.
+GAP_PER_V = 11.2
+
+
+def block_gaps(tape, apps, n_reads):
+    """[(read R, copy a, copy b, gap)]: the reads after which the queue moves
+    from the appendant copy appended at read a to the one appended at read
+    b, with the t = 0 spatial gap between their component regions. The
+    first predicted failure at spacing v is the first R with
+    gap > GAP_PER_V * v."""
+    regs = component_regions(tape, apps, n_reads // len(apps) + 3)
+    q = deque((-1, ch) for ch in tape)
+    origin = []
+    for r in range(n_reads):
+        if not q:
+            break
+        a, ch = q.popleft()
+        origin.append(a)
+        if ch == "Y":
+            q.extend((r, x) for x in apps[r % len(apps)])
+    return [(R, a, b, regs[b][0] - regs[a][1])
+            for R, (a, b) in enumerate(zip(origin, origin[1:])) if a != b and a >= 0]
+
+
 def read_outcomes(tape, apps, v, n_reads, T, row_origin=None, stream=True,
                   engine=None, checkpoint=None):
     """Observed outcome ('Y'/'N') of each of the first n_reads reads, '!'

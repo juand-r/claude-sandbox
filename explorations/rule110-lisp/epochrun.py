@@ -234,8 +234,10 @@ def local_run(run, lo, hi):
 JUMP_MARGIN = 3
 FIRST_GAP = 0.9 * 30       # x v: a safe underestimate of the first interval
 LOOKAHEAD = 2
-JUMP_GRID_PER_V = 1 / 16   # main-tree jumps land on multiples of 30 * 2^b,
-                           # 2^b the largest power of two <= v / 16
+JUMP_GRID_PER_V = 30 / 8   # main-tree jumps land on multiples of 2^b, the
+                           # largest power of two <= 30v / 8 (an eighth of a
+                           # read interval), so a jump is one or two HashLife
+                           # advances; local copies cover the remainder
 
 
 class EpochReads:
@@ -245,11 +247,14 @@ class EpochReads:
     Samples are 2^sample_bits steps apart: each is one HashLife advance of
     the local copy plus a census history stepped locally (30-59 steps, so
     that the census lands on t = 0 mod 30). reach: how far a local copy is
-    stepped before it is rebuilt from the main tree; epoch: reads per
-    epoch."""
+    stepped before it is rebuilt from the main tree (default: two jump
+    grid units plus 2^20); epoch: reads per epoch."""
 
-    def __init__(self, tape, apps, v, n_reads, sample_bits=17, reach=1 << 20,
+    def __init__(self, tape, apps, v, n_reads, sample_bits=17, reach=None,
                  epoch=8, log=print, checkpoint=None, max_nodes=None):
+        self.jump_grid = 1 << max(0, int(v * JUMP_GRID_PER_V).bit_length() - 1)
+        if reach is None:
+            reach = 2 * self.jump_grid + (1 << 20)
         self.key = (tape, tuple(apps), v, n_reads, sample_bits, reach, epoch)
         self.checkpoint = checkpoint
         self.apps, self.v, self.reach, self.epoch = apps, v, reach, epoch
@@ -258,7 +263,6 @@ class EpochReads:
         # (None: at every rebuild)
         self.max_nodes = max_nodes
         self.every = 1 << sample_bits
-        self.jump_grid = 30 << max(0, int(v * JUMP_GRID_PER_V).bit_length() - 1)
         self.log = log
         # enough table periods for the reads plus the carry margins
         r2 = component_regions(tape, apps, 2)
@@ -300,7 +304,9 @@ class EpochReads:
     def _resume(self):
         with open(self.checkpoint, "rb") as fh:
             state = pickle.load(fh)
-        if state["key"] != self.key:
+        # the saved state depends on the program, v and the read count, not
+        # on sampling or epoch settings (key[:4])
+        if state["key"][:4] != self.key[:4]:
             raise ValueError(f"checkpoint {self.checkpoint} is for another run")
         x0, cL, cR, t = state["run"]
         self.run = HashRun.__new__(HashRun)
@@ -314,7 +320,8 @@ class EpochReads:
     def _universe(self, t, A, j):
         """Universe for an epoch starting at time t with read j next and
         the active region starting at A (global columns at time t)."""
-        horizon = HORIZON * self.epoch * 30 * self.v
+        # the epoch's reads, plus a local copy's reach beyond the last one
+        horizon = HORIZON * (self.epoch * 30 * self.v + self.reach)
         reach_left = A - CLOSING_SPEED * horizon - 3 * GRID
         shift = OSS_SPEED[0] * t // OSS_SPEED[1]
         n = 0
@@ -324,13 +331,16 @@ class EpochReads:
                 break
             n = k + 1
         n = min(self.n_all, n + OSS_AHEAD)
-        j_end = j + self.epoch + APPS_AHEAD
+        j_end = j + self.epoch + APPS_AHEAD + self.reach // (27 * self.v) + 1
         # the next boundary carries up to ~2 GRID beyond the read point
         x_end = (self.regs[j_end][1] + 3 * GRID if j_end < len(self.regs)
                  else self.lay.hi)
         return Universe(self.lay, self.n_all, n, x_end)
 
     def _epoch(self, j):
+        # the free sides are translations of the t = 0 layout only at
+        # t = 0 mod 30
+        self.run.step(-self.run.t % 30)
         run, t = self.run, self.run.t
         split = self.regs[j][0] - 8 * t // 30
         left, right = self.uni.at(t)
@@ -358,8 +368,7 @@ class EpochReads:
             due = 2 * starts[j - 1] - starts[j - 2]
         else:
             due = starts[j - 1] + int(FIRST_GAP * self.v)
-        q = self.jump_grid
-        return (due - JUMP_MARGIN * self.every) // q * q
+        return (due - JUMP_MARGIN * self.every) // 30 * 30
 
     def run_reads(self):
         w = self.watch
@@ -375,8 +384,10 @@ class EpochReads:
             # never sample earlier than the last sample: a read that started
             # while the previous one was watched would be seen unread again
             start = max(due or 0, (w.t_last or 0) // 30 * 30)
-            if start > self.run.t:
-                self.run.step(start - self.run.t)
+            # the main tree jumps on the grid; the local copy covers the rest
+            grid_t = start // self.jump_grid * self.jump_grid
+            if grid_t > self.run.t:
+                self.run.step(grid_t - self.run.t)
             # a local copy around the watched regions, valid for `reach` steps
             lo_g, hi_g = w.span(pending)
             sh = -8 * self.run.t // 30
@@ -384,6 +395,8 @@ class EpochReads:
             temp = local_run(self.run, lo_g + sh - self.reach * 8 // 30 - margin,
                              hi_g + sh + margin)
             t0 = temp.t
+            if start > temp.t:
+                temp.step(start - temp.t)       # no samples before the read is due
             while w.pending() == pending and temp.t + self.every - t0 <= self.reach:
                 temp.advance(self.sample_bits)
                 depth = MAX_DT + (-(temp.t + MAX_DT)) % 30

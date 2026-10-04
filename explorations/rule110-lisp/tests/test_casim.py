@@ -87,6 +87,7 @@ def test_epoch_run_is_exact():
                     log=lambda *a: None)
     assert er.run_reads() == "YYYYNNYYYYNN"
     run = er.run
+    run.step(-run.t % 30)            # free sides are known at t = 0 mod 30
     full = HashRun.from_layout(layout(READS_TAPE, READS_APPS, er.n_all,
                                       len(er.regs) // len(READS_APPS), v_override=v))
     full.step(run.t)
