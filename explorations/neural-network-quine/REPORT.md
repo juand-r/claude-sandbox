@@ -302,7 +302,24 @@ initialization is a different regime: the loss starts three orders of
 magnitude above the paper's, regeneration diverges, and it is the only
 setting in which any method reached ρ clearly below 1.
 
-[Literal-He Adamax at 100 epochs: to be filled in.]
+Run for the paper's full 100 Adamax epochs, the literal He initialization
+keeps improving (`results/opt_adamax_100ep_seed0_he.json`, seed 0):
+
+| epoch | 10 | 30 | 50 | 72 | 90 | 100 |
+|---|---|---|---|---|---|---|
+| L_SR | 294 | 252 | 249 | 276 | 278 | 274 |
+| ρ | 1.005 | 0.79 | 0.58 | 0.48 | 0.41 | 0.37 |
+| weight RMS | 0.121 | 0.126 | 0.147 | 0.169 | 0.184 | 0.192 |
+
+Observation. ρ falls steadily and is still falling at epoch 100, where the
+network accounts for about 63% of its own weight variance. The weights grow
+while this happens, so L_SR does not fall below ~250.
+
+Interpretation. This is the only run in which a network learned a
+substantial part of its own weights. It happens when the weights are
+too large for the output-zero solution to be cheap. But it is far from the
+paper's reported numbers (L_SR 274 versus 32.10), so it is not what the paper
+describes either. This is a single seed.
 
 ## 10. Alternative explanations and remaining uncertainty
 
