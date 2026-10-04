@@ -294,3 +294,26 @@ Questions and tests:
    weights and measure how many reports go wrong, and whether one regeneration
    step or a few optimization steps repair it (the paper's self-repair
    motivation).
+
+### Section 10 result: change, then repair (`diag_absorb.py`, `results/diag_absorb.json`)
+
+Start: one layer, seed 0, R² 0.9853 (`lmnorm_L1_seed0_cont80`). One random change
+Δ of each size, then 10 iterations of damped Newton on 1 − R², compared with a
+control run from the unchanged network. Singular values of J − I at the start:
+3 below 0.001, 19 below 0.01, 178 below 0.1, 1,736 below 1 (of 10,100).
+
+| run | R² after change | R² after 10 repair iterations | fraction of Δ kept | other movement / |Δ| |
+|---|---|---|---|---|
+| control | 0.9853 | 0.9884 | | |
+| |Δ| = 1% of |θ| | 0.807 | 0.9904 | 0.09 | 3.4 |
+| |Δ| = 10% of |θ| | −21.2 | 0.9899 | 0.14 | 1.4 |
+
+Observation. Repair restores the network from heavy damage (R² −21 → 0.99 in 10
+iterations), keeps only 9-14% of the change, and ends far from the control's end
+point, at a slightly better R².
+
+Interpretation (one network, one Δ per size). The near-quines form a broad region:
+a change is neither absorbed nor undone; the network re-settles elsewhere in the
+region. For pushing R² up, "change, then repair" beat plain continuation twice;
+worth trying repeatedly (perturb-and-repair cycles), together with a damping
+schedule that does not ratchet up. Saved networks: `results/weights/absorb_*.pt`.
