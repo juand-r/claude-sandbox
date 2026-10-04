@@ -174,3 +174,32 @@ SSE rises to 380 to 610 while R² improves.
   ~200). Add periodic checkpoints so runs can resume, and check that processes
   are alive, not only that logs exist.
 - Rerun the two 10,000-epoch hill-climbing runs (paper reproduction, E3).
+
+## 9. Pushing R² toward 1 (current best: 0.87-0.89, one layer, He weights, P scale 1)
+
+Goal set by the user: R² as close to 1 as possible, plain version only. The
+collapse of small-weight + large-P is parked.
+
+Diagnostic (`diag_gap.py`, seed 0 networks after 1,000 epochs). Is the
+remaining error a failure to fit the frozen targets, or drift of the weights
+during an epoch? One extra epoch from the saved network:
+
+| network | R² now | lr 2e-3 (current) | lr 2e-4 | lr 2e-5 |
+|---|---|---|---|---|
+| one layer | 0.870 | 0.876 | 0.930 | 0.919 |
+| two layers | 0.874 | 0.848 | 0.911 | 0.900 |
+
+Drift is negligible (|Δθ|² < 0.1% of the weights' variance per epoch); R²
+against the frozen copy equals R² against the current weights. The limit is
+the learning rate: Adamax moves every weight by up to lr per step, so at the
+paper's fixed 2e-3 the weights jitter around a better solution.
+
+Plan, in order (each step decided by the previous result):
+
+1. Learning-rate decay. Continue the six best networks at lr 2e-4 for 300
+   epochs (running). Then try a schedule from scratch (e.g. cosine decay).
+2. Loss that cannot be lowered by shrinking: train on SSE / Σ(θ − mean θ)²
+   (= 1 − R²) instead of SSE (idea 5).
+3. Full gradient through the target (idea 6), likely only safe together with 2,
+   since pulling the weights toward the predictions also favours θ = 0.
+4. Architecture: width of the hidden layer; structured addresses (idea 4).
