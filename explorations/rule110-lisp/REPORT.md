@@ -636,8 +636,9 @@ just below the threshold, so the rule predicts all 5,970 reads correct
 where Cook's own v fails at read 3,269. The run (made after the rule)
 gives 5,970 of 5,970, the visits (1, 1), (2, 1) decoded from the reads,
 and the last read at generation 1.58e11 (`data/tm_one_v1.25.log`). This
-is the smallest spacing tried that runs the machine to its halt, and it
-tightens the bound to 10.92 < 11.05 < c, unchanged.
+is the smallest spacing tried that runs the machine to its halt. Its
+own critical gaps (up to 10.92v) sit just below De Mol's bound, so the
+range 11.05 < c < 11.39 stands.
 
 *What it means for the spacing.* A filled CTS reads correctly at
 spacing v only if v exceeds G_max / 11.2, where G_max is the largest gap
