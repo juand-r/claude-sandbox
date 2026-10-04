@@ -1,0 +1,7 @@
+results/weights/opt_adamax_300ep_seed0_he_lr2e-05_fullgrad_normalized_from-stage2fn_L2_seed0.pt: R² 0.9941, N = 20100
+  self-sensitivity ∂f(c)/∂θ_c: mean 0.0211, median -0.0000
+  own-weight share |J_cc| / |J_c,:|: median 0.00006
+  sensitivity of one report to all weights |J_c,:|: median 120.963
+  block W1    (10000 weights): mean ∂f(c)/∂θ_c 0.0009, median own-weight share 0.00009
+  block W2    (10000 weights): mean ∂f(c)/∂θ_c 0.0008, median own-weight share 0.00000
+  block w_out (  100 weights): mean ∂f(c)/∂θ_c 4.0720, median own-weight share 0.01600
