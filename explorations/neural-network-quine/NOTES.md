@@ -124,3 +124,12 @@ of θ ↦ f_θ(C) with a finite basin; outside the basin the map diverges.
 The paper's "rapidly converges to the zero quine" and my divergence are
 consistent with opposite sides of one boundary; which side the default
 initialization lands on depends on unstated details.
+
+### Container restarts kill background runs (2026-10-04)
+
+The container restarted at least twice while runs were in progress. Lost:
+the two 10,000-epoch hill-climbing runs (logs stop at 00:48, epoch 2,400) and
+the first three He-init 1,000-epoch runs (stop at 04:27, epoch ~200). I reported
+the hill-climbing runs as "still running" from their last log line without
+checking that the processes were alive. Lesson: check `ps`, not only logs.
+Dead logs kept as `*.died-at-restart.log`. He runs relaunched 05:01.

@@ -6,7 +6,8 @@ Hod Lipson, ALIFE 2018, arXiv:1803.05859). The network takes a coordinate
 trains it by gradient descent, by hill-climbing, and by "regeneration".
 It also trains a variant that classifies MNIST at the same time.
 
-Results and their interpretation are in `REPORT.md`. Unstated details in the
+Results and their interpretation are in `REPORT.md`. Further ideas and planned
+experiments are in `IDEAS.md`. Unstated details in the
 paper, and how each was resolved, are in `PLAN.md`; the evidence is in `NOTES.md`.
 
 ## Run
