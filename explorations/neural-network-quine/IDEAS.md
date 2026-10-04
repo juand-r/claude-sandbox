@@ -55,7 +55,10 @@ unchanged, because SELU is designed to keep mean 0 and variance 1 for standard
 normal input; the shape of each entry's distribution changes (negatives squashed
 toward −1.76). Training at epochs 20 and 30: no difference beyond seed spread.
 
-Status: running. He init, Adamax, 1,000 epochs, 3 seeds, with and without σ.
+Result (He init, Adamax, 1,000 epochs, 3 seeds each): no detectable difference.
+Mean R² over seeds, averaged over the last 100 epochs: 0.850 with σ, 0.848
+without. Seed-to-seed spread (0.80 to 0.87 at epoch 1,000) is larger than the
+gap. Mean best R²: 0.869 with, 0.866 without. Tested only at P scale s = 1.
 
 ## 3. Does the distribution of P matter (Gaussian vs other)?
 
@@ -110,8 +113,10 @@ through f_θ. The true gradient of SSE also has a term from the target,
 
 ## 7. Push the He-init run further
 
-R² was still rising at epoch 100. Running 1,000 epochs (idea 2 runs) answers
-where it converges.
+Done (idea 2 runs). R² rises fast to ~0.81 by epoch 400, then slowly, to
+~0.85 (mean over seeds) by epoch 1,000; best single epoch 0.85 to 0.88. The
+weights keep growing throughout (RMS 0.14 at start, ~0.39 at epoch 1,000), so
+SSE rises to 380 to 610 while R² improves.
 
 ## 8. Housekeeping
 
