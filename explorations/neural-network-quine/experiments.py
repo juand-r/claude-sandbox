@@ -59,15 +59,17 @@ def tag(a):
 
 # -- E1/E2: gradient-based optimizers ---------------------------------------
 def optimizer_run(a):
-    m = q.Quine(**model_kwargs(a))
-    opt = q.make_optimizer(a.optimizer, m.parameters())
+    m = load_model(a.start, **model_kwargs(a)) if a.start else q.Quine(**model_kwargs(a))
+    opt = q.make_optimizer(a.optimizer, m.parameters(), lr=a.lr)
     gen = torch.Generator().manual_seed(a.seed)
     log = []
     record(log, 0, m)
     for t in range(1, a.epochs + 1):
         q.grad_epoch(m, opt, gen)
         record(log, t, m)
-    save(f"opt_{a.optimizer}_{a.epochs}ep_{tag(a)}", vars(a), log, m)
+    lr = f"_lr{a.lr:g}" if a.lr is not None else ""
+    start = f"_from-{Path(a.start).stem}" if a.start else ""
+    save(f"opt_{a.optimizer}_{a.epochs}ep_{tag(a)}{lr}{start}", vars(a), log, m)
 
 
 # -- E3/E4: hill-climbing -----------------------------------------------------
@@ -135,7 +137,8 @@ def main():
     p.add_argument("--epochs", type=int, default=30)
     p.add_argument("--optimizer", choices=OPTIMIZERS, default="adamax")
     p.add_argument("--sigma", type=float, default=1e-3, help="hill-climbing noise std")
-    p.add_argument("--start", default=None, help="hill-climbing: .pt file to start from")
+    p.add_argument("--start", default=None, help="hill-climbing or optimizer: .pt file to start from")
+    p.add_argument("--lr", type=float, default=None, help="optimizer learning rate (default: torch default)")
     p.add_argument("--log-every", type=int, default=1)
     p.add_argument("--generations", type=int, default=10)
     p.add_argument("--T", type=int, default=1, help="optimization epochs per generation")

@@ -179,21 +179,22 @@ def replication_stats(model, images=None):
 
 
 # -- training methods ---------------------------------------------------------
-def make_optimizer(name, params):
+def make_optimizer(name, params, lr=None):
     """Optimizers of Fig. 4. 'Default hyperparameter settings' = torch defaults,
-    except the two learning rates the paper states."""
+    except the two learning rates the paper states. `lr` overrides the rate."""
+    kw = {} if lr is None else {"lr": lr}
     if name == "sgd":
-        return torch.optim.SGD(params, lr=0.01)
+        return torch.optim.SGD(params, **({"lr": 0.01} | kw))
     if name == "sgd_momentum":
-        return torch.optim.SGD(params, lr=0.01, momentum=0.9)
+        return torch.optim.SGD(params, momentum=0.9, **({"lr": 0.01} | kw))
     if name == "adam":
-        return torch.optim.Adam(params)
+        return torch.optim.Adam(params, **kw)
     if name == "adagrad":
-        return torch.optim.Adagrad(params)
+        return torch.optim.Adagrad(params, **kw)
     if name == "adamax":
-        return torch.optim.Adamax(params)
+        return torch.optim.Adamax(params, **kw)
     if name == "rmsprop":
-        return torch.optim.RMSprop(params)
+        return torch.optim.RMSprop(params, **kw)
     raise ValueError(f"unknown optimizer {name!r}")
 
 
