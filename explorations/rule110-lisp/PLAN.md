@@ -10,8 +10,8 @@ the engine faster and smaller.
         correctly, then destroyed by the next ossifier
   - [x] b. queue-gap rule: break at the first transition between queued
         copies with gap > c v, 11.05 < c < 11.39 (12 runs, 2 programs)
-  - [ ] c. fresh test: one-move TM at 1.25x Cook's v (critical gaps
-        10.78v and 10.92v: predicted to pass) -- running
+  - [x] c. fresh test: one-move TM at 1.25x Cook's v (critical gaps
+        10.78v and 10.92v: predicted to pass): 5,970/5,970
   - [ ] (open) c from geometry; the small-program constraint of 3.5
 - [x] 2. Efficiency (REPORT 5, NOTES phase 8)
   - [x] a. profiles: main-tree advances dominate; cost linear in time

@@ -741,3 +741,12 @@ read outcomes and Ebar-cluster counts in every comparison)
   cost is linear in simulated generations (0.84 s per 2^24, 0.19 s per
   2^22): the glider interactions themselves, mostly ossifiers crossing
   junk. Only a collision-level method would go further.
+
+### Prediction confirmed: one-move TM at 1.25x Cook's v
+
+v = 876,305 (run with the engine of commit a7f1292, started before the
+tuning): 5,970/5,970 reads equal the reference, 103 accepts (cluster
+deviations +1 x45, 0 x43, -1 x15, as at 2v and 4v), visits [(1, 1),
+(2, 1)], last read at t = 1.58e11. The rule's two critical transitions
+were at 10.78v and 10.92v; the lower bound on c becomes 10.92 (still
+below De Mol's 11.05). Log: data/tm_one_v1.25.log.

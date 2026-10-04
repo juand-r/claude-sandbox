@@ -76,8 +76,9 @@ The main claims, in decreasing order of the strength of their evidence:
    so the spacing must exceed the widest gap between consecutively
    queued appendant copies divided by about 11.2. One constant fits all
    twelve runs of two programs (it was bounded by them), with each
-   failure at the first queue transition above it; a run at 1.25x Cook's
-   v tests the rule on a fresh case. Why small programs need more than
+   failure at the first queue transition above it. A run made after the
+   rule confirmed its prediction: at 1.25x Cook's v the machine runs to
+   its halt, all 5,970 reads correct. Why small programs need more than
    about 55 per symbol is still open.
 9. **Running the whole tower on gliders is out of reach by about 14
    orders of magnitude** (about 5e19 generations for the capstone with
@@ -620,7 +621,7 @@ give:
 | De Mol, 6,400 | 83 | 14.25 | 5.37 |
 | De Mol, 12,216 (Cook) | none (556 reads) | - | 8.39 |
 | one-move TM, 701,044 (Cook) | 3,269 | 13.48 | 2.55 |
-| one-move TM, 2v and 4v | none (5,970 reads) | - | 6.83, 3.41 |
+| one-move TM, 1.25v, 2v, 4v | none (5,970 reads) | - | 10.92, 6.83, 3.41 |
 
 One threshold fits all of them: the machine breaks at the first queue
 transition with gap G > c v, where 11.05 < c < 11.39. The model's 8v is
@@ -629,11 +630,14 @@ the right order; the rest of the constant is geometry the model ignores
 add to the tape). The 1,600, 3,200 and 6,400 rows reproduce the
 StreamRun results of 3.6 with a different engine.
 
-*Prediction.* At 1.25x Cook's v (876,305) the one-move machine's two
-widest transitions are 10.78v (read 3,269) and 10.92v (read 5,519), just
-below the threshold, so the rule predicts all 5,970 reads correct where
-Cook's own v fails. (Run in progress; this paragraph is updated with the
-result.)
+*Prediction, tested.* At 1.25x Cook's v (876,305) the one-move machine's
+two widest transitions are 10.78v (read 3,269) and 10.92v (read 5,519),
+just below the threshold, so the rule predicts all 5,970 reads correct
+where Cook's own v fails at read 3,269. The run (made after the rule)
+gives 5,970 of 5,970, the visits (1, 1), (2, 1) decoded from the reads,
+and the last read at generation 1.58e11 (`data/tm_one_v1.25.log`). This
+is the smallest spacing tried that runs the machine to its halt, and it
+tightens the bound to 10.92 < 11.05 < c, unchanged.
 
 *What it means for the spacing.* A filled CTS reads correctly at
 spacing v only if v exceeds G_max / 11.2, where G_max is the largest gap

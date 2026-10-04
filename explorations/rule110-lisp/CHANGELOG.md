@@ -9,7 +9,9 @@ Why Cook's spacing can be too small (REPORT 3.8)
   breaks at the first transition between consecutively queued appendant
   copies whose spatial gap exceeds c v, 11.05 < c < 11.39; one constant
   fits twelve runs of De Mol's program and the TM, each failing at the
-  first transition above it (`experiments.block_gaps`).
+  first transition above it (`experiments.block_gaps`). Prediction
+  tested afterwards: at 1.25x Cook's v the TM reads 5,970/5,970
+  (data/tm_one_v1.25.log).
 - Epoch engine: samples forced into time order (a bug that only small v
   could trigger); ossifier budget enlarged; 55 s -> 38.6 s and 1.64 ->
   1.06 GB on a late benchmark (power-of-two jumps, hash tables to load
