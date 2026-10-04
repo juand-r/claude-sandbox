@@ -5,7 +5,14 @@ The residual is r(θ) = f_θ(C) − θ, a map from ℝᴺ to ℝᴺ. Each step s
 SSE = |r|² decreases. Everything is in double precision. R² is tracked at every
 step because θ = 0 also solves the equations.
 
-Usage: python newton.py <start.pt> <n_layers> <out_name> [max_steps]
+Pure Newton fails here: J − I is badly conditioned (condition number ~5e6 on
+the one-layer network) and the linear model holds only for tiny steps
+(diag_newton.py). `lm` is Levenberg–Marquardt: Δ = −(AᵀA + μI)⁻¹ Aᵀ r with
+A = J − I and an adaptive damping μ, which shortens the step and keeps it out
+of near-singular directions.
+
+Usage: python newton.py <start.pt> <n_layers> <out_name> [max_steps] [method]
+       method: lm (default) or newton
 """
 import json
 import sys
@@ -78,16 +85,64 @@ def newton(model, max_steps):
     return log
 
 
+MU_UP, MU_DOWN, MAX_TRIES = 4.0, 3.0, 12
+
+
+def lm(model, max_steps, mu_rel=1e-3):
+    """Levenberg–Marquardt on r(θ) = f_θ(C) − θ. μ starts at mu_rel times the
+    mean diagonal of AᵀA; it is divided by MU_DOWN after an accepted step and
+    multiplied by MU_UP after a rejected one (up to MAX_TRIES per step)."""
+    theta = model.theta.detach().clone()
+    r, sse, r2, rms = stats(model, theta)
+    log = [{"step": 0, "sse": sse, "r2": r2, "theta_rms": rms, "mu": None, "seconds": 0.0}]
+    print(f"step 0: SSE {sse:.6g}  R² {r2:.6f}  weight rms {rms:.4f}", flush=True)
+    mu = None
+    for k in range(1, max_steps + 1):
+        t0 = time.time()
+        A = jacobian(model, theta)
+        A.diagonal().sub_(1.0)                       # A = J − I
+        g = A.T @ r
+        H = A.T @ A
+        del A
+        if mu is None:
+            mu = mu_rel * H.diagonal().mean().item()
+        for _ in range(MAX_TRIES):
+            H.diagonal().add_(mu)
+            L, info = torch.linalg.cholesky_ex(H)
+            H.diagonal().sub_(mu)
+            if info.item() == 0:
+                delta = -torch.cholesky_solve(g.unsqueeze(1), L).squeeze(1)
+                cand = theta + delta
+                r_c, sse_c, r2_c, rms_c = stats(model, cand)
+                if sse_c < sse:
+                    break
+            mu *= MU_UP
+        else:
+            print(f"step {k}: no decrease after {MAX_TRIES} damping increases; stopping", flush=True)
+            break
+        theta, r, sse, r2, rms = cand, r_c, sse_c, r2_c, rms_c
+        log.append({"step": k, "sse": sse, "r2": r2, "theta_rms": rms, "mu": mu,
+                    "step_norm_rel": delta.norm().item() / theta.norm().item(), "seconds": time.time() - t0})
+        print(f"step {k}: SSE {sse:.6g}  R² {r2:.6f}  weight rms {rms:.4f}  mu {mu:.3g}  "
+              f"|Δ|/|θ| {log[-1]['step_norm_rel']:.2e}  ({time.time() - t0:.0f} s)", flush=True)
+        mu /= MU_DOWN
+    with torch.no_grad():
+        model.theta.copy_(theta)
+    return log
+
+
 def main():
     start, n_layers, out = sys.argv[1], int(sys.argv[2]), sys.argv[3]
     max_steps = int(sys.argv[4]) if len(sys.argv) > 4 else 10
+    method = sys.argv[5] if len(sys.argv) > 5 else "lm"
     torch.set_num_threads(4)
     model = q.Quine(n_layers=n_layers, init="he_normal", proj_std=1.0)
     model.load_state_dict(torch.load(start))
     model.double()
-    log = newton(model, max_steps)
+    log = {"lm": lm, "newton": newton}[method](model, max_steps)
     res = Path(__file__).parent / "results"
-    (res / f"{out}.json").write_text(json.dumps({"config": {"start": start, "n_layers": n_layers}, "log": log}, indent=1))
+    (res / f"{out}.json").write_text(json.dumps(
+        {"config": {"start": start, "n_layers": n_layers, "method": method}, "log": log}, indent=1))
     torch.save(model.float().state_dict(), res / f"{out}.pt")
     print(f"wrote results/{out}.json")
 

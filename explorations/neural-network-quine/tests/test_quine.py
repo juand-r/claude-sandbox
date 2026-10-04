@@ -162,3 +162,13 @@ def test_newton_accepted_steps_decrease_sse():
     log = newton.newton(m, max_steps=5)
     sses = [row["sse"] for row in log]
     assert all(b < a for a, b in zip(sses, sses[1:]))
+
+
+def test_lm_accepted_steps_decrease_sse():
+    """Every accepted Levenberg–Marquardt step decreases SSE, and on a tiny
+    network it makes progress."""
+    import newton
+    m = q.Quine(hidden=3, n_layers=1, init="he_normal", proj_std=1.0, seed=9).double()
+    log = newton.lm(m, max_steps=8)
+    sses = [row["sse"] for row in log]
+    assert len(sses) > 1 and all(b < a for a, b in zip(sses, sses[1:]))
