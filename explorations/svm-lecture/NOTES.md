@@ -58,3 +58,7 @@
 - Plots are capped at 74vh (56vh on slides with tiles and controls) so slides never need shrinking.
 - Claim on the properties slide, "roughly quadratic or worse in the number of points" for kernel
   SVM training: standard in the literature, stated as approximate. Not measured here.
+- Definition of "margin": the deck uses the textbook one (CS229, ISLR): the distance from the
+  boundary to the closest training point, 1/‖w‖ after scaling, half the street. Some sources
+  (Wikipedia; Cortes and Vapnik 1995, from memory, not checked) call the full width 2/‖w‖
+  the margin. Slides 2, 5 and 6 were aligned to the textbook definition at the user's request.

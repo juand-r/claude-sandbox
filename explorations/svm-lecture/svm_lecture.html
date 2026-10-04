@@ -329,8 +329,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>Which line?</h2>
     <ul>
       <li data-step="1">Lines A, B and C all separate the training points. Training error is zero for each.</li>
-      <li data-step="2">They differ in how much room they leave: the widest empty street (<b>margin</b>) around each line. Pick a line, or build your own with the sliders.</li>
-      <li data-step="3">The support vector machine chooses the line with the widest street (<b>margin</b>). New points near the boundary are then least likely to land on the wrong side.</li>
+      <li data-step="2">They differ in how much room they leave: the widest empty street around each line. Half its width, the distance to the closest point, is the <b>margin</b>. Pick a line, or build your own with the sliders.</li>
+      <li data-step="3">The support vector machine chooses the line with the widest street, which is the largest <b>margin</b>. New points near the boundary are then least likely to land on the wrong side.</li>
     </ul>
   </div>
   <div class="fig short">
@@ -350,7 +350,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p><b class="cue">0</b>Fifteen training points, two classes. Green is positive, purple is negative. Ask the room: where would you draw the boundary?</p>
     <p><b class="cue">1</b>Three answers, all with zero training error. Training error cannot choose between them.</p>
     <p><b class="cue">2</b>For each line, find the widest band around it that contains no point: the street. Click A, B, C. A and B are tilted, so the street hits points early. C has the right tilt but sits too close to the green points. Then try the sliders; a line that crosses a point shows the mistake ringed in orange.</p>
-    <p><b class="cue">3</b>The SVM line is the one with the widest possible street, 2.83 here. The rest of the lecture is how to find it, and what to do when no line separates the classes.</p>
+    <p><b class="cue">3</b>The SVM line is the one with the widest possible street, 2.83 here, so its margin is 1.41. The rest of the lecture is how to find it, and what to do when no line separates the classes.</p>
   </div>
 </section>
 
@@ -433,7 +433,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p><b class="cue">0</b>The separable data from the start, with the best line already drawn. We first say what "room" means precisely.</p>
     <p><b class="cue">1</b>y_i f(x_i) is positive exactly when point i is on its correct side, so y_i f(x_i)/‖w‖ is its distance to the line, counted positive when correct. The margin is the smallest of these. Three points tie here, ringed.</p>
     <p><b class="cue">2</b>The scale of w is free. We use the freedom to make the closest points score exactly ±1. That is a convention, not a restriction.</p>
-    <p><b class="cue">3</b>From the last slide, a point with f = 1 is 1/‖w‖ away. Here w = (0.5, 0.5), ‖w‖ ≈ 0.71, so the width is about 2.83. A wide street means a short w.</p>
+    <p><b class="cue">3</b>From the last slide, a point with f = 1 is 1/‖w‖ away. Here w = (0.5, 0.5), ‖w‖ ≈ 0.71, so the margin is 1/‖w‖ ≈ 1.41 and the width about 2.83. A wide street means a short w.</p>
   </div>
 </section>
 
@@ -444,7 +444,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>The hard-margin<br>SVC</h2>
     <ul>
       <li data-step="1">The widest street with every point on its correct side, outside the street:
-        <span class="eq">maximize 2 / ‖w‖<br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1 for all i</span></li>
+        <span class="eq">maximize 2 / ‖w‖<br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1 for all i</span>
+        This is the same as maximizing the margin <span class="math" style="white-space:nowrap">1/‖w‖</span>.</li>
       <li data-step="2">The same <span class="math">w</span> wins if we instead
         <span class="eq">minimize ½ ‖w‖²<br>subject to the same constraints</span>
         A bowl-shaped objective with straight-line constraints: a <b data-hint="qp">quadratic program</b>. It has one best solution, and standard solvers find it.</li>
