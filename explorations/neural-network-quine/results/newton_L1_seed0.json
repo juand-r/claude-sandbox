@@ -1,0 +1,16 @@
+{
+ "config": {
+  "start": "results/stage3_L1_seed0.pt",
+  "n_layers": 1
+ },
+ "log": [
+  {
+   "step": 0,
+   "sse": 65.11597602861684,
+   "r2": 0.9596124839829888,
+   "theta_rms": 0.39956008827040945,
+   "t": 1.0,
+   "seconds": 0.0
+  }
+ ]
+}
