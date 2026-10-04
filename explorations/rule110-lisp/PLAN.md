@@ -5,17 +5,22 @@
 User: find why the one-move TM fails at Cook's v (read 3,269), then make
 the engine faster and smaller.
 
-- [ ] 1. Mechanism of the failure (checkpoint at read 3,264 in scratch)
-  - [ ] a. trace where each read's tape character comes from (ossifier
-        meets moving data) for a good read (3,268) and the bad one (3,269)
-  - [ ] b. find what differs; test the explanation (prediction at other
-        reads or other v)
-  - [ ] c. write up (REPORT 3.7, NOTES)
-- [ ] 2. Efficiency
-  - [ ] a. profile time and memory on a fixed benchmark (one-move TM,
-        reads 0-1000 and a late stretch from a checkpoint)
-  - [ ] b. improvements, each measured and checked for identical output
-  - [ ] c. write up (REPORT 5, NOTES)
+- [x] 1. Mechanism of the failure (REPORT 3.8, NOTES phase 8)
+  - [x] a. tape characters traced through checkpoints: 3,269's is made
+        correctly, then destroyed by the next ossifier
+  - [x] b. queue-gap rule: break at the first transition between queued
+        copies with gap > c v, 11.05 < c < 11.39 (12 runs, 2 programs)
+  - [ ] c. fresh test: one-move TM at 1.25x Cook's v (critical gaps
+        10.78v and 10.92v: predicted to pass) -- running
+  - [ ] (open) c from geometry; the small-program constraint of 3.5
+- [x] 2. Efficiency (REPORT 5, NOTES phase 8)
+  - [x] a. profiles: main-tree advances dominate; cost linear in time
+  - [x] b. kept: power-of-two jumps, skip-ahead local copies, tables to
+        load 3/4, 12-byte nodes: 55 s -> 38.6 s, 1.64 -> 1.06 GB (late)
+  - [x] dropped: Ebar-frame HashLife, interleaved tables, bigger direct
+        blocks (all measured)
+  - [x] bug found and fixed: samples out of time order at small v
+  - [ ] (open) collision-level stepping of junk crossings
 
 ## Phase 7: long exact runs with HashLife; a compiled Turing machine on gliders (started 2026-10-03)
 

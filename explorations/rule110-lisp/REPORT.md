@@ -70,8 +70,15 @@ The main claims, in decreasing order of the strength of their evidence:
    table, which is what Cook's formula scales with. But long runs of
    rejections need more: De Mol's program needs more than half of
    Cook's value at one point, and a compiled Turing machine needs more
-   than Cook's value itself (section 3.7). What the needed spacing
-   depends on is open, and the savings on real programs may be small.
+   than Cook's value itself (section 3.7). For long programs the reason
+   is now identified and quantified (section 3.8): an ossifier must meet
+   the next queued symbol before it reaches the newest tape character,
+   so the spacing must exceed the widest gap between consecutively
+   queued appendant copies divided by about 11.2. One constant fits all
+   twelve runs of two programs (it was bounded by them), with each
+   failure at the first queue transition above it; a run at 1.25x Cook's
+   v tests the rule on a fresh case. Why small programs need more than
+   about 55 per symbol is still open.
 9. **Running the whole tower on gliders is out of reach by about 14
    orders of magnitude** (about 5e19 generations for the capstone with
    the direct binary construction, 3.6e20 with the old one; before any
@@ -413,9 +420,11 @@ first 29 reads correctly, including an 18-symbol accept, then broke
 during a run of 16 consecutive rejections. At v = 3,200 it reads that
 run correctly (and 83 reads in all, section 3.6). So the spacing must also cover long runs of
 rejections, as the encoder's own caveat on Cook's formula warns. The
-mechanism is not identified (the moving-data queue does not run dry:
-it holds about 55 characters there). The small programs above have
-rejection runs of at most two, which is why they did not show it.
+mechanism is now identified and quantified (section 3.8): what matters
+is the spatial gap between consecutively queued appendant copies, which
+a long run of rejections makes wide. The small programs above have
+rejection runs of at most two, which is why they did not show it; their
+own failures below v ~ 500 have tiny gaps and remain unexplained.
 
 *Scope.* Five small programs with appendants of 6 and 18 symbols, 8 to
 12 reads each, plus De Mol's program. Two lengths do not establish a scaling law; "at most
@@ -460,6 +469,9 @@ The failure at 1,600 is cured by 3,200; the one at read 83 survives at
 calling it spacing-independent) and is gone at Cook's value. So for this
 program the spacing must exceed half of Cook's: his formula is not
 grossly conservative here, whatever the small programs of 3.5 suggest.
+Section 3.8 explains these failures and predicts their reads: the first
+queue transition whose gap exceeds about 11.2v is at read 29 for
+v = 1,600 and at read 83 for 3,200 and 6,400.
 
 *Scope and caveats.* One program and one input. The check observes the
 outcome of every read (the regions the acceptor and rejector leave
@@ -547,9 +559,9 @@ which fits the encoder's caveat that Cook's formula assumes a nonempty
 append in every appendant cycle; the filled program's rejection runs are
 about 200 reads long. An engine error is not excluded outright (see
 above), but it would have to depend on the spacing and not on the epoch
-and sampling choices. Why the character is missing (an ossification
-that does not happen, or a character destroyed on its way to the read
-point) is not identified.
+and sampling choices. Section 3.8 identifies the mechanism: the
+character for read 3,269 is made correctly and then destroyed by the
+next ossifier, which finds no queued symbol in its way.
 
 *Scope.* One machine, one input, three spacings. The machine is as
 small as a machine with a state change and a head move can be (two
@@ -557,6 +569,87 @@ states, one symbol); it shows the lower half of the tower working on
 gliders end to end, not that larger machines do. The checks are as in
 3.3 and 3.6: every read's outcome, and the TM's visits decoded from
 them; the tape itself is not decoded.
+
+### 3.8 Why long rejection runs need a larger spacing
+
+*The failure, observed directly.* Epoch checkpoints of the Cook's-v run
+of 3.7 were kept from read 3,152 on, and the tape characters (groups of
+four C gliders) were located by census over the whole active region.
+- Up to read 3,248 the tape is healthy: 19 complete characters wait
+  ahead of the read point, 5.6e6 cells apart.
+- The character for read 3,269 is made correctly, four C gliders, at
+  generation ~6.8796e10.
+- One ossifier period later the next ossifier arrives at that character
+  and destroys three of its four C gliders. The character for read 3,270
+  is never made; the characters after it are scattered C gliders.
+So the ossifier did not meet a moving-data symbol to turn into the next
+character; it ran into the newest character instead.
+
+*Where in the queue.* In the reference CTS, reads 3,262-3,269 read the
+last symbols of the appendant copy queued by the accept at read 783, and
+read 3,270 reads the first symbol of the copy queued at read 999.
+Between those two copies' regions in the table lie the 215 appendant
+regions that were read and rejected in between: a spatial gap of
+9,449,496 cells. Every earlier queue transition in the run crossed at
+most 1.8e6 cells.
+
+*Model.* In the Ebar frame the queued symbols (moving data) are static,
+while tape characters, stationary in the lab, drift through that frame
+at 8/30 cell per generation. An ossifier makes the next character only
+if the next queued symbol has already drifted past the newest character
+when it arrives. Within an appendant copy the next symbol is one symbol
+away. At the boundary between two queued copies it is the whole gap
+between them, and in one ossifier period (about 30v generations) the
+tape drifts only about 8v cells. A gap much wider than that, and the
+ossifier meets the newest character first.
+
+*Test.* `experiments.block_gaps` lists a program's queue transitions and
+their gaps. Runs of De Mol's program at nine spacings (epoch engine,
+each stopped at its first wrong read) and the compiled machine of 3.7
+give:
+
+| program, v | first wrong read | gap there / v | largest earlier gap / v |
+|---|---|---|---|
+| De Mol, 1,600 | 30 | 17.9 (read 29) | - |
+| De Mol, 2,205 | 29 | 13.0 | - |
+| De Mol, 2,389 | 29 | 12.0 | - |
+| De Mol, 2,606 | 53 | 13.2 | 11.05 |
+| De Mol, 2,867 | 53 | 12.0 | 10.04 |
+| De Mol, 3,018 | 53 | 11.39 | 9.54 |
+| De Mol, 3,200 | 83 | 28.5 | 10.74 |
+| De Mol, 6,400 | 83 | 14.25 | 5.37 |
+| De Mol, 12,216 (Cook) | none (556 reads) | - | 8.39 |
+| one-move TM, 701,044 (Cook) | 3,269 | 13.48 | 2.55 |
+| one-move TM, 2v and 4v | none (5,970 reads) | - | 6.83, 3.41 |
+
+One threshold fits all of them: the machine breaks at the first queue
+transition with gap G > c v, where 11.05 < c < 11.39. The model's 8v is
+the right order; the rest of the constant is geometry the model ignores
+(where symbols sit within their regions, the drift that junk crossings
+add to the tape). The 1,600, 3,200 and 6,400 rows reproduce the
+StreamRun results of 3.6 with a different engine.
+
+*Prediction.* At 1.25x Cook's v (876,305) the one-move machine's two
+widest transitions are 10.78v (read 3,269) and 10.92v (read 5,519), just
+below the threshold, so the rule predicts all 5,970 reads correct where
+Cook's own v fails. (Run in progress; this paragraph is updated with the
+result.)
+
+*What it means for the spacing.* A filled CTS reads correctly at
+spacing v only if v exceeds G_max / 11.2, where G_max is the largest gap
+between consecutively queued appendant copies over the run. G_max is
+roughly the total width of the appendant regions in the longest run of
+rejections between two accepts. Cook's formula grows with the whole
+table, which is enough when an appendant is accepted at least once per
+cycle (his stated assumption) and can be too little otherwise. For
+compiled Turing machines the long rejection runs come from the unary
+code and from the fill rewrite.
+
+*Scope.* Two programs, one CTS family (filled, unary-coded); c is an
+empirical constant measured on De Mol's table and consistent with the
+compiled machine's runs. This explains the failures of long programs; the
+small programs of 3.5, whose gaps are a few hundred cells, fail below
+v ~ 500 for another reason that is still open.
 
 ## 4. The cost of the tower
 
@@ -623,7 +716,7 @@ Four engines are available, all exact and cross-checked cell for cell.
 | packed cyclic array | `engine.py`, `casim.Run` | 64 cells per word; with a numba kernel, 17 us per step at 870k cells | reference only (wrap-seam debris spreads from the array ends) |
 | streaming window | `casim.StreamRun` | steps only where the state differs from the assembly's free evolution | 3.9 h |
 | HashLife | `hashlife.py`, `hlc.c` | hash-consed binary tree in space, memoized results in time | 340 s (one tree for the whole run, Python core, 11 GB; this read loop was retired for the next row) |
-| HashLife in epochs | `epochrun.py` | HashLife on a tree rebuilt every few reads from the active region and the next few ossifiers and appendants | 41 s (C core, 0.3 GB) |
+| HashLife in epochs | `epochrun.py` | HashLife on a tree rebuilt every few reads from the active region and the next few ossifiers and appendants | 45 s (C core, 0.3 GB) |
 
 *Why the streaming window works.* Far from the collisions, the left side
 (the ossifier train) and the right side (the unread table) evolve freely,
@@ -708,6 +801,31 @@ three-state machine that moves both ways (59,136 reads; NOTES.md, phase
 simulator that steps each crossing as one event would remove most of
 this cost; it is not built.
 
+*Tuning, measured.* On a fixed late stretch of the one-move machine (32
+reads from read 3,152) the engine went from 55 s and 1.64 GB to 38.6 s and
+1.06 GB, with every read's outcome and cluster count unchanged:
+- the main tree jumps on a power-of-two grid, so a jump is one or two
+  HashLife advances instead of about thirteen, and local copies skip to
+  the predicted read in whole sample steps;
+- hash tables fill to 3/4 before growing, and a node takes 12 bytes
+  instead of 24.
+Three ideas were measured and dropped (NOTES.md, phase 8):
+- HashLife in the Ebar frame, where table and junk are static: exact,
+  but no faster, because the lab frame already reuses most of that work;
+- interleaved hash-table entries: 12% slower;
+- stepping larger blocks directly instead of memoizing: slower at every
+  size tried.
+After tuning, main-tree advances take about 87% of the time and their
+cost is linear in simulated generations: what is left is the glider
+interactions themselves.
+
+*A bug found at small v.* At De Mol's smaller spacings, reads come closer
+together than a local copy's reach, and a copy could be built from an
+earlier time than the last sample. A read already under way was then
+seen unread and settled as '!'. Samples are now forced into time order
+(ReadWatch raises otherwise). Runs at Cook-scale v, with reads 2e7
+generations apart, could not hit this.
+
 *Operational note.* Long runs checkpoint (StreamRun: the live window;
 EpochReads: the tree at each rebuild, a few MB). The cloud container
 running this project is reclaimed within minutes of the session going
@@ -788,13 +906,11 @@ Done since (v0.2, unreleased):
 
 Open, roughly in order of value:
 
-- Why the one-move machine fails at Cook's v at read 3,269 (3.7): the
-  tape character for that read never arrives. A cell-level look at the
-  ossification before it is the next step, and it bears directly on the
-  spacing question below.
-- A model of the ossifier spacing a program really needs. Small programs
-  tolerate a quarter of Cook's value; De Mol needs more than half, the
-  one-move machine more than all of it (3.5-3.7).
+- Done: why long programs fail at small spacing (3.8). Open: the
+  constant 11.2 from geometry rather than fits, and the second
+  constraint that small programs show (3.5). With both, a non-uniform
+  ossifier schedule could give each stretch of a run only the spacing
+  it needs.
 - A glider-level simulator that steps each junk crossing as one event
   (section 5). Without it the cost of a run grows with the square of its
   reads; a three-state machine that moves both ways (59,136 reads) is

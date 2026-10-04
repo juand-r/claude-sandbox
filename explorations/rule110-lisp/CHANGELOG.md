@@ -2,6 +2,19 @@
 
 ## Unreleased (after v0.1.1)
 
+Why Cook's spacing can be too small (REPORT 3.8)
+- The one-move TM's failure at Cook's v is observed directly: the
+  character for read 3,269 is made correctly, then the next ossifier,
+  finding no queued symbol in its way, destroys it. Rule: a filled CTS
+  breaks at the first transition between consecutively queued appendant
+  copies whose spatial gap exceeds c v, 11.05 < c < 11.39; one constant
+  fits twelve runs of De Mol's program and the TM, each failing at the
+  first transition above it (`experiments.block_gaps`).
+- Epoch engine: samples forced into time order (a bug that only small v
+  could trigger); ossifier budget enlarged; 55 s -> 38.6 s and 1.64 ->
+  1.06 GB on a late benchmark (power-of-two jumps, hash tables to load
+  3/4, 12-byte nodes). Ebar-frame HashLife tried and dropped (no gain).
+
 Long runs and a compiled Turing machine on gliders (REPORT 3.7, 5)
 - A compiled Turing machine runs on Rule 110 gliders: the smallest
   machine that changes state and moves (tests/machines.py one_move_tm),
