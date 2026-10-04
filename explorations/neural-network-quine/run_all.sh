@@ -19,6 +19,13 @@ jobs() {
   echo "hill --sigma 1e-5 --epochs 1000 --log-every 10 --start results/opt_adamax_100ep_seed0.pt --seed 0"
   # Literal He init, Adamax, 1,000 epochs, 3 seeds: where does R^2 converge?
   for s in $SEEDS; do echo "optimizer --optimizer adamax --epochs 1000 --seed $s --init-literal-he"; done
+  # IDEAS.md idea 1: 2 x 2 grid of weight init x P scale, Adamax, 1,000 epochs.
+  # He/He is the --init-literal-he run above. Prediction: P scale matters more.
+  for s in $SEEDS; do
+    echo "optimizer --optimizer adamax --epochs 1000 --seed $s --init torch_default --proj-std 1"
+    echo "optimizer --optimizer adamax --epochs 1000 --seed $s --init he_normal --proj-std 0.0577350269"
+    echo "optimizer --optimizer adamax --epochs 1000 --seed $s"
+  done
   # Same, with P treated as a plain embedding table (no SELU after the lookup)
   for s in $SEEDS; do echo "optimizer --optimizer adamax --epochs 1000 --seed $s --init-literal-he --no-embed-selu"; done
   # E2 under the paper's literal initialization (100 Adamax epochs)

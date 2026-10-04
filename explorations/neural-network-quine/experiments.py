@@ -42,12 +42,18 @@ def model_kwargs(a):
     kw = {"seed": a.seed, "out_selu": a.out_selu, "embed_selu": not a.no_embed_selu}
     if a.init_literal_he:      # the paper's text, taken literally (PLAN.md item 5)
         kw.update(init="he_normal", proj_std=1.0)
+    if a.init is not None:     # set weight init and P scale separately (IDEAS.md idea 1)
+        kw["init"] = a.init
+    if a.proj_std is not None:
+        kw["proj_std"] = a.proj_std
     return kw
 
 
 def tag(a):
     return (f"seed{a.seed}" + ("_outselu" if a.out_selu else "") + ("_noembedselu" if a.no_embed_selu else "")
-            + ("_he" if a.init_literal_he else ""))
+            + ("_he" if a.init_literal_he else "")
+            + (f"_init-{a.init}" if a.init is not None else "")
+            + (f"_proj{a.proj_std:g}" if a.proj_std is not None else ""))
 
 
 # -- E1/E2: gradient-based optimizers ---------------------------------------
@@ -134,6 +140,8 @@ def main():
     p.add_argument("--T", type=int, default=1, help="optimization epochs per generation")
     p.add_argument("--task-only", action="store_true", help="aux: drop L_SR (baseline E8)")
     p.add_argument("--out-selu", action="store_true", help="SELU on the weight output")
+    p.add_argument("--init", choices=q.INIT_SCHEMES, default=None, help="weight initialization")
+    p.add_argument("--proj-std", type=float, default=None, help="std of the entries of P")
     p.add_argument("--no-embed-selu", action="store_true",
                    help="no SELU on the looked-up projection row (treat P as a plain embedding table)")
     p.add_argument("--init-literal-he", action="store_true",
