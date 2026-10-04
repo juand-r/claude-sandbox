@@ -1,0 +1,1766 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="">
+<meta name="copyright" content="Slide template © 2026 Dori Litvak.">
+<meta name="description" content="Lecture slides: hyperplanes, margins, hard- and soft-margin support vector classifiers, kernels.">
+<title>Support Vector Machines</title>
+<style>
+:root{
+  --bg:#F6F7FA; --surface:#FFFFFF; --ink:#16213E; --muted:#5B6478; --line:#D7DBE6; --grid:#E9ECF3;
+  --model:#0097A0; --model-soft:rgba(0,151,160,.14);
+  --err:#D9531E; --err-soft:rgba(217,83,30,.18);
+  --mean:#7457C9; --mean-soft:rgba(116,87,201,.16);
+  --hi:#B87A00; --hi-soft:rgba(184,122,0,.16);
+  --pos:#2B8A3E;   /* positive class */
+  --focus:#0097A0;
+  --shadow:0 10px 30px rgba(22,33,62,.08);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1524; --surface:#172036; --ink:#E8ECF5; --muted:#9AA5BF; --line:#2A3550; --grid:#1F2940;
+    --model:#14A3AB; --model-soft:rgba(20,163,171,.2);
+    --err:#E86A3C; --err-soft:rgba(232,106,60,.22);
+    --mean:#8E76DB; --mean-soft:rgba(142,118,219,.22);
+    --hi:#BD8620; --hi-soft:rgba(189,134,32,.22);
+    --pos:#51B865;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1524; --surface:#172036; --ink:#E8ECF5; --muted:#9AA5BF; --line:#2A3550; --grid:#1F2940;
+  --model:#14A3AB; --model-soft:rgba(20,163,171,.2);
+  --err:#E86A3C; --err-soft:rgba(232,106,60,.22);
+  --mean:#8E76DB; --mean-soft:rgba(142,118,219,.22);
+  --hi:#BD8620; --hi-soft:rgba(189,134,32,.22);
+  --pos:#51B865;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,-apple-system,Segoe UI,sans-serif;font-size:clamp(17px,1.5vw,23px);line-height:1.5}
+h1,h2,h3{font-family:"Bricolage Grotesque","Source Sans 3",sans-serif;text-wrap:balance;margin:0;line-height:1.05;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,6vw,5.4rem);font-weight:800}
+h2{font-size:clamp(1.8rem,3.2vw,3rem);font-weight:700}
+h3{font-size:1.05em;font-weight:700}
+.eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.noup,.tile .lbl.noup{text-transform:none;letter-spacing:.04em}
+.math,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums}
+.math{font-size:1.02em}
+.k-model{color:var(--model)} .k-pos{color:var(--pos)} .k-err{color:var(--err)} .k-mean{color:var(--mean)} .k-hi{color:var(--hi)}
+.tag{display:inline-block;padding:.05em .45em;border-radius:.35em;font-weight:600}
+.tag.model{background:var(--model-soft);color:var(--model)} .tag.err{background:var(--err-soft);color:var(--err)} .tag.mean{background:var(--mean-soft);color:var(--mean)} .tag.hi{background:var(--hi-soft);color:var(--hi)}
+
+/* deck */
+#deck{height:100dvh;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.slide{min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,56px);align-items:center;padding:clamp(48px,6vh,72px) clamp(20px,5vw,80px) clamp(64px,8vh,90px);max-width:1700px;margin:0 auto}
+.slide.one{grid-template-columns:1fr}
+.slide.wide{grid-template-columns:minmax(0,4fr) minmax(0,9fr)}
+.slide>*:not(.notes){zoom:var(--fit,1)}
+.slide .prose{max-width:34rem}
+.slide .prose>*+*{margin-top:.9em}
+.slide .prose ul{padding-left:1.1em;margin:0}
+.slide .prose li{margin:.35em 0}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:clamp(10px,1.4vw,20px);min-width:0}
+.fig svg{width:100%;height:auto;display:block}
+.tipbox{fill:var(--surface);stroke:var(--line);stroke-width:1}
+.axtick{font-family:"JetBrains Mono",monospace;font-size:15px;fill:var(--muted)}
+.axname{font-family:"Source Sans 3",system-ui,sans-serif;font-size:14.5px;font-weight:700;letter-spacing:.07em;fill:var(--ink)}
+.tiptxt{font-family:"JetBrains Mono",monospace;font-size:12.5px;font-weight:600;fill:var(--ink)}
+.fig .toolbar{display:flex;flex-wrap:wrap;gap:.6em 1.2em;align-items:center;padding:.5em .3em 0;font-size:1em}
+.fig .toolbar label{display:flex;align-items:center;gap:.5em}
+input[type=range]{accent-color:var(--model);width:9em}
+button{font:inherit;font-weight:600;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:.35em .95em;cursor:pointer}
+button:hover{border-color:var(--model);color:var(--model)}
+button.primary{background:var(--model);border-color:var(--model);color:#fff}
+button.sel{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+button.primary:hover{filter:brightness(1.08);color:#fff}
+button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+/* step reveals */
+[data-step]{transition:opacity .35s ease,transform .35s ease}
+[data-step].pending{opacity:0;transform:translateY(6px);pointer-events:none}
+.slide .prose li[data-step].pending{opacity:.0}
+@media (prefers-reduced-motion:reduce){[data-step]{transition:none}}
+
+/* chrome */
+#progress{position:fixed;top:0;left:0;height:4px;background:var(--model);width:0;z-index:20;transition:width .3s}
+#hud{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;padding:10px clamp(16px,3vw,40px);font-size:.8em;color:var(--muted);z-index:20;pointer-events:none}
+#hud>*{pointer-events:auto}
+#hud .dots{display:flex;gap:6px}
+#hud .dots i{width:8px;height:8px;border-radius:50%;background:var(--line);display:block}
+#hud .dots i.on{background:var(--model)}
+#hud .keys{display:flex;gap:1em}
+#hud kbd{font-family:"JetBrains Mono",monospace;font-size:.85em;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 .4em;background:var(--surface)}
+#hud .hudright{display:flex;align-items:center;gap:1.1em}
+#hud .cprt{font-family:"JetBrains Mono",monospace;font-size:.85em;opacity:.6;letter-spacing:.02em}
+@media (max-width:820px){#hud .cprt{display:none}}
+.rights{margin-top:1.4em;font-family:"JetBrains Mono",monospace;font-size:.78em;line-height:1.6;color:var(--muted);opacity:.85}
+#hud .btns{display:flex;gap:.4em}
+#hud .btns button{padding:.2em .7em;font-size:.95em}
+
+.slide .notes{display:none}
+#popnote{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.5em 1em;border-radius:999px;font-size:.9em;z-index:50;display:none}
+#popnote.show{display:block}
+
+/* help */
+#help{position:fixed;inset:0;background:rgba(10,14,26,.6);z-index:40;display:none;align-items:center;justify-content:center;padding:20px}
+#help.open{display:flex}
+#help .card{background:var(--surface);color:var(--ink);border-radius:14px;padding:26px 30px;max-width:34rem;box-shadow:var(--shadow)}
+#help .card table{border-collapse:collapse;width:100%}
+#help .card td{padding:.3em .5em;border-bottom:1px solid var(--line)}
+#help kbd{font-family:"JetBrains Mono",monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 .45em;background:var(--bg)}
+
+/* title slide */
+.title{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,64px);align-items:center;max-width:64rem}
+.title img{width:clamp(140px,18vw,240px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.title .who{margin-top:1.2em;display:grid;gap:.15em}
+.title .who .name{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.4em}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .3s,background .3s}
+.card .eyebrow{margin-bottom:.4em}
+.card.lit{border-color:var(--model);background:var(--model-soft)}
+.card.dim{opacity:.45}
+.card p{margin:.2em 0 0;color:var(--muted);font-size:1.02em}
+
+/* metrics */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tile{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.tile .lbl{font-size:.96em;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-family:"JetBrains Mono",monospace}
+.tile .val{font-family:"JetBrains Mono",monospace;font-size:1.6em;font-weight:600;margin-top:.1em;transition:color .3s}
+.tile .sub{font-size:.93em;color:var(--muted)}
+.tile .f{font-size:.86em;color:var(--muted);font-family:"JetBrains Mono",monospace;margin-top:.3em}
+
+/* takeaways */
+.slide a{color:var(--model);text-decoration:none;border-bottom:1px solid var(--model-soft)}
+.slide a:hover{border-bottom-color:var(--model)}
+.srcs{display:flex;flex-wrap:wrap;gap:.4em .7em;margin-top:.7em}
+.srcs a{font-family:"JetBrains Mono",monospace;font-size:.78em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.24em .7em;background:var(--surface)}
+.srcs a:hover{color:var(--model);border-color:var(--model)}
+.impact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin-top:clamp(14px,2.2vh,24px);align-items:start}
+.icard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(14px,1.5vw,20px);box-shadow:var(--shadow)}
+.icard .tagline{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.icard h3{margin:.4em 0 .1em;font-size:clamp(.98rem,1.22vw,1.24rem);line-height:1.2}
+.icard .when{font-family:"JetBrains Mono",monospace;font-size:.8em;color:var(--muted);margin-bottom:.5em}
+.icard p{font-size:clamp(.95rem,1.12vw,1.14rem);line-height:1.45;margin:.4em 0}
+.icard .num{font-family:"JetBrains Mono",monospace;font-weight:700}
+.recapstrip{margin:clamp(10px,1.8vh,20px) 0 clamp(6px,1.2vh,14px)}
+@media (max-width:900px){.impact{grid-template-columns:1fr}}
+.take{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.take .card{padding:16px 18px;font-size:1.02em}
+.take .card h3{margin-bottom:.3em}
+
+#hintcard{position:fixed;z-index:80;max-width:390px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 14px 40px rgba(15,30,50,.18);padding:14px 16px;opacity:0;pointer-events:none;
+  transition:opacity .16s ease;font-size:15px;line-height:1.45}
+#hintcard.on{opacity:1}
+#hintcard .ht{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.5em}
+#hintcard p{margin:.5em 0 0;color:var(--ink)}
+#hintcard .rules{display:grid;gap:.34em;font-family:"JetBrains Mono",monospace;font-size:15px}
+#hintcard .rules span{color:var(--muted)}
+#hintcard .rules span b{color:var(--ink);font-weight:600}
+#hintcard .rules span.key{color:var(--ink);background:var(--model-soft);border-radius:7px;padding:.22em .5em;margin:.1em -.5em}
+/* about-me slide */
+.about{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3.2vw,52px);align-items:start;max-width:74rem}
+.about img{width:clamp(128px,14.5vw,205px);aspect-ratio:3/4;object-fit:cover;border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.about h1{font-size:clamp(1.7rem,3.1vw,2.7rem);margin:.14em 0 .26em}
+.about .role{margin:0;font-size:1.02em}
+.about .sub{color:var(--muted);font-size:.88em}
+.about .bio{margin:.7em 0 0;max-width:53rem;font-size:.95em}
+.about .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.5vw,22px);margin-top:clamp(12px,1.7vh,18px);padding-top:clamp(10px,1.4vh,15px);border-top:1px solid var(--line);max-width:53rem}
+.about .facts .eyebrow{display:block;margin-bottom:.3em}
+.about .facts p{margin:0;font-size:.88em}
+.about .pull{margin-top:clamp(12px,1.7vh,18px);border-left:3px solid var(--model);padding-left:.95em;font-size:.93em;max-width:50rem}
+.about .door{background:var(--model-soft);border:1.5px solid var(--model);border-radius:14px;padding:13px 17px;margin-top:clamp(12px,1.7vh,18px);max-width:50rem;font-size:.95em}
+.about .door h3{color:var(--model);margin-bottom:.35em}
+.about .door p{margin:.3em 0 0}
+
+/* today's-topic card */
+.topic{max-width:58rem}
+.topic .hook{font-size:1.15em;color:var(--muted);margin:.75em 0 0;max-width:33rem}
+.topic .obj{margin-top:clamp(20px,3.4vh,36px);border-left:3px solid var(--model);padding:.15em 0 .15em 1.15em;max-width:46rem}
+.topic .obj ol{margin:.45em 0 0;padding-left:1.2em}
+.topic .obj li{margin:.38em 0}
+.topic .obj ul{margin:.45em 0 0;padding-left:1.2em}
+
+/* ---------- roadmap ---------- */
+.roadslide{width:100%}
+.roadslide .lede{color:var(--muted);max-width:47rem;margin:.6em 0 0}
+.roadwrap{margin-top:clamp(22px,4vh,42px);overflow-x:auto;padding-bottom:10px}
+.road{display:grid;grid-template-columns:repeat(11,minmax(104px,1fr));row-gap:14px;min-width:1150px}
+.phase{grid-row:1;font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:.32em .75em;border-radius:999px;justify-self:start;transition:opacity .35s}
+.phase.juan{grid-column:1/6;color:var(--muted);background:var(--grid)}
+.phase.dori{grid-column:6/11;color:var(--model);background:var(--model-soft)}
+.phase.exam{grid-column:11/12;color:var(--err);background:var(--err-soft)}
+.stops{display:contents;list-style:none;margin:0;padding:0}
+.stop{grid-row:2;display:grid;grid-template-rows:auto auto auto;align-content:start;justify-items:center;gap:8px;padding:0 5px;text-align:center;transition:opacity .35s}
+.stop .d{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--muted)}
+.stop .dotrow{justify-self:stretch;position:relative;height:16px;display:flex;align-items:center;justify-content:center}
+.stop .dotrow::before{content:"";position:absolute;left:0;right:0;height:3px;background:var(--line);border-radius:2px}
+.stop:first-of-type .dotrow::before{left:50%}
+.stop:last-of-type .dotrow::before{right:50%}
+.stop .dot{width:12px;height:12px;border-radius:50%;background:var(--muted);border:3px solid var(--surface);box-shadow:0 0 0 2px var(--muted);position:relative;z-index:1}
+.stop .t{font-size:14.5px;line-height:1.3;text-wrap:balance;color:var(--muted);overflow-wrap:break-word;hyphens:auto}
+.stop.d .dotrow::before{background:var(--model)}
+.stop.d .dot{background:var(--model);box-shadow:0 0 0 2px var(--model)}
+.stop.d .t{color:var(--ink);font-weight:600}
+.stop.x .dotrow::before{background:var(--err)}
+.stop.x .dot{width:15px;height:15px;background:var(--err);box-shadow:0 0 0 2px var(--err)}
+.stop.x .t{color:var(--err);font-weight:700}
+.stop .now{display:block;font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--model);margin-top:.28em}
+.road[data-lit="0"] .now{visibility:hidden}
+.road[data-lit="0"] .stop.d,.road[data-lit="0"] .stop.x,.road[data-lit="0"] .phase.dori,.road[data-lit="0"] .phase.exam{opacity:.3}
+.road[data-lit="1"] .stop.x,.road[data-lit="1"] .phase.exam{opacity:.3}
+.roadslide .ask{margin-top:clamp(18px,3vh,32px);max-width:54rem;padding:.75em 1.05em;background:var(--surface);border:1.5px solid var(--line);border-radius:12px}
+
+/* ---------- announcements ---------- */
+.annslide{width:100%;max-width:74rem;margin:0 auto}
+.annslide .lede{color:var(--muted);margin:.55em 0 0}
+.anncards.three{grid-template-columns:repeat(3,minmax(0,1fr));max-width:64rem;margin-left:auto;margin-right:auto}
+.anncards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.4vw,20px);margin-top:clamp(20px,3.2vh,38px);align-items:stretch}
+@media (max-width:1000px){.anncards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.anncards{grid-template-columns:1fr}}
+.anncard{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:clamp(14px,1.7vh,20px) clamp(15px,1.5vw,21px);transition:opacity .35s}
+.anncard h3{margin-bottom:.4em}
+.anncard p{margin:.35em 0 0;font-size:1.02em}
+.anncard .fine{font-size:.85em;color:var(--muted)}
+.anncard.go{border-color:var(--model);background:var(--model-soft)}
+.anncard.go h3{color:var(--model)}
+.anncard.hot{border-color:var(--err);background:var(--err-soft)}
+.anncard.hot h3{color:var(--err)}
+.anndate{margin-top:clamp(16px,2.6vh,28px);font-family:"JetBrains Mono",monospace;font-size:.86em;color:var(--muted)}
+
+/* ---------- holding slide ---------- */
+.hold{width:100%;max-width:64rem;margin:0 auto;text-align:center}
+.hold .eyebrow{display:block}
+.hold h1{font-size:clamp(2.4rem,5.4vw,4.8rem);margin:.18em 0 .1em}
+.hold .course{font-family:"JetBrains Mono",monospace;font-size:clamp(1rem,1.6vw,1.35rem);letter-spacing:.14em;color:var(--model);font-weight:700}
+.hold .sess{color:var(--muted);margin:.45em 0 0;font-size:1.02em}
+.hold .startin{font-family:"JetBrains Mono",monospace;font-size:clamp(.8rem,1.1vw,.95rem);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:clamp(18px,2.8vh,32px) 0 0}
+
+
+
+
+/* ---------- interactive examples ---------- */
+.fig.grab svg{cursor:grab;touch-action:none;user-select:none}
+.fig.grab svg:active{cursor:grabbing}
+.fig .readout{font-family:"JetBrains Mono",monospace;font-size:.95em;color:var(--muted);text-align:center;margin:.4em 0 0}
+.fig .readout b{color:var(--model);font-weight:600}
+.land{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:10px;align-items:stretch}
+.land .side{display:grid;grid-template-rows:auto 1fr;gap:6px;min-width:0}
+.land .side .lbl{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.land .side svg{width:100%;height:auto;display:block}
+@media (max-width:900px){.land{grid-template-columns:1fr}}
+
+/* ---------- template placeholders (delete when the deck is real) ---------- */
+.ph{display:grid;place-items:center;min-height:clamp(220px,38vh,420px);border:2px dashed var(--line);border-radius:14px;color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.9em;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:1em}
+.hook{font-size:1.15em;color:var(--muted);margin:.75em 0 0;max-width:33rem}
+
+/* ---------- SVM lecture: added components ---------- */
+.k-pos{color:var(--pos)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(10px,1.4vw,24px);align-items:center}
+.stack{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.6fr);gap:10px clamp(12px,1.6vw,26px);align-items:center}
+@media (max-width:900px){.duo,.stack{grid-template-columns:1fr}}
+.tiles.col{grid-template-columns:1fr}
+.tiles.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tiles.row{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:620px){.tiles.row,.tiles.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fig .tiles{margin-top:.6em}
+.fig svg.sq{max-height:74vh;width:auto;max-width:100%;margin:0 auto}
+.fig.short svg.sq{max-height:56vh}
+.fig .tile .val{font-size:1.3em}
+.fig.drag svg,.fig.grab svg{touch-action:none;user-select:none}
+.legend{display:flex;flex-wrap:wrap;gap:.3em 1.4em;justify-content:center;margin:.3em 0 0;font-family:"JetBrains Mono",monospace;font-size:.85em;font-weight:600}
+.slide .prose h2+ul,.slide .prose h2+p{margin-top:.8em}
+.eq{display:block;font-family:"JetBrains Mono",monospace;font-size:.92em;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--model);border-radius:8px;padding:.4em .8em;margin:.45em 0;line-height:1.55}
+.take.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.take.three{grid-template-columns:1fr}}
+.extab{border-collapse:collapse;font-family:"JetBrains Mono",monospace;font-size:.9em}
+.extab th{text-align:left;font-weight:600;color:var(--muted);padding:.2em .8em .2em 0}
+.extab td{text-align:center;padding:.2em .5em;border-left:1px solid var(--line);white-space:nowrap}
+.answer{border-left:3px solid var(--hi);padding:.1em 0 .1em .8em;margin:.3em 0 0;color:var(--ink)}
+.answer .math{white-space:nowrap}
+.prose ol{padding-left:1.2em;margin:0}
+.prose ol li{margin:.35em 0}
+</style>
+</head>
+<body>
+<!--
+  SLIDE TEMPLATE · interactive HTML deck
+  © 2026 Dori Litvak. All rights reserved.
+
+  HOW TO USE
+  · Every slide is a <section class="slide" id="s-…" data-steps="N">.
+    class "one"  = single column · class "wide" = narrow text, wide figure · no class = text | figure.
+  · data-steps="N" is how many → presses the slide has. Anything with data-step="k" appears at press k.
+  · Speaker notes go in <div class="notes"> at the end of a slide. <b class="cue">k</b> ties a paragraph to step k.
+  · Keys: → / Space next · ← back · P presenter view · F fullscreen · ? help.
+  · Give each deck its own BroadcastChannel name (search for CHANNEL below) or two open decks drive each other.
+  · Do not add a webfont <link> to this window; the presenter window carries its own.
+  · Figures: chart(host,{…}) draws an axis box, see "svg chart" in the script. Or drop in your own SVG inside <div class="fig">.
+-->
+<div id="progress"></div>
+<main id="deck">
+
+<!-- 1 TITLE -->
+<section class="slide one" id="s-title" data-steps="0">
+  <div class="prose">
+    <div class="eyebrow">Machine learning · Classifiers</div>
+    <h1>Support vector<br>machines</h1>
+    <p class="hook">Many lines can separate two classes. A support vector machine picks the one that leaves the most room on both sides.</p>
+  </div>
+  <div class="notes">
+    <p>Today: a classifier built from one geometric idea, the widest street between the classes. Two classes only; more than two classes comes later with ensembles.</p>
+  </div>
+</section>
+
+<!-- 2 WHICH LINE -->
+<section class="slide" id="s-which" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">The question</div>
+    <h2>Which line?</h2>
+    <ul>
+      <li data-step="1">Lines A, B and C all separate the training points. Training error is zero for each.</li>
+      <li data-step="2">They differ in how much room they leave: the widest empty street around each line. Pick a line, or build your own with the sliders.</li>
+      <li data-step="3">The support vector machine chooses the line with the widest street. New points near the boundary are then least likely to land on the wrong side.</li>
+    </ul>
+  </div>
+  <div class="fig short">
+    <div id="fig-which"></div>
+    <div class="tiles" data-step="2">
+      <div class="tile"><div class="lbl">street width</div><div class="val k-model" id="v-which-w">–</div></div>
+      <div class="tile"><div class="lbl">mistakes</div><div class="val k-err" id="v-which-err">–</div></div>
+    </div>
+    <div class="toolbar" data-step="2">
+      <button id="b-which-A">A</button><button id="b-which-B">B</button><button id="b-which-C">C</button>
+      <button id="b-which-SVM" data-step="3">SVM</button>
+      <label>angle <input type="range" id="r-which-ang" min="0" max="90" value="30"></label>
+      <label>shift <input type="range" id="r-which-off" min="300" max="1100" value="700"></label>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Fifteen training points, two classes. Green is positive, purple is negative. Ask the room: where would you draw the boundary?</p>
+    <p><b class="cue">1</b>Three answers, all with zero training error. Training error cannot choose between them.</p>
+    <p><b class="cue">2</b>For each line, find the widest band around it that contains no point: the street. Click A, B, C. A and B are tilted, so the street hits points early. C has the right tilt but sits too close to the green points. Then try the sliders; a line that crosses a point shows the mistake ringed in orange.</p>
+    <p><b class="cue">3</b>The SVM line is the one with the widest possible street, 2.83 here. The rest of the lecture is how to find it, and what to do when no line separates the classes.</p>
+  </div>
+</section>
+
+<!-- 3 HYPERPLANES -->
+<section class="slide" id="s-hyper" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">1 · Hyperplanes</div>
+    <h2>A line is<br>w · x + b = 0</h2>
+    <ul>
+      <li>Pick a vector <span class="math">w</span> and a number <span class="math">b</span>. The points with <span class="math">f(x) = w · x + b = 0</span> form a line in 2D, a plane in 3D, a hyperplane in general.</li>
+      <li data-step="1"><span class="math">w</span> is perpendicular to the line. Changing <span class="math">b</span> slides the line without turning it.</li>
+      <li data-step="2"><span class="math">f(x) &gt; 0</span> on one side, <span class="math">f(x) &lt; 0</span> on the other. Predict <span class="math">+1</span> when <span class="math">f(x) &gt; 0</span>.</li>
+      <li data-step="3"><span class="math">f(x)</span> is a score, like the scores in the ROC lecture. The SVM's default threshold is 0.</li>
+    </ul>
+  </div>
+  <div class="fig short drag">
+    <div id="fig-hyper"></div>
+    <div class="tiles three" data-step="3">
+      <div class="tile"><div class="lbl noup">point x</div><div class="val k-hi" id="v-hy-x"></div></div>
+      <div class="tile"><div class="lbl noup">f(x)</div><div class="val" id="v-hy-f"></div></div>
+      <div class="tile"><div class="lbl">prediction</div><div class="val" id="v-hy-p"></div></div>
+    </div>
+    <div class="toolbar">
+      <label>w₁ <input type="range" id="r-hy-w1" min="-100" max="100" value="50"></label>
+      <label>w₂ <input type="range" id="r-hy-w2" min="-100" max="100" value="50"></label>
+      <label>b <input type="range" id="r-hy-b" min="-100" max="100" value="-50"></label>
+      <span class="mono" id="v-hy-eq" style="color:var(--muted)"></span>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Start from the formula. With w = (0.5, 0.5) and b = −5 the line is 0.5·x₁ + 0.5·x₂ − 5 = 0, that is x₁ + x₂ = 10. Move the w₁ and w₂ sliders: the line turns. Move b: it slides.</p>
+    <p><b class="cue">1</b>Why is w perpendicular? Take two points p and q on the line. Then w·p + b = 0 and w·q + b = 0, so w·(p − q) = 0. Every direction along the line is orthogonal to w.</p>
+    <p><b class="cue">2</b>The sign of f tells the side. w points toward the positive side.</p>
+    <p><b class="cue">3</b>Drag the amber point. f(x) changes smoothly; only its sign is the prediction. Like k-NN fractions or naive Bayes posteriors, we could threshold f somewhere other than 0 and trace an ROC curve.</p>
+  </div>
+</section>
+
+<!-- 4 DISTANCE -->
+<section class="slide" id="s-dist" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">1 · Hyperplanes</div>
+    <h2>Distance to<br>the hyperplane</h2>
+    <ul>
+      <li data-step="1">Let <span class="math">x<sub>p</sub></span> be the closest point on the line. The step from <span class="math">x<sub>p</sub></span> to <span class="math">x</span> runs along <span class="math">w</span>:<br><span class="math">x = x<sub>p</sub> + r · w / ‖w‖</span><br>where <span class="math">r</span> is the signed distance.</li>
+      <li data-step="2">Apply <span class="math">f</span>. Since <span class="math">f(x<sub>p</sub>) = 0</span> and <span class="math">w · w = ‖w‖²</span>:<br><span class="math">f(x) = r · ‖w‖</span></li>
+      <li data-step="3">So <span class="math">r = f(x) / ‖w‖</span>. The sign says which side, the size says how far.</li>
+    </ul>
+  </div>
+  <div class="fig short drag">
+    <div id="fig-dist"></div>
+    <div class="tiles three" data-step="2">
+      <div class="tile"><div class="lbl noup">f(x)</div><div class="val" id="v-di-f"></div></div>
+      <div class="tile"><div class="lbl noup">‖w‖</div><div class="val" id="v-di-n"></div></div>
+      <div class="tile" data-step="3"><div class="lbl noup">r = f(x) / ‖w‖</div><div class="val k-hi" id="v-di-r"></div></div>
+    </div>
+    <p class="readout">w = (0.3, 0.4), b = −3.5 · drag the point x</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>We need distances because the margin is a distance. The line here is 0.3·x₁ + 0.4·x₂ − 3.5 = 0, chosen so that ‖w‖ = 0.5.</p>
+    <p><b class="cue">1</b>The shortest path from x to the line is perpendicular to it, so it runs along w. w/‖w‖ is the unit vector in that direction.</p>
+    <p><b class="cue">2</b>Plug in: f(x) = w·x_p + b + r·(w·w)/‖w‖. The first two terms are f(x_p) = 0. The last is r·‖w‖.</p>
+    <p><b class="cue">3</b>Drag the point and check the tiles: r is always f(x) divided by 0.5. Doubling w and b gives the same line but doubles f; the division by ‖w‖ undoes that, as a distance should.</p>
+  </div>
+</section>
+
+<!-- 5 MARGIN -->
+<section class="slide" id="s-margin" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">2 · Hard margin</div>
+    <h2>The margin</h2>
+    <ul>
+      <li>A line that separates the classes.</li>
+      <li data-step="1">Its margin is the distance to the closest training point: <span class="math">min<sub>i</sub> y<sub>i</sub> f(x<sub>i</sub>) / ‖w‖</span>, with labels <span class="math">y<sub>i</sub> = ±1</span>.</li>
+      <li data-step="2"><span class="math">(w, b)</span> and <span class="math">(2w, 2b)</span> give the same line. Fix the scale so the closest points have <span class="math">y<sub>i</sub> f(x<sub>i</sub>) = 1</span>. The street's edges are then <span class="math">f = +1</span> and <span class="math">f = −1</span>.</li>
+      <li data-step="3">Each edge is at distance <span class="math">1/‖w‖</span>, so the street is <span class="math">2/‖w‖</span> wide.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-margin"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>The separable data from the start, with the best line already drawn. We first say what "room" means precisely.</p>
+    <p><b class="cue">1</b>y_i f(x_i) is positive exactly when point i is on its correct side, so y_i f(x_i)/‖w‖ is its distance to the line, counted positive when correct. The margin is the smallest of these. Three points tie here, ringed.</p>
+    <p><b class="cue">2</b>The scale of w is free. We use the freedom to make the closest points score exactly ±1. That is a convention, not a restriction.</p>
+    <p><b class="cue">3</b>From the last slide, a point with f = 1 is 1/‖w‖ away. Here w = (0.5, 0.5), ‖w‖ ≈ 0.71, so the width is about 2.83. A wide street means a short w.</p>
+  </div>
+</section>
+
+<!-- 6 HARD-MARGIN SVC -->
+<section class="slide" id="s-hard" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">2 · Hard margin</div>
+    <h2>The hard-margin<br>SVC</h2>
+    <ul>
+      <li data-step="1">The widest street with every point on its correct side, outside the street:
+        <span class="eq">maximize 2 / ‖w‖<br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1 for all i</span></li>
+      <li data-step="2">The same <span class="math">w</span> wins if we instead
+        <span class="eq">minimize ½ ‖w‖²<br>subject to the same constraints</span>
+        A bowl-shaped objective with straight-line constraints: a <b data-hint="qp">quadratic program</b>. It has one best solution, and standard solvers find it.</li>
+      <li data-step="3">The usual solution method uses Lagrange multipliers, one <span class="math">α<sub>i</sub> ≥ 0</span> per point. It gives <span class="math">w = Σ α<sub>i</sub> y<sub>i</sub> x<sub>i</sub></span>, and <span class="math">α<sub>i</sub> &gt; 0</span> only for points on the edges: the <b data-hint="sv">support vectors</b>.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-hard"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>Same data. Now we turn "widest street" into a problem a computer can solve.</p>
+    <p><b class="cue">1</b>The constraints say: every point at least 1 in score on its correct side, which is the scale convention from the last slide. Among all such (w, b), take the widest street.</p>
+    <p><b class="cue">2</b>Maximizing 2/‖w‖ is minimizing ‖w‖, which is minimizing ½‖w‖². The square removes the square root and the ½ tidies the derivative. Quadratic objective, linear constraints: a quadratic program, a well-studied problem class with reliable solvers.</p>
+    <p><b class="cue">3</b>We will not derive the multipliers. The result to keep: w is a weighted sum of the training points, and only the three ringed points get non-zero weight. Here α = 1/12, 1/6 and 1/4. Delete any other point and the solution stays the same.</p>
+  </div>
+</section>
+
+<!-- 7 SUPPORT VECTORS -->
+<section class="slide" id="s-sv" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">2 · Hard margin</div>
+    <h2>Only the support<br>vectors matter</h2>
+    <ul>
+      <li data-step="1">Drag a point that is not ringed. As long as it stays outside the street, nothing changes.</li>
+      <li data-step="2">Drag a support vector. The street moves with it. Drag a point across the line and no street exists: the hard-margin problem has no solution.</li>
+    </ul>
+  </div>
+  <div class="fig short grab">
+    <div id="fig-sv"></div>
+    <div class="tiles" data-step="1">
+      <div class="tile"><div class="lbl">street width</div><div class="val k-model" id="v-sv-w"></div></div>
+      <div class="tile"><div class="lbl">support vectors</div><div class="val k-hi" id="v-sv-n"></div></div>
+    </div>
+    <p class="readout" id="rd-sv" data-step="1">drag any point</p>
+    <div class="toolbar"><button id="b-sv-reset">Reset points</button></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The same fifteen points. From the next step the solver runs live: every time a point moves, the SVM is retrained.</p>
+    <p><b class="cue">1</b>Pull the far green point at the top right around. Nothing happens. The solution depends only on the points that touch the street.</p>
+    <p><b class="cue">2</b>Now pull a ringed point into the street: the street shrinks to make room. Pull a point all the way to the other side: no line separates the data and the hard-margin SVC has no answer. One mislabelled point can do this, which motivates the soft margin.</p>
+  </div>
+</section>
+
+<!-- 8 SOFT MARGIN -->
+<section class="slide" id="s-soft" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">3 · Soft margin</div>
+    <h2>When no line<br>separates</h2>
+    <ul>
+      <li data-step="1">Two points sit among the other class. No line separates the data, so the hard-margin problem has no solution.</li>
+      <li data-step="2">Let point <span class="math">i</span> fall short by a slack <span class="math">ξ<sub>i</sub> ≥ 0</span>, and pay for it:
+        <span class="eq">minimize ½ ‖w‖² + C Σ ξ<sub>i</sub><br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1 − ξ<sub>i</sub>, ξ<sub>i</sub> ≥ 0</span></li>
+      <li data-step="3"><span class="math">ξ<sub>i</sub> = 0</span>: outside the street. <span class="math">0 &lt; ξ<sub>i</sub> ≤ 1</span>: inside the street, correct side. <span class="math">ξ<sub>i</sub> &gt; 1</span>: wrong side, a training mistake.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-soft"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>The same fifteen points plus two more: a purple point among the greens and a green point among the purples.</p>
+    <p><b class="cue">1</b>Real data is rarely separable: noise, overlapping classes, mislabelled examples. We need a version that tolerates some violations.</p>
+    <p><b class="cue">2</b>Each point gets its own slack ξ_i, how far its score falls short of 1. The objective now has two parts: a wide street (small ‖w‖) and little total slack. C sets the exchange rate. This is the soft-margin SVC; the figure shows the solution for C = 1.</p>
+    <p><b class="cue">3</b>The orange segments show each slack: the distance from the point to its own edge of the street is ξ_i/‖w‖. The two intruders have ξ &gt; 1; they are misclassified. Points with ξ &gt; 0 are support vectors too, as are points exactly on an edge.</p>
+  </div>
+</section>
+
+<!-- 9 THE ROLE OF C -->
+<section class="slide" id="s-c" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">3 · Soft margin</div>
+    <h2>The role of C</h2>
+    <ul>
+      <li data-step="1">Large <span class="math">C</span>: slack is expensive. The street narrows to keep points out of it.</li>
+      <li data-step="2">Small <span class="math">C</span>: slack is cheap. The street widens and many points sit inside it, all of them support vectors.</li>
+      <li data-step="3"><span class="math">C</span> is a hyperparameter. Choose it on validation data, the way you choose <span class="math">k</span> for k-NN.</li>
+    </ul>
+  </div>
+  <div class="fig short">
+    <div id="fig-c"></div>
+    <div class="tiles row">
+      <div class="tile"><div class="lbl">street width</div><div class="val k-model" id="v-c-w"></div></div>
+      <div class="tile"><div class="lbl">support vectors</div><div class="val k-hi" id="v-c-n"></div></div>
+      <div class="tile"><div class="lbl">mistakes</div><div class="val k-err" id="v-c-e"></div></div>
+      <div class="tile"><div class="lbl noup">Σ ξ</div><div class="val" id="v-c-x"></div></div>
+    </div>
+    <div class="toolbar"><label>C <input type="range" id="r-c" min="-200" max="200" value="0"></label><span class="mono" id="v-c-c" style="color:var(--muted)"></span></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>C = 1, the solution from the last slide. Ringed points are support vectors.</p>
+    <p><b class="cue">1</b>C = 100. The street is narrower: about 2.7 wide. The model works hard to fit the training points.</p>
+    <p><b class="cue">2</b>C = 0.01. The street is almost 8 wide and swallows most points. Fourteen of the seventeen are support vectors.</p>
+    <p><b class="cue">3</b>Neither end is right in general. Large C chases individual training points and can overfit; small C can underfit. As with k in k-NN, try several values and keep the one that does best on held-out data.</p>
+  </div>
+</section>
+
+<!-- 10 NOT LINEAR -->
+<section class="slide wide" id="s-lift" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">4 · Kernels</div>
+    <h2>No line will do</h2>
+    <ul>
+      <li data-step="1">Green inside, purple around it. No line puts all green on one side and all purple on the other.</li>
+      <li data-step="2">Add a third feature: <span class="math">z = (x₁ − 5)² + (x₂ − 5)²</span>, the squared distance from the centre. Drag to turn the 3D view.</li>
+      <li data-step="3">In 3D a flat plane separates the classes. Train an ordinary linear SVM there.</li>
+      <li data-step="4">Back in 2D, the plane becomes a circle. A linear boundary in new features is curved in the old ones.</li>
+    </ul>
+  </div>
+  <div class="fig grab">
+    <div class="duo">
+      <div id="fig-lift2d"></div>
+      <div id="fig-lift3d" data-step="2"></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>A new dataset: 10 green points near the centre, 16 purple points in a ring around them.</p>
+    <p><b class="cue">1</b>Ask for a line. There is none: the green points lie inside the region enclosed by the purple ones, so any half-plane that holds all the purple points also holds the green ones.</p>
+    <p><b class="cue">2</b>The new feature measures distance from the centre. Green points are close, so their z is small; purple points are far, so their z is large. Drag the 3D view to see the two layers.</p>
+    <p><b class="cue">3</b>Now a horizontal-ish plane separates them. This is the same hard-margin SVC as before, run on three features.</p>
+    <p><b class="cue">4</b>The plane w₁x₁ + w₂x₂ + w₃z + b = 0, written in the original coordinates, is the equation of a circle. The dashed circles are the street edges f = ±1.</p>
+  </div>
+</section>
+
+<!-- 11 KERNELS -->
+<section class="slide wide" id="s-kernel" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">4 · Kernels</div>
+    <h2>The kernel trick</h2>
+    <ul>
+      <li data-step="1">A linear SVM on the rings: no good boundary exists.</li>
+      <li data-step="2">In the Lagrange-multiplier solution, the points appear only in dot products <span class="math">x<sub>i</sub> · x<sub>j</sub></span>. Replace each by a <b data-hint="kernel">kernel</b> <span class="math">K(x<sub>i</sub>, x<sub>j</sub>)</span>, a similarity. The RBF kernel is <span class="math">exp(−γ ‖x − x′‖²)</span>.</li>
+      <li data-step="3">The score is <span class="math">f(x) = Σ α<sub>i</sub> y<sub>i</sub> K(x<sub>i</sub>, x) + b</span>: support vectors vote, weighted by similarity. Large <span class="math">γ</span> makes votes local and the boundary wiggly.</li>
+      <li data-step="4">The same machinery handles XOR, where no line works either.</li>
+    </ul>
+  </div>
+  <div class="fig short">
+    <div class="stack">
+      <div id="fig-kernel"></div>
+      <div class="tiles col" data-step="1">
+        <div class="tile"><div class="lbl">kernel</div><div class="val k-model" id="v-k-k"></div></div>
+        <div class="tile"><div class="lbl">mistakes</div><div class="val k-err" id="v-k-e"></div></div>
+        <div class="tile"><div class="lbl">support vectors</div><div class="val k-hi" id="v-k-n"></div></div>
+      </div>
+    </div>
+    <div class="toolbar">
+      <button id="b-k-rings" class="sel">rings</button><button id="b-k-xor">XOR</button>
+      <button id="b-k-linear">linear</button><button id="b-k-rbf">RBF</button>
+      <label>γ <input type="range" id="r-k-g" min="-200" max="100" value="-30"></label><span class="mono" id="v-k-g" style="color:var(--muted)"></span>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Back to the rings. C = 10 throughout this slide.</p>
+    <p><b class="cue">1</b>Linear kernel, the plain SVM. The shading shows the predicted class; nothing sensible comes out.</p>
+    <p><b class="cue">2</b>On the last slide we built the new feature by hand. A kernel does it implicitly: K(x, x′) equals a dot product in some feature space, but we never compute those features. For the RBF kernel that space has infinitely many dimensions, yet K is one exponential.</p>
+    <p><b class="cue">3</b>This should feel familiar from k-NN: the prediction is a vote of nearby training points. The differences: only support vectors vote, and their weights α_i are learned. Slide γ up: each vote reaches less far and the boundary wraps around individual points, a sign of overfitting.</p>
+    <p><b class="cue">4</b>XOR: positives in two opposite corners, negatives in the other two. Linear fails; RBF succeeds. Like C, γ is chosen on validation data.</p>
+  </div>
+</section>
+
+<!-- 12 PROPERTIES -->
+<section class="slide one" id="s-props" data-steps="0">
+  <div style="width:100%;max-width:72rem;margin:0 auto">
+    <div class="eyebrow">5 · In practice</div>
+    <h2 style="margin:.2em 0 .8em">General properties</h2>
+    <div class="take three">
+      <div class="card"><h3>One best answer</h3><p>The objective is a bowl and the constraints are straight lines. There is a single best solution, and solvers find it.</p></div>
+      <div class="card"><h3>Sparse</h3><p>Only support vectors shape the boundary. Prediction cost grows with their number, not with the size of the training set.</p></div>
+      <div class="card"><h3>Scale the features</h3><p>Margins are distances. A feature measured in thousands swamps one measured in units. Standardize first, as for k-NN.</p></div>
+      <div class="card"><h3>Hyperparameters</h3><p><span class="math">C</span>, the kernel and its parameters such as <span class="math">γ</span>. Choose them on validation data.</p></div>
+      <div class="card"><h3>A score, not a probability</h3><p><span class="math">f(x)</span> ranks points. Thresholds other than 0 trade TPR against FPR and trace an ROC curve.</p></div>
+      <div class="card"><h3>Training cost</h3><p>Kernel SVMs slow down sharply on large training sets: roughly quadratic or worse in the number of points. Linear SVMs scale much further.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p>Six points to remember when using an SVM. The convexity point matters: whatever solver or starting point, you get the same model. Scaling is the most common practical mistake. The score point links back to the ROC lecture: an SVM score can be thresholded like any other, but it is not a probability.</p>
+  </div>
+</section>
+
+<!-- 13 EXERCISE -->
+<section class="slide" id="s-ex" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Your turn</div>
+    <h2>A trained SVC</h2>
+    <p>A soft-margin SVC returned <span class="math">w = (3, 4)</span>, <span class="math">b = −10</span>.</p>
+    <table class="extab">
+      <tr><th>point</th><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td></tr>
+      <tr><th>x₁</th><td>3</td><td>1</td><td>2.4</td><td>2</td><td>3</td></tr>
+      <tr><th>x₂</th><td>1</td><td>1</td><td>0.8</td><td>1</td><td>0.6</td></tr>
+      <tr><th>label</th><td class="k-pos">+</td><td class="k-mean">−</td><td class="k-pos">+</td><td class="k-mean">−</td><td class="k-mean">−</td></tr>
+    </table>
+    <ol>
+      <li>Compute <span class="math">f(x)</span> and the predicted class of each point.
+        <p class="answer" data-step="1">f = 3, −3, 0.4, 0, 1.4. Predicted +, −, +, on the line, +. E is a mistake.</p></li>
+      <li>How wide is the street?
+        <p class="answer" data-step="2">‖w‖ = 5, so the width is <span class="math">2/5 = 0.4</span>.</p></li>
+      <li>What is each point's slack <span class="math">ξ = max(0, 1 − y f(x))</span>?
+        <p class="answer" data-step="3">ξ = 0, 0, 0.6, 1, 2.4.</p></li>
+    </ol>
+  </div>
+  <div class="fig"><div id="fig-ex"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>Give them five minutes. The slack formula in question 3 follows from the constraint y·f(x) ≥ 1 − ξ with the smallest ξ that satisfies it.</p>
+    <p><b class="cue">1</b>A: 9 + 4 − 10 = 3. B: 3 + 4 − 10 = −3. C: 7.2 + 3.2 − 10 = 0.4. D: 6 + 4 − 10 = 0. E: 9 + 2.4 − 10 = 1.4, positive, but E is negative.</p>
+    <p><b class="cue">2</b>2/‖w‖ with ‖w‖ = √(9 + 16) = 5.</p>
+    <p><b class="cue">3</b>A and B are outside the street: ξ = 0. C is inside on the correct side: 1 − 0.4 = 0.6. D is on the line: ξ = 1. E is on the wrong side: 1 + 1.4 = 2.4. One point per case from the soft-margin slide.</p>
+  </div>
+</section>
+
+<!-- 14 TAKEAWAYS -->
+<section class="slide one" id="s-take" data-steps="0">
+  <div style="width:100%;max-width:64rem;margin:0 auto">
+    <div class="eyebrow">Summary</div>
+    <h2 style="margin:.2em 0 .8em">Takeaways</h2>
+    <div class="take">
+      <div class="card"><div class="eyebrow">Geometry</div><h3>Hyperplanes</h3><p><span class="math">f(x) = w · x + b</span>. Predict by its sign. The distance to the hyperplane is <span class="math">f(x)/‖w‖</span>.</p></div>
+      <div class="card"><div class="eyebrow">Hard margin</div><h3>The widest street</h3><p>Minimize <span class="math">½‖w‖²</span> subject to <span class="math">y<sub>i</sub> f(x<sub>i</sub>) ≥ 1</span>. The width is <span class="math">2/‖w‖</span>. Support vectors alone fix the answer.</p></div>
+      <div class="card"><div class="eyebrow">Soft margin</div><h3>Slack and C</h3><p>Slack <span class="math">ξ<sub>i</sub></span> lets points violate the street at a cost <span class="math">C Σ ξ<sub>i</sub></span>. C trades width against violations.</p></div>
+      <div class="card"><div class="eyebrow">Kernels</div><h3>Curved boundaries</h3><p>Replace dot products by a kernel. Same solver, boundaries that are linear only in a hidden feature space.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p>Four ideas. If students keep one sentence: an SVM picks the widest street, and only the points on its edge matter.</p>
+  </div>
+</section>
+
+<!-- 15 BONUS: HINGE LOSS -->
+<section class="slide" id="s-hinge" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Bonus · for later</div>
+    <h2>Slack is<br>hinge loss</h2>
+    <ul>
+      <li>At the solution each slack is as small as allowed: <span class="math">ξ<sub>i</sub> = max(0, 1 − y<sub>i</sub> f(x<sub>i</sub>))</span>.</li>
+      <li data-step="1">Substitute, and the constraints disappear:
+        <span class="eq">minimize ½ ‖w‖² + C Σ max(0, 1 − y<sub>i</sub> f(x<sub>i</sub>))</span>
+        The second term is the <b>hinge loss</b>.</li>
+      <li data-step="2">The hinge loss is never below the 0–1 loss, so the sum bounds the number of training mistakes. Many other classifiers have this same form: a loss on the data plus a penalty on the weights.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-hinge"></div>
+    <p class="legend"><span class="k-err">━ 0–1 loss (mistake or not)</span><span class="k-model">━ hinge loss</span></p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>A slide to come back to later in the course. Given w and b, the best slack for point i is the smallest one that satisfies its constraint.</p>
+    <p><b class="cue">1</b>The horizontal axis is y·f(x): positive means correct, at least 1 means outside the street. The hinge is zero there and grows linearly below 1.</p>
+    <p><b class="cue">2</b>Read the objective as "fit the data, but keep w small". That pattern, loss plus penalty, will come back with other models.</p>
+  </div>
+</section>
+
+<!-- 16 THANKS -->
+<section class="slide one" id="s-thanks" data-steps="0">
+  <div style="text-align:center;width:100%">
+    <div class="eyebrow">Machine learning · Support vector machines</div>
+    <h1 style="margin:.15em 0 .1em">Thank you.</h1>
+    <p style="font-size:clamp(1.2rem,2vw,1.9rem);color:var(--model);font-weight:600;margin:.2em 0 .8em">Questions?</p>
+    <p class="rights">Slide template © 2026 Dori Litvak.</p>
+  </div>
+  <div class="notes">
+    <p>Questions now, in office hours, or on the forum.</p>
+  </div>
+</section>
+
+</main>
+
+<div id="popnote">Pop-up blocked. Allow pop-ups for this file, then press P again.</div>
+<div id="hud">
+  <div class="btns"><button id="b-prev" title="Previous">←</button><button id="b-next" title="Next step">→</button><button id="b-pres" title="Open presenter view (P)">Presenter view</button><button id="b-full" title="Fullscreen (F)">⛶</button><button id="b-help" title="Help (?)">?</button></div>
+  <div class="dots" id="dots"></div>
+  <div class="hudright"><span class="cprt">template © D. Litvak</span><span id="counter" class="mono"></span></div>
+</div>
+
+<div id="help" role="dialog" aria-modal="true">
+  <div class="card">
+    <h3 style="margin-bottom:.6em">Driving the lecture</h3>
+    <table>
+      <tr><td><kbd>→</kbd> / <kbd>Space</kbd></td><td>Reveal next step (or next slide when done)</td></tr>
+      <tr><td><kbd>←</kbd></td><td>Previous step / slide</td></tr>
+      <tr><td><kbd>↓</kbd> <kbd>↑</kbd> / <kbd>PgDn</kbd> <kbd>PgUp</kbd></td><td>Next / previous slide</td></tr>
+      <tr><td><kbd>P</kbd></td><td>Open the presenter view in a separate window</td></tr>
+      <tr><td><kbd>F</kbd></td><td>Fullscreen</td></tr>
+      <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>First / last slide</td></tr>
+      <tr><td><kbd>L</kbd></td><td>Presenter view: show / hide the slide list</td></tr>
+      <tr><td><kbd>?</kbd></td><td>This help</td></tr>
+    </table>
+    <p style="color:var(--muted);font-size:.9em;margin:.9em 0 0"><b>Presenter view:</b> press <kbd>P</kbd> to open a separate window with the slide on the left and your script on the right. <b>Drag the two vertical handles</b> to make the slide bigger or the notes wider &mdash; double-click a handle to reset. Drag it to your laptop screen, hit <kbd>⛶</kbd> to fullscreen it, and put this window on the projector. Down its left side is the full list of slides — click any one to jump straight to it, which is how to go back to something a question refers to. It has its own ← → keys, <kbd>A+</kbd>/<kbd>A−</kbd> to size the text and <kbd>L</kbd> to hide the list, so you can drive the whole lecture from there.</p>
+    <p style="text-align:right;margin:.6em 0 0"><button id="help-close" class="primary">Got it</button></p>
+  </div>
+</div>
+
+<script>
+(() => {
+'use strict';
+
+/* ---------- svg chart ---------- */
+const NS='http://www.w3.org/2000/svg';
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);e.__t=performance.now();return e;};
+function chart(host,o={}){
+  const W=o.W||640,H=o.H||420,m={l:o.ml||58,r:18,t:16,b:46};
+  const xmin=o.xmin??0,xmax=o.xmax??11,ymin=o.ymin??0,ymax=o.ymax??120;
+  const sx=x=>m.l+(x-xmin)/(xmax-xmin)*(W-m.l-m.r), sy=y=>H-m.b-(y-ymin)/(ymax-ymin)*(H-m.t-m.b);
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label||'chart'},host);
+  const g=el('g',{},svg);
+  const xt=o.xticks||[0,2,4,6,8,10], yt=o.yticks||[0,20,40,60,80,100,120];
+  const FS=o.fs||1, bare=!!o.bare, xfmt=o.xfmt||(v=>v);
+  for(const v of xt){el('line',{x1:sx(v),x2:sx(v),y1:sy(ymin),y2:sy(ymax),stroke:'var(--grid)'},g);
+    if(!bare){const t=el('text',{x:sx(v),y:H-m.b+14+4*FS,'text-anchor':'middle',fill:'var(--muted)','font-size':14*FS,'font-family':'JetBrains Mono,monospace'},g);t.textContent=xfmt(v);}}
+  const yfmt=o.yfmt||(v=>v);
+  for(const v of yt){el('line',{x1:sx(xmin),x2:sx(xmax),y1:sy(v),y2:sy(v),stroke:'var(--grid)'},g);
+    if(!bare){const t=el('text',{x:m.l-8,y:sy(v)+4*FS,'text-anchor':'end',fill:'var(--muted)','font-size':14*FS,'font-family':'JetBrains Mono,monospace'},g);t.textContent=yfmt(v);}}
+  el('line',{x1:sx(xmin),x2:sx(xmax),y1:sy(ymin),y2:sy(ymin),stroke:'var(--line)'},g);
+  el('line',{x1:sx(xmin),x2:sx(xmin),y1:sy(ymin),y2:sy(ymax),stroke:'var(--line)'},g);
+  if(!bare){const xl=el('text',{x:(sx(xmin)+sx(xmax))/2,y:H-8,'text-anchor':'middle',fill:'var(--muted)','font-size':15*FS,'font-weight':600},g);xl.textContent=o.xlabel||'x';
+  const yl=el('text',{x:14,y:(sy(ymin)+sy(ymax))/2,'text-anchor':'middle',fill:'var(--muted)','font-size':15*FS,'font-weight':600,transform:`rotate(-90 14 ${(sy(ymin)+sy(ymax))/2})`},g);yl.textContent=o.ylabel||'y';}
+  const cid='clip'+Math.random().toString(36).slice(2,8);const cp=el('clipPath',{id:cid},el('defs',{},svg));el('rect',{x:sx(xmin),y:sy(ymax),width:sx(xmax)-sx(xmin),height:sy(ymin)-sy(ymax)},cp);
+  const layers={};const layer=n=>layers[n]||(layers[n]=el('g',['squares','resid','fit','extra','heat'].includes(n)?{'clip-path':`url(#${cid})`}:{},svg));
+  ['heat','squares','extra','mean','resid','fit','pts','anno','hover'].forEach(layer);
+  const clear=n=>{const L=layer(n);while(L.firstChild)L.removeChild(L.firstChild);return L;};
+  const clip=y=>Math.max(sy(ymax),Math.min(sy(ymin),y));
+  const api={svg,sx,sy,layer,clear,W,H,
+    points(pts,{color='var(--ink)',r=6,layerName='pts',dim=false}={}){const L=clear(layerName);pts.forEach(([x,y])=>{el('circle',{cx:sx(x),cy:sy(y),r,fill:color,stroke:'var(--surface)','stroke-width':2,opacity:dim?.35:1},L);});},
+    line(b0,b1,{color='var(--model)',width=3,dash='',layerName='fit',opacity=1,clearIt=true}={}){const L=clearIt?clear(layerName):layer(layerName);
+      // clip the line to the plot box
+      const f=x=>b0+b1*x,eps=1e-6;
+      const cand=[[xmin,f(xmin)],[xmax,f(xmax)]];
+      if(b1!==0){cand.push([(ymin-b0)/b1,ymin],[(ymax-b0)/b1,ymax]);}
+      const ok=cand.filter(([x,y])=>x>=xmin-eps&&x<=xmax+eps&&y>=ymin-eps&&y<=ymax+eps).sort((a,b)=>a[0]-b[0]);
+      if(ok.length<2)return;const a=ok[0],b=ok[ok.length-1];
+      el('line',{x1:sx(a[0]),y1:sy(a[1]),x2:sx(b[0]),y2:sy(b[1]),stroke:color,'stroke-width':width,'stroke-dasharray':dash,'stroke-linecap':'round',opacity},L);},
+    curve(fn,{color='var(--model)',width=3,layerName='fit'}={}){const L=clear(layerName);let d='';for(let i=0;i<=120;i++){const x=xmin+(xmax-xmin)*i/120,y=Math.max(ymin,Math.min(ymax,fn(x)));d+=(i?'L':'M')+sx(x)+' '+sy(y)+' ';}el('path',{d,fill:'none',stroke:color,'stroke-width':width,'stroke-linejoin':'round'},L);},
+    residuals(x,y,fn,{color='var(--err)',layerName='resid'}={}){const L=clear(layerName);x.forEach((xi,i)=>{el('line',{x1:sx(xi),x2:sx(xi),y1:sy(y[i]),y2:clip(sy(fn(xi))),stroke:color,'stroke-width':2.5,'stroke-linecap':'round'},L);});},
+    squares(x,y,fn,{color='var(--err)',layerName='squares'}={}){const L=clear(layerName);x.forEach((xi,i)=>{const yh=fn(xi);const top=Math.min(sy(y[i]),sy(yh)),h=Math.abs(sy(y[i])-sy(yh));el('rect',{x:sx(xi),y:top,width:h,height:h,fill:color,opacity:.18,stroke:color,'stroke-width':1},L);});},
+    label(x,y,text,{color='var(--ink)',anchor='start',size=13,dx=0,dy=0,mono=true,layerName='anno',bg=true}={}){const L=layer(layerName);const t=el('text',{x:sx(x)+dx,y:sy(y)+dy,fill:color,'text-anchor':anchor,'font-size':size,'font-weight':600,'font-family':mono?'JetBrains Mono,monospace':'inherit','paint-order':'stroke',stroke:bg?'var(--surface)':'none','stroke-width':4,'stroke-linejoin':'round'},L);t.textContent=text;return t;},
+    seg(x1,y1,x2,y2,{color='var(--hi)',dash='4 4',width=2,layerName='anno'}={}){el('line',{x1:sx(x1),y1:sy(y1),x2:sx(x2),y2:sy(y2),stroke:color,'stroke-dasharray':dash,'stroke-width':width,'stroke-linecap':'round'},layer(layerName));},
+    dot(x,y,{color='var(--hi)',r=7,layerName='anno'}={}){el('circle',{cx:sx(x),cy:sy(y),r,fill:color,stroke:'var(--surface)','stroke-width':2},layer(layerName));},
+    hover(pts,label){
+      const L=clear('hover'),rings=[];
+      pts.forEach(([x,y])=>rings.push(el('circle',{cx:sx(x),cy:sy(y),r:9,fill:'none',stroke:'var(--model)','stroke-width':2,opacity:0,'pointer-events':'none'},L)));
+      const tip=el('g',{opacity:0,'pointer-events':'none'},L);
+      const box=el('rect',{rx:7,class:'tipbox'},tip);
+      const txt=el('text',{class:'tiptxt','text-anchor':'middle'},tip);
+      const show=(x,y,s)=>{
+        txt.textContent=s;
+        const w=Math.max(64,txt.getComputedTextLength()+24),h=27;
+        const px=Math.min(Math.max(sx(x),m.l+w/2+2),W-m.r-w/2-2);
+        const above=sy(y)-14-h>m.t;
+        const py=above?sy(y)-14:sy(y)+14+h;
+        box.setAttribute('x',px-w/2);box.setAttribute('y',py-h);
+        box.setAttribute('width',w);box.setAttribute('height',h);
+        txt.setAttribute('x',px);txt.setAttribute('y',py-9);
+        tip.setAttribute('opacity',1);tip.style.opacity='';
+      };
+      pts.forEach(([x,y],i)=>{
+        const hit=el('circle',{cx:sx(x),cy:sy(y),r:16,fill:'transparent'},L);
+        hit.addEventListener('pointerenter',()=>{rings[i].setAttribute('opacity',1);rings[i].style.opacity='';show(x,y,label(x,y,i));});
+        hit.addEventListener('pointerleave',()=>{rings[i].setAttribute('opacity',0);tip.setAttribute('opacity',0);});
+      });
+      L.appendChild(tip);
+    }
+  };
+  return api;
+}
+/* ---------- draw-in animation (lines trace themselves, marks fade in) ---------- */
+const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SHAPES=new Set(['path','line','polyline','polygon','circle','rect','text']);
+function animateEls(list,base=0,total=700){
+  if(REDUCED||!list.length)return;
+  const now=performance.now();
+  const items=[];
+  for(const e of list){
+    if(!SHAPES.has(e.tagName)||e.closest('defs,clipPath'))continue;
+    if(e.__a&&now-e.__a<60)continue;
+    e.__a=now;
+    const tag=e.tagName,fill=e.getAttribute('fill');
+    const stroked=(tag==='path'||tag==='line'||tag==='polyline')&&(fill==='none'||fill===null);
+    if(stroked&&e.getTotalLength){
+      let L=0;try{L=e.getTotalLength();}catch(_){}
+      if(!isFinite(L)||L<1){continue;}
+      const orig=e.getAttribute('stroke-dasharray')||'';
+      e.setAttribute('data-orig-dash',orig);
+      e.style.transition='none';e.setAttribute('stroke-dasharray',`${L} ${L}`);e.style.strokeDashoffset=L;
+      items.push({e,kind:'draw',orig});
+    }else{
+      e.style.transition='none';e.style.opacity='0';
+      items.push({e,kind:'fade',target:e.getAttribute('opacity')||'1'});
+    }
+  }
+  if(!items.length)return;
+  void document.body.offsetHeight;  // one layout flush, then start everything
+  const step=Math.min(48,total/items.length);
+  items.forEach((it,i)=>{const d=base+i*step;
+    if(it.kind==='draw'){it.e.style.transition=`stroke-dashoffset .85s cubic-bezier(.4,0,.2,1) ${d}ms`;it.e.style.strokeDashoffset='0';}
+    else{it.e.style.transition=`opacity .5s ease ${d}ms`;it.e.style.opacity=it.target;}
+  });
+  const last=base+(items.length-1)*step+950;
+  setTimeout(()=>{items.forEach(it=>{const e=it.e;e.style.transition='';
+    if(it.kind==='draw'){e.style.strokeDashoffset='';it.orig?e.setAttribute('stroke-dasharray',it.orig):e.removeAttribute('stroke-dasharray');e.removeAttribute('data-orig-dash');}
+    else e.style.opacity='';});},last);
+}
+function animateSlide(root,since){
+  const all=[...root.querySelectorAll('.fig svg *')].filter(e=>SHAPES.has(e.tagName)&&(!since||(e.__t||0)>=since));
+  animateEls(all,0,all.length>200?900:650);
+}
+
+
+/* ---------- deck ---------- */
+const slides=[...document.querySelectorAll('.slide')];
+let prSettle=null;
+const deck=document.getElementById('deck');
+let cur=0,step=0,receiving=false,lock=0;
+const hooks={};
+
+const chan=('BroadcastChannel' in window)?new BroadcastChannel('deck-svm') /* CHANNEL: one name per deck */:null;
+const send=m=>{if(!receiving&&chan)chan.postMessage(m);};
+const maxStep=i=>+slides[i].dataset.steps||0;
+function applySteps(i,s){slides[i].querySelectorAll('[data-step]').forEach(e=>{e.classList.toggle('pending',+e.dataset.step>s);});}
+let enterAnim=true;
+function render(){
+  const t0=performance.now();
+  slides.forEach((sl,i)=>applySteps(i,i===cur?step:(i<cur?maxStep(i):0)));
+  document.getElementById('progress').style.width=((cur+(maxStep(cur)?step/maxStep(cur):1))/slides.length*100)+'%';
+  document.getElementById('counter').textContent=`${cur+1} / ${slides.length}`;
+  const d=document.getElementById('dots');d.innerHTML='';for(let k=0;k<=maxStep(cur);k++){const i=document.createElement('i');if(k<=step)i.className='on';d.appendChild(i);}
+  const h=hooks[slides[cur].id];if(h&&h.step)h.step(step);
+  // draw-in animation only when a slide is entered; step presses redraw in place, no flicker
+  if(enterAnim)animateSlide(slides[cur],0);enterAnim=false;
+  presenterRender();
+  clearTimeout(prSettle);prSettle=setTimeout(presenterRender,1250);
+}
+function goto(i,s=0,{scroll=true}={}){i=Math.max(0,Math.min(slides.length-1,i));const changed=i!==cur;cur=i;step=Math.max(0,Math.min(maxStep(i),s));if(scroll){lock=Date.now()+900;slides[i].scrollIntoView({behavior:'smooth',block:'start'});}if(changed){enterAnim=true;const h=hooks[slides[i].id];if(h&&h.enter)h.enter();}render();send({type:'nav',i:cur,s:step});}
+function next(){if(step<maxStep(cur))goto(cur,step+1,{scroll:false});else goto(cur+1,0);}
+function prev(){if(step>0)goto(cur,step-1,{scroll:false});else if(cur>0)goto(cur-1,maxStep(cur-1));}
+// keep index in sync with manual scrolling
+const io=new IntersectionObserver(es=>{if(Date.now()<lock)return;es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.6){const i=slides.indexOf(e.target);if(i!==cur){goto(i,0,{scroll:false});}}});},{root:deck,threshold:[.6]});
+slides.forEach(s=>io.observe(s));
+document.addEventListener('keydown',e=>{
+  if(e.target.matches('input,textarea'))return;
+  const k=e.key;
+  if(k==='ArrowRight'||k===' '){e.preventDefault();next();}
+  else if(k==='ArrowLeft'){e.preventDefault();prev();}
+  else if(k==='ArrowDown'||k==='PageDown'){e.preventDefault();goto(cur+1,0);}
+  else if(k==='ArrowUp'||k==='PageUp'){e.preventDefault();goto(cur-1,0);}
+  else if(k==='Home'){goto(0,0);}else if(k==='End'){goto(slides.length-1,0);}
+  else if(k==='p'||k==='P'){togglePresenter();}
+  else if(k==='f'||k==='F'){toggleFull();}
+  else if(k==='?'){toggleHelp();}
+  else if(k==='Escape'){document.getElementById('help').classList.remove('open');}
+});
+document.getElementById('b-prev').onclick=prev;document.getElementById('b-next').onclick=next;
+document.getElementById('b-pres').onclick=togglePresenter;document.getElementById('b-full').onclick=toggleFull;
+document.getElementById('b-help').onclick=toggleHelp;document.getElementById('help-close').onclick=toggleHelp;
+document.getElementById('help').addEventListener('click',e=>{if(e.target.id==='help')toggleHelp();});
+function toggleHelp(){document.getElementById('help').classList.toggle('open');}
+function toggleFull(){if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();}
+
+/* ---------- presenter view (separate window) ---------- */
+let pop=null,t0=null,noteScale=1;
+const STAGE_W=1440,STAGE_H=810;
+// main stylesheet, with viewport units resolved against the fixed stage so the
+// preview matches the projector, and width breakpoints stripped so the narrow
+// presenter window never triggers the phone layout
+function mainCSS(){
+  return [...document.querySelectorAll('style')].map(s=>s.textContent).join('\n')
+    .replace(/@media\s*\([^)]*max-width[^)]*\)\s*\{(?:[^{}]|\{[^{}]*\})*\}/g,'')
+    .replace(/([\d.]+)dvh/g,(m,n)=>(n*STAGE_H/100).toFixed(2)+'px')
+    .replace(/([\d.]+)vh/g ,(m,n)=>(n*STAGE_H/100).toFixed(2)+'px')
+    .replace(/([\d.]+)vw/g ,(m,n)=>(n*STAGE_W/100).toFixed(2)+'px');
+}
+const CHROME=`
+body{display:flex;flex-direction:column;height:100vh;overflow:hidden}
+header.pr,footer.pr{flex:none;display:flex;justify-content:space-between;align-items:center;gap:1em;padding:9px 16px}
+header.pr{border-bottom:1px solid var(--line)}
+footer.pr{border-top:1px solid var(--line);font-size:.9em}
+header.pr #ttl{font-family:"Bricolage Grotesque","Source Sans 3",sans-serif;font-weight:700;font-size:clamp(1.05em,1.5vw,1.6em);line-height:1.15}
+#tm{font-family:"JetBrains Mono",monospace;font-size:clamp(1.3em,1.8vw,2em)}
+header.pr button,footer.pr button{padding:.22em .8em}
+header .tools{display:flex;gap:.4em;align-items:center}
+main.pr{flex:1;display:grid;grid-template-columns:var(--railw,188px) 9px minmax(0,1fr) 9px var(--notesw,36%);
+  padding:14px 12px 14px 16px;min-height:0}
+main.pr.norail{grid-template-columns:0px 0px minmax(0,1fr) 9px var(--notesw,36%)}
+.gutter{cursor:col-resize;display:flex;align-items:center;justify-content:center;touch-action:none;user-select:none}
+.gutter i{display:block;width:3px;height:44px;border-radius:2px;background:var(--line);transition:background .18s,height .18s}
+.gutter:hover i,.gutter.on i{background:var(--model);height:92px}
+main.pr.norail .gutter.g1{display:none}
+.pane-slide{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;position:relative;padding:0 6px}
+#prhint{position:absolute;left:14px;right:14px;bottom:12px;z-index:9;background:var(--surface);
+  border:1.5px solid var(--model);border-radius:14px;box-shadow:0 14px 40px rgba(15,30,50,.22);
+  padding:12px 15px;font-size:15px;line-height:1.45;max-height:52%;overflow:auto}
+#prhint[hidden]{display:none}
+#prhint .ht{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--model);margin-bottom:.5em}
+#prhint p{margin:.5em 0 0;color:var(--ink)}
+#prhint .rules{display:grid;gap:.34em;font-family:"JetBrains Mono",monospace;font-size:15px}
+#prhint .rules span{color:var(--muted)}
+#prhint .rules span b{color:var(--ink);font-weight:600}
+#prhint .rules span.key{color:var(--ink);background:var(--model-soft);border-radius:7px;padding:.22em .5em;margin:.1em -.5em}
+.pane-notes{min-width:0;min-height:0;display:flex;padding-left:8px}
+.pane-list{min-width:0;min-height:0;overflow-y:auto;overflow-x:hidden;
+  border-right:1px solid var(--line);padding:2px 9px 2px 0;display:flex;flex-direction:column;gap:6px}
+.pane-list.hide{display:none}
+.pane-list button{display:block;width:100%;text-align:left;padding:4px;border-radius:10px;
+  border:1.5px solid transparent;background:transparent;color:var(--muted);font:inherit;cursor:pointer}
+.pane-list button:hover{border-color:var(--line)}
+.pane-list button:hover .thumb{border-color:var(--model)}
+.pane-list .thumb{display:block;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;
+  border:1px solid var(--line);border-radius:6px;background:var(--bg);transition:border-color .2s,opacity .2s}
+.pane-list .tin{display:block;position:absolute;top:0;left:0;width:${STAGE_W}px;height:${STAGE_H}px;
+  transform-origin:top left;pointer-events:none}
+.pane-list .thumb .slide{min-height:${STAGE_H}px;height:${STAGE_H}px;margin:0}
+.pane-list .cap{display:grid;grid-template-columns:1.9em 1fr;gap:.3em;margin-top:4px;
+  font-size:clamp(10.5px,.88vw,12.5px);line-height:1.2}
+.pane-list .cap .n{font-family:"JetBrains Mono",monospace;text-align:right;opacity:.6}
+.pane-list .cap .t{min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pane-list button.done{color:var(--ink)}
+.pane-list button.done .thumb{opacity:.6}
+.pane-list button.cur{border-color:var(--model);background:var(--model-soft);color:var(--model);font-weight:700}
+.pane-list button.cur .thumb{border-color:var(--model);opacity:1;box-shadow:0 0 0 1px var(--model)}
+.pane-list button.cur .cap .n{opacity:1;color:var(--model)}
+.stagebox{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--bg);box-shadow:var(--shadow)}
+#stage{position:absolute;top:0;left:0;width:${STAGE_W}px;height:${STAGE_H}px;transform-origin:top left;pointer-events:none}
+#stage{pointer-events:auto}
+.pane-slide .stagebox{cursor:default}
+#stage .slide{min-height:${STAGE_H}px;height:${STAGE_H}px;margin:0}
+.tin .slide{min-height:${STAGE_H}px;height:${STAGE_H}px;margin:0}
+/* vh resolves against this window, not the 1440x810 stage, so pin the dice grid in px */
+#stage .dicebox,.tin .dicebox{width:min(100%,454px)!important;max-width:min(100%,454px)!important}
+.tin .slide>*:not(.notes){zoom:1!important}
+#notes{flex:1;overflow:auto;padding:2px 6px 2px 0;font-size:calc(clamp(16px,1.45vw,26px) * var(--ns,1));line-height:1.48}
+#notes p{margin:0 0 .75em;padding:.5em .75em;border-left:3px solid transparent;border-radius:7px;color:var(--muted)}
+#notes p.now{color:var(--ink);background:var(--model-soft);border-left-color:var(--model);font-size:1.12em;font-weight:500}
+#notes p.past{opacity:.42}
+#notes b.cue{font-family:"JetBrains Mono",monospace;font-size:.75em;color:var(--model);margin-right:.5em}
+.prdots{display:flex;align-items:center;gap:.9em}
+.prdots .dots{display:flex;gap:9px}
+.prdots .dots i{width:13px;height:13px;border-radius:50%;background:var(--line);display:block;transition:background .15s}
+.prdots .dots i.on{background:var(--model)}
+.prdots .dots i.cur{box-shadow:0 0 0 4px var(--model-soft)}
+.prdots .pos{font-family:"JetBrains Mono",monospace;font-size:1.25em;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.prdots .pos small{color:var(--muted);font-weight:400}
+@media (max-width:860px){ main.pr,main.pr.norail{grid-template-columns:minmax(0,1fr)} .gutter{display:none}
+  .pane-list{max-height:20vh;border-right:0;border-bottom:1px solid var(--line);padding:0 0 8px} }
+`;
+const POP_HTML=`<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Presenter view · ${document.title}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>${mainCSS()}</style><style>${CHROME}</style></head><body>
+<header class="pr">
+  <div><div class="eyebrow">Slide <span id="cnt"></span> · step <span id="stp"></span></div><div id="ttl"></div></div>
+  <div class="tools"><span id="tm">00:00</span><button id="rst" title="Reset timer">↺</button>
+    <button id="sm" title="Smaller text">A−</button><button id="lg" title="Bigger text">A+</button>
+    <button id="tg" title="Show / hide the slide list (L)">☰</button>
+    <button id="fs" title="Fullscreen">⛶</button></div>
+</header>
+<main class="pr">
+  <nav class="pane-list" id="prlist" aria-label="Slides"></nav>
+  <div class="gutter g1" id="pg1" title="Drag to resize the slide list"><i></i></div>
+  <div class="pane-slide"><div class="stagebox"><div id="stage"></div></div><div id="prhint" hidden></div></div>
+  <div class="gutter g2" id="pg2" title="Drag to resize the notes"><i></i></div>
+  <div class="pane-notes"><div id="notes"></div></div>
+</main>
+<footer class="pr">
+  <div class="prdots"><div class="dots" id="prd"></div><div class="pos"><span id="prn"></span> <small>/</small> <small id="prtot"></small></div></div>
+  <div style="display:flex;gap:.4em"><button id="pv" title="Previous">←</button><button id="nt" title="Next step">→</button></div>
+</footer></body></html>`;
+
+function setNoteScale(v){
+  noteScale=Math.max(.7,Math.min(2.2,v));
+  if(pop&&!pop.closed){const n=pop.document.getElementById('notes');if(n)n.style.setProperty('--ns',noteScale);}
+}
+function togglePresenter(){
+  if(pop&&!pop.closed){pop.focus();return;}
+  pop=window.open('','deck-presenter','width=1200,height=760,resizable=yes,scrollbars=yes');
+  if(!pop){const n=document.getElementById('popnote');n.classList.add('show');setTimeout(()=>n.classList.remove('show'),4500);return;}
+  pop.document.open();pop.document.write(POP_HTML);pop.document.close();
+  const d=pop.document;
+  d.getElementById('pv').onclick=prev;d.getElementById('nt').onclick=next;
+  d.getElementById('rst').onclick=()=>{t0=Date.now();};
+  d.getElementById('sm').onclick=()=>setNoteScale(noteScale-.12);
+  d.getElementById('lg').onclick=()=>setNoteScale(noteScale+.12);
+  d.getElementById('fs').onclick=()=>{const e=d.documentElement;if(d.fullscreenElement)d.exitFullscreen();else e.requestFullscreen&&e.requestFullscreen();};
+  d.addEventListener('keydown',e=>{const k=e.key;
+    if(k==='ArrowRight'||k===' '){e.preventDefault();next();}
+    else if(k==='ArrowLeft'){e.preventDefault();prev();}
+    else if(k==='ArrowDown'||k==='PageDown'){e.preventDefault();goto(cur+1,0);}
+    else if(k==='ArrowUp'||k==='PageUp'){e.preventDefault();goto(cur-1,0);}
+    else if(k==='Home'){goto(0,0);}else if(k==='End'){goto(slides.length-1,0);}
+    else if(k==='+'||k==='='){setNoteScale(noteScale+.12);}else if(k==='-'){setNoteScale(noteScale-.12);}
+    else if(k==='l'||k==='L'){toggleList();}
+    else if(k==='f'||k==='F'){d.getElementById('fs').click();}});
+  d.getElementById('tg').onclick=toggleList;
+  buildList(d);
+  wireGutters(d);
+  wireLiveStage(d);
+  pop.addEventListener('resize',()=>presenterRender());
+  setNoteScale(noteScale);
+  if(t0===null)t0=Date.now();
+  presenterRender();
+}
+window.addEventListener('beforeunload',()=>{if(pop&&!pop.closed)pop.close();});
+setInterval(()=>{if(t0===null||!pop||pop.closed)return;const s=Math.floor((Date.now()-t0)/1000);
+  const e=pop.document.getElementById('tm');if(e)e.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');},500);
+
+function fillStage(host,slideEl){
+  if(!host)return;host.textContent='';
+  if(!slideEl)return;
+  const c=slideEl.cloneNode(true);
+  c.removeAttribute('id');
+  // keep the inline opacity the live slide is using (that is the per-step reveal);
+  // only undo the draw-in animation's own temporary state
+  c.querySelectorAll('svg *').forEach(e=>{e.style.transition='';e.style.strokeDashoffset='';
+    if(e.hasAttribute('data-orig-dash')){const o=e.getAttribute('data-orig-dash');o?e.setAttribute('stroke-dasharray',o):e.removeAttribute('stroke-dasharray');e.removeAttribute('data-orig-dash');}});
+  const n=c.querySelector('.notes');if(n)n.remove();
+  c.querySelectorAll('video').forEach(v=>{const d=document.createElement('div');d.className='vidph';d.style.cssText='width:100%;aspect-ratio:16/9;border-radius:14px;border:1px solid var(--line);background:var(--grid) url('+JSON.stringify(v.getAttribute('poster')||'')+') center/cover';v.replaceWith(d);});
+  host.appendChild(c);
+  // the live window's zoom-to-fit was measured against that window; the stage is a fixed
+  // 1440x810 box, so measure again here instead of inheriting it
+  c.style.removeProperty('--fit');
+  if(host.id==='stage'){
+    for(let i=0;i<6;i++){
+      const need=c.scrollHeight;
+      if(!need||need<=STAGE_H+1)break;
+      const cur=parseFloat(c.style.getPropertyValue('--fit'))||1;
+      c.style.setProperty('--fit',Math.max(.5,cur*STAGE_H/need*.985).toFixed(3));
+    }
+  }
+}
+let stageT=0;
+function presenterStage(){
+  if(!pop||pop.closed)return;const d=pop.document;
+  const st=d.getElementById('stage');if(!st)return;
+  fillStage(st,slides[cur]);
+  const box=d.querySelector('.stagebox');
+  if(box)st.style.transform='scale('+(parseFloat(box.style.width)/STAGE_W||1)+')';
+}
+function stageSoon(){const n=Date.now();if(n-stageT<140)return;stageT=n;presenterStage();}
+
+/* ---------- drive the real slide from the presenter's mini copy ---------- */
+function wireLiveStage(d){
+  const st=d.getElementById('stage');if(!st)return;
+  let hoverEl=null,dragEl=null,dragRange=null,dragRect=null,downAt=null;
+  const isRange=e=>e&&e.tagName==='INPUT'&&e.type==='range';
+  function locate(px,py){
+    const el=d.elementFromPoint(px,py);
+    if(!el||!st.contains(el))return null;
+    const path=[];let n=el;
+    while(n&&n.parentNode&&n.parentNode!==st){path.push([...n.parentNode.childNodes].indexOf(n));n=n.parentNode;}
+    if(!n||n.parentNode!==st)return null;
+    path.reverse();
+    let real=slides[cur];
+    for(const i of path){if(!real.childNodes||!real.childNodes[i])return null;real=real.childNodes[i];}
+    if(real.nodeType!==1)return null;
+    const cr=el.getBoundingClientRect(),rr=real.getBoundingClientRect();
+    const fx=cr.width?(px-cr.left)/cr.width:.5, fy=cr.height?(py-cr.top)/cr.height:.5;
+    return {clone:el,real,fx,fy,
+      x:rr.width?rr.left+fx*rr.width:rr.left, y:rr.height?rr.top+fy*rr.height:rr.top};
+  }
+  function fire(t,type,x,y,btns){
+    if(!t)return;
+    try{t.dispatchEvent(new window.PointerEvent(type,{bubbles:true,cancelable:true,composed:true,
+      clientX:x,clientY:y,pointerId:1,pointerType:'mouse',isPrimary:true,buttons:btns||0}));}catch(_){}
+  }
+  function setRange(inp,f){
+    const mn=+inp.min||0,mx=(inp.max===''?100:+inp.max),sp=+inp.step||1;
+    let v=mn+(mx-mn)*Math.max(0,Math.min(1,f));
+    v=Math.round(v/sp)*sp;v=Math.max(mn,Math.min(mx,v));
+    if(String(v)===inp.value)return;
+    inp.value=v;inp.dispatchEvent(new Event('input',{bubbles:true}));
+  }
+  function hover(m){
+    const t=m?m.real:null;
+    if(t===hoverEl){if(m)fire(t,'pointermove',m.x,m.y,0);return;}
+    if(hoverEl){fire(hoverEl,'pointerout',0,0,0);fire(hoverEl,'pointerleave',0,0,0);}
+    hoverEl=t;
+    if(t&&m){fire(t,'pointerover',m.x,m.y,0);fire(t,'pointerenter',m.x,m.y,0);fire(t,'pointermove',m.x,m.y,0);}
+  }
+  st.addEventListener('pointerdown',e=>{
+    const m=locate(e.clientX,e.clientY);if(!m)return;
+    e.preventDefault();downAt=[e.clientX,e.clientY];
+    try{st.setPointerCapture(e.pointerId);}catch(_){}
+    if(isRange(m.real)){dragRange=m.real;dragRect=m.clone.getBoundingClientRect();
+      setRange(dragRange,(e.clientX-dragRect.left)/dragRect.width);stageSoon();return;}
+    dragEl=m.real;hover(null);fire(dragEl,'pointerdown',m.x,m.y,1);
+  });
+  st.addEventListener('pointermove',e=>{
+    if(dragRange){setRange(dragRange,(e.clientX-dragRect.left)/dragRect.width);stageSoon();return;}
+    if(dragEl){const m=locate(e.clientX,e.clientY);
+      const r=dragEl.getBoundingClientRect();
+      fire(dragEl,'pointermove',m?m.x:r.left,m?m.y:r.top,1);stageSoon();return;}
+    hover(locate(e.clientX,e.clientY));
+  });
+  const finish=e=>{
+    if(dragRange){dragRange=null;presenterStage();return;}
+    if(dragEl){
+      const m=locate(e.clientX,e.clientY);
+      const r=dragEl.getBoundingClientRect();
+      fire(dragEl,'pointerup',m?m.x:r.left,m?m.y:r.top,0);
+      const moved=downAt&&Math.hypot(e.clientX-downAt[0],e.clientY-downAt[1])>4;
+      if(!moved){
+        const hit=(m&&m.real)||dragEl;
+        try{hit.dispatchEvent(new window.MouseEvent('click',{bubbles:true,cancelable:true,
+          composed:true,clientX:m?m.x:r.left,clientY:m?m.y:r.top}));}catch(_){}
+      }
+      dragEl=null;setTimeout(presenterStage,60);setTimeout(presenterStage,700);
+    }
+  };
+  st.addEventListener('pointerup',finish);
+  st.addEventListener('pointercancel',()=>{dragEl=null;dragRange=null;});
+  st.addEventListener('pointerleave',()=>{if(!dragEl&&!dragRange)hover(null);});
+}
+
+// <br> inside a heading must read as a space, not run the words together
+function titleOf(h){return h?h.innerHTML.replace(/<br\s*\/?>/gi,' ')
+  .replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/\s+/g,' ').trim():'';}
+let listOpen=true;
+// every slide, clickable. Jumping back lands on a slide fully revealed, the way
+// it looked when it was taught; jumping forward lands on its first step.
+let thumbW=0;
+function buildList(d){
+  const host=d.getElementById('prlist');if(!host)return;host.textContent='';
+  // each row is the slide itself, cloned and scaled down — and the clone carries
+  // whatever step state the deck has applied, so past slides show up revealed
+  slides.forEach((sl,i)=>{
+    const h=sl.querySelector('h1,h2'),t=titleOf(h)||'\u2014';
+    const b=d.createElement('button');
+    b.innerHTML='<span class="thumb"><span class="tin"></span></span>'+
+      '<span class="cap"><span class="n">'+String(i+1).padStart(2,'0')+'</span><span class="t"></span></span>';
+    b.querySelector('.cap .t').textContent=t;b.title=(i+1)+' \u00b7 '+t;
+    fillStage(b.querySelector('.tin'),sl);
+    b.onclick=()=>goto(i,i<cur?maxStep(i):0);
+    host.appendChild(b);
+  });
+  host.classList.toggle('hide',!listOpen);
+  thumbW=0;scaleThumbs(d);
+}
+function scaleThumbs(d){
+  const host=d.getElementById('prlist');if(!host||!host.children.length)return;
+  const w=host.children[0].querySelector('.thumb').clientWidth;
+  if(!w||w===thumbW)return;                      // 0 while the rail is hidden
+  thumbW=w;const k='scale('+(w/STAGE_W)+')';
+  host.querySelectorAll('.tin').forEach(e=>e.style.transform=k);
+}
+function toggleList(){
+  listOpen=!listOpen;
+  if(pop&&!pop.closed){const d=pop.document;
+    const l=d.getElementById('prlist');if(l)l.classList.toggle('hide',!listOpen);
+    const m=d.querySelector('main.pr');if(m)m.classList.toggle('norail',!listOpen);}
+  presenterRender();
+}
+// drag the two vertical handles to trade space between list, slide and notes
+function wireGutters(d){
+  const main=d.querySelector('main.pr');if(!main)return;
+  const wire=(id,fn)=>{
+    const g=d.getElementById(id);if(!g)return;
+    g.addEventListener('pointerdown',e=>{
+      e.preventDefault();g.classList.add('on');
+      try{g.setPointerCapture(e.pointerId);}catch(_){}
+      const move=ev=>{fn(ev.clientX,main.getBoundingClientRect());presenterRender();};
+      const up=()=>{g.classList.remove('on');
+        g.removeEventListener('pointermove',move);g.removeEventListener('pointerup',up);
+        g.removeEventListener('pointercancel',up);presenterRender();};
+      g.addEventListener('pointermove',move);g.addEventListener('pointerup',up);
+      g.addEventListener('pointercancel',up);
+    });
+    g.addEventListener('dblclick',()=>{main.style.removeProperty('--railw');
+      main.style.removeProperty('--notesw');presenterRender();});
+  };
+  wire('pg1',(x,r)=>{const w=Math.max(90,Math.min(360,x-r.left));main.style.setProperty('--railw',w+'px');});
+  wire('pg2',(x,r)=>{const w=Math.max(170,Math.min(r.width-300,r.right-x));main.style.setProperty('--notesw',w+'px');});
+}
+function listRender(d){
+  const host=d.getElementById('prlist');if(!host||!host.children.length)return;
+  [...host.children].forEach((b,i)=>{b.className=i===cur?'cur':(i<cur?'done':'');});
+  const c=host.children[cur];
+  if(c){fillStage(c.querySelector('.tin'),slides[cur]);c.scrollIntoView({block:'nearest'});}
+  scaleThumbs(d);
+}
+function presenterRender(){
+  if(!pop||pop.closed)return;const d=pop.document;
+  if(window.__hintMirrorOff)window.__hintMirrorOff();
+  const pane=d.querySelector('.pane-slide'),box=d.querySelector('.stagebox');if(!box||!pane)return;
+  const sl=slides[cur],h=sl.querySelector('h1,h2');
+  d.getElementById('ttl').textContent=titleOf(h);
+  d.getElementById('cnt').textContent=`${cur+1} / ${slides.length}`;
+  d.getElementById('stp').textContent=`${step} / ${maxStep(cur)}`;
+  // fit the 1440x810 stage into whatever space the pane has
+  const s=Math.max(.05,Math.min(pane.clientWidth/STAGE_W,pane.clientHeight/STAGE_H));
+  box.style.width=(STAGE_W*s)+'px';box.style.height=(STAGE_H*s)+'px';
+  const st=d.getElementById('stage');
+  fillStage(st,sl);st.style.transform='scale('+s+')';
+  const notes=sl.querySelector('.notes'),bx=d.getElementById('notes');bx.textContent='';
+  if(notes){notes.querySelectorAll('p').forEach(p=>{const c=d.importNode(p,true);const cue=c.querySelector('.cue');
+    if(cue){const n=+cue.textContent;c.className=n===step?'now':(n<step?'past':'later');}else c.className='now';bx.appendChild(c);});
+    const now=bx.querySelector('.now');if(now)now.scrollIntoView({block:'nearest'});}
+  const pd=d.getElementById('prd');pd.textContent='';
+  for(let k=0;k<=maxStep(cur);k++){const i=d.createElement('i');
+    i.className=(k<=step?'on':'')+(k===step?' cur':'');pd.appendChild(i);}
+  d.getElementById('prn').textContent=cur+1;
+  d.getElementById('prtot').textContent=slides.length;
+  listRender(d);
+}
+
+window.__HINTS = {
+  /* hover cards: put data-hint="key" on any element and add a key here */
+  qp:`<div class="ht">quadratic program</div><p>Minimize a quadratic function subject to linear inequality constraints. When the quadratic is bowl-shaped (convex), every local minimum is the global one.</p>`,
+  sv:`<div class="ht">support vectors</div><p>The training points with α > 0. In the hard-margin SVC they lie exactly on the edges of the street, f(x) = ±1.</p>`,
+  kernel:`<div class="ht">kernel</div><p>A function K(x, x′) that equals a dot product φ(x)·φ(x′) in some feature space, without computing φ. Examples: (x·x′ + 1)², exp(−γ‖x − x′‖²).</p>`
+};
+/* ---------- hover helper cards ---------- */
+{
+ const card=document.createElement('div');card.id='hintcard';document.body.appendChild(card);
+ const HINTS=window.__HINTS||{};
+ let openEl=null;
+ function place(el){
+   const r=el.getBoundingClientRect();
+   card.style.left='0px';card.style.top='0px';
+   const w=card.offsetWidth,h=card.offsetHeight,M=12;
+   let x=r.left+r.width/2-w/2, y=r.bottom+10;
+   if(y+h>innerHeight-M)y=Math.max(M,r.top-h-10);
+   x=Math.max(M,Math.min(innerWidth-w-M,x));
+   card.style.left=x+'px';card.style.top=y+'px';
+ }
+ // the presenter window shows a clone of the slide, and this card is not part of
+ // the slide at all (it is fixed to the main viewport), so mirror it across
+ function mirror(html){
+   if(!pop||pop.closed)return;
+   const h=pop.document.getElementById('prhint');if(!h)return;
+   if(html){h.innerHTML=html;h.hidden=false;}else{h.hidden=true;h.innerHTML='';}
+ }
+ window.__hintMirrorOff=()=>mirror('');
+ function show(el){
+   const k=el.getAttribute('data-hint');if(!HINTS[k])return;
+   openEl=el;card.innerHTML=HINTS[k];place(el);card.classList.add('on');mirror(HINTS[k]);
+ }
+ function hide(el){if(openEl!==el&&el)return;openEl=null;card.classList.remove('on');mirror('');}
+ function bind(el){
+   el.addEventListener('pointerenter',()=>show(el));
+   el.addEventListener('pointerleave',()=>hide(el));
+   el.addEventListener('pointerover',()=>show(el));
+   el.addEventListener('pointerout',()=>hide(el));
+ }
+ document.querySelectorAll('[data-hint]').forEach(bind);
+ addEventListener('resize',()=>{if(openEl)place(openEl);});
+ deck.addEventListener('scroll',()=>{if(openEl)hide(openEl);},{passive:true});
+}
+
+/* ---------- sync ---------- */
+const params={};
+function bindRange(id,fn){const inp=document.getElementById(id);const run=()=>{fn(+inp.value);send({type:'param',id,v:inp.value});};inp.addEventListener('input',run);params[id]=v=>{inp.value=v;fn(+v);};return run;}
+if(chan)chan.onmessage=e=>{const m=e.data;receiving=true;try{
+  if(m.type==='nav'){goto(m.i,m.s);}
+  else if(m.type==='param'&&params[m.id]){params[m.id](m.v);}
+  else if(m.type==='act'&&actions[m.id]){actions[m.id](m.v);}
+}finally{receiving=false;}};
+const actions={};
+const act=(id,fn)=>{actions[id]=fn;return v=>{fn(v);send({type:'act',id,v});};};
+
+/* ================= SVM lecture ================= */
+const $=id=>document.getElementById(id);
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const MONO='JetBrains Mono,monospace';
+function txt(parent,x,y,s,a={}){const t=el('text',{x,y,...a},parent);t.textContent=s;return t;}
+const dot=(a,b)=>{let s=0;for(let k=0;k<a.length;k++)s+=a[k]*b[k];return s;};
+const norm=a=>Math.sqrt(dot(a,a));
+const f2=v=>(Math.abs(v)<.005?0:v).toFixed(2);
+const short=v=>String(+v.toFixed(2)).replace('-','−');   // 3, −3, 0.4
+
+/* ---------- datasets: coordinates in a 10 × 10 box, labels y = +1 (positive) or −1 ---------- */
+// Separable set. Its max-margin line is x1 + x2 = 10 (w = (0.5, 0.5), b = −5), with three
+// support vectors; check_numbers.py confirms this against scikit-learn.
+const SEP={X:[[5.5,6.5],[7,5],[8,7.5],[6.5,8.5],[8.5,5.5],[9,8],[5,8.5],
+              [4.5,3.5],[3,4],[2,2],[1.5,4.5],[5,2.5],[2,5.5],[3.5,1.5],[6,1]],
+           y:[1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1]};
+// Not separable: SEP plus a negative among the positives and a positive among the negatives.
+const SOFT={X:[...SEP.X,[6.5,6.2],[4.2,5]],y:[...SEP.y,-1,1]};
+// Rings: positives near the centre, negatives on a ring around them (deterministic layout).
+const RINGS=(()=>{const X=[],y=[];
+  for(let i=0;i<10;i++){const a=2*Math.PI*i/10+.3,r=1+.6*((i*7)%5)/4;X.push([5+r*Math.cos(a),5+r*Math.sin(a)]);y.push(1);}
+  for(let i=0;i<16;i++){const a=2*Math.PI*i/16+.1,r=3.4+.8*((i*3)%5)/4;X.push([5+r*Math.cos(a),5+r*Math.sin(a)]);y.push(-1);}
+  return {X,y};})();
+// XOR: positives in two opposite corners, negatives in the other two.
+const XOR=(()=>{const X=[],y=[],OFF=[[0,0],[.9,.5],[-.7,.8],[.4,-.9],[-.8,-.4],[1.1,-.2]];
+  for(const [cx,cy,lab] of [[2.5,2.5,1],[7.5,7.5,1],[2.5,7.5,-1],[7.5,2.5,-1]])
+    for(const [dx,dy] of OFF){X.push([cx+dx,cy+dy]);y.push(lab);}
+  return {X,y};})();
+// Rings lifted to 3D: z = squared distance from the centre (5, 5).
+const lift=p=>[p[0],p[1],(p[0]-5)**2+(p[1]-5)**2];
+
+/* ---------- SVM solver ----------
+   Solves the dual problem  min ½ ΣΣ αi αj yi yj K(xi,xj) − Σ αi,  0 ≤ αi ≤ C,  Σ αi yi = 0
+   by SMO with the maximal-violating-pair rule, the method used in LIBSVM (Fan, Chen & Lin 2005).
+   Returns α, b and f(x) = Σ αi yi K(xi, x) + b; for the linear kernel also w = Σ αi yi xi.
+   A very large C gives the hard-margin solution when the data are separable. Near the edge of
+   separability that takes many iterations; with strict:false a non-converged run is returned
+   (converged:false) instead of throwing. */
+const KERNEL={linear:()=>dot,rbf:g=>(a,b)=>{let s=0;for(let k=0;k<a.length;k++)s+=(a[k]-b[k])**2;return Math.exp(-g*s);}};
+const HARD_C=1e4;
+function svmSolve(X,y,{C=1,K=dot,eps=1e-7,maxIter=200000,strict=true}={}){
+  const n=X.length,Kx=X.map(a=>X.map(b=>K(a,b))),Q=(i,j)=>y[i]*y[j]*Kx[i][j];
+  const a=new Array(n).fill(0),G=new Array(n).fill(-1);
+  let it=0;
+  for(;it<maxIter;it++){
+    let i=-1,j=-1,gmax=-Infinity,gmin=Infinity;
+    for(let t=0;t<n;t++){const v=-y[t]*G[t];
+      if(((y[t]>0&&a[t]<C)||(y[t]<0&&a[t]>0))&&v>gmax){gmax=v;i=t;}
+      if(((y[t]<0&&a[t]<C)||(y[t]>0&&a[t]>0))&&v<gmin){gmin=v;j=t;}}
+    if(gmax-gmin<eps)break;
+    const ai=a[i],aj=a[j];
+    if(y[i]!==y[j]){
+      const quad=Math.max(Kx[i][i]+Kx[j][j]+2*Q(i,j),1e-12),delta=(-G[i]-G[j])/quad,diff=a[i]-a[j];
+      a[i]+=delta;a[j]+=delta;
+      if(diff>0){if(a[j]<0){a[j]=0;a[i]=diff;}}else{if(a[i]<0){a[i]=0;a[j]=-diff;}}
+      if(diff>0){if(a[i]>C){a[i]=C;a[j]=C-diff;}}else{if(a[j]>C){a[j]=C;a[i]=C+diff;}}
+    }else{
+      const quad=Math.max(Kx[i][i]+Kx[j][j]-2*Q(i,j),1e-12),delta=(G[i]-G[j])/quad,sum=a[i]+a[j];
+      a[i]-=delta;a[j]+=delta;
+      if(sum>C){if(a[i]>C){a[i]=C;a[j]=sum-C;}}else{if(a[j]<0){a[j]=0;a[i]=sum;}}
+      if(sum>C){if(a[j]>C){a[j]=C;a[i]=sum-C;}}else{if(a[i]<0){a[i]=0;a[j]=sum;}}
+    }
+    const di=a[i]-ai,dj=a[j]-aj;
+    for(let t=0;t<n;t++)G[t]+=Q(t,i)*di+Q(t,j)*dj;
+  }
+  const converged=it<maxIter;
+  if(!converged&&strict)throw new Error('svmSolve did not converge');   // strict:false lets the caller report it
+  // offset, as LIBSVM computes it: average over free α, else midpoint of the feasible interval
+  let ub=Infinity,lb=-Infinity,nf=0,sf=0;const tol=1e-12*Math.max(1,C);
+  for(let t=0;t<n;t++){const yg=y[t]*G[t];
+    if(a[t]>=C-tol){if(y[t]<0)ub=Math.min(ub,yg);else lb=Math.max(lb,yg);}
+    else if(a[t]<=tol){if(y[t]>0)ub=Math.min(ub,yg);else lb=Math.max(lb,yg);}
+    else{nf++;sf+=yg;}}
+  const b=-(nf>0?sf/nf:(ub+lb)/2);
+  const sv=[];for(let t=0;t<n;t++)if(a[t]>1e-8*Math.max(1,C))sv.push(t);
+  const f=x=>{let s=b;for(const t of sv)s+=a[t]*y[t]*K(X[t],x);return s;};
+  const out={alpha:a,b,sv,f,iters:it,converged};
+  if(K===dot){out.w=X[0].map((_,k)=>sv.reduce((s,t)=>s+a[t]*y[t]*X[t][k],0));}
+  return out;
+}
+// summary numbers for a linear solution
+function stats(m,X,y){const yf=X.map((p,i)=>y[i]*m.f(p)),xi=yf.map(v=>Math.max(0,1-v));
+  return {width:m.w?2/norm(m.w):NaN,nsv:m.sv.length,mistakes:yf.filter(v=>v<0).length,sumXi:xi.reduce((s,v)=>s+v,0),xi,yf};}
+window.__svm={svmSolve,KERNEL,SEP,SOFT,RINGS,XOR,lift,HARD_C};   // used by tests/export.js
+
+/* ---------- drawing on a square data plot ---------- */
+function plane(host,{label,xmax=10,ymax=10,xticks=[0,2,4,6,8,10],yticks=xticks,H=470}={}){
+  const ml=74,plotH=H-62,W=Math.round(plotH*xmax/ymax+ml+18);
+  const api=chart(host,{W,H,ml,fs:1.45,xmin:0,xmax,ymin:0,ymax,xticks,yticks,xlabel:'x₁',ylabel:'x₂',label});
+  api.box=[[0,0],[xmax,0],[xmax,ymax],[0,ymax]];
+  api.svg.classList.add('sq');
+  return api;
+}
+// keep the part of polygon P where a·x + c ≥ 0
+function clipHalf(P,a,c){const out=[],g=p=>a[0]*p[0]+a[1]*p[1]+c;
+  for(let k=0;k<P.length;k++){const p=P[k],q=P[(k+1)%P.length],gp=g(p),gq=g(q);
+    if(gp>=0)out.push(p);
+    if((gp>=0)!==(gq>=0)){const t=gp/(gp-gq);out.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);}}
+  return out;}
+// part of the box where lo ≤ w·x + b ≤ hi
+const band=(api,w,b,lo,hi)=>clipHalf(clipHalf(api.box,w,b-lo),[-w[0],-w[1]],hi-b);
+const polyD=(api,P)=>P.map((p,k)=>(k?'L':'M')+api.sx(p[0]).toFixed(1)+' '+api.sy(p[1]).toFixed(1)).join(' ')+' Z';
+// end points of the line w·x + b = c inside the box (null if it misses the box)
+function lineEnds(api,w,b,c){const P=api.box,g=p=>w[0]*p[0]+w[1]*p[1]+b-c,out=[];
+  for(let k=0;k<4;k++){const p=P[k],q=P[(k+1)%4],gp=g(p),gq=g(q);
+    if(gp===0)out.push(p);else if(gp*gq<0){const t=gp/(gp-gq);out.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);}}
+  const u=out.filter((p,k)=>out.findIndex(q=>Math.hypot(p[0]-q[0],p[1]-q[1])<1e-9)===k);
+  return u.length>=2?u.slice(0,2):null;}
+function drawLine(api,L,w,b,c,a={}){const e=lineEnds(api,w,b,c);if(!e)return null;
+  return el('line',{x1:api.sx(e[0][0]),y1:api.sy(e[0][1]),x2:api.sx(e[1][0]),y2:api.sy(e[1][1]),stroke:'var(--model)','stroke-width':3,'stroke-linecap':'round',...a},L);}
+function drawBand(api,L,w,b,lo,hi,a={}){const P=band(api,w,b,lo,hi);if(P.length<3)return null;
+  return el('path',{d:polyD(api,P),fill:'var(--model-soft)',stroke:'none',...a},L);}
+// the street of a linear SVM: shaded band, dashed edges f = ±1, solid line f = 0
+function drawStreet(api,L,w,b){drawBand(api,L,w,b,-1,1);
+  for(const c of [-1,1])drawLine(api,L,w,b,c,{'stroke-width':2,'stroke-dasharray':'7 6',opacity:.85});
+  drawLine(api,L,w,b,0);}
+const dotFill=yi=>yi>0?'var(--pos)':'var(--mean)';
+function drawPoints(api,L,X,y,{r=8}={}){return X.map((p,i)=>el('circle',{cx:api.sx(p[0]),cy:api.sy(p[1]),r,fill:dotFill(y[i]),stroke:'var(--surface)','stroke-width':2},L));}
+function ring(api,L,p,{color='var(--hi)',r=14,w=3}={}){return el('circle',{cx:api.sx(p[0]),cy:api.sy(p[1]),r,fill:'none',stroke:color,'stroke-width':w},L);}
+const stepG=(parent,k)=>el('g',{'data-step':k},parent);
+function arrow(api,L,p,q,{color='var(--ink)',width=2.5,head=10}={}){
+  const x1=api.sx(p[0]),y1=api.sy(p[1]),x2=api.sx(q[0]),y2=api.sy(q[1]),a=Math.atan2(y2-y1,x2-x1);
+  el('line',{x1,y1,x2:x2-Math.cos(a)*head*.6,y2:y2-Math.sin(a)*head*.6,stroke:color,'stroke-width':width,'stroke-linecap':'round'},L);
+  el('polygon',{points:[[x2,y2],[x2-head*Math.cos(a-.4),y2-head*Math.sin(a-.4)],[x2-head*Math.cos(a+.4),y2-head*Math.sin(a+.4)]].map(v=>v.join(',')).join(' '),fill:color},L);}
+// pointer position in data coordinates
+function toData(api,e){const r=api.svg.getBoundingClientRect(),px=(e.clientX-r.left)/r.width*api.W,py=(e.clientY-r.top)/r.height*api.H;
+  const [x0,y0]=api.box[0],[x1,y1]=api.box[2];
+  return [clamp(x0+(px-api.sx(x0))/(api.sx(x1)-api.sx(x0))*(x1-x0),x0,x1),clamp(y0+(py-api.sy(y0))/(api.sy(y1)-api.sy(y0))*(y1-y0),y0,y1)];}
+// make an SVG element draggable in data coordinates
+function draggable(api,node,onMove){node.style.cursor='grab';
+  node.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();try{node.setPointerCapture(e.pointerId);}catch(_){}
+    const mv=ev=>onMove(toData(api,ev)),up=()=>{node.removeEventListener('pointermove',mv);node.removeEventListener('pointerup',up);node.removeEventListener('pointercancel',up);};
+    node.addEventListener('pointermove',mv);node.addEventListener('pointerup',up);node.addEventListener('pointercancel',up);});}
+
+const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
+
+/* ---------- slide 2: which line? ---------- */
+{
+  const api=plane($('fig-which'),{label:'which separating line?'});
+  const {X,y}=SEP;
+  // a line in unit-normal form: u = (cos θ, sin θ), f(x) = u·x − c is the signed distance
+  const unit=deg=>[Math.cos(deg*Math.PI/180),Math.sin(deg*Math.PI/180)];
+  const gap=(u,c)=>Math.min(...X.map((p,i)=>y[i]*(dot(u,p)-c)));          // > 0: half the street width
+  function feasible(deg){const u=unit(deg),pr=X.map(p=>dot(u,p));
+    return {u,lo:Math.max(...pr.filter((_,i)=>y[i]<0)),hi:Math.min(...pr.filter((_,i)=>y[i]>0))};}
+  const LINES={};
+  for(const [k,deg,frac] of [['A',15,.5],['B',72,.5],['C',45,.82]]){const F=feasible(deg);
+    if(!(F.lo<F.hi))throw new Error(`line ${k} does not separate the data`);
+    LINES[k]={u:F.u,c:F.lo+frac*(F.hi-F.lo)};}
+  {const w=SEP_HARD.w,n=norm(w);LINES.SVM={u:[w[0]/n,w[1]/n],c:-SEP_HARD.b/n};}
+  const gl=stepG(api.layer('extra'),1),gs=stepG(api.layer('heat'),2),gsl=stepG(api.layer('anno'),2);
+  for(const k of ['A','B','C']){const {u,c}=LINES[k];
+    drawLine(api,gl,u,-c,0,{stroke:'var(--muted)','stroke-width':2,'stroke-dasharray':'2 5',opacity:.9});
+    const e=lineEnds(api,u,-c,0),[top,bot]=e[0][1]>e[1][1]?e:[e[1],e[0]],len=Math.hypot(bot[0]-top[0],bot[1]-top[1]);
+    const at=[top[0]+.8*(bot[0]-top[0])/len,top[1]+.8*(bot[1]-top[1])/len];
+    txt(gl,api.sx(at[0])+14,api.sy(at[1]),k,{fill:'var(--muted)','font-size':19,'font-weight':700,'font-family':MONO,'text-anchor':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});}
+  drawPoints(api,api.layer('pts'),X,y);
+  let sel='A',mine={deg:30,c:7};
+  function draw(){
+    gs.textContent='';gsl.textContent='';
+    const {u,c}=sel==='yours'?{u:unit(mine.deg),c:mine.c}:LINES[sel];
+    const h=gap(u,c);
+    if(h>0)drawBand(api,gs,u,-c,-h,h);
+    drawLine(api,gs,u,-c,0,{stroke:sel==='SVM'?'var(--model)':'var(--ink)'});
+    const wrong=X.filter((p,i)=>y[i]*(dot(u,p)-c)<=0);
+    wrong.forEach(p=>ring(api,gsl,p,{color:'var(--err)'}));
+    $('v-which-w').textContent=h>0?(2*h).toFixed(2):'none';
+    $('v-which-err').textContent=wrong.length;
+    for(const k of ['A','B','C','SVM'])$('b-which-'+k).classList.toggle('sel',k===sel);
+  }
+  const pick=act('which-pick',k=>{sel=k;draw();});
+  const setMine=act('which-mine',([deg,c])=>{mine={deg,c};sel='yours';$('r-which-ang').value=deg;$('r-which-off').value=Math.round(c*100);draw();});
+  for(const k of ['A','B','C','SVM'])$('b-which-'+k).onclick=()=>pick(k);
+  for(const id of ['r-which-ang','r-which-off'])$(id).addEventListener('input',()=>setMine([+$('r-which-ang').value,$('r-which-off').value/100]));
+  hooks['s-which']={step(s){if(s===2)pick('A');else if(s===3)pick('SVM');}};
+  draw();
+}
+
+/* ---------- slide 3: the hyperplane w·x + b = 0 ---------- */
+{
+  const api=plane($('fig-hyper'),{label:'a line given by w and b'});
+  let w=[.5,.5],b=-5,x=[7.5,3];
+  const gReg=stepG(api.layer('heat'),2),gLine=api.layer('fit'),gW=stepG(api.layer('anno'),1),gRegLab=stepG(api.layer('anno'),2),gX=stepG(api.layer('anno'),3);
+  const px=el('circle',{r:10,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':2.5},gX);
+  const pl=txt(gX,0,0,'x',{fill:'var(--hi)','font-size':18,'font-weight':700,'font-family':MONO});
+  function draw(){
+    gReg.textContent='';gLine.textContent='';gW.textContent='';gRegLab.textContent='';
+    const n=norm(w);
+    if(n<1e-9){$('v-hy-eq').textContent='w = 0: no line';return;}
+    const pos=clipHalf(api.box,w,b),neg=clipHalf(api.box,[-w[0],-w[1]],-b);
+    if(pos.length>2)el('path',{d:polyD(api,pos),fill:'var(--pos)',opacity:.1},gReg);
+    if(neg.length>2)el('path',{d:polyD(api,neg),fill:'var(--mean)',opacity:.1},gReg);
+    const cen=P=>[P.reduce((s,p)=>s+p[0],0)/P.length,P.reduce((s,p)=>s+p[1],0)/P.length];
+    if(pos.length>2){const c=cen(pos);txt(gRegLab,api.sx(c[0]),api.sy(c[1]),'f(x) > 0',{fill:'var(--pos)','font-size':17,'font-weight':700,'font-family':MONO,'text-anchor':'middle'});}
+    if(neg.length>2){const c=cen(neg);txt(gRegLab,api.sx(c[0]),api.sy(c[1]),'f(x) < 0',{fill:'var(--mean)','font-size':17,'font-weight':700,'font-family':MONO,'text-anchor':'middle'});}
+    drawLine(api,gLine,w,b,0);
+    // w drawn from the point of the line closest to the centre of the box; length 3·‖w‖ for visibility
+    const t=-(dot(w,[5,5])+b)/(n*n),foot=[5+t*w[0],5+t*w[1]],tip=[foot[0]+3*w[0],foot[1]+3*w[1]];
+    if(foot[0]>=0&&foot[0]<=10&&foot[1]>=0&&foot[1]<=10){arrow(api,gW,foot,tip,{color:'var(--ink)'});
+      txt(gW,api.sx(tip[0])+10,api.sy(tip[1])-6,'w',{fill:'var(--ink)','font-size':19,'font-weight':700,'font-family':MONO});}
+    const fx=dot(w,x)+b;
+    px.setAttribute('cx',api.sx(x[0]));px.setAttribute('cy',api.sy(x[1]));pl.setAttribute('x',api.sx(x[0])+14);pl.setAttribute('y',api.sy(x[1])-12);
+    $('v-hy-x').textContent=`(${x[0].toFixed(1)}, ${x[1].toFixed(1)})`;
+    $('v-hy-f').textContent=f2(fx);
+    $('v-hy-p').textContent=fx>0?'+1':fx<0?'−1':'on the line';$('v-hy-p').className='val '+(fx>0?'k-pos':fx<0?'k-mean':'');
+    $('v-hy-eq').textContent=`f(x) = ${f2(w[0])}·x₁ + ${f2(w[1])}·x₂ ${b<0?'−':'+'} ${Math.abs(b).toFixed(1)}`;
+  }
+  const set=act('hy',([w1,w2,bb,x1,x2])=>{w=[w1,w2];b=bb;x=[x1,x2];
+    $('r-hy-w1').value=Math.round(w1*100);$('r-hy-w2').value=Math.round(w2*100);$('r-hy-b').value=Math.round(bb*10);draw();});
+  const cur=()=>[w[0],w[1],b,x[0],x[1]];
+  $('r-hy-w1').addEventListener('input',e=>{const v=cur();v[0]=e.target.value/100;set(v);});
+  $('r-hy-w2').addEventListener('input',e=>{const v=cur();v[1]=e.target.value/100;set(v);});
+  $('r-hy-b').addEventListener('input',e=>{const v=cur();v[2]=e.target.value/10;set(v);});
+  draggable(api,px,p=>{const v=cur();v[3]=p[0];v[4]=p[1];set(v);});
+  draw();
+}
+
+/* ---------- slide 4: distance to the hyperplane ---------- */
+{
+  const api=plane($('fig-dist'),{label:'distance from a point to the line'});
+  const w=[.3,.4],b=-3.5,n=norm(w),u=[w[0]/n,w[1]/n];
+  let x=[8,7];
+  drawLine(api,api.layer('fit'),w,b,0);
+  const g1=stepG(api.layer('anno'),1),gx=api.layer('pts');
+  const seg=el('line',{stroke:'var(--hi)','stroke-width':3,'stroke-dasharray':'6 5'},g1);
+  const sq=el('path',{fill:'none',stroke:'var(--muted)','stroke-width':1.5},g1);
+  const foot=el('circle',{r:7,fill:'var(--model)',stroke:'var(--surface)','stroke-width':2},g1);
+  const fl=txt(g1,0,0,'xₚ',{fill:'var(--model)','font-size':18,'font-weight':700,'font-family':MONO});
+  const rl=txt(g1,0,0,'r',{fill:'var(--hi)','font-size':19,'font-weight':700,'font-family':MONO,'paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});
+  const px=el('circle',{r:10,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':2.5},gx);
+  const pl=txt(gx,0,0,'x',{fill:'var(--hi)','font-size':18,'font-weight':700,'font-family':MONO});
+  function draw(){
+    const fx=dot(w,x)+b,r=fx/n,xp=[x[0]-r*u[0],x[1]-r*u[1]];
+    const S=p=>[api.sx(p[0]),api.sy(p[1])],[X0,Y0]=S(x),[X1,Y1]=S(xp);
+    seg.setAttribute('x1',X0);seg.setAttribute('y1',Y0);seg.setAttribute('x2',X1);seg.setAttribute('y2',Y1);
+    // right-angle mark at the foot, 0.35 units along the line and along w
+    const a=[xp[0]+.35*u[1],xp[1]-.35*u[0]],c=[xp[0]+.35*Math.sign(r||1)*u[0],xp[1]+.35*Math.sign(r||1)*u[1]],d=[a[0]+c[0]-xp[0],a[1]+c[1]-xp[1]];
+    sq.setAttribute('d',`M${S(a).join(' ')} L${S(d).join(' ')} L${S(c).join(' ')}`);
+    foot.setAttribute('cx',X1);foot.setAttribute('cy',Y1);fl.setAttribute('x',X1-34);fl.setAttribute('y',Y1+22);
+    rl.setAttribute('x',(X0+X1)/2+10);rl.setAttribute('y',(Y0+Y1)/2-8);
+    px.setAttribute('cx',X0);px.setAttribute('cy',Y0);pl.setAttribute('x',X0+14);pl.setAttribute('y',Y0-12);
+    $('v-di-f').textContent=f2(fx);$('v-di-n').textContent=n.toFixed(2);$('v-di-r').textContent=f2(r);
+  }
+  const set=act('dist',p=>{x=p;draw();});
+  draggable(api,px,p=>set(p));
+  draw();
+}
+
+/* ---------- slide 5: the margin ---------- */
+{
+  const api=plane($('fig-margin'),{label:'margin of the separating line'});
+  const {X,y}=SEP,{w,b}=SEP_HARD,n=norm(w),u=[w[0]/n,w[1]/n];
+  drawLine(api,api.layer('fit'),w,b,0);
+  const closest=X.map((p,i)=>i).filter(i=>Math.abs(y[i]*(dot(w,X[i])+b)-1)<1e-6);
+  const g1=stepG(api.layer('anno'),1),g2=stepG(api.layer('extra'),2),g2l=stepG(api.layer('anno'),2),g3=stepG(api.layer('heat'),3),g3l=stepG(api.layer('anno'),3);
+  for(const i of closest){const p=X[i],r=(dot(w,p)+b)/n,q=[p[0]-r*u[0],p[1]-r*u[1]];
+    el('line',{x1:api.sx(p[0]),y1:api.sy(p[1]),x2:api.sx(q[0]),y2:api.sy(q[1]),stroke:'var(--hi)','stroke-width':2.5,'stroke-dasharray':'5 5'},g1);
+    ring(api,g1,p);}
+  for(const c of [-1,1]){drawLine(api,g2,w,b,c,{'stroke-width':2,'stroke-dasharray':'7 6'});
+    const e=lineEnds(api,w,b,c),low=e[0][1]<e[1][1]?e[0]:e[1];
+    txt(g2l,api.sx(low[0])-10,api.sy(low[1])-(c>0?14:10),c>0?'f = +1':'f = −1',{fill:'var(--model)','font-size':15,'font-weight':700,'font-family':MONO,'text-anchor':'end','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});}
+  drawBand(api,g3,w,b,-1,1);
+  // width arrow centred on the point of f = 0 nearest to (1.5, 8.5), an empty part of the plot
+  const t=-(dot(w,[1.5,8.5])+b)/(n*n),m=[1.5+t*w[0],8.5+t*w[1]],p0=[m[0]-u[0]/n,m[1]-u[1]/n],p1=[m[0]+u[0]/n,m[1]+u[1]/n];
+  arrow(api,g3l,m,p1,{color:'var(--ink)',width:2});arrow(api,g3l,m,p0,{color:'var(--ink)',width:2});
+  txt(g3l,api.sx(p1[0])+10,api.sy(p1[1])+4,`2/‖w‖ = ${(2/n).toFixed(2)}`,{fill:'var(--ink)','font-size':16,'font-weight':700,'font-family':MONO,'text-anchor':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});
+  drawPoints(api,api.layer('pts'),X,y);
+}
+
+/* ---------- slide 6: hard-margin SVC with support vectors and α ---------- */
+{
+  const api=plane($('fig-hard'),{label:'hard-margin SVC'});
+  const {X,y}=SEP,m=SEP_HARD;
+  drawStreet(api,stepG(api.layer('heat'),1),m.w,m.b);
+  const g2=stepG(api.layer('anno'),2);
+  const FR={'0.08333':'1/12','0.16667':'1/6','0.25000':'1/4'},frac=v=>FR[v.toFixed(5)]||v.toFixed(3);
+  for(const i of m.sv){ring(api,g2,X[i]);
+    const p=X[i],left=y[i]<0;      // negatives: label to the lower left; positives: lower right
+    txt(g2,api.sx(p[0])+(left?-12:12),api.sy(p[1])+30,`α = ${frac(m.alpha[i])}`,{fill:'var(--hi)','font-size':16,'font-weight':700,'font-family':MONO,'text-anchor':left?'end':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});}
+  drawPoints(api,api.layer('pts'),X,y);
+}
+
+/* ---------- slide 7: drag points, the SVM refits ---------- */
+{
+  const api=plane($('fig-sv'),{label:'drag points; the SVM is retrained'});
+  const y=SEP.y.slice();let X=SEP.X.map(p=>p.slice());
+  const gS=stepG(api.layer('heat'),1),gR=stepG(api.layer('anno'),1);   // the fit appears at step 1
+  const dots=drawPoints(api,api.layer('pts'),X,y,{r:9});
+  function draw(){
+    gS.textContent='';gR.textContent='';
+    // no hard-margin solution: the solver fails to converge, or the best large-C fit violates the margin
+    const m=svmSolve(X,y,{C:HARD_C,strict:false}),st=stats(m,X,y),separable=m.converged&&Math.min(...st.yf)>1-1e-3;
+    dots.forEach((c,i)=>{c.setAttribute('cx',api.sx(X[i][0]));c.setAttribute('cy',api.sy(X[i][1]));});
+    if(separable){drawStreet(api,gS,m.w,m.b);m.sv.forEach(i=>ring(api,gR,X[i]));
+      $('v-sv-w').textContent=st.width.toFixed(2);$('v-sv-n').textContent=st.nsv;$('rd-sv').textContent='ringed: support vectors';}
+    else{$('v-sv-w').textContent='none';$('v-sv-n').textContent='–';
+      $('rd-sv').innerHTML='<span class="k-err">no line separates these points: the hard-margin problem has no solution</span>';}
+  }
+  const set=act('sv',P=>{X=P.map(p=>p.slice());draw();});
+  dots.forEach((c,i)=>draggable(api,c,p=>{const P=X.map(q=>q.slice());P[i]=p;set(P);}));
+  $('b-sv-reset').onclick=()=>set(SEP.X);
+  draw();
+}
+
+/* ---------- slides 8–9: soft margin ---------- */
+// slack of point i as a segment from the point to its own street edge (length ξ/‖w‖)
+function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
+  X.forEach((p,i)=>{const xi=Math.max(0,1-y[i]*m.f(p));if(xi<1e-6)return;
+    const q=[p[0]+y[i]*xi*m.w[0]/n2,p[1]+y[i]*xi*m.w[1]/n2];
+    el('line',{x1:api.sx(p[0]),y1:api.sy(p[1]),x2:api.sx(q[0]),y2:api.sy(q[1]),stroke:'var(--err)','stroke-width':3,'stroke-linecap':'round'},L);
+    if(labels)txt(L,api.sx(p[0])+(y[i]>0?-14:14),api.sy(p[1])+(y[i]>0?24:-12),`ξ = ${xi.toFixed(2)}`,{fill:'var(--err)','font-size':15,'font-weight':700,'font-family':MONO,'text-anchor':y[i]>0?'end':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});});}
+{
+  const api=plane($('fig-soft'),{label:'soft-margin SVC, C = 1'});
+  const {X,y}=SOFT,m=svmSolve(X,y,{C:1});
+  const g1=stepG(api.layer('anno'),1);
+  [X.length-2,X.length-1].forEach(i=>ring(api,g1,X[i],{color:'var(--err)'}));
+  drawStreet(api,stepG(api.layer('heat'),2),m.w,m.b);
+  drawSlack(api,stepG(api.layer('anno'),3),m,X,y);
+  drawPoints(api,api.layer('pts'),X,y);
+}
+{
+  const api=plane($('fig-c'),{label:'soft-margin SVC for a chosen C',H:440});
+  const {X,y}=SOFT;
+  drawPoints(api,api.layer('pts'),X,y);
+  const inp=$('r-c');
+  const set=act('c',v=>{inp.value=v;const C=10**(v/100),m=svmSolve(X,y,{C}),st=stats(m,X,y);
+    const gS=api.clear('heat'),gA=api.clear('anno');
+    drawStreet(api,gS,m.w,m.b);drawSlack(api,gA,m,X,y,{labels:false});m.sv.forEach(i=>ring(api,gA,X[i],{r:13,w:2.5}));
+    $('v-c-c').textContent=`C = ${C<1?C.toFixed(C<.1?3:2):C.toFixed(C<10?1:0)}`;
+    $('v-c-w').textContent=st.width.toFixed(2);$('v-c-n').textContent=st.nsv;$('v-c-e').textContent=st.mistakes;$('v-c-x').textContent=st.sumXi.toFixed(2);});
+  inp.addEventListener('input',()=>set(+inp.value));
+  hooks['s-c']={step(s){const v={0:0,1:200,2:-200,3:0}[s];if(v!==undefined)set(v);}};
+  set(0);
+}
+
+/* ---------- slide 10: lift the rings to 3D ---------- */
+{
+  const {X,y}=RINGS,Z=X.map(lift);
+  const m=svmSolve(Z,y,{C:HARD_C});                       // linear SVM on (x1, x2, z)
+  const [w1,w2,w3]=m.w;
+  // 2D view: the plane w1·x1 + w2·x2 + w3·z + b = c is a circle in (x1, x2)
+  const api=plane($('fig-lift2d'),{label:'rings in two dimensions',H:440});
+  const g4=stepG(api.layer('heat'),4);
+  const X0=-w1/(2*w3),Y0=-w2/(2*w3),k=5*w1+5*w2+m.b;
+  const radius=c=>Math.sqrt(X0*X0+Y0*Y0-(k-c)/w3);
+  const ux=api.sx(1)-api.sx(0);
+  for(const c of [-1,0,1]){const R=radius(c);
+    el('circle',{cx:api.sx(5+X0),cy:api.sy(5+Y0),r:R*ux,fill:c===0?'var(--pos)':'none','fill-opacity':c===0?.1:0,stroke:'var(--model)','stroke-width':c===0?3:2,'stroke-dasharray':c===0?'':'7 6'},g4);}
+  drawPoints(api,api.layer('pts'),X,y);
+  // 3D view, drag to rotate
+  const W=440,H=440,S=29,ZS=1/3;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'the rings lifted to three dimensions; drag to turn'},$('fig-lift3d'));
+  const gFloor=el('g',{},svg),gLow=el('g',{},svg),gPlane=el('g',{'data-step':3},svg),gHigh=el('g',{},svg);
+  let yaw=-.6,pitch=.38;
+  const proj=([px,py,pz])=>{const a=px-5,b2=py-5,c=pz*ZS,cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+    const Xr=a*cy-b2*sy,Yr=a*sy+b2*cy;return [W/2+Xr*S,H*.74-(c*cp-Yr*sp)*S,c*sp+Yr*cp];};
+  const zPlane=(px,py)=>-(w1*px+w2*py+m.b)/w3;
+  function draw3(){
+    for(const g of [gFloor,gLow,gPlane,gHigh])g.textContent='';
+    for(let v=0;v<=10;v+=2.5){for(const [p,q] of [[[v,0,0],[v,10,0]],[[0,v,0],[10,v,0]]]){const A=proj(p),B=proj(q);
+      el('line',{x1:A[0],y1:A[1],x2:B[0],y2:B[1],stroke:'var(--grid)','stroke-width':1.2},gFloor);}}
+    const ax=(p,q,s)=>{const A=proj(p),B=proj(q);el('line',{x1:A[0],y1:A[1],x2:B[0],y2:B[1],stroke:'var(--line)','stroke-width':1.5},gFloor);
+      txt(gFloor,B[0]+6,B[1]+4,s,{fill:'var(--muted)','font-size':15,'font-weight':700,'font-family':MONO});};
+    ax([0,0,0],[10.8,0,0],'x₁');ax([0,0,0],[0,10.8,0],'x₂');ax([0,0,0],[0,0,19],'z');
+    const order=Z.map((p,i)=>i).sort((i,j)=>proj(Z[j])[2]-proj(Z[i])[2]);
+    for(const i of order){const P=proj(Z[i]),F=proj([Z[i][0],Z[i][1],0]),L=y[i]>0?gLow:gHigh;
+      el('line',{x1:F[0],y1:F[1],x2:P[0],y2:P[1],stroke:dotFill(y[i]),'stroke-width':1.2,opacity:.45},L);
+      el('circle',{cx:P[0],cy:P[1],r:7,fill:dotFill(y[i]),stroke:'var(--surface)','stroke-width':1.5},L);}
+    const C=[[0,0],[10,0],[10,10],[0,10]].map(([a,b2])=>proj([a,b2,zPlane(a,b2)]));
+    el('polygon',{points:C.map(p=>p[0]+','+p[1]).join(' '),fill:'var(--model)','fill-opacity':.18,stroke:'var(--model)','stroke-width':2},gPlane);
+  }
+  let drag=null;
+  svg.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,yaw,pitch];try{svg.setPointerCapture(e.pointerId);}catch(_){}});
+  svg.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag[2]+(e.clientX-drag[0])/150;pitch=clamp(drag[3]+(e.clientY-drag[1])/220,.05,1.3);draw3();});
+  svg.addEventListener('pointerup',()=>{drag=null;});svg.addEventListener('pointercancel',()=>{drag=null;});
+  draw3();
+}
+
+/* ---------- slide 11: kernels ---------- */
+{
+  const api=plane($('fig-kernel'),{label:'kernel SVM decision regions',H:450});
+  const DATA={rings:RINGS,xor:XOR},C=10,N=40,NC=60;
+  let ds='rings',kern='linear',lg=-.3;
+  const gModel=stepG(api.layer('heat'),1),gSV=stepG(api.layer('anno'),1),gPts=api.layer('pts');
+  // contour of a grid of values at level c, by marching squares; returns an SVG path string
+  function contour(F,n,c){const h=10/n,S=(i,j)=>[i*h,j*h];let d='';
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++){
+      const v=[F[i][j]-c,F[i+1][j]-c,F[i+1][j+1]-c,F[i][j+1]-c],P=[S(i,j),S(i+1,j),S(i+1,j+1),S(i,j+1)],pts=[];
+      for(let k=0;k<4;k++){const a=v[k],b=v[(k+1)%4];if((a>=0)!==(b>=0)){const t=a/(a-b),p=P[k],q=P[(k+1)%4];pts.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);}}
+      for(let k=0;k+1<pts.length;k+=2)d+=`M${api.sx(pts[k][0]).toFixed(1)} ${api.sy(pts[k][1]).toFixed(1)}L${api.sx(pts[k+1][0]).toFixed(1)} ${api.sy(pts[k+1][1]).toFixed(1)}`;}
+    return d;}
+  function draw(){
+    const {X,y}=DATA[ds],g=10**lg,K=kern==='linear'?KERNEL.linear():KERNEL.rbf(g),m=svmSolve(X,y,{C,K});
+    gModel.textContent='';gSV.textContent='';gPts.textContent='';
+    const h=10/N,cw=api.sx(h)-api.sx(0),gHeat=el('g',{opacity:.13},gModel);
+    for(let i=0;i<N;i++)for(let j=0;j<N;j++){const v=m.f([(i+.5)*h,(j+.5)*h]);
+      el('rect',{x:api.sx(i*h),y:api.sy((j+1)*h),width:cw+.6,height:cw+.6,fill:v>0?'var(--pos)':'var(--mean)'},gHeat);}
+    const F=[];for(let i=0;i<=NC;i++){F.push([]);for(let j=0;j<=NC;j++)F[i].push(m.f([i*10/NC,j*10/NC]));}
+    el('path',{d:contour(F,NC,0),fill:'none',stroke:'var(--model)','stroke-width':3,'stroke-linecap':'round'},gModel);
+    for(const c of [-1,1])el('path',{d:contour(F,NC,c),fill:'none',stroke:'var(--model)','stroke-width':1.8,'stroke-dasharray':'6 5',opacity:.8},gModel);
+    m.sv.forEach(i=>ring(api,gSV,X[i],{r:13,w:2.5}));
+    drawPoints(api,gPts,X,y);
+    const mistakes=X.filter((p,i)=>y[i]*m.f(p)<0).length;
+    $('v-k-k').textContent=kern==='linear'?'linear':'RBF';$('v-k-e').textContent=mistakes;$('v-k-n').textContent=m.sv.length;
+    $('v-k-g').textContent=kern==='rbf'?`γ = ${g<1?g.toFixed(g<.1?3:2):g.toFixed(1)}`:'';
+    $('r-k-g').disabled=kern!=='rbf';
+    for(const [id,on] of [['b-k-rings',ds==='rings'],['b-k-xor',ds==='xor'],['b-k-linear',kern==='linear'],['b-k-rbf',kern==='rbf']])$(id).classList.toggle('sel',on);
+  }
+  const set=act('kernel',([d,k,l])=>{ds=d;kern=k;lg=l;$('r-k-g').value=Math.round(l*100);draw();});
+  $('b-k-rings').onclick=()=>set(['rings',kern,lg]);$('b-k-xor').onclick=()=>set(['xor',kern,lg]);
+  $('b-k-linear').onclick=()=>set([ds,'linear',lg]);$('b-k-rbf').onclick=()=>set([ds,'rbf',lg]);
+  $('r-k-g').addEventListener('input',e=>set([ds,'rbf',e.target.value/100]));
+  const PRESET={1:['rings','linear',-.3],2:['rings','rbf',-.3],3:['rings','rbf',1],4:['xor','rbf',-.3]};
+  hooks['s-kernel']={step(s){if(PRESET[s])set(PRESET[s]);}};
+  draw();
+}
+
+/* ---------- slide 13: exercise ---------- */
+{
+  const api=plane($('fig-ex'),{label:'exercise: a trained SVC',xmax:4,ymax:3,xticks:[0,1,2,3,4],yticks:[0,1,2,3],H:430});
+  const w=[3,4],b=-10;
+  const P={A:[[3,1],1],B:[[1,1],-1],C:[[2.4,.8],1],D:[[2,1],-1],E:[[3,.6],-1]};
+  drawLine(api,api.layer('fit'),w,b,0);
+  const g2=stepG(api.layer('heat'),2);drawBand(api,g2,w,b,-1,1);
+  for(const c of [-1,1])drawLine(api,g2,w,b,c,{'stroke-width':2,'stroke-dasharray':'7 6'});
+  // letter labels placed away from the neighbouring points
+  const OFF={A:[14,-12,'start'],B:[-14,-12,'end'],C:[-14,24,'end'],D:[-14,-12,'end'],E:[14,24,'start']};
+  for(const [k,[p,lab]] of Object.entries(P)){const [dx,dy,anchor]=OFF[k];
+    el('circle',{cx:api.sx(p[0]),cy:api.sy(p[1]),r:9,fill:dotFill(lab),stroke:'var(--surface)','stroke-width':2},api.layer('pts'));
+    txt(api.layer('pts'),api.sx(p[0])+dx,api.sy(p[1])+dy,k,{fill:'var(--ink)','font-size':18,'font-weight':700,'font-family':MONO,'text-anchor':anchor,'paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});}
+  // step 3: slack segments, as on the soft-margin slide
+  const ex={w,f:p=>dot(w,p)+b},PX=Object.values(P).map(v=>v[0]),PY=Object.values(P).map(v=>v[1]);
+  drawSlack(api,stepG(api.layer('anno'),3),ex,PX,PY,{labels:false});
+}
+
+/* ---------- slide 15: hinge loss ---------- */
+{
+  const api=chart($('fig-hinge'),{W:600,H:400,xmin:-2,xmax:3,ymin:0,ymax:3,xticks:[-2,-1,0,1,2,3],yticks:[0,1,2,3],xlabel:'y · f(x)',ylabel:'loss',fs:1.2,ml:64,label:'hinge loss and 0-1 loss'});
+  const L=api.layer('fit');
+  el('path',{d:`M${api.sx(-2)} ${api.sy(1)} L${api.sx(0)} ${api.sy(1)} M${api.sx(0)} ${api.sy(0)} L${api.sx(3)} ${api.sy(0)}`,fill:'none',stroke:'var(--err)','stroke-width':3.5,'stroke-linecap':'round'},L);
+  el('path',{d:`M${api.sx(-2)} ${api.sy(3)} L${api.sx(1)} ${api.sy(0)} L${api.sx(3)} ${api.sy(0)}`,fill:'none',stroke:'var(--model)','stroke-width':3.5,'stroke-linejoin':'round'},L);
+  const g=stepG(api.layer('anno'),2);
+  g.appendChild(api.label(.2,2.3,'hinge ≥ 0–1 loss',{color:'var(--ink)',size:16}));
+}
+
+/* ---------- fit every slide to the screen: no slide ever needs scrolling ---------- */
+let fitT=null;
+function fitSlides(){
+  const H=innerHeight;if(!H)return;
+  slides.forEach(sl=>{
+    sl.style.removeProperty('--fit');
+    for(let i=0;i<6;i++){
+      const need=sl.scrollHeight;
+      if(!need||need<=H+1)break;
+      const cur=parseFloat(sl.style.getPropertyValue('--fit'))||1;
+      sl.style.setProperty('--fit',Math.max(.5,cur*H/need*.985).toFixed(3));
+    }
+  });
+  presenterRender();
+}
+addEventListener('resize',()=>{clearTimeout(fitT);fitT=setTimeout(fitSlides,150);});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>setTimeout(fitSlides,50));
+addEventListener('load',()=>setTimeout(fitSlides,200));
+
+/* ---------- boot ---------- */
+fitSlides();
+render();
+})();
+</script>
+</html>
