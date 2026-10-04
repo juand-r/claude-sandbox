@@ -717,3 +717,27 @@ near read 1,150 of the one-move TM; early: reads 0-399)
   cheap. Reverted.
 - Keeping memo tables across epochs (collect only above a node budget):
   12-19% faster, ~5x memory. Available (max_nodes), off by default.
+
+### Efficiency: what was kept (A/B against the previous commit, identical
+read outcomes and Ebar-cluster counts in every comparison)
+
+| benchmark | before | after |
+|---|---|---|
+| 32 late reads from read 3,152 (one-move TM, Cook's v) | 55 s, 1.64 GB | 38.6 s, 1.06 GB |
+| 400 early reads (same program) | 105 s, 0.51 GB | 98 s, 0.49 GB |
+| De Mol 556 reads (collatz-hash) | 42 s | 45 s |
+
+- Main-tree jumps on a power-of-two grid (about an eighth of a read
+  interval): one or two advances per read instead of ~13.
+- Local copies skip ahead to the predicted read in whole sample steps,
+  without censuses. (A first version stepped by an arbitrary remainder,
+  which HashLife splits into up to 15 small advances of the whole copy:
+  Collatz went from 42 s to 63 s. Caught by the A/B and fixed.)
+- Hash tables grow at load 3/4 (was 1/2): -30% memory, no slowdown.
+- Node record 24 -> 12 bytes (leaf values in their own array): -10%.
+- The truncation horizon now includes a local copy's reach, so copies
+  never outrun the universe at small v (costs ~7% on De Mol).
+- What remains: main-tree advances are ~87% of the late time, and their
+  cost is linear in simulated generations (0.84 s per 2^24, 0.19 s per
+  2^22): the glider interactions themselves, mostly ossifiers crossing
+  junk. Only a collision-level method would go further.

@@ -395,8 +395,11 @@ class EpochReads:
             temp = local_run(self.run, lo_g + sh - self.reach * 8 // 30 - margin,
                              hi_g + sh + margin)
             t0 = temp.t
-            if start > temp.t:
-                temp.step(start - temp.t)       # no samples before the read is due
+            # no samples before the read is due: skip ahead in whole sample
+            # steps (one HashLife advance each; an arbitrary remainder would
+            # be many small advances of the whole copy)
+            while temp.t + self.every <= start:
+                temp.advance(self.sample_bits)
             while w.pending() == pending and temp.t + self.every - t0 <= self.reach:
                 temp.advance(self.sample_bits)
                 depth = MAX_DT + (-(temp.t + MAX_DT)) % 30
