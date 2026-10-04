@@ -227,3 +227,69 @@ weight RMS fixed at 0.391; the SSE run shrinks it to 0.390).
 
 Two layers, seed 0, damped Newton: 0.9545 → 0.9713 in 20 iterations (~2 min
 each), still rising ~0.0008 per iteration at the end, damping falling.
+
+## 10. Reading off versus computing one's own state (introspection)
+
+Motivation (discussion with the user). There are two ways a network can report
+its own weights.
+
+- Reading off. With one-hot addresses feeding straight into the weights, the
+  report is a lookup: f(r, c) = e_rᵀ M e_c = M_rc. Every weight setting is then a
+  perfect quine; nothing is learned. This is the neural analogue of a "cheating"
+  program quine that prints its source by opening its own file. In linear form,
+  with fixed addresses z_c stacked as Z, the quine condition is Zᵀθ = θ: quines
+  are eigenvectors of Zᵀ with eigenvalue 1. One-hot addresses give Z = I, so every
+  θ is a quine; shuffled one-hot addresses (a permutation) allow exactly the θ
+  that are constant on each cycle; random addresses generically allow only θ = 0.
+- Computing. With random addresses (the paper's fixed random table P), the
+  network cannot look its weights up; it must compute outputs that happen to
+  equal them. That is a learned self-model, not access.
+
+Measurement (`diag_grounding.py`; output in
+`results/diag_grounding_lm_L1_seed2.txt`). Causal test: if weight c is nudged,
+does the report of weight c move with it? The self-sensitivity ∂f(c)/∂θ_c, the
+diagonal of the Jacobian, is 1 for a reading-off network. For the best network
+(one layer, seed 2, R² 0.987):
+
+| block | weights | mean ∂f(c)/∂θ_c | median share of the report's sensitivity going to its own weight |
+|---|---|---|---|
+| W₁ (hidden layer) | 10,000 | 0.0001 | 0.0012 |
+| w (output layer) | 100 | 0.95 | 0.044 |
+
+Typical sensitivity of one report to all weights together, |J_c,:|: 38.
+
+Observation. Hidden-layer weights are reported accurately but not causally: a
+report does not depend on the weight it describes, only on the weights
+collectively. Output weights are reported with self-sensitivity close to 1.
+
+Interpretation (not yet verified). For an output weight w_j, ∂f/∂w_j equals h_j,
+the value of hidden unit j at w_j's own address. A mean of 0.95 suggests that
+hidden unit j fires at almost exactly 1 at the address of w_j, a one-hot lookup
+channel that emerged for the only layer where one hidden unit per weight is
+possible (100 units, 100 output weights; W₁ has 10,000 entries). To verify:
+check that for output-weight addresses, h_j ≈ 1 and the other units contribute
+little to the report.
+
+Connection to work on introspection in language models (from memory; check
+before citing): Binder et al. (2024, "Looking Inward") test whether models
+predict their own behaviour better than other models trained on that behaviour;
+Lindsey (Anthropic, 2025) injects concepts into activations and separates
+accuracy of a self-report from its grounding (causal dependence on the state it
+describes) and internality (the dependence does not run through the model's own
+outputs). The quine separates accuracy from grounding in a 10,000-weight system
+where everything is measurable: R² 0.99, yet almost no per-weight grounding. An
+accurate self-report alone is weak evidence of access to the state reported.
+
+Questions and tests:
+
+1. Verify the lookup channel for the output weights (above).
+2. Does grounding of hidden-layer reports change with training, depth, or
+   address structure (section 4)? Compute the table above for the other saved
+   networks, including the paper-matching ones (R² ≈ 0) as a baseline.
+3. Can grounding be trained? Add a term rewarding ∂f(c)/∂θ_c ≈ 1, and see what
+   it costs in R².
+4. Fragility. With every report depending strongly on all weights (|J_c,:| ≈
+   38), small damage anywhere may corrupt many reports at once. Damage random
+   weights and measure how many reports go wrong, and whether one regeneration
+   step or a few optimization steps repair it (the paper's self-repair
+   motivation).
