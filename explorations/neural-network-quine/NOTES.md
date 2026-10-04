@@ -133,3 +133,17 @@ the first three He-init 1,000-epoch runs (stop at 04:27, epoch ~200). I reported
 the hill-climbing runs as "still running" from their last log line without
 checking that the processes were alive. Lesson: check `ps`, not only logs.
 Dead logs kept as `*.died-at-restart.log`. He runs relaunched 05:01.
+
+### Background jobs killed by the tool's time limit (2026-10-04, ~06:00)
+
+The 2 x 2 grid runner (xargs) was started as a background tool command with
+the default 30-minute limit. At the limit the tool killed it and its children:
+the four second-wave runs died at epoch ~240 (logs kept as
+`*.killed-by-tool-timeout.log`). The queued one-layer launcher had the same
+limit and was stopped before it could start anything.
+Fix: long batches now run fully detached (`nohup setsid script &`), so no
+tool limit applies; monitors only read logs.
+Repeated mistake: a monitor's `pgrep -f "experiments.py optimizer"` matched the
+monitor's own command line (same error as before). Use `pgrep -f "[e]xperiments.py"`.
+Rule for myself: any background command longer than a few minutes gets
+detached, and any pgrep inside a script uses the bracket pattern.
