@@ -90,6 +90,10 @@ def regeneration_run(a):
         if a.T:
             record(log, g, m, phase="after_opt")
         q.regenerate(m)
+        if not torch.isfinite(m.theta).all():
+            print(f"  generation {g}: weights are no longer finite; stopping", flush=True)
+            log.append({"epoch": g, "phase": "diverged"})
+            break
         record(log, g, m, phase="after_regen")
     save(f"regen_T{a.T}_G{a.generations}_{tag(a)}", vars(a), log, m)
 

@@ -164,7 +164,7 @@ def replication_stats(model, images=None):
         "L_SR": L,
         "rms_error": math.sqrt(L / n),              # paper's "average weight prediction margin"
         "mean_abs_error": (pred - theta).abs().mean().item(),
-        "srq_paper": math.log(n / L) if L > 0 else float("inf"),  # paper's "self-replicating quotient"
+        "srq_paper": math.log(n) - math.log(L) if L > 0 else float("inf"),  # paper's "self-replicating quotient"
         "theta_rms": theta.pow(2).mean().sqrt().item(),
         "pred_rms": pred.pow(2).mean().sqrt().item(),
         "rel_error": L / theta.pow(2).sum().item(),   # L_SR / ||theta||^2

@@ -24,5 +24,10 @@ jobs() {
   for sig in 1e-5 3e-5 1e-4 3e-4 1e-3 3e-3; do echo "hill --sigma $sig --epochs 50 --seed 0"; done
 }
 
-jobs | xargs -P 4 -I{} sh -c 'log=logs/$(echo "{}" | tr " " "_" | tr -d "-").log; '"$PY"' experiments.py {} > "$log" 2>&1 || { echo "FAILED: {}"; exit 255; }'
-echo "batch 1 done"
+# A job whose log already ends in "wrote results/..." is skipped, so the script can be rerun
+# after an interruption. A failing job prints FAILED; the others still run.
+jobs | xargs -P 4 -I{} sh -c 'log=logs/$(echo "{}" | tr " " "_" | tr -d "-").log;
+  grep -q "^wrote results" "$log" 2>/dev/null && exit 0;
+  '"$PY"' experiments.py {} > "$log" 2>&1 || { echo "FAILED: {}"; exit 1; }' \
+  || { echo "some jobs FAILED"; exit 1; }
+echo "all jobs done"
