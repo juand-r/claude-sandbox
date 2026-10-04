@@ -35,7 +35,7 @@ def explicit_forward(m, c, image=None):
     pre = onehot @ m.P_coord
     if m.aux:
         pre = torch.cat([pre, image @ m.P_img])
-    h = F.selu(pre)
+    h = F.selu(pre) if m.embed_selu else pre
     h = F.selu(m.view("W1") @ h)
     h = F.selu(m.view("W2") @ h)
     w = m.view("w_out") @ h
@@ -44,9 +44,10 @@ def explicit_forward(m, c, image=None):
     return w.squeeze(), (m.view("W_cls") @ h if m.aux else None)
 
 
-@pytest.mark.parametrize("aux,out_selu", [(False, False), (False, True), (True, False)])
-def test_forward_matches_one_hot_computation(aux, out_selu):
-    m = q.Quine(hidden=SMALL, aux=aux, out_selu=out_selu, seed=1)
+@pytest.mark.parametrize("aux,out_selu,embed_selu",
+                         [(False, False, True), (False, True, True), (True, False, True), (False, False, False)])
+def test_forward_matches_one_hot_computation(aux, out_selu, embed_selu):
+    m = q.Quine(hidden=SMALL, aux=aux, out_selu=out_selu, embed_selu=embed_selu, seed=1)
     coords = torch.tensor([0, 5, m.n_params - 1])
     images = torch.randn(3, q.IMG_DIM) if aux else None
     with torch.no_grad():

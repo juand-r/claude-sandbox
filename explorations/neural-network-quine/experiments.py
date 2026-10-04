@@ -39,14 +39,15 @@ def load_model(path, **kw):
 
 
 def model_kwargs(a):
-    kw = {"seed": a.seed, "out_selu": a.out_selu}
+    kw = {"seed": a.seed, "out_selu": a.out_selu, "embed_selu": not a.no_embed_selu}
     if a.init_literal_he:      # the paper's text, taken literally (PLAN.md item 5)
         kw.update(init="he_normal", proj_std=1.0)
     return kw
 
 
 def tag(a):
-    return f"seed{a.seed}" + ("_outselu" if a.out_selu else "") + ("_he" if a.init_literal_he else "")
+    return (f"seed{a.seed}" + ("_outselu" if a.out_selu else "") + ("_noembedselu" if a.no_embed_selu else "")
+            + ("_he" if a.init_literal_he else ""))
 
 
 # -- E1/E2: gradient-based optimizers ---------------------------------------
@@ -133,6 +134,8 @@ def main():
     p.add_argument("--T", type=int, default=1, help="optimization epochs per generation")
     p.add_argument("--task-only", action="store_true", help="aux: drop L_SR (baseline E8)")
     p.add_argument("--out-selu", action="store_true", help="SELU on the weight output")
+    p.add_argument("--no-embed-selu", action="store_true",
+                   help="no SELU on the looked-up projection row (treat P as a plain embedding table)")
     p.add_argument("--init-literal-he", action="store_true",
                    help="He-normal weights and N(0,1) projection, instead of the defaults matched to the paper")
     a = p.parse_args()

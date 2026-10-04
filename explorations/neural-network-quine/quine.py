@@ -65,9 +65,10 @@ def init_weights_(w, scheme, gen):
 
 class Quine(nn.Module):
     def __init__(self, aux=False, hidden=HIDDEN, init=DEFAULT_INIT,
-                 proj_std=DEFAULT_PROJ_STD, out_selu=False, seed=0):
+                 proj_std=DEFAULT_PROJ_STD, out_selu=False, embed_selu=True, seed=0):
         super().__init__()
         self.aux, self.hidden, self.out_selu = aux, hidden, out_selu
+        self.embed_selu = embed_selu   # selu on the looked-up projection row (paper: "every layer")
         shapes = {"W1": (hidden, hidden), "W2": (hidden, hidden), "w_out": (1, hidden)}
         if aux:
             shapes["W_cls"] = (N_CLASSES, hidden)
@@ -107,7 +108,7 @@ class Quine(nn.Module):
             if images is None:
                 raise ValueError("the auxiliary quine needs an image for every coordinate")
             pre = torch.cat([pre, images @ self.P_img], dim=1)
-        return F.selu(pre)
+        return F.selu(pre) if self.embed_selu else pre
 
     def forward(self, coords, images=None, theta=None):
         """Return (weight predictions [B], class logits [B, K] or None).
