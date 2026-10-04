@@ -166,3 +166,12 @@ regenerate the stored P exactly; forward-pass flags (embedding/output SELU) come
 from each run's JSON. 93 of 112 reproduce their logged final SSE after reload;
 the stage copies reproduce their source runs; the rest are MNIST or diverged.
 New runs write a compact copy automatically.
+
+### Second out-of-memory kill (2026-10-04, ~19:40)
+
+The two-layer damped Newton run on 1 − R² reached 13.2 GB and was killed after
+one iteration (log: `logs/lmnorm_L2_seed0.oom-killed-2.log`). Cause: the
+normalized residual's rank-one correction `A.sub_(torch.outer(r, d) / S)`
+allocated two extra N × N temporaries (3.2 GB each for N = 20,100). Fixed with
+the in-place `A.addr_(r, d, alpha=-1/S)`; tests pass. Relaunched.
+Also: the container restarted at ~19:30, while nothing was running.

@@ -104,7 +104,7 @@ def residual_and_matrix(model, theta, r, normalized):
         return r, A
     d = theta - theta.mean()
     S = d.pow(2).sum()
-    A.sub_(torch.outer(r, d) / S)
+    A.addr_(r, d, alpha=-1.0 / S.item())     # in place: no N × N temporaries (memory)
     A.div_(S.sqrt())
     return r / S.sqrt(), A
 
