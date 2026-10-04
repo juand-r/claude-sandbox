@@ -63,6 +63,29 @@ selecting the lowest SSE picks the checkpoint just before learning starts.
 
 Open: why does small-weight + large-P collapse? Not yet investigated.
 
+### One hidden layer (N = 10,100): same grid
+
+Requested by the user: f_θ(c) = wᵀ σ(W₁ σ(p_c)), θ = (W₁, w). Adamax, 1,000
+epochs, 3 seeds per cell, R² averaged over epochs 901-1000:
+
+| | P scale 0.058 | P scale 1 |
+|---|---|---|
+| default weights | 0.45-0.56 | ≈ 0 (−0.15); weights collapse to RMS 0.01 |
+| He weights | 0.79-0.80 | 0.87-0.89 |
+
+Same pattern as two layers, and the one-layer network copies itself as well
+or better in every cell that learns. Mean R² at epochs 100 / 400 / 1,000:
+
+| cell | two layers | one layer |
+|---|---|---|
+| default weights, P 0.058 | 0.01 / 0.23 / 0.43 | 0.09 / 0.39 / 0.50 |
+| He weights, P 0.058 | 0.20 / 0.40 / 0.57 | 0.30 / 0.67 / 0.80 |
+| He weights, P 1 | 0.61 / 0.81 / 0.85 | 0.60 / 0.81 / 0.88 |
+
+Interpretation (tentative): the one-layer network has half as many weights to
+reproduce with the same 100-unit width, so it has more capacity per weight it
+must copy. Not tested beyond this grid.
+
 ## 2. SELU on the embedding lookup
 
 Question raised: is P a layer (σ applied after it) or an embedding table (no
