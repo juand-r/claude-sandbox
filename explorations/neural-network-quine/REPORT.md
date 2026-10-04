@@ -1,371 +1,370 @@
-# Neural Network Quine: a reimplementation
+# Neural Network Quine: a reimplementation, and making it work
 
 Paper: Oscar Chang and Hod Lipson, "Neural Network Quine", ALIFE 2018,
-arXiv:1803.05859v4. Code, logs and raw results are in this directory; every
-number below is printed by `summarize.py` from `results/*.json`, except where
-a diagnostic script is named.
+arXiv:1803.05859v4. Every run mentioned here is listed, with all its settings
+and its final numbers, in the registry in EXPERIMENTS.md; the trained networks
+are saved in `results/weights/`. Unstated details of the paper and how each was
+resolved are in PLAN.md; the working log is in NOTES.md.
 
 ## Summary
 
-I reimplemented the paper from its text. Several details are unstated, and
-one stated detail (He initialization) is inconsistent with the paper's own
-numbers. With an initialization chosen to match the paper's initial losses,
-most of the paper's numbers reproduce:
+A neural network quine is given the index of one of its own weights and must
+output that weight. I reimplemented the paper from its text (Part I) and then
+worked on making the network actually reproduce its weights (Part II).
 
-- the initial loss of the untrained quine (86.7 ± 5.8 over 20 seeds; paper 90.16);
-- the qualitative ranking of optimizers in its Fig. 4;
-- the loss reached by regeneration (0.43 to 0.88 across three seeds; paper 0.86);
-- the initial loss and final MNIST accuracy of the auxiliary quine
-  (1064 and 89.7%; paper 1072 and 90.41%).
+Success is measured here by R² = 1 − SSE / Σ(θ − mean θ)², where SSE is the
+sum of squared errors between the network's guesses and its weights θ. R² = 1
+is a perfect copy; R² = 0 is no better than guessing the mean weight. The paper
+reports only SSE, which a network can lower without copying anything, by
+shrinking its weights and guessing zero.
 
-But the loss the paper reports, L_SR, can be lowered without any
-self-replication: a network that outputs 0 for every coordinate scores
-L_SR = Σθ², the sum of its squared weights, so shrinking the weights lowers
-the loss. I therefore also tracked the ratio L_SR / Σθ². It is 1 for the
-output-zero network and 0 for a perfect quine. At every solution the paper
-reports, this ratio is between 0.94 and 1.02 in my runs. In this
-reimplementation, with the initialization that matches the paper's numbers,
-none of the paper's methods produced a network that predicts its own weights
-better than a network that outputs zero. The reported drops in loss come from
-the weights getting smaller. The one exception is a different regime: with
-the He initialization the paper names (but whose losses do not match the
-paper's), Adamax reaches ρ = 0.37 after 100 epochs, at a loss of about 274
-(section 9).
+Part I. With an initialization chosen to match the paper's starting loss, most
+of the paper's numbers reproduce: the starting SSE (86.7 against 90.16), the
+ranking of optimizers, the SSE reached by regeneration (0.43 to 0.88 against
+0.86), and the MNIST accuracy (89.7% against 90.41%). But no network trained
+with the paper's methods for the paper's training lengths reaches an R² above
+0.10, and most end between −0.05 and 0.02: they guess roughly zero, and the low
+SSE comes from small weights. Two claims did not reproduce: the accuracy cost of
+self-replication (a classifier alone reaches the same 89.7%, not 96.33%), and
+the collapse of pure regeneration to zero (it diverges instead, for this
+initialization).
 
-Two of the paper's claims did not reproduce at all:
-
-- The cost of self-replication to classification accuracy. A network trained
-  only to classify reached the same accuracy as the auxiliary quine (89.7%),
-  not the paper's 96.33%.
-- Regeneration without optimization collapsing to the all-zero network. With
-  my initialization it diverges instead, for all three seeds. A scan over
-  initial weight scale shows both outcomes exist, on either side of a threshold.
-
-The paper reports no weight norms, so I cannot tell whether the authors'
-networks were in the same regime as mine. Their regeneration result is
-consistent with it: an RMS error of 0.0065 is what my runs produce when the
-weights themselves have RMS 0.0046 to 0.0066.
+Part II. The quine does work, given the right setup and enough optimization.
+In order of importance: training far longer than the paper's 100 epochs; He
+initialization of the weights with a unit-scale address table; a lower learning
+rate; and finally damped Newton (Levenberg–Marquardt), which solves the quine
+equations directly. The best network (one hidden layer) reaches R² = 0.987,
+with normal-sized weights (RMS 0.41); the best two-layer network (the paper's
+architecture) reaches 0.971 and was still improving. Further damped Newton
+iterations stall near 0.985 for the one-layer network whether it minimizes SSE
+or 1 − R².
 
 ## 1. The setup
 
-A quine network takes a coordinate c, the index of one of its own weights,
-and outputs a number f_θ(c), its estimate of the weight θ_c. Its loss is
+The network is f(c) = wᵀ σ(W₂ σ(W₁ σ(p_c))) (two hidden layers, the paper's) or
+f(c) = wᵀ σ(W₁ σ(p_c)) (one hidden layer). Here c indexes a weight, p_c is row c
+of a fixed random table P (100 numbers per weight, never trained, not part of
+the weights), σ is the SELU activation, and the trained weights θ are W₁, W₂ (100
+× 100 each) and w (100), so N = 20,100 (two layers) or 10,100 (one layer). The
+paper writes the table lookup as a one-hot vector times a fixed random
+projection; the two are the same computation. A learnable table would have far
+more entries than the network it describes.
 
-    L_SR = Σ_c (f_θ(c) − θ_c)²,
+Training, as in the paper: each epoch freezes a copy of the weights as targets
+and visits every weight once in random minibatches of 10. The paper also uses
+hill-climbing (random perturbations kept if they lower the minibatch SSE) and
+regeneration (replace every weight by the network's guess of it). The MNIST
+version feeds an image alongside the address and adds a classifier head.
+EXPERIMENTS.md defines every variant precisely.
 
-summed over all N = 20,100 learnable weights. The coordinate enters as a
-one-hot vector, mapped to the first layer by a fixed random projection (a
-learnable projection would have more parameters than the network it is
-supposed to describe). The network is a bias-free MLP with SELU activations:
-projection to 100 units, then two learnable 100×100 matrices, then a 100→1
-output. The auxiliary quine splits the first layer into 50 units for the
-coordinate and 50 for a projected MNIST image, and adds a 100→10 classifier
-head (N = 21,100).
+## 2. Why SSE alone is not enough
 
-Training methods, as in the paper:
+A network that outputs 0 for every weight has SSE = Σθ², the sum of its squared
+weights. So any change that shrinks the weights lowers SSE, whether or not the
+network learns anything about itself, and the all-zero network has SSE = 0. The
+paper notices the all-zero solution but reports no quantity that separates
+shrinking from copying. R² does: shrinking the weights does not change it, and
+guessing zero gives R² ≈ 0 (exactly 0 if the mean weight is 0).
 
-- Gradient descent. Each epoch freezes a copy of the weights as targets, then
-  visits every coordinate once in random minibatches of 10.
-- Hill-climbing. For each minibatch, add Gaussian noise to every weight; keep
-  the change if the minibatch loss against the frozen targets goes down.
-- Regeneration. Alternate T epochs of Adamax with a step that overwrites
-  every weight with the network's prediction of it.
-
-## 2. Why L_SR alone is not enough
-
-L_SR compares predictions with weights in absolute terms. A network that
-predicts 0 everywhere has L_SR = Σθ², and so does a network whose
-predictions are uncorrelated with its weights and very small. Any change that
-shrinks the weights lowers L_SR, whether or not the network learns anything
-about itself. The paper notices one form of this (the all-zero network has
-L_SR = 0) but reports no quantity that separates shrinkage from prediction.
-
-I report the relative error
-
-    ρ = L_SR / Σθ².
-
-ρ = 1 means the network is no better than predicting zero; ρ > 1 is worse;
-ρ near 0 means the network reproduces its own weights. ρ is undefined for the
-all-zero network, which is the trivial quine. A small L_SR with ρ ≈ 1 means
-the weights are small and the network has not learned them.
+# Part I: reproducing the paper
 
 ## 3. Reproduction status
 
-Mean (sd) over seeds 0 to 2 unless noted. "Paper" values are from its text or
-read off its figures (marked ~).
+Mean (sd) over seeds 0 to 2 unless noted; "~" marks values read off the
+paper's figures. R² is at the end of each run.
 
-| quantity | paper | this reimplementation | ρ in this reimplementation |
+| quantity | paper | this reimplementation | R² (mine) |
 |---|---|---|---|
-| initial L_SR, vanilla | 90.16 | 86.7 (5.8), 20 seeds | 1.25 (seed 0) |
-| SGD, 30 epochs | plateau ~66 | 64.8 (0.1) | 0.98 |
-| Adagrad | loss rises over time | best 64.2 at epoch 4, then rises to 74.9 | 0.99 at best |
-| RMSprop | explodes | rises to 671 (165) | > 1 |
-| Adamax, 30 epochs | ~33, best of the optimizers | best 41.8 (1.4), best of the optimizers | 0.985 |
-| Adamax, 100 epochs | best 32.10 at the end | best still 41.8 at epoch ~25; rises to 58.8 by epoch 100 | 0.985 at best |
-| hill-climbing, 10,000 epochs | 90 → ~64 | see section 6 | |
-| hill-climbing from SGD solution | improves it significantly | no improvement; worse after 1,000 epochs (65.7 → 67.7 at σ = 1e-5) | 0.99 |
-| regeneration, T=1, G=10 | best 0.86 | best 0.88, 0.61, 0.43 (three seeds) | 0.999, 1.010, 1.000 |
-| regeneration, T=0 | collapses to the zero quine | diverges, all three seeds | |
-| auxiliary quine, initial L_Aux | 1072.05 | 1063.9 (53.0) | |
-| auxiliary quine, L_SR over training | rises ~80 → ~260 | falls 138 → 63 | 1.02 at the end |
-| auxiliary quine, test accuracy | 90.41% | 89.69% (0.81) | |
-| classifier only, same network | 96.33% | 89.65% (0.71) | |
+| starting SSE | 90.16 | 86.7 (5.8), 20 seeds | negative (−0.25 for seed 0) |
+| SGD, 30 epochs | plateau ~66 | 64.8 (0.1) | 0.02 |
+| SGD with momentum, 30 epochs | ~64.5 | 54.3 (1.1) | 0.04 to 0.07 |
+| Adam, 30 epochs | ~56.5 | 68.0 (0.8) | ≈ 0 |
+| Adagrad | rises over time | best 64.2 at epoch 4, then rises to 74.9 | 0.09 |
+| RMSprop | explodes | rises to 671 (165) | negative |
+| Adamax, 100 epochs | best 32.10, at the end | best 41.8 at epoch ~25, then rises to 58.8 | 0.01 to 0.02 |
+| hill-climbing, 10,000 epochs | 90 → ~64 | 71.3 at epoch 2,400, then lost (section 6) | ≈ 0 |
+| hill-climbing from the SGD solution | improves it significantly | no improvement (65.7 → 67.7) | 0.01 |
+| regeneration (1 Adamax epoch per generation, 10 generations) | best 0.86 | best 0.88, 0.61, 0.43 | −0.05 to −0.01 |
+| regeneration without training | collapses to all-zero weights | diverges, 3 of 3 seeds | |
+| MNIST version, starting combined loss | 1072.05 | 1063.9 (53.0) | |
+| MNIST version, SSE over training | rises ~80 → ~260 | falls 138 → 63 | ≈ 0 |
+| MNIST version, test accuracy | 90.41% | 89.69% (0.81) | |
+| same network, classification only | 96.33% | 89.65% (0.71) | |
 
-## 4. Gradient-based training (E1, E2)
+## 4. Gradient training (paper E1, E2)
 
-Observation. The optimizers reproduce the shape of the paper's Fig. 4
-(figure: `figures/e1_optimizers.png`). Every optimizer except RMSprop drops
-from ~85 to between 62 and 67 in the first epoch. SGD then plateaus near 65, Adagrad turns
-upward after epoch 4, RMSprop diverges, and Adamax goes lowest.
+Observation. The optimizers reproduce the shape of the paper's Fig. 4 (figure:
+`figures/e1_optimizers.png`). All but RMSprop drop from ~85 to between 62 and 67
+in the first epoch; SGD then plateaus near 65, Adagrad turns upward after epoch
+4, RMSprop diverges, and Adamax goes lowest.
 
-Observation. After the first epoch, ρ stays between 0.90 and 1.05 for every
-optimizer except RMSprop (all epochs, all three seeds). The first-epoch drop is the network learning to
-output almost nothing: for Adamax, seed 0, the prediction RMS falls from
-0.030 to 0.0067 while the weight RMS stays at 0.056. By epoch 24
-Adamax has lowered L_SR from 62 to 42, and Σθ² has fallen in step, from 62 to 42.
+Observation. After the first epoch, SSE stays within 10% of Σθ² (between 0.90
+and 1.05 times it, every optimizer but RMSprop, all epochs and seeds). The
+first-epoch drop is the network learning to output almost nothing: for Adamax,
+seed 0, the prediction RMS falls from 0.030 to 0.0067 while the weight RMS stays
+at 0.056. From then on SSE and Σθ² fall together:
 
 | Adamax, seed 0, epoch | 0 | 1 | 5 | 10 | 24 | 50 | 100 |
 |---|---|---|---|---|---|---|---|
-| L_SR | 83.8 | 62.5 | 55.0 | 48.4 | 41.9 | 42.8 | 53.7 |
-| Σθ² | 66.8 | 62.1 | 55.2 | 48.7 | 42.4 | 43.2 | 54.8 |
+| SSE | 83.8 | 62.5 | 55.0 | 48.4 | 41.9 | 42.8 | 53.7 |
+| Σθ² (SSE of guessing zero) | 66.8 | 62.1 | 55.2 | 48.7 | 42.4 | 43.2 | 54.8 |
 | prediction RMS | 0.030 | 0.0067 | 0.0047 | 0.0053 | 0.0056 | 0.0064 | 0.0069 |
 
-Interpretation. Within this reimplementation, gradient training of the
-vanilla quine finds the output-zero solution within one epoch and then
-lowers the loss by lowering the weight norm. I have not analysed why Adamax
-shrinks the weights; the gradient of L_SR flows only through the predictions
-(the targets are frozen within an epoch), so the shrinkage is an indirect
-effect of the updates, not a direct pull toward zero.
+Interpretation. Within 100 epochs, gradient training finds the guess-zero
+solution in the first epoch and then lowers SSE by shrinking the weights. (Part
+II shows that the same setup does start to learn after epoch ~50, which is why
+SSE rises again toward epoch 100.)
 
-One difference from the paper: my Adamax loss reaches its minimum around
-epoch 25 and then rises (to 58.8 at epoch 100), whereas the paper's falls
-to 32.10 at epoch 100. With SELU on the output layer (section 9) Adamax reaches
-32.3 by epoch 30, again with ρ = 0.986.
+My Adamax minimum (41.8) is higher than the paper's 32.10. With SELU also on the
+output layer, an unstated detail, Adamax reaches 32.3 by epoch 30, again with R²
+≈ 0.
 
-## 5. Regeneration (E5, E6)
+## 5. Regeneration (paper E5, E6)
 
-### 5.1 With optimization (T = 1)
+### 5.1 Regeneration with one Adamax epoch per generation
 
-Observation. After the first generation, L_SR measured after each
-regeneration is 0.43 to 1.1 across three seeds, the paper's order of
-magnitude (0.86). The weight RMS at that point is 0.0046 to 0.0074, about a
-tenth of its initial value 0.058, and ρ is 0.998 to 1.013 (figure:
-`figures/e5_regeneration.png`). Measured instead just after each Adamax
-epoch, ρ is lower, 0.45 to 0.74.
+Observation. SSE measured after each regeneration is 0.43 to 1.1 across three
+seeds, the paper's order of magnitude (0.86). The weight RMS there is 0.0046 to
+0.0074, a tenth of its starting value, and R² is −0.05 to −0.01 (figure:
+`figures/e5_regeneration.png`). The paper says of this solution that "the order
+of magnitude of the weights are in line with what we would observe in a normal
+neural network"; in my runs the weights are about the size of the prediction
+error.
 
-The paper says of this solution: "the order of magnitude of the weights are in
-line with what we would observe in a normal neural network". In my runs it is
-not: the weights are an order of magnitude smaller than at initialization,
-and about the size of the prediction error.
+Mechanism (`diag_regen_cycle.py`, output in `results/diag_regen_cycle.txt`).
+Call the weights just after a regeneration θ_R. During the next Adamax epoch,
+the network learns to output θ_R (to within 0.2% to 2.3% of Σθ_R²), while its
+own weights move to θ_R + Δ with |Δ|² ≈ |θ_R|². Regeneration then writes θ_R
+back, and the network with weights θ_R outputs almost nothing (prediction RMS
+7e-5). So regeneration alternates between two networks: one prints the other,
+and the other prints nothing. Neither prints itself.
 
-Mechanism test. `diag_regen_cycle.py` (output: `results/diag_regen_cycle.txt`)
-follows one seed through four generations. Call the weights just after a
-regeneration θ_R. During the next Adamax epoch:
+### 5.2 Regeneration without training
 
-- the network learns to output θ_R: relative error against θ_R falls to
-  0.002 to 0.023;
-- its own weights move to θ_R + Δ, with |Δ|² ≈ |θ_R|² (0.81 to 1.50 versus
-  0.88 to 0.90);
-- regeneration then writes θ_R back (relative change 0.002 to 0.023), and
-  the network with weights θ_R predicts almost nothing (prediction RMS 7e-5).
+Observation. All three seeds diverge: the weight RMS falls for one or two
+generations and then grows without bound until the loss overflows.
 
-Interpretation. Regeneration in this setting alternates between two
-networks: one (θ_R + Δ) prints the other (θ_R), and the other prints
-nothing. Neither prints itself. The ρ ≈ 0.5 seen after the Adamax epoch comes
-from the θ_R part of θ_R + Δ, which the network reproduces; the Δ part it does
-not. The loss the paper reports at the end of a generation (0.86 in the paper)
-is the loss of the network that prints nothing, made small by its small weights.
+Mechanism (`diag_regen_scale.py`). Repeating pure regeneration with the
+starting weights multiplied by α: α ≤ 0.5 collapses to exactly zero within four
+to six generations (all seeds); α ≥ 1 diverges (all seeds); α = 0.75 goes either
+way. With every weight scaled by ε, the output scales roughly as ε³ (the table
+P does not scale), so all-zero weights attract strongly, but only within a
+basin. The paper's collapse and my divergence are opposite sides of the same
+boundary.
 
-### 5.2 Without optimization (T = 0)
+## 6. Hill-climbing (paper E3, E4)
 
-Observation. Pure regeneration diverged for all three seeds: the weight RMS
-falls for one or two generations, then grows without bound (seed 0: 0.030,
-0.014, 0.065, 4.4, 4.9e4, 6.6e15) until the loss overflows.
+Observation. In a 50-epoch sweep of the perturbation size σ, the acceptance
+rate is 49 to 52% at every σ. Larger σ makes SSE and Σθ² grow together (σ =
+1e-3: Σθ² from 67 to 1043). Each step moves all 20,100 weights but checks only
+10 predictions, so accepted steps are close to a random walk, which inflates
+the weights.
 
-Mechanism test. `diag_regen_scale.py` (output: `results/diag_regen_scale.txt`)
-repeats pure regeneration with the initial weights multiplied by α:
+Observation. Hill-climbing from the SGD and Adamax solutions (1,000 epochs,
+σ = 1e-5 and 3e-5) improved neither; the paper reports that it improves the
+SGD solution. All end with R² ≈ 0 (−0.002 to 0.017).
 
-| seed | α = 0.25 | 0.5 | 0.75 | 1.0 | 1.5 |
-|---|---|---|---|---|---|
-| 0 | zero | zero | zero | diverges | diverges |
-| 1 | zero | zero | diverges | diverges | diverges |
-| 2 | zero | zero | zero | diverges | diverges |
+Gap. The two 10,000-epoch runs of E3 were lost to a container restart at epoch
+2,400 (SSE 71.3 at σ = 1e-5 and 110.4 at σ = 3e-5; the paper's curve is ~69.5
+there, ~64 at the end; R² ≈ 0 throughout). They were not rerun.
 
-Below the threshold the weights collapse to exactly zero within four to six
-generations, faster than geometric decay (seed 0, α = 0.25: RMS 4.8e-4,
-7.2e-8, 8.5e-18, 0).
+## 7. The MNIST version (paper E7, E8)
 
-Interpretation. If every weight is scaled by ε, the output
-w_out · selu(W2 · selu(W1 · h0)) scales roughly as ε³, because the first-layer
-input h0 comes from the fixed projection and does not scale. So the all-zero
-network is a strongly attracting fixed point of regeneration, but only within
-a basin; outside it, the map diverges. The paper's observation (collapse to
-zero) and mine (divergence) fit opposite sides of the same boundary. Which
-side a run lands on depends on the initial weight scale, which the paper does
-not pin down (section 9).
+Observation. The starting losses match (1063.9 against 1072.05) and so does the
+accuracy after 30 epochs (89.69% against 90.41%). But SSE falls (138 → 63, R² ≈
+0) where the paper's rises, and the same network trained only to classify
+reaches the same accuracy (89.65%), not the paper's 96.33%.
 
-## 6. Hill-climbing (E3, E4)
+Interpretation. The self-replication term is satisfied by guessing zero, which
+costs the classifier nothing, so there is no trade-off to observe. I cannot
+explain the paper's 96.33% baseline; it may have been trained differently (the
+paper does not say).
 
-Observation, noise sweep (50 epochs, figure: `figures/e3_hill_sweep.png`).
-The acceptance rate is 49 to 52% for every noise level from σ = 1e-5 to 3e-3.
-With σ ≥ 3e-4 the loss rises, and Σθ² rises with it (σ = 1e-3: Σθ² from 67 to
-1043 in 50 epochs). The lowest loss after 50 epochs was at σ = 3e-5 (71.4).
+## 8. The paper's derived metrics
 
-Interpretation. Each step perturbs all 20,100 weights but checks only 10
-predictions, against frozen targets. The check is close to a coin flip, so
-the accepted steps are close to a random walk, and a random walk in weight
-space inflates Σθ², which raises the next epoch's loss. Small σ limits the
-damage. The paper does not state σ.
+Both formulas are inferred from the paper's printed numbers, which match them to
+every digit. The "average weight prediction margin", described as the mean
+absolute error, equals the RMS error √(SSE/N): 90.16 → 0.067, 32.10 → 0.040,
+0.86 → 0.0065. The "self-replicating quotient", described as a log likelihood
+ratio against random guessing, equals ln(N/SSE): 6.44 and 10.06. Taken
+literally, the chance of a random point landing within √SSE of the weights in
+20,100 dimensions would give quotients of tens of thousands. Both metrics are
+functions of SSE alone, so neither can tell copying from shrinking.
 
-Observation, hill-climbing from trained solutions (E4, seed 0, 1,000 epochs).
-The paper reports that hill-climbing improves the SGD solution significantly
-and does not improve the Adamax solution. In my runs it improves neither:
+## 9. Initialization: the paper's text and its numbers disagree
 
-| start | σ | start L_SR | best L_SR (epoch) | L_SR after 1,000 epochs | ρ after |
-|---|---|---|---|---|---|
-| SGD, 10 epochs | 1e-5 | 65.67 | 65.67 (0) | 67.65 | 0.992 |
-| SGD, 10 epochs | 3e-5 | 65.67 | 65.67 (0) | 84.04 | 1.002 |
-| Adamax, 100 epochs | 1e-5 | 53.74 | 53.69 (20) | 55.23 | 0.976 |
-| Adamax, 100 epochs | 3e-5 | 53.74 | 53.74 (0) | 70.71 | 0.986 |
+The paper says He initialization. An untrained network's SSE is about Σθ² +
+Σf², and He weights alone give Σθ² ≈ 402, so the paper's starting SSE of 90.16
+is impossible with them (I measured ~95,000 with a unit-scale table). PyTorch's
+default initialization (uniform on ±0.1) with the table at the same scale gives
+86.7 (5.8). The same choice reproduces the MNIST version's starting losses. My
+inference, with moderate confidence, is that the authors' code used PyTorch's
+defaults. Part I uses them throughout.
 
-Interpretation. The same random-walk effect as in the sweep: accepted steps
-inflate Σθ², and with ρ ≈ 1 the loss follows Σθ². Smaller σ would slow the
-damage, but at an acceptance rate near 50% I see no mechanism by which it
-would turn into the improvement the paper reports. This is one seed.
+# Part II: making the quine copy itself
 
-[E3 full-length (10,000-epoch) runs: to be filled in when they finish.]
+All of Part II uses the plain quine (no MNIST). R² values are per seed (0 / 1 /
+2) unless stated.
 
-## 7. The auxiliary quine (E7, E8)
+## 10. The paper's own setup learns, if trained longer
 
-Observation. The initial losses match the paper: L_Aux = 1063.9 (53.0) versus
-1072.05, with λ·L_Task = 926 (30) versus ~990 in Fig. 8. After 30 Adamax
-epochs the test accuracy is 89.69% (0.81), versus 90.41% in the paper
-(figure: `figures/e7_auxiliary.png`).
+Observation. With the paper's setup (two layers, default initialization),
+training for 1,000 epochs instead of 100 changes the outcome. The weights shrink
+until about epoch 50, where SSE reaches its minimum (~42, close to the paper's
+best), and then grow while the network increasingly copies itself:
 
-Observation. Two results differ from the paper.
+| epoch (seed 0) | 25 | 50 | 100 | 200 | 400 | 600 | 1,000 |
+|---|---|---|---|---|---|---|---|
+| R² | 0.00 | 0.00 | 0.01 | 0.07 | 0.20 | 0.31 | 0.44 |
+| SSE | 42 | 43 | 54 | 137 | 439 | 784 | 1,291 |
+| weight RMS | 0.046 | 0.046 | 0.052 | 0.085 | 0.165 | 0.238 | 0.341 |
 
-- L_SR falls, from 138 (24) to 63.0 (0.5), and ends at ρ = 1.02. In the
-  paper it rises from ~80 to ~260 over 30 epochs.
-- The same network trained on λ·L_Task alone, with the same epochs and the
-  same image sampling, reaches 89.65% (0.71), the same as the quine. The
-  paper reports 96.33% and reads the gap as self-replication taking up
-  network capacity.
+Interpretation. SSE rises as the copy improves, because SSE grows with the size
+of the weights. Selecting the run with the lowest SSE, as the paper does, picks
+the moment just before learning starts.
 
-Interpretation. In this reimplementation the self-replication term does not
-compete with classification, because it is satisfied by the output-zero
-solution, which costs the classifier nothing. Without the L_SR term, L_SR
-grows to 234 (65), i.e. the classifier-only network's weight output drifts;
-with it, the output stays near zero. The accuracy curves of the two runs are
-nearly identical epoch by epoch.
+## 11. What the starting point and architecture change
 
-I cannot explain the 96.33% baseline. My baseline sees 21,100 training images
-per epoch (one per coordinate), about 10.5 passes over MNIST in total, and its
-input is a fixed random projection of 784 pixels to 50 numbers. The paper does
-not say how its baseline was trained; it may have used full passes over the
-data or a learnable input layer. This is a guess.
+Observation. Weight initialization and the scale of P, crossed, with one and two
+hidden layers (Adamax at the default rate, 1,000 epochs, 3 seeds, R² averaged
+over the last 100 epochs):
 
-## 8. The paper's two derived metrics
+| weights, P scale | two layers | one layer |
+|---|---|---|
+| default, 0.058 (the paper's) | 0.39 to 0.43 | 0.45 to 0.56 |
+| default, 1 | ≈ 0; weights collapse to RMS 0.02 | ≈ 0; weights collapse to RMS 0.01 |
+| He, 0.058 | 0.55 to 0.57 | 0.79 to 0.80 |
+| He, 1 | 0.84 to 0.86 | 0.87 to 0.89 |
 
-Both formulas below are inferred from the paper's numbers, not stated in it.
+- He initialization with a unit-scale table is best. I had predicted the
+  opposite ranking of the two factors, from the size of the activations at
+  initialization; the prediction was wrong.
+- Small weights with a large table is the one combination that never leaves the
+  guess-zero state. I have not investigated why.
+- One hidden layer copies itself as well as two or better, despite (or because
+  of) having half as many weights to reproduce. Untested explanation: more
+  capacity per weight that must be copied.
+- Applying SELU to the looked-up row of P, or not, makes no measurable
+  difference (R² 0.850 against 0.848, He initialization, two layers).
 
-The "average weight prediction margin" is described as the average absolute
-difference between weights and predictions. The reported values equal the
-RMS error sqrt(L_SR / N) to every printed digit: 90.16 → 0.0670 (paper 0.067),
-32.10 → 0.0400 (0.040), 0.86 → 0.0065 (0.0065). The mean absolute error is
-smaller; in my seed-0 initial network it is 0.0541 against an RMS error of 0.0646.
+## 12. The learning rate was the main obstacle
 
-The "self-replicating quotient" is described as a log likelihood ratio: how
-much more likely a perfect copy is under the network's noisy copying than by
-chance, with chance modelled as outputs uniform on [−0.5, 0.5]. The reported
-values equal ln(N / L_SR): ln(20100 / 32.10) = 6.440 (paper 6.44) and
-ln(20100 / 0.86) = 10.059 (paper 10.06). Taken literally, the chance that a
-uniform random point lands in the 20,100-dimensional ball of radius
-sqrt(L_SR) around the weights is e^(−36,203) for L_SR = 32.10 and
-e^(−72,581) for 0.86, which would give quotients of tens of thousands of
-nats. I do not know what calculation the authors intended. Either way, both
-metrics are functions of L_SR alone and so inherit its blindness to weight
-shrinkage.
+Diagnostic (`diag_gap.py`). Is the remaining error a failure to fit the
+frozen targets, or drift of the weights within an epoch? From the networks
+after 1,000 epochs: drift is negligible (under 0.1% of the weights' variance per
+epoch), but one extra epoch at a lower learning rate jumps R² from 0.87 to 0.93
+(one layer) and from 0.87 to 0.91 (two layers). Adamax moves each weight by up
+to the learning rate at every step, so at the default 2e-3 the weights jitter
+around a better solution.
 
-## 9. Unstated details, and how much they matter
+Observation. Continuing at lower rates (He initialization, P scale 1):
 
-PLAN.md lists every detail the paper leaves open and the choice made. Two
-choices were not forced by the paper's numbers and could change the results.
+| stage, each continuing the previous | one layer | two layers |
+|---|---|---|
+| Adamax lr 2e-3, 1,000 epochs | 0.870 / 0.866 / 0.900 | 0.874 / 0.837 / 0.834 |
+| + 300 epochs at lr 2e-4 | 0.947 / 0.959 / 0.966 | 0.945 / 0.933 / 0.947 |
+| + 300 epochs at lr 2e-5 | 0.955 / 0.964 / 0.970 | 0.955 / 0.943 / 0.955 |
 
-Initialization. The paper says He et al. (2015). An untrained network's
-predictions are unrelated to its weights, so its L_SR is about
-Σθ² + Σ f². He-normal weights give Σθ² ≈ 402 on their own, so the paper's
-initial 90.16 is out of reach; I measured 94,636 (14,475) with a unit-variance
-projection and 7,873 (1,494) with a 0.1 projection. PyTorch's default
-nn.Linear initialization, uniform on ±1/√100, gives Σθ² ≈ 67, and with the
-coordinate projection at the same scale the initial L_SR is 86.7 (5.8) over
-20 seeds. The same choice, together with a default nn.Linear(784, 50) on raw
-[0, 1] pixels for the image projection, matches the auxiliary quine's initial
-L_Aux and λ·L_Task. A further hint: the SGD plateau in the paper's Fig. 4
-(~66) is close to Σθ² under this initialization, the loss of predicting
-zero. My inference, with moderate confidence, is that the original code used
-PyTorch's default initialization. NOTES.md has the full comparison.
+## 13. Changing what the gradient does: full gradient, and 1 − R² as the loss
 
-SELU on the output. "Every layer is followed by a SeLU" can include the
-scalar weight output. I left it linear. Both versions give initial losses
-consistent with 90.16 (86.7 vs 106.5 mean over 20 seeds).
+Two changes to the loss, tested from the lr 2e-5 networks with 300 more epochs
+at lr 2e-5:
 
-Sensitivity runs, seed 0:
+- Full gradient: the targets are the live weights, so each step also moves each
+  weight toward its own prediction (the paper freezes the targets).
+- 1 − R² as the loss: divide the minibatch SSE by the weights' current spread,
+  so shrinking the weights cannot lower the loss.
 
-| variant | Adamax, 30 epochs: best L_SR | ρ at best | regeneration (T=1) |
-|---|---|---|---|
-| defaults | 41.9 | 0.987 | best L_SR 0.881, weight RMS 0.0066, ρ 0.999 |
-| SELU on the weight output | 32.3 | 0.986 | best L_SR 1.241, weight RMS 0.0079, ρ 0.999 |
-| literal He init, N(0, 1) projection | 237 (from 97,831) | 0.771 | diverges (non-finite at generation 5) |
+| variant | one layer | two layers |
+|---|---|---|
+| frozen targets, SSE (control) | 0.958 / 0.966 / 0.971 | 0.961 / 0.951 / 0.961 |
+| full gradient, SSE | 0.960 / 0.967 / 0.973 | 0.962 / 0.952 / 0.962 |
+| full gradient, 1 − R² | 0.960 / 0.967 / 0.973 | running |
+| frozen targets, 1 − R² | not run (see below) | running |
 
-SELU on the output changes the numbers, not the conclusion. The literal He
-initialization is a different regime: the loss starts three orders of
-magnitude above the paper's, regeneration diverges, and it is the only
-setting in which any method reached ρ clearly below 1.
+Observation. The full gradient helps by a small, consistent amount (about
+0.0015 on every seed of both architectures). Using 1 − R² as the loss changes
+nothing at this stage.
 
-Run for the paper's full 100 Adamax epochs, the literal He initialization
-keeps improving (`results/opt_adamax_100ep_seed0_he.json`, seed 0):
+Interpretation. 1 − R² differs from SSE only by the weights' spread, and the
+weights were not shrinking at this stage (RMS steady at ~0.40), so the divisor
+is nearly constant and Adamax ignores a constant rescaling of the loss. With
+frozen targets the divisor is exactly constant within an epoch, so I expect no
+difference at all; the two-layer run tests that expectation.
 
-| epoch | 10 | 30 | 50 | 72 | 90 | 100 |
-|---|---|---|---|---|---|---|
-| L_SR | 294 | 252 | 249 | 276 | 278 | 274 |
-| ρ | 1.005 | 0.79 | 0.58 | 0.48 | 0.41 | 0.37 |
-| weight RMS | 0.121 | 0.126 | 0.147 | 0.169 | 0.184 | 0.192 |
+Running at the time of writing: the same four variants from random
+initialization (two layers, He, P scale 1, lr 2e-3, 1,000 epochs), where the
+choice of loss may matter more because shrinking happens early.
 
-Observation. ρ falls steadily and is still falling at epoch 100, where the
-network accounts for about 63% of its own weight variance. The weights grow
-while this happens, so L_SR does not fall below ~250.
+## 14. Solving the quine equations directly: Newton's method
 
-Interpretation. This is the only run in which a network learned a
-substantial part of its own weights. It happens when the weights are
-too large for the output-zero solution to be cheap. But it is far from the
-paper's reported numbers (L_SR 274 versus 32.10), so it is not what the paper
-describes either. This is a single seed.
+The quine condition f(c) = θ_c for every c is N equations in N unknowns. With
+residual r = f(C) − θ and J the Jacobian of the outputs with respect to the
+weights, Newton's method solves (J − I) Δ = −r.
 
-## 10. Alternative explanations and remaining uncertainty
+Observation, pure Newton (`diag_newton.py`). It fails at the first step. The
+Jacobian is correct (checked against finite differences), but J − I is badly
+conditioned (condition number 4.8 million), the Newton step is 6.75 times the
+size of the weights, and the linear model holds only for steps about 10⁻⁶ of
+that size.
 
-- My implementation could differ from the authors' in a way that matters.
-  The forced details (no biases, layer sizes, minibatch of 10, frozen targets
-  per epoch) and the matched initial losses limit the room for this, but do
-  not remove it. The unforced choices are listed in PLAN.md.
-- The authors' networks may have had larger weights than mine at the
-  reported losses. The paper does not report weight norms, and Fig. 7 is
-  log-normalized, which hides scale. Their regeneration figures (L_SR 0.86,
-  RMS error 0.0065) are what my runs produce with weight RMS 0.005 to 0.007.
-- Regeneration's outcome depends on initial scale (section 5.2), so another
-  initialization could behave differently. Under the one other initialization
-  I tried, the paper's literal He init, regeneration diverged.
-- The tests (tests/test_quine.py) check the parameter layout, the forward
-  pass against an explicit one-hot computation, the loss against a
-  brute-force loop, simultaneous regeneration, hill-climbing acceptance, and
-  frozen targets. They do not check the training dynamics against the paper,
-  which is what this report is for.
+Observation, damped Newton (Levenberg–Marquardt), which solves (AᵀA + μI)Δ =
+−Aᵀr with A = J − I and an adaptive damping μ:
+
+| run | start | after 20 iterations |
+|---|---|---|
+| one layer (from the full-gradient networks) | 0.960 / 0.967 / 0.973 | 0.983 / 0.985 / 0.987 |
+| two layers, seed 0 (from the lr 2e-5 network) | 0.955 | 0.971, still rising |
+
+One iteration takes about 20 seconds for one layer and 2 to 3 minutes for two
+layers, mainly the Jacobian and an N × N linear solve.
+
+Observation, longer and normalized. Continuing the one-layer seed-0 network for
+80 more iterations: 0.9832 → 0.9852 minimizing SSE, and 0.9832 → 0.9853
+minimizing 1 − R² (which also keeps the weight RMS fixed at 0.391 instead of
+shrinking it to 0.390). Both stall, with the damping rising and the steps
+shrinking to 10⁻⁵ of the weights.
+
+Interpretation. Damped Newton is far more efficient than Adamax here (the gain
+from 0.96 to 0.98 took 20 iterations), but for this network it converges to a
+local optimum near 0.985; changing the objective does not move it. Running at
+the time of writing: the two-layer seed-0 run minimizing 1 − R², for comparison
+with the SSE run above.
+
+## 15. The best network
+
+The best network (one layer, seed 2, R² 0.987) has normal-sized weights: RMS
+0.41 (0.14 at initialization), median magnitude 0.24, largest 1.78. Each weight
+is reproduced to within about 11% (error RMS 0.045 against weight RMS 0.41). The
+error is spread evenly: weights with errors more than three times the typical
+error carry 5% of the total, close to what bell-curve noise would give. The 100
+output weights w are copied less well (R² 0.86 within that block) but carry only
+2% of the total error.
+
+## 16. Remaining uncertainty and open questions
+
+- Part I depends on an initialization inferred from the paper's numbers, not
+  its text. The forced details (no biases, layer sizes, minibatch of 10, frozen
+  targets) and the matched starting losses limit the room for error, but the
+  authors' code may differ in ways that matter.
+- The paper reports no weight sizes, so I cannot confirm that its networks were
+  guessing zero; I can only say that its numbers are what guessing zero produces
+  in this reimplementation.
+- Most Part II results use three seeds; the damped Newton runs for two layers use
+  one.
+- Whether R² = 1 is reachable at all is open: it requires a non-zero exact
+  solution of N equations in N unknowns, and the badly conditioned Jacobian says
+  nothing about whether one exists.
+- Untested directions (IDEAS.md): structured addresses, so related weights get
+  related addresses; smaller networks; why small weights with a large table
+  collapse; the MNIST version with the setup that works.
 
 ## Reproduction
 
-    ./run_all.sh                     # all runs, ~3 h on 4 CPU cores (hill-climbing dominates)
-    .venv/bin/python summarize.py    # tables
-    .venv/bin/python plots.py        # figures
-    .venv/bin/python diag_regen_scale.py
-    .venv/bin/python diag_regen_cycle.py
+    ./run_all.sh                       # Adamax, hill-climbing, regeneration, MNIST runs (detached)
+    .venv/bin/python newton.py ...     # damped Newton runs; arguments in EXPERIMENTS.md
+    .venv/bin/python registry.py       # registry of every run (EXPERIMENTS.md)
+    .venv/bin/python summarize.py      # tables
+    .venv/bin/python plots.py          # figures
 
-Seeds 0, 1 and 2; PyTorch 2.14.1 on CPU, one thread per run.
+Seeds 0, 1 and 2; PyTorch 2.14.1 on CPU.

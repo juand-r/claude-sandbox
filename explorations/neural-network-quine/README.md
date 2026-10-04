@@ -6,9 +6,17 @@ Hod Lipson, ALIFE 2018, arXiv:1803.05859). The network takes a coordinate
 trains it by gradient descent, by hill-climbing, and by "regeneration".
 It also trains a variant that classifies MNIST at the same time.
 
-Results and their interpretation are in `REPORT.md`. Further ideas and planned
-experiments are in `IDEAS.md`. Unstated details in the
-paper, and how each was resolved, are in `PLAN.md`; the evidence is in `NOTES.md`.
+## Documents
+
+| file | contents |
+|---|---|
+| `REPORT.md` | findings: Part I reproduces the paper, Part II makes the quine copy itself (best R² 0.987) |
+| `EXPERIMENTS.md` | definitions of every variant, and a generated registry of every run with its settings and results |
+| `IDEAS.md` | ideas and plans, with results recorded as they came in |
+| `PLAN.md` | the paper's unstated details and how each was resolved |
+| `NOTES.md` | working log, including mistakes and lost runs |
+
+Trained networks are in `results/weights/` (load with `quine.load_weights`).
 
 ## Run
 
@@ -32,4 +40,8 @@ paper, and how each was resolved, are in `PLAN.md`; the evidence is in `NOTES.md
 | `run_all.sh` | every run reported in REPORT.md |
 | `plots.py` | figures from `results/` |
 | `tests/test_quine.py` | coordinate mapping, forward pass vs explicit one-hot, loss vs brute force, regeneration, hill-climbing acceptance, snapshot targets |
+| `newton.py` | pure and damped Newton (Levenberg–Marquardt) on the quine equations |
+| `export_weights.py` | compact, verified checkpoints in `results/weights/` |
+| `registry.py` | the run registry in `EXPERIMENTS.md` |
+| `diag_*.py` | diagnostics referenced in `REPORT.md` |
 | `paper/quine.pdf` | the paper (arXiv v4) |
