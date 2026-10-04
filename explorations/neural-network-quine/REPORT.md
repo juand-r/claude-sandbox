@@ -279,8 +279,8 @@ at lr 2e-5:
 |---|---|---|
 | frozen targets, SSE (control) | 0.958 / 0.966 / 0.971 | 0.961 / 0.951 / 0.961 |
 | full gradient, SSE | 0.960 / 0.967 / 0.973 | 0.962 / 0.952 / 0.962 |
-| full gradient, 1 − R² | 0.960 / 0.967 / 0.973 | running |
-| frozen targets, 1 − R² | not run (see below) | running |
+| full gradient, 1 − R² | 0.960 / 0.967 / 0.973 | 0.962 / 0.952 / 0.962 |
+| frozen targets, 1 − R² | not run | 0.961 / 0.951 / 0.961 |
 
 Observation. The full gradient helps by a small, consistent amount (about
 0.0015 on every seed of both architectures). Using 1 − R² as the loss changes
@@ -289,8 +289,9 @@ nothing at this stage.
 Interpretation. 1 − R² differs from SSE only by the weights' spread, and the
 weights were not shrinking at this stage (RMS steady at ~0.40), so the divisor
 is nearly constant and Adamax ignores a constant rescaling of the loss. With
-frozen targets the divisor is exactly constant within an epoch, so I expect no
-difference at all; the two-layer run tests that expectation.
+frozen targets the divisor is exactly constant within an epoch, so no
+difference was expected, and none appears (two layers: identical to four
+decimal places on all three seeds).
 
 Running at the time of writing: the same four variants from random
 initialization (two layers, He, P scale 1, lr 2e-3, 1,000 epochs), where the
