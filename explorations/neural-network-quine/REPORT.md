@@ -24,9 +24,13 @@ L_SR = Σθ², the sum of its squared weights, so shrinking the weights lowers
 the loss. I therefore also tracked the ratio L_SR / Σθ². It is 1 for the
 output-zero network and 0 for a perfect quine. At every solution the paper
 reports, this ratio is between 0.94 and 1.02 in my runs. In this
-reimplementation, none of the paper's methods produced a network that
-predicts its own weights better than a network that outputs zero. The
-reported drops in loss come from the weights getting smaller.
+reimplementation, with the initialization that matches the paper's numbers,
+none of the paper's methods produced a network that predicts its own weights
+better than a network that outputs zero. The reported drops in loss come from
+the weights getting smaller. The one exception is a different regime: with
+the He initialization the paper names (but whose losses do not match the
+paper's), Adamax reaches ρ = 0.37 after 100 epochs, at a loss of about 274
+(section 9).
 
 Two of the paper's claims did not reproduce at all:
 
