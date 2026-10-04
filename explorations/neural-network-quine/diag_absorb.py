@@ -26,6 +26,12 @@ START = "results/weights/lmnorm_L1_seed0_cont80.pt"
 ITERS = 10
 SIZES = (0.01, 0.10)          # |Δ| / |θ|
 OUT = Path(__file__).parent / "results" / "diag_absorb.json"
+WEIGHTS = Path(__file__).parent / "results" / "weights"
+
+
+def save_progress(results):
+    """Write results after every run, so a restart loses at most one run."""
+    OUT.write_text(json.dumps(results, indent=1))
 
 
 def load():
@@ -33,12 +39,14 @@ def load():
     return m
 
 
-def repair(delta):
+def repair(delta, name):
     m = load()
+    settings = q.load_weights(START)[1]["settings"]
     with torch.no_grad():
         m.theta.add_(delta)
     r2_after_change = q.replication_stats(m)["r2"]
     log = newton.lm(m, ITERS, normalized=True)
+    q.save_weights(m, WEIGHTS / f"{name}.pt", settings, extra={"source": START, "experiment": "diag_absorb"})
     return m.theta.detach().clone(), r2_after_change, [row["r2"] for row in log]
 
 
@@ -56,10 +64,12 @@ def main():
         "largest": sv[0].item(), "smallest_10": sv[-10:].tolist(),
         "count_below": {str(t): int((sv < t).sum()) for t in (1e-3, 1e-2, 1e-1, 1.0)}}
     print("singular values of J − I:", results["singular_values_J_minus_I"], flush=True)
+    save_progress(results)
 
     print("control (no change)", flush=True)
-    theta_ctrl, _, r2_ctrl = repair(torch.zeros_like(theta0))
+    theta_ctrl, _, r2_ctrl = repair(torch.zeros_like(theta0), "absorb_control")
     results["control"] = {"r2": r2_ctrl, "moved": (theta_ctrl - theta0).norm().item() / theta0.norm().item()}
+    save_progress(results)
 
     gen = torch.Generator().manual_seed(0)
     results["runs"] = []
@@ -67,7 +77,7 @@ def main():
         delta = torch.randn(len(theta0), generator=gen, dtype=torch.float64)
         delta *= size * theta0.norm() / delta.norm()
         print(f"change of size {size:.0%}", flush=True)
-        theta_f, r2_changed, r2_log = repair(delta)
+        theta_f, r2_changed, r2_log = repair(delta, f"absorb_change{size:g}")
         diff = theta_f - theta_ctrl
         r = (diff @ delta / (delta @ delta)).item()
         other = (diff - r * delta).norm().item() / delta.norm().item()
@@ -75,6 +85,7 @@ def main():
                                 "r2_log": r2_log, "retention": r, "other_drift": other})
         print(f"  R² before {r2_ctrl[0]:.4f}, after change {r2_changed:.4f}, after repair {r2_log[-1]:.4f}; "
               f"retention {r:.4f}, other drift {other:.4f}", flush=True)
+        save_progress(results)
     OUT.write_text(json.dumps(results, indent=1))
     print(f"wrote {OUT}")
 

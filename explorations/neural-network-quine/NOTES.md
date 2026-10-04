@@ -185,3 +185,18 @@ at once); fixed by `del L` before retrying, so at most two N × N matrices are
 live (~6.5 GB); (2) I ran the grounding diagnostic (its own Jacobian, ~1-2 GB)
 at the same time. Rule: nothing else heavy while a two-layer damped Newton run
 is active. Log kept as `logs/lmnorm_L2_seed0.oom-killed-3.log`. Relaunched.
+
+### Container restart (2026-10-04, ~22:47); damped Newton "plateau" corrected
+
+Restart killed the change-and-repair experiment (`diag_absorb.py`, mid-run; its
+log survived as `logs/diag_absorb.died-at-restart.log`) and the seed-2
+from-scratch run with full gradient + 1 − R² (epoch 414). Both relaunched;
+`diag_absorb.py` now saves results and weights after each run.
+
+The surviving log corrects an earlier claim. The control run re-ran damped
+Newton on 1 − R² from `lmnorm_L1_seed0_cont80`, where 80 iterations had stalled
+at R² 0.9853. A fresh start reached 0.9884 in 10 iterations. So the stall was
+mostly the damping schedule (μ × 4 after a rejection, ÷ 3 after an acceptance,
+so μ ratchets up over a long run), not a local optimum. Also: the 1% random
+change dropped R² to 0.807, and 9 repair iterations brought it to 0.9901, above
+the control (0.9883) at the same point; that network was lost.
