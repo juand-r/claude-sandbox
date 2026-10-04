@@ -147,3 +147,22 @@ Repeated mistake: a monitor's `pgrep -f "experiments.py optimizer"` matched the
 monitor's own command line (same error as before). Use `pgrep -f "[e]xperiments.py"`.
 Rule for myself: any background command longer than a few minutes gets
 detached, and any pgrep inside a script uses the bracket pattern.
+
+### Out-of-memory kill (2026-10-04)
+
+Two damped Newton (Levenberg–Marquardt) runs at once (two-layer: ~6-10 GB peak
+for the 20,100² Jacobian, AᵀA and its Cholesky factor; one-layer: ~3 GB) plus
+Adamax jobs exceeded the 15 GB memory limit; the kernel killed both. Lost: 3
+two-layer iterations and 1 iteration of the 1 − R² run (logs kept as
+`*.oom-killed.log`). Rule: damped Newton runs strictly one at a time; check
+memory before launching anything large next to them.
+
+### Compact checkpoints
+
+All trained networks are committed in `results/weights/` as θ + constructor
+settings + SHA-256 of P (`quine.save_weights` / `quine.load_weights`;
+`export_weights.py`). Settings were recovered by searching for the ones that
+regenerate the stored P exactly; forward-pass flags (embedding/output SELU) come
+from each run's JSON. 93 of 112 reproduce their logged final SSE after reload;
+the stage copies reproduce their source runs; the rest are MNIST or diverged.
+New runs write a compact copy automatically.
