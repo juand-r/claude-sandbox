@@ -139,3 +139,26 @@ def test_mnist_loader():
     assert set(ty.unique().tolist()) == set(range(10))
     assert tx.min() == 0.0 and tx.max() == 1.0
     assert abs(tx.mean().item() - 0.1307) < 0.001   # the well-known MNIST pixel mean
+
+
+@pytest.mark.parametrize("n_layers", [1, 2])
+def test_newton_jacobian_matches_finite_differences(n_layers):
+    import newton
+    m = q.Quine(hidden=3, n_layers=n_layers, init="he_normal", proj_std=1.0, seed=8).double()
+    theta = m.theta.detach().clone()
+    J = newton.jacobian(m, theta, chunk=4)
+    eps = 1e-6
+    for k in range(m.n_params):
+        e = torch.zeros_like(theta)
+        e[k] = eps
+        fd = (newton.predict(m, theta + e) - newton.predict(m, theta - e)) / (2 * eps)
+        assert torch.allclose(J[:, k], fd, atol=1e-7), k
+
+
+def test_newton_accepted_steps_decrease_sse():
+    """Every accepted Newton step (after backtracking) decreases SSE."""
+    import newton
+    m = q.Quine(hidden=3, n_layers=1, init="he_normal", proj_std=1.0, seed=9).double()
+    log = newton.newton(m, max_steps=5)
+    sses = [row["sse"] for row in log]
+    assert all(b < a for a, b in zip(sses, sses[1:]))
