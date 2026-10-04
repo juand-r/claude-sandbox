@@ -1,5 +1,22 @@
 # Plan
 
+## Phase 8: the Cook's-v failure; engine efficiency (started 2026-10-04)
+
+User: find why the one-move TM fails at Cook's v (read 3,269), then make
+the engine faster and smaller.
+
+- [ ] 1. Mechanism of the failure (checkpoint at read 3,264 in scratch)
+  - [ ] a. trace where each read's tape character comes from (ossifier
+        meets moving data) for a good read (3,268) and the bad one (3,269)
+  - [ ] b. find what differs; test the explanation (prediction at other
+        reads or other v)
+  - [ ] c. write up (REPORT 3.7, NOTES)
+- [ ] 2. Efficiency
+  - [ ] a. profile time and memory on a fixed benchmark (one-move TM,
+        reads 0-1000 and a late stretch from a checkpoint)
+  - [ ] b. improvements, each measured and checked for identical output
+  - [ ] c. write up (REPORT 5, NOTES)
+
 ## Phase 7: long exact runs with HashLife; a compiled Turing machine on gliders (started 2026-10-03)
 
 User: "take charge, no more agents". Lead's decision: return to the main

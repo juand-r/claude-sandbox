@@ -183,15 +183,19 @@ def _build(run, A, B, left, right, x, k):
                 _build(run, A, B, left, right, x + h, k - 1))
 
 
-def rebuild(run, A, B, left, right):
+def rebuild(run, A, B, left, right, collect=True):
     """New HashRun at run.t: run's cells on [A, B) (multiples of GRID),
-    the free rows left/right of it, memo tables cleared."""
+    the free rows left/right of it. collect: clear the memo tables and
+    keep only the new tree's nodes (otherwise every node and memoized
+    result survives, and later advances can reuse them)."""
     if A % GRID or B % GRID or run.x0 % GRID:
         raise ValueError("carry bounds and the tree must be on the grid")
     lo, hi = min(left.lo, A), max(right.hi, B)
     k = max(ALIGN + 2, (hi - lo + 2 * GRID).bit_length() + 2)
     x0 = _floor((lo + hi) // 2 - (1 << (k - 1)))
-    root = hl.recanonicalize(_build(run, A, B, left, right, x0, k))
+    root = _build(run, A, B, left, right, x0, k)
+    if collect:
+        root = hl.recanonicalize(root)
     new = HashRun.__new__(HashRun)
     # HashRun's ether constants are t = 0 constants (it adds 4t itself);
     # the shifted layouts' phases are constants at time t
@@ -245,11 +249,14 @@ class EpochReads:
     epoch."""
 
     def __init__(self, tape, apps, v, n_reads, sample_bits=17, reach=1 << 20,
-                 epoch=8, log=print, checkpoint=None):
+                 epoch=8, log=print, checkpoint=None, max_nodes=None):
         self.key = (tape, tuple(apps), v, n_reads, sample_bits, reach, epoch)
         self.checkpoint = checkpoint
         self.apps, self.v, self.reach, self.epoch = apps, v, reach, epoch
         self.sample_bits = sample_bits
+        # memo tables are cleared at a rebuild only past this many nodes
+        # (None: at every rebuild)
+        self.max_nodes = max_nodes
         self.every = 1 << sample_bits
         self.jump_grid = 30 << max(0, int(v * JUMP_GRID_PER_V).bit_length() - 1)
         self.log = log
@@ -257,7 +264,10 @@ class EpochReads:
         r2 = component_regions(tape, apps, 2)
         width = r2[len(apps)][0] - r2[0][0]
         rp = n_reads // len(apps) + 3 + -(-4 * GRID // width)
-        self.n_all = (n_reads + 3) * 32 // 30 + 3
+        # ossifiers for the whole run: one per read, at least; at small v reads
+        # come further apart than 30v (fixed costs per read), so be generous
+        # (the epochs check that the train never runs out)
+        self.n_all = 2 * (n_reads + 3) + 10
         self.lay = layout(tape, apps, self.n_all, rp, v_override=v)
         self.regs = component_regions(tape, apps, rp)
         self.watch = ReadWatch(self.regs[:n_reads], apps, lookahead=LOOKAHEAD)
@@ -280,7 +290,7 @@ class EpochReads:
                  "run": (r.x0, r.cL, r.cR, r.t),
                  "uni": (self.uni.n_oss, self.uni.x_cut),
                  "watch": {k: getattr(self.watch, k)
-                           for k in ("before", "state", "read_at", "last")},
+                           for k in ("before", "state", "read_at", "last", "t_last")},
                  "next_epoch": self.next_epoch}
         tmp = self.checkpoint + ".tmp"
         with open(tmp, "wb") as fh:
@@ -332,7 +342,8 @@ class EpochReads:
                 f"(ossifiers from {left.lo}, table to {right.hi}): epoch too long")
         self.uni = self._universe(t, A, j)
         left, right = self.uni.at(t)
-        self.run = rebuild(run, A, B, left, right)
+        collect = self.max_nodes is None or hl.stats()["nodes"] > self.max_nodes
+        self.run = rebuild(run, A, B, left, right, collect)
         st = hl.stats()
         self.log(f"epoch at read {j}, t={t}: active [{a}, {b}] ({b - a} cells), "
                  f"{self.uni.n_oss} ossifiers, table to {self.uni.x_cut}, "
@@ -361,8 +372,11 @@ class EpochReads:
                 if self.checkpoint:
                     self._save()
             due = self._due(j)
-            if due is not None and due > self.run.t:
-                self.run.step(due - self.run.t)
+            # never sample earlier than the last sample: a read that started
+            # while the previous one was watched would be seen unread again
+            start = max(due or 0, (w.t_last or 0) // 30 * 30)
+            if start > self.run.t:
+                self.run.step(start - self.run.t)
             # a local copy around the watched regions, valid for `reach` steps
             lo_g, hi_g = w.span(pending)
             sh = -8 * self.run.t // 30

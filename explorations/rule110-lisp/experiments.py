@@ -135,6 +135,7 @@ class ReadWatch:
         self.state = ["." if a is not None else "-" for a, _ in regs]
         self.read_at = [None] * len(regs)
         self.last = [None] * len(regs)
+        self.t_last = None            # time of the latest sample
 
     def pending(self):
         """Reads happen in order: watch only the next few pending regions."""
@@ -146,7 +147,12 @@ class ReadWatch:
 
     def observe(self, t, pending, rel):
         """rel: census [(x, kind)] at time t, x in Ebar-frame global columns
-        (the t = 0 column of a cell moving with Ebar velocity)."""
+        (the t = 0 column of a cell moving with Ebar velocity). Samples must
+        come in time order (a region seen again before its read started
+        would look unread)."""
+        if self.t_last is not None and t < self.t_last:
+            raise RuntimeError(f"sample at t={t} precedes the previous one ({self.t_last})")
+        self.t_last = t
         for j in pending:
             a, b = self.regs[j]
             inside = tuple(c for c in rel if a <= c[0] < b)
