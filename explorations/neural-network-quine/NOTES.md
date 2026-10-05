@@ -216,3 +216,12 @@ at the end of step 2 (R² 0.9941; copied to `results/stage3fn_L2_seed0.pt`):
 
 Checked and rejected my own earlier guess (IDEAS.md section 10) that the
 one-layer output weights have a one-hot lookup unit; see REPORT.md section 16.
+
+### Rule for describing results to the user (2026-10-05)
+
+The user has repeatedly not understood my summaries ("describes itself
+accurately without depending on what it describes", "matched but not through
+their own values"). Cause: I compress a measurement into an abstract phrase.
+Rule: state what was measured and what number came out, in plain words, with
+one concrete example. No coined phrases. If a sentence needs a second reading,
+rewrite it.
