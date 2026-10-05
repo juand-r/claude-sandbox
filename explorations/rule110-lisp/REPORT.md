@@ -545,8 +545,14 @@ symbol, within one) and the TM's first visit. Then the machinery fails:
   at the same read and the same generation, with the same cluster
   counts. Both runs share the HashLife core and the layout code; those
   are tested against the packed engine and the direct assembly, but not
-  at 7e10 generations. An independent engine cannot reach this point in
-  reasonable time (StreamRun's cost is quadratic in time).
+  at 7e10 generations.
+- Not the engine (added later). The event engine of section 5 shares no
+  simulation code with HashLife (only the layout and the census). Run
+  from t = 0, it reproduces reads 0 to 3,270 read for read, including
+  the failure: 3,270 settles as '!' with 843 Ebar clusters, 3,269 then
+  completes late, 3,272 settles as '!' with 844. At two HashLife
+  checkpoints just before (reads 3,152 and 3,256) the two engines agree
+  on every cell of the active region (1.4e8 cells each).
 - Spacing-dependent. At 2v the same reads are correct.
 - Where in the program. In the reference CTS the tape holds about 3,300
   symbols at that point, so the queue is not empty; read 3,269 is the
@@ -558,9 +564,10 @@ construction itself failing at Cook's spacing. Like De Mol's program
 below half of Cook's v (3.6), it breaks during a long run of rejections,
 which fits the encoder's caveat that Cook's formula assumes a nonempty
 append in every appendant cycle; the filled program's rejection runs are
-about 200 reads long. An engine error is not excluded outright (see
-above), but it would have to depend on the spacing and not on the epoch
-and sampling choices. Section 3.8 identifies the mechanism: the
+about 200 reads long. Two independent engines agree on it, cell for cell
+up to just before the failure and read for read through it, so an engine
+error is no longer a live explanation. Section 3.8 identifies the
+mechanism: the
 character for read 3,269 is made correctly and then destroyed by the
 next ossifier, which finds no queued symbol in its way.
 
