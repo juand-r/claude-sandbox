@@ -1,0 +1,4 @@
+results/weights/lmnormReset_L2fn_seed0_b.pt: 300 random hidden-layer weights c, N = 20100
+  ∂f(c)/∂θ_c: mean 0.0033, median of |·| 0.0101
+  |∂f(c)/∂θ_k|, k ≠ c, median over k then over c: 0.0070
+  number of weights k with |∂f(c)/∂θ_k| > |∂f(c)/∂θ_c|: median over c 9553 of 20100

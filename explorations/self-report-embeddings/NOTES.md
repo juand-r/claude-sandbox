@@ -52,3 +52,26 @@ conditions. The reviewer's 200-epoch runs: training R² 1.0, held-out 0.34-0.39.
 parallel; then `follow_test.py`. No failures. Results in REPORT.md. Held-out R²
 levels off by about epoch 500 (seed 0 fixed: 0.49; seed 1 fixed: 0.39-0.41) and
 does not decline later.
+
+## 2026-10-05: terminology review of REPORT.md
+
+The user could not follow "row" and asked for a full review of terms. I
+rewrote the report with a Terms section, then a separate Claude instance read
+it cold. Its findings, all verified and fixed:
+- Wrong number of mine: the quine sentence in the introduction mixed two
+  measurements. Now cites a saved file
+  (`../neural-network-quine/diag_own_influence.py` and its output; median size
+  of a hidden weight's derivative of its own output 0.010 on the R² 0.9975
+  network).
+- Understated claim of mine: "the embedding table changed little". With trained
+  embeddings, training tokens' embedding vectors moved by a median of 19-21% of
+  their length (cosine to the start ≥ 0.925); held-out ones did not move.
+- "Half as much" and "other movement 0.65" held only for held-out tokens; now
+  both sets are reported.
+- Finite-change follow at 100% on held-out tokens (0.38-0.42) is below follow;
+  the claim that finite changes agree is now limited to changes up to 10%.
+- One rounding error (0.66 for 0.6548).
+- The 30-epoch trial numbers were not saved; now in
+  `results/trial_30ep_seed0_follow_test.json`.
+- Terms used two ways ("trained", "size", "change") and undefined terms
+  (internal state, position, run, pass, length) fixed.
