@@ -996,7 +996,11 @@ Done since (v0.2, unreleased):
 - HashLife engines: a sparse initial row, epochs, a C core (section 5);
 - an independent re-run of the Collatz trajectory (3.6);
 - a compiled Turing machine on gliders, and a construction failure at
-  Cook's own spacing (3.7).
+  Cook's own spacing (3.7);
+- why long rejection runs need a larger spacing (3.8);
+- an event engine: gliders as particles, collisions simulated once and
+  memoized, exact against HashLife cell for cell, 5 to 17 times faster
+  (section 5); it also confirmed the failure of 3.7 independently.
 
 Open, roughly in order of value:
 
@@ -1005,10 +1009,10 @@ Open, roughly in order of value:
   constraint that small programs show (3.5). With both, a non-uniform
   ossifier schedule could give each stretch of a run only the spacing
   it needs.
-- A glider-level simulator that steps each junk crossing as one event
-  (section 5). Without it the cost of a run grows with the square of its
-  reads; a three-state machine that moves both ways (59,136 reads) is
-  about a hundred times the one-move machine.
+- Done: an event engine (section 5). Open: its cost per read follows
+  the queue of the CTS, and on the three-state machine about two thirds
+  of its time goes to the read check (rendering windows and the census);
+  a census taken from the particles themselves would remove most of that.
 - Why Cook's short-leader block fails (3.4), and why one control program
   reads only every second ossifier period. Fixing the short leader would
   also remove the fill rewrite, which triples the reads of a compiled
