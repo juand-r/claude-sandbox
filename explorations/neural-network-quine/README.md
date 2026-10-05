@@ -45,3 +45,7 @@ Trained networks are in `results/weights/` (load with `quine.load_weights`).
 | `registry.py` | the run registry in `EXPERIMENTS.md` |
 | `diag_*.py` | diagnostics referenced in `REPORT.md` |
 | `paper/quine.pdf` | the paper (arXiv v4) |
+
+PDF of the report: `REPORT.pdf`, built with
+`pandoc REPORT.md -o REPORT.pdf --pdf-engine=xelatex -V mainfont="DejaVu Serif" -V monofont="DejaVu Sans Mono" -V geometry:margin=2.2cm -V fontsize=10pt -V colorlinks=true --toc -V toc-title="Contents"`
+(needs pandoc, texlive-xetex and fonts-dejavu-core).
