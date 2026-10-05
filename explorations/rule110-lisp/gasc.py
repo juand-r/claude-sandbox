@@ -49,6 +49,7 @@ def _load():
             ("gc_set_side", None, [i32, i64, i64, i64]),
             ("gc_side_request", i64, [i32]),
             ("gc_dump", i64, [i64, p, p]), ("gc_set_now", None, [i64]),
+            ("gc_family_counts", None, [p]),
             ("gc_start", i32, []),
             ("gc_materialize", i32, [i32, p, p, p, p, p]),
             ("gc_advance", i32, [i64]),
@@ -84,6 +85,8 @@ class CGas:
         self.c_left = None
         self._rows = []                # setup: items before start()
         self.n_events_before = 0       # events before a resume
+        self._row_cache = {}           # side row key -> its pieces, resolved
+        self._oflat = None
         # rendering: flat key slots and their cells (window)
         self._obase, self._ebase, self._nkeys = [], [], 0
         self._koff = np.zeros(0, np.int64)
@@ -205,6 +208,13 @@ class CGas:
     def count(self):
         return _lib.gc_count()
 
+    def family_counts(self):
+        """Merges so far by the two items' glider family (A, C, E, other)."""
+        out = np.zeros(16, np.int64)
+        _lib.gc_family_counts(out.ctypes.data)
+        return {f"{a}x{b}": int(out[4 * i + j]) for i, a in enumerate("ACEX")
+                for j, b in enumerate("ACEX") if out[4 * i + j]}
+
     def _request(self):
         a, b, k = ctypes.c_int32(), ctypes.c_int32(), ctypes.c_int32()
         t = ctypes.c_int64()
@@ -264,25 +274,55 @@ class CGas:
             raise RuntimeError(f"t={t}: side {'LR'[s]} exhausted")
         cells, x, cl, cr = row
         key, dx = key_of_cells(cells, (cl + x) % TILE, (cr + x + len(cells)) % TILE)
-        new = []
-        for pk, off in split(key):
-            lo = x + dx + off
-            it = self._item_tuple(pk, lo, 0)
-            if it[0] != PART:
-                raise RuntimeError(f"side {'LR'[s]}: non-periodic piece at {lo}")
-            o = self.reg.orbits[it[1]]
-            k_, s_ = divmod(t - it[2], o.p)
-            l_now = it[3] + k_ * o.d + o.off[s_]
-            if (l_now + o.w[s_] - 1 > bound) if s == 0 else (l_now < bound):
-                raise AssertionError(f"t={t}: side {'LR'[s]} content beyond its bound")
-            new.append(it)
+        # a side's rows repeat (ossifiers; the table's super-period chunks):
+        # split and resolve each distinct row once
+        info = self._row_cache.get(key)
+        if info is None:
+            rows = []
+            for pk, off in split(key):
+                kind, i, ph = self._resolve(pk)
+                if kind != PART:
+                    raise RuntimeError(f"side {'LR'[s]}: non-periodic piece at {x + dx + off}")
+                rows.append((i, ph, off, pk[2]))
+            info = self._row_cache[key] = np.array(rows, dtype=np.int64).reshape(-1, 4)
+        oid, ph, off, phl = info.T
+        ob, ooff, ow, op, od = self._orbit_flat()
+        lo = x + dx + off
+        cL = (phl - lo) % TILE                       # t = 0
+        t0 = -ph
+        x0 = lo - ooff[ob[oid] + ph]
+        # every new item must lie beyond the side's bound at time t
+        k_, s_ = np.divmod(t - t0, op[oid])
+        l_now = x0 + k_ * od[oid] + ooff[ob[oid] + s_]
+        w_now = ow[ob[oid] + s_]
+        if np.any(l_now + w_now - 1 > bound) if s == 0 else np.any(l_now < bound):
+            raise AssertionError(f"t={t}: side {'LR'[s]} content beyond its bound")
         self._side_params(s)
-        sen = (SENL if s == 0 else SENR, -1, 0, 0, 0)
-        new = [sen] + new if s == 0 else new + [sen]
-        cols = list(zip(*new))
-        arrs = [_arr(cols[0], np.int32), _arr(cols[1], np.int32), _arr(cols[2], np.int64),
-                _arr(cols[3], np.int64), _arr(cols[4], np.int32)]
-        self._check(_lib.gc_materialize(len(new), *[q.ctypes.data for q in arrs]))
+        n = len(oid) + 1
+        kind = np.full(n, PART, np.int32)
+        ids, t0s, x0s, cls = (np.zeros(n, np.int32), np.zeros(n, np.int64),
+                              np.zeros(n, np.int64), np.zeros(n, np.int32))
+        sl = slice(1, n) if s == 0 else slice(0, n - 1)
+        kind[0 if s == 0 else n - 1] = SENL if s == 0 else SENR
+        ids[0 if s == 0 else n - 1] = -1
+        ids[sl], t0s[sl], x0s[sl], cls[sl] = oid, t0, x0, cL
+        self._check(_lib.gc_materialize(n, *[q.ctypes.data for q in (kind, ids, t0s, x0s, cls)]))
+
+    def _orbit_flat(self):
+        """Flat per-phase arrays of all orbits: base index per orbit,
+        offsets, widths; and per orbit p and d."""
+        n = len(self.reg.orbits)
+        if self._oflat is None or len(self._oflat[0]) < n:
+            ob, off, w = [], [], []
+            for o in self.reg.orbits:
+                ob.append(len(off))
+                off.extend(o.off[:o.p])
+                w.extend(o.w)
+            self._oflat = (np.array(ob, np.int64), np.array(off, np.int64),
+                           np.array(w, np.int64),
+                           np.array([o.p for o in self.reg.orbits], np.int64),
+                           np.array([o.d for o in self.reg.orbits], np.int64))
+        return self._oflat
 
     # -- rendering ------------------------------------------------------------------
     def _key_index(self, kind, ids, ph):

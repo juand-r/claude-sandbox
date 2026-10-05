@@ -17,6 +17,8 @@
 #include <string.h>
 
 #define MIN_GAP 2
+#define BOUND_GAP 64           /* see gas.py: groupable */
+#define MAX_GROUP_W 256
 #define MARGIN 256
 #define TILE 14
 #define SHIFT 4
@@ -45,6 +47,9 @@ static int32_t *o_off, *o_w; static int8_t *o_phl, *o_phr;
 static int64_t n_oarr, cap_oarr;
 static Entry *entries; static int64_t n_entries, cap_entries;
 static int32_t *e_off, *e_w; static int8_t *e_phl, *e_phr;
+/* per step s of an entry: the smallest left edge and the largest right
+   boundary (left + width) over steps s..T, relative like e_off */
+static int32_t *e_lmin, *e_rmax;
 static int64_t n_earr, cap_earr;
 static Piece *pieces; static int64_t n_pieces, cap_pieces;
 static Event *heap; static int64_t n_heap, cap_heap;
@@ -240,7 +245,35 @@ static int64_t collision(const Item *a, const Item *b, int64_t t) {
     Cursor ca, cb;
     cur_init(&ca, a, t); cur_init(&cb, b, t);
     if (cb.x - ca.x - ca.w >= MIN_GAP + 2 * n) return -1;     /* light cone */
-    for (int64_t i = 0;; i++) {
+    /* a lower bound on the gap, linear in i: skip the steps before it
+       can fall under MIN_GAP */
+    double ba, va, bb, vb;
+    if (a->kind == PART) {
+        const Orbit *o = &orbits[a->id];
+        /* linear path at t: period anchor + v s (the orbit's bounds are
+           relative to it) */
+        ba = (double)(ca.x - o_off[o->base + ca.s]) + o->v * ca.s + o->hi_max; va = o->v;
+    } else {
+        const Entry *e = &entries[a->id];
+        ba = (double)(a->x0 + e_rmax[e->base + ca.s]); va = 0;
+    }
+    if (b->kind == PART) {
+        const Orbit *o = &orbits[b->id];
+        bb = (double)(cb.x - o_off[o->base + cb.s]) + o->v * cb.s + o->lo_min; vb = o->v;
+    } else {
+        const Entry *e = &entries[b->id];
+        bb = (double)(b->x0 + e_lmin[e->base + cb.s]); vb = 0;
+    }
+    double lb0 = bb - ba, closing = va - vb;
+    int64_t i0 = 0;
+    if (lb0 >= MIN_GAP) {
+        if (closing <= 0) return -1;
+        double di = (lb0 - MIN_GAP) / closing - 1;          /* -1: rounding */
+        if (di >= (double)n) return -1;
+        if (di > 0) i0 = (int64_t)di;
+    }
+    if (i0) { cur_init(&ca, a, t + i0); cur_init(&cb, b, t + i0); }
+    for (int64_t i = i0;; i++) {
         if (cb.x - ca.x - ca.w < MIN_GAP) return t + i;
         if (i + 1 >= n) return -1;
         cur_next(&ca); cur_next(&cb);
@@ -262,7 +295,7 @@ static int64_t sentinel_time(const Item *a, const Item *b, int64_t t) {
     double v, lo, hi; int64_t end = -1;
     if (it->kind == PART) {
         const Orbit *o = &orbits[it->id];
-        double lin = (double)(l - o_off[o->base + ph]);
+        double lin = (double)(l - o_off[o->base + ph]) + o->v * ph;
         v = o->v; lo = lin + o->lo_min; hi = lin + o->hi_max;
     } else {
         lo = (double)l; hi = (double)(l + w); end = end_of(it);
@@ -340,6 +373,15 @@ static void free_item(int32_t i) {
     items[i].next = free_head; free_head = i;
 }
 
+static int groupable(const Item *a, const Item *b, int64_t t) {
+    if (a->kind != PART || b->kind != PART) return 0;
+    if (orbits[a->id].d != 0 || orbits[b->id].d != 0) return 0;
+    int32_t pa, pb, wa, wb; int64_t la, lb;
+    state(a, t, &pa, &la, &wa); state(b, t, &pb, &lb, &wb);
+    int64_t g = lb - la - wa;
+    return g >= 0 && g < BOUND_GAP && lb + wb - la <= MAX_GROUP_W;
+}
+
 static int schedule_pair(int32_t a, int64_t t) {
     Item *ia = &items[a];
     int32_t b = ia->next;
@@ -350,7 +392,8 @@ static int schedule_pair(int32_t a, int64_t t) {
     if (ia->kind == SENL || ib->kind == SENR) {
         if (ia->kind == SENL && ib->kind == SENR) { failed = 2; return ERR; }
         tc = sentinel_time(ia, ib, t); kind = EV_M;
-    } else { tc = collision(ia, ib, t); kind = EV_C; }
+    } else if (groupable(ia, ib, t)) { tc = t; kind = EV_C; }   /* join now */
+    else { tc = collision(ia, ib, t); kind = EV_C; }
     if (tc == -2) return ERR;
     if (tc >= 0) return push(tc, kind, a, b, ia->ptok);
     return OK;
@@ -412,18 +455,36 @@ static void signature(const Item *a, const Item *b, int64_t t, uint64_t *k1, uin
     int32_t pa, pb, wb;
     state(a, t, &pa, la, wa); state(b, t, &pb, lb, &wb);
     int64_t g = *lb - *la - *wa;
-    *k1 = ((uint64_t)a->kind << 62) | ((uint64_t)(uint32_t)a->id << 30) | (uint64_t)pa;
-    *k2 = ((uint64_t)b->kind << 62) | ((uint64_t)(uint32_t)b->id << 30) | ((uint64_t)pb << 2)
-          | (uint64_t)(g & 3);
+    *k1 = ((uint64_t)a->kind << 62) | ((uint64_t)(uint32_t)a->id << 32) | (uint64_t)(uint32_t)pa;
+    *k2 = ((uint64_t)b->kind << 62) | ((uint64_t)(uint32_t)b->id << 32) | ((uint64_t)pb << 8)
+          | (uint64_t)(g & 255);
 }
+
+/* merge counts by family (A: speed 2/3, C: 0, E: -4/15, X: other or a
+   composite), for profiling */
+static int64_t fam_count[4][4];
+
+static int family(const Item *it) {
+    if (it->kind != PART) return 3;
+    const Orbit *o = &orbits[it->id];
+    if (3 * o->d == 2 * o->p) return 0;
+    if (o->d == 0) return 1;
+    if (15 * o->d == -4 * o->p) return 2;
+    return 3;
+}
+
+void gc_family_counts(int64_t *out) { memcpy(out, fam_count, sizeof(fam_count)); }
 
 static int do_merge(int32_t a, int32_t b, int64_t t) {
     uint64_t k1, k2; int64_t la, lb; int32_t wa;
     signature(&items[a], &items[b], t, &k1, &k2, &la, &wa, &lb);
     int64_t g = lb - la - wa;
-    if (g < 0 || g >= MIN_GAP) { req_a = a; req_b = b; req_t = t; failed = 3; return ERR; }
+    if (g < 0 || (g >= MIN_GAP && !groupable(&items[a], &items[b], t))) {
+        req_a = a; req_b = b; req_t = t; failed = 3; return ERR;
+    }
     MEnt *m = mfind(k1, k2);
     if (!m->used) { req_a = a; req_b = b; req_t = t; return NEED_MERGE; }
+    fam_count[family(&items[a])][family(&items[b])]++;
     int32_t n = piece_item(m->kind, m->id, m->phase, la + m->dx, t, items[a].cL);
     if (n < 0) return ERR;
     return replace(a, b, &n, 1, t);
@@ -468,8 +529,8 @@ int gc_reset(void) {
     free(o_off); free(o_w); free(o_phl); free(o_phr);
     o_off = o_w = 0; o_phl = o_phr = 0; n_oarr = cap_oarr = 0;
     free(entries); entries = 0; n_entries = cap_entries = 0;
-    free(e_off); free(e_w); free(e_phl); free(e_phr);
-    e_off = e_w = 0; e_phl = e_phr = 0; n_earr = cap_earr = 0;
+    free(e_off); free(e_w); free(e_phl); free(e_phr); free(e_lmin); free(e_rmax);
+    e_off = e_w = e_lmin = e_rmax = 0; e_phl = e_phr = 0; n_earr = cap_earr = 0;
     free(pieces); pieces = 0; n_pieces = cap_pieces = 0;
     free(heap); heap = 0; n_heap = cap_heap = 0;
     free(mtab); mtab = 0; mcap = mused = 0;
@@ -553,7 +614,8 @@ int32_t gc_add_entry(int32_t T, const int32_t *off, const int32_t *w,
         while (c < n_earr + need) c *= 2;
         e_off = realloc(e_off, c * sizeof(int32_t)); e_w = realloc(e_w, c * sizeof(int32_t));
         e_phl = realloc(e_phl, c); e_phr = realloc(e_phr, c);
-        if (!e_off || !e_w || !e_phl || !e_phr) { failed = 1; return -1; }
+        e_lmin = realloc(e_lmin, c * sizeof(int32_t)); e_rmax = realloc(e_rmax, c * sizeof(int32_t));
+        if (!e_off || !e_w || !e_phl || !e_phr || !e_lmin || !e_rmax) { failed = 1; return -1; }
         cap_earr = c;
     }
     if (n_pieces + np > cap_pieces) {
@@ -568,6 +630,14 @@ int32_t gc_add_entry(int32_t T, const int32_t *off, const int32_t *w,
     memcpy(e_off + n_earr, off, need * sizeof(int32_t));
     memcpy(e_w + n_earr, w, need * sizeof(int32_t));
     memcpy(e_phl + n_earr, phl, need); memcpy(e_phr + n_earr, phr, need);
+    for (int64_t k = need - 1; k >= 0; k--) {
+        int32_t l = off[k], r = off[k] + w[k];
+        if (k < need - 1) {
+            if (e_lmin[n_earr + k + 1] < l) l = e_lmin[n_earr + k + 1];
+            if (e_rmax[n_earr + k + 1] > r) r = e_rmax[n_earr + k + 1];
+        }
+        e_lmin[n_earr + k] = l; e_rmax[n_earr + k] = r;
+    }
     n_earr += need;
     for (int k = 0; k < np; k++) {
         Piece *p = &pieces[n_pieces + k];

@@ -882,3 +882,23 @@ Validation (all on the C engine unless stated):
 
 Where the time goes now (one-move TM, late reads): events ~0.05 s per
 read, the read check (window rendering, census) ~0.07 s per read.
+
+Bound groups (same day): where the 3-state run spends its events.
+- Merge counts by glider family, 3-state TM at 2x, reads 2000-2040:
+  C x E 6.09e6 of 6.22e6 merges; A x E (ossifiers through junk) 4.6e4.
+  So the cost is tape characters crossing the queue, not the junk; it
+  grows with the CTS queue, which is physics. But each character is four
+  C gliders 20-49 cells apart, so one crossing was 4 merges + 4 splits.
+- Tried: split threshold 64 cells everywhere. Collatz crawled (4 reads in
+  ~5 min): the table's Ebars become large one-off groups, each needing
+  its own period search and collisions. Dropped.
+- Kept: (1) adjacent stationary particles closer than 64 cells (combined
+  width <= 256) are joined at once into one particle - their union,
+  periodic since they never interact; (2) a collision's pieces leave as
+  bound groups (same velocity, closer than 64), and the split waits while
+  any two neighbouring groups within 64 cells are closing in or one is
+  still transient. A character then crosses an Ebar as one collision.
+  Collatz: C x E merges 912k -> 224k, events 4.84e6 -> 2.49e6, reads
+  identical including read times; 63 distinct collisions.
+- Bug on the way: a bound group led by a zero-width slip piece starts a
+  few cells after that piece (trim); allowed.

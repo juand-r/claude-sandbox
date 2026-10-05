@@ -118,9 +118,9 @@ def split(key):
     bits, w, phL, phR = key
     if w < SPLIT_GAP + 2:
         return [(key, 0)]
-    # two tiles of padding: windows starting in the first tile lie inside
-    # the pad, so its first 14 cells are always a gap of phase phL
-    pad = 2 * TILE
+    # windows starting in the pad's first pad - 13 cells lie inside it, so
+    # those cells are always clean ether of phase phL: a gap
+    pad = SPLIT_GAP + TILE
     row = np.concatenate([cells_of(ether_int(phL - pad, pad), pad), cells_of(bits, w),
                           cells_of(ether_int(phR, pad), pad)])
     from census import ether_phase
@@ -247,6 +247,59 @@ def _empty(key):
     return key[1] == 0 and key[2] == key[3]
 
 
+# Pieces that leave a collision moving at exactly the same velocity and
+# closer than BOUND_GAP stay together as one particle (a bound group): a
+# tape character's four C gliders, an Ebar pair. They can never interact,
+# so the group is periodic, and a character then crosses an Ebar as one
+# collision instead of four. (Only for collision outcomes: grouping the
+# table's rows the same way makes every group unique and is much slower.)
+BOUND_GAP = 64
+# Adjacent stationary particles (tape C gliders) closer than BOUND_GAP are
+# joined into one particle at once (their union, which is periodic), if
+# the result is at most MAX_GROUP_W wide: a tape character becomes one
+# particle, so a character crossing an Ebar is one collision.
+MAX_GROUP_W = 256
+
+
+def groupable(ka, la, oa, kb, lb, ob):
+    """Two adjacent particles (keys at left edges la < lb, orbits) to be
+    joined into one."""
+    g = lb - la - ka[1]
+    return (oa.d == 0 and ob.d == 0 and 0 <= g < BOUND_GAP
+            and lb + kb[1] - la <= MAX_GROUP_W)
+
+
+def group_pieces(key, ps, reg):
+    """Bound groups of a split [(key, offset)] -> [(key, offset)], or
+    None while the composite is not done: two groups within BOUND_GAP of
+    each other are still closing in, or one of them is not periodic yet
+    (still in a collision)."""
+    groups = []                         # [first, last, velocity]
+    for pk, off in ps:
+        r = reg.lookup(pk)
+        v = Fraction(r[0].d, r[0].p) if r is not None else None
+        if groups and v is not None and groups[-1][2] == v and \
+                off - (groups[-1][1][1] + groups[-1][1][0][1]) < BOUND_GAP:
+            groups[-1][1] = (pk, off)
+        else:
+            groups.append([(pk, off), (pk, off), v])
+    for (_, (lk, lo_), v1), ((fk, fo), _, v2) in zip(groups, groups[1:]):
+        if fo - (lo_ + lk[1]) < BOUND_GAP and (v1 is None or v2 is None or v1 > v2):
+            return None
+    if len(groups) == len(ps):
+        return ps
+    cells = cells_of(key[0], key[1])
+    out = []
+    for (fk, fo), (lk, lo_), _ in groups:
+        if fk is lk and fo == lo_:
+            out.append((fk, fo))
+            continue
+        # (a group led by a zero-width slip piece may start a few cells on)
+        gk, dx = key_of_cells(cells[fo:lo_ + lk[1]], fk[2], lk[3])
+        out.append((gk, fo + dx))
+    return out
+
+
 def simulate(key, reg):
     """Evolve a composite until it splits (>= 2 pieces), becomes one
     periodic piece, vanishes, or COMPOSITE_CAP steps pass."""
@@ -273,8 +326,12 @@ def simulate(key, reg):
         states.append((k, x))
         seen[k] = s
         ps = split(k)
-        if len(ps) != 1:
-            return Entry(states, [(pk, x + off) for pk, off in ps])
+        if not ps:
+            return Entry(states, [])
+        if len(ps) > 1:
+            gs = group_pieces(k, ps, reg)
+            if gs is not None and len(gs) > 1:
+                return Entry(states, [(gk, x + off) for gk, off in gs])
     return Entry(states, [(k, x)])
 
 
@@ -482,6 +539,9 @@ class Gas:
         a.token += 1
         if a.side == "L" or b.side == "R":
             tc, kind = self._sentinel_time(a, b, t), "M"
+        elif a.orbit is not None and b.orbit is not None and \
+                groupable(*a.at(t), a.orbit, *b.at(t), b.orbit):
+            tc, kind = t, "C"                    # join now (a merge)
         else:
             tc, kind = self._collision(a, b, t), "C"
         if tc is not None:
@@ -496,7 +556,8 @@ class Gas:
         key, l = it.at(t)
         if it.orbit is not None:
             o = it.orbit
-            lin = l - o.offa[(t - it.t0) % o.p]        # linear path at t
+            ph = (t - it.t0) % o.p
+            lin = l - o.offa[ph] + o.v * ph             # linear path at t
             v, lo, hi, end = Fraction(o.d, o.p), lin + o.lo_min, lin + o.hi_max, None
         else:
             v, lo, hi, end = None, l, l + key[1], it.end()
@@ -629,6 +690,9 @@ class Gas:
         g = lb - la - ka[1]
         if g < 0:
             raise AssertionError(f"t={t}: items overlap ({g})")
+        if g >= MIN_GAP and not (a.orbit is not None and b.orbit is not None and
+                                 groupable(ka, la, a.orbit, kb, lb, b.orbit)):
+            raise AssertionError(f"t={t}: merge at gap {g}")
         if (ka[3] + g) % TILE != kb[2]:
             raise AssertionError(f"t={t}: ether phase mismatch between items")
         bits = ka[0] | (ether_int(ka[3], g) << ka[1]) | (kb[0] << (ka[1] + g))

@@ -97,7 +97,7 @@ def test_gas_matches_hashlife_on_collatz_layout():
         g.advance_to(T)
         h.step(T - h.t)
         assert np.array_equal(g.window(lo, hi), h.window(lo, hi)), T
-    assert g.n_events > 10_000
+    assert g.n_events > 1_000
 
 
 def test_c_engine_matches_python_engine_and_hashlife():

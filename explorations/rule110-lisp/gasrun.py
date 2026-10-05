@@ -74,18 +74,52 @@ class Train:
 
 
 class Table:
-    """Right side from x on (x a clean cut, c the ether constant there)."""
+    """Right side from x on (x a clean cut, c the ether constant there).
 
-    def __init__(self, lay, x, c):
+    period: (s0, w) when the layout repeats one super-period of w cells
+    from s0 on (casim.layout's periodic right side). Chunks are then cut
+    at the same offsets in every period, so every period yields the same
+    chunks, and the engine splits each distinct chunk only once."""
+
+    def __init__(self, lay, x, c, period=None):
         self.lay, self.x, self.c = lay, x, c
+        self.cuts = None
+        if period is not None:
+            # cuts y0 + i w + o_j: the first clean cut y0 >= s0, then one
+            # about every TABLE_CHUNK cells up to y0 + w (the next y0)
+            s0, w = period
+            cuts = [clean_cut(lay, s0)]
+            while True:
+                y, cy = clean_cut(lay, cuts[-1][0] + TABLE_CHUNK)
+                if y >= cuts[0][0] + w:
+                    break
+                cuts.append((y, cy))
+            self.y0, self.w = cuts[0][0], w
+            self.cuts = [(y - self.y0, cy) for y, cy in cuts]   # o_j, constant
+
+    def _next_cut(self):
+        x, lay = self.x, self.lay
+        if self.cuts is not None:
+            first = self.y0
+            if x >= first:
+                # the next grid point after x (x itself, a clean cut, may be
+                # off the grid: the first chunk is cut before the grid is used)
+                i, r = divmod(x - self.y0, self.w)
+                j = next((j for j, (o, _) in enumerate(self.cuts) if o > r), len(self.cuts))
+                if j == len(self.cuts):
+                    i, j = i + 1, 0
+                o, c = self.cuts[j]
+                return self.y0 + i * self.w + o, (c - i * self.w) % TILE
+            cut, c = clean_cut(lay, x + TABLE_CHUNK)
+            return (cut, c) if cut < first else (first, self.cuts[0][1])
+        return clean_cut(lay, x + TABLE_CHUNK)
 
     def src(self):
         if self.x >= self.lay.hi:
             return None
-        if self.x + TABLE_CHUNK >= self.lay.hi:
+        cut, c = self._next_cut() if self.x + TABLE_CHUNK < self.lay.hi else (self.lay.hi, None)
+        if cut >= self.lay.hi:
             cut, c = self.lay.hi, self.lay.phases[-1]
-        else:
-            cut, c = clean_cut(self.lay, self.x + TABLE_CHUNK)
         row = (self.lay.cells(self.x, cut), self.x, self.c, c)
         self.x, self.c = cut, c
         return row
@@ -159,6 +193,15 @@ def _cgas_run():
     return CGasRun
 
 
+def table_period(lay, n_all):
+    """(s0, w) if the layout's right side repeats one shared super-period
+    (casim.layout), else None."""
+    right = lay.segments[n_all:]
+    if len(right) >= 4 and right[2][1] is right[1][1]:
+        return right[1][0], right[2][0] - right[1][0]
+    return None
+
+
 def build(lay, n_all, engine="c"):
     """Gas for a casim.layout with n_all ossifiers: ossifier 0 (adjacent
     to block C) and the first table chunk materialized, the rest lazy.
@@ -169,7 +212,7 @@ def build(lay, n_all, engine="c"):
     g = GasRun() if engine == "py" else _cgas_run()()
     g.append_row(lay.cells(x0, cut), x0, lay.phases[n_all - 1], c)
     g.add_sides(_side("L", Train(lay, n_all), TRAIN_SPEED),
-                _side("R", Table(lay, cut, c), TABLE_SPEED))
+                _side("R", Table(lay, cut, c, table_period(lay, n_all)), TABLE_SPEED))
     g.start()
     return g
 
@@ -228,7 +271,7 @@ class GasReads:
             raise ValueError(f"checkpoint {self.checkpoint} is for another run")
         train = Train(self.lay, self.n_all)
         train.k = state["train_k"]
-        table = Table(self.lay, *state["table"])
+        table = Table(self.lay, *state["table"], table_period(self.lay, self.n_all))
         sides = [_side("L", train, TRAIN_SPEED), _side("R", table, TABLE_SPEED)]
         self.run = _cgas_run().from_state(state["gas"], sides)
         for k, val in state["watch"].items():

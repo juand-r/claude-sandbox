@@ -100,7 +100,7 @@ read 96: at t~2540875470, 0 Ebar clusters remain: N
 read 97: at t~2567553270, 0 Ebar clusters remain: N
 read 98: at t~2593968960, 360 Ebar clusters remain: Y
 read 99: at t~2620515750, 0 Ebar clusters remain: N
-[gas] read 100: t=2620777842, 4492370 events, 6279 items, 75 collisions, 27 orbits, wall 14s
+[gas] read 100: t=2620777842, 750686 events, 5654 items, 57 collisions, 37 orbits, wall 9s
 read 100: at t~2647193640, 0 Ebar clusters remain: N
 read 101: at t~2673609420, 0 Ebar clusters remain: N
 read 102: at t~2700025230, 0 Ebar clusters remain: N
@@ -201,7 +201,7 @@ read 196: at t~5186522070, 0 Ebar clusters remain: N
 read 197: at t~5212940730, 0 Ebar clusters remain: N
 read 198: at t~5239490490, 0 Ebar clusters remain: N
 read 199: at t~5265778140, 0 Ebar clusters remain: N
-[gas] read 200: t=5265909154, 10120961 events, 6625 items, 75 collisions, 27 orbits, wall 27s
+[gas] read 200: t=5265909154, 1698244 events, 6095 items, 57 collisions, 37 orbits, wall 15s
 read 200: at t~5292196890, 0 Ebar clusters remain: N
 read 201: at t~5318615670, 0 Ebar clusters remain: N
 read 202: at t~5345034480, 0 Ebar clusters remain: N
@@ -302,7 +302,7 @@ read 296: at t~7831551180, 0 Ebar clusters remain: N
 read 297: at t~7857972840, 0 Ebar clusters remain: N
 read 298: at t~7884394530, 0 Ebar clusters remain: N
 read 299: at t~7910816250, 0 Ebar clusters remain: N
-[gas] read 300: t=7911078340, 16912605 events, 7781 items, 75 collisions, 27 orbits, wall 39s
+[gas] read 300: t=7911078340, 2859852 events, 7348 items, 57 collisions, 37 orbits, wall 22s
 read 300: at t~7937369070, 0 Ebar clusters remain: N
 read 301: at t~7963790850, 0 Ebar clusters remain: N
 read 302: at t~7990212660, 0 Ebar clusters remain: N
@@ -403,7 +403,7 @@ read 396: at t~10476617370, 0 Ebar clusters remain: N
 read 397: at t~10503042000, 0 Ebar clusters remain: N
 read 398: at t~10529466660, 359 Ebar clusters remain: Y
 read 399: at t~10556022420, 0 Ebar clusters remain: N
-[gas] read 400: t=10556153440, 24926024 events, 9291 items, 75 collisions, 27 orbits, wall 53s
+[gas] read 400: t=10556153440, 4241091 events, 8952 items, 57 collisions, 37 orbits, wall 29s
 read 400: at t~10582447140, 0 Ebar clusters remain: N
 read 401: at t~10608871890, 0 Ebar clusters remain: N
 read 402: at t~10635296670, 0 Ebar clusters remain: N
@@ -504,7 +504,7 @@ read 496: at t~13121719200, 0 Ebar clusters remain: N
 read 497: at t~13148146830, 0 Ebar clusters remain: N
 read 498: at t~13174574490, 0 Ebar clusters remain: N
 read 499: at t~13201002180, 0 Ebar clusters remain: N
-[gas] read 500: t=13201264270, 34162017 events, 9059 items, 75 collisions, 27 orbits, wall 66s
+[gas] read 500: t=13201264270, 5845992 events, 8815 items, 57 collisions, 37 orbits, wall 36s
 read 500: at t~13227560970, 0 Ebar clusters remain: N
 read 501: at t~13253988720, 0 Ebar clusters remain: N
 read 502: at t~13280416500, 0 Ebar clusters remain: N
@@ -605,7 +605,7 @@ read 596: at t~15766857510, 0 Ebar clusters remain: N
 read 597: at t~15793288110, 0 Ebar clusters remain: N
 read 598: at t~15819718740, 0 Ebar clusters remain: N
 read 599: at t~15846149400, 0 Ebar clusters remain: N
-[gas] read 600: t=15846411490, 44505584 events, 10207 items, 75 collisions, 27 orbits, wall 79s
+[gas] read 600: t=15846411490, 7654378 events, 10060 items, 57 collisions, 37 orbits, wall 43s
 read 600: at t~15872580090, 0 Ebar clusters remain: N
 read 601: at t~15899010810, 0 Ebar clusters remain: N
 read 602: at t~15925441560, 0 Ebar clusters remain: N
@@ -706,7 +706,7 @@ read 696: at t~18411899310, 0 Ebar clusters remain: N
 read 697: at t~18438332880, 0 Ebar clusters remain: N
 read 698: at t~18464897550, 0 Ebar clusters remain: N
 read 699: at t~18491331180, 0 Ebar clusters remain: N
-[gas] read 700: t=18491462196, 56015217 events, 11355 items, 75 collisions, 27 orbits, wall 92s
+[gas] read 700: t=18491462196, 9675303 events, 11303 items, 57 collisions, 37 orbits, wall 51s
 read 700: at t~18517764840, 0 Ebar clusters remain: N
 read 701: at t~18544198530, 0 Ebar clusters remain: N
 read 702: at t~18570632250, 0 Ebar clusters remain: N
@@ -807,7 +807,7 @@ read 796: at t~21056977650, 0 Ebar clusters remain: N
 read 797: at t~21083414220, 0 Ebar clusters remain: N
 read 798: at t~21109850820, 0 Ebar clusters remain: N
 read 799: at t~21136287450, 0 Ebar clusters remain: N
-[gas] read 800: t=21136549540, 69357197 events, 13344 items, 76 collisions, 27 orbits, wall 105s
+[gas] read 800: t=21136549540, 12010746 events, 13304 items, 61 collisions, 37 orbits, wall 58s
 read 800: at t~21162724110, 0 Ebar clusters remain: N
 read 801: at t~21189160800, 0 Ebar clusters remain: N
 read 802: at t~21215728590, 0 Ebar clusters remain: N
@@ -908,7 +908,7 @@ read 896: at t~23698285080, 0 Ebar clusters remain: N
 read 897: at t~23724724560, 0 Ebar clusters remain: N
 read 898: at t~23751164070, 0 Ebar clusters remain: N
 read 899: at t~23777603610, 0 Ebar clusters remain: N
-[gas] read 900: t=23777865700, 83306065 events, 13406 items, 76 collisions, 27 orbits, wall 118s
+[gas] read 900: t=23777865700, 14498664 events, 13365 items, 63 collisions, 37 orbits, wall 66s
 read 900: at t~23803649940, 0 Ebar clusters remain: N
 read 901: at t~23829303060, 0 Ebar clusters remain: N
 read 902: at t~23854562970, 0 Ebar clusters remain: N
@@ -1009,7 +1009,7 @@ read 996: at t~26336211990, 0 Ebar clusters remain: N
 read 997: at t~26362785330, 0 Ebar clusters remain: N
 read 998: at t~26389358700, 0 Ebar clusters remain: N
 read 999: at t~26415801030, 1080 Ebar clusters remain: Y
-[gas] read 1000: t=26416325262, 96967353 events, 13904 items, 76 collisions, 27 orbits, wall 131s
+[gas] read 1000: t=26416325262, 16991906 events, 13863 items, 63 collisions, 37 orbits, wall 74s
 read 1000: at t~26442505530, 0 Ebar clusters remain: N
 read 1001: at t~26468947920, 0 Ebar clusters remain: N
 read 1002: at t~26495390340, 0 Ebar clusters remain: N
@@ -1110,7 +1110,7 @@ read 1096: at t~28978488750, 0 Ebar clusters remain: N
 read 1097: at t~29004933900, 0 Ebar clusters remain: N
 read 1098: at t~29031379080, 0 Ebar clusters remain: N
 read 1099: at t~29057824290, 0 Ebar clusters remain: N
-[gas] read 1100: t=29057955308, 112104062 events, 13890 items, 76 collisions, 27 orbits, wall 145s
+[gas] read 1100: t=29057955308, 19773600 events, 13845 items, 63 collisions, 37 orbits, wall 82s
 read 1100: at t~29084269530, 0 Ebar clusters remain: N
 read 1101: at t~29110583730, 0 Ebar clusters remain: N
 read 1102: at t~29137029030, 0 Ebar clusters remain: N
@@ -1211,7 +1211,7 @@ read 1196: at t~31620396960, 0 Ebar clusters remain: N
 read 1197: at t~31646844990, 0 Ebar clusters remain: N
 read 1198: at t~31673293050, 0 Ebar clusters remain: N
 read 1199: at t~31699741140, 0 Ebar clusters remain: N
-[gas] read 1200: t=31700003230, 127382398 events, 13970 items, 76 collisions, 27 orbits, wall 159s
+[gas] read 1200: t=31700003230, 22628258 events, 13926 items, 63 collisions, 37 orbits, wall 89s
 read 1200: at t~31726189260, 0 Ebar clusters remain: N
 read 1201: at t~31752637410, 0 Ebar clusters remain: N
 read 1202: at t~31779085590, 0 Ebar clusters remain: N
@@ -1312,7 +1312,7 @@ read 1296: at t~34261806330, 0 Ebar clusters remain: N
 read 1297: at t~34288257270, 0 Ebar clusters remain: N
 read 1298: at t~34314708240, 0 Ebar clusters remain: N
 read 1299: at t~34341159240, 0 Ebar clusters remain: N
-[gas] read 1300: t=34341290258, 142787041 events, 15132 items, 76 collisions, 27 orbits, wall 173s
+[gas] read 1300: t=34341290258, 25543785 events, 15088 items, 63 collisions, 37 orbits, wall 97s
 read 1300: at t~34367610270, 359 Ebar clusters remain: Y
 read 1301: at t~34393930260, 0 Ebar clusters remain: N
 read 1302: at t~34420381350, 0 Ebar clusters remain: N
@@ -1413,7 +1413,7 @@ read 1396: at t~36903636870, 0 Ebar clusters remain: N
 read 1397: at t~36930090720, 0 Ebar clusters remain: N
 read 1398: at t~36956413530, 0 Ebar clusters remain: N
 read 1399: at t~36982867440, 0 Ebar clusters remain: N
-[gas] read 1400: t=36983129532, 159563476 events, 15917 items, 76 collisions, 27 orbits, wall 186s
+[gas] read 1400: t=36983129532, 28733509 events, 15869 items, 63 collisions, 37 orbits, wall 105s
 read 1400: at t~37009321380, 0 Ebar clusters remain: N
 read 1401: at t~37035775350, 0 Ebar clusters remain: N
 read 1402: at t~37062229350, 0 Ebar clusters remain: N
@@ -1514,7 +1514,7 @@ read 1496: at t~39545625060, 0 Ebar clusters remain: N
 read 1497: at t~39571950720, 0 Ebar clusters remain: N
 read 1498: at t~39598407480, 0 Ebar clusters remain: N
 read 1499: at t~39624864270, 0 Ebar clusters remain: N
-[gas] read 1500: t=39625126360, 176206902 events, 15986 items, 76 collisions, 27 orbits, wall 199s
+[gas] read 1500: t=39625126360, 31949661 events, 15938 items, 63 collisions, 37 orbits, wall 113s
 read 1500: at t~39651321090, 0 Ebar clusters remain: N
 read 1501: at t~39677777940, 0 Ebar clusters remain: N
 read 1502: at t~39704234820, 0 Ebar clusters remain: N
@@ -1615,7 +1615,7 @@ read 1596: at t~42186984240, 0 Ebar clusters remain: N
 read 1597: at t~42213312810, 0 Ebar clusters remain: N
 read 1598: at t~42239772480, 0 Ebar clusters remain: N
 read 1599: at t~42266232180, 0 Ebar clusters remain: N
-[gas] read 1600: t=42266494270, 193490843 events, 16113 items, 76 collisions, 27 orbits, wall 213s
+[gas] read 1600: t=42266494270, 35307971 events, 16062 items, 63 collisions, 37 orbits, wall 121s
 read 1600: at t~42292691910, 0 Ebar clusters remain: N
 read 1601: at t~42319151670, 359 Ebar clusters remain: Y
 read 1602: at t~42345611460, 0 Ebar clusters remain: N
@@ -1716,7 +1716,7 @@ read 1696: at t~44828764590, 0 Ebar clusters remain: N
 read 1697: at t~44855227140, 0 Ebar clusters remain: N
 read 1698: at t~44881689720, 0 Ebar clusters remain: N
 read 1699: at t~44908021260, 0 Ebar clusters remain: N
-[gas] read 1700: t=44908283348, 211751856 events, 16551 items, 76 collisions, 27 orbits, wall 228s
+[gas] read 1700: t=44908283348, 38880650 events, 16500 items, 63 collisions, 37 orbits, wall 129s
 read 1700: at t~44934483900, 0 Ebar clusters remain: N
 read 1701: at t~44960946570, 0 Ebar clusters remain: N
 read 1702: at t~44987409270, 0 Ebar clusters remain: N
@@ -1817,7 +1817,7 @@ read 1796: at t~47470703970, 0 Ebar clusters remain: N
 read 1797: at t~47497169430, 0 Ebar clusters remain: N
 read 1798: at t~47523634920, 0 Ebar clusters remain: N
 read 1799: at t~47550100440, 0 Ebar clusters remain: N
-[gas] read 1800: t=47550231458, 229783643 events, 16617 items, 76 collisions, 27 orbits, wall 242s
+[gas] read 1800: t=47550231458, 42466088 events, 16568 items, 63 collisions, 37 orbits, wall 137s
 read 1800: at t~47576172750, 0 Ebar clusters remain: N
 read 1801: at t~47601851850, 0 Ebar clusters remain: N
 read 1802: at t~47627137740, 0 Ebar clusters remain: N
@@ -1918,7 +1918,7 @@ read 1896: at t~50109262950, 0 Ebar clusters remain: N
 read 1897: at t~50135862300, 0 Ebar clusters remain: N
 read 1898: at t~50162461680, 0 Ebar clusters remain: N
 read 1899: at t~50188930020, 0 Ebar clusters remain: N
-[gas] read 1900: t=50189323180, 249062212 events, 17833 items, 76 collisions, 27 orbits, wall 257s
+[gas] read 1900: t=50189323180, 46298694 events, 17779 items, 63 collisions, 37 orbits, wall 145s
 read 1900: at t~50215660530, 0 Ebar clusters remain: N
 read 1901: at t~50242128930, 0 Ebar clusters remain: N
 read 1902: at t~50268466290, 0 Ebar clusters remain: N
@@ -2019,7 +2019,7 @@ read 1996: at t~52751781630, 0 Ebar clusters remain: N
 read 1997: at t~52778252820, 0 Ebar clusters remain: N
 read 1998: at t~52804724040, 0 Ebar clusters remain: N
 read 1999: at t~52831064220, 0 Ebar clusters remain: N
-[gas] read 2000: t=52831326308, 268703563 events, 18474 items, 76 collisions, 27 orbits, wall 271s
+[gas] read 2000: t=52831326308, 50240639 events, 18421 items, 63 collisions, 37 orbits, wall 153s
 read 2000: at t~52857535500, 0 Ebar clusters remain: N
 read 2001: at t~52884006810, 0 Ebar clusters remain: N
 read 2002: at t~52910347080, 0 Ebar clusters remain: N
@@ -2120,7 +2120,7 @@ read 2096: at t~55393148160, 0 Ebar clusters remain: N
 read 2097: at t~55419491160, 0 Ebar clusters remain: N
 read 2098: at t~55445965260, 0 Ebar clusters remain: N
 read 2099: at t~55472439390, 0 Ebar clusters remain: N
-[gas] read 2100: t=55472701480, 288326740 events, 18242 items, 76 collisions, 27 orbits, wall 286s
+[gas] read 2100: t=55472701480, 54218984 events, 18185 items, 63 collisions, 37 orbits, wall 161s
 read 2100: at t~55498913550, 0 Ebar clusters remain: N
 read 2101: at t~55525256670, 0 Ebar clusters remain: N
 read 2102: at t~55551730890, 0 Ebar clusters remain: N
@@ -2221,7 +2221,7 @@ read 2196: at t~58034932560, 0 Ebar clusters remain: N
 read 2197: at t~58061409510, 0 Ebar clusters remain: N
 read 2198: at t~58087755420, 0 Ebar clusters remain: N
 read 2199: at t~58114232430, 0 Ebar clusters remain: N
-[gas] read 2200: t=58114494522, 309375846 events, 19034 items, 76 collisions, 27 orbits, wall 301s
+[gas] read 2200: t=58114494522, 58477184 events, 18977 items, 63 collisions, 37 orbits, wall 169s
 read 2200: at t~58140709470, 0 Ebar clusters remain: N
 read 2201: at t~58167186540, 0 Ebar clusters remain: N
 read 2202: at t~58193532570, 0 Ebar clusters remain: N
@@ -2322,7 +2322,7 @@ read 2296: at t~60676873770, 0 Ebar clusters remain: N
 read 2297: at t~60703353630, 0 Ebar clusters remain: N
 read 2298: at t~60729833520, 0 Ebar clusters remain: N
 read 2299: at t~60756182370, 0 Ebar clusters remain: N
-[gas] read 2300: t=60756444458, 330378793 events, 19095 items, 76 collisions, 27 orbits, wall 316s
+[gas] read 2300: t=60756444458, 62778968 events, 19036 items, 63 collisions, 37 orbits, wall 177s
 read 2300: at t~60782662320, 0 Ebar clusters remain: N
 read 2301: at t~60809142300, 0 Ebar clusters remain: N
 read 2302: at t~60835491240, 0 Ebar clusters remain: N
@@ -2423,7 +2423,7 @@ read 2396: at t~63317137620, 0 Ebar clusters remain: N
 read 2397: at t~63343620360, 0 Ebar clusters remain: N
 read 2398: at t~63370103130, 0 Ebar clusters remain: N
 read 2399: at t~63396585930, 0 Ebar clusters remain: N
-[gas] read 2400: t=63396716948, 351189402 events, 19657 items, 76 collisions, 27 orbits, wall 331s
+[gas] read 2400: t=63396716948, 67093561 events, 19597 items, 63 collisions, 37 orbits, wall 185s
 read 2400: at t~63422937690, 0 Ebar clusters remain: N
 read 2401: at t~63449420550, 0 Ebar clusters remain: N
 read 2402: at t~63475903440, 0 Ebar clusters remain: N
@@ -2524,7 +2524,7 @@ read 2496: at t~65959262820, 0 Ebar clusters remain: N
 read 2497: at t~65985617400, 0 Ebar clusters remain: N
 read 2498: at t~66012103080, 0 Ebar clusters remain: N
 read 2499: at t~66038588790, 0 Ebar clusters remain: N
-[gas] read 2500: t=66038719808, 372577351 events, 20092 items, 76 collisions, 27 orbits, wall 346s
+[gas] read 2500: t=66038719808, 71555165 events, 20032 items, 63 collisions, 37 orbits, wall 194s
 read 2500: at t~66064943460, 0 Ebar clusters remain: N
 read 2501: at t~66091429230, 0 Ebar clusters remain: N
 read 2502: at t~66117915030, 0 Ebar clusters remain: N
@@ -2625,7 +2625,7 @@ read 2596: at t~68601151860, 0 Ebar clusters remain: N
 read 2597: at t~68627640390, 0 Ebar clusters remain: N
 read 2598: at t~68654128950, 0 Ebar clusters remain: N
 read 2599: at t~68680486470, 0 Ebar clusters remain: N
-[gas] read 2600: t=68680748558, 393777786 events, 18786 items, 76 collisions, 27 orbits, wall 361s
+[gas] read 2600: t=68680748558, 76034902 events, 18725 items, 63 collisions, 37 orbits, wall 202s
 read 2600: at t~68706975090, 0 Ebar clusters remain: N
 read 2601: at t~68733463740, 0 Ebar clusters remain: N
 read 2602: at t~68759821350, 0 Ebar clusters remain: N
@@ -2726,7 +2726,7 @@ read 2696: at t~71242412490, 0 Ebar clusters remain: N
 read 2697: at t~71268772860, 0 Ebar clusters remain: N
 read 2698: at t~71295264330, 0 Ebar clusters remain: N
 read 2699: at t~71321624760, 0 Ebar clusters remain: N
-[gas] read 2700: t=71321886848, 415027147 events, 19700 items, 76 collisions, 27 orbits, wall 375s
+[gas] read 2700: t=71321886848, 80559074 events, 19637 items, 63 collisions, 37 orbits, wall 210s
 read 2700: at t~71347591980, 0 Ebar clusters remain: N
 read 2701: at t~71373165990, 0 Ebar clusters remain: N
 read 2702: at t~71398346790, 0 Ebar clusters remain: N
@@ -2827,7 +2827,7 @@ read 2796: at t~73881734490, 0 Ebar clusters remain: N
 read 2797: at t~73908359820, 0 Ebar clusters remain: N
 read 2798: at t~73934985180, 0 Ebar clusters remain: N
 read 2799: at t~73961348430, 0 Ebar clusters remain: N
-[gas] read 2800: t=73961741588, 436700834 events, 19111 items, 76 collisions, 27 orbits, wall 391s
+[gas] read 2800: t=73961741588, 85218443 events, 19046 items, 63 collisions, 37 orbits, wall 219s
 read 2800: at t~73988104920, 0 Ebar clusters remain: N
 read 2801: at t~74014599300, 0 Ebar clusters remain: N
 read 2802: at t~74040962640, 0 Ebar clusters remain: N
@@ -2928,7 +2928,7 @@ read 2896: at t~76525933950, 0 Ebar clusters remain: N
 read 2897: at t~76552431120, 0 Ebar clusters remain: N
 read 2898: at t~76578797250, 0 Ebar clusters remain: N
 read 2899: at t~76605163410, 0 Ebar clusters remain: N
-[gas] read 2900: t=76605425500, 458182129 events, 20118 items, 76 collisions, 27 orbits, wall 405s
+[gas] read 2900: t=76605425500, 89869967 events, 20053 items, 63 collisions, 37 orbits, wall 227s
 read 2900: at t~76631660670, 0 Ebar clusters remain: N
 read 2901: at t~76658026890, 0 Ebar clusters remain: N
 read 2902: at t~76684524210, 0 Ebar clusters remain: N
@@ -3029,7 +3029,7 @@ read 2996: at t~79170949380, 0 Ebar clusters remain: N
 read 2997: at t~79197318450, 0 Ebar clusters remain: N
 read 2998: at t~79223818620, 0 Ebar clusters remain: N
 read 2999: at t~79250318820, 0 Ebar clusters remain: N
-[gas] read 3000: t=79250449838, 480377488 events, 21280 items, 76 collisions, 27 orbits, wall 420s
+[gas] read 3000: t=79250449838, 94649197 events, 21209 items, 63 collisions, 37 orbits, wall 236s
 read 3000: at t~79276687980, 0 Ebar clusters remain: N
 read 3001: at t~79303188240, 0 Ebar clusters remain: N
 read 3002: at t~79329557460, 0 Ebar clusters remain: N
@@ -3130,7 +3130,7 @@ read 3096: at t~81812198580, 0 Ebar clusters remain: N
 read 3097: at t~81838701630, 0 Ebar clusters remain: N
 read 3098: at t~81865073640, 0 Ebar clusters remain: N
 read 3099: at t~81891576750, 0 Ebar clusters remain: N
-[gas] read 3100: t=81891707770, 503748205 events, 21043 items, 76 collisions, 27 orbits, wall 435s
+[gas] read 3100: t=81891707770, 99630102 events, 20970 items, 63 collisions, 37 orbits, wall 244s
 read 3100: at t~81917948820, 0 Ebar clusters remain: N
 read 3101: at t~81944451990, 0 Ebar clusters remain: N
 read 3102: at t~81970824120, 0 Ebar clusters remain: N
@@ -3231,7 +3231,7 @@ read 3196: at t~84453998940, 0 Ebar clusters remain: N
 read 3197: at t~84480504870, 0 Ebar clusters remain: N
 read 3198: at t~84506879760, 0 Ebar clusters remain: N
 read 3199: at t~84533385750, 0 Ebar clusters remain: N
-[gas] read 3200: t=84533647842, 527410311 events, 21120 items, 76 collisions, 27 orbits, wall 450s
+[gas] read 3200: t=84533647842, 104718995 events, 21048 items, 63 collisions, 37 orbits, wall 253s
 read 3200: at t~84559760700, 0 Ebar clusters remain: N
 read 3201: at t~84586266750, 0 Ebar clusters remain: N
 read 3202: at t~84612641760, 0 Ebar clusters remain: N
@@ -3332,7 +3332,7 @@ read 3296: at t~87073800270, 0 Ebar clusters remain: N
 read 3297: at t~87100308900, 0 Ebar clusters remain: N
 read 3298: at t~87126686490, 0 Ebar clusters remain: N
 read 3299: at t~87153195180, 0 Ebar clusters remain: N
-[gas] read 3300: t=87153457272, 550822567 events, 21562 items, 76 collisions, 27 orbits, wall 465s
+[gas] read 3300: t=87153457272, 109904639 events, 21490 items, 63 collisions, 37 orbits, wall 261s
 read 3300: at t~87179572830, 0 Ebar clusters remain: N
 read 3301: at t~87206081580, 0 Ebar clusters remain: N
 read 3302: at t~87232459290, 0 Ebar clusters remain: N
@@ -3433,7 +3433,7 @@ read 3396: at t~89718911940, 0 Ebar clusters remain: N
 read 3397: at t~89745423540, 0 Ebar clusters remain: N
 read 3398: at t~89771804100, 0 Ebar clusters remain: N
 read 3399: at t~89798315760, 0 Ebar clusters remain: N
-[gas] read 3400: t=89798446780, 575003166 events, 22709 items, 76 collisions, 27 orbits, wall 481s
+[gas] read 3400: t=89798446780, 115383911 events, 22633 items, 63 collisions, 37 orbits, wall 270s
 read 3400: at t~89824696380, 0 Ebar clusters remain: N
 read 3401: at t~89851208100, 0 Ebar clusters remain: N
 read 3402: at t~89877588780, 361 Ebar clusters remain: Y
@@ -3534,7 +3534,7 @@ read 3496: at t~92364060150, 0 Ebar clusters remain: N
 read 3497: at t~92390443680, 0 Ebar clusters remain: N
 read 3498: at t~92416958310, 0 Ebar clusters remain: N
 read 3499: at t~92443341900, 0 Ebar clusters remain: N
-[gas] read 3500: t=92443603988, 600403577 events, 24221 items, 76 collisions, 27 orbits, wall 496s
+[gas] read 3500: t=92443603988, 121064074 events, 24139 items, 63 collisions, 37 orbits, wall 279s
 read 3500: at t~92469856590, 0 Ebar clusters remain: N
 read 3501: at t~92496240240, 0 Ebar clusters remain: N
 read 3502: at t~92522623920, 0 Ebar clusters remain: N
@@ -3635,7 +3635,7 @@ read 3596: at t~95005962150, 0 Ebar clusters remain: N
 read 3597: at t~95032348560, 0 Ebar clusters remain: N
 read 3598: at t~95058866070, 0 Ebar clusters remain: N
 read 3599: at t~95085252540, 0 Ebar clusters remain: N
-[gas] read 3600: t=95085514628, 626711287 events, 23272 items, 76 collisions, 27 orbits, wall 512s
+[gas] read 3600: t=95085514628, 126934987 events, 23190 items, 63 collisions, 37 orbits, wall 288s
 read 3600: at t~95111770110, 0 Ebar clusters remain: N
 read 3601: at t~95138156640, 0 Ebar clusters remain: N
 read 3602: at t~95164805340, 0 Ebar clusters remain: N
@@ -3736,7 +3736,7 @@ read 3696: at t~97648284600, 0 Ebar clusters remain: N
 read 3697: at t~97674936060, 0 Ebar clusters remain: N
 read 3698: at t~97701456480, 0 Ebar clusters remain: N
 read 3699: at t~97727976930, 0 Ebar clusters remain: N
-[gas] read 3700: t=97728239020, 652875664 events, 24066 items, 76 collisions, 27 orbits, wall 528s
+[gas] read 3700: t=97728239020, 132840224 events, 23982 items, 63 collisions, 37 orbits, wall 298s
 read 3700: at t~97754628480, 0 Ebar clusters remain: N
 read 3701: at t~97781148990, 0 Ebar clusters remain: N
 read 3702: at t~97807538460, 0 Ebar clusters remain: N
@@ -3837,7 +3837,7 @@ read 3796: at t~100269521820, 0 Ebar clusters remain: N
 read 3797: at t~100296044970, 0 Ebar clusters remain: N
 read 3798: at t~100322437080, 0 Ebar clusters remain: N
 read 3799: at t~100348829220, 0 Ebar clusters remain: N
-[gas] read 3800: t=100348960238, 679060940 events, 24410 items, 76 collisions, 27 orbits, wall 544s
+[gas] read 3800: t=100348960238, 138985875 events, 24326 items, 63 collisions, 37 orbits, wall 307s
 read 3800: at t~100375221390, 0 Ebar clusters remain: N
 read 3801: at t~100401613590, 0 Ebar clusters remain: N
 read 3802: at t~100428136890, 0 Ebar clusters remain: N
@@ -3938,7 +3938,7 @@ read 3896: at t~102914514330, 0 Ebar clusters remain: N
 read 3897: at t~102941040480, 0 Ebar clusters remain: N
 read 3898: at t~102967435590, 0 Ebar clusters remain: N
 read 3899: at t~102993830730, 0 Ebar clusters remain: N
-[gas] read 3900: t=102994092820, 706455920 events, 25565 items, 76 collisions, 27 orbits, wall 560s
+[gas] read 3900: t=102994092820, 145360582 events, 25476 items, 63 collisions, 37 orbits, wall 316s
 read 3900: at t~103020356970, 0 Ebar clusters remain: N
 read 3901: at t~103046752170, 0 Ebar clusters remain: N
 read 3902: at t~103073147400, 0 Ebar clusters remain: N
@@ -4039,7 +4039,7 @@ read 3996: at t~105556397700, 0 Ebar clusters remain: N
 read 3997: at t~105582926730, 0 Ebar clusters remain: N
 read 3998: at t~105609324720, 0 Ebar clusters remain: N
 read 3999: at t~105635722740, 0 Ebar clusters remain: N
-[gas] read 4000: t=105635984830, 735029522 events, 26721 items, 76 collisions, 27 orbits, wall 575s
+[gas] read 4000: t=105635984830, 151938960 events, 26630 items, 63 collisions, 37 orbits, wall 325s
 read 4000: at t~105662251860, 0 Ebar clusters remain: N
 read 4001: at t~105688649940, 0 Ebar clusters remain: N
 read 4002: at t~105715048050, 0 Ebar clusters remain: N
@@ -4140,7 +4140,7 @@ read 4096: at t~108198306810, 0 Ebar clusters remain: N
 read 4097: at t~108224707680, 0 Ebar clusters remain: N
 read 4098: at t~108251239650, 0 Ebar clusters remain: N
 read 4099: at t~108277640580, 0 Ebar clusters remain: N
-[gas] read 4100: t=108277902668, 763899567 events, 26776 items, 76 collisions, 27 orbits, wall 591s
+[gas] read 4100: t=108277902668, 158627069 events, 26682 items, 63 collisions, 37 orbits, wall 335s
 read 4100: at t~108304041540, 0 Ebar clusters remain: N
 read 4101: at t~108330573600, 0 Ebar clusters remain: N
 read 4102: at t~108356974620, 0 Ebar clusters remain: N
@@ -4241,7 +4241,7 @@ read 4196: at t~110819005710, 0 Ebar clusters remain: N
 read 4197: at t~110845409310, 0 Ebar clusters remain: N
 read 4198: at t~110871812940, 0 Ebar clusters remain: N
 read 4199: at t~110898347670, 0 Ebar clusters remain: N
-[gas] read 4200: t=110898478690, 792494791 events, 25827 items, 76 collisions, 27 orbits, wall 607s
+[gas] read 4200: t=110898478690, 165402298 events, 25737 items, 63 collisions, 37 orbits, wall 344s
 read 4200: at t~110924751360, 0 Ebar clusters remain: N
 read 4201: at t~110951155080, 0 Ebar clusters remain: N
 read 4202: at t~110977689900, 0 Ebar clusters remain: N
@@ -4342,7 +4342,7 @@ read 4296: at t~113464099980, 0 Ebar clusters remain: N
 read 4297: at t~113490506550, 0 Ebar clusters remain: N
 read 4298: at t~113516913150, 0 Ebar clusters remain: N
 read 4299: at t~113543450850, 0 Ebar clusters remain: N
-[gas] read 4300: t=113543581870, 821879815 events, 26969 items, 76 collisions, 27 orbits, wall 622s
+[gas] read 4300: t=113543581870, 172467211 events, 26873 items, 63 collisions, 37 orbits, wall 354s
 read 4300: at t~113569857510, 0 Ebar clusters remain: N
 read 4301: at t~113596264200, 0 Ebar clusters remain: N
 read 4302: at t~113622670920, 361 Ebar clusters remain: Y
@@ -4443,7 +4443,7 @@ read 4396: at t~116109097740, 0 Ebar clusters remain: N
 read 4397: at t~116135638350, 0 Ebar clusters remain: N
 read 4398: at t~116162047920, 0 Ebar clusters remain: N
 read 4399: at t~116188457520, 0 Ebar clusters remain: N
-[gas] read 4400: t=116188719610, 852483040 events, 28488 items, 76 collisions, 27 orbits, wall 638s
+[gas] read 4400: t=116188719610, 179733694 events, 28388 items, 63 collisions, 37 orbits, wall 364s
 read 4400: at t~116214867150, 0 Ebar clusters remain: N
 read 4401: at t~116241407880, 0 Ebar clusters remain: N
 read 4402: at t~116267817570, 0 Ebar clusters remain: N
@@ -4544,7 +4544,7 @@ read 4496: at t~118751110410, 0 Ebar clusters remain: N
 read 4497: at t~118777522830, 0 Ebar clusters remain: N
 read 4498: at t~118803935280, 0 Ebar clusters remain: N
 read 4499: at t~118830347760, 0 Ebar clusters remain: N
-[gas] read 4500: t=118830609850, 883980993 events, 28910 items, 76 collisions, 27 orbits, wall 654s
+[gas] read 4500: t=118830609850, 187188850 events, 28807 items, 63 collisions, 37 orbits, wall 374s
 read 4500: at t~118856891340, 0 Ebar clusters remain: N
 read 4501: at t~118883303880, 0 Ebar clusters remain: N
 read 4502: at t~118909978590, 0 Ebar clusters remain: N
@@ -4645,7 +4645,7 @@ read 4596: at t~121393412460, 0 Ebar clusters remain: N
 read 4597: at t~121420089930, 0 Ebar clusters remain: N
 read 4598: at t~121446636360, 0 Ebar clusters remain: N
 read 4599: at t~121473051750, 0 Ebar clusters remain: N
-[gas] read 4600: t=121473444910, 915362736 events, 28326 items, 76 collisions, 27 orbits, wall 671s
+[gas] read 4600: t=121473444910, 194685485 events, 28224 items, 63 collisions, 37 orbits, wall 384s
 read 4600: at t~121499860380, 0 Ebar clusters remain: N
 read 4601: at t~121526275800, 0 Ebar clusters remain: N
 read 4602: at t~121552691250, 0 Ebar clusters remain: N
@@ -4746,7 +4746,7 @@ read 4696: at t~124014755280, 0 Ebar clusters remain: N
 read 4697: at t~124041173280, 0 Ebar clusters remain: N
 read 4698: at t~124067591310, 0 Ebar clusters remain: N
 read 4699: at t~124093878300, 0 Ebar clusters remain: N
-[gas] read 4700: t=124094140388, 946751097 events, 28669 items, 76 collisions, 27 orbits, wall 687s
+[gas] read 4700: t=124094140388, 202416997 events, 28568 items, 63 collisions, 37 orbits, wall 394s
 read 4700: at t~124120296390, 0 Ebar clusters remain: N
 read 4701: at t~124146845580, 0 Ebar clusters remain: N
 read 4702: at t~124173263730, 0 Ebar clusters remain: N
@@ -4847,7 +4847,7 @@ read 4796: at t~126659718390, 0 Ebar clusters remain: N
 read 4797: at t~126686139390, 0 Ebar clusters remain: N
 read 4798: at t~126712560420, 0 Ebar clusters remain: N
 read 4799: at t~126738981480, 0 Ebar clusters remain: N
-[gas] read 4800: t=126739243570, 979345440 events, 29822 items, 76 collisions, 27 orbits, wall 704s
+[gas] read 4800: t=126739243570, 210375426 events, 29715 items, 63 collisions, 37 orbits, wall 404s
 read 4800: at t~126765402570, 0 Ebar clusters remain: N
 read 4801: at t~126791823690, 0 Ebar clusters remain: N
 read 4802: at t~126818375910, 0 Ebar clusters remain: N
@@ -4948,7 +4948,7 @@ read 4896: at t~129301572360, 0 Ebar clusters remain: N
 read 4897: at t~129327996240, 0 Ebar clusters remain: N
 read 4898: at t~129354420150, 0 Ebar clusters remain: N
 read 4899: at t~129380844090, 0 Ebar clusters remain: N
-[gas] read 4900: t=129381106180, 1013128210 events, 30981 items, 76 collisions, 27 orbits, wall 721s
+[gas] read 4900: t=129381106180, 218542569 events, 30872 items, 63 collisions, 37 orbits, wall 414s
 read 4900: at t~129407399130, 0 Ebar clusters remain: N
 read 4901: at t~129433823130, 0 Ebar clusters remain: N
 read 4902: at t~129460247160, 0 Ebar clusters remain: N
@@ -5049,7 +5049,7 @@ read 4996: at t~131943452070, 0 Ebar clusters remain: N
 read 4997: at t~131969878860, 0 Ebar clusters remain: N
 read 4998: at t~131996305680, 0 Ebar clusters remain: N
 read 4999: at t~132022732530, 0 Ebar clusters remain: N
-[gas] read 5000: t=132022994620, 1047199161 events, 31052 items, 76 collisions, 27 orbits, wall 737s
+[gas] read 5000: t=132022994620, 226816695 events, 30941 items, 63 collisions, 37 orbits, wall 424s
 read 5000: at t~132049159410, 0 Ebar clusters remain: N
 read 5001: at t~132075586320, 0 Ebar clusters remain: N
 read 5002: at t~132102144330, 0 Ebar clusters remain: N
@@ -5150,7 +5150,7 @@ read 5096: at t~134564122470, 0 Ebar clusters remain: N
 read 5097: at t~134590551990, 0 Ebar clusters remain: N
 read 5098: at t~134616981540, 0 Ebar clusters remain: N
 read 5099: at t~134643411120, 0 Ebar clusters remain: N
-[gas] read 5100: t=134643673210, 1080975552 events, 31498 items, 76 collisions, 27 orbits, wall 754s
+[gas] read 5100: t=134643673210, 235176004 events, 31390 items, 63 collisions, 37 orbits, wall 434s
 read 5100: at t~134669840730, 0 Ebar clusters remain: N
 read 5101: at t~134696270370, 0 Ebar clusters remain: N
 read 5102: at t~134722700040, 0 Ebar clusters remain: N
@@ -5251,7 +5251,7 @@ read 5196: at t~137209189020, 0 Ebar clusters remain: N
 read 5197: at t~137235621540, 0 Ebar clusters remain: N
 read 5198: at t~137262054090, 0 Ebar clusters remain: N
 read 5199: at t~137288486670, 0 Ebar clusters remain: N
-[gas] read 5200: t=137288748760, 1115572863 events, 31271 items, 76 collisions, 27 orbits, wall 771s
+[gas] read 5200: t=137288748760, 243826132 events, 31157 items, 63 collisions, 37 orbits, wall 444s
 read 5200: at t~137314919280, 0 Ebar clusters remain: N
 read 5201: at t~137341351920, 0 Ebar clusters remain: N
 read 5202: at t~137367915660, 361 Ebar clusters remain: Y
@@ -5352,7 +5352,7 @@ read 5296: at t~139854291450, 0 Ebar clusters remain: N
 read 5297: at t~139880726940, 0 Ebar clusters remain: N
 read 5298: at t~139907162460, 0 Ebar clusters remain: N
 read 5299: at t~139933598010, 0 Ebar clusters remain: N
-[gas] read 5300: t=139933860100, 1151373856 events, 32791 items, 76 collisions, 27 orbits, wall 788s
+[gas] read 5300: t=139933860100, 252679055 events, 32673 items, 63 collisions, 37 orbits, wall 454s
 read 5300: at t~139960033590, 0 Ebar clusters remain: N
 read 5301: at t~139986469200, 0 Ebar clusters remain: N
 read 5302: at t~140012904840, 0 Ebar clusters remain: N
@@ -5453,7 +5453,7 @@ read 5396: at t~142496148930, 0 Ebar clusters remain: N
 read 5397: at t~142522587330, 0 Ebar clusters remain: N
 read 5398: at t~142549025760, 0 Ebar clusters remain: N
 read 5399: at t~142575464220, 0 Ebar clusters remain: N
-[gas] read 5400: t=142575726310, 1188087449 events, 33216 items, 76 collisions, 27 orbits, wall 806s
+[gas] read 5400: t=142575726310, 261722668 events, 33095 items, 63 collisions, 37 orbits, wall 464s
 read 5400: at t~142602033780, 0 Ebar clusters remain: N
 read 5401: at t~142628472300, 0 Ebar clusters remain: N
 read 5402: at t~142655041920, 0 Ebar clusters remain: N
@@ -5554,7 +5554,7 @@ read 5496: at t~145138558650, 0 Ebar clusters remain: N
 read 5497: at t~145165262100, 0 Ebar clusters remain: N
 read 5498: at t~145191703440, 0 Ebar clusters remain: N
 read 5499: at t~145218144810, 0 Ebar clusters remain: N
-[gas] read 5500: t=145218537972, 1224669960 events, 32639 items, 76 collisions, 27 orbits, wall 825s
+[gas] read 5500: t=145218537972, 270807865 events, 32519 items, 63 collisions, 37 orbits, wall 475s
 read 5500: at t~145244979420, 0 Ebar clusters remain: N
 read 5501: at t~145271420820, 0 Ebar clusters remain: N
 read 5502: at t~145297862250, 0 Ebar clusters remain: N
@@ -5655,7 +5655,7 @@ read 5596: at t~147755419710, 0 Ebar clusters remain: N
 read 5597: at t~147781863660, 0 Ebar clusters remain: N
 read 5598: at t~147808307640, 0 Ebar clusters remain: N
 read 5599: at t~147834620580, 0 Ebar clusters remain: N
-[gas] read 5600: t=147834882668, 1260991451 events, 33651 items, 76 collisions, 27 orbits, wall 842s
+[gas] read 5600: t=147834882668, 280126408 events, 33534 items, 63 collisions, 37 orbits, wall 486s
 read 5600: at t~147861064620, 0 Ebar clusters remain: N
 read 5601: at t~147887508690, 0 Ebar clusters remain: N
 read 5602: at t~147913952790, 0 Ebar clusters remain: N
@@ -5756,7 +5756,7 @@ read 5696: at t~150397205700, 0 Ebar clusters remain: N
 read 5697: at t~150423652560, 0 Ebar clusters remain: N
 read 5698: at t~150450099450, 0 Ebar clusters remain: N
 read 5699: at t~150476415300, 0 Ebar clusters remain: N
-[gas] read 5700: t=150476677388, 1297257192 events, 33722 items, 76 collisions, 27 orbits, wall 859s
+[gas] read 5700: t=150476677388, 289518063 events, 33604 items, 63 collisions, 37 orbits, wall 496s
 read 5700: at t~150502862250, 0 Ebar clusters remain: N
 read 5701: at t~150529309230, 0 Ebar clusters remain: N
 read 5702: at t~150555756240, 0 Ebar clusters remain: N
@@ -5857,7 +5857,7 @@ read 5796: at t~153014364120, 0 Ebar clusters remain: N
 read 5797: at t~153040813620, 0 Ebar clusters remain: N
 read 5798: at t~153067263150, 0 Ebar clusters remain: N
 read 5799: at t~153093712710, 0 Ebar clusters remain: N
-[gas] read 5800: t=153093843728, 1333295852 events, 32782 items, 76 collisions, 27 orbits, wall 876s
+[gas] read 5800: t=153093843728, 299116581 events, 32668 items, 63 collisions, 37 orbits, wall 507s
 read 5800: at t~153120162300, 0 Ebar clusters remain: N
 read 5801: at t~153146611920, 0 Ebar clusters remain: N
 read 5802: at t~153173061570, 0 Ebar clusters remain: N
@@ -5958,7 +5958,7 @@ read 5896: at t~155656181730, 0 Ebar clusters remain: N
 read 5897: at t~155682634140, 0 Ebar clusters remain: N
 read 5898: at t~155709086580, 0 Ebar clusters remain: N
 read 5899: at t~155735539050, 0 Ebar clusters remain: N
-[gas] read 5900: t=155735801140, 1369300783 events, 32849 items, 76 collisions, 27 orbits, wall 894s
+[gas] read 5900: t=155735801140, 308824005 events, 32736 items, 63 collisions, 37 orbits, wall 517s
 read 5900: at t~155761991550, 0 Ebar clusters remain: N
 read 5901: at t~155788444080, 0 Ebar clusters remain: N
 read 5902: at t~155814896640, 0 Ebar clusters remain: N
@@ -6030,4 +6030,4 @@ read 5967: at t~157511826900, 0 Ebar clusters remain: N
 read 5968: at t~157538281170, 0 Ebar clusters remain: N
 read 5969: at t~157564735470, 0 Ebar clusters remain: N
 outcome YNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNN
-done 907s events 1394362057
+done 524s events 315695774
