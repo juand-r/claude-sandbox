@@ -50,4 +50,5 @@ conditions. The reviewer's 200-epoch runs: training R² 1.0, held-out 0.34-0.39.
 
 `run_all.sh`: 2 conditions x 3 seeds, 3,000 epochs, about 230 s each, four in
 parallel; then `follow_test.py`. No failures. Results in REPORT.md. Held-out R²
-rises to about 0.49 by epoch 500 and stays there (no later decline).
+levels off by about epoch 500 (seed 0 fixed: 0.49; seed 1 fixed: 0.39-0.41) and
+does not decline later.
