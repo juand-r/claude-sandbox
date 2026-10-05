@@ -62,3 +62,10 @@
   boundary to the closest training point, 1/‖w‖ after scaling, half the street. Some sources
   (Wikipedia; Cortes and Vapnik 1995, from memory, not checked) call the full width 2/‖w‖
   the margin. Slides 2, 5 and 6 were aligned to the textbook definition at the user's request.
+- Formula layout (user report: formulas broke mid-expression, e.g. "exp(−γ / ‖x − x′‖²)").
+  Fix, in both decks: inline `.math` never wraps; formulas longer than about 18 characters
+  sit on their own line (`.math.dm`); equation boxes break only at chosen points, with
+  continuation lines indented. On phones (≤ 620px) formulas may wrap, since overflowing the
+  screen is worse. `tests/mathwrap.js` checks this at 1440×810, 1280×720, 1920×1080, 1024×768
+  and 390×844; both decks pass. (The phone rule must come last in the stylesheet, or the
+  later `.eq` and `.answer .math` rules override it; the first attempt failed for that reason.)

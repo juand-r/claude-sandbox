@@ -26,6 +26,9 @@ Open `svm_lecture.html` in a browser. No server or install is needed.
   - `interact.js`: screenshots every slide at step 0, drives the figures (drag, C slider,
     kernels, 3D rotation), opens the presenter view, checks dark mode and phone width.
   - `export.js`: runs the deck's solver on all datasets and writes `tests/solver_outputs.json`.
+  - `mathwrap.js [deck.html]`: checks at five screen sizes that no inline formula breaks across
+    lines and no formula sticks out of its text block. Also works on the ROC deck:
+    `node mathwrap.js ../../roc-auc-lecture/roc_auc_lecture.html`.
 
 ## Checking the numbers
 

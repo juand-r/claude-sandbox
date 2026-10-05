@@ -280,7 +280,10 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .fig.drag svg,.fig.grab svg{touch-action:none;user-select:none}
 .legend{display:flex;flex-wrap:wrap;gap:.3em 1.4em;justify-content:center;margin:.3em 0 0;font-family:"JetBrains Mono",monospace;font-size:.85em;font-weight:600}
 .slide .prose h2+ul,.slide .prose h2+p{margin-top:.8em}
-.eq{display:block;font-family:"JetBrains Mono",monospace;font-size:.92em;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--model);border-radius:8px;padding:.4em .8em;margin:.45em 0;line-height:1.55}
+.math{white-space:nowrap}   /* a formula never breaks across lines */
+.dm{display:block;margin:.3em 0;white-space:nowrap}
+.eq .ind{padding-left:2ch}
+.eq{white-space:nowrap;overflow-x:auto;display:block;font-family:"JetBrains Mono",monospace;font-size:.88em;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--model);border-radius:8px;padding:.4em .8em;margin:.45em 0;line-height:1.55}
 .take.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:900px){.take.three{grid-template-columns:1fr}}
 .extab{border-collapse:collapse;font-family:"JetBrains Mono",monospace;font-size:.9em}
@@ -290,6 +293,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .answer .math{white-space:nowrap}
 .prose ol{padding-left:1.2em;margin:0}
 .prose ol li{margin:.35em 0}
+@media (max-width:620px){.math,.answer .math,#s-today .math{white-space:normal}.eq{font-size:.8em;white-space:normal}}   /* phones: wrapping beats overflowing */
 </style>
 </head>
 <body>
@@ -360,7 +364,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="eyebrow">1 · Hyperplanes</div>
     <h2>A line is<br>w · x + b = 0</h2>
     <ul>
-      <li>Pick a vector <span class="math">w</span> and a number <span class="math">b</span>. The points with <span class="math">f(x) = w · x + b = 0</span> form a line in 2D, a plane in 3D, a hyperplane in general.</li>
+      <li>Pick a vector <span class="math">w</span> and a number <span class="math">b</span>. The points with<span class="math dm">f(x) = w · x + b = 0</span>form a line in 2D, a plane in 3D, a hyperplane in general.</li>
       <li data-step="1"><span class="math">w</span> is perpendicular to the line. Changing <span class="math">b</span> slides the line without turning it.</li>
       <li data-step="2"><span class="math">f(x) &gt; 0</span> on one side, <span class="math">f(x) &lt; 0</span> on the other. Predict <span class="math">+1</span> when <span class="math">f(x) &gt; 0</span>.</li>
       <li data-step="3"><span class="math">f(x)</span> is a score, like the scores in the ROC lecture. The SVM's default threshold is 0.</li>
@@ -394,9 +398,9 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="eyebrow">1 · Hyperplanes</div>
     <h2>Distance to<br>the hyperplane</h2>
     <ul>
-      <li data-step="1">Let <span class="math">x<sub>p</sub></span> be the closest point on the line. The step from <span class="math">x<sub>p</sub></span> to <span class="math">x</span> runs along <span class="math">w</span>:<br><span class="math">x = x<sub>p</sub> + r · w / ‖w‖</span><br>where <span class="math">r</span> is the signed distance.</li>
-      <li data-step="2">Apply <span class="math">f</span>. Since <span class="math">f(x<sub>p</sub>) = 0</span> and <span class="math">w · w = ‖w‖²</span>:<br><span class="math">f(x) = r · ‖w‖</span></li>
-      <li data-step="3">So <span class="math">r = f(x) / ‖w‖</span>. The sign says which side, the size says how far.</li>
+      <li data-step="1">Let <span class="math">x<sub>p</sub></span> be the closest point on the line. The step from <span class="math">x<sub>p</sub></span> to <span class="math">x</span> runs along <span class="math">w</span>:<span class="math dm">x = x<sub>p</sub> + r · w / ‖w‖</span>where <span class="math">r</span> is the signed distance.</li>
+      <li data-step="2">Apply <span class="math">f</span>. Since <span class="math">f(x<sub>p</sub>) = 0</span> and <span class="math">w · w = ‖w‖²</span>:<span class="math dm">f(x) = r · ‖w‖</span></li>
+      <li data-step="3">So<span class="math dm">r = f(x) / ‖w‖</span>The sign says which side, the size says how far.</li>
     </ul>
   </div>
   <div class="fig short drag">
@@ -423,7 +427,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>The margin</h2>
     <ul>
       <li>A line that separates the classes.</li>
-      <li data-step="1">Its margin is the distance to the closest training point: <span class="math">min<sub>i</sub> y<sub>i</sub> f(x<sub>i</sub>) / ‖w‖</span>, with labels <span class="math">y<sub>i</sub> = ±1</span>.</li>
+      <li data-step="1">Its margin is the distance to the closest training point:<span class="math dm">min<sub>i</sub> y<sub>i</sub> f(x<sub>i</sub>) / ‖w‖</span>with labels <span class="math">y<sub>i</sub> = ±1</span>.</li>
       <li data-step="2"><span class="math">(w, b)</span> and <span class="math">(2w, 2b)</span> give the same line. Fix the scale so the closest points have <span class="math">y<sub>i</sub> f(x<sub>i</sub>) = 1</span>. The street's edges are then <span class="math">f = +1</span> and <span class="math">f = −1</span>.</li>
       <li data-step="3">Each edge is at distance <span class="math">1/‖w‖</span>, so the street is <span class="math">2/‖w‖</span> wide.</li>
     </ul>
@@ -444,7 +448,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>The hard-margin<br>SVC</h2>
     <ul>
       <li data-step="1">The widest street with every point on its correct side, outside the street:
-        <span class="eq">maximize 2 / ‖w‖<br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1 for all i</span>
+        <span class="eq">maximize 2 / ‖w‖<br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1<br><span class="ind">for every i</span></span>
         This is the same as maximizing the margin <span class="math" style="white-space:nowrap">1/‖w‖</span>.</li>
       <li data-step="2">The same <span class="math">w</span> wins if we instead
         <span class="eq">minimize ½ ‖w‖²<br>subject to the same constraints</span>
@@ -495,7 +499,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <ul>
       <li data-step="1">Two points sit among the other class. No line separates the data, so the hard-margin problem has no solution.</li>
       <li data-step="2">Let point <span class="math">i</span> fall short by a slack <span class="math">ξ<sub>i</sub> ≥ 0</span>, and pay for it:
-        <span class="eq">minimize ½ ‖w‖² + C Σ ξ<sub>i</sub><br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1 − ξ<sub>i</sub>, ξ<sub>i</sub> ≥ 0</span></li>
+        <span class="eq">minimize ½ ‖w‖² + C Σ ξ<sub>i</sub><br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1 − ξ<sub>i</sub><br><span class="ind">and ξ<sub>i</sub> ≥ 0 for every i</span></span></li>
       <li data-step="3"><span class="math">ξ<sub>i</sub> = 0</span>: outside the street. <span class="math">0 &lt; ξ<sub>i</sub> ≤ 1</span>: inside the street, correct side. <span class="math">ξ<sub>i</sub> &gt; 1</span>: wrong side, a training mistake.</li>
     </ul>
   </div>
@@ -544,7 +548,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>No line will do</h2>
     <ul>
       <li data-step="1">Green inside, purple around it. No line puts all green on one side and all purple on the other.</li>
-      <li data-step="2">Add a third feature: <span class="math">z = (x₁ − 5)² + (x₂ − 5)²</span>, the squared distance from the centre. Drag to turn the 3D view.</li>
+      <li data-step="2">Add a third feature, the squared distance from the centre:<span class="math dm">z = (x₁ − 5)² + (x₂ − 5)²</span> Drag to turn the 3D view.</li>
       <li data-step="3">In 3D a flat plane separates the classes. Train an ordinary linear SVM there.</li>
       <li data-step="4">Back in 2D, the plane becomes a circle. A linear boundary in new features is curved in the old ones.</li>
     </ul>
@@ -572,7 +576,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <ul>
       <li data-step="1">A linear SVM on the rings: no good boundary exists.</li>
       <li data-step="2">In the Lagrange-multiplier solution, the points appear only in dot products <span class="math">x<sub>i</sub> · x<sub>j</sub></span>. Replace each by a <b data-hint="kernel">kernel</b> <span class="math">K(x<sub>i</sub>, x<sub>j</sub>)</span>, a similarity. The RBF kernel is <span class="math">exp(−γ ‖x − x′‖²)</span>.</li>
-      <li data-step="3">The score is <span class="math">f(x) = Σ α<sub>i</sub> y<sub>i</sub> K(x<sub>i</sub>, x) + b</span>: support vectors vote, weighted by similarity. Large <span class="math">γ</span> makes votes local and the boundary wiggly.</li>
+      <li data-step="3">The score is<span class="math dm">f(x) = Σ α<sub>i</sub> y<sub>i</sub> K(x<sub>i</sub>, x) + b</span>Support vectors vote, weighted by similarity. Large <span class="math">γ</span> makes votes local and the boundary wiggly.</li>
       <li data-step="4">The same machinery handles XOR, where no line works either.</li>
     </ul>
   </div>
@@ -636,7 +640,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
         <p class="answer" data-step="1">f = 3, −3, 0.4, 0, 1.4. Predicted +, −, +, on the line, +. E is a mistake.</p></li>
       <li>How wide is the street?
         <p class="answer" data-step="2">‖w‖ = 5, so the width is <span class="math">2/5 = 0.4</span>.</p></li>
-      <li>What is each point's slack <span class="math">ξ = max(0, 1 − y f(x))</span>?
+      <li>What is each point's slack?<span class="math dm">ξ = max(0, 1 − y f(x))</span>
         <p class="answer" data-step="3">ξ = 0, 0, 0.6, 1, 2.4.</p></li>
     </ol>
   </div>
@@ -672,9 +676,9 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="eyebrow">Bonus · for later</div>
     <h2>Slack is<br>hinge loss</h2>
     <ul>
-      <li>At the solution each slack is as small as allowed: <span class="math">ξ<sub>i</sub> = max(0, 1 − y<sub>i</sub> f(x<sub>i</sub>))</span>.</li>
+      <li>At the solution each slack is as small as allowed:<span class="math dm">ξ<sub>i</sub> = max(0, 1 − y<sub>i</sub> f(x<sub>i</sub>))</span></li>
       <li data-step="1">Substitute, and the constraints disappear:
-        <span class="eq">minimize ½ ‖w‖² + C Σ max(0, 1 − y<sub>i</sub> f(x<sub>i</sub>))</span>
+        <span class="eq">minimize ½ ‖w‖²<br><span class="ind">+ C Σ max(0, 1 − y<sub>i</sub> f(x<sub>i</sub>))</span></span>
         The second term is the <b>hinge loss</b>.</li>
       <li data-step="2">The hinge loss is never below the 0–1 loss, so the sum bounds the number of training mistakes. Many other classifiers have this same form: a loss on the data plus a penalty on the weights.</li>
     </ul>

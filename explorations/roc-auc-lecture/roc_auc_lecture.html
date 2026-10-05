@@ -52,7 +52,8 @@ h3{font-size:1.05em;font-weight:700}
 .noup,.tile .lbl.noup{text-transform:none;letter-spacing:.04em}
 .math,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums}
 .math{font-size:1.02em}
-.k-model{color:var(--model)} .k-pos{color:var(--pos)} .k-err{color:var(--err)} .k-mean{color:var(--mean)} .k-hi{color:var(--hi)}
+.k-model{color:var(--model)} .k-pos{color:var(--pos)}
+.math{white-space:nowrap}   /* a formula never breaks across lines */ .k-err{color:var(--err)} .k-mean{color:var(--mean)} .k-hi{color:var(--hi)}
 .tag{display:inline-block;padding:.05em .45em;border-radius:.35em;font-weight:600}
 .tag.model{background:var(--model-soft);color:var(--model)} .tag.err{background:var(--err-soft);color:var(--err)} .tag.mean{background:var(--mean-soft);color:var(--mean)} .tag.hi{background:var(--hi-soft);color:var(--hi)}
 
@@ -305,6 +306,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .prose ol{padding-left:1.2em;margin:0}
 .prose ol li{margin:.35em 0}
 .lede{color:var(--muted)}
+@media (max-width:620px){.math,.answer .math,#s-today .math{white-space:normal}.eq{font-size:.8em;white-space:normal}}   /* phones: wrapping beats overflowing */
 </style>
 </head>
 <body>

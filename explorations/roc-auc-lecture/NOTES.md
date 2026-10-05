@@ -47,3 +47,6 @@
 - SVG elements revealed by a step are wrapped in a `<g data-step>`. Putting `data-step` on the
   shape itself would let the draw-in animation briefly show it, because that animation writes
   an inline opacity.
+- Formula layout: inline `.math` never wraps (allowed on phones ≤ 620px). Before the fix,
+  "(FPR, TPR)", "FPR = FP/(FP+TN)", "AUC = 0.79" and others broke across lines at some screen
+  sizes. Checked with `../svm-lecture/tests/mathwrap.js`.
