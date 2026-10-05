@@ -323,6 +323,51 @@ def collatz_hash(v, n_reads):
           f"(v={v}, {time.time() - t0:.0f}s)")
 
 
+def collatz_gas(v, n_reads):
+    """collatz() on the event engine (gasrun.GasReads)."""
+    from gasrun import GasReads
+    apps = fill_empty_appendants(DEMOL_APPS)
+    t0 = time.time()
+    got = GasReads(DEMOL_TAPE, apps, v, n_reads, sample_bits=14).run_reads()
+    ref = "".join(t[0] for _, t, _ in cts_run(DEMOL_TAPE, apps, n_reads) if t)[:n_reads]
+    same = sum(g == r for g, r in zip(got, ref))
+    print(f"{'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads}) "
+          f"(v={v}, {time.time() - t0:.0f}s)")
+
+
+def gas_vs_hash(checkpoint):
+    """Cell-exact check of the event engine against HashLife: load an
+    EpochReads checkpoint of the one-move TM at Cook's v (tm-gliders one
+    1), run the event engine from t = 0 to its time, and compare every
+    cell of the active region."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests"))
+    import machines
+    import gasrun
+    from epochrun import EpochReads, diff_extent
+    from tag import ts_to_cts
+    from tm import tm_to_ts
+    make, cfg = TM_RUNS["one"]
+    rules, ts_tape, s = tm_to_ts(getattr(machines, make)(), *cfg)
+    tape, apps, _ = ts_to_cts(rules, ts_tape, s)
+    apps = fill_empty_appendants(apps)
+    t0 = time.time()
+    er = EpochReads(tape, apps, _left_v(apps), 5970, 17, checkpoint=checkpoint)
+    er.checkpoint = None                     # read only
+    T = er.run.t
+    g = gasrun.build(er.lay, er.n_all)
+    g.advance_to(T)
+    print(f"event engine at t={T}: {g.n_events} events, {time.time() - t0:.0f}s", flush=True)
+    left, right = er.uni.at(T)
+    j = next(j for j, st in enumerate(er.watch.state) if st in ".r")
+    a, b = diff_extent(er.run, left, right, er.regs[j][0] - 8 * T // 30)
+    lo, hi, chunk, bad = a - (1 << 16), b + (1 << 16), 1 << 22, 0
+    for x in range(lo, hi, chunk):
+        y = min(hi, x + chunk)
+        bad += int(np.count_nonzero(g.window(x, y) != er.run.window(x, y)))
+    print(f"{'MATCH' if bad == 0 else 'DIFFER'}: {hi - lo} cells compared "
+          f"(active region [{a}, {b}]), {bad} differ, {time.time() - t0:.0f}s")
+
+
 # Compiled Turing machines on gliders (REPORT.md 3.7): tests/machines.py
 # machine and start configuration (state, left_bg, left, cur, right,
 # right_bg), compiled TM -> tag (Cocke-Minsky) -> CTS -> filled CTS.
@@ -341,12 +386,13 @@ def tm_visits(heads, t):
     return out
 
 
-def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8):
-    """Run a compiled TM on gliders (epochrun.EpochReads at v_factor times
-    Cook's v) up to the read that completes its halting visit, then decode
-    the TM's visit sequence from the observed reads alone and compare it
-    with the TM. Checkpoints to tm_{name}_v{v_factor}.ckpt (rerun the same
-    command to resume)."""
+def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8, engine="hash"):
+    """Run a compiled TM on gliders (at v_factor times Cook's v) up to the
+    read that completes its halting visit, then decode the TM's visit
+    sequence from the observed reads alone and compare it with the TM.
+    engine: "hash" (epochrun.EpochReads) or "gas" (gasrun.GasReads, the
+    event engine). Checkpoints to tm_{name}_v{v_factor}[_gas].ckpt (rerun
+    the same command to resume)."""
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests"))
     import machines
     from epochrun import EpochReads
@@ -359,6 +405,8 @@ def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8):
     tape, apps, order = ts_to_cts(rules, ts_tape, s)
     apps = fill_empty_appendants(apps)
     v = v_factor * _left_v(apps)
+    if v == int(v):
+        v = int(v)
     # reference reads, long enough to contain the halting visit's word
     q, ref_reads, n = deque(tape), [], 0
     while True:
@@ -376,9 +424,14 @@ def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8):
     print(f"{make} {cfg}: visits {ref}; CTS {len(apps)} appendants, "
           f"{sum(map(len, apps))} symbols, v = {v}; {n_reads} reads", flush=True)
     t0 = time.time()
-    ckpt = f"tm_{name}_v{v_factor}.ckpt"
-    er = EpochReads(tape, apps, v, n_reads, sample_bits=sample_bits, epoch=epoch,
-                    checkpoint=ckpt)
+    if engine == "gas":
+        from gasrun import GasReads
+        ckpt = f"tm_{name}_v{v_factor}_gas.ckpt"
+        er = GasReads(tape, apps, v, n_reads, sample_bits=sample_bits, checkpoint=ckpt)
+    else:
+        ckpt = f"tm_{name}_v{v_factor}.ckpt"
+        er = EpochReads(tape, apps, v, n_reads, sample_bits=sample_bits, epoch=epoch,
+                        checkpoint=ckpt)
     got = er.run_reads()
     same = sum(g == r for g, r in zip(got, ref_reads))
     print(f"reads: {'MATCH' if got == ref_reads else 'DIFFER'} ({same}/{n_reads}), "
@@ -446,8 +499,17 @@ if __name__ == "__main__":
         collatz_hash(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
                      int(sys.argv[3]) if len(sys.argv) > 3 else 556)
     elif sys.argv[1:2] == ["tm-gliders"]:
+        # tm-gliders [one|three] [F] [gas]
+        f = sys.argv[3] if len(sys.argv) > 3 else "1"
         tm_gliders(sys.argv[2] if len(sys.argv) > 2 else "one",
-                   int(sys.argv[3]) if len(sys.argv) > 3 else 1)
+                   float(f) if "." in f else int(f),
+                   engine="gas" if "gas" in sys.argv[4:] else "hash")
+    elif sys.argv[1:2] == ["collatz-gas"]:
+        # the same run on the event engine (gasrun.GasReads, ~15 s)
+        collatz_gas(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
+                    int(sys.argv[3]) if len(sys.argv) > 3 else 556)
+    elif sys.argv[1:2] == ["gas-vs-hash"]:
+        gas_vs_hash(sys.argv[2])
     elif sys.argv[1:2] == ["cost"]:
         tower_cost(direct=False)
         tower_cost(direct=True)
