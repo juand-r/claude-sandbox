@@ -222,6 +222,10 @@ class Registry:
 # Composites: patches that came within MIN_GAP cells of each other.
 
 COMPOSITE_CAP = 2048          # steps per memo entry (then it continues anew)
+# A composite this wide is not a collision but spreading debris (a broken
+# construction): every step of it would be memoized, so memory explodes
+# (the one-move TM at Cook's v after read 3270: 13.5 GB). Stop loudly.
+COMPOSITE_MAX_WIDTH = 1 << 16
 
 
 class Entry:
@@ -253,6 +257,9 @@ def simulate(key, reg):
         b, w, pl, pr, dx = step(*k)
         k = (b, w, pl, pr)
         x += dx
+        if w > COMPOSITE_MAX_WIDTH:
+            raise RuntimeError(f"composite wider than {COMPOSITE_MAX_WIDTH} cells "
+                               f"after {s} steps: debris, not a collision")
         if _empty(k):
             states.append((k, x))
             return Entry(states, [])
