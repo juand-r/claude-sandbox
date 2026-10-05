@@ -31,9 +31,9 @@ The model's inputs and outputs:
 - Token: one of 64 symbols, numbered 0 to 63, that the model is asked about.
 - Embedding table: the model's table of 64 embedding vectors, one per token.
   Its entries are weights of the model. Written E.
-- Embedding vector of token t: the list of 32 numbers that the embedding table
-  holds for token t. Written E[t]. Its 32 numbers are its coordinates,
-  numbered 0 to 31; coordinate i is written E[t, i].
+- Embedding vector of token t: the 32-dimensional vector that the embedding
+  table holds for token t. Written E[t]. Its coordinates are numbered 0 to
+  31; coordinate i is written E[t, i].
 - Coordinate token: one of 32 extra symbols, meaning "coordinate 0" to
   "coordinate 31". They have their own separate embedding table, which is
   not asked about.
@@ -49,7 +49,7 @@ Which tokens are used where:
   questions about each, 48 × 32 = 1,536 questions in all.
 - Held-out tokens: the other 16 tokens. The model is never asked about them
   during training.
-- Random vectors: 1,024 lists of 32 numbers drawn at random from the same
+- Random vectors: 1,024 vectors in ℝ³² drawn at random from the same
   distribution as the initial embedding vectors (a standard normal for each
   coordinate). They were never in the embedding table. We give one to the model
   in place of a token's embedding vector and ask the 32 questions about it.
@@ -191,7 +191,7 @@ different table.
 
 During training the model sees only 48 different embedding vectors. Consider a
 model whose 32 answers about a vector x are a linear function of x: answers =
-A x + b, with A a 32 × 32 matrix and b a list of 32 numbers. For each of the 32
+A x + b, with A a 32 × 32 matrix and b ∈ ℝ³². For each of the 32
 answers there are 33 unknowns (one row of A, plus one number of b), and the 48
 training tokens give 48 equations. With more equations than unknowns, and
 random embedding vectors, there is exactly one solution, and it is the perfect
