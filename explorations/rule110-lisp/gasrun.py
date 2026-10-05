@@ -17,7 +17,7 @@ import numpy as np
 
 import gas
 from casim import TILE, layout
-from census import MAX_DT, ether_phase
+from census import FAMILIES, MAX_DT, ether_phase
 from engine import pack, step_packed, unpack
 from experiments import ReadWatch, component_regions, sample
 
@@ -113,16 +113,38 @@ class RunInterface:
 
     def history(self, lo, hi, depth, advance=False):
         """Rows t..t+depth of [lo, hi), stepped locally (exact on [lo, hi)
-        by the light cone, as HashRun.history); the Gas stays at t."""
+        by the light cone, as HashRun.history); the Gas stays at t. Only
+        the rows census reads (the last, and the last minus each family's
+        period) are unpacked; asking for another raises."""
         if advance:
             raise ValueError("GasRun.history does not advance")
         width = hi - lo + 2 * depth
+        need = {depth} | {depth - dt for dt, _ in FAMILIES.values()}
         words = pack(self.window(lo - depth, hi + depth))
-        rows = [unpack(words, width)[depth:width - depth]]
-        for _ in range(depth):
-            words = step_packed(words)
-            rows.append(unpack(words, width)[depth:width - depth])
-        return np.array(rows)
+        rows = {}
+        for k in range(depth + 1):
+            if k:
+                words = step_packed(words)
+            if k in need:
+                rows[k] = unpack(words, width)[depth:width - depth]
+        return _Rows(rows, depth + 1, hi - lo)
+
+
+class _Rows:
+    """Some rows of a history (row k = time t + k), indexed like an array
+    of all of them."""
+
+    def __init__(self, rows, n, width):
+        self.rows, self.n, self.shape = rows, n, (n, width)
+
+    def __len__(self):
+        return self.n
+
+    def __getitem__(self, i):
+        k = i + self.n if i < 0 else i
+        if k not in self.rows:
+            raise KeyError(f"history row {i} was not kept")
+        return self.rows[k]
 
 
 class GasRun(RunInterface, gas.Gas):
