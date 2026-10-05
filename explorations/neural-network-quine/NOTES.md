@@ -225,3 +225,8 @@ their own values"). Cause: I compress a measurement into an abstract phrase.
 Rule: state what was measured and what number came out, in plain words, with
 one concrete example. No coined phrases. If a sentence needs a second reading,
 rewrite it.
+Addendum (2026-10-05): the same rule applies in conversation, not only in
+reports. Use the terms defined in the current report's Terms section, with the
+same meanings, and define anything new before using it. Pitch at the user's
+level (math and CS background): standard mathematical language is fine and
+preferred ("vector in ℝ³²"); do not explain basics such as what a vector is.
