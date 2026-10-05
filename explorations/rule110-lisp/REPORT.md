@@ -714,7 +714,7 @@ realistic gain is smaller and unknown.
 
 ## 5. Simulating long runs
 
-Four engines are available, all exact and cross-checked cell for cell.
+Five engines are available, all exact and cross-checked cell for cell.
 
 | engine | module | idea | measured on De Mol's 556 reads (3.6) |
 |---|---|---|---|
@@ -722,6 +722,7 @@ Four engines are available, all exact and cross-checked cell for cell.
 | streaming window | `casim.StreamRun` | steps only where the state differs from the assembly's free evolution | 3.9 h |
 | HashLife | `hashlife.py`, `hlc.c` | hash-consed binary tree in space, memoized results in time | 340 s (one tree for the whole run, Python core, 11 GB; this read loop was retired for the next row) |
 | HashLife in epochs | `epochrun.py` | HashLife on a tree rebuilt every few reads from the active region and the next few ossifiers and appendants | 45 s (C core, 0.3 GB) |
+| event engine | `gas.py`, `gasc.c`, `gasrun.py` | gliders as particles moved in closed form; only patches that come within two cells are simulated, and each such collision once (memoized) | 9 s (C event loop) |
 
 *Why the streaming window works.* Far from the collisions, the left side
 (the ossifier train) and the right side (the unread table) evolve freely,
@@ -802,9 +803,8 @@ quadratic in the number of reads. For the machine of 3.7 at 2v the
 active region reached 2.6e8 cells by the last read, and the cost per read
 rose from about 0.5 s to about 2 s (three runs sharing four cores). A
 three-state machine that moves both ways (59,136 reads; NOTES.md, phase
-7) would cost roughly a hundred times as much. A glider-level
-simulator that steps each crossing as one event would remove most of
-this cost; it is not built.
+7) would cost roughly a hundred times as much. The event engine below
+was built for this.
 
 *Tuning, measured.* On a fixed late stretch of the one-move machine (32
 reads from read 3,152) the engine went from 55 s and 1.64 GB to 38.6 s and
@@ -823,6 +823,77 @@ Three ideas were measured and dropped (NOTES.md, phase 8):
 After tuning, main-tree advances take about 87% of the time and their
 cost is linear in simulated generations: what is left is the glider
 interactions themselves.
+
+*The event engine (v0.2, Phase 9).* HashLife spends its time on glider
+interactions that differ only in where and when they happen: a tape
+character (four C gliders) crossing a queued Ebar is the same collision
+thousands of times per read, at a handful of relative phases. The event
+engine treats the row as particles instead.
+- *Why it is exact.* Rule 110 has radius 1. If two non-ether patches,
+  each evolved alone in ether, stay at least two ether cells apart, no
+  cell's neighbourhood ever touches both, so the row evolves as the union
+  of the two isolated evolutions (induction on time). The engine
+  therefore moves each particle in closed form and simulates exactly,
+  cell by cell, only patches that come within two cells of each other
+  (a composite), until the composite splits into pieces at least one
+  ether tile apart.
+- *Particles and keys.* A patch is its cells plus the ether phase on each
+  side, normalized by translation (the canonical key). A patch is a
+  particle if its key recurs under isolated evolution (a period of at
+  most 120 steps, found automatically): Cook's gliders, bound groups,
+  pure phase slips (an A glider has phases of width 0).
+- *Memoization.* A composite's whole evolution is memoized by its key at
+  the moment of merging. On the one-move machine at 1.25x Cook's v, 1.4e9
+  events needed only 76 distinct collisions and 27 particle kinds; De
+  Mol's program needs 78 collisions.
+- *Structure.* Items sit in a linked list; the next collision of each
+  adjacent pair is in a heap. For two particles the collision time comes
+  from a cached table of their relative edge offsets over one joint
+  period (one division and a short scan). The ossifier train and the
+  table are materialized lazily from `casim.layout`: a sentinel stands
+  for each unmaterialized side and fires when anything not moving with
+  that side gets close. The event loop is C (`gasc.c`); Python keeps all
+  cell-level work (new collisions, period detection), and the Python
+  engine `gas.Gas` remains the reference (identical event counts and
+  reads).
+
+*Is it exact? Checked against HashLife, cell for cell.* The one-move
+machine at Cook's v was run from t = 0 on the event engine to the times
+of two HashLife checkpoints, and the whole active region was compared
+(`python experiments.py gas-vs-hash CHECKPOINT`).
+
+| HashLife checkpoint | generations | cells compared | differing | event engine time |
+|---|---|---|---|---|
+| read 3,152 | 6.67e10 | 137,190,722 | 0 | 10 min (first C version) |
+| read 3,256 | 6.89e10 | 141,909,284 | 0 | 101 s (5.4e8 events) |
+
+With the read check, the same machine at Cook's v gives reads 0 to 3,270
+identical to HashLife's (outcome and cluster count). That includes the
+failure of 3.7, read for read: 3,270 '!' with 843 Ebar clusters, 3,269
+late 'N', 3,271 'N', 3,272 '!' with 844. This is the independent-engine
+check of that failure that the to-do list asked for (PLAN.md, phase 9,
+item 4). Shortly afterwards the
+debris that follows the failure filled memory (13.5 GB), as it did for
+HashLife. Debris is a spreading region, not a collision; the engine now
+stops with an error when a composite grows beyond 2^16 cells.
+
+*How fast.* Measured on the same container as the HashLife numbers.
+
+| run | HashLife epochs | event engine |
+|---|---|---|
+| De Mol's Collatz program, 556 reads | 45 s | 9 s |
+| one-move TM at 1.25x Cook's v, 5,970 reads, 1.6e11 generations | 9,151 s | 907 s |
+| one-move TM at Cook's v, time to read 3,000 | 2,331 s (older build) | 295 s |
+
+All reads were identical in each pair. The event loop costs 0.2 to 0.3
+us per event. On the one-move machine's late reads, about 0.05 s per
+read goes to events and about 0.07 s to the read check (rendering
+windows and the census), now the larger part.
+
+*What still limits it.* The number of events per read grows with the
+junk, as HashLife's cost did: every ossifier still crosses every Ebar
+left by every rejected appendant. The total remains quadratic in the
+number of reads, with a much smaller constant.
 
 *A bug found at small v.* At De Mol's smaller spacings, reads come closer
 together than a local copy's reach, and a copy could be built from an
