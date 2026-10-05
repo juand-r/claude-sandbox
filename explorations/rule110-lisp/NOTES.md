@@ -943,3 +943,37 @@ Later the same day: costs and the 3-state run (C2).
   within one of 4 clusters per symbol), 58,779 rejections; 2.7e10
   events, 65 collisions, 37 orbits; ~3.3 h wall in three legs (resumed
   at 3500 and 29000), sharing cores. data/tm_three_v2_gas.log.
+
+## Phase 9 follow-up: fail-fast and a census from the particles (2026-10-05)
+
+User asked: fix the debris problem; make the read check cheaper (they
+suggested making it optional; I argued against that - without it a run
+produces no result - and proposed a census from the particles instead).
+
+Debris: not fixable cheaply (chaotic, no particles, quadratic cost for
+any exact engine). Runs now stop at the first read that settles as '!'
+(GasReads and EpochReads, stop_on_fail=True; tm-gliders keeps the
+checkpoint). Tested: De Mol at v = 4000 stops at read 83.
+
+Census from the particles (gascensus.py):
+- First design considered: cell census only on segments around items.
+  Measured on the 3-state machine: segments still cover 80% of a sampled
+  span (2.1e5 cells, ~3,600 items) - at most 1.25x. Dropped.
+- Kept: clumps of items (gaps < 32 cells at the census time). A rigid
+  clump (old particles - 64+ steps since made, or untouched layout rows
+  -, one velocity, nothing else within 96 cells) has exactly its own
+  isolated history over the census's 30 steps, so its clusters are
+  memoized by composition (single particles: by orbit and phase, flat,
+  vectorized). Anything else: census() on a local window. Items needed a
+  creation time (gasc Item.tc; collision outcomes get the event time).
+- First version had per-item Python loops: slower than the cell census
+  on Collatz (10.9 s vs 8.5 s). Vectorized: 7.8 s.
+- Validation (census="both" raises at the first difference inside a
+  watched region): Collatz 556 reads; one-move TM at 1.25x, all 5,970
+  reads (identical to the earlier run including read times, and to
+  HashLife); 3-state TM, first 3,000 reads. No difference in any sample.
+- Speed, 3-state TM, first 2,000 reads (run side by side): cells 245.7 s,
+  particles 115.8 s, identical read lines. Local cell census covered
+  0.3% of the sampled spans; 175-187 clumps rendered for ~3e7 lookups.
+- ReadWatch.observe bisects the (sorted) census instead of scanning it,
+  and checks that it is sorted.

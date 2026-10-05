@@ -992,6 +992,29 @@ speed:
 - the read check (rendering windows, the census), about 0.07 s per read,
   now the largest part.
 
+*The read check from the particles.* Rendering the watched span (about
+200,000 cells on the three-state machine) and running census() on it was
+most of the remaining time. `gascensus.py` takes the same census from
+the particles. A clump of old particles moving together, with nothing
+else within 96 cells, has over the census's 30 steps exactly the history
+of the clump alone in ether. Its clusters are therefore a function of its
+composition, computed once and memoized; the repeating table is almost
+all such clumps. Everything else (a collision under way, young
+particles, different velocities nearby) still gets census() on a local
+window.
+- Checked: computed both ways at every sample, the two never differed
+  inside a watched region, over De Mol's 556 reads, all 5,970 reads of
+  the one-move machine at 1.25x, and the first 3,000 reads of the
+  three-state machine. The reads equal the earlier runs, including read
+  times.
+- Speed: the first 2,000 reads of the three-state machine took 116 s
+  instead of 246 s.
+
+Runs now also stop at the first read that settles as '!' and keep the
+last checkpoint. After a construction failure the debris spreads with
+no particles to exploit, at a cost quadratic in time for any exact
+engine; there is nothing left to compute.
+
 *What still limits it.* The number of events per read grows with the
 junk, as HashLife's cost did: every ossifier still crosses every Ebar
 left by every rejected appendant. The total remains quadratic in the
@@ -1094,9 +1117,8 @@ Open, roughly in order of value:
   ossifier schedule could give each stretch of a run only the spacing
   it needs.
 - Done: an event engine (section 5). Open: its cost per read follows
-  the queue of the CTS, and on the three-state machine about two thirds
-  of its time goes to the read check (rendering windows and the census);
-  a census taken from the particles themselves would remove most of that.
+  the queue of the CTS. The census is now taken from the particles
+  (about 2x on the three-state machine's early reads).
 - Why Cook's short-leader block fails (3.4), and why one control program
   reads only every second ossifier period. Fixing the short leader would
   also remove the fill rewrite, which triples the reads of a compiled

@@ -25,6 +25,11 @@ An event engine (REPORT 5; PLAN.md phase 9, item 1)
   visits (1,1), (2,1), (3,1), (3,2) decoded from the reads; the first
   3,072 reads identical on HashLife (data/tm_three_v2_gas.log,
   data/tm_three_v2_hash_first3072.log).
+- The read check's census from the particles (gascensus.py: rigid clumps
+  memoized, a local cell census elsewhere; census="both" checks the two
+  agree): 3-state TM's first 2,000 reads 246 s -> 116 s, reads identical.
+- Runs stop at the first read that settles as '!' (stop_on_fail),
+  keeping the checkpoint: after a failure there is only debris.
 - ReadWatch keeps only the Ebar count of a settled read (its censuses
   made a 59k-read run grow to 6 GB).
 

@@ -19,6 +19,7 @@ import os
 import pickle
 import sys
 import time
+from bisect import bisect_left
 from collections import deque
 
 from casim import Run, StreamRun, padded_row
@@ -154,9 +155,12 @@ class ReadWatch:
         if self.t_last is not None and t < self.t_last:
             raise RuntimeError(f"sample at t={t} precedes the previous one ({self.t_last})")
         self.t_last = t
+        if any(p[0] > q[0] for p, q in zip(rel, rel[1:])):
+            raise ValueError("census positions are not sorted")
         for j in pending:
             a, b = self.regs[j]
-            inside = tuple(c for c in rel if a <= c[0] < b)
+            # rel is sorted by position (census order; the particle census sorts)
+            inside = tuple(rel[bisect_left(rel, (a,)):bisect_left(rel, (b,))])
             if self.before[j] is None:
                 self.before[j] = inside
             elif self.state[j] == "." and inside != self.before[j]:
