@@ -57,6 +57,9 @@ static int64_t now;
 static int64_t n_events;
 static int64_t sen_b0[2], sen_num[2], sen_den[2];
 static int failed;
+/* merge counts by family (A: speed 2/3, C: 0, E: -4/15, X: other or a
+   composite), for profiling */
+static int64_t fam_count[4][4];
 
 /* pending request for Python */
 static int32_t req_a, req_b, req_k; static int64_t req_t;
@@ -460,9 +463,6 @@ static void signature(const Item *a, const Item *b, int64_t t, uint64_t *k1, uin
           | (uint64_t)(g & 255);
 }
 
-/* merge counts by family (A: speed 2/3, C: 0, E: -4/15, X: other or a
-   composite), for profiling */
-static int64_t fam_count[4][4];
 
 static int family(const Item *it) {
     if (it->kind != PART) return 3;
@@ -537,6 +537,7 @@ int gc_reset(void) {
     free(ptab); ptab = 0; pcap = pused = 0;
     free(pool); pool = 0; n_pool = cap_pool = 0;
     now = 0; n_events = 0; failed = 0;
+    memset(fam_count, 0, sizeof(fam_count));
     sen_den[0] = sen_den[1] = 1;
     return mgrow();
 }

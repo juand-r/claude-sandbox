@@ -197,3 +197,36 @@ def test_gas_checkpoint_resume_matches_uninterrupted_run(tmp_path):
     assert resumed.watch.last == full.watch.last
     assert resumed.watch.read_at == full.watch.read_at
     assert resumed.run.n_events == full_events
+
+
+def test_random_patches_both_engines_match_hashlife():
+    """Arbitrary collisions, not just Cook's: random patches in ether
+    make debris, unknown gliders, slips and stationary groups."""
+    from census import ether_phase
+    from gasc import CGas
+    from hashlife import HashRun
+    rng = np.random.default_rng(3)
+    reg = gas.Registry()
+    for _ in range(8):
+        n = 14 * 300
+        c = int(rng.integers(14))
+        row = _E[(c + np.arange(n)) % 14].copy()
+        x = 300
+        while x < n - 400:
+            w = int(rng.integers(1, 25))
+            row[x:x + w] = rng.integers(0, 2, w)
+            x += w + int(rng.integers(40, 400))
+        cr = (int(ether_phase(row[-14:])[0]) - (n - 14)) % 14
+        T = int(rng.integers(300, 1500))
+        py, cg, h = gas.Gas(reg=reg), CGas(reg=reg), HashRun(row, 0)
+        for g in (py, cg):
+            g.append_row(row, 0, c, cr)
+            g.start()
+            g.advance_to(T)
+        h.step(T)
+        lo, hi = -T - 50, n + T + 50
+        w = cg.window(lo, hi)
+        assert np.array_equal(w, h.window(lo, hi))
+        assert np.array_equal(w, py.window(lo, hi))
+        assert cg.n_events == py.n_events
+    assert len(reg.orbits) > 30
