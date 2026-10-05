@@ -96,7 +96,13 @@ item) hardly measured following at all.
 - [x] Run A and B, 3 seeds each (about 4 minutes each).
 - [x] Write up the results in plain language (REPORT.md).
 
-## Later, only if the first version works and the user agrees
+## Vocabulary sweep (asked for by the user, 2026-10-05)
+
+- [x] V = 256, 1,024, 4,096 (a quarter held out), both conditions, 3 seeds, the
+      same 72,000 optimizer steps as V = 64 (`run_vocab.sh`). Results in
+      REPORT.md, Result 2.
+
+## Later, only if the user agrees
 
 - Answers written as text tokens instead of a number.
 - More content tokens than the model can memorize, and fewer: does the outcome

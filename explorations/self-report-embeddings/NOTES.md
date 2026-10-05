@@ -90,3 +90,8 @@ Mistake of mine: `pkill -f "[p]ytest -q tests"` inside a command whose own text
 contained "pytest -q tests" killed that command (exit 144). Same class of error
 as the earlier pgrep self-matches. Rule: never pkill by a pattern that also
 appears in the current command line; kill by PID.
+Sweep finished: all 18 runs, no failures; measurements in
+`results/follow_test.json` (V = 64 entries kept from before). Held-out R² rises
+with V (0.45, 0.91, 0.98-0.99, 0.997-0.999); follow goes to 1 (0.997-1.001 on
+held-out tokens at V = 4,096). Trained embeddings shrink at large V (RMS about
+0.90) and give follow slightly above 1 at V = 1,024 (up to 1.027); not explained.
