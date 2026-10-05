@@ -33,13 +33,14 @@ Part II. The quine does work, given the right setup and enough optimization.
 In order of importance: training far longer than the paper's 100 epochs; He
 initialization of the weights with a unit-scale address table; a lower learning
 rate; and finally damped Newton (Levenberg–Marquardt), which solves the quine
-equations directly. The best network (one hidden layer) reaches R² = 0.987,
-with normal-sized weights (RMS 0.41); the best two-layer network (the paper's
-architecture) reaches 0.971 and was still improving. Long damped Newton runs
-appeared to stall near 0.985, but that stall came from the damping schedule, not
-from the problem: restarting the method from the same network resumes progress
-(0.985 → 0.988 in 10 iterations), and a random change followed by repair
-reached 0.990 (section 14).
+equations directly. Two changes to the loss matter from the start of training:
+taking the full gradient (the targets are the live weights) and dividing the
+loss by the weights' spread, so that it equals 1 − R² (section 13). With all of
+these, the best two-layer network (the paper's architecture) reaches R² =
+0.9975, with normal-sized weights (RMS 0.90); all three two-layer seeds reach
+0.994 before damped Newton (section 13). Long damped Newton runs appeared to
+stall, but the stall came from the damping schedule, not from the problem:
+restarting the method resumes progress (section 14).
 
 ## 1. The setup
 
@@ -318,6 +319,21 @@ and the same pull then helps: the weights grow (RMS ~1) and the copy improves.
 The two changes matter in combination and only early in training, which is why
 the continuation runs above showed no effect.
 
+Continuing these from-scratch networks (full gradient, 1 − R²) with lower
+learning rates, 300 epochs each:
+
+| stage | R² (seeds 0 / 1 / 2) | weight RMS |
+|---|---|---|
+| 1,000 epochs at lr 2e-3 (the table above) | 0.940 / 0.942 / 0.939 | 0.90 / 1.17 / 1.08 |
+| + 300 epochs at lr 2e-4 | 0.9926 / 0.9927 / 0.9926 | 0.90 / 1.17 / 1.08 |
+| + 300 epochs at lr 2e-5 | 0.9941 / 0.9941 / 0.9945 | 0.91 / 1.17 / 1.08 |
+
+Observation. The three seeds end within 0.0004 of each other, at 0.994, with
+the weights at their full size. The old pipeline (frozen targets and SSE, then
+the same learning-rate steps, then 20 damped Newton iterations) reached 0.971
+on seed 0 (section 14). Adamax with the right loss now beats it, before any
+damped Newton.
+
 ## 14. Solving the quine equations directly: Newton's method
 
 The quine condition f(c) = θ_c for every c is N equations in N unknowns. With
@@ -355,25 +371,128 @@ after an accepted one, so over a long run it ratchets up until the steps are
 too small to matter; a restart resets it. Also, changing the weights by a random
 1% and then repairing them reached 0.9901 in 9 iterations, better than the
 unchanged network over the same iterations (that network was lost in a
-container restart; the experiment is being rerun).
+container restart; the rerun gave 0.9904, and the two-layer version is in
+section 16).
 
 Interpretation. Damped Newton is far more efficient than Adamax here (the gain
 from 0.96 to 0.98 took 20 iterations). Changing the objective from SSE to
 1 − R² makes no difference for one layer or two (two layers, seed 0, 20
-iterations: 0.9713 on SSE, 0.9714 on 1 − R²). The ceiling, if there is one, is
-not yet known; the damping schedule should be fixed before looking for it.
+iterations: 0.9713 on SSE, 0.9714 on 1 − R²).
+
+Observation, two damping rules (two layers, seed 0, from the 0.9941 network of
+section 13, damped Newton on 1 − R², about 90 to 105 seconds per iteration):
+
+| run | after 5 | after 10 | after 20 iterations |
+|---|---|---|---|
+| old rule (μ × 4 after a rejected step, ÷ 3 after an accepted one) | 0.99553 | 0.99653 | |
+| old rule, restarted after 10 iterations (μ reset) | | 0.99653 | 0.99753 |
+| Nielsen's rule (Nielsen 1999; implemented in `newton.lm`) | 0.99508 | 0.99577 | 0.99659 |
+
+The old rule's first 10 iterations were run twice (the control of the
+change-and-repair experiment in section 16, and the first half of the restart
+run) and gave the same result, as they must: the method is deterministic.
+
+Observation. Restarting the old rule every 10 iterations beat Nielsen's rule by
+0.0009 at 20 iterations. Under Nielsen's rule the damping stayed near 5 × 10⁻⁴
+and the steps near 0.3% of the weights' size; the old rule, just after a reset,
+took steps of 0.5 to 1.3%.
+
+Interpretation (one seed, one start). On this problem, larger steps pay, and
+Nielsen's rule is too cautious. The best schedule tried so far is the old rule
+with a reset every 10 iterations. The ceiling, if there is one, is not yet
+known; R² was still rising by about 0.00004 per iteration at the end.
 
 ## 15. The best network
 
-The best network (one layer, seed 2, R² 0.987) has normal-sized weights: RMS
-0.41 (0.14 at initialization), median magnitude 0.24, largest 1.78. Each weight
-is reproduced to within about 11% (error RMS 0.045 against weight RMS 0.41). The
-error is spread evenly: weights with errors more than three times the typical
-error carry 5% of the total, close to what bell-curve noise would give. The 100
-output weights w are copied less well (R² 0.86 within that block) but carry only
-2% of the total error.
+The best network (two layers, seed 0, R² 0.99753;
+`results/weights/lmnormReset_L2fn_seed0_b.pt`) has normal-sized weights: RMS
+0.90 (0.14 at initialization), median magnitude 0.46, largest 8.4. The error RMS
+is 0.045, 5% of the weight RMS. The error is spread evenly: weights with errors
+more than three times the typical error carry 4% of the total, close to what
+bell-curve noise would give.
 
-## 16. Remaining uncertainty and open questions
+By block:
+
+| block | weights | R² within the block | share of the total SSE |
+|---|---|---|---|
+| W₁ | 10,000 | 0.9944 | 52% |
+| W₂ | 10,000 | 0.9985 | 48% |
+| w (output weights) | 100 | −1.20 | 0.5% |
+
+The output weights are small (standard deviation 0.030, largest 0.043), and
+they are guessed with the same absolute error as all the others (about 0.045).
+Their errors are larger than their spread, so R² within that block is negative.
+They carry too little of the total to affect the overall R².
+
+The best one-layer network (seed 2, R² 0.987) was described in an earlier
+version of this section: weight RMS 0.41, error RMS 0.045, output-weight R² 0.86.
+
+## 16. Reading off versus computing: does a guess depend on its own weight?
+
+A network could match its weights in two ways. It could read them off, as a
+lookup would. Or it could compute values that happen to equal them. The test:
+nudge one weight θ_c and see whether the guess f(c) for that weight moves with
+it. The self-sensitivity ∂f(c)/∂θ_c, the diagonal of the Jacobian J, is 1 for a
+lookup (`diag_grounding.py`).
+
+Observation (two layers, seed 0, R² 0.9941;
+`results/diag_grounding_L2_stage3fn_seed0.txt`; one layer, seed 2, R² 0.987, for
+comparison):
+
+| block | mean ∂f(c)/∂θ_c, two layers | mean ∂f(c)/∂θ_c, one layer |
+|---|---|---|
+| W₁ | 0.0009 | 0.0001 |
+| W₂ | 0.0008 | (no such block) |
+| w (output weights) | 4.07 | 0.95 |
+
+The length of a row of J, the sensitivity of one guess to all weights together,
+has median 121 (two layers) and 38 (one layer).
+
+Observation, output weights. For an output weight w_j, ∂f(c_j)/∂w_j = h_j(c_j)
+exactly: the activation of last-layer unit j at w_j's own index. This is not a
+dedicated lookup unit. At output-weight indices, h_j(c_j) has mean 0.95 and
+standard deviation 2.84 (one layer), and mean 4.07 and standard deviation 9.95
+(two layers). The other units are, on average, larger in magnitude (mean
+|h_k(c_j)| 2.24 and 7.22). The one-layer mean of 0.95 is an average of widely
+scattered values, not a sign of lookup.
+
+Interpretation. In both networks the guesses for the hidden-layer weights,
+99.5% of the weights, hardly depend on the weight being guessed. They are right
+because of how all the weights are set together. An accurate self-description
+here is not evidence of access to the thing described.
+
+Change and repair (`diag_absorb.py`; `results/diag_absorb_L2.json`). Starting
+from the same two-layer network, change the weights by a random Δ, then run 10
+iterations of damped Newton on 1 − R². Compare the result with a control run
+from the unchanged network. Retention is the component of (final − control)
+along Δ, as a fraction of Δ: 1 means the change was kept, 0 that it was
+removed. Other drift is the rest of (final − control), in units of |Δ|.
+
+| run | R² right after the change | R² after repair | retention | other drift |
+|---|---|---|---|---|
+| control (no change) | 0.9941 | 0.9965 | | |
+| \|Δ\| = 1% of \|θ\| | −0.26 | 0.9965 | 0.085 | 1.30 |
+| \|Δ\| = 10% of \|θ\| | −152 | 0.9975 | 0.127 | 1.04 |
+
+The singular values of J − I at the start: largest 7,505, smallest 0.00002; 4
+below 0.001, 34 below 0.01, 336 below 0.1, 2,976 below 1, of 20,100. A small
+singular value marks a direction in which a weight change is nearly followed by
+the guesses. For one layer: largest 1,088; 3, 19, 178 and 1,736 below the same
+thresholds, of 10,100.
+
+Observation. The two-layer network is far more fragile than the one-layer one:
+a random 1% change sends R² to −0.26 (one layer: 0.81). Repair recovers fully
+from both changes. It keeps 9% to 13% of the change and ends about one
+change-size away from the control, at an equal or better R². The one-layer
+results were similar (retention 0.09 and 0.14).
+
+Interpretation. The near-quines form a broad region. A change is neither kept
+nor undone; the network settles at a different point of the region. The 10%
+change ended 0.001 above the control after the same 10 iterations, as in the
+one-layer case. Whether a large change helps damped Newton in general is not
+established: there is one random change per size and one seed.
+
+## 17. Remaining uncertainty and open questions
 
 - Part I depends on an initialization inferred from the paper's numbers, not
   its text. The forced details (no biases, layer sizes, minibatch of 10, frozen
@@ -382,8 +501,9 @@ output weights w are copied less well (R² 0.86 within that block) but carry onl
 - The paper reports no weight sizes, so I cannot confirm that its networks were
   guessing zero; I can only say that its numbers are what guessing zero produces
   in this reimplementation.
-- Most Part II results use three seeds; the damped Newton runs for two layers use
-  one.
+- Most Part II results use three seeds. The damped Newton runs for two layers,
+  the self-sensitivity measurement, and change-and-repair use one seed (seed 0),
+  and change-and-repair uses one random change per size.
 - Whether R² = 1 is reachable at all is open: it requires a non-zero exact
   solution of N equations in N unknowns, and the badly conditioned Jacobian says
   nothing about whether one exists.

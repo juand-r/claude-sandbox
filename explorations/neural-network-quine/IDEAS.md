@@ -229,6 +229,21 @@ over a long run. A random 1% change plus repair reached 0.9901. See NOTES.md.)
 Two layers, seed 0, damped Newton: 0.9545 → 0.9713 in 20 iterations (~2 min
 each), still rising ~0.0008 per iteration at the end, damping falling.
 
+Two layers, the recipe that now works best (seeds 0 / 1 / 2; REPORT.md sections
+13 and 14):
+
+| stage | R² |
+|---|---|
+| from random init: Adamax, full gradient, 1 − R² loss, lr 2e-3, 1,000 epochs | 0.940 / 0.942 / 0.939 |
+| + 300 epochs at lr 2e-4 | 0.9926 / 0.9927 / 0.9926 |
+| + 300 epochs at lr 2e-5 | 0.9941 / 0.9941 / 0.9945 |
+| + damped Newton on 1 − R², old damping rule, 10 iterations, reset, 10 more | 0.99753 (seed 0 only) |
+| (instead: Nielsen damping rule, 20 iterations) | 0.99659 (seed 0 only) |
+
+Next candidates: the same damped Newton schedule on seeds 1 and 2; repeated
+cycles of a 10% random change followed by repair (see section 10), against
+plain restarts with the same number of iterations.
+
 ## 10. Reading off versus computing one's own state (introspection)
 
 Motivation (discussion with the user). There are two ways a network can report
@@ -263,13 +278,16 @@ Observation. Hidden-layer weights are reported accurately but not causally: a
 report does not depend on the weight it describes, only on the weights
 collectively. Output weights are reported with self-sensitivity close to 1.
 
-Interpretation (not yet verified). For an output weight w_j, ∂f/∂w_j equals h_j,
-the value of hidden unit j at w_j's own address. A mean of 0.95 suggests that
-hidden unit j fires at almost exactly 1 at the address of w_j, a one-hot lookup
-channel that emerged for the only layer where one hidden unit per weight is
-possible (100 units, 100 output weights; W₁ has 10,000 entries). To verify:
-check that for output-weight addresses, h_j ≈ 1 and the other units contribute
-little to the report.
+Interpretation, checked and rejected (2026-10-05). For an output weight w_j,
+∂f/∂w_j equals h_j, the value of hidden unit j at w_j's own address. I guessed
+that a mean of 0.95 meant a one-hot lookup channel (h_j ≈ 1, other units ≈ 0).
+The check says no: h_j(c_j) has mean 0.95 but standard deviation 2.84, and the
+other units are larger on average (mean |h_k(c_j)| 2.24). The mean of 0.95 is an
+average of scattered values. Same for two layers (mean 4.07, sd 9.95; other
+units 7.22).
+
+Two layers (seed 0, R² 0.9941; `results/diag_grounding_L2_stage3fn_seed0.txt`):
+mean ∂f(c)/∂θ_c is 0.0009 for W₁, 0.0008 for W₂, 4.07 for w; |J_c,:| median 121.
 
 Connection to work on introspection in language models (from memory; check
 before citing): Binder et al. (2024, "Looking Inward") test whether models
@@ -317,3 +335,18 @@ a change is neither absorbed nor undone; the network re-settles elsewhere in the
 region. For pushing R² up, "change, then repair" beat plain continuation twice;
 worth trying repeatedly (perturb-and-repair cycles), together with a damping
 schedule that does not ratchet up. Saved networks: `results/weights/absorb_*.pt`.
+
+Two layers (seed 0, from R² 0.9941; `results/diag_absorb_L2.json`; REPORT.md
+section 16). Singular values of J − I: 4 below 0.001, 34 below 0.01, 336 below
+0.1, 2,976 below 1 (of 20,100); largest 7,505.
+
+| run | R² after change | R² after 10 repair iterations | fraction of Δ kept | other movement / |Δ| |
+|---|---|---|---|---|
+| control | 0.9941 | 0.9965 | | |
+| |Δ| = 1% of |θ| | −0.26 | 0.9965 | 0.085 | 1.30 |
+| |Δ| = 10% of |θ| | −152 | 0.9975 | 0.127 | 1.04 |
+
+Same picture as one layer: the change is mostly not kept, the network re-settles
+about one change-size from the control. Much more fragile (1% change → R² −0.26).
+The 10% change again ended above the control (0.9975 vs 0.9965). Saved networks:
+`results/weights/absorb_L2_*.pt`.

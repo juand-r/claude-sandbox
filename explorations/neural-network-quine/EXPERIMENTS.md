@@ -198,32 +198,58 @@ their predictions depend on the image paired with each coordinate.
 | opt_adamax_1000ep_seed2_init-torch_default_proj1_L1 | 1 | default | 1 | yes | adamax | SSE | frozen | default | 1000 ep | random init | -0.1515 | -0.0549 | 1.42 | 0.011 |
 | opt_adamax_1000ep_seed2_noembedselu_he | 2 | He | 1 | no | adamax | SSE | frozen | default | 1000 ep | random init | 0.8637 | 0.8731 | 414.29 | 0.389 |
 
+### F. From random initialization: loss and target variants
+
+| run (results/<run>.json) | layers | weight init | P scale | SELU on embedding (", output": also on output) | training | loss | targets | lr | length | started from | final R² | best R² | final SSE | weight RMS |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| opt_adamax_1000ep_seed0_he_fullgrad | 2 | He | 1 | yes | adamax | SSE | live (full gradient) | default | 1000 ep | random init | 0.8468 | 0.8685 | 113.05 | 0.192 |
+| opt_adamax_1000ep_seed0_he_fullgrad_normalized | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | default | 1000 ep | random init | 0.9404 | 0.9505 | 964.64 | 0.899 |
+| opt_adamax_1000ep_seed0_he_normalized | 2 | He | 1 | yes | adamax | 1 − R² | frozen | default | 1000 ep | random init | 0.8753 | 0.8753 | 381.10 | 0.390 |
+| opt_adamax_1000ep_seed1_he_fullgrad | 2 | He | 1 | yes | adamax | SSE | live (full gradient) | default | 1000 ep | random init | 0.8482 | 0.8668 | 117.21 | 0.196 |
+| opt_adamax_1000ep_seed1_he_fullgrad_normalized | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | default | 1000 ep | random init | 0.9421 | 0.9535 | 1565.22 | 1.161 |
+| opt_adamax_1000ep_seed1_he_normalized | 2 | He | 1 | yes | adamax | 1 − R² | frozen | default | 1000 ep | random init | 0.8516 | 0.8540 | 481.96 | 0.402 |
+| opt_adamax_1000ep_seed2_he_fullgrad | 2 | He | 1 | yes | adamax | SSE | live (full gradient) | default | 1000 ep | random init | 0.8333 | 0.8653 | 124.77 | 0.193 |
+| opt_adamax_1000ep_seed2_he_fullgrad_normalized | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | default | 1000 ep | random init | 0.9390 | 0.9561 | 1410.05 | 1.074 |
+| opt_adamax_1000ep_seed2_he_normalized | 2 | He | 1 | yes | adamax | 1 − R² | frozen | default | 1000 ep | random init | 0.8597 | 0.8735 | 433.99 | 0.392 |
+
 ### G. Continuation from saved networks: learning rate, full gradient, 1 − R²
 
 | run (results/<run>.json) | layers | weight init | P scale | SELU on embedding (", output": also on output) | training | loss | targets | lr | length | started from | final R² | best R² | final SSE | weight RMS |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | opt_adamax_300ep_seed0_he_lr0.0002_from-opt_adamax_1000ep_seed0_he | 2 | He | 1 | yes | adamax | SSE | frozen | 0.0002 | 300 ep | opt_adamax_1000ep_seed0_he | 0.9451 | 0.9465 | 164.67 | 0.386 |
+| opt_adamax_300ep_seed0_he_lr0.0002_fullgrad_normalized_from-stage1fn_L2_seed0 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 0.0002 | 300 ep | stage1fn_L2_seed0 | 0.9926 | 0.9927 | 120.99 | 0.905 |
 | opt_adamax_300ep_seed0_he_lr2e-05_from-opt_adamax_300ep_seed0_he_lr0.0002_from-opt_adamax_1000ep_seed0_he | 2 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | opt_adamax_300ep_seed0_he_lr0.0002_from-opt_adamax_1000ep_seed0_he | 0.9545 | 0.9547 | 136.42 | 0.386 |
 | opt_adamax_300ep_seed0_he_lr2e-05_from-stage2_L2_seed0 | 2 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | stage2_L2_seed0 | 0.9609 | 0.9610 | 117.20 | 0.386 |
 | opt_adamax_300ep_seed0_he_lr2e-05_fullgrad_from-stage2_L2_seed0 | 2 | He | 1 | yes | adamax | SSE | live (full gradient) | 2e-05 | 300 ep | stage2_L2_seed0 | 0.9621 | 0.9622 | 113.00 | 0.385 |
+| opt_adamax_300ep_seed0_he_lr2e-05_fullgrad_normalized_from-stage2_L2_seed0 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 2e-05 | 300 ep | stage2_L2_seed0 | 0.9621 | 0.9623 | 114.09 | 0.387 |
+| opt_adamax_300ep_seed0_he_lr2e-05_fullgrad_normalized_from-stage2fn_L2_seed0 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 2e-05 | 300 ep | stage2fn_L2_seed0 | 0.9941 | 0.9941 | 96.98 | 0.905 |
+| opt_adamax_300ep_seed0_he_lr2e-05_normalized_from-stage2_L2_seed0 | 2 | He | 1 | yes | adamax | 1 − R² | frozen | 2e-05 | 300 ep | stage2_L2_seed0 | 0.9609 | 0.9610 | 117.21 | 0.386 |
 | opt_adamax_300ep_seed0_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed0_init-he_normal_proj1_L1 | 1 | He | 1 | yes | adamax | SSE | frozen | 0.0002 | 300 ep | opt_adamax_1000ep_seed0_init-he_normal_proj1_L1 | 0.9475 | 0.9495 | 85.20 | 0.401 |
 | opt_adamax_300ep_seed0_init-he_normal_proj1_L1_lr2e-05_from-opt_adamax_300ep_seed0_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed0_init-he_normal_proj1_L1 | 1 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | opt_adamax_300ep_seed0_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed0_init-he_normal_proj1_L1 | 0.9554 | 0.9555 | 72.28 | 0.401 |
 | opt_adamax_300ep_seed0_init-he_normal_proj1_L1_lr2e-05_from-stage2_L1_seed0 | 1 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | stage2_L1_seed0 | 0.9579 | 0.9580 | 68.16 | 0.401 |
 | opt_adamax_300ep_seed0_init-he_normal_proj1_L1_lr2e-05_fullgrad_from-stage2_L1_seed0 | 1 | He | 1 | yes | adamax | SSE | live (full gradient) | 2e-05 | 300 ep | stage2_L1_seed0 | 0.9596 | 0.9597 | 65.12 | 0.400 |
 | opt_adamax_300ep_seed0_init-he_normal_proj1_L1_lr2e-05_fullgrad_normalized_from-stage2_L1_seed0 | 1 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 2e-05 | 300 ep | stage2_L1_seed0 | 0.9596 | 0.9596 | 65.66 | 0.401 |
 | opt_adamax_300ep_seed1_he_lr0.0002_from-opt_adamax_1000ep_seed1_he | 2 | He | 1 | yes | adamax | SSE | frozen | 0.0002 | 300 ep | opt_adamax_1000ep_seed1_he | 0.9326 | 0.9327 | 208.72 | 0.393 |
+| opt_adamax_300ep_seed1_he_lr0.0002_fullgrad_normalized_from-stage1fn_L2_seed1 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 0.0002 | 300 ep | stage1fn_L2_seed1 | 0.9927 | 0.9929 | 199.79 | 1.170 |
 | opt_adamax_300ep_seed1_he_lr2e-05_from-opt_adamax_300ep_seed1_he_lr0.0002_from-opt_adamax_1000ep_seed1_he | 2 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | opt_adamax_300ep_seed1_he_lr0.0002_from-opt_adamax_1000ep_seed1_he | 0.9431 | 0.9431 | 176.21 | 0.392 |
 | opt_adamax_300ep_seed1_he_lr2e-05_from-stage2_L2_seed1 | 2 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | stage2_L2_seed1 | 0.9505 | 0.9506 | 153.18 | 0.392 |
 | opt_adamax_300ep_seed1_he_lr2e-05_fullgrad_from-stage2_L2_seed1 | 2 | He | 1 | yes | adamax | SSE | live (full gradient) | 2e-05 | 300 ep | stage2_L2_seed1 | 0.9518 | 0.9519 | 148.35 | 0.391 |
+| opt_adamax_300ep_seed1_he_lr2e-05_fullgrad_normalized_from-stage2_L2_seed1 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 2e-05 | 300 ep | stage2_L2_seed1 | 0.9518 | 0.9519 | 149.95 | 0.394 |
+| opt_adamax_300ep_seed1_he_lr2e-05_fullgrad_normalized_from-stage2fn_L2_seed1 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 2e-05 | 300 ep | stage2fn_L2_seed1 | 0.9941 | 0.9941 | 162.32 | 1.170 |
+| opt_adamax_300ep_seed1_he_lr2e-05_normalized_from-stage2_L2_seed1 | 2 | He | 1 | yes | adamax | 1 − R² | frozen | 2e-05 | 300 ep | stage2_L2_seed1 | 0.9505 | 0.9506 | 153.20 | 0.392 |
 | opt_adamax_300ep_seed1_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed1_init-he_normal_proj1_L1 | 1 | He | 1 | yes | adamax | SSE | frozen | 0.0002 | 300 ep | opt_adamax_1000ep_seed1_init-he_normal_proj1_L1 | 0.9592 | 0.9604 | 65.26 | 0.398 |
 | opt_adamax_300ep_seed1_init-he_normal_proj1_L1_lr2e-05_from-opt_adamax_300ep_seed1_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed1_init-he_normal_proj1_L1 | 1 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | opt_adamax_300ep_seed1_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed1_init-he_normal_proj1_L1 | 0.9641 | 0.9641 | 57.33 | 0.398 |
 | opt_adamax_300ep_seed1_init-he_normal_proj1_L1_lr2e-05_from-stage2_L1_seed1 | 1 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | stage2_L1_seed1 | 0.9659 | 0.9659 | 54.48 | 0.398 |
 | opt_adamax_300ep_seed1_init-he_normal_proj1_L1_lr2e-05_fullgrad_from-stage2_L1_seed1 | 1 | He | 1 | yes | adamax | SSE | live (full gradient) | 2e-05 | 300 ep | stage2_L1_seed1 | 0.9674 | 0.9674 | 51.80 | 0.397 |
 | opt_adamax_300ep_seed1_init-he_normal_proj1_L1_lr2e-05_fullgrad_normalized_from-stage2_L1_seed1 | 1 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 2e-05 | 300 ep | stage2_L1_seed1 | 0.9674 | 0.9674 | 52.19 | 0.398 |
 | opt_adamax_300ep_seed2_he_lr0.0002_from-opt_adamax_1000ep_seed2_he | 2 | He | 1 | yes | adamax | SSE | frozen | 0.0002 | 300 ep | opt_adamax_1000ep_seed2_he | 0.9472 | 0.9472 | 165.09 | 0.394 |
+| opt_adamax_300ep_seed2_he_lr0.0002_fullgrad_normalized_from-stage1fn_L2_seed2 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 0.0002 | 300 ep | stage1fn_L2_seed2 | 0.9926 | 0.9934 | 174.04 | 1.082 |
 | opt_adamax_300ep_seed2_he_lr2e-05_from-opt_adamax_300ep_seed2_he_lr0.0002_from-opt_adamax_1000ep_seed2_he | 2 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | opt_adamax_300ep_seed2_he_lr0.0002_from-opt_adamax_1000ep_seed2_he | 0.9549 | 0.9549 | 141.07 | 0.394 |
 | opt_adamax_300ep_seed2_he_lr2e-05_from-stage2_L2_seed2 | 2 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | stage2_L2_seed2 | 0.9607 | 0.9608 | 122.99 | 0.395 |
 | opt_adamax_300ep_seed2_he_lr2e-05_fullgrad_from-stage2_L2_seed2 | 2 | He | 1 | yes | adamax | SSE | live (full gradient) | 2e-05 | 300 ep | stage2_L2_seed2 | 0.9619 | 0.9619 | 118.77 | 0.394 |
+| opt_adamax_300ep_seed2_he_lr2e-05_fullgrad_normalized_from-stage2_L2_seed2 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 2e-05 | 300 ep | stage2_L2_seed2 | 0.9619 | 0.9619 | 119.88 | 0.395 |
+| opt_adamax_300ep_seed2_he_lr2e-05_fullgrad_normalized_from-stage2fn_L2_seed2 | 2 | He | 1 | yes | adamax | 1 − R² | live (full gradient) | 2e-05 | 300 ep | stage2fn_L2_seed2 | 0.9945 | 0.9946 | 128.74 | 1.082 |
+| opt_adamax_300ep_seed2_he_lr2e-05_normalized_from-stage2_L2_seed2 | 2 | He | 1 | yes | adamax | 1 − R² | frozen | 2e-05 | 300 ep | stage2_L2_seed2 | 0.9607 | 0.9608 | 122.99 | 0.395 |
 | opt_adamax_300ep_seed2_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed2_init-he_normal_proj1_L1 | 1 | He | 1 | yes | adamax | SSE | frozen | 0.0002 | 300 ep | opt_adamax_1000ep_seed2_init-he_normal_proj1_L1 | 0.9659 | 0.9673 | 58.87 | 0.413 |
 | opt_adamax_300ep_seed2_init-he_normal_proj1_L1_lr2e-05_from-opt_adamax_300ep_seed2_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed2_init-he_normal_proj1_L1 | 1 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | opt_adamax_300ep_seed2_init-he_normal_proj1_L1_lr0.0002_from-opt_adamax_1000ep_seed2_init-he_normal_proj1_L1 | 0.9701 | 0.9701 | 51.55 | 0.413 |
 | opt_adamax_300ep_seed2_init-he_normal_proj1_L1_lr2e-05_from-stage2_L1_seed2 | 1 | He | 1 | yes | adamax | SSE | frozen | 2e-05 | 300 ep | stage2_L1_seed2 | 0.9714 | 0.9714 | 49.34 | 0.413 |
@@ -239,7 +265,11 @@ their predictions depend on the image paired with each coordinate.
 | lm_L1_seed1 | 1 | He | 1 | yes | damped Newton | SSE | live | — | 20 it | stage3_L1_seed1 | 0.9846 | 0.9846 | 23.45 | 0.388 |
 | lm_L1_seed2 | 1 | He | 1 | yes | damped Newton | SSE | live | — | 20 it | stage3_L1_seed2 | 0.9872 | 0.9872 | 21.06 | 0.403 |
 | lm_L2_seed0 | 2 | He | 1 | yes | damped Newton | SSE | live | — | 20 it | stage2_L2_seed0 | 0.9713 | 0.9713 | 85.63 | 0.385 |
+| lmnormNielsen_L2fn_seed0 | 2 | He | 1 | yes | damped Newton (Nielsen damping) | 1 − R² | live | — | 20 it | stage3fn_L2_seed0 | 0.9966 | 0.9966 | 55.83 | 0.903 |
+| lmnormReset_L2fn_seed0_a | 2 | He | 1 | yes | damped Newton | 1 − R² | live | — | 10 it | stage3fn_L2_seed0 | 0.9965 | 0.9965 | 56.69 | 0.903 |
+| lmnormReset_L2fn_seed0_b | 2 | He | 1 | yes | damped Newton | 1 − R² | live | — | 10 it | lmnormReset_L2fn_seed0_a | 0.9975 | 0.9975 | 40.18 | 0.901 |
 | lmnorm_L1_seed0_cont80 | 1 | He | 1 | yes | damped Newton | 1 − R² | live | — | 80 it | lm_L1_seed0 | 0.9853 | 0.9853 | 22.78 | 0.391 |
+| lmnorm_L2_seed0 | 2 | He | 1 | yes | damped Newton | 1 − R² | live | — | 20 it | stage2_L2_seed0 | 0.9714 | 0.9714 | 85.79 | 0.386 |
 | newton_L1_seed0 | 1 | He | 1 | yes | pure Newton | SSE | live | — | 0 it | stage3_L1_seed0 | 0.9596 | 0.9596 | 65.12 | 0.400 |
 
 <!-- registry end -->

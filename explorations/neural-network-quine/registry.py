@@ -66,8 +66,9 @@ def describe(name, cfg, settings):
     emb += ", output" if settings.get("out_selu") else ""
     if name.startswith(("lm", "newton")):
         method = cfg.get("method", "newton" if name.startswith("newton") else "lm")   # early runs lack the field
-        training = {"lm": "damped Newton", "lm_normalized": "damped Newton", "newton": "pure Newton"}[method]
-        loss = "1 − R²" if method == "lm_normalized" else "SSE"
+        training = {"lm": "damped Newton", "lm_normalized": "damped Newton",
+                    "lm_normalized_nielsen": "damped Newton (Nielsen damping)", "newton": "pure Newton"}[method]
+        loss = "1 − R²" if method.startswith("lm_normalized") else "SSE"
         targets, lr = "live", "—"
         n_iter = None
     elif name.startswith("hill"):

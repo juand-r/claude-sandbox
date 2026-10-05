@@ -200,3 +200,19 @@ mostly the damping schedule (μ × 4 after a rejection, ÷ 3 after an acceptance
 so μ ratchets up over a long run), not a local optimum. Also: the 1% random
 change dropped R² to 0.807, and 9 repair iterations brought it to 0.9901, above
 the control (0.9883) at the same point; that network was lost.
+
+### Two-layer runs, 2026-10-04/05 (focus set by the user: two layers only)
+
+Container restart around 23:30 (process IDs restarted low); recipe step 2 was
+relaunched and completed. Then, one at a time (memory), from the seed-0 network
+at the end of step 2 (R² 0.9941; copied to `results/stage3fn_L2_seed0.pt`):
+
+1. Self-sensitivity: `results/diag_grounding_L2_stage3fn_seed0.txt`.
+2. Change-and-repair: `results/diag_absorb_L2.json`; the singular values of
+   J − I (20,100², float64) took about 25 minutes and ~6 GB; each repair
+   iteration ~90-105 s.
+3. Damped Newton on 1 − R², Nielsen rule, 20 iterations: 0.99659.
+4. Old rule, 10 iterations (0.99653), then a restart of 10 more (0.99753).
+
+Checked and rejected my own earlier guess (IDEAS.md section 10) that the
+one-layer output weights have a one-hot lookup unit; see REPORT.md section 16.
