@@ -12,7 +12,8 @@ def test_position_0_is_the_embedding_row_and_ignores_position_1():
     t = torch.tensor([3, 3, 7])
     i = torch.tensor([0, 5, 5])
     states = m.states(m.E[t], i)
-    assert torch.equal(states[0][:, 0], m.E[t])
+    assert torch.equal(states[0][:, 0], m.E[t])          # the input really is the embedding row
+    assert torch.equal(states[0][:, 1], m.E_idx[i])
     # causal attention: position 0's state never depends on the index token
     for h in states[1:]:
         torch.testing.assert_close(h[0, 0], h[1, 0])
@@ -82,6 +83,52 @@ def test_follow_measures_a_hand_made_partial_follower():
     out = F.follow(m, torch.arange(10), 0.3, torch.Generator().manual_seed(0))
     assert abs(out["follow_ratio_mean"] - 0.5) < 1e-5
     assert out["other_movement_mean"] < 1e-5
+    local = F.local_follow(m, torch.arange(10))
+    assert abs(local["local_follow_mean"] - 0.5) < 1e-6
+    assert local["local_other_mean"] < 1e-6
+
+
+def test_local_follow_sees_off_diagonal_movement():
+    """Answers a(x) = P x with P a permutation (no fixed points): trace 0, and
+    |P − 0·I|_F / √d = 1."""
+    class Shift(torch.nn.Module):
+        def __init__(self, E):
+            super().__init__()
+            self.E = torch.nn.Parameter(E.clone())
+
+        def answer(self, x, i):
+            return x[torch.arange(len(x)), (i + 1) % x.shape[1]]
+
+        def forward(self, t, i):
+            return self.answer(self.E[t], i)
+
+    m = Shift(torch.randn(M.N_TOKENS, M.DIM))
+    local = F.local_follow(m, torch.arange(5))
+    assert local["local_follow_mean"] == 0.0
+    assert abs(local["local_other_mean"] - 1.0) < 1e-6
+
+
+def test_no_gradient_flows_through_the_target():
+    """The gradient into E must equal the gradient with the target replaced by a constant."""
+    torch.manual_seed(0)
+    m = M.SelfReporter()
+    t, i = torch.tensor([1, 2, 3, 4]), torch.tensor([0, 1, 2, 3])
+    T.batch_loss(m, t, i).backward()
+    g_train = m.E.grad.clone()
+    m.E.grad = None
+    const = m.E[t, i].detach().clone()
+    T.loss_fn(m(t, i), const).backward()
+    torch.testing.assert_close(g_train, m.E.grad)
+    # and the target path, had it been allowed, would change the gradient
+    m.E.grad = None
+    T.loss_fn(m(t, i), m.E[t, i]).backward()
+    assert not torch.allclose(g_train, m.E.grad)
+
+
+def test_training_learns_the_training_tokens():
+    for condition in T.CONDITIONS:
+        _, _, log = T.train(condition, 0, epochs=40, log_every=40, verbose=False)
+        assert log[-1]["r2_train"] > 0.9, (condition, log[-1])
 
 
 def test_save_and_load_round_trip(tmp_path):

@@ -4,10 +4,13 @@ Conditions:
   fixed    the content-token embedding E stays at its random initial values
   trained  E is trained together with the rest of the model
 
-In both, the target is the current value E[t, i], with no gradient through it:
-the answer is pulled toward the weight, never the weight toward the answer.
+In both, the target is the current value E[t, i], with no gradient through it.
+In the trained condition E still gets a gradient through its other role, as the
+input at position 0: E[t] is moved so that the answers a(E[t]) come closer to
+the current E[t]. Nothing anchors the scale of E, so its RMS is logged.
 The loss is the batch's squared error divided by the batch's target variance,
-which equals 1 − R² of the batch.
+which equals 1 − R² of the batch. (With the target detached, the division does
+not guard against shrinking E; it only rescales each batch.)
 
 Usage: python train.py <fixed|trained> <seed> [epochs]
 Writes results/<condition>_seed<seed>.pt (weights and settings) and .json (log).
@@ -34,6 +37,11 @@ CONDITIONS = ("fixed", "trained")
 def loss_fn(answer, target):
     """Squared error / target variance = 1 − R² of the batch."""
     return ((answer - target) ** 2).mean() / target.var(unbiased=False)
+
+
+def batch_loss(m, t, i):
+    """The training loss for questions (t, i); no gradient through the target."""
+    return loss_fn(m(t, i), m.E[t, i].detach())
 
 
 @torch.no_grad()
@@ -71,7 +79,7 @@ def train(condition, seed, epochs=EPOCHS, log_every=LOG_EVERY, verbose=True):
         for s in range(0, len(perm), BATCH):
             idx = perm[s:s + BATCH]
             t, i = t_all[idx], i_all[idx]
-            loss = loss_fn(m(t, i), m.E[t, i].detach())
+            loss = batch_loss(m, t, i)
             opt.zero_grad()
             loss.backward()
             opt.step()

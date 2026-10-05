@@ -28,11 +28,13 @@ principle, read those weights.
   version: LayerNorm divides the internal state by its size, so the answer could
   not follow a change in the size of E[t] exactly.
 - An exact reader exists in this architecture, so failure to read cannot be
-  blamed on the architecture. Construction: attention copies E[t] to the last
-  position; the MLP then computes x_i exactly with two ReLU units per
-  coordinate, x_i = relu(x_i + M·[index is i] − M) − relu(−x_i + M·[index is i] − M),
-  valid when |x_i| < M. That needs 2d = 64 MLP units of the 128. (Check this
-  with a hand-built model in the tests.)
+  blamed on the architecture (`canaries.perfect_reader`, 96 of the 128 MLP
+  units, valid while every |x_j| < 15). Attention with zero queries averages the
+  two positions; with index embeddings 10·e_i, position 1 holds
+  x/2 + 15·e_i. The MLP cancels that and writes x_i/2 + 7.5 into coordinate 0
+  (one ReLU per coordinate, active only for coordinate i); the readout undoes
+  the scale and offset. (An earlier draft of this plan described a 2·d-unit
+  version that did not account for the residual stream; it was wrong.)
 - Target. E[t]_i, read from the model's current embedding table at each
   training step (so if the embeddings are trained, the targets move with them,
   as in the quine). No gradient flows through the target: the answer is pulled
@@ -57,19 +59,25 @@ trained in both.
 
 ## Measurements
 
-All on the trained model, separately for training tokens and held-out tokens.
+Defined precisely in the docstring of `follow_test.py`. In short, for training
+tokens and held-out tokens separately:
 
-1. R²: answers against the current embedding values.
-2. Follow test. Replace the embedding row of t by E[t] + δ, with δ random, at
-   sizes 10% and 100% of |E[t]|. Then
+1. R² of the answers against the current embedding values (also a centred R²).
+2. Local follow: J = ∂answers/∂E[t] from autograd; trace(J)/d (1 for a reader,
+   0 for a memorizer) and the size of J's other part. Exact, no random changes.
+3. Finite changes E[t] ← E[t] + δ at 1%, 10% and 100% of |E[t]|: follow ratio
+   ⟨Δanswers, δ⟩/|δ|² (mean and median), other movement, R² of the change,
+   fraction of jumps.
+4. Brand-new embedding rows (never in E): R² of the answers.
 
-   follow ratio = ⟨answers after − answers before, δ⟩ / |δ|²
+Canaries: a hand-built perfect reader and a nearest-row memorizer, pushed through
+the same code; `check_canaries` fails loudly if their known results are not
+reproduced. Untrained models (same initialization) give a baseline.
 
-   computed over the d coordinates of t. 1 means the answers moved exactly with
-   the change; 0 means they ignored it.
-3. Brand-new tokens. Give the model completely new random embedding rows (not
-   from training) and measure R². A model that reads gets these right; a model
-   that memorized cannot.
+Changes after the code review (2026-10-05, see NOTES.md): items 2, the median,
+the jump fraction, the 1% size and R² of the change were added, because the mean
+follow ratio is unreliable when answers jump, and "R² after change" (the earlier
+item) hardly measured following at all.
 
 ## What would count as an answer
 
@@ -79,12 +87,12 @@ All on the trained model, separately for training tokens and held-out tokens.
 
 ## Steps
 
-- [ ] Virtualenv and requirements.txt.
-- [ ] `model.py`: the transformer and the data.
-- [ ] `train.py`: one run per (condition, seed); saves the model and a JSON log.
-- [ ] `follow_test.py`: measurements 1 to 3.
-- [ ] Tests: the internal state at position 1 equals E[t] exactly; a model
-      whose output is the hand-built coordinate reader has follow ratio 1.
+- [x] Virtualenv and requirements.txt.
+- [x] `model.py`: the transformer and the data.
+- [x] `train.py`: one run per (condition, seed); saves the model and a JSON log.
+- [x] `follow_test.py`: measurements 1 to 4.
+- [x] Tests (12) and canaries.
+- [x] Independent code review by a subagent; findings addressed (NOTES.md).
 - [ ] Run A and B, 3 seeds each (CPU, minutes each).
 - [ ] Write up the results in plain language (REPORT.md).
 
