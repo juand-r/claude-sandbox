@@ -43,18 +43,55 @@ Phase A: feasibility (measure before building; go/no-go at the end)
   below is rewritten for it (pending the user's go-ahead, since it is a
   multi-day build).
 
-Phase B: the transport (only after A says go)
-- [ ] B1. Junk zone as a list of objects (kind, Ebar-frame position,
-      phase), extracted from the tree at epoch rebuilds, exactly (the
-      cells of each object must reproduce the tree's cells).
-- [ ] B2. Ossifier transport: each ossifier crosses the list by lookups;
-      outputs its exit position/phase and the junk's new positions.
-- [ ] B3. The tree holds only the right part; ossifiers enter it at the
-      zone boundary with their computed delays (left free side becomes
-      the transported train).
-- [ ] B4. Exactness checks: cell-exact agreement with the plain epoch
-      engine at epoch boundaries for the one-move TM, and identical read
-      outcomes and cluster counts.
+Phase B (rewritten 2026-10-05 after the go-ahead): an event engine
+("gas engine", gas.py) instead of the HashLife/list hybrid.
+
+Why not the hybrid: the queue zone's two ends (ossification, read point)
+move, and matter crosses them both ways (characters out of the
+ossification zone, data into the queue). Exact handover between a tree
+and a list at moving boundaries is the hardest part of the hybrid and the
+most likely to be subtly wrong. A pure event engine has no handover; its
+correctness rests on one lemma, and HashLife becomes the oracle it is
+checked against.
+
+Lemma (superposition). Let a row be ether with two non-ether patches P
+and Q, and let the cells between them be ether of one phase constant.
+If at every step the two patches, each evolved alone in ether, stay at
+least 3 cells apart (no cell's neighbourhood touches both), the row
+evolves as the union of the two isolated evolutions. (Induction on t:
+rule 110 has radius 1.) So particles far apart can be moved in closed
+form, and only patches that come within 3 cells must be simulated
+together.
+
+Design:
+- Item = particle or composite. A particle is a periodic patch: an orbit
+  (period p, displacement d, its p patches) plus an anchor and the
+  ether phase constant on its left. Recognized automatically: an
+  isolated patch is simulated until its canonical key (cells + local
+  ether phases on both sides, translation invariant) recurs.
+- Composite: patches that came within 3 cells; its cells are simulated
+  exactly (big-int bit rows, ether re-padded each step). Outcome
+  memoized by the canonical key at merge time: duration, envelope, and
+  the particles it splits into (pieces at least 14 cells of one-phase
+  ether apart, each a recognized particle).
+- Items in a doubly linked list, left to right; the next collision of
+  each adjacent pair in a heap (lazy invalidation). A composite hit by a
+  neighbour before it splits is re-simulated to that time and merged.
+- Sides from the t = 0 Layout, materialized lazily (the ossifier train
+  from the left, the table from the right).
+- Interface like HashRun (t, window, history, step), so ReadWatch and
+  census sample it unchanged.
+
+Steps:
+- [ ] B1. Decomposition and period detection; the t = 0 rows of Collatz
+      and the one-move TM must split into periodic particles.
+- [ ] B2. Engine core; tests against the packed engine on small rows.
+- [ ] B3. Lazy sides and a read driver; Collatz 556 reads identical to
+      data/collatz_v12216.log (outcomes and cluster counts).
+- [ ] B4. One-move TM: windows cell-exact against EpochReads at several
+      times; identical read outcomes; then the full run at 1.25x.
+- Fallback if Python is too slow per event: port the event loop to C
+  (hlc.c-style), keeping the Python engine as the reference.
 
 Phase C: use it
 - [ ] C1. Benchmark against the current engine (late stretch).
