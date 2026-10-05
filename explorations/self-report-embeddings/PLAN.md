@@ -35,7 +35,9 @@ principle, read those weights.
   with a hand-built model in the tests.)
 - Target. E[t]_i, read from the model's current embedding table at each
   training step (so if the embeddings are trained, the targets move with them,
-  as in the quine).
+  as in the quine). No gradient flows through the target: the answer is pulled
+  toward the weight, never the weight toward the answer. (The quine's "full
+  gradient" did the opposite; that can be a later variant.)
 - Loss. Mean squared error divided by the variance of the targets in the batch
   (= 1 − R² of the batch). Lesson from the quine: with plain squared error and
   trained embeddings, shrinking the embeddings lowers the loss without any
