@@ -1,5 +1,67 @@
 # Plan
 
+## Phase 9: next improvements (started 2026-10-05)
+
+To-do (user asked for these to be recorded, then #1 planned and done):
+- [ ] 1. Junk crossings as single events (biggest speed lever): plan below
+- [ ] 2. Fix Cook's short-leader block, so no fill rewrite (fewer reads,
+        less junk, smaller gaps)
+- [ ] 3. Finish the spacing model: derive c ~ 11.2 from geometry; explain
+        the small-program constraint (REPORT 3.5)
+- [ ] 4. Stronger verification: decode the tape itself; independent engine
+        check of a stretch near read 3,269 (Python core from a checkpoint)
+- [ ] 5. Small engine wins: memo kept across epochs under a memory budget
+
+### Plan for #1: junk crossings as events
+
+Why: late in a run ~87% of the time is HashLife evolving glider
+interactions, and the active region grows ~43k cells per read, mostly
+junk that every later ossifier must cross. Cost per read grows linearly,
+total quadratically. If an ossifier's passage through the junk can be
+computed as a sequence of table lookups (exact outcomes memoized from
+real simulation), the junk can leave the HashLife tree.
+
+Phase A: feasibility (measure before building; go/no-go at the end)
+- [ ] A1. Map the active region in the Ebar frame at a late checkpoint:
+      where the pure junk zone is (left of the ossification point, with
+      nothing but junk and ossifiers in transit), how many objects, of
+      which kinds, how far apart (are crossings pairwise?).
+- [ ] A2. Upper bound on the gain: HashLife cost of the full active region
+      vs the region without the pure junk zone, over one read interval.
+- [ ] A3. Crossing physics: an ossifier (and a single A^4) crossing each
+      junk kind at every relative phase in clean ether: clean? which
+      displacements? how many phase classes? Then: does a real ossifier's
+      passage through a real stretch of junk equal the composition of
+      pairwise outcomes (cell-exact against HashLife)?
+- Gate: go only if (A2) the zone is most of the cost and (A3) crossings
+  are clean, pairwise and phase-determined.
+- Result (NOTES, phase 9): A1 and A2 done; the junk zone is only ~16% of
+  the cost, so the gate fails for it. 83% is the queue zone, where tape
+  characters cross queued matter; A3 there: 14 crossings all clean
+  (character +14 cells; object shifted by one of 4 amounts = the 4
+  relative phase classes). Target moved to the queue zone; Phase B
+  below is rewritten for it (pending the user's go-ahead, since it is a
+  multi-day build).
+
+Phase B: the transport (only after A says go)
+- [ ] B1. Junk zone as a list of objects (kind, Ebar-frame position,
+      phase), extracted from the tree at epoch rebuilds, exactly (the
+      cells of each object must reproduce the tree's cells).
+- [ ] B2. Ossifier transport: each ossifier crosses the list by lookups;
+      outputs its exit position/phase and the junk's new positions.
+- [ ] B3. The tree holds only the right part; ossifiers enter it at the
+      zone boundary with their computed delays (left free side becomes
+      the transported train).
+- [ ] B4. Exactness checks: cell-exact agreement with the plain epoch
+      engine at epoch boundaries for the one-move TM, and identical read
+      outcomes and cluster counts.
+
+Phase C: use it
+- [ ] C1. Benchmark against the current engine (late stretch).
+- [ ] C2. The 3-state TM that moves both ways (59,136 reads) at a spacing
+      the queue-gap rule allows.
+- [ ] C3. Write up (REPORT 5, 3.x; NOTES).
+
 ## Phase 8: the Cook's-v failure; engine efficiency (started 2026-10-04)
 
 User: find why the one-move TM fails at Cook's v (read 3,269), then make

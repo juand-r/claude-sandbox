@@ -750,3 +750,47 @@ deviations +1 x45, 0 x43, -1 x15, as at 2v and 4v), visits [(1, 1),
 (2, 1)], last read at t = 1.58e11. The rule's two critical transitions
 were at 10.78v and 10.92v; the lower bound on c becomes 10.92 (still
 below De Mol's 11.05). Log: data/tm_one_v1.25.log.
+
+## Phase 9, item 1: crossings as events -- feasibility (2026-10-05)
+
+Measured on the read-3,152 checkpoint of the one-move TM at Cook's v
+(scratchpad scripts junk/a1_map.py, a2_cost.py, a3_track.py).
+
+A1, map (Ebar frame, where E-family matter is static):
+- active region [0.18e6, 137.2e6]; read point at the right end.
+- The ossifiers are converting the copy queued at read 752 (region at
+  33.1e6): the "junk zone" left of it is 33e6 cells with only 1,550 Ebar
+  clusters and 2 ossifiers in transit.
+- The "queue zone" from there to the read point is 104e6 cells with
+  20,339 Ebar clusters (queued moving data and the leftovers of
+  rejected regions between queued copies) and 19 tape characters
+  (4 C gliders each). Tape characters are stationary in the lab, so in
+  this frame they sweep right through all of it, 5.6e6 cells per read
+  each: every object of the zone is crossed about once per read.
+- Only 55 distinct Ebar cluster patterns occur.
+
+A2, cost (each zone advanced alone over 2^24 generations, fresh memo):
+junk zone 0.22 s, queue zone 1.17 s, both 1.41 s. So the junk zone, the
+original target of item 1, is ~16% of the cost; the queue zone ~83%.
+Excising the junk zone alone cannot pay for itself. Gate failed as
+planned; the target moves to the queue zone.
+
+A3, crossings in the queue zone, tracked one by one (a lab window around
+one tape character, sampled every 210 generations; two characters, one
+in a sparse and one in a dense stretch): in all 14 crossings seen, the
+character comes out intact, all four C gliders moved by +14 cells (two
+ether tiles; in two steps of 7 as the object passes); the Ebar object
+comes out shifted by one of exactly four amounts, -39, -44, -45 or -50
+cells in the Ebar frame. Four is the number of relative phase classes of
+a stationary period-7 object and a (30, -8) object in ether
+(|det((30,-8),(7,0))| / 14 = 56 / 14). Patterns sampled at a fixed
+phase differ after a crossing because a shifted Ebar is in another
+internal phase; "clean" here means same object up to a lattice
+displacement.
+
+Interpretation: the dominant traffic is tape characters crossing queued
+matter, and the crossings look clean with a small outcome table, which
+is what an event treatment needs. Not yet shown: that every object kind
+crosses cleanly (14 crossings is a small sample), that close groups
+(clusters as near as 17 cells) cross as one unit, and how the class of a
+crossing follows from positions.
