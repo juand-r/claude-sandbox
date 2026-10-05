@@ -139,3 +139,25 @@ def test_save_and_load_round_trip(tmp_path):
     with torch.no_grad():
         assert torch.equal(m(t, i), m2(t, i))
     assert s2 == s
+
+
+def test_vocabulary_size_setting():
+    assert T.epochs_for(64) == T.EPOCHS                       # the original runs are unchanged
+    for V in (256, 1024, 4096):
+        steps = T.epochs_for(V) * -(-(V - V // 4) * M.DIM // T.BATCH)
+        assert abs(steps - T.TOTAL_STEPS) / T.TOTAL_STEPS < 0.01, (V, steps)
+    assert T.run_name("fixed", 0, 64, T.EPOCHS) == "fixed_seed0"
+    assert T.run_name("trained", 2, 1024, T.epochs_for(1024)) == "trained_V1024_seed2"
+    assert F.RUN_NAME.match("trained_V1024_seed2") and F.RUN_NAME.match("fixed_seed0")
+    assert not F.RUN_NAME.match("fixed_V256_seed0_3ep")
+
+
+def test_larger_vocabulary_split_and_training():
+    torch.manual_seed(7)
+    E0 = M.SelfReporter(n_tokens=256).E.detach().clone()
+    m, s, log = T.train("trained", 7, epochs=1, verbose=False, n_tokens=256)
+    tr, ho = M.split_tokens(7, 256, 64)
+    assert s["n_tokens"] == 256 and s["n_held_out"] == 64 and m.E.shape == (256, M.DIM)
+    assert len(set(tr.tolist()) & set(ho.tolist())) == 0 and len(tr) + len(ho) == 256
+    assert torch.equal(m.E.detach()[ho], E0[ho])              # held-out embedding vectors untouched
+    assert not torch.equal(m.E.detach()[tr], E0[tr])

@@ -37,11 +37,14 @@ while held-out rows stay at their initial values.
 The canaries (canaries.py) have known results and go through the same code;
 `check_canaries` fails loudly if the code does not reproduce them.
 
-Usage: python follow_test.py   (runs results/<condition>_seed<k>.pt, canaries, untrained baselines)
-Writes results/follow_test.json.
+Usage: python follow_test.py [output name]
+  Measures the main runs results/<condition>[_V<V>]_seed<k>.pt, the canaries and
+  untrained baselines. Writes results/follow_test.json, or results/<output name>.
+  Already-measured runs in an existing output file are kept and skipped.
 """
 import json
 import re
+import sys
 from pathlib import Path
 
 import torch
@@ -55,7 +58,7 @@ N_DRAWS = 4                # random δ per token and size
 N_NEW = 1024               # brand-new content vectors
 JUMP = 3.0                 # a draw is a jump if |Δa| > JUMP · |δ|
 RESULTS = Path(__file__).parent / "results"
-RUN_NAME = re.compile(r"^(fixed|trained)_seed\d+$")    # main runs only; trial runs carry an "_<n>ep" suffix
+RUN_NAME = re.compile(r"^(fixed|trained)(_V\d+)?_seed\d+$")   # main runs only; trial runs carry an "_<n>ep" suffix
 
 
 def all_questions(t, dim):
@@ -192,20 +195,23 @@ def check_canaries(seed=0):
 
 def main():
     torch.set_num_threads(4)
-    out = {"canaries": check_canaries()}
+    out_path = RESULTS / (sys.argv[1] if len(sys.argv) > 1 else "follow_test.json")
+    out = json.loads(out_path.read_text()) if out_path.exists() else {}
+    out["canaries"] = check_canaries()
     print("canaries: all known results reproduced", flush=True)
     for path in sorted(p for p in RESULTS.glob("*.pt") if RUN_NAME.match(p.stem)):
         m, s = T.load(path)
-        train_tokens, held_out = M.split_tokens(s["seed"])
-        out[path.stem] = {"settings": s, **measure(m, train_tokens, held_out, s["seed"])}
-        print(path.stem, {k: round(v, 4) for k, v in out[path.stem].items() if isinstance(v, float)}, flush=True)
-        base_name = f"untrained_seed{s['seed']}"
+        train_tokens, held_out = M.split_tokens(s["seed"], s["n_tokens"], s["n_held_out"])
+        base_name = path.stem.replace(s["condition"], "untrained", 1)   # e.g. untrained_V256_seed0
+        if path.stem not in out:
+            out[path.stem] = {"settings": s, **measure(m, train_tokens, held_out, s["seed"])}
+            print(path.stem, {k: round(v, 4) for k, v in out[path.stem].items() if isinstance(v, float)}, flush=True)
         if base_name not in out:
             torch.manual_seed(s["seed"])           # same initialization as the run (train.train), untrained
             base = M.SelfReporter(s["n_tokens"], s["dim"], s["n_layers"], s["n_heads"], s["mlp_width"])
             out[base_name] = measure(base, train_tokens, held_out, s["seed"])
-    (RESULTS / "follow_test.json").write_text(json.dumps(out, indent=1))
-    print("wrote results/follow_test.json")
+        out_path.write_text(json.dumps(out, indent=1))     # after every run: a restart loses at most one
+    print(f"wrote {out_path}")
 
 
 if __name__ == "__main__":
