@@ -83,15 +83,20 @@ Design:
   census sample it unchanged.
 
 Steps:
-- [ ] B1. Decomposition and period detection; the t = 0 rows of Collatz
+- [x] B1. Decomposition and period detection; the t = 0 rows of Collatz
       and the one-move TM must split into periodic particles.
-- [ ] B2. Engine core; tests against the packed engine on small rows.
-- [ ] B3. Lazy sides and a read driver; Collatz 556 reads identical to
+- [x] B2. Engine core; tests against the packed engine on small rows.
+- [x] B3. Lazy sides and a read driver; Collatz 556 reads identical to
       data/collatz_v12216.log (outcomes and cluster counts).
 - [ ] B4. One-move TM: windows cell-exact against EpochReads at several
       times; identical read outcomes; then the full run at 1.25x.
-- Fallback if Python is too slow per event: port the event loop to C
-  (hlc.c-style), keeping the Python engine as the reference.
+  - [x] read 3152 at Cook's v: 137,190,722 cells identical
+  - [ ] read 3256 at Cook's v (running); the failure at 3269 reproduced?
+  - [ ] full run at 1.25x (running)
+- [x] Python too slow per event (37 us): event loop ported to C (gasc.c,
+      0.2-0.3 us per event after pair tables); Python engine kept as the
+      reference (identical reads and event counts).
+- [x] Checkpoints (gasrun.GasReads checkpoint=..., tested by kill/resume).
 
 Phase C: use it
 - [ ] C1. Benchmark against the current engine (late stretch).

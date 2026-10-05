@@ -421,7 +421,7 @@ static int do_merge(int32_t a, int32_t b, int64_t t) {
     uint64_t k1, k2; int64_t la, lb; int32_t wa;
     signature(&items[a], &items[b], t, &k1, &k2, &la, &wa, &lb);
     int64_t g = lb - la - wa;
-    if (g < 0 || g >= MIN_GAP) { failed = 3; return ERR; }
+    if (g < 0 || g >= MIN_GAP) { req_a = a; req_b = b; req_t = t; failed = 3; return ERR; }
     MEnt *m = mfind(k1, k2);
     if (!m->used) { req_a = a; req_b = b; req_t = t; return NEED_MERGE; }
     int32_t n = piece_item(m->kind, m->id, m->phase, la + m->dx, t, items[a].cL);

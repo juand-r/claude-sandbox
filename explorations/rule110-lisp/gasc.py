@@ -96,7 +96,11 @@ class CGas:
             raise RuntimeError("another CGas owns the C state")
         f = _lib.gc_failed()
         if f or r == ERR:
-            raise RuntimeError(f"gasc: C failure code {f}")
+            detail = ""
+            if f == 3:                     # bad merge: the two items
+                a, b, _, t = self._request()
+                detail = f" at t={t}: {self._item(a, t)} / {self._item(b, t)}"
+            raise RuntimeError(f"gasc: C failure code {f}{detail}")
 
     def _push_orbits(self):
         while self.n_orbits_c < len(self.reg.orbits):

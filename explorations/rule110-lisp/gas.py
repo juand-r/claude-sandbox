@@ -59,9 +59,13 @@ def ether_int(ph, n):
     return v & ((1 << n) - 1)
 
 
-def trim(bits, w, phL, phR):
+def trim(bits, w, phL, phR, lo_cut=0):
     """Canonical (trimmed) form -> (bits, w, phL, phR, dx): the patch now
-    starts dx cells right of where it did."""
+    starts dx cells right of where it did. A patch that is a pure phase
+    slip (width 0) may be cut anywhere between the last cell differing
+    from the right ether and the first differing from the left one: the
+    leftmost such cut, but not left of lo_cut (split keeps pieces inside
+    their parent)."""
     if w == 0:
         return 0, 0, phL % TILE, phR % TILE, 0
     full = (1 << w) - 1
@@ -70,8 +74,8 @@ def trim(bits, w, phL, phR):
     dr = bits ^ ether_int(phR - w, w)
     j = w - dr.bit_length()                                # trailing ether-R cells
     if i + j >= w:                                         # empty: cut at w - j
-        cut = w - j
-        return 0, 0, (phL + cut) % TILE, (phR - j) % TILE, cut
+        cut = min(max(w - j, lo_cut), i)
+        return 0, 0, (phL + cut) % TILE, (phR - (w - cut)) % TILE, cut
     nw = w - i - j
     return (bits >> i) & ((1 << nw) - 1), nw, (phL + i) % TILE, (phR - j) % TILE, i
 
@@ -90,11 +94,11 @@ def step(bits, w, phL, phR):
     return b, nw, pl, pr, dx - 1
 
 
-def key_of_cells(cells, phL, phR):
+def key_of_cells(cells, phL, phR, lo_cut=0):
     """Trimmed key of a uint8 cell array -> (key, dx)."""
     w = len(cells)
     bits = int.from_bytes(np.packbits(cells, bitorder="little").tobytes(), "little")
-    b, nw, pl, pr, dx = trim(bits, w, phL, phR)
+    b, nw, pl, pr, dx = trim(bits, w, phL, phR, lo_cut)
     return (b, nw, pl, pr), dx
 
 
@@ -147,9 +151,12 @@ def split(key):
         b0, a1 = int(b0), int(a1)
         pl = (int(phase[b0 - 1]) + b0) % TILE   # gap phase c: cell y reads (c + y)
         pr = (int(phase[a1]) + a1) % TILE
-        k, dx = key_of_cells(row[b0:a1], pl, pr)
+        k, dx = key_of_cells(row[b0:a1], pl, pr, lo_cut=max(0, pad - b0))
         if not _empty(k):                       # a pure phase slip is kept
-            pieces.append((k, int(b0 + dx - pad)))
+            off = int(b0 + dx - pad)
+            if off < 0 or off + k[1] > w:
+                raise AssertionError(f"split: piece [{off}, +{k[1]}) outside [0, {w})")
+            pieces.append((k, off))
     return pieces
 
 

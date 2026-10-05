@@ -19,6 +19,9 @@ def _render_all(pieces, lo, hi):
     ys = np.arange(lo, hi)
     out = np.empty(hi - lo, dtype=np.uint8)
     x = lo
+    for ((_, w0, _, pr0), x0), ((_, _, pl1, _), x1) in zip(pieces, pieces[1:]):
+        # adjacent pieces agree on the ether between them
+        assert (pr0 + x1 - x0 - w0) % 14 == pl1
     for (bits, w, pl, _), xp in pieces:
         out[x - lo:xp - lo] = _E[(pl + ys[x - lo:xp - lo] - xp) % 14]
         out[xp - lo:xp - lo + w] = gas.cells_of(bits, w)
