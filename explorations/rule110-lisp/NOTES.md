@@ -938,3 +938,8 @@ Later the same day: costs and the 3-state run (C2).
   read 29,000 the run holds 0.8 GB. The HashLife cross-check was stopped
   at read 3,072 to free memory: all 3,072 reads identical to the event
   engine's.
+- 3-state TM at 2x: 59,184/59,184 reads, visits (1,1) (2,1) (3,1) (3,2)
+  decoded and equal; last read at generation 1.16e13; 405 accepts (each
+  within one of 4 clusters per symbol), 58,779 rejections; 2.7e10
+  events, 65 collisions, 37 orbits; ~3.3 h wall in three legs (resumed
+  at 3500 and 29000), sharing cores. data/tm_three_v2_gas.log.

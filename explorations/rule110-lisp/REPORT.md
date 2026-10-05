@@ -55,9 +55,15 @@ The main claims, in decreasing order of the strength of their evidence:
    reads alone (section 3.7). At
    Cook's own spacing it fails at read 3,269, during a long run of
    rejections; that failure was reproduced with different epoch and
-   sampling settings and disappears at twice the spacing. The new HashLife
-   engines (section 5) also re-ran the Collatz trajectory of claim 5
-   independently, read for read, in about 40 s instead of 3.9 hours.
+   sampling settings and disappears at twice the spacing, and an
+   independent event engine (section 5) reproduces it read for read. A
+   three-state machine that moves left and right then ran to its halt:
+   all 59,184 reads correct over 1.2e13 generations, at twice Cook's
+   spacing, and its four visits recovered from the reads (section 3.9).
+   The new engines (section 5: HashLife in epochs, and an event engine
+   that is exact against it cell for cell) also re-ran the Collatz
+   trajectory of claim 5 independently, read for read, in 45 s and 9 s
+   instead of 3.9 hours.
 7. **Empty appendants are no longer a blocker.** Cook's block for them
    (the "raw short leader" L) breaks the machinery, for reasons still
    unknown. An exact rewrite of the CTS replaces each empty appendant by
@@ -78,7 +84,8 @@ The main claims, in decreasing order of the strength of their evidence:
    twelve runs of two programs (it was bounded by them), with each
    failure at the first queue transition above it. A run made after the
    rule confirmed its prediction: at 1.25x Cook's v the machine runs to
-   its halt, all 5,970 reads correct. Why small programs need more than
+   its halt, all 5,970 reads correct; so does the three-state machine of
+   3.9 at 2x, where the rule asks for at least about 1.7x. Why small programs need more than
    about 55 per symbol is still open.
 9. **Running the whole tower on gliders is out of reach by about 14
    orders of magnitude** (about 5e19 generations for the capstone with
@@ -663,6 +670,72 @@ compiled machine's runs. This explains the failures of long programs; the
 small programs of 3.5, whose gaps are a few hundred cells, fail below
 v ~ 500 for another reason that is still open.
 
+### 3.9 A Turing machine that moves both ways, on gliders
+
+*Setup.* A three-state, two-symbol machine that steps left, steps back
+right, then marches right over 1s and halts on the first 2
+(`tests/machines.py three_state_tm`), started in state 1 on the tape
+... 1 1 [1] 2 1 ... (head in brackets). Its visit sequence is (1, 1),
+(2, 1), (3, 1), (3, 2): both head directions, a state change at every
+step, and a halt. It is compiled as in 3.7:
+- Cocke-Minsky TM -> tag system -> CTS: 192 appendants, 153 of them
+  empty;
+- the empty appendants filled (3.4): 40,752 table symbols, a tape of
+  1,920;
+- the halting visit's code word ends at read 59,184 of the reference CTS
+  (ten times the one-move machine of 3.7);
+- Cook's formula gives v = 3,270,732.
+
+*The spacing was chosen by the rule of 3.8, before the run.* The widest
+gap between consecutively queued appendant copies in the first 59,184
+reads is 61,995,404 cells (the transition after read 21,695). The rule
+needs v above that gap divided by c, with 11.05 < c < 11.39, so above
+1.66x to 1.71x Cook's v. At Cook's v it predicts the first failure at
+read 10,799. The run used 2x Cook's v (v = 6,541,464). There the widest
+gap is 9.5v, 14% below the smallest threshold measured.
+
+*How it was run.* The run used the event engine (section 5), with every
+read checked as in 3.3 and the visits decoded from the reads as in 3.7
+(`python experiments.py tm-gliders three 2 gas`). It covers about
+1.2e13 generations.
+
+*Result.*
+- All 59,184 reads equal the reference CTS: 405 accepts and 58,779
+  rejections. Every accept left 4 Ebar clusters per symbol within one
+  (128 one fewer, 171 exact, 106 one more).
+- The last read completed at generation 1.16e13.
+- Decoded from those reads alone, the tag heads give the visit sequence
+  (1, 1), (2, 1), (3, 1), (3, 2), equal to the machine's own.
+- The data: `data/tm_three_v2_gas.log`.
+
+*Cross-check on a second engine.* The epoch HashLife engine ran the same
+configuration for its first 3,072 reads. They are identical read for
+read, outcome and cluster count (`data/tm_three_v2_hash_first3072.log`).
+HashLife took about 0.5 s per read at that stage, and its cost per read
+grows with the junk; the event engine took about 0.15 s.
+
+*Cost.*
+- The run took 2.7e10 events and about 3.3 hours of wall time. It ran in
+  three legs, resumed from checkpoints at reads 3,500 and 29,000, and
+  shared four cores with other jobs.
+- The whole run needed only 65 distinct collisions and 37 particle
+  kinds.
+- The cost per read stayed between 0.1 and 0.3 s. It follows the queue
+  of the CTS, which holds 8,000 to 10,000 symbols for most of the run
+  and 25,000 at the end.
+
+*Interpretation.* This is the first compiled machine with a left move, a
+right move and repeated states to run to its halt on Rule 110 gliders
+here. It is also the second prediction of the spacing rule to hold, the
+first being the one-move machine at 1.25x (3.8). This run supports the
+rule's sufficiency side: 2x passes where the rule says 1.7x is needed.
+Cook's v was not run for this machine, so the predicted failure at read
+10,799 remains a prediction.
+
+*Scope.* One machine, one input, one spacing. The checks are those of 3.7:
+every read's outcome and cluster count, and the visits decoded from
+them. The tape itself is not decoded.
+
 ## 4. The cost of the tower
 
 For the capstone machine (6 two-way TM steps, then halt), with the old
@@ -1035,11 +1108,13 @@ Open, roughly in order of value:
 
 All results are deterministic.
 
-- `pytest tests/` (about 15 s, 58 tests) covers every symbolic layer, the
+- `pytest tests/` (about 40 s, 67 tests) covers every symbolic layer, the
   encoder's local exactness, the glider census, the sparse layout, the
   equivalence of the engines (including the epoch engine after several
-  rebuilds), and the decoding of TM visits from CTS reads. hlc.c is
-  compiled on first import (needs a C compiler).
+  rebuilds, and both event engines against HashLife on Cook's layouts and
+  on random patches), event-engine checkpoints, and the decoding of TM
+  visits from CTS reads. hlc.c and gasc.c are compiled on first import
+  (needs a C compiler).
 - `python experiments.py reads 12` reproduces the 12/12 check in 3.3
   (about 3 minutes).
 - `python experiments.py lblock 0..4` reproduces the first table in 3.4;
@@ -1047,11 +1122,16 @@ All results are deterministic.
 - `python experiments.py cost` reproduces the tables in section 4.
 - `python experiments.py collatz` reproduces section 3.6 (about 4 hours;
   it checkpoints, so rerunning the same command resumes);
-  `python experiments.py collatz-hash` the same reads on HashLife (~40 s).
+  `python experiments.py collatz-hash` the same reads on HashLife (~40 s),
+  `python experiments.py collatz-gas` on the event engine (~10 s).
 - `python experiments.py tm-gliders one 2` reproduces the 2v run of 3.7
   (about 2 hours; checkpoints and resumes); `... one 1` the failure at
   Cook's v (it ends when the run's tree outgrows memory, after read
-  3,272), `... one 4` the 4v run.
+  3,272), `... one 4` the 4v run. Adding `gas` runs any of them on the
+  event engine: `... one 1.25 gas` (about 9 minutes), `... three 2 gas`
+  the run of 3.9 (about 3 hours; checkpoints and resumes).
+- `python experiments.py gas-vs-hash CKPT` compares the event engine with
+  a HashLife checkpoint of `tm-gliders one 1`, cell for cell (5).
 - `pytest tests/` includes the direct binary construction on the SKI
   machine (section 1).
 - `python tools/extract_blocks.py DIR` regenerates the block data from

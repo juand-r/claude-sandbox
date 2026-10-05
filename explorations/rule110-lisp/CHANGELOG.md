@@ -19,6 +19,14 @@ An event engine (REPORT 5; PLAN.md phase 9, item 1)
   chunks are split once; census window codes from a lookup table.
 - `python experiments.py collatz-gas | gas-vs-hash CKPT | tm-gliders
   NAME F gas`.
+- A Turing machine that moves both ways runs on gliders (REPORT 3.9):
+  tests/machines.py three_state_tm at 2x Cook's v (the spacing rule of
+  3.8 asks for about 1.7x): 59,184/59,184 reads over 1.2e13 generations,
+  visits (1,1), (2,1), (3,1), (3,2) decoded from the reads; the first
+  3,072 reads identical on HashLife (data/tm_three_v2_gas.log,
+  data/tm_three_v2_hash_first3072.log).
+- ReadWatch keeps only the Ebar count of a settled read (its censuses
+  made a 59k-read run grow to 6 GB).
 
 Why Cook's spacing can be too small (REPORT 3.8)
 - The one-move TM's failure at Cook's v is observed directly: the

@@ -3,7 +3,7 @@
 ## Phase 9: next improvements (started 2026-10-05)
 
 To-do (user asked for these to be recorded, then #1 planned and done):
-- [ ] 1. Junk crossings as single events (biggest speed lever): plan below
+- [x] 1. Crossings as single events (done as an event engine; Phase B below)
 - [ ] 2. Fix Cook's short-leader block, so no fill rewrite (fewer reads,
         less junk, smaller gaps)
 - [ ] 3. Finish the spacing model: derive c ~ 11.2 from geometry; explain
@@ -104,10 +104,10 @@ Steps:
 Phase C: use it
 - [x] C1. Benchmark against the current engine: Collatz 45 s -> 9 s;
       one-move TM 1.25x 9151 s -> 524 s (REPORT 5).
-- [ ] C2. The 3-state TM that moves both ways (59,184 reads; the gap rule
-      needs v > 1.69x Cook's, run at 2x) - running
-      (`experiments.py tm-gliders three 2 gas`).
-- [ ] C3. Write up (REPORT 5, 3.x; NOTES).
+- [x] C2. The 3-state TM that moves both ways (59,184 reads; the gap rule
+      needs v > 1.69x Cook's, run at 2x): 59,184/59,184 reads, visits
+      decoded and equal; first 3,072 reads identical on HashLife (REPORT 3.9).
+- [x] C3. Write up (REPORT 5, 3.7, 3.9, summary, 7; NOTES; CHANGELOG).
 
 ## Phase 8: the Cook's-v failure; engine efficiency (started 2026-10-04)
 
