@@ -197,15 +197,22 @@ class CGas:
         self._check(_lib.gc_start())
 
     # -- events ---------------------------------------------------------------------
+    def _own(self):
+        if _live[0] is not self:
+            raise RuntimeError("another CGas owns the C state")
+
     @property
     def t(self):
+        self._own()
         return _lib.gc_now()
 
     @property
     def n_events(self):
+        self._own()
         return _lib.gc_events() + self.n_events_before
 
     def count(self):
+        self._own()
         return _lib.gc_count()
 
     def family_counts(self):
@@ -229,6 +236,7 @@ class CGas:
         return kind, eid, ph, left.value, w, cL
 
     def advance_to(self, T):
+        self._own()
         while True:
             r = _lib.gc_advance(T)
             if r == OK:
@@ -362,6 +370,7 @@ class CGas:
 
     def window(self, lo, hi):
         """uint8 cells [lo, hi) at time t (vectorized rendering)."""
+        self._own()
         self.ensure(lo, hi)
         t = self.t
         cap = 1 << 12
@@ -407,6 +416,7 @@ class CGas:
     def state(self):
         """Everything needed to resume (with the same side sources), as
         plain Python data. Only between advance_to calls."""
+        self._own()
         n = self.count()
         small, big = np.zeros(3 * n, np.int32), np.zeros(2 * n, np.int64)
         if _lib.gc_dump(n, small.ctypes.data, big.ctypes.data) != n:

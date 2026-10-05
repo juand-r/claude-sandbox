@@ -134,3 +134,66 @@ def test_gas_reads_collatz_first_reads():
     for j in range(30):
         counts.append(sum(1 for x, k in gr.watch.last[j] if k == "E"))
     assert counts[:7] == [48, 0, 0, 0, 0, 0, 48] and counts[26] == 72
+
+
+def test_periodic_table_chunks_tile_the_table_and_repeat():
+    """Table chunks cut on the periodic grid cover the layout exactly, and
+    the chunks of one super-period recur in the next (same keys)."""
+    from casim import TILE, layout
+    from cts import fill_empty_appendants
+    from experiments import DEMOL_APPS, DEMOL_TAPE
+    from gasrun import Table, clean_cut, table_period
+    lay = layout(DEMOL_TAPE, fill_empty_appendants(DEMOL_APPS), 2, 12, v_override=12216)
+    period = table_period(lay, 2)
+    assert period is not None
+    x0 = lay.segments[2][0]
+    cut, c = clean_cut(lay, x0 + 1000)
+    tab = Table(lay, cut, c, period)
+    rows = []
+    while True:
+        r = tab.src()
+        if r is None:
+            break
+        rows.append(r)
+    assert rows[-1][0].size and rows[-1][1] + len(rows[-1][0]) == lay.hi
+    for (cells, x, cl, cr), nxt in zip(rows, rows[1:]):
+        assert nxt[1] == x + len(cells) and nxt[2] == cr       # contiguous
+        assert np.array_equal(cells, lay.cells(x, x + len(cells)))
+    keys = [gas.key_of_cells(cells, (cl + x) % TILE, (cr + x + len(cells)) % TILE)[0]
+            for cells, x, cl, cr in rows]
+    per = len(tab.cuts)
+    assert per >= 1 and len(keys) > 3 * per
+    assert keys[per:2 * per] == keys[2 * per:3 * per]
+
+
+def test_gas_checkpoint_resume_matches_uninterrupted_run(tmp_path):
+    import pytest
+    from cts import fill_empty_appendants
+    from experiments import DEMOL_APPS, DEMOL_TAPE
+    from gasrun import GasReads
+    apps = fill_empty_appendants(DEMOL_APPS)
+
+    class Stop(Exception):
+        pass
+
+    def stop_at_100(msg):
+        # the checkpoint for read 100 is written just before this line
+        if msg.startswith("[gas] read 100:"):
+            raise Stop
+
+    def make(ckpt=None, log=lambda *a: None):
+        return GasReads(DEMOL_TAPE, apps, 12216, 160, sample_bits=14, log=log,
+                        checkpoint=ckpt, ckpt_every=100)
+
+    full = make()
+    full.run_reads()
+    full_events = full.run.n_events            # the C state is global
+    ck = str(tmp_path / "gas.ckpt")
+    with pytest.raises(Stop):
+        make(ck, stop_at_100).run_reads()
+    resumed = make(ck)
+    resumed.run_reads()
+    assert resumed.watch.outcome() == full.watch.outcome()
+    assert resumed.watch.last == full.watch.last
+    assert resumed.watch.read_at == full.watch.read_at
+    assert resumed.run.n_events == full_events
