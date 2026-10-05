@@ -843,9 +843,21 @@ engine treats the row as particles instead.
   most 120 steps, found automatically): Cook's gliders, bound groups,
   pure phase slips (an A glider has phases of width 0).
 - *Memoization.* A composite's whole evolution is memoized by its key at
-  the moment of merging. On the one-move machine at 1.25x Cook's v, 1.4e9
-  events needed only 76 distinct collisions and 27 particle kinds; De
-  Mol's program needs 78 collisions.
+  the moment of merging. The whole one-move machine at 1.25x Cook's v
+  (3.2e8 events) needs only 63 distinct collisions and 37 particle kinds,
+  and De Mol's program the same 63.
+- *Bound groups.* A tape character is four C gliders 20 to 49 cells apart.
+  Merged one by one, a character crossing an Ebar costs four collisions.
+  Instead, stationary neighbours closer than 64 cells are joined into one
+  particle (their union, which is periodic because they never
+  interact), and a collision's pieces that leave at the same velocity
+  within 64 cells stay one group; a split waits while neighbouring
+  pieces within 64 cells are still closing in. A character then crosses
+  an Ebar as one collision: on De Mol's program the C-Ebar merges fall
+  from 912,000 to 224,000 and all events from 4.8e6 to 2.5e6, with every
+  read, read time and cluster count unchanged. (Grouping the table the
+  same way was measured to be much slower: its groups are all
+  different.)
 - *Structure.* Items sit in a linked list; the next collision of each
   adjacent pair is in a heap. For two particles the collision time comes
   from a cached table of their relative edge offsets over one joint
@@ -865,7 +877,7 @@ of two HashLife checkpoints, and the whole active region was compared
 | HashLife checkpoint | generations | cells compared | differing | event engine time |
 |---|---|---|---|---|
 | read 3,152 | 6.67e10 | 137,190,722 | 0 | 10 min (first C version) |
-| read 3,256 | 6.89e10 | 141,909,284 | 0 | 101 s (5.4e8 events) |
+| read 3,256 | 6.89e10 | 141,909,284 | 0 | 101 s (5.4e8 events); with bound groups 115 s (1.1e8 events) |
 
 With the read check, the same machine at Cook's v gives reads 0 to 3,270
 identical to HashLife's (outcome and cluster count). That includes the
@@ -882,13 +894,19 @@ stops with an error when a composite grows beyond 2^16 cells.
 | run | HashLife epochs | event engine |
 |---|---|---|
 | De Mol's Collatz program, 556 reads | 45 s | 9 s |
-| one-move TM at 1.25x Cook's v, 5,970 reads, 1.6e11 generations | 9,151 s | 907 s |
+| one-move TM at 1.25x Cook's v, 5,970 reads, 1.6e11 generations | 9,151 s | 907 s; with bound groups 524 s |
 | one-move TM at Cook's v, time to read 3,000 | 2,331 s (older build) | 295 s |
 
-All reads were identical in each pair. The event loop costs 0.2 to 0.3
-us per event. On the one-move machine's late reads, about 0.05 s per
-read goes to events and about 0.07 s to the read check (rendering
-windows and the census), now the larger part.
+All reads were identical in each pair. Three measured costs set the
+speed:
+- the event loop, 0.2 to 0.3 us per event before bound groups (bound
+  groups mean fewer but longer collisions, whose neighbours are found by
+  a bounded scan);
+- materializing the sides, which was a quarter of the time until each
+  distinct table chunk was split once (the table repeats one
+  super-period, so chunks are cut at the same offsets in every period);
+- the read check (rendering windows, the census), about 0.07 s per read,
+  now the largest part.
 
 *What still limits it.* The number of events per read grows with the
 junk, as HashLife's cost did: every ossifier still crosses every Ebar
