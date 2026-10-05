@@ -341,6 +341,7 @@ def gas_vs_hash(checkpoint):
     1), run the event engine from t = 0 to its time, and compare every
     cell of the active region."""
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests"))
+    import numpy as np
     import machines
     import gasrun
     from epochrun import EpochReads, diff_extent
