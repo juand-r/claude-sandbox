@@ -386,10 +386,12 @@ class CGas:
         # the last item, that item's right constant
         last = self._key(int(kind[-1]), int(ids[-1]), int(ph[-1]))
         c_end = (last[3] - int(left[-1]) - last[1] - SHIFT * t) % TILE
-        xs = np.arange(lo, hi)
-        j = np.searchsorted(left, xs, side="right")
-        c = np.where(j < len(left), cls[np.minimum(j, len(left) - 1)], c_end)
-        out = _ETHER_BITS[(c + xs + SHIFT * t) % TILE]
+        # constant per cell, run by run: cells before item k's left edge
+        # (and after item k-1's) read item k's constant
+        edges = np.clip(left, lo, hi)
+        runs = np.diff(np.concatenate([[lo], edges, [hi]]))
+        c = np.repeat(np.append(cls.astype(np.int64), c_end), runs)
+        out = _ETHER_BITS[(c + np.arange(lo, hi) + SHIFT * t) % TILE]
         # patches
         total = int(width.sum())
         if total:
