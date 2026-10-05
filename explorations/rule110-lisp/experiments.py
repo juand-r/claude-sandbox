@@ -135,6 +135,7 @@ class ReadWatch:
         self.state = ["." if a is not None else "-" for a, _ in regs]
         self.read_at = [None] * len(regs)
         self.last = [None] * len(regs)
+        self.n_ebar = [None] * len(regs)  # Ebar clusters of a settled region
         self.t_last = None            # time of the latest sample
 
     def pending(self):
@@ -174,7 +175,19 @@ class ReadWatch:
                     self.state[j] = "!"
                 print(f"read {j}: at t~{self.read_at[j]}, {n_e} Ebar clusters "
                       f"remain: {self.state[j]}", flush=True)
+                # a settled region is never watched again: keep its count,
+                # drop its censuses (they made long runs' memory grow)
+                self.n_ebar[j] = n_e
+                self.before[j] = self.last[j] = None
+                continue
             self.last[j] = inside
+
+    def forget_settled(self):
+        """Drop the censuses of settled regions (for state from before
+        observe() did so itself)."""
+        for j, st in enumerate(self.state):
+            if st in "YN!":
+                self.before[j] = self.last[j] = None
 
     def outcome(self):
         return "".join(s if s in "YN!" else "." for s in self.state)

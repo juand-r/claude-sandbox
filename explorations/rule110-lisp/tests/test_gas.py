@@ -126,13 +126,11 @@ def test_gas_reads_collatz_first_reads():
     from cts import fill_empty_appendants
     from experiments import DEMOL_APPS, DEMOL_TAPE
     from gasrun import GasReads
-    counts = []
     gr = GasReads(DEMOL_TAPE, fill_empty_appendants(DEMOL_APPS), 12216, 30,
                   sample_bits=14, log=lambda *a: None)
     got = gr.run_reads()
     assert got == "YNNNNNYNNNNNYNNNNNNYNNNNNNYNNN"
-    for j in range(30):
-        counts.append(sum(1 for x, k in gr.watch.last[j] if k == "E"))
+    counts = gr.watch.n_ebar[:30]
     assert counts[:7] == [48, 0, 0, 0, 0, 0, 48] and counts[26] == 72
 
 
@@ -194,7 +192,7 @@ def test_gas_checkpoint_resume_matches_uninterrupted_run(tmp_path):
     resumed = make(ck)
     resumed.run_reads()
     assert resumed.watch.outcome() == full.watch.outcome()
-    assert resumed.watch.last == full.watch.last
+    assert resumed.watch.n_ebar == full.watch.n_ebar
     assert resumed.watch.read_at == full.watch.read_at
     assert resumed.run.n_events == full_events
 

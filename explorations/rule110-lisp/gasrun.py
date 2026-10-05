@@ -249,7 +249,7 @@ class GasReads:
             self.run = build(self.lay, self.n_all, engine)
         self.t_wall = time.time()
 
-    _WATCH = ("before", "state", "read_at", "last", "t_last")
+    _WATCH = ("before", "state", "read_at", "last", "t_last", "n_ebar")
 
     def _save(self):
         """Checkpoint (C engine only): the gas, the sides' positions, the
@@ -276,6 +276,7 @@ class GasReads:
         self.run = _cgas_run().from_state(state["gas"], sides)
         for k, val in state["watch"].items():
             setattr(self.watch, k, val)
+        self.watch.forget_settled()
         self.log(f"resumed from {self.checkpoint} at t={self.run.t}")
 
     def _due(self, j):

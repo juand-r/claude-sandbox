@@ -294,7 +294,7 @@ class EpochReads:
                  "run": (r.x0, r.cL, r.cR, r.t),
                  "uni": (self.uni.n_oss, self.uni.x_cut),
                  "watch": {k: getattr(self.watch, k)
-                           for k in ("before", "state", "read_at", "last", "t_last")},
+                           for k in ("before", "state", "read_at", "last", "t_last", "n_ebar")},
                  "next_epoch": self.next_epoch}
         tmp = self.checkpoint + ".tmp"
         with open(tmp, "wb") as fh:
@@ -314,6 +314,7 @@ class EpochReads:
         self.uni = Universe(self.lay, self.n_all, *state["uni"])
         for k, val in state["watch"].items():
             setattr(self.watch, k, val)
+        self.watch.forget_settled()
         self.next_epoch = state["next_epoch"]
         self.log(f"resumed from {self.checkpoint} at t={t}")
 
