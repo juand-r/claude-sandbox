@@ -902,3 +902,28 @@ Bound groups (same day): where the 3-state run spends its events.
   identical including read times; 63 distinct collisions.
 - Bug on the way: a bound group led by a zero-width slip piece starts a
   few cells after that piece (trim); allowed.
+
+Later the same day: costs and the 3-state run (C2).
+- Profile of the 3-state run at read 2000 (100 reads, 13.7 s after the
+  census speedup): C event loop 1.6 s; the read check (window rendering,
+  census, local history) most of the rest. A census taken from the
+  particles would remove most of it, but it would change the check
+  itself (cell census = the same check as on HashLife); not done.
+- Materialization was a quarter of the time (every table chunk split
+  piece by piece in Python). The table repeats one super-period, so
+  chunks are now cut at fixed offsets within it, and each distinct chunk
+  (and each distinct ossifier row) is split and resolved once.
+- A composite-collision scan skips the steps before a safe lower bound on
+  the gap (composite edges: suffix extrema; particles: linear path plus
+  oscillation bounds). First version used the period anchor instead of
+  the linear path at the current phase - not a bound for moving
+  particles; caught in review before use. The same slip in the sentinel
+  times (harmless there: the margin is 256 cells, the error at most 8)
+  is fixed too.
+- CTS queue length of the 3-state program stays 8-10k symbols for most
+  of the run (25k at the end), so the cost per read stays roughly flat:
+  about 0.12-0.16 s per read.
+- Cross-check: HashLife epochs on the same configuration, first 1000
+  reads: identical to the event engine, outcome and cluster count.
+- I restarted the 3-state run twice: after bound groups (fresh start),
+  and at its read-3500 checkpoint after the census speedup (resume).
