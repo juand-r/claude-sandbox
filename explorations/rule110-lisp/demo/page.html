@@ -1,0 +1,459 @@
+<title>Glider Event Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one 1080px lab-notebook column; the live spacetime plate leads, results follow. */
+:root {
+  --bg: #f4f6f8; --surface: #ffffff; --sunk: #eceff3;
+  --ink: #14181d; --ink-2: #4b535d; --ink-3: #78818c; --rule: #d9dee4;
+  --btn: #1d2733; --btn-ink: #ffffff;
+  --fam-e: #2a78d6; --fam-c: #eb6834; --fam-a: #1baf7a; --fam-x: #14181d; --fam-p: #7b6fd0;
+  --cell-on: #39414b; --cell-off: #e7ebf0; --defect: #14181d; --space: #f9fafb;
+  --good: #1a7f37; --good-bg: #e3f4e8; --bad: #c62828; --bad-bg: #fbe5e5;
+  --f-display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1215; --surface: #161a1f; --sunk: #1c2127;
+    --ink: #eef1f4; --ink-2: #b3bbc5; --ink-3: #87909b; --rule: #2a3038;
+    --btn: #e6eaef; --btn-ink: #12161a;
+    --fam-e: #3987e5; --fam-c: #d95926; --fam-a: #199e70; --fam-x: #eef1f4; --fam-p: #9085e9;
+    --cell-on: #c3cad3; --cell-off: #1e242a; --defect: #f4f6f8; --space: #12161a;
+    --good: #46c46b; --good-bg: #16301f; --bad: #f47067; --bad-bg: #3a1a1a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1215; --surface: #161a1f; --sunk: #1c2127;
+  --ink: #eef1f4; --ink-2: #b3bbc5; --ink-3: #87909b; --rule: #2a3038;
+  --btn: #e6eaef; --btn-ink: #12161a;
+  --fam-e: #3987e5; --fam-c: #d95926; --fam-a: #199e70; --fam-x: #eef1f4; --fam-p: #9085e9;
+  --cell-on: #c3cad3; --cell-off: #1e242a; --defect: #f4f6f8; --space: #12161a;
+  --good: #46c46b; --good-bg: #16301f; --bad: #f47067; --bad-bg: #3a1a1a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--f-body); }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 600; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.05; }
+h2 { font-size: 24px; }
+h3 { font-size: 17px; }
+p { margin: 0; max-width: 68ch; }
+.lede { display: grid; gap: 12px; }
+.lede p { color: var(--ink-2); font-size: 16.5px; }
+.eyebrow { font: 500 12px/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.mono, .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+section { display: grid; gap: 16px; min-width: 0; }
+
+/* the demo plate */
+.plate { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; display: grid; gap: 14px; min-width: 0; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; background: transparent; color: var(--ink-2); font: 500 13.5px var(--f-body); padding: 8px 12px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button[aria-pressed="true"] { background: var(--sunk); color: var(--ink); }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn { border: 1px solid var(--btn); background: var(--btn); color: var(--btn-ink); border-radius: 7px; font: 600 13.5px var(--f-body); padding: 8px 14px; cursor: pointer; min-width: 84px; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+.btn:focus-visible, .seg button:focus-visible, select:focus-visible { outline: 2px solid var(--fam-e); outline-offset: 2px; }
+select { font: 500 13.5px var(--f-body); padding: 7px 8px; border-radius: 7px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); }
+label.inline { display: inline-flex; gap: 6px; align-items: center; color: var(--ink-2); font-size: 13px; }
+.scene-note { color: var(--ink-2); font-size: 14px; }
+.scene-note strong { color: var(--ink); font-weight: 600; }
+.views { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; }
+@media (max-width: 860px) { .views { grid-template-columns: minmax(0, 1fr); } }
+figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
+figcaption { color: var(--ink-3); font-size: 12.5px; }
+canvas { display: block; width: 100%; max-width: 100%; border-radius: 6px; background: var(--space); }
+#space { height: 440px; }
+#zoom { aspect-ratio: 1 / 1; height: auto; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 18px; height: 8px; border-radius: 2px; display: inline-block; }
+
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+@media (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats .stat:last-child { grid-column: 1 / -1; }
+  .seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
+  .seg button { padding-inline: 6px; }
+  .seg button + button { border-left: 1px solid var(--rule); }
+}
+.stat { background: var(--surface); padding: 10px 12px; display: grid; gap: 2px; min-width: 0; }
+.stat .k { font-size: 12px; color: var(--ink-3); }
+.stat .v { font: 500 19px/1.2 var(--f-mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.stat .s { font-size: 12px; color: var(--ink-2); }
+.chip { display: inline-flex; align-items: center; gap: 6px; font: 600 12px var(--f-body); border-radius: 999px; padding: 2px 9px; width: fit-content; }
+.chip.ok { color: var(--good); background: var(--good-bg); }
+.chip.no { color: var(--bad); background: var(--bad-bg); }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+.log { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 13px; max-height: 196px; overflow-y: auto; }
+.log li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px; color: var(--ink-2); }
+.log li .num { color: var(--ink-3); }
+.log .empty { color: var(--ink-3); grid-template-columns: 1fr; }
+
+/* results */
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 860px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 500 12px var(--f-body); color: var(--ink-3); letter-spacing: 0.02em; }
+td.r, th.r { text-align: right; padding-right: 0; padding-left: 16px; white-space: nowrap; }
+td .sub { display: block; color: var(--ink-3); font-size: 12.5px; }
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 9px; font-size: 12.5px; color: var(--ink); box-shadow: 0 4px 14px rgb(0 0 0 / 0.12); white-space: nowrap; }
+.tip .num { color: var(--ink); }
+.how { display: grid; gap: 12px; }
+.how p { color: var(--ink-2); }
+.foot { color: var(--ink-3); font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header class="lede">
+    <div class="eyebrow">Rule 110 · Cook's construction · phase 9</div>
+    <h1>Glider Event Engine</h1>
+    <p>Rule 110 computes with gliders that cross a periodic background, the ether. This engine treats each glider as a particle that moves by formula and simulates cells only where two of them come within two cells of each other. Each distinct collision is simulated once and remembered.</p>
+    <p>Below, a JavaScript port of the engine runs in your browser on windows cut from the real Turing-machine runs, and every row it produces is checked against a brute-force Rule 110 simulation.</p>
+  </header>
+
+  <section aria-labelledby="demo-h">
+    <h2 id="demo-h">Run it</h2>
+    <div class="plate">
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Scene">
+          <button type="button" id="sc-char" data-scene="char" aria-pressed="true">Tape character</button>
+          <button type="button" id="sc-oss" data-scene="oss" aria-pressed="false">Ossifier</button>
+          <button type="button" id="sc-random" data-scene="random" aria-pressed="false">Random patches</button>
+        </div>
+        <div class="controls">
+          <button type="button" class="btn" id="play">Play</button>
+          <button type="button" class="btn ghost" id="next">Next event</button>
+          <button type="button" class="btn ghost" id="restart">Restart</button>
+          <button type="button" class="btn ghost" id="reroll" hidden>New pattern</button>
+          <label class="inline" for="speed">Speed
+            <select id="speed">
+              <option value="1">Slow</option>
+              <option value="3" selected>Normal</option>
+              <option value="12">Fast</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <p class="scene-note" id="note"></p>
+      <div class="views">
+        <figure>
+          <canvas id="space" aria-label="Spacetime diagram: cells left to right, time downward; coloured bands are the engine's particles"></canvas>
+          <figcaption id="space-cap">Columns are cells, time runs downward. Grey shading is the brute-force simulation; coloured bands are the engine's particles; black marks a collision being simulated.</figcaption>
+          <div class="legend" aria-hidden="true">
+            <span><i class="sw" style="background:var(--fam-c)"></i>C glider (tape)</span>
+            <span><i class="sw" style="background:var(--fam-e)"></i>Ebar (data, table)</span>
+            <span><i class="sw" style="background:var(--fam-a)"></i>A glider (ossifier)</span>
+            <span><i class="sw" style="background:var(--fam-p)"></i>other periodic</span>
+            <span><i class="sw" style="background:var(--fam-x)"></i>collision in progress</span>
+          </div>
+        </figure>
+        <figure>
+          <canvas id="zoom" width="300" height="300" aria-label="Brute-force cells around the latest event"></canvas>
+          <figcaption id="zoom-cap">Brute-force cells around the latest event, the last 100 generations. Dark marks cells that differ from the ether.</figcaption>
+          <h3 style="margin-top:8px">Events</h3>
+          <ul class="log" id="log"><li class="empty">No events yet.</li></ul>
+        </figure>
+      </div>
+      <div class="stats" aria-live="polite">
+        <div class="stat"><span class="k">Generation</span><span class="v" id="st-t">0</span><span class="s" id="st-T"></span></div>
+        <div class="stat"><span class="k">Events</span><span class="v" id="st-ev">0</span><span class="s" id="st-items"></span></div>
+        <div class="stat"><span class="k">Collisions simulated</span><span class="v" id="st-sim">0</span><span class="s">each once, then reused</span></div>
+        <div class="stat"><span class="k">Cell updates</span><span class="v" id="st-cells">0</span><span class="s" id="st-brute"></span></div>
+        <div class="stat"><span class="k">Checked against brute force</span><span class="v" id="st-chk">0</span><span class="s" id="st-diff"><span class="chip ok">0 cells differ</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="res-h">
+    <h2 id="res-h">What the full engine did</h2>
+    <p class="scene-note">Measured with the C implementation (<span class="mono">gasc.c</span>) on the project's runs. Every result below is reproduced read for read or cell for cell against an independent engine.</p>
+    <div class="two">
+      <div class="tbl">
+        <h3>Exactness checks</h3>
+        <table>
+          <thead><tr><th>Check</th><th class="r">Result</th></tr></thead>
+          <tbody>
+            <tr><td>One-move Turing machine at Cook's spacing, run from the start to a HashLife checkpoint at read 3,152<span class="sub num">137,190,722 cells at generation 6.67 × 10¹⁰</span></td><td class="r">identical</td></tr>
+            <tr><td>The same at read 3,256<span class="sub num">141,909,284 cells at generation 6.89 × 10¹⁰</span></td><td class="r">identical</td></tr>
+            <tr><td>Its construction failure at read 3,269, read for read<span class="sub">confirmed by a second, independent engine</span></td><td class="r">reproduced</td></tr>
+            <tr><td>One-move machine at 1.25× spacing, all reads<span class="sub num">5,970 outcomes and cluster counts vs HashLife</span></td><td class="r">identical</td></tr>
+            <tr><td>Three-state machine at 2× spacing, to its halt<span class="sub num">59,184 reads over 1.16 × 10¹³ generations</span></td><td class="r">all correct</td></tr>
+            <tr><td>Random patches in ether<span class="sub num">60 runs, 638 kinds of particle</span></td><td class="r">identical</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl">
+        <h3>Speed</h3>
+        <table>
+          <thead><tr><th>Run</th><th class="r">HashLife</th><th class="r">Event engine</th></tr></thead>
+          <tbody>
+            <tr><td>Collatz trajectory on gliders<span class="sub num">556 reads</span></td><td class="r num">45 s</td><td class="r num">9 s</td></tr>
+            <tr><td>One-move machine, 1.25×<span class="sub num">5,970 reads, 1.6 × 10¹¹ generations</span></td><td class="r num">9,151 s</td><td class="r num">524 s</td></tr>
+            <tr><td>Three-state machine, first 3,072 reads</td><td class="r num">≈0.5 s / read</td><td class="r num">≈0.15 s / read</td></tr>
+            <tr><td>Three-state machine, all 59,184 reads<span class="sub">HashLife not run to the end</span></td><td class="r num">—</td><td class="r num">≈3.3 h</td></tr>
+          </tbody>
+        </table>
+        <p class="foot" style="margin-top:10px">The whole one-move run needed 63 distinct collisions; the three-state run, 65.</p>
+      </div>
+    </div>
+    <div class="chart" id="chart-wrap">
+      <h3>Events per read, three-state machine at 2× Cook's spacing</h3>
+      <svg id="chart" viewBox="0 0 1000 300" role="img" aria-label="Events per read rise from about 18 thousand at the start to about 1 million at the halt, in step with the queue of the tag system"></svg>
+      <div class="tip" id="tip" hidden></div>
+      <p class="foot">Each point averages 100 reads. The cost per read follows the tag system's queue, which holds 8,000–10,000 symbols for most of the run and 25,000 at the end: every queued symbol must be crossed by the tape characters.</p>
+    </div>
+  </section>
+
+  <section class="how" aria-labelledby="how-h">
+    <h2 id="how-h">Why it is exact</h2>
+    <p>Rule 110 updates each cell from itself and its two neighbours. So if two non-ether patches, each evolved alone in ether, never come within two cells of each other, no cell ever sees both, and the row is exactly the union of the two isolated evolutions. A particle is a patch whose cells recur, shifted, under isolated evolution (Cook's C, Ebar and A gliders, bound groups, even pure phase slips of the ether). Between collisions, particles move by formula.</p>
+    <p>When two patches come within two cells, the engine simulates their cells together until the result splits again into pieces at least one ether tile apart. That evolution depends only on the patches' cells and ether phases, so it is stored under that key and every later identical collision costs a lookup. The C engine adds a heap of next collisions, lazily materialized ossifier train and table, and checkpoints; this page's port keeps the same rules with simpler bookkeeping.</p>
+  </section>
+</div>
+
+<script>/*ENGINE*/</script>
+<script>
+const SCENES = /*SCENES*/;
+const EVENTS3 = /*EVENTS*/;
+const { Gas, Brute, ETHER, etherPhase, mod } = window.GasEngine;
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => Math.round(n).toLocaleString("en-US");
+const short = (n) => n >= 1e9 ? (n / 1e9).toFixed(2) + " G" : n >= 1e6 ? (n / 1e6).toFixed(1) + " M" : n >= 1e4 ? (n / 1e3).toFixed(1) + " k" : fmt(n);
+const NOTES = {
+  char: "<strong>A tape character crossed by moving data.</strong> Cut from the one-move Turing machine at 1.25× Cook's spacing at generation 3,000,095,790: one character (four C gliders) and two Ebars of data 300 cells to its right, moving left through it.",
+  oss: "<strong>An ossifier closing in.</strong> Cut from the same run at generation 22,400,153,260: A gliders of an ossifier, moving right at 2/3 cell per step, meet two Ebars moving left.",
+  random: "<strong>Random patches in ether.</strong> Arbitrary cells make unknown gliders, debris and phase slips; the engine finds and memoizes whatever appears. Use New pattern for another seed."
+};
+let S = null, playing = false, seed = 7, sceneName = "char";
+const ZR = 100, ZW = 100;
+
+function colors() {
+  const cs = getComputedStyle(document.documentElement), v = (k) => cs.getPropertyValue(k).trim();
+  return { E: v("--fam-e"), C: v("--fam-c"), A: v("--fam-a"), X: v("--fam-x"), P: v("--fam-p"),
+           on: v("--cell-on"), off: v("--cell-off"), defect: v("--defect"), space: v("--space") };
+}
+
+function randomRow(sd) {
+  let s = sd >>> 0;
+  const rnd = () => ((s = (Math.imul(s, 1103515245) + 12345) >>> 0) / 4294967296);
+  const n = 1500, c = Math.floor(rnd() * 14), row = Uint8Array.from({ length: n }, (_, x) => +ETHER[mod(c + x, 14)]);
+  for (let x = 220; x < n - 320;) {
+    const w = 1 + Math.floor(rnd() * 20);
+    for (let k = 0; k < w; k++) row[x + k] = rnd() < 0.5 ? 1 : 0;
+    x += w + 80 + Math.floor(rnd() * 220);
+  }
+  return row;
+}
+
+function setupCanvas(cv) {
+  const r = cv.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+  cv.width = Math.max(1, Math.round(r.width * dpr)); cv.height = Math.max(1, Math.round(r.height * dpr));
+  return cv.getContext("2d");
+}
+
+function load(name) {
+  sceneName = name;
+  const cells = name === "random" ? randomRow(seed) : Uint8Array.from(SCENES[name].cells, (c) => +c);
+  const T = name === "random" ? 1600 : SCENES[name].T, n = cells.length;
+  const cL = etherPhase(cells.slice(0, 14))[0], cR = mod(etherPhase(cells.slice(n - 14))[0] - (n - 14), 14);
+  const pad = Math.round(n * 0.12);
+  const g = Gas.fromRow(cells, cL, cR, T), b = new Brute(cells, cL, cR, 2 * T + 60);
+  const ctx = setupCanvas($("space"));
+  S = { g, b, T, n, lo: -pad, hi: n + pad, y: -1, ctx, H: ctx.canvas.height, Wd: ctx.canvas.width,
+        checked: 0, differ: 0, ring: [], startItems: g.items.length, lastEvent: null, logShown: 0 };
+  ctx.fillStyle = colors().space; ctx.fillRect(0, 0, S.Wd, S.H);
+  $("note").innerHTML = NOTES[name];
+  $("reroll").hidden = name !== "random";
+  for (const bt of document.querySelectorAll(".seg button")) bt.setAttribute("aria-pressed", String(bt.dataset.scene === name));
+  $("log").innerHTML = '<li class="empty">No events yet.</li>';
+  drawRow(); updateStats(); drawZoom();
+}
+
+// advance to the next pixel row: both engines to its generation, compare, draw
+function drawRow() {
+  const s = S;
+  if (s.y >= s.H - 1) return false;
+  s.y++;
+  const tY = Math.round(s.y * s.T / (s.H - 1));
+  while (s.b.t < tY) {
+    s.b.step();
+    if (s.b.t > tY - ZR) { s.ring.push(s.b.window(s.lo, s.hi)); if (s.ring.length > ZR) s.ring.shift(); }
+  }
+  if (s.ring.length === 0) s.ring.push(s.b.window(s.lo, s.hi));
+  s.g.advanceTo(tY);
+  const a = s.g.window(s.lo, s.hi), r = s.ring[s.ring.length - 1];
+  let d = 0;
+  for (let k = 0; k < a.length; k++) if (a[k] !== r[k]) d++;
+  s.checked += a.length; s.differ += d;
+  // background: brute-force cells, averaged per pixel column
+  const C = colors(), ctx = s.ctx, sx = s.Wd / (s.hi - s.lo);
+  const img = ctx.createImageData(s.Wd, 1), on = hex(C.on), off = hex(C.off);
+  for (let px = 0; px < s.Wd; px++) {
+    const c0 = Math.floor(px / sx), c1 = Math.max(c0 + 1, Math.floor((px + 1) / sx));
+    let ones = 0;
+    for (let c = c0; c < c1; c++) ones += r[c];
+    const f = 0.25 + 0.5 * ones / (c1 - c0);
+    for (let ch = 0; ch < 3; ch++) img.data[4 * px + ch] = Math.round(off[ch] + (on[ch] - off[ch]) * f * 0.45);
+    img.data[4 * px + 3] = 255;
+  }
+  ctx.putImageData(img, 0, s.y);
+  for (const it of s.g.items) {
+    const st = s.g.at(it, tY), x0 = (st.left - s.lo) * sx, w = Math.max(st.p.cells.length * sx, 1.6);
+    if (x0 + w < 0 || x0 > s.Wd) continue;
+    ctx.fillStyle = C[it.e ? "X" : it.fam] || C.P;
+    ctx.fillRect(x0, s.y, w, 1);
+  }
+  return true;
+}
+
+function hex(c) {
+  const m = c.replace("#", "");
+  return [0, 2, 4].map((i) => parseInt(m.slice(i, i + 2), 16));
+}
+
+const NAMES = { C: "C", E: "Ebar", A: "A", P: "glider", X: "collision" };
+function updateStats() {
+  const s = S;
+  $("st-t").textContent = fmt(s.g.t);
+  $("st-T").textContent = "of " + fmt(s.T);
+  $("st-ev").textContent = fmt(s.g.nEvents);
+  $("st-items").textContent = s.g.items.length + " items now, " + s.startItems + " at the start";
+  $("st-sim").textContent = fmt(s.g.nSim);
+  $("st-cells").textContent = short(s.g.cellSteps);
+  $("st-brute").textContent = "brute force: " + short(s.b.cellSteps);
+  $("st-chk").textContent = short(s.checked);
+  $("st-diff").innerHTML = s.differ === 0 ? '<span class="chip ok">0 cells differ</span>'
+                                          : '<span class="chip no">' + fmt(s.differ) + ' cells differ</span>';
+  const log = s.g.log;
+  if (log.length !== s.logShown) {
+    s.logShown = log.length;
+    s.lastEvent = log[log.length - 1];
+    $("log").innerHTML = log.slice(-40).reverse().map((e) =>
+      '<li><span class="num">t ' + fmt(e.t) + '</span><span>' + (e.kind === "collide"
+        ? NAMES[e.a] + " meets " + NAMES[e.b]
+        : (e.into.length ? "splits into " + e.into.map((f) => NAMES[f]).join(", ") : "vanishes")) + '</span></li>').join("");
+  }
+}
+
+function drawZoom() {
+  const cv = $("zoom"), ctx = cv.getContext("2d"), C = colors(), s = S;
+  const cx = s.lastEvent ? s.lastEvent.x : Math.round(s.n / 2);
+  const x0 = Math.min(Math.max(cx - ZW / 2, s.lo + 14), s.hi - ZW - 14);
+  const cell = cv.width / ZW;
+  ctx.fillStyle = C.space; ctx.fillRect(0, 0, cv.width, cv.height);
+  const rows = s.ring.slice(-ZR);
+  rows.forEach((row, y) => {
+    const seg = row.slice(x0 - s.lo - 14, x0 - s.lo + ZW + 14);
+    const ph = etherPhase(seg);
+    for (let k = 0; k < ZW; k++) {
+      const i = k + 14;
+      let clean = false;
+      for (let st = i - 13; st <= i && !clean; st++) if (st >= 0 && st < ph.length && ph[st] >= 0) clean = true;
+      ctx.fillStyle = !clean ? C.defect : seg[i] ? C.on : C.off;
+      if (clean && !seg[i]) continue;
+      ctx.globalAlpha = clean ? 0.28 : 1;
+      ctx.fillRect(k * cell, y * cell, Math.ceil(cell), Math.ceil(cell));
+    }
+  });
+  ctx.globalAlpha = 1;
+  $("zoom-cap").textContent = "Brute-force cells " + fmt(x0) + "–" + fmt(x0 + ZW) +
+    " around the latest event, generations " + fmt(Math.max(0, s.b.t - rows.length + 1)) + "–" + fmt(s.b.t) +
+    ". Dark cells differ from the ether.";
+}
+
+function frame() {
+  if (!playing) return;
+  const k = +$("speed").value;
+  let more = true;
+  for (let i = 0; i < k && more; i++) more = drawRow();
+  updateStats(); drawZoom();
+  if (!more) { setPlaying(false); return; }
+  requestAnimationFrame(frame);
+}
+function setPlaying(p) {
+  playing = p;
+  $("play").textContent = p ? "Pause" : (S && S.y >= S.H - 1 ? "Done" : "Play");
+  if (p) requestAnimationFrame(frame);
+}
+$("play").addEventListener("click", () => {
+  if (S.y >= S.H - 1) load(sceneName);
+  setPlaying(!playing);
+});
+$("next").addEventListener("click", () => {
+  setPlaying(false);
+  const n0 = S.g.nEvents;
+  while (S.g.nEvents === n0 && drawRow()) { /* until the next event */ }
+  updateStats(); drawZoom();
+  $("play").textContent = S.y >= S.H - 1 ? "Done" : "Play";
+});
+$("restart").addEventListener("click", () => { setPlaying(false); load(sceneName); });
+$("reroll").addEventListener("click", () => { setPlaying(false); seed = (seed * 48271 + 11) % 2147483647; load("random"); });
+for (const bt of document.querySelectorAll(".seg button"))
+  bt.addEventListener("click", () => { setPlaying(false); load(bt.dataset.scene); });
+let rsz = null;
+window.addEventListener("resize", () => { clearTimeout(rsz); rsz = setTimeout(() => { setPlaying(false); load(sceneName); drawChart(); }, 250); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { drawChart(); drawZoom(); });
+
+// chart: events per read over the three-state run
+function drawChart() {
+  const svg = $("chart"), W = 1000, H = 300, m = { l: 64, r: 16, t: 14, b: 38 };
+  const xs = EVENTS3.map((p) => p[0]), ys = EVENTS3.map((p) => p[1]);
+  const xmax = 60000, ymax = 1_000_000;
+  const X = (v) => m.l + (W - m.l - m.r) * v / xmax, Y = (v) => H - m.b - (H - m.t - m.b) * v / ymax;
+  let g = "";
+  for (let v = 0; v <= ymax; v += 250_000) {
+    g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--rule)" stroke-width="1"/>`;
+    g += `<text x="${m.l - 8}" y="${Y(v) + 4}" text-anchor="end" font-size="12" fill="var(--ink-3)" font-family="var(--f-mono)">${v === 0 ? "0" : (v / 1000) + "k"}</text>`;
+  }
+  for (let v = 0; v <= xmax; v += 10000)
+    g += `<text x="${X(v)}" y="${H - m.b + 20}" text-anchor="middle" font-size="12" fill="var(--ink-3)" font-family="var(--f-mono)">${v === 0 ? "0" : (v / 1000) + "k"}</text>`;
+  g += `<text x="${(m.l + W - m.r) / 2}" y="${H - 2}" text-anchor="middle" font-size="12" fill="var(--ink-2)">read number</text>`;
+  g += `<text x="14" y="${(m.t + H - m.b) / 2}" text-anchor="middle" font-size="12" fill="var(--ink-2)" transform="rotate(-90 14 ${(m.t + H - m.b) / 2})">events per read</text>`;
+  const pts = EVENTS3.map((p) => `${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join(" ");
+  g += `<polygon points="${X(xs[0])},${Y(0)} ${pts} ${X(xs[xs.length - 1])},${Y(0)}" fill="var(--fam-e)" fill-opacity="0.12"/>`;
+  g += `<polyline points="${pts}" fill="none" stroke="var(--fam-e)" stroke-width="2" stroke-linejoin="round"/>`;
+  const last = EVENTS3[EVENTS3.length - 1];
+  g += `<circle cx="${X(last[0])}" cy="${Y(last[1])}" r="4" fill="var(--fam-e)" stroke="var(--surface)" stroke-width="2"/>`;
+  g += `<line id="cross" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}" stroke="var(--ink-3)" stroke-width="1" visibility="hidden"/>`;
+  g += `<circle id="dot" r="4.5" fill="var(--fam-e)" stroke="var(--surface)" stroke-width="2" visibility="hidden"/>`;
+  g += `<rect id="hit" x="${m.l}" y="${m.t}" width="${W - m.l - m.r}" height="${H - m.t - m.b}" fill="transparent"/>`;
+  svg.innerHTML = g;
+  const hit = svg.querySelector("#hit"), cross = svg.querySelector("#cross"), dot = svg.querySelector("#dot"), tip = $("tip");
+  const move = (ev) => {
+    const r = svg.getBoundingClientRect(), vx = (ev.clientX - r.left) * W / r.width;
+    const read = (vx - m.l) / (W - m.l - m.r) * xmax;
+    let i = 0, best = Infinity;
+    EVENTS3.forEach((p, k) => { const d = Math.abs(p[0] - read); if (d < best) { best = d; i = k; } });
+    const p = EVENTS3[i];
+    cross.setAttribute("x1", X(p[0])); cross.setAttribute("x2", X(p[0])); cross.setAttribute("visibility", "visible");
+    dot.setAttribute("cx", X(p[0])); dot.setAttribute("cy", Y(p[1])); dot.setAttribute("visibility", "visible");
+    tip.hidden = false;
+    tip.innerHTML = `Reads ${fmt(p[0] - 100)}–${fmt(p[0])}<br><span class="num">${fmt(p[1])}</span> events per read<br><span class="num">${fmt(p[2])}</span> particles alive`;
+    const wrap = $("chart-wrap").getBoundingClientRect(), px = X(p[0]) * r.width / W + r.left - wrap.left;
+    tip.style.left = Math.min(Math.max(px + 12, 0), wrap.width - tip.offsetWidth) + "px";
+    tip.style.top = (Y(p[1]) * r.height / H + r.top - wrap.top - 64) + "px";
+  };
+  hit.addEventListener("pointermove", move);
+  hit.addEventListener("pointerleave", () => { tip.hidden = true; cross.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); });
+}
+
+load("char");
+drawChart();
+// open in a working state: the first part of the crossing already drawn
+for (let i = 0; i < 150; i++) drawRow();
+updateStats(); drawZoom();
+</script>

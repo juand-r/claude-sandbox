@@ -50,6 +50,7 @@ Version 0.2, unreleased (v0.1.0 was tagged `rule110-lisp-v0.1.0`; v0.1.1 was not
 | `hashlife.py`, `hlc.c` | 1-D HashLife (exact): C core via ctypes (compiled on first import), Python API, `HashRun` |
 | `epochrun.py` | long runs: HashLife on a tree rebuilt every few reads from the active region and the next ossifiers and appendants |
 | `gas.py`, `gasc.c`, `gasc.py`, `gasrun.py`, `gascensus.py` | event engine (exact): gliders as particles, collisions simulated once and memoized; C event loop; Cook's layout with lazy sides and the read driver |
+| `demo/` | browser demo of the event engine (published as an artifact): `engine.js` (a JS port, checked by `node demo/test.js` against brute force), `page.html` + `build.py` -> `glider_event_engine.html`; scenes cut from the one-move TM run by `extract_scenes.py` |
 | `census.py` | glider census: find and type gliders in a row |
 | `decoder.py` | moving-data reader (diagnostic) |
 | `experiments.py` | the long automaton runs cited in REPORT.md |
