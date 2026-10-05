@@ -122,41 +122,129 @@ static inline int64_t end_of(const Item *it) {
 
 static int64_t gcd64(int64_t a, int64_t b) { while (b) { int64_t r = a % b; a = b; b = r; } return a; }
 
-/* first time >= t with fewer than MIN_GAP cells between a and b, or -1 */
-static int64_t collision(const Item *a, const Item *b, int64_t t) {
-    int64_t ea = end_of(a), eb = end_of(b);
-    if (a->kind == PART && b->kind == PART) {
-        const Orbit *oa = &orbits[a->id], *ob = &orbits[b->id];
-        int64_t L = oa->p / gcd64(oa->p, ob->p) * ob->p;
-        int64_t delta = ob->d * (L / ob->p) - oa->d * (L / oa->p);
-        int32_t pa, pb, wa, wb; int64_t la, lb;
-        state(a, t, &pa, &la, &wa); state(b, t, &pb, &lb, &wb);
-        int64_t best = -1;
-        int64_t ka = 0, kb = 0;          /* periods completed since t */
-        for (int64_t i = 0; i < L; i++) {
-            int32_t sa = (int32_t)((pa + i) % oa->p), sb = (int32_t)((pb + i) % ob->p);
-            int64_t xa = la - o_off[oa->base + pa] + ((pa + i) / oa->p) * oa->d + o_off[oa->base + sa];
-            int64_t xb = lb - o_off[ob->base + pb] + ((pb + i) / ob->p) * ob->d + o_off[ob->base + sb];
-            int64_t g = xb - xa - o_w[oa->base + sa];
-            int64_t tt;
-            if (g < MIN_GAP) tt = i;
-            else if (delta >= 0) continue;
-            else tt = i + ((g - MIN_GAP) / (-delta) + 1) * L;
-            if (best < 0 || tt < best) best = tt;
+/* Pair tables: for orbits oa, ob at phases pa, pb (at some time t), the
+   gap at t + i is G + h[i] for i in [0, L), G = lb - la (left edges at t),
+   and it grows by delta per joint period L. Cached by (oa, ob, pa, pb). */
+typedef struct { uint64_t key; int32_t L, delta, hmin, base; int32_t used; } PEnt;
+static PEnt *ptab; static uint64_t pcap, pused;
+static int32_t *pool; static int64_t n_pool, cap_pool;
+
+static int pgrow(void) {
+    PEnt *old = ptab; uint64_t oc = pcap;
+    pcap = oc ? 2 * oc : (1 << 12);
+    ptab = calloc(pcap, sizeof(PEnt));
+    if (!ptab) { failed = 1; return 0; }
+    for (uint64_t i = 0; i < oc; i++)
+        if (old[i].used) {
+            uint64_t m = pcap - 1, j = mix(old[i].key) & m;
+            while (ptab[j].used) j = (j + 1) & m;
+            ptab[j] = old[i];
         }
-        (void)ka; (void)kb; (void)wb;
-        return best < 0 ? -1 : t + best;
+    free(old);
+    return 1;
+}
+
+static const PEnt *pair_table(int32_t ia, int32_t ib, int32_t pa, int32_t pb) {
+    uint64_t key = ((uint64_t)ia << 48) | ((uint64_t)ib << 32) | ((uint64_t)pa << 16) | (uint64_t)pb;
+    if (4 * (pused + 1) > 3 * pcap && !pgrow()) return 0;
+    uint64_t m = pcap - 1, j = mix(key) & m;
+    while (ptab[j].used) {
+        if (ptab[j].key == key) return &ptab[j];
+        j = (j + 1) & m;
     }
+    const Orbit *oa = &orbits[ia], *ob = &orbits[ib];
+    int64_t L = oa->p / gcd64(oa->p, ob->p) * ob->p;
+    if (n_pool + L > cap_pool) {
+        int64_t c = cap_pool ? 2 * cap_pool : (1 << 16);
+        while (c < n_pool + L) c *= 2;
+        int32_t *q = realloc(pool, c * sizeof(int32_t));
+        if (!q) { failed = 1; return 0; }
+        pool = q; cap_pool = c;
+    }
+    PEnt *e = &ptab[j];
+    e->key = key; e->used = 1; pused++;
+    e->L = (int32_t)L; e->base = (int32_t)n_pool;
+    e->delta = (int32_t)(ob->d * (L / ob->p) - oa->d * (L / oa->p));
+    int32_t hmin = INT32_MAX;
+    int32_t oa0 = o_off[oa->base + pa], ob0 = o_off[ob->base + pb];
+    for (int64_t i = 0; i < L; i++) {
+        int64_t ja = pa + i, jb = pb + i;
+        int32_t sa = (int32_t)(ja % oa->p), sb = (int32_t)(jb % ob->p);
+        int64_t xa = (ja / oa->p) * oa->d + o_off[oa->base + sa] - oa0;
+        int64_t xb = (jb / ob->p) * ob->d + o_off[ob->base + sb] - ob0;
+        int32_t h = (int32_t)(xb - xa - o_w[oa->base + sa]);
+        pool[n_pool + i] = h;
+        if (h < hmin) hmin = h;
+    }
+    e->hmin = hmin;
+    n_pool += L;
+    return e;
+}
+
+static int64_t collision_periodic(const Item *a, const Item *b, int64_t t) {
+    int32_t pa, pb, wa, wb; int64_t la, lb;
+    state(a, t, &pa, &la, &wa); state(b, t, &pb, &lb, &wb);
+    const PEnt *e = pair_table(a->id, b->id, pa, pb);
+    if (!e) return -2;
+    int64_t G = lb - la;
+    const int32_t *h = pool + e->base;
+    if (G + e->hmin >= MIN_GAP) {
+        if (e->delta >= 0) return -1;                   /* never */
+        /* first period n* in which some phase dips below MIN_GAP, then
+           the first such phase */
+        int64_t D = -e->delta;
+        int64_t q = (G + e->hmin - MIN_GAP) / D;        /* >= 0 */
+        int64_t thr = (q + 1) * D - G + MIN_GAP;        /* h_i < thr */
+        for (int32_t i = 0; i < e->L; i++)
+            if (h[i] < thr) return t + i + (q + 1) * e->L;
+        failed = 6;                                      /* unreachable */
+        return -2;
+    }
+    for (int32_t i = 0; i < e->L; i++)
+        if (G + h[i] < MIN_GAP) return t + i;
+    failed = 6;
+    return -2;
+}
+
+/* an item's edges stepped one time unit at a time */
+typedef struct { int64_t x; int32_t s, w; const Item *it; } Cursor;
+
+static inline void cur_init(Cursor *c, const Item *it, int64_t t) {
+    c->it = it;
+    state(it, t, &c->s, &c->x, &c->w);
+}
+
+static inline void cur_next(Cursor *c) {
+    const Item *it = c->it;
+    if (it->kind == PART) {
+        const Orbit *o = &orbits[it->id];
+        int32_t s = c->s + 1;
+        int64_t x = c->x - o_off[o->base + c->s];
+        if (s == o->p) { s = 0; x += o->d; }
+        c->s = s; c->x = x + o_off[o->base + s]; c->w = o_w[o->base + s];
+    } else {
+        const Entry *e = &entries[it->id];
+        int64_t x0 = c->x - e_off[e->base + c->s];
+        c->s++;
+        c->x = x0 + e_off[e->base + c->s]; c->w = e_w[e->base + c->s];
+    }
+}
+
+/* first time >= t with fewer than MIN_GAP cells between a and b, or -1
+   (-2: failure) */
+static int64_t collision(const Item *a, const Item *b, int64_t t) {
+    if (a->kind == PART && b->kind == PART) return collision_periodic(a, b, t);
+    int64_t ea = end_of(a), eb = end_of(b);
     int64_t horizon = ea < eb ? ea : eb;
     int64_t n = horizon - t + 1;
-    int32_t ph; int64_t la, lb; int32_t wa, wb;
-    state(a, t, &ph, &la, &wa); state(b, t, &ph, &lb, &wb);
-    if (lb - la - wa >= MIN_GAP + 2 * n) return -1;     /* light cone */
-    for (int64_t i = 0; i < n; i++) {
-        state(a, t + i, &ph, &la, &wa); state(b, t + i, &ph, &lb, &wb);
-        if (lb - la - wa < MIN_GAP) return t + i;
+    Cursor ca, cb;
+    cur_init(&ca, a, t); cur_init(&cb, b, t);
+    if (cb.x - ca.x - ca.w >= MIN_GAP + 2 * n) return -1;     /* light cone */
+    for (int64_t i = 0;; i++) {
+        if (cb.x - ca.x - ca.w < MIN_GAP) return t + i;
+        if (i + 1 >= n) return -1;
+        cur_next(&ca); cur_next(&cb);
     }
-    return -1;
 }
 
 static inline int64_t sen_bound(int side, int64_t t) {    /* side 0: L, 1: R */
@@ -263,6 +351,7 @@ static int schedule_pair(int32_t a, int64_t t) {
         if (ia->kind == SENL && ib->kind == SENR) { failed = 2; return ERR; }
         tc = sentinel_time(ia, ib, t); kind = EV_M;
     } else { tc = collision(ia, ib, t); kind = EV_C; }
+    if (tc == -2) return ERR;
     if (tc >= 0) return push(tc, kind, a, b, ia->ptok);
     return OK;
 }
@@ -384,6 +473,8 @@ int gc_reset(void) {
     free(pieces); pieces = 0; n_pieces = cap_pieces = 0;
     free(heap); heap = 0; n_heap = cap_heap = 0;
     free(mtab); mtab = 0; mcap = mused = 0;
+    free(ptab); ptab = 0; pcap = pused = 0;
+    free(pool); pool = 0; n_pool = cap_pool = 0;
     now = 0; n_events = 0; failed = 0;
     sen_den[0] = sen_den[1] = 1;
     return mgrow();
@@ -611,6 +702,21 @@ int64_t gc_list(int64_t lo, int64_t hi, int64_t max, int32_t *kind, int32_t *id,
     }
     return n;
 }
+
+/* all items in order: kind, id, cL (int32 x3 per item), t0, x0 (int64 x2) */
+int64_t gc_dump(int64_t max, int32_t *small, int64_t *big) {
+    int64_t n = 0;
+    for (int32_t i = head; i >= 0; i = items[i].next) {
+        if (n == max) return -1;
+        small[3 * n] = items[i].kind; small[3 * n + 1] = items[i].id;
+        small[3 * n + 2] = items[i].cL;
+        big[2 * n] = items[i].t0; big[2 * n + 1] = items[i].x0;
+        n++;
+    }
+    return n;
+}
+
+void gc_set_now(int64_t t) { now = t; }
 
 int64_t gc_count(void) {
     int64_t n = 0;

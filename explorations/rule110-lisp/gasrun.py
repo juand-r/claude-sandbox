@@ -8,6 +8,8 @@ at clean ether. ReadWatch and census check the reads exactly as for the
 HashLife engines (experiments.sample), on windows rendered by the Gas.
 """
 
+import os
+import pickle
 import time
 from fractions import Fraction
 
@@ -165,16 +167,51 @@ class GasReads:
     samples every 2^sample_bits steps around the predicted read times
     (the sampling scheme of epochrun.EpochReads)."""
 
-    def __init__(self, tape, apps, v, n_reads, sample_bits=17, log=print, engine="c"):
+    def __init__(self, tape, apps, v, n_reads, sample_bits=17, log=print, engine="c",
+                 checkpoint=None, ckpt_every=500):
         self.apps, self.v, self.log = apps, v, log
         self.every = 1 << sample_bits
+        self.key = (tape, tuple(apps), v, n_reads)
+        self.checkpoint, self.ckpt_every = checkpoint, ckpt_every
         rp = n_reads // len(apps) + 3
         self.n_all = 2 * (n_reads + 3) + 10
         self.lay = layout(tape, apps, self.n_all, rp, v_override=v)
         self.regs = component_regions(tape, apps, rp)
         self.watch = ReadWatch(self.regs[:n_reads], apps, lookahead=2)
-        self.run = build(self.lay, self.n_all, engine)
+        if checkpoint and os.path.exists(checkpoint):
+            self._resume()
+        else:
+            self.run = build(self.lay, self.n_all, engine)
         self.t_wall = time.time()
+
+    _WATCH = ("before", "state", "read_at", "last", "t_last")
+
+    def _save(self):
+        """Checkpoint (C engine only): the gas, the sides' positions, the
+        read check."""
+        g = self.run
+        sides = [s.linear.__self__ for s in g.sides]
+        state = {"key": self.key, "gas": g.state(),
+                 "train_k": sides[0].k, "table": (sides[1].x, sides[1].c),
+                 "watch": {k: getattr(self.watch, k) for k in self._WATCH}}
+        tmp = self.checkpoint + ".tmp"
+        with open(tmp, "wb") as fh:
+            pickle.dump(state, fh)
+        os.replace(tmp, self.checkpoint)
+
+    def _resume(self):
+        with open(self.checkpoint, "rb") as fh:
+            state = pickle.load(fh)
+        if state["key"] != self.key:
+            raise ValueError(f"checkpoint {self.checkpoint} is for another run")
+        train = Train(self.lay, self.n_all)
+        train.k = state["train_k"]
+        table = Table(self.lay, *state["table"])
+        sides = [_side("L", train, TRAIN_SPEED), _side("R", table, TABLE_SPEED)]
+        self.run = _cgas_run().from_state(state["gas"], sides)
+        for k, val in state["watch"].items():
+            setattr(self.watch, k, val)
+        self.log(f"resumed from {self.checkpoint} at t={self.run.t}")
 
     def _due(self, j):
         w, starts = self.watch, self.watch.read_at
@@ -192,6 +229,8 @@ class GasReads:
         while w.pending():
             pending = w.pending()
             if pending[0] // 100 > logged:
+                if self.checkpoint and logged >= 0 and pending[0] % self.ckpt_every < 100:
+                    self._save()
                 logged = pending[0] // 100
                 self.log(f"[gas] read {pending[0]}: t={g.t}, {g.n_events} events, "
                          f"{g.count()} items, {len(g.memo)} collisions, "

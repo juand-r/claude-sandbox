@@ -28,7 +28,10 @@ FAR = 1 << 62
 def _load():
     if not os.path.exists(_LIB) or os.path.getmtime(_LIB) < os.path.getmtime(_SRC):
         os.makedirs(os.path.dirname(_LIB), exist_ok=True)
-        subprocess.run(["cc", "-O2", "-shared", "-fPIC", "-o", _LIB, _SRC], check=True)
+        # build beside and rename: running processes keep the old file
+        tmp = f"{_LIB}.{os.getpid()}"
+        subprocess.run(["cc", "-O2", "-shared", "-fPIC", "-o", tmp, _SRC], check=True)
+        os.replace(tmp, _LIB)
     lib = ctypes.CDLL(_LIB)
     i32, i64, p = ctypes.c_int32, ctypes.c_int64, ctypes.c_void_p
     for name, res, args in (
@@ -44,6 +47,7 @@ def _load():
             ("gc_append", i32, [i32, i32, i64, i64, i32]),
             ("gc_set_side", None, [i32, i64, i64, i64]),
             ("gc_side_request", i64, [i32]),
+            ("gc_dump", i64, [i64, p, p]), ("gc_set_now", None, [i64]),
             ("gc_start", i32, []),
             ("gc_materialize", i32, [i32, p, p, p, p, p]),
             ("gc_advance", i32, [i64]),
@@ -78,6 +82,7 @@ class CGas:
         self.n_sim = 0
         self.c_left = None
         self._rows = []                # setup: items before start()
+        self.n_events_before = 0       # events before a resume
 
     # -- tables ----------------------------------------------------------------
     def _check(self, r=None):
@@ -108,26 +113,31 @@ class CGas:
             e = simulate(key, self.reg)
             self.n_sim += 1
             self._push_orbits()
-            kinds, ids, phases = [], [], []
-            for pk, _ in e.pieces:
-                r = self.reg.lookup(pk)
-                if r is not None:
-                    self._push_orbits()
-                    kinds.append(PART); ids.append(r[0].id); phases.append(r[1])
-                else:                  # composite piece: simulated when reached
-                    kinds.append(COMP); ids.append(self.memo.get(pk, -1)); phases.append(0)
-            st = e.states
-            arrs = [_arr([x for _, x in st], np.int32), _arr([k[1] for k, _ in st], np.int32),
-                    _arr([k[2] for k, _ in st], np.int8), _arr([k[3] for k, _ in st], np.int8)]
-            parrs = [_arr(kinds, np.int32), _arr(ids, np.int32), _arr(phases, np.int32),
-                     _arr([x for _, x in e.pieces], np.int64),
-                     _arr([k[2] for k, _ in e.pieces], np.int32)]
-            eid = _lib.gc_add_entry(e.T, *[a.ctypes.data for a in arrs], len(e.pieces),
-                                    *[a.ctypes.data for a in parrs])
-            self._check(eid if eid >= 0 else ERR)
+            eid = self._add_entry(e)
             self.entries.append(e)
             self.memo[key] = eid
         return COMP, eid, 0
+
+    def _add_entry(self, e):
+        """Push a gas.Entry to C (its composite pieces resolved if known)."""
+        kinds, ids, phases = [], [], []
+        for pk, _ in e.pieces:
+            r = self.reg.lookup(pk)
+            if r is not None:
+                self._push_orbits()
+                kinds.append(PART); ids.append(r[0].id); phases.append(r[1])
+            else:                  # composite piece: simulated when reached
+                kinds.append(COMP); ids.append(self.memo.get(pk, -1)); phases.append(0)
+        st = e.states
+        arrs = [_arr([x for _, x in st], np.int32), _arr([k[1] for k, _ in st], np.int32),
+                _arr([k[2] for k, _ in st], np.int8), _arr([k[3] for k, _ in st], np.int8)]
+        parrs = [_arr(kinds, np.int32), _arr(ids, np.int32), _arr(phases, np.int32),
+                 _arr([x for _, x in e.pieces], np.int64),
+                 _arr([k[2] for k, _ in e.pieces], np.int32)]
+        eid = _lib.gc_add_entry(e.T, *[a.ctypes.data for a in arrs], len(e.pieces),
+                                *[a.ctypes.data for a in parrs])
+        self._check(eid if eid >= 0 else ERR)
+        return eid
 
     def _key(self, kind, i, phase):
         if kind == PART:
@@ -180,7 +190,7 @@ class CGas:
 
     @property
     def n_events(self):
-        return _lib.gc_events()
+        return _lib.gc_events() + self.n_events_before
 
     def count(self):
         return _lib.gc_count()
@@ -306,6 +316,48 @@ class CGas:
             raise ValueError("window: no item found")
         out[x - lo:] = eth[(c + xs[x - lo:] + SHIFT * t) % TILE]
         return out
+
+    # -- checkpoints ----------------------------------------------------------------
+    def state(self):
+        """Everything needed to resume (with the same side sources), as
+        plain Python data. Only between advance_to calls."""
+        n = self.count()
+        small, big = np.zeros(3 * n, np.int32), np.zeros(2 * n, np.int64)
+        if _lib.gc_dump(n, small.ctypes.data, big.ctypes.data) != n:
+            raise RuntimeError("gasc: dump failed")
+        return {"t": self.t, "n_events": self.n_events, "items": (small, big),
+                "orbits": [(o.keys, o.off) for o in self.reg.orbits],
+                "entries": self.entries, "memo": self.memo, "n_sim": self.n_sim}
+
+    @classmethod
+    def from_state(cls, st, sides):
+        """Resume from state(): the C tables are rebuilt in the same id
+        order and every pending event is recomputed from time t (the first
+        collision at or after t is the one originally scheduled, since
+        none was skipped)."""
+        g = cls()
+        for keys, off in st["orbits"]:
+            g.reg.add(keys, off)
+        g._push_orbits()
+        g.memo = st["memo"]
+        g.n_sim = st["n_sim"]
+        for e in st["entries"]:
+            g.entries.append(e)
+            g._add_entry(e)
+        g.sides = sides
+        _lib.gc_set_now(st["t"])
+        small, big = st["items"]
+        for k in range(len(small) // 3):
+            kind = int(small[3 * k])
+            if kind in (SENL, SENR):
+                g._side_params(0 if kind == SENL else 1)
+            if _lib.gc_append(kind, int(small[3 * k + 1]), int(big[2 * k]),
+                              int(big[2 * k + 1]), int(small[3 * k + 2])) < 0:
+                g._check(ERR)
+        g._rows = None
+        g._check(_lib.gc_start())
+        g.n_events_before = st["n_events"]
+        return g
 
     @classmethod
     def from_layout(cls, lay):
