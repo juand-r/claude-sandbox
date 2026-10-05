@@ -88,20 +88,25 @@ Steps:
 - [x] B2. Engine core; tests against the packed engine on small rows.
 - [x] B3. Lazy sides and a read driver; Collatz 556 reads identical to
       data/collatz_v12216.log (outcomes and cluster counts).
-- [ ] B4. One-move TM: windows cell-exact against EpochReads at several
+- [x] B4. One-move TM: windows cell-exact against EpochReads at several
       times; identical read outcomes; then the full run at 1.25x.
   - [x] read 3152 at Cook's v: 137,190,722 cells identical
-  - [ ] read 3256 at Cook's v (running); the failure at 3269 reproduced?
-  - [ ] full run at 1.25x (running)
+  - [x] read 3256 at Cook's v: 141,909,284 identical; the failure at 3269
+        reproduced read for read (then debris: 13.5 GB, as HashLife)
+  - [x] full run at 1.25x: 5970/5970 identical to HashLife
+- [x] Bound groups (tape characters cross as one particle): events 4-5x
+      fewer; all checks repeated and identical.
 - [x] Python too slow per event (37 us): event loop ported to C (gasc.c,
       0.2-0.3 us per event after pair tables); Python engine kept as the
       reference (identical reads and event counts).
 - [x] Checkpoints (gasrun.GasReads checkpoint=..., tested by kill/resume).
 
 Phase C: use it
-- [ ] C1. Benchmark against the current engine (late stretch).
-- [ ] C2. The 3-state TM that moves both ways (59,136 reads) at a spacing
-      the queue-gap rule allows.
+- [x] C1. Benchmark against the current engine: Collatz 45 s -> 9 s;
+      one-move TM 1.25x 9151 s -> 524 s (REPORT 5).
+- [ ] C2. The 3-state TM that moves both ways (59,184 reads; the gap rule
+      needs v > 1.69x Cook's, run at 2x) - running
+      (`experiments.py tm-gliders three 2 gas`).
 - [ ] C3. Write up (REPORT 5, 3.x; NOTES).
 
 ## Phase 8: the Cook's-v failure; engine efficiency (started 2026-10-04)
