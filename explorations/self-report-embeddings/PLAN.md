@@ -93,8 +93,8 @@ item) hardly measured following at all.
 - [x] `follow_test.py`: measurements 1 to 4.
 - [x] Tests (12) and canaries.
 - [x] Independent code review by a subagent; findings addressed (NOTES.md).
-- [ ] Run A and B, 3 seeds each (CPU, minutes each).
-- [ ] Write up the results in plain language (REPORT.md).
+- [x] Run A and B, 3 seeds each (about 4 minutes each).
+- [x] Write up the results in plain language (REPORT.md).
 
 ## Later, only if the first version works and the user agrees
 

@@ -45,3 +45,9 @@ Findings and what I did:
 Quick numbers seen during development (seed 0, not the experiment): after 40
 epochs, R² 0.94 on training tokens, 0.32-0.34 on held-out tokens, both
 conditions. The reviewer's 200-epoch runs: training R² 1.0, held-out 0.34-0.39.
+
+## 2026-10-05: first runs
+
+`run_all.sh`: 2 conditions x 3 seeds, 3,000 epochs, about 230 s each, four in
+parallel; then `follow_test.py`. No failures. Results in REPORT.md. Held-out R²
+rises to about 0.49 by epoch 500 and stays there (no later decline).
