@@ -49,6 +49,7 @@ Version 0.2, unreleased (v0.1.0 was tagged `rule110-lisp-v0.1.0`; v0.1.1 was not
 | `casim.py` | running an encoded CTS on the automaton: `Run` (cyclic array), `StreamRun` (exact streaming window, checkpointable), `layout` (the initial row as segments, never materialized) |
 | `hashlife.py`, `hlc.c` | 1-D HashLife (exact): C core via ctypes (compiled on first import), Python API, `HashRun` |
 | `epochrun.py` | long runs: HashLife on a tree rebuilt every few reads from the active region and the next ossifiers and appendants |
+| `gas.py`, `gasc.c`, `gasc.py`, `gasrun.py` | event engine (exact): gliders as particles, collisions simulated once and memoized; C event loop; Cook's layout with lazy sides and the read driver |
 | `census.py` | glider census: find and type gliders in a row |
 | `decoder.py` | moving-data reader (diagnostic) |
 | `experiments.py` | the long automaton runs cited in REPORT.md |
@@ -67,4 +68,7 @@ Version 0.2, unreleased (v0.1.0 was tagged `rule110-lisp-v0.1.0`; v0.1.1 was not
     python experiments.py cost           # REPORT.md section 4 tables
     python experiments.py collatz        # REPORT.md 3.6, ~4 hours, resumable
     python experiments.py collatz-hash   # the same on HashLife, ~1 minute
+    python experiments.py collatz-gas    # the same on the event engine, ~10 s
     python experiments.py tm-gliders one 2   # REPORT.md 3.7: a compiled TM at 2x Cook's v, resumable
+    python experiments.py tm-gliders one 1.25 gas   # the same on the event engine (~9 min)
+    python experiments.py gas-vs-hash CKPT  # event engine vs a HashLife checkpoint, cell for cell

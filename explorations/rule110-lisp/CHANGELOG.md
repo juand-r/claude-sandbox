@@ -2,6 +2,24 @@
 
 ## Unreleased (after v0.1.1)
 
+An event engine (REPORT 5; PLAN.md phase 9, item 1)
+- gas.py (reference, Python), gasc.c/gasc.py (C event loop),
+  gasrun.py (Cook's layout with lazy sides, read driver, checkpoints):
+  gliders are particles moved in closed form; patches that come within
+  two cells are simulated exactly and each collision is memoized by its
+  canonical key. Exact by the superposition lemma (radius 1).
+- Exact against HashLife: the one-move TM at Cook's v, run from t = 0,
+  equals two HashLife checkpoints on every active cell (1.37e8 and
+  1.42e8 cells at 6.7e10 and 6.9e10 generations); reads 0-3,270 equal,
+  including the failure of 3.7 read for read (an independent-engine
+  confirmation). De Mol's 556 reads and the one-move TM's 5,970 reads
+  at 1.25x identical to HashLife, outcome and cluster count.
+- Speed: De Mol 45 s -> 9 s; one-move TM at 1.25x 9,151 s -> 524 s.
+  Tape characters cross as one particle (bound groups); periodic table
+  chunks are split once; census window codes from a lookup table.
+- `python experiments.py collatz-gas | gas-vs-hash CKPT | tm-gliders
+  NAME F gas`.
+
 Why Cook's spacing can be too small (REPORT 3.8)
 - The one-move TM's failure at Cook's v is observed directly: the
   character for read 3,269 is made correctly, then the next ossifier,
