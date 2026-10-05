@@ -886,6 +886,10 @@ of two HashLife checkpoints, and the whole active region was compared
 | read 3,152 | 6.67e10 | 137,190,722 | 0 | 10 min (first C version) |
 | read 3,256 | 6.89e10 | 141,909,284 | 0 | 101 s (5.4e8 events); with bound groups 115 s (1.1e8 events) |
 
+Beyond Cook's gliders, random patches in ether (60 trials of up to
+3,000 steps, with debris, unknown gliders and phase slips; 638 particle
+kinds appeared) give the same cells on the event engine and on HashLife.
+
 With the read check, the same machine at Cook's v gives reads 0 to 3,270
 identical to HashLife's (outcome and cluster count). That includes the
 failure of 3.7, read for read: 3,270 '!' with 843 Ebar clusters, 3,269

@@ -927,3 +927,8 @@ Later the same day: costs and the 3-state run (C2).
   reads: identical to the event engine, outcome and cluster count.
 - I restarted the 3-state run twice: after bound groups (fresh start),
   and at its read-3500 checkpoint after the census speedup (resume).
+- Generality check: random patches in ether (60 trials, up to 3000
+  steps; debris, unknown gliders, slips, stationary groups): C engine,
+  Python engine and HashLife agree on every cell, C and Python on every
+  event count; 638 distinct particle kinds appeared. A short version is
+  tests/test_gas.py::test_random_patches_both_engines_match_hashlife.
