@@ -185,8 +185,14 @@ static int64_t sentinel_time(const Item *a, const Item *b, int64_t t) {
     double gap, closing;
     if (left) { gap = lo - (double)sen_bound(0, t) - MARGIN; closing = vmax - v; }
     else { gap = (double)sen_bound(1, t) - hi - MARGIN; closing = v + vmax; }
+    if (it->kind == PART) {
+        /* exact: a particle moving with the side never gets closer */
+        const Orbit *o = &orbits[it->id];
+        int64_t c = left ? sen_num[0] * o->p - (int64_t)o->d * sen_den[0]
+                         : (int64_t)o->d * sen_den[1] + sen_num[1] * o->p;
+        if (c <= 0) return -1;
+    } else if (closing <= 0) return -1;
     if (gap <= 0) return t;
-    if (closing <= 0) return -1;
     int64_t tc = t + (int64_t)(gap / closing);
     if (end >= 0 && tc > end) return -1;
     return tc;
@@ -490,6 +496,18 @@ int gc_set_merge(int32_t kind, int32_t id, int32_t phase, int32_t dx) {
     if (!m->used) mused++;
     m->k1 = k1; m->k2 = k2; m->kind = kind; m->id = id; m->phase = phase; m->dx = dx; m->used = 1;
     return OK;
+}
+
+/* request a materialization of side s (0: L, 1: R) now; returns the
+   sentinel's bound, or the far value if that side has no sentinel */
+int64_t gc_side_request(int32_t s) {
+    int32_t i = s == 0 ? head : tail;
+    if (i < 0 || items[i].kind != (s == 0 ? SENL : SENR))
+        return s == 0 ? INT64_MIN : INT64_MAX;
+    if (s == 0) { req_a = i; req_b = items[i].next; }
+    else { req_a = items[i].prev; req_b = i; }
+    req_t = now;
+    return sen_bound(s, now);
 }
 
 /* append an item at the right end (setup, before gc_start) */

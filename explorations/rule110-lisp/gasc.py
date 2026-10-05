@@ -43,6 +43,7 @@ def _load():
             ("gc_set_merge", i32, [i32, i32, i32, i32]),
             ("gc_append", i32, [i32, i32, i64, i64, i32]),
             ("gc_set_side", None, [i32, i64, i64, i64]),
+            ("gc_side_request", i64, [i32]),
             ("gc_start", i32, []),
             ("gc_materialize", i32, [i32, p, p, p, p, p]),
             ("gc_advance", i32, [i64]),
@@ -226,9 +227,16 @@ class CGas:
         b2, w2, pl, pr, dx = trim(bits, ka[1] + g + kb[1], ka[2], kb[3])
         self._check(_lib.gc_set_merge(*self._resolve((b2, w2, pl, pr)), dx))
 
+    def ensure(self, lo, hi):
+        """Materialize the sides until neither reaches into [lo, hi)."""
+        while _lib.gc_side_request(0) >= lo - gas.SENTINEL_MARGIN:
+            self._materialize()
+        while _lib.gc_side_request(1) < hi + gas.SENTINEL_MARGIN:
+            self._materialize()
+
     def _materialize(self):
         a, b, _, t = self._request()
-        s = 0 if self._item(a, t)[0] == SENL else 1
+        s = 0 if a >= 0 and self._item(a, t)[0] == SENL else 1
         side = self.sides[s]
         bound = side.bound(t)
         row = side.src()
@@ -258,6 +266,7 @@ class CGas:
 
     # -- rendering ------------------------------------------------------------------
     def window(self, lo, hi):
+        self.ensure(lo, hi)
         t = self.t
         cap = 1 << 12
         while True:

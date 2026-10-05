@@ -151,7 +151,7 @@ def build(lay, n_all, engine="c"):
 
 
 def _side(name, s, speed):
-    side = gas.Side(name, s.src, s.bound, float(speed))
+    side = gas.Side(name, s.src, s.bound, speed)
     side.linear = s.linear
     return side
 

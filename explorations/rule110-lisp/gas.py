@@ -19,6 +19,8 @@ first cell differs from the left ether, the last from the right ether
 (width 0 when the two ethers agree on a cut).
 """
 
+from fractions import Fraction
+
 import numpy as np
 
 from engine import ETHER
@@ -481,7 +483,7 @@ class Gas:
         if it.orbit is not None:
             o = it.orbit
             lin = l - o.offa[(t - it.t0) % o.p]        # linear path at t
-            v, lo, hi, end = o.v, lin + o.lo_min, lin + o.hi_max, None
+            v, lo, hi, end = Fraction(o.d, o.p), lin + o.lo_min, lin + o.hi_max, None
         else:
             v, lo, hi, end = None, l, l + key[1], it.end()
         sb = sen.bound
@@ -491,10 +493,12 @@ class Gas:
         else:
             gap = sb.bound(t) - hi - SENTINEL_MARGIN
             closing = (v if v is not None else SPEED_MAX) + sb.v_max
-        if gap <= 0:
-            return t
+        # a particle moving with the side (exact rational test) never gets
+        # closer to it: the side's own last materialized row, typically
         if closing <= 0:
             return None
+        if gap <= 0:
+            return t
         tc = t + int(gap / closing)
         return None if end is not None and tc > end else tc
 
@@ -625,8 +629,20 @@ class Gas:
         self._replace([a], news, t)
 
     # -- rendering --------------------------------------------------------------
+    def ensure(self, lo, hi):
+        """Materialize the sides until neither reaches into [lo, hi)
+        (exact at any time: unmaterialized content is untouched)."""
+        t = self.t
+        while self.head is not None and self.head.side == "L" and \
+                self.head.bound.bound(t) >= lo - SENTINEL_MARGIN:
+            self._materialize(self.head, self.head.next, t)
+        while self.tail is not None and self.tail.side == "R" and \
+                self.tail.bound.bound(t) < hi + SENTINEL_MARGIN:
+            self._materialize(self.tail.prev, self.tail, t)
+
     def window(self, lo, hi):
         """uint8 cells [lo, hi) at time t."""
+        self.ensure(lo, hi)
         t = self.t
         out = np.empty(hi - lo, dtype=np.uint8)
         xs = np.arange(lo, hi)
