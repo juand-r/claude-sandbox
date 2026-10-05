@@ -23,6 +23,7 @@ _LIB = os.path.join(_DIR, "__pycache__", "gasc.so")
 DEAD, PART, COMP, SENL, SENR = range(5)
 OK, NEED_MERGE, NEED_SIDE, NEED_PIECE, ERR = 0, 1, 2, 3, -1
 FAR = 1 << 62
+_ETHER_BITS = np.array([int(c) for c in gas.ETHER], dtype=np.uint8)
 
 
 def _load():
@@ -83,6 +84,11 @@ class CGas:
         self.c_left = None
         self._rows = []                # setup: items before start()
         self.n_events_before = 0       # events before a resume
+        # rendering: flat key slots and their cells (window)
+        self._obase, self._ebase, self._nkeys = [], [], 0
+        self._koff = np.zeros(0, np.int64)
+        self._cellbuf = np.zeros(1 << 16, np.uint8)
+        self._ncells = 0
 
     # -- tables ----------------------------------------------------------------
     def _check(self, r=None):
@@ -275,7 +281,43 @@ class CGas:
         self._check(_lib.gc_materialize(len(new), *[q.ctypes.data for q in arrs]))
 
     # -- rendering ------------------------------------------------------------------
+    def _key_index(self, kind, ids, ph):
+        """Flat index of each (kind, id, phase) key: orbits and entries
+        get consecutive slots (one per phase or step), allocated here."""
+        while len(self._obase) < len(self.reg.orbits):
+            o = self.reg.orbits[len(self._obase)]
+            self._obase.append(self._nkeys)
+            self._nkeys += o.p
+        while len(self._ebase) < len(self.entries):
+            e = self.entries[len(self._ebase)]
+            self._ebase.append(self._nkeys)
+            self._nkeys += e.T + 1
+        if len(self._koff) < self._nkeys:
+            grow = max(self._nkeys, 2 * len(self._koff)) - len(self._koff)
+            self._koff = np.concatenate([self._koff, np.full(grow, -1, np.int64)])
+        ob, eb = np.array(self._obase, np.int64), np.array(self._ebase, np.int64)
+        part = kind == PART
+        kid = np.empty(len(kind), np.int64)
+        kid[part] = ob[ids[part]] + ph[part]
+        kid[~part] = eb[ids[~part]] + ph[~part]
+        # cells of keys not seen before
+        new = np.nonzero(self._koff[kid] < 0)[0]
+        for j in new:
+            k = kid[j]
+            if self._koff[k] >= 0:
+                continue
+            key = self._key(int(kind[j]), int(ids[j]), int(ph[j]))
+            cells = cells_of(key[0], key[1])
+            if self._ncells + len(cells) > len(self._cellbuf):
+                self._cellbuf = np.concatenate(
+                    [self._cellbuf, np.zeros(max(len(self._cellbuf), len(cells)), np.uint8)])
+            self._cellbuf[self._ncells:self._ncells + len(cells)] = cells
+            self._koff[k] = self._ncells
+            self._ncells += len(cells)
+        return kid
+
     def window(self, lo, hi):
+        """uint8 cells [lo, hi) at time t (vectorized rendering)."""
         self.ensure(lo, hi)
         t = self.t
         cap = 1 << 12
@@ -286,35 +328,33 @@ class CGas:
             if n >= 0:
                 break
             cap *= 4
-        kind, ids, ph, left, width, cls = [q[:n].tolist() for q in bufs]
-        eth = np.array([int(c) for c in gas.ETHER], dtype=np.uint8)
-        out = np.empty(hi - lo, dtype=np.uint8)
-        xs = np.arange(lo, hi)
-        x, c = lo, None
-        for kd, i, p, l, w, cl in zip(kind, ids, ph, left, width, cls):
-            if kd in (SENL, SENR):
-                if (kd == SENL and l >= lo) or (kd == SENR and l < hi):
-                    raise ValueError(f"window [{lo}, {hi}) reaches an unmaterialized side")
-                continue
-            key = self._key(kd, i, p)
-            r = l + w
-            if l > x:
-                e = min(l, hi)
-                out[x - lo:e - lo] = eth[(cl + xs[x - lo:e - lo] + SHIFT * t) % TILE]
-                x = e
-            if x >= hi:
-                return out
-            if r > x:
-                cells = cells_of(key[0], w)
-                a_, b_ = max(x, l), min(r, hi)
-                out[a_ - lo:b_ - lo] = cells[a_ - l:b_ - l]
-                x = b_
-            c = (key[3] - r - SHIFT * t) % TILE
-            if x >= hi:
-                return out
-        if c is None:
+        kind, ids, ph, left, width, cls = [q[:n] for q in bufs]
+        sen = kind >= SENL
+        if np.any(sen & (kind == SENL) & (left >= lo)) or np.any(sen & (kind == SENR) & (left < hi)):
+            raise ValueError(f"window [{lo}, {hi}) reaches an unmaterialized side")
+        keep = ~sen
+        kind, ids, ph, left, width, cls = (kind[keep], ids[keep], ph[keep], left[keep],
+                                           width[keep].astype(np.int64), cls[keep])
+        if not len(kind):
             raise ValueError("window: no item found")
-        out[x - lo:] = eth[(c + xs[x - lo:] + SHIFT * t) % TILE]
+        kid = self._key_index(kind, ids, ph)
+        # ether: each gap reads the constant of the item right of it; after
+        # the last item, that item's right constant
+        last = self._key(int(kind[-1]), int(ids[-1]), int(ph[-1]))
+        c_end = (last[3] - int(left[-1]) - last[1] - SHIFT * t) % TILE
+        xs = np.arange(lo, hi)
+        j = np.searchsorted(left, xs, side="right")
+        c = np.where(j < len(left), cls[np.minimum(j, len(left) - 1)], c_end)
+        out = _ETHER_BITS[(c + xs + SHIFT * t) % TILE]
+        # patches
+        total = int(width.sum())
+        if total:
+            starts = np.cumsum(width) - width
+            within = np.arange(total) - np.repeat(starts, width)
+            pos = np.repeat(left, width) + within - lo
+            vals = self._cellbuf[np.repeat(self._koff[kid], width) + within]
+            m = (pos >= 0) & (pos < hi - lo)
+            out[pos[m]] = vals[m]
         return out
 
     # -- checkpoints ----------------------------------------------------------------
