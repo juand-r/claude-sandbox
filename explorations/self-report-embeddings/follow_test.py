@@ -203,13 +203,19 @@ def main():
         m, s = T.load(path)
         train_tokens, held_out = M.split_tokens(s["seed"], s["n_tokens"], s["n_held_out"])
         base_name = path.stem.replace(s["condition"], "untrained", 1)   # e.g. untrained_V256_seed0
-        if path.stem not in out:
+        if path.stem in out:                       # measured before: must be the same run
+            old = {k: v for k, v in out[path.stem]["settings"].items() if k != "steps"}
+            if old != {k: v for k, v in s.items() if k != "steps"}:
+                raise RuntimeError(f"{path.stem}: saved settings differ from the stored measurement; "
+                                   f"delete its entry from {out_path.name} to remeasure")
+        else:
             out[path.stem] = {"settings": s, **measure(m, train_tokens, held_out, s["seed"])}
             print(path.stem, {k: round(v, 4) for k, v in out[path.stem].items() if isinstance(v, float)}, flush=True)
         if base_name not in out:
             torch.manual_seed(s["seed"])           # same initialization as the run (train.train), untrained
             base = M.SelfReporter(s["n_tokens"], s["dim"], s["n_layers"], s["n_heads"], s["mlp_width"])
-            out[base_name] = measure(base, train_tokens, held_out, s["seed"])
+            out[base_name] = {"seed": s["seed"], "n_tokens": s["n_tokens"],
+                              **measure(base, train_tokens, held_out, s["seed"])}
         out_path.write_text(json.dumps(out, indent=1))     # after every run: a restart loses at most one
     print(f"wrote {out_path}")
 

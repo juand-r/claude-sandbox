@@ -75,3 +75,18 @@ it cold. Its findings, all verified and fixed:
   `results/trial_30ep_seed0_follow_test.json`.
 - Terms used two ways ("trained", "size", "change") and undefined terms
   (internal state, position, run, pass, length) fixed.
+
+## 2026-10-05: vocabulary sweep (V = 256, 1024, 4096)
+
+Second review (separate Claude instance) of the vocabulary change: no bugs; V = 64
+runs reproduce bit for bit. Added its suggested guard: the measurement driver
+raises if a stored measurement's settings differ from the saved run's.
+Caveats it raised, for the write-up: equal steps means fewer passes per token
+at larger V (3000, 750, 188, 47 epochs), so in the trained condition each
+embedding vector gets far fewer updates; the centred R² uses a per-coordinate
+mean over very different numbers of tokens across V.
+
+Mistake of mine: `pkill -f "[p]ytest -q tests"` inside a command whose own text
+contained "pytest -q tests" killed that command (exit 144). Same class of error
+as the earlier pgrep self-matches. Rule: never pkill by a pattern that also
+appears in the current command line; kill by PID.
