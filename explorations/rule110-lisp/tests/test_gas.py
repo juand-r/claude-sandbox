@@ -95,3 +95,39 @@ def test_gas_matches_hashlife_on_collatz_layout():
         h.step(T - h.t)
         assert np.array_equal(g.window(lo, hi), h.window(lo, hi)), T
     assert g.n_events > 10_000
+
+
+def test_c_engine_matches_python_engine_and_hashlife():
+    from casim import layout
+    from cts import fill_empty_appendants
+    from experiments import DEMOL_APPS, DEMOL_TAPE
+    from gasc import CGas
+    from hashlife import HashRun
+    lay = layout(DEMOL_TAPE, fill_empty_appendants(DEMOL_APPS), 20, 3,
+                 v_override=12216)
+    c, g, h = CGas.from_layout(lay), gas.Gas.from_layout(lay), HashRun.from_layout(lay)
+    lo, hi = lay.lo - 20_000, lay.hi + 20_000
+    for T in (0, 1_000, 30_000, 300_000, 3_000_000):
+        c.advance_to(T)
+        g.advance_to(T)
+        h.step(T - h.t)
+        w = c.window(lo, hi)
+        assert np.array_equal(w, h.window(lo, hi)), T
+        assert np.array_equal(w, g.window(lo, hi)), T
+    assert c.n_events == g.n_events
+
+
+def test_gas_reads_collatz_first_reads():
+    """Lazy sides and the read check: the first 30 Collatz reads, with
+    their cluster counts, as in data/collatz_v12216.log."""
+    from cts import fill_empty_appendants
+    from experiments import DEMOL_APPS, DEMOL_TAPE
+    from gasrun import GasReads
+    counts = []
+    gr = GasReads(DEMOL_TAPE, fill_empty_appendants(DEMOL_APPS), 12216, 30,
+                  sample_bits=14, log=lambda *a: None)
+    got = gr.run_reads()
+    assert got == "YNNNNNYNNNNNYNNNNNNYNNNNNNYNNN"
+    for j in range(30):
+        counts.append(sum(1 for x, k in gr.watch.last[j] if k == "E"))
+    assert counts[:7] == [48, 0, 0, 0, 0, 0, 48] and counts[26] == 72

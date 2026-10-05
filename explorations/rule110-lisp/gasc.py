@@ -1,0 +1,314 @@
+"""The gas engine with its event loop in C (gasc.c); same interface and
+results as gas.Gas, which stays the reference.
+
+C holds the items, the event heap and the geometry of orbits and
+memoized composites; Python holds every key (the cells) and does the
+cell-level work C asks for: an unknown merge (simulate the new
+composite), a composite piece not yet simulated, a side to materialize.
+"""
+
+import ctypes
+import os
+import subprocess
+
+import numpy as np
+
+import gas
+from gas import SHIFT, TILE, Registry, cells_of, ether_int, key_of_cells, simulate, split, trim
+
+_DIR = os.path.dirname(os.path.abspath(__file__))
+_SRC = os.path.join(_DIR, "gasc.c")
+_LIB = os.path.join(_DIR, "__pycache__", "gasc.so")
+
+DEAD, PART, COMP, SENL, SENR = range(5)
+OK, NEED_MERGE, NEED_SIDE, NEED_PIECE, ERR = 0, 1, 2, 3, -1
+FAR = 1 << 62
+
+
+def _load():
+    if not os.path.exists(_LIB) or os.path.getmtime(_LIB) < os.path.getmtime(_SRC):
+        os.makedirs(os.path.dirname(_LIB), exist_ok=True)
+        subprocess.run(["cc", "-O2", "-shared", "-fPIC", "-o", _LIB, _SRC], check=True)
+    lib = ctypes.CDLL(_LIB)
+    i32, i64, p = ctypes.c_int32, ctypes.c_int64, ctypes.c_void_p
+    for name, res, args in (
+            ("gc_reset", i32, []), ("gc_failed", i32, []), ("gc_now", i64, []),
+            ("gc_events", i64, []), ("gc_heap", i64, []), ("gc_count", i64, []),
+            ("gc_request", None, [p, p, p, p]),
+            ("gc_item", None, [i32, i64, p, p]),
+            ("gc_item_entry", i32, [i32]),
+            ("gc_set_piece", None, [i32, i32, i32, i32, i32]),
+            ("gc_add_orbit", i32, [i32, i32, p, p, p, p]),
+            ("gc_add_entry", i32, [i32, p, p, p, p, i32, p, p, p, p, p]),
+            ("gc_set_merge", i32, [i32, i32, i32, i32]),
+            ("gc_append", i32, [i32, i32, i64, i64, i32]),
+            ("gc_set_side", None, [i32, i64, i64, i64]),
+            ("gc_start", i32, []),
+            ("gc_materialize", i32, [i32, p, p, p, p, p]),
+            ("gc_advance", i32, [i64]),
+            ("gc_list", i64, [i64, i64, i64, p, p, p, p, p, p])):
+        f = getattr(lib, name)
+        f.restype, f.argtypes = res, args
+    return lib
+
+
+_lib = _load()
+_live = [None]                 # the one CGas the C state belongs to
+
+
+def _arr(xs, dtype):
+    return np.ascontiguousarray(np.array(xs, dtype=dtype))
+
+
+class CGas:
+    """Gas engine (gas.Gas interface: t, advance_to, window, n_events,
+    count) with the event loop in C. One instance at a time (the C state
+    is global)."""
+
+    def __init__(self, reg=None):
+        if not _lib.gc_reset():
+            raise MemoryError("gasc: initial allocation failed")
+        _live[0] = self
+        self.reg = reg or Registry()
+        self.n_orbits_c = 0            # orbits pushed to C (ids = reg ids)
+        self.entries = []              # C entry id -> gas.Entry
+        self.memo = {}                 # composite key -> C entry id
+        self.sides = [None, None]      # L, R side sources
+        self.n_sim = 0
+        self.c_left = None
+        self._rows = []                # setup: items before start()
+
+    # -- tables ----------------------------------------------------------------
+    def _check(self, r=None):
+        if _live[0] is not self:
+            raise RuntimeError("another CGas owns the C state")
+        f = _lib.gc_failed()
+        if f or r == ERR:
+            raise RuntimeError(f"gasc: C failure code {f}")
+
+    def _push_orbits(self):
+        while self.n_orbits_c < len(self.reg.orbits):
+            o = self.reg.orbits[self.n_orbits_c]
+            arrs = [_arr(o.off[:o.p], np.int32), _arr(o.w, np.int32),
+                    _arr([k[2] for k in o.keys], np.int8), _arr([k[3] for k in o.keys], np.int8)]
+            i = _lib.gc_add_orbit(o.p, o.d, *[a.ctypes.data for a in arrs])
+            if i != o.id:
+                raise RuntimeError("gasc: orbit ids out of step")
+            self.n_orbits_c += 1
+
+    def _resolve(self, key):
+        """(kind, id, phase) of a piece key, simulating it if new."""
+        r = self.reg.lookup(key)
+        if r is not None:
+            self._push_orbits()
+            return PART, r[0].id, r[1]
+        eid = self.memo.get(key)
+        if eid is None:
+            e = simulate(key, self.reg)
+            self.n_sim += 1
+            self._push_orbits()
+            kinds, ids, phases = [], [], []
+            for pk, _ in e.pieces:
+                r = self.reg.lookup(pk)
+                if r is not None:
+                    self._push_orbits()
+                    kinds.append(PART); ids.append(r[0].id); phases.append(r[1])
+                else:                  # composite piece: simulated when reached
+                    kinds.append(COMP); ids.append(self.memo.get(pk, -1)); phases.append(0)
+            st = e.states
+            arrs = [_arr([x for _, x in st], np.int32), _arr([k[1] for k, _ in st], np.int32),
+                    _arr([k[2] for k, _ in st], np.int8), _arr([k[3] for k, _ in st], np.int8)]
+            parrs = [_arr(kinds, np.int32), _arr(ids, np.int32), _arr(phases, np.int32),
+                     _arr([x for _, x in e.pieces], np.int64),
+                     _arr([k[2] for k, _ in e.pieces], np.int32)]
+            eid = _lib.gc_add_entry(e.T, *[a.ctypes.data for a in arrs], len(e.pieces),
+                                    *[a.ctypes.data for a in parrs])
+            self._check(eid if eid >= 0 else ERR)
+            self.entries.append(e)
+            self.memo[key] = eid
+        return COMP, eid, 0
+
+    def _key(self, kind, i, phase):
+        if kind == PART:
+            return self.reg.orbits[i].keys[phase]
+        return self.entries[i].states[phase][0]
+
+    def _item_tuple(self, key, lo, t):
+        """(kind, id, t0, x0, cL) of a new item for a piece."""
+        kind, i, ph = self._resolve(key)
+        cL = (key[2] - lo - SHIFT * t) % TILE
+        if kind == PART:
+            o = self.reg.orbits[i]
+            return kind, i, t - ph, lo - o.off[ph], cL
+        return kind, i, t, lo, cL
+
+    # -- setup (gas.Gas interface) ------------------------------------------------
+    def append_row(self, cells, x, c_left, c_right):
+        key, dx = key_of_cells(cells, (c_left + x) % TILE, (c_right + x + len(cells)) % TILE)
+        if self.c_left is None:
+            self.c_left = c_left
+        for pk, off in split(key):
+            self._rows.append(self._item_tuple(pk, x + dx + off, 0))
+
+    def add_sides(self, left, right):
+        self.sides = [left, right]
+
+    def _side_params(self, s):
+        side = self.sides[s]
+        b0, num, den = side.linear()
+        _lib.gc_set_side(s, b0, num, den)
+
+    def start(self):
+        rows = self._rows
+        if self.sides[0] is not None:
+            rows = [(SENL, -1, 0, 0, 0)] + rows
+            self._side_params(0)
+        if self.sides[1] is not None:
+            rows = rows + [(SENR, -1, 0, 0, 0)]
+            self._side_params(1)
+        for r in rows:
+            if _lib.gc_append(*r) < 0:
+                self._check(ERR)
+        self._rows = None
+        self._check(_lib.gc_start())
+
+    # -- events ---------------------------------------------------------------------
+    @property
+    def t(self):
+        return _lib.gc_now()
+
+    @property
+    def n_events(self):
+        return _lib.gc_events()
+
+    def count(self):
+        return _lib.gc_count()
+
+    def _request(self):
+        a, b, k = ctypes.c_int32(), ctypes.c_int32(), ctypes.c_int32()
+        t = ctypes.c_int64()
+        _lib.gc_request(ctypes.byref(a), ctypes.byref(b), ctypes.byref(k), ctypes.byref(t))
+        return a.value, b.value, k.value, t.value
+
+    def _item(self, i, t):
+        out = np.zeros(5, dtype=np.int32)
+        left = ctypes.c_int64()
+        _lib.gc_item(i, t, out.ctypes.data, ctypes.byref(left))
+        kind, eid, ph, w, cL = out.tolist()
+        return kind, eid, ph, left.value, w, cL
+
+    def advance_to(self, T):
+        while True:
+            r = _lib.gc_advance(T)
+            if r == OK:
+                return
+            if r == NEED_MERGE:
+                self._merge()
+            elif r == NEED_PIECE:
+                a, _, k, t = self._request()
+                e = _lib.gc_item_entry(a)
+                kind, i, ph = self._resolve(self.entries[e].pieces[k][0])
+                _lib.gc_set_piece(e, k, kind, i, ph)
+            elif r == NEED_SIDE:
+                self._materialize()
+            else:
+                self._check(ERR)
+
+    def _merge(self):
+        a, b, _, t = self._request()
+        kda, ia, pa, la, wa, _ = self._item(a, t)
+        kdb, ib, pb, lb, wb, _ = self._item(b, t)
+        ka, kb = self._key(kda, ia, pa), self._key(kdb, ib, pb)
+        g = lb - la - ka[1]
+        if g < 0 or (ka[3] + g) % TILE != kb[2]:
+            raise AssertionError(f"t={t}: bad merge (gap {g})")
+        bits = ka[0] | (ether_int(ka[3], g) << ka[1]) | (kb[0] << (ka[1] + g))
+        b2, w2, pl, pr, dx = trim(bits, ka[1] + g + kb[1], ka[2], kb[3])
+        self._check(_lib.gc_set_merge(*self._resolve((b2, w2, pl, pr)), dx))
+
+    def _materialize(self):
+        a, b, _, t = self._request()
+        s = 0 if self._item(a, t)[0] == SENL else 1
+        side = self.sides[s]
+        bound = side.bound(t)
+        row = side.src()
+        if row is None:
+            raise RuntimeError(f"t={t}: side {'LR'[s]} exhausted")
+        cells, x, cl, cr = row
+        key, dx = key_of_cells(cells, (cl + x) % TILE, (cr + x + len(cells)) % TILE)
+        new = []
+        for pk, off in split(key):
+            lo = x + dx + off
+            it = self._item_tuple(pk, lo, 0)
+            if it[0] != PART:
+                raise RuntimeError(f"side {'LR'[s]}: non-periodic piece at {lo}")
+            o = self.reg.orbits[it[1]]
+            k_, s_ = divmod(t - it[2], o.p)
+            l_now = it[3] + k_ * o.d + o.off[s_]
+            if (l_now + o.w[s_] - 1 > bound) if s == 0 else (l_now < bound):
+                raise AssertionError(f"t={t}: side {'LR'[s]} content beyond its bound")
+            new.append(it)
+        self._side_params(s)
+        sen = (SENL if s == 0 else SENR, -1, 0, 0, 0)
+        new = [sen] + new if s == 0 else new + [sen]
+        cols = list(zip(*new))
+        arrs = [_arr(cols[0], np.int32), _arr(cols[1], np.int32), _arr(cols[2], np.int64),
+                _arr(cols[3], np.int64), _arr(cols[4], np.int32)]
+        self._check(_lib.gc_materialize(len(new), *[q.ctypes.data for q in arrs]))
+
+    # -- rendering ------------------------------------------------------------------
+    def window(self, lo, hi):
+        t = self.t
+        cap = 1 << 12
+        while True:
+            bufs = [np.zeros(cap, np.int32), np.zeros(cap, np.int32), np.zeros(cap, np.int32),
+                    np.zeros(cap, np.int64), np.zeros(cap, np.int32), np.zeros(cap, np.int32)]
+            n = _lib.gc_list(lo, hi, cap, *[q.ctypes.data for q in bufs])
+            if n >= 0:
+                break
+            cap *= 4
+        kind, ids, ph, left, width, cls = [q[:n].tolist() for q in bufs]
+        eth = np.array([int(c) for c in gas.ETHER], dtype=np.uint8)
+        out = np.empty(hi - lo, dtype=np.uint8)
+        xs = np.arange(lo, hi)
+        x, c = lo, None
+        for kd, i, p, l, w, cl in zip(kind, ids, ph, left, width, cls):
+            if kd in (SENL, SENR):
+                if (kd == SENL and l >= lo) or (kd == SENR and l < hi):
+                    raise ValueError(f"window [{lo}, {hi}) reaches an unmaterialized side")
+                continue
+            key = self._key(kd, i, p)
+            r = l + w
+            if l > x:
+                e = min(l, hi)
+                out[x - lo:e - lo] = eth[(cl + xs[x - lo:e - lo] + SHIFT * t) % TILE]
+                x = e
+            if x >= hi:
+                return out
+            if r > x:
+                cells = cells_of(key[0], w)
+                a_, b_ = max(x, l), min(r, hi)
+                out[a_ - lo:b_ - lo] = cells[a_ - l:b_ - l]
+                x = b_
+            c = (key[3] - r - SHIFT * t) % TILE
+            if x >= hi:
+                return out
+        if c is None:
+            raise ValueError("window: no item found")
+        out[x - lo:] = eth[(c + xs[x - lo:] + SHIFT * t) % TILE]
+        return out
+
+    @classmethod
+    def from_layout(cls, lay):
+        g = cls()
+        segs, ph = lay.segments, lay.phases
+        i = 0
+        while i < len(segs):
+            j = i
+            while j + 1 < len(segs) and ph[j + 1] is None:
+                j += 1
+            x, hi = segs[i][0], segs[j][0] + len(segs[j][1])
+            g.append_row(lay.cells(x, hi), x, ph[i], ph[j + 1])
+            i = j + 1
+        g.start()
+        return g

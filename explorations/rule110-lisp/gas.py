@@ -436,6 +436,9 @@ class Gas:
                 self.tail = it
             a.next = it
 
+    def count(self):
+        return sum(1 for _ in self.items())
+
     def items(self):
         it = self.head
         while it is not None:

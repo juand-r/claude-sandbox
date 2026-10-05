@@ -62,6 +62,14 @@ class Train:
         x, b = self.lay.segments[i]
         return x + len(b) - 1 + int(TRAIN_SPEED * t) + 1 + EDGE_SLACK
 
+    def linear(self):
+        """bound(t) = b0 + num * t // den (t >= 0), for gasc."""
+        i = self.n_all - 1 - self.k
+        if i < 0:
+            return -(1 << 62), 0, 1
+        x, b = self.lay.segments[i]
+        return x + len(b) + EDGE_SLACK, TRAIN_SPEED.numerator, TRAIN_SPEED.denominator
+
 
 class Table:
     """Right side from x on (x a clean cut, c the ether constant there)."""
@@ -85,9 +93,15 @@ class Table:
             return 1 << 62
         return self.x - int(TABLE_SPEED * t) - 1 - EDGE_SLACK
 
+    def linear(self):
+        """bound(t) = b0 - num * t // den (t >= 0), for gasc."""
+        if self.x >= self.lay.hi:
+            return 1 << 62, 0, 1
+        return self.x - 1 - EDGE_SLACK, TABLE_SPEED.numerator, TABLE_SPEED.denominator
 
-class GasRun(gas.Gas):
-    """A Gas with the HashRun interface that experiments.sample uses."""
+
+class RunInterface:
+    """The HashRun interface that experiments.sample uses, for a Gas."""
 
     origin = 0
 
@@ -109,22 +123,37 @@ class GasRun(gas.Gas):
         return np.array(rows)
 
 
-def build(lay, n_all, reg=None):
-    """GasRun for a casim.layout with n_all ossifiers: ossifier 0 (adjacent
-    to block C) and the first table chunk materialized, the rest lazy."""
+class GasRun(RunInterface, gas.Gas):
+    pass
+
+
+def _cgas_run():
+    from gasc import CGas
+
+    class CGasRun(RunInterface, CGas):
+        pass
+    return CGasRun
+
+
+def build(lay, n_all, engine="c"):
+    """Gas for a casim.layout with n_all ossifiers: ossifier 0 (adjacent
+    to block C) and the first table chunk materialized, the rest lazy.
+    engine: "c" (gasc.CGas) or "py" (gas.Gas, the reference)."""
     x0 = lay.segments[n_all - 1][0]
     x_c = lay.segments[n_all][0]
     cut, c = clean_cut(lay, x_c + TABLE_CHUNK)
-    g = GasRun(reg)
+    g = GasRun() if engine == "py" else _cgas_run()()
     g.append_row(lay.cells(x0, cut), x0, lay.phases[n_all - 1], c)
-    g.add_sides(gas.Side("L", *_side(Train(lay, n_all)), float(TRAIN_SPEED)),
-                gas.Side("R", *_side(Table(lay, cut, c)), float(TABLE_SPEED)))
+    g.add_sides(_side("L", Train(lay, n_all), TRAIN_SPEED),
+                _side("R", Table(lay, cut, c), TABLE_SPEED))
     g.start()
     return g
 
 
-def _side(s):
-    return s.src, s.bound
+def _side(name, s, speed):
+    side = gas.Side(name, s.src, s.bound, float(speed))
+    side.linear = s.linear
+    return side
 
 
 FIRST_GAP = 0.9 * 30           # as epochrun: a safe underestimate (x v)
@@ -136,7 +165,7 @@ class GasReads:
     samples every 2^sample_bits steps around the predicted read times
     (the sampling scheme of epochrun.EpochReads)."""
 
-    def __init__(self, tape, apps, v, n_reads, sample_bits=17, log=print):
+    def __init__(self, tape, apps, v, n_reads, sample_bits=17, log=print, engine="c"):
         self.apps, self.v, self.log = apps, v, log
         self.every = 1 << sample_bits
         rp = n_reads // len(apps) + 3
@@ -144,7 +173,7 @@ class GasReads:
         self.lay = layout(tape, apps, self.n_all, rp, v_override=v)
         self.regs = component_regions(tape, apps, rp)
         self.watch = ReadWatch(self.regs[:n_reads], apps, lookahead=2)
-        self.run = build(self.lay, self.n_all)
+        self.run = build(self.lay, self.n_all, engine)
         self.t_wall = time.time()
 
     def _due(self, j):
@@ -164,9 +193,8 @@ class GasReads:
             pending = w.pending()
             if pending[0] // 100 > logged:
                 logged = pending[0] // 100
-                n_items = sum(1 for _ in g.items())
                 self.log(f"[gas] read {pending[0]}: t={g.t}, {g.n_events} events, "
-                         f"{n_items} items, {len(g.memo)} collisions, "
+                         f"{g.count()} items, {len(g.memo)} collisions, "
                          f"{len(g.reg.orbits)} orbits, wall {time.time() - self.t_wall:.0f}s")
             t = max(g.t, self._due(pending[0]) or 0, (w.t_last or 0) // 30 * 30)
             while w.pending() == pending:
