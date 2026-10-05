@@ -19,7 +19,7 @@ import gas
 from casim import TILE, layout
 from census import FAMILIES, MAX_DT, ether_phase
 from engine import pack, step_packed, unpack
-from experiments import ReadWatch, component_regions, sample
+from experiments import ReadWatch, component_regions, sample, sample_rel
 
 TABLE_CHUNK = 1 << 16          # cells per lazily materialized table chunk
 CUT_CELLS = 2 * TILE           # clean ether of one phase at a chunk cut
@@ -233,7 +233,19 @@ class GasReads:
     (the sampling scheme of epochrun.EpochReads)."""
 
     def __init__(self, tape, apps, v, n_reads, sample_bits=17, log=print, engine="c",
-                 checkpoint=None, ckpt_every=500):
+                 checkpoint=None, ckpt_every=500, census="particles", stop_on_fail=True):
+        """census: "cells" (experiments.sample: census() of the rendered
+        span), "particles" (gascensus: the same clusters from the
+        particles, C engine only), or "both" (raise on any difference in
+        the watched regions). stop_on_fail: stop at the first read that
+        settles as '!' (the construction has failed; what follows is
+        debris), keeping the last checkpoint."""
+        if census not in ("cells", "particles", "both"):
+            raise ValueError(f"census must be cells, particles or both, not {census!r}")
+        if census != "cells" and engine != "c":
+            raise ValueError("the particle census needs the C engine")
+        self.census, self.stop_on_fail = census, stop_on_fail
+        self.failed = None
         self.apps, self.v, self.log = apps, v, log
         self.every = 1 << sample_bits
         self.key = (tape, tuple(apps), v, n_reads)
@@ -248,6 +260,9 @@ class GasReads:
         else:
             self.run = build(self.lay, self.n_all, engine)
         self.t_wall = time.time()
+        if census != "cells":
+            from gascensus import ParticleCensus
+            self.pc = ParticleCensus(self.run)
 
     _WATCH = ("before", "state", "read_at", "last", "t_last", "n_ebar")
 
@@ -305,6 +320,30 @@ class GasReads:
             while w.pending() == pending:
                 g.advance_to(t)
                 depth = MAX_DT + (-(t + MAX_DT)) % 30
-                sample(g, w, pending, depth, advance=False)
+                self._sample(pending, depth)
                 t += self.every
+            bad = [j for j in pending if w.state[j] == "!"]
+            if bad and self.stop_on_fail:
+                self.failed = bad[0]
+                self.log(f"[gas] read {bad[0]} settled as '!': the construction failed; "
+                         f"stopping at t={g.t} (last checkpoint kept)")
+                return w.outcome()
         return w.outcome()
+
+    def _sample(self, pending, depth):
+        w, g = self.watch, self.run
+        if self.census == "cells":
+            sample(g, w, pending, depth, advance=False)
+            return
+        T, rel = self.pc.rel(w, pending, depth)
+        if self.census == "both":
+            Tc, rel_c = sample_rel(g, w, pending, depth, advance=False)
+
+            def inside(r):
+                return [c for c in r if any(w.regs[j][0] <= c[0] < w.regs[j][1] for j in pending)]
+            if Tc != T or inside(rel) != inside(rel_c):
+                a, b = inside(rel), inside(rel_c)
+                diff = sorted(set(a) ^ set(b))[:10]
+                raise AssertionError(f"t={T}: particle census differs from the cell census "
+                                     f"({len(a)} vs {len(b)} clusters; first differences {diff})")
+        w.observe(T, pending, rel)

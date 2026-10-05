@@ -45,7 +45,7 @@ def _load():
             ("gc_add_orbit", i32, [i32, i32, p, p, p, p]),
             ("gc_add_entry", i32, [i32, p, p, p, p, i32, p, p, p, p, p]),
             ("gc_set_merge", i32, [i32, i32, i32, i32]),
-            ("gc_append", i32, [i32, i32, i64, i64, i32]),
+            ("gc_append", i32, [i32, i32, i64, i64, i32, i64]),
             ("gc_set_side", None, [i32, i64, i64, i64]),
             ("gc_side_request", i64, [i32]),
             ("gc_dump", i64, [i64, p, p]), ("gc_set_now", None, [i64]),
@@ -53,7 +53,7 @@ def _load():
             ("gc_start", i32, []),
             ("gc_materialize", i32, [i32, p, p, p, p, p]),
             ("gc_advance", i32, [i64]),
-            ("gc_list", i64, [i64, i64, i64, p, p, p, p, p, p])):
+            ("gc_list", i64, [i64, i64, i64, p, p, p, p, p, p, p])):
         f = getattr(lib, name)
         f.restype, f.argtypes = res, args
     return lib
@@ -191,7 +191,7 @@ class CGas:
             rows = rows + [(SENR, -1, 0, 0, 0)]
             self._side_params(1)
         for r in rows:
-            if _lib.gc_append(*r) < 0:
+            if _lib.gc_append(*r, 0) < 0:          # rows of the layout: tc = 0
                 self._check(ERR)
         self._rows = None
         self._check(_lib.gc_start())
@@ -368,20 +368,26 @@ class CGas:
             self._ncells += len(cells)
         return kid
 
+    def list_items(self, lo, hi):
+        """Items overlapping [lo, hi) at time t (and the sentinels met), as
+        arrays: kind, id, phase or step, left edge, width, cL, creation
+        time (0 for untouched layout rows)."""
+        cap = 1 << 12
+        while True:
+            bufs = [np.zeros(cap, np.int32), np.zeros(cap, np.int32), np.zeros(cap, np.int32),
+                    np.zeros(cap, np.int64), np.zeros(cap, np.int32), np.zeros(cap, np.int32),
+                    np.zeros(cap, np.int64)]
+            n = _lib.gc_list(lo, hi, cap, *[q.ctypes.data for q in bufs])
+            if n >= 0:
+                return [q[:n] for q in bufs]
+            cap *= 4
+
     def window(self, lo, hi):
         """uint8 cells [lo, hi) at time t (vectorized rendering)."""
         self._own()
         self.ensure(lo, hi)
         t = self.t
-        cap = 1 << 12
-        while True:
-            bufs = [np.zeros(cap, np.int32), np.zeros(cap, np.int32), np.zeros(cap, np.int32),
-                    np.zeros(cap, np.int64), np.zeros(cap, np.int32), np.zeros(cap, np.int32)]
-            n = _lib.gc_list(lo, hi, cap, *[q.ctypes.data for q in bufs])
-            if n >= 0:
-                break
-            cap *= 4
-        kind, ids, ph, left, width, cls = [q[:n] for q in bufs]
+        kind, ids, ph, left, width, cls, _ = self.list_items(lo, hi)
         sen = kind >= SENL
         if np.any(sen & (kind == SENL) & (left >= lo)) or np.any(sen & (kind == SENR) & (left < hi)):
             raise ValueError(f"window [{lo}, {hi}) reaches an unmaterialized side")
@@ -418,7 +424,7 @@ class CGas:
         plain Python data. Only between advance_to calls."""
         self._own()
         n = self.count()
-        small, big = np.zeros(3 * n, np.int32), np.zeros(2 * n, np.int64)
+        small, big = np.zeros(3 * n, np.int32), np.zeros(3 * n, np.int64)
         if _lib.gc_dump(n, small.ctypes.data, big.ctypes.data) != n:
             raise RuntimeError("gasc: dump failed")
         return {"t": self.t, "n_events": self.n_events, "items": (small, big),
@@ -447,8 +453,8 @@ class CGas:
             kind = int(small[3 * k])
             if kind in (SENL, SENR):
                 g._side_params(0 if kind == SENL else 1)
-            if _lib.gc_append(kind, int(small[3 * k + 1]), int(big[2 * k]),
-                              int(big[2 * k + 1]), int(small[3 * k + 2])) < 0:
+            if _lib.gc_append(kind, int(small[3 * k + 1]), int(big[3 * k]),
+                              int(big[3 * k + 1]), int(small[3 * k + 2]), int(big[3 * k + 2])) < 0:
                 g._check(ERR)
         g._rows = None
         g._check(_lib.gc_start())

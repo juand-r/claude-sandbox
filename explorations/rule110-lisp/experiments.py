@@ -198,6 +198,12 @@ def sample(run, watch, pending, depth=MAX_DT, advance=True):
     0 mod 30, the phase the regions' censuses are compared at). With
     advance the run steps there (Run.history's contract); otherwise
     (HashRun only) it stays put."""
+    t, rel = sample_rel(run, watch, pending, depth, advance)
+    watch.observe(t, pending, rel)
+
+
+def sample_rel(run, watch, pending, depth=MAX_DT, advance=True):
+    """sample() without the observation: (t, census [(x, kind)])."""
     t = run.t + depth
     if t % 30:
         raise ValueError(f"census at t={t}: not 0 mod 30")
@@ -208,8 +214,7 @@ def sample(run, watch, pending, depth=MAX_DT, advance=True):
             run.history(lo, run.origin + hi_g + shift, depth, advance=False))
     cs = census(hist)
     shift = run.ebar_frame(t) - run.origin
-    rel = [(x0 + lo - run.origin - shift, k) for x0, _, k in cs]
-    watch.observe(t, pending, rel)
+    return t, [(x0 + lo - run.origin - shift, k) for x0, _, k in cs]
 
 
 # Why long rejection runs need a larger v (REPORT 3.7). The symbols waiting
@@ -447,6 +452,10 @@ def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8, engine="hash"):
         er = EpochReads(tape, apps, v, n_reads, sample_bits=sample_bits, epoch=epoch,
                         checkpoint=ckpt)
     got = er.run_reads()
+    if er.failed is not None:
+        print(f"FAILED: read {er.failed} settled as '!' (the construction broke); "
+              f"checkpoint {ckpt} kept for diagnosis")
+        return
     same = sum(g == r for g, r in zip(got, ref_reads))
     print(f"reads: {'MATCH' if got == ref_reads else 'DIFFER'} ({same}/{n_reads}), "
           f"t = {er.run.t}, {time.time() - t0:.0f}s")

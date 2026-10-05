@@ -228,3 +228,32 @@ def test_random_patches_both_engines_match_hashlife():
         assert np.array_equal(w, py.window(lo, hi))
         assert cg.n_events == py.n_events
     assert len(reg.orbits) > 30
+
+
+def test_particle_census_equals_cell_census():
+    """census="both" computes the read check's census from the particles
+    and by rendering the span, and raises at the first difference inside
+    a watched region; the reads must equal the reference too."""
+    from cts import fill_empty_appendants
+    from experiments import DEMOL_APPS, DEMOL_TAPE
+    from gasrun import GasReads
+    gr = GasReads(DEMOL_TAPE, fill_empty_appendants(DEMOL_APPS), 12216, 120,
+                  sample_bits=14, log=lambda *a: None, census="both")
+    got = gr.run_reads()
+    assert got[:30] == "YNNNNNYNNNNNYNNNNNNYNNNNNNYNNN"
+    assert "." not in got and "!" not in got
+    assert gr.pc.stats["memo"] > 10 * gr.pc.stats["rendered"]
+
+
+def test_stop_on_fail():
+    """Below half of Cook's v De Mol's program breaks (REPORT 3.6): the run
+    stops at the first read that settles as '!'."""
+    from cts import fill_empty_appendants
+    from experiments import DEMOL_APPS, DEMOL_TAPE
+    from gasrun import GasReads
+    gr = GasReads(DEMOL_TAPE, fill_empty_appendants(DEMOL_APPS), 4000, 556,
+                  sample_bits=13, log=lambda *a: None)
+    out = gr.run_reads()
+    assert gr.failed is not None and out[gr.failed] == "!"
+    assert "!" not in out[:gr.failed]
+    assert set(out[gr.failed + 1:]) <= {".", "Y", "N", "!"} and out.count(".") > 300

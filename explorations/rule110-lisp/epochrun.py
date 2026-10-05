@@ -251,7 +251,9 @@ class EpochReads:
     grid units plus 2^20); epoch: reads per epoch."""
 
     def __init__(self, tape, apps, v, n_reads, sample_bits=17, reach=None,
-                 epoch=8, log=print, checkpoint=None, max_nodes=None):
+                 epoch=8, log=print, checkpoint=None, max_nodes=None, stop_on_fail=True):
+        # stop at the first read that settles as '!' (what follows is debris)
+        self.stop_on_fail, self.failed = stop_on_fail, None
         self.jump_grid = 1 << max(0, int(v * JUMP_GRID_PER_V).bit_length() - 1)
         if reach is None:
             reach = 2 * self.jump_grid + (1 << 20)
@@ -409,4 +411,10 @@ class EpochReads:
                 # the read outlasted the local copy: move the main tree on
                 # (to t = 0 mod 30, where epochs can start)
                 self.run.step((temp.t - self.run.t) // 30 * 30)
+            bad = [j for j in pending if w.state[j] == "!"]
+            if bad and self.stop_on_fail:
+                self.failed = bad[0]
+                self.log(f"read {bad[0]} settled as '!': the construction failed; "
+                         f"stopping (last checkpoint kept)")
+                return w.outcome()
         return w.outcome()

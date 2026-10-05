@@ -29,6 +29,7 @@ enum { OK = 0, NEED_MERGE = 1, NEED_SIDE = 2, NEED_PIECE = 3, ERR = -1 };
 
 typedef struct {
     int64_t t0, x0;
+    int64_t tc;            /* creation time (0: an untouched layout row) */
     uint64_t ptok, uid;
     int32_t id, prev, next;
     int8_t kind, cL;
@@ -432,11 +433,11 @@ static int replace(int32_t first, int32_t last, const int32_t *idx, int n, int64
     return OK;
 }
 
-static int32_t new_item(int kind, int32_t id, int64_t t0, int64_t x0, int cL) {
+static int32_t new_item(int kind, int32_t id, int64_t t0, int64_t x0, int cL, int64_t tc) {
     int32_t i = alloc_item();
     if (i < 0) return -1;
     Item *it = &items[i];
-    it->kind = (int8_t)kind; it->id = id; it->t0 = t0; it->x0 = x0;
+    it->kind = (int8_t)kind; it->id = id; it->t0 = t0; it->x0 = x0; it->tc = tc;
     it->cL = (int8_t)cL; it->ptok = 0; it->uid = next_tok++;
     it->prev = it->next = -1;
     return i;
@@ -448,9 +449,9 @@ static inline int mod14(int64_t x) { int r = (int)(x % TILE); return r < 0 ? r +
 static int32_t piece_item(int kind, int32_t id, int32_t phase, int64_t lo, int64_t t, int cL) {
     if (kind == PART) {
         const Orbit *o = &orbits[id];
-        return new_item(PART, id, t - phase, lo - o_off[o->base + phase], cL);
+        return new_item(PART, id, t - phase, lo - o_off[o->base + phase], cL, t);
     }
-    return new_item(COMP, id, t, lo, cL);
+    return new_item(COMP, id, t, lo, cL, t);
 }
 
 static void signature(const Item *a, const Item *b, int64_t t, uint64_t *k1, uint64_t *k2,
@@ -673,8 +674,8 @@ int64_t gc_side_request(int32_t s) {
 }
 
 /* append an item at the right end (setup, before gc_start) */
-int32_t gc_append(int32_t kind, int32_t id, int64_t t0, int64_t x0, int32_t cL) {
-    int32_t i = new_item(kind, id, t0, x0, cL);
+int32_t gc_append(int32_t kind, int32_t id, int64_t t0, int64_t x0, int32_t cL, int64_t tc) {
+    int32_t i = new_item(kind, id, t0, x0, cL, tc);
     if (i < 0) return -1;
     items[i].prev = tail;
     if (tail < 0) head = i; else items[tail].next = i;
@@ -700,7 +701,7 @@ int gc_materialize(int32_t n, const int32_t *kind, const int32_t *id, const int6
     int32_t *idx = malloc(n * sizeof(int32_t));
     if (!idx) { failed = 1; return ERR; }
     for (int k = 0; k < n; k++) {
-        idx[k] = new_item(kind[k], id[k], t0[k], x0[k], cL[k]);
+        idx[k] = new_item(kind[k], id[k], t0[k], x0[k], cL[k], 0);   /* untouched rows */
         if (idx[k] < 0) { free(idx); return ERR; }
     }
     int r = replace(sen, sen, idx, n, req_t);
@@ -743,7 +744,7 @@ int gc_advance(int64_t T) {
    out arrays get kind, id, phase/step, left edge, width, cL; returns the
    count (at most max), or -1 if more */
 int64_t gc_list(int64_t lo, int64_t hi, int64_t max, int32_t *kind, int32_t *id,
-                int32_t *phase, int64_t *left, int32_t *width, int32_t *cL) {
+                int32_t *phase, int64_t *left, int32_t *width, int32_t *cL, int64_t *tc) {
     int32_t i = tail;
     /* walk left to the first item whose right edge < lo */
     while (i >= 0) {
@@ -766,7 +767,7 @@ int64_t gc_list(int64_t lo, int64_t hi, int64_t max, int32_t *kind, int32_t *id,
         else state(it, now, &ph, &l, &w);
         if (n == max) return -1;
         kind[n] = it->kind; id[n] = it->id; phase[n] = ph; left[n] = l; width[n] = w;
-        cL[n] = it->cL;
+        cL[n] = it->cL; tc[n] = it->tc;
         n++;
         if (it->kind != SENL && l >= hi) break;
         if (it->kind == SENR) break;
@@ -774,14 +775,14 @@ int64_t gc_list(int64_t lo, int64_t hi, int64_t max, int32_t *kind, int32_t *id,
     return n;
 }
 
-/* all items in order: kind, id, cL (int32 x3 per item), t0, x0 (int64 x2) */
+/* all items in order: kind, id, cL (int32 x3 per item), t0, x0, tc (int64 x3) */
 int64_t gc_dump(int64_t max, int32_t *small, int64_t *big) {
     int64_t n = 0;
     for (int32_t i = head; i >= 0; i = items[i].next) {
         if (n == max) return -1;
         small[3 * n] = items[i].kind; small[3 * n + 1] = items[i].id;
         small[3 * n + 2] = items[i].cL;
-        big[2 * n] = items[i].t0; big[2 * n + 1] = items[i].x0;
+        big[3 * n] = items[i].t0; big[3 * n + 1] = items[i].x0; big[3 * n + 2] = items[i].tc;
         n++;
     }
     return n;
