@@ -932,3 +932,9 @@ Later the same day: costs and the 3-state run (C2).
   Python engine and HashLife agree on every cell, C and Python on every
   event count; 638 distinct particle kinds appeared. A short version is
   tests/test_gas.py::test_random_patches_both_engines_match_hashlife.
+- Memory: at read 28,000 the 3-state run held 6.2 GB (checkpoint 0.7 GB),
+  growing ~0.2 GB per 1000 reads: ReadWatch kept the full census tuples
+  of every settled read. It now keeps only their Ebar counts; resumed at
+  read 29,000 the run holds 0.8 GB. The HashLife cross-check was stopped
+  at read 3,072 to free memory: all 3,072 reads identical to the event
+  engine's.
