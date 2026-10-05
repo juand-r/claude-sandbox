@@ -272,13 +272,13 @@ class Item:
     ETHER[(cL + x + 4t) % 14])."""
 
     __slots__ = ("orbit", "t0", "x0", "entry", "ts", "xs", "cL",
-                 "prev", "next", "alive", "token")
+                 "prev", "next", "alive", "token", "side", "src", "bound")
 
     def __init__(self):
         self.prev = self.next = None
         self.alive = True
         self.token = 0
-        self.orbit = self.entry = None
+        self.orbit = self.entry = self.side = None
 
     def at(self, t):
         """(key, left edge) at time t."""
@@ -308,6 +308,31 @@ def _orbit_arrays(o):
     if not hasattr(o, "offa"):
         o.offa = np.array(o.off[:o.p], dtype=np.int64)
         o.wa = np.array(o.w, dtype=np.int64)
+        lin = o.d * np.arange(o.p) / o.p
+        o.v = o.d / o.p
+        # edges relative to the linear path x0 + v (t - t0)
+        o.lo_min = float((o.offa - lin).min())
+        o.hi_max = float((o.offa + o.wa - lin).max())
+
+
+# Sentinels stand for the not yet materialized sides (gasrun.py): a left
+# sentinel's content lies left of bound(t) (moving right at most at
+# speed v_max), a right sentinel's right of bound(t). When an item may come
+# within SENTINEL_MARGIN cells of it, the side's next row is materialized.
+SENTINEL_MARGIN = 256
+SPEED_MAX = 1                 # no deviation spreads faster
+
+
+class Side:
+    """A lazily materialized side. src() -> (cells, x, c_left, c_right) of
+    its next t = 0 row (left side: right to left; right side: left to
+    right), or None when exhausted. bound(t): for the left side the largest
+    cell the remaining content can occupy at time t, for the right side
+    the smallest; v_max: the most the bound moves towards the items per
+    step."""
+
+    def __init__(self, side, src, bound, v_max):
+        self.side, self.src, self.bound, self.v_max = side, src, bound, v_max
 
 
 class Gas:
@@ -379,6 +404,14 @@ class Gas:
         g.start()
         return g
 
+    def add_sides(self, left, right):
+        """Sentinels for lazily materialized sides (Side objects, or None)
+        at the ends; after the rows, before start()."""
+        if left is not None:
+            self._link_after(None, self._sentinel(left))
+        if right is not None:
+            self._link_after(self.tail, self._sentinel(right))
+
     def start(self):
         """Schedule the initial events (after the rows are added)."""
         it = self.head
@@ -420,11 +453,73 @@ class Gas:
         neighbour (the left pair is scheduled by the caller)."""
         if it.entry is not None:
             self._push(it.ts + it.entry.T, "S", it)
-        if it.next is not None:
-            it.token += 1
-            t = self._collision(it, it.next, self.t)
-            if t is not None:
-                self._push(t, "C", it, it.next)
+        self._pair(it, self.t)
+
+    def _pair(self, a, t):
+        """Schedule the event of a and its right neighbour."""
+        b = a.next
+        if b is None:
+            return
+        a.token += 1
+        if a.side == "L" or b.side == "R":
+            tc, kind = self._sentinel_time(a, b, t), "M"
+        else:
+            tc, kind = self._collision(a, b, t), "C"
+        if tc is not None:
+            self._push(tc, kind, a, b)
+
+    def _sentinel_time(self, a, b, t):
+        """Conservative time from which b (a: left sentinel) or a (b: right
+        sentinel) may come within SENTINEL_MARGIN of the sentinel."""
+        if a.side == "L" and b.side == "R":
+            raise RuntimeError("the two sides met")
+        it, sen = (b, a) if a.side == "L" else (a, b)
+        key, l = it.at(t)
+        if it.orbit is not None:
+            o = it.orbit
+            lin = l - o.offa[(t - it.t0) % o.p]        # linear path at t
+            v, lo, hi, end = o.v, lin + o.lo_min, lin + o.hi_max, None
+        else:
+            v, lo, hi, end = None, l, l + key[1], it.end()
+        sb = sen.bound
+        if sen.side == "L":
+            gap = lo - sb.bound(t) - SENTINEL_MARGIN
+            closing = sb.v_max - (v if v is not None else -SPEED_MAX)
+        else:
+            gap = sb.bound(t) - hi - SENTINEL_MARGIN
+            closing = (v if v is not None else SPEED_MAX) + sb.v_max
+        if gap <= 0:
+            return t
+        if closing <= 0:
+            return None
+        tc = t + int(gap / closing)
+        return None if end is not None and tc > end else tc
+
+    def _materialize(self, a, b, t):
+        sen = a if a.side == "L" else b
+        sb = sen.bound
+        bound = sb.bound(t)
+        row = sb.src()
+        if row is None:
+            raise RuntimeError(f"t={t}: side {sen.side} exhausted")
+        cells, x, cl, cr = row
+        key, dx = key_of_cells(cells, (cl + x) % TILE, (cr + x + len(cells)) % TILE)
+        items = []
+        for pk, off in split(key):
+            it = self._make(pk, x + dx + off, 0)
+            if it.orbit is None:
+                raise RuntimeError(f"side {sen.side}: non-periodic piece at {x + dx + off}")
+            key_t, l = it.at(t)
+            if (l + key_t[1] - 1 > bound) if sen.side == "L" else (l < bound):
+                raise AssertionError(f"t={t}: side {sen.side} content beyond its bound")
+            items.append(it)
+        new = self._sentinel(sb)
+        self._replace([sen], [new] + items if sen.side == "L" else items + [new], t)
+
+    def _sentinel(self, side):
+        it = Item()
+        it.side, it.bound = side.side, side
+        return it
 
     def _collision(self, a, b, t):
         """First time >= t at which fewer than MIN_GAP ether cells separate
@@ -467,11 +562,14 @@ class Gas:
             t, _, kind, a, b, tok = heapq.heappop(heap)
             if not a.alive:
                 continue
-            if kind == "C":
+            if kind in "CM":
                 if not b.alive or a.next is not b or a.token != tok:
                     continue
                 self.t = t
-                self._merge(a, b, t)
+                if kind == "C":
+                    self._merge(a, b, t)
+                else:
+                    self._materialize(a, b, t)
             else:
                 self.t = t
                 self._split(a, t)
@@ -502,12 +600,7 @@ class Gas:
         for it in news:
             self._schedule(it)
         if left is not None:
-            left.token += 1
-            nb = left.next
-            if nb is not None:
-                tc = self._collision(left, nb, t)
-                if tc is not None:
-                    self._push(tc, "C", left, nb)
+            self._pair(left, t)
 
     def _merge(self, a, b, t):
         ka, la = a.at(t)
@@ -538,6 +631,11 @@ class Gas:
         # ether by region: walk items, filling the gap left of each
         x, c = lo, self.c_left
         for it in self.items():
+            if it.side is not None:
+                b = it.bound.bound(t)
+                if (it.side == "L" and b >= lo) or (it.side == "R" and b < hi):
+                    raise ValueError(f"window [{lo}, {hi}) reaches the unmaterialized side {it.side}")
+                continue
             key, l = it.at(t)
             r = l + key[1]
             c_it = it.cL

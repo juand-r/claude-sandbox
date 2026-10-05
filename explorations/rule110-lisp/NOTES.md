@@ -794,3 +794,31 @@ is what an event treatment needs. Not yet shown: that every object kind
 crosses cleanly (14 crossings is a small sample), that close groups
 (clusters as near as 17 cells) cross as one unit, and how the class of a
 crossing follows from positions.
+
+## Phase 9, item 1: the event engine (gas.py, gasrun.py) (2026-10-05)
+
+Design change (PLAN.md Phase B): instead of a HashLife/list hybrid, a
+pure event engine. Every non-ether patch is a particle (periodic, moved in
+closed form) or a composite (simulated exactly, outcome memoized by its
+canonical key). Exact by the superposition lemma: patches more than 2
+ether cells apart evolve independently. HashLife is the oracle.
+
+Bugs found while building (both caught by cell-exact comparison):
+- a pure phase slip (an A glider in some phases has width 0: every cell
+  matches one of the two ethers) was dropped as an empty piece;
+- the splitter's ether padding was one tile; a conflict at the inner
+  edge could leave the pad's clean run under 14 cells, so the piece next
+  to it was lost. Two tiles of padding make the first 14 cells always a
+  gap (asserted).
+
+Validation so far:
+- Collatz layout (20 ossifiers, 3 table periods), whole row cell-exact
+  against HashRun at t = 0 ... 3e6 (tests/test_gas.py); a 60-ossifier
+  layout exact to 1.5e7 (109k events).
+- Collatz, all 556 reads with lazily materialized sides (gasrun.GasReads):
+  every outcome and cluster count identical to data/collatz_v12216.log
+  (data/collatz_v12216_gas.log). 181 s, 4.84e6 events, 76 distinct
+  collisions, 26 orbits: the whole run uses a tiny outcome table.
+- Speed (Python): ~37 us per event, slower than HashLife on Collatz
+  (45 s). A C event loop (gasc.c) is next; Python keeps all cell-level
+  work (simulation of new collisions, period detection), which is rare.
