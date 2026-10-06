@@ -2,6 +2,23 @@
 
 ## Unreleased (after v0.1.1)
 
+Lisp on Rule 110 without the tower (REPORT 7; INTERPRETER.md; phase 10)
+- phasem.py: a CTS read by one-hot symbols (phase machines), exact
+  against the bit-level CTS.
+- busm.py: bus machines. Registers broadcast one bit per pass as a blank
+  and its complement, so the schedule is data independent and the CTS
+  table holds the program; parity tags decode the bit; per-read letter
+  numbering; register lifetimes. Exact against a reference on random
+  programs.
+- lisp_bus.py: quote car cdr cons atom? eq? cond t, lambda and define
+  (inlined to a compile-time depth bound; overflow is reported). The
+  table depends on the code and data sizes only (tested).
+- lisp110.py: expression -> CTS -> value, or --gliders.
+- (car (quote (a b))) on gliders: 4,512/4,512 reads, value read out,
+  115 s (old tower: ~1e19 generations).
+- Found: on gliders the cost per read grows with reads (ossifiers cross
+  accumulated debris), ~8 x reads^2 events; dominates small queues.
+
 An event engine (REPORT 5; PLAN.md phase 9, item 1)
 - gas.py (reference, Python), gasc.c/gasc.py (C event loop),
   gasrun.py (Cook's layout with lazy sides, read driver, checkpoints):
