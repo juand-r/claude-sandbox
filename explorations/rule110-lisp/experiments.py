@@ -473,7 +473,7 @@ def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8, engine="hash"):
         os.remove(ckpt)
 
 
-def lisp_gliders(src, v=None, margin=7.5):
+def lisp_gliders(src, v=None, margin=7.5, depth=4):
     """Evaluate a variable-free Lisp expression on Rule 110 gliders.
 
     lisp_bus compiles it to a bus program, hence to a CTS (tape +
@@ -487,7 +487,7 @@ def lisp_gliders(src, v=None, margin=7.5):
     from gasrun import GasReads
     from lisp import run as lisp_run
     from lisp_bus import LispBus
-    lb = LispBus(src)
+    lb = LispBus(src, depth)
     comp = lb.compile_bus()
     pm = comp.pm
     tape = pm.encode(comp.initial_tape(lb.values))
