@@ -471,6 +471,68 @@ def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8, engine="hash"):
         os.remove(ckpt)
 
 
+def lisp_gliders(src, v=None, margin=7.5):
+    """Evaluate a variable-free Lisp expression on Rule 110 gliders.
+
+    lisp_bus compiles it to a bus program, hence to a CTS (tape +
+    appendants). The event engine runs Cook's construction for every read
+    of the program; each read is checked against the reference CTS, and
+    the Lisp value is decoded from the glider reads alone: the program's
+    last pass reads every register once, and each register's B reads hold
+    one Y whose offset is its letter.
+    v: ossifier spacing; default: the widest queued-copy gap divided by
+    `margin` (the gap rule of REPORT 3.8 fails above ~11.2 v)."""
+    from gasrun import GasReads
+    from lisp import run as lisp_run
+    from lisp_bus import LispBus
+    lb = LispBus(src)
+    comp = lb.compile_bus()
+    pm = comp.pm
+    tape = pm.encode(comp.initial_tape(lb.values))
+    apps = pm.appendants()
+    n_reads = comp.p * pm.B
+    ref = []
+    q = deque(tape)
+    for r in range(n_reads):
+        ch = q.popleft()
+        ref.append(ch)
+        if ch == "Y":
+            q.extend(apps[r % len(apps)])
+    ref = "".join(ref)
+    gap = max(g for *_, g in block_gaps(tape, apps, n_reads))
+    if v is None:
+        v = int(gap / margin) + 1
+    print(f"{src}: {lb.n} registers, B = {pm.B}, {comp.passes} passes, "
+          f"{len(apps)} appendants ({sum(map(len, apps))} symbols), "
+          f"{n_reads} reads; widest gap {gap} = {gap / v:.1f} v at v = {v}",
+          flush=True)
+    t0 = time.time()
+    ckpt = "lisp_gliders.ckpt"
+    er = GasReads(tape, apps, v, n_reads, checkpoint=ckpt)
+    got = er.run_reads()
+    if er.failed is not None:
+        print(f"FAILED: read {er.failed} settled as '!'; checkpoint {ckpt} kept")
+        return
+    same = sum(g == r for g, r in zip(got, ref))
+    print(f"reads: {'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads}), "
+          f"t = {er.run.t}, {time.time() - t0:.0f}s", flush=True)
+    last = comp.passes - 1
+    letters = []
+    for k in range(lb.n):
+        i = comp.nominal[(last, k)] * pm.B
+        word = got[i:i + pm.B]
+        if word.count("Y") != 1:
+            raise ValueError(f"register {k}: word {word} is not one letter")
+        letters.append(word.index("Y"))
+    dec = [{i: x for x, i in comp.enc[(last, k)].items()} for k in range(lb.n)]
+    value = lb.decode([dec[k][c // 2] for k, c in enumerate(letters)])
+    print(f"value decoded from the glider reads: {value}\n"
+          f"lisp.py:                            {lisp_run(src)}\n"
+          f"{'MATCH' if value == lisp_run(src) else 'DIFFER'}", flush=True)
+    if os.path.exists(ckpt):
+        os.remove(ckpt)
+
+
 def tower_cost(direct):
     """Sizes and step counts of the capstone machine (tests/machines.py
     three_state_tm on CAPSTONE_CFG) at every level of the tower, and the
@@ -525,6 +587,9 @@ if __name__ == "__main__":
         # the same run on the HashLife epoch engine (~1 min)
         collatz_hash(int(sys.argv[2]) if len(sys.argv) > 2 else 12_216,
                      int(sys.argv[3]) if len(sys.argv) > 3 else 556)
+    elif sys.argv[1:2] == ["lisp-gliders"]:
+        # lisp-gliders "(car (quote (a b)))" [v]
+        lisp_gliders(sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 else None)
     elif sys.argv[1:2] == ["tm-gliders"]:
         # tm-gliders [one|three] [F] [gas]
         f = sys.argv[3] if len(sys.argv) > 3 else "1"

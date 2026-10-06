@@ -977,3 +977,35 @@ Census from the particles (gascensus.py):
   0.3% of the sampled spans; 175-187 clumps rendered for ~3e7 lookups.
 - ReadWatch.observe bisects the (sorted) census instead of scanning it,
   and checks that it is sorted.
+
+## Phase 10: an efficient Lisp interpreter (2026-10-06)
+
+Request: "we have not found a good interpreter ... find another way ...
+focus on a more efficient solution". Design notes: INTERPRETER.md.
+
+- Measured where the old tower spends: SKI itself is small
+  (`(car (quote (a b)))`: 61 normal-order steps, terms <= 1,475 chars);
+  the cost is the SKI Turing machine (85.9M steps) and the 7.9M-symbol
+  Neary-Woods alphabet, each symbol a one-hot word of that length.
+- Analysis (INTERPRETER.md 2): read by symbols, one CTS pass gives every
+  symbol only (its letter, a mod-m prefix/suffix count of earlier blank
+  emissions). No local communication is possible in general; exact
+  identification of who is read needs sparse emissions. Ideas tried on
+  paper and dropped: parallel CA-style rewriting (needs local
+  communication), a global step counter in phases (costs a factor T in
+  letters or spacing, unavoidable), segmented scans mod 2 (pollution).
+- What works: a *bus machine* (busm.py). Registers = symbols; the CTS
+  table holds the whole program per (pass, register); one register
+  broadcasts one bit per pass as a blank and compensates it the next
+  pass, so the schedule is data independent; a parity tag in each letter
+  decodes the bit. Tested exact against a reference and the bit-level CTS
+  (60 random programs; a mis-decoding mutant fails 92 of 240 runs).
+- lisp_bus.py: variable-free Lisp (quote car cdr cons atom? eq? cond t)
+  on the bus machine, in place on token blocks; tested at reference and
+  CTS level against lisp.py; the table is identical for different data of
+  equal size (test).
+- Letters numbered per read over reachable values: B 108 -> 24 for car.
+  `(car (quote (a b)))`: 8 registers, 22 passes, 4,512 CTS reads, queue
+  192 bits; widest queued-copy gap 744,766 cells -> v > 66,497 by the gap
+  rule. Glider run started at v = 99,303 (gap = 7.5 v):
+  data/lisp_car_gas.log.
