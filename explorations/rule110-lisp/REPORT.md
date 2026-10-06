@@ -87,12 +87,21 @@ The main claims, in decreasing order of the strength of their evidence:
    its halt, all 5,970 reads correct; so does the three-state machine of
    3.9 at 2x, where the rule asks for at least about 1.7x. Why small programs need more than
    about 55 per symbol is still open.
-9. **Running the whole tower on gliders is out of reach by about 14
+9. **Running the whole old tower on gliders is out of reach by about 14
    orders of magnitude** (about 5e19 generations for the capstone with
    the direct binary construction, 3.6e20 with the old one; before any
    spacing reduction). The dominant cost grows with the cube of the tag
    alphabet.
-10. **A programmable Rule 110 computer that is not a cyclic tag system
+10. **Lisp runs on Rule 110 gliders through a direct compiler.** A
+   compiler that writes the program into the CTS table ("bus machines",
+   section 7) evaluates `(car (quote (a b)))` on the glider field in
+   115 s (4,512 reads, all correct, value read off the gliders) and a
+   cond/eq? expression in 37 min (34,818 reads). The old tower needs
+   ~1e19 generations for the first. lambda and define work with a
+   compile-time recursion bound, exact at the CTS level; on gliders,
+   long runs cost about reads² because ossifiers cross accumulated
+   debris (section 7.6).
+11. **A programmable Rule 110 computer that is not a cyclic tag system
    exists; a universal one was not found.** A one-counter machine driven
    by a fixed glider stream branches on zero and runs compiled loop
    programs (parity, mod k) exactly, cross-verified. Theory shows one
@@ -1090,7 +1099,180 @@ records every claim's status.
   No universal non-CTS machine was found; each blocked route's scope is
   stated.
 
-## 7. What comes next
+## 7. Lisp on Rule 110 without the tower
+
+Sections 2 to 4 put Lisp on Rule 110 through a universal Turing machine,
+and section 4 shows the price: about 1e19 generations or more even for
+`(car (quote (a b)))`. This section replaces everything between Lisp
+and the cyclic tag system with a compiler written for the CTS itself.
+The same expression then runs on the glider field in two minutes.
+Design notes and the full derivations are in INTERPRETER.md.
+
+### 7.1 Where the old tower spends
+
+*Observation.* The SKI level is small. `(car (quote (a b)))` is 61
+normal-order reduction steps on terms of at most 1,475 characters. The
+cost appears below it: the SKI Turing machine takes 85.9M steps, and
+the Neary-Woods construction turns that machine into a tag system with
+about 7.9M symbols, each encoded in the CTS as a 7.9M-bit one-hot word.
+
+*Interpretation.* The CTS is not slow because Lisp is hard. It is slow
+because a universal Turing machine is a poor fit for a CTS, and the
+encodings that bridge the two multiply.
+
+### 7.2 What one pass of a CTS can compute
+
+A useful way to read a CTS is by symbols. Cook's construction requires
+appendant lengths that are multiples of 6 and no empty appendants
+(sections 3.4, 3.5). Take as a symbol a B-bit one-hot word (B a
+multiple of 6), plus the all-N blank. If every appendant is a whole
+number of symbols, the CTS acts symbol by symbol. The symbol at absolute
+index k is read against the appendants of group k mod m ("its phase").
+`phasem.py` implements this view and is checked against the bit-level
+CTS (`tests/test_phasem.py`).
+
+*What a symbol knows.* Its letter and its phase, nothing else. The phase
+was fixed when the symbol was appended. A symbol that appends an extra
+blank shifts the phase of everything appended after it. That is the
+only way information moves between symbols.
+
+*Consequence.* One pass can give each symbol a prefix or suffix count
+(mod m) of earlier emissions, but not its neighbour's value: isolating
+one sender requires every other emission before the receiver to cancel,
+and nothing can arrange that without the information already being on
+both sides of the receiver (INTERPRETER.md section 2 gives the
+argument). Tag systems live inside this model, which explains why their
+known simulations of Turing machines are expensive. The constructive
+lesson: give the CTS a schedule that does not depend on the data, and
+let the table, not the data, carry the program.
+
+### 7.3 Bus machines
+
+*Mechanism* (`busm.py`). Registers are symbols, read once per pass in a
+fixed order. The CTS table holds one entry per pass, register and
+letter, so it "knows" at every read which register and which step of
+the program it serves, and a letter needs to hold only the register's
+current value. Communication is a broadcast of one bit per pass:
+
+- Register j appends a blank after itself at pass s if the bit is 1,
+  and at pass s+1 if it is 0. Exactly one blank is emitted either way.
+  So the queue length, and every later index, is independent of the
+  data.
+- In between, the symbols appended after the blank are read one index
+  late. Each letter carries the parity of its data-independent index
+  (a tag), so a receiver reads the bit as (index - tag) mod 2, and the
+  table entry still knows whom it serves.
+- A scheduler places each broadcast at the earliest pass where no read
+  carries two unknown bits.
+
+Two refinements matter for cost:
+- Letters are numbered per read over the values the register can hold
+  there (a reachability pass). This took the symbol width for `car`
+  from 108 bits to 24.
+- Registers have lifetimes. A register enters the queue at its first
+  use, written in by its live predecessor, and leaves after its last use
+  as a blank. Both events are fixed by the program, so the schedule
+  stays data independent.
+
+*Checks.* Random bus programs agree with the reference semantics: 60
+without lifetimes, 80 with, and one against the bit-level CTS. A variant
+that decodes the wrong bit fails 92 of 240 runs (`tests/test_busm.py`).
+
+### 7.4 Lisp as a bus program
+
+*Translation* (`lisp_bus.py`).
+- A value is a block of token registers (PAD, OPEN, CLOSE, atom), read
+  in register order with PAD skipped.
+- Operations work in place. car pads everything outside the first
+  element; cdr pads the first element; cons pads the second argument's
+  OPEN and puts a fresh OPEN in front; cond pads the branches not
+  taken.
+- Blocks are scanned token by token by a scan register that runs a
+  small automaton (two broadcast bits per token, one answer bit back).
+- eq? moves atom codes through two code registers.
+- lambda and define are inlined at compile time, up to a depth bound
+  fixed when compiling, like a stack size. A deeper call compiles to an
+  overflow marker, and decoding it raises an error, so a too-small bound
+  fails loudly instead of giving a wrong value.
+- A variable's uses are copies of its block, except the last use,
+  which takes the block itself.
+
+*Honesty of the translation.* The table is built from the expression
+with each quoted datum replaced by its size; registers holding quoted
+data are given every token value as their domain. The data enter only
+as the CTS tape. A test checks that different data of equal size give an
+identical table and different, correct answers
+(`tests/test_lisp_bus.py`). All test expressions agree with `lisp.py` at
+the reference level and through the compiled CTS.
+
+*Measured, CTS level* (current compiler):
+
+| expression | registers | passes | B | CTS reads | queue (max) |
+|---|---|---|---|---|---|
+| `(car (quote (a b)))` | 8 | 18 | 24 | 2,448 | 120 bits |
+| `(cond ((eq? (quote a) (quote b)) (quote x)) (t (quote y)))` | 13 | 55 | 42 | 14,238 | 294 bits |
+| `last` of `(a b c)`, depth 3 | 50 | 362 | 24 | 157,824 | 600 bits |
+| `append` of `(a b)` and `(c)`, depth 3 | 61 | 415 | 24 | 255,648 | 792 bits |
+
+The old tower runs `(car (quote (a b)))` as 85.9M Turing-machine steps
+on a 7.9M-symbol tag alphabet; the new CTS has 2,448 reads.
+
+### 7.5 On gliders
+
+*Setup.* The compiled CTS is laid out with Cook's blocks (section 1) and
+run by the event engine (section 5). Every read is checked against the
+reference CTS, and the Lisp value is decoded from the glider reads
+alone: the program's last pass reads every live register once, and each
+register's B reads hold one Y, whose offset is its letter. The ossifier
+spacing v is set by the gap rule of 3.8, with the widest queued-copy gap
+at 7.5 v (failures were measured above ~11.05 v). Command:
+`python lisp110.py --gliders "<expr>"`.
+
+*Results.*
+
+| expression | compiler state | CTS reads | v | reads correct | value from the gliders | generations | events | wall |
+|---|---|---|---|---|---|---|---|---|
+| `(car (quote (a b)))` | before lifetimes | 4,512 | 99,303 | 4,512 / 4,512 | `a` | 1.35e10 | 1.6e8 | 115 s |
+| `(cond ((eq? (quote a) (quote b)) (quote x)) (t (quote y)))` | before lifetimes | 34,818 | 117,027 | 34,818 / 34,818 | `y` | 1.23e11 | 9.6e9 | 37 min |
+
+*Interpretation.* A Lisp expression typed by the user is translated into
+a Rule 110 initial condition, Rule 110 evolves, and the value is read
+out of the glider field. The compiler, the schedule, the read check and
+the decoding are exact and tested at every level.
+
+Both runs used the compiler before register lifetimes and the scheduler
+fix; the current compiler needs 2,448 and 14,238 reads for them. The
+logs are `data/lisp_car_gas.log` and `data/lisp_cond_gas.log`.
+
+*Scope.* Two expressions were run on gliders; the recursive programs
+were checked at the CTS level only (next paragraph). The bus compiler
+supports lambda and define only with a compile-time depth bound;
+unbounded recursion would need a periodic interpreter loop, which is not
+built.
+
+### 7.6 The remaining cost: junk left of the queue
+
+*Observation.* On the glider field, events per read grow linearly with
+the read count. For `car` they grew from 2.4e4 to 6.8e4 per read, and
+the three-state machine of 3.9 shows the same growth (items 675 ->
+190,847, events per read 7.5e4 -> 8.4e5). 14.0M of 16.0M merges in the
+first 2,000 reads of `car` are ossifiers crossing E-family objects.
+Those objects are spread evenly over the zone left of the queue and
+repeat with a period of five items.
+
+*Interpretation.* Ossification appears to leave debris, and every later
+ossifier crosses all of it, so the work grows as reads². This is work
+Rule 110 itself does, not an engine artefact, and it dominates whenever
+the queue is small, as it is here. A fit to the `car` run gives about
+8 x reads² events. For `last` (157,824 reads) that is about 2e11
+events, a day of simulation, against about 3e9 for the queue crossings.
+
+*Recommendation.* An engine-level macro step for an ossifier crossing a
+long periodic stretch of debris would make long runs roughly linear.
+Item counts change between snapshots (the debris objects merge and
+split), so this needs real engine work, not a rigid-shift shortcut.
+
+## 8. What comes next
 
 Done in v0.1.1:
 - the dynamic-verification gap (3.3);
@@ -1109,7 +1291,17 @@ Done since (v0.2, unreleased):
   memoized, exact against HashLife cell for cell, 5 to 17 times faster
   (section 5); it also confirmed the failure of 3.7 independently.
 
+Done in phase 10: a direct Lisp -> CTS compiler (section 7); Lisp on
+gliders, value read out.
+
 Open, roughly in order of value:
+
+- The debris sweep (7.6): an engine macro step for an ossifier crossing
+  a long periodic stretch of debris would make long glider runs roughly
+  linear in reads instead of quadratic. Needed for recursive programs on
+  gliders (`last` of (a b c): ~2e11 events now).
+- Unbounded recursion: a periodic interpreter loop in the bus machine
+  (memory bounded by a register file), instead of compile-time inlining.
 
 - Done: why long programs fail at small spacing (3.8). Open: the
   constant 11.2 from geometry rather than fits, and the second
@@ -1127,6 +1319,12 @@ Open, roughly in order of value:
   (section 6).
 
 ## Reproduction
+
+Phase 10 (section 7):
+
+    python lisp110.py "(car (quote (a b)))"              # CTS level
+    python lisp110.py --gliders "(car (quote (a b)))"    # ~1-2 min
+    python -m pytest tests/test_phasem.py tests/test_busm.py tests/test_lisp_bus.py
 
 All results are deterministic.
 
