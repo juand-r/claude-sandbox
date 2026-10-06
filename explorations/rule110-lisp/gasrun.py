@@ -233,7 +233,8 @@ class GasReads:
     (the sampling scheme of epochrun.EpochReads)."""
 
     def __init__(self, tape, apps, v, n_reads, sample_bits=17, log=print, engine="c",
-                 checkpoint=None, ckpt_every=500, census="particles", stop_on_fail=True):
+                 checkpoint=None, ckpt_every=500, census="particles", stop_on_fail=True,
+                 rope=False, rope_every=25):
         """census: "cells" (experiments.sample: census() of the rendered
         span), "particles" (gascensus: the same clusters from the
         particles, C engine only), or "both" (raise on any difference in
@@ -245,6 +246,9 @@ class GasReads:
         if census != "cells" and engine != "c":
             raise ValueError("the particle census needs the C engine")
         self.census, self.stop_on_fail = census, stop_on_fail
+        if rope and (engine != "c" or checkpoint):
+            raise ValueError("the rope needs the C engine and no checkpoints (not saved yet)")
+        self.rope, self.rope_every = rope, rope_every
         self.failed = None
         self.apps, self.v, self.log = apps, v, log
         self.every = 1 << sample_bits
@@ -316,6 +320,9 @@ class GasReads:
                 self.log(f"[gas] read {pending[0]}: t={g.t}, {g.n_events} events, "
                          f"{g.count()} items, {len(g.memo)} collisions, "
                          f"{len(g.reg.orbits)} orbits, wall {time.time() - self.t_wall:.0f}s")
+            if self.rope and pending[0] % self.rope_every == 0 and pending[0] != getattr(self, "_roped", -1):
+                self._roped = pending[0]
+                g.rope_absorb()
             t = max(g.t, self._due(pending[0]) or 0, (w.t_last or 0) // 30 * 30)
             while w.pending() == pending:
                 g.advance_to(t)

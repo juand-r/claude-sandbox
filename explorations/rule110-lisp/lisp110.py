@@ -33,6 +33,8 @@ def main():
     ap.add_argument("--depth", type=int, default=4)
     ap.add_argument("--gliders", action="store_true")
     ap.add_argument("--v", type=int, default=None, help="ossifier spacing")
+    ap.add_argument("--no-rope", action="store_true",
+                    help="simulate the debris left of the queue event by event")
     a = ap.parse_args()
 
     t0 = time.time()
@@ -52,7 +54,7 @@ def main():
           f"(~{est / 2.3e6 / 60:.0f} min at 2.3e6 events/s)")
     if a.gliders:
         from experiments import lisp_gliders
-        lisp_gliders(a.src, a.v, depth=a.depth)
+        lisp_gliders(a.src, a.v, depth=a.depth, rope=not a.no_rope)
         return
     value = lb.decode(comp.run(lb.values))
     print(f"value (CTS): {value}")

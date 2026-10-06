@@ -473,7 +473,7 @@ def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8, engine="hash"):
         os.remove(ckpt)
 
 
-def lisp_gliders(src, v=None, margin=7.5, depth=4):
+def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True):
     """Evaluate a variable-free Lisp expression on Rule 110 gliders.
 
     lisp_bus compiles it to a bus program, hence to a CTS (tape +
@@ -483,7 +483,10 @@ def lisp_gliders(src, v=None, margin=7.5, depth=4):
     last pass reads every register once, and each register's B reads hold
     one Y whose offset is its letter.
     v: ossifier spacing; default: the widest queued-copy gap divided by
-    `margin` (the gap rule of REPORT 3.8 fails above ~11.2 v)."""
+    `margin` (the gap rule of REPORT 3.8 fails above ~11.2 v).
+    rope: sweep ossifiers through the debris left of the queue by memoized
+    crossings (gasc rope; exact, checked against the plain engine), so the
+    cost stops growing with the square of the reads. No checkpoints then."""
     from gasrun import GasReads
     from lisp import run as lisp_run
     from lisp_bus import LispBus
@@ -509,8 +512,8 @@ def lisp_gliders(src, v=None, margin=7.5, depth=4):
           f"{n_reads} reads; widest gap {gap} = {gap / v:.1f} v at v = {v}",
           flush=True)
     t0 = time.time()
-    ckpt = "lisp_gliders.ckpt"
-    er = GasReads(tape, apps, v, n_reads, checkpoint=ckpt)
+    ckpt = None if rope else "lisp_gliders.ckpt"
+    er = GasReads(tape, apps, v, n_reads, checkpoint=ckpt, rope=rope)
     got = er.run_reads()
     if er.failed is not None:
         print(f"FAILED: read {er.failed} settled as '!'; checkpoint {ckpt} kept")
@@ -533,8 +536,10 @@ def lisp_gliders(src, v=None, margin=7.5, depth=4):
     print(f"value decoded from the glider reads: {value}\n"
           f"lisp.py:                            {lisp_run(src)}\n"
           f"{'MATCH' if value == lisp_run(src) else 'DIFFER'}", flush=True)
-    if os.path.exists(ckpt):
+    if ckpt and os.path.exists(ckpt):
         os.remove(ckpt)
+    if rope:
+        print(f"rope: {er.run.rope_info()}, {er.run.n_events} events", flush=True)
 
 
 def tower_cost(direct):

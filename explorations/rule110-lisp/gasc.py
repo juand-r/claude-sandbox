@@ -21,7 +21,7 @@ _SRC = os.path.join(_DIR, "gasc.c")
 _LIB = os.path.join(_DIR, "__pycache__", "gasc.so")
 
 DEAD, PART, COMP, SENL, SENR = range(5)
-OK, NEED_MERGE, NEED_SIDE, NEED_PIECE, ERR = 0, 1, 2, 3, -1
+OK, NEED_MERGE, NEED_SIDE, NEED_PIECE, NEED_UNIT, ERR = 0, 1, 2, 3, 4, -1
 FAR = 1 << 62
 _ETHER_BITS = np.array([int(c) for c in gas.ETHER], dtype=np.uint8)
 
@@ -53,7 +53,12 @@ def _load():
             ("gc_start", i32, []),
             ("gc_materialize", i32, [i32, p, p, p, p, p]),
             ("gc_advance", i32, [i64]),
-            ("gc_list", i64, [i64, i64, i64, p, p, p, p, p, p, p])):
+            ("gc_list", i64, [i64, i64, i64, p, p, p, p, p, p, p]),
+            ("gc_debug", i64, [p]), ("gc_rope_on", i32, []), ("gc_rope_info", None, [p]),
+            ("gc_rope_absorb", i32, [i64, i64]),
+            ("gc_rope_push_ossifier", i32, [i32, p, p, p, p, i64]),
+            ("gc_unit_request", i32, [p, p, p]),
+            ("gc_set_unit", i32, [i64, p, i32])):
         f = getattr(lib, name)
         f.restype, f.argtypes = res, args
     return lib
@@ -248,8 +253,14 @@ class CGas:
                 e = _lib.gc_item_entry(a)
                 kind, i, ph = self._resolve(self.entries[e].pieces[k][0])
                 _lib.gc_set_piece(e, k, kind, i, ph)
+            elif r == NEED_UNIT:
+                self._rope_unit()
             elif r == NEED_SIDE:
-                self._materialize()
+                if _lib.gc_rope_on() and self._request()[0] >= 0 and \
+                        self._item(self._request()[0], self._request()[3])[0] == SENL:
+                    self._rope_draw()
+                else:
+                    self._materialize()
             else:
                 self._check(ERR)
 
@@ -268,6 +279,8 @@ class CGas:
     def ensure(self, lo, hi):
         """Materialize the sides until neither reaches into [lo, hi)."""
         while _lib.gc_side_request(0) >= lo - gas.SENTINEL_MARGIN:
+            if _lib.gc_rope_on():
+                raise ValueError(f"window [{lo}, {hi}) reaches into the rope")
             self._materialize()
         while _lib.gc_side_request(1) < hi + gas.SENTINEL_MARGIN:
             self._materialize()
@@ -315,6 +328,155 @@ class CGas:
         ids[0 if s == 0 else n - 1] = -1
         ids[sl], t0s[sl], x0s[sl], cls[sl] = oid, t0, x0, cL
         self._check(_lib.gc_materialize(n, *[q.ctypes.data for q in (kind, ids, t0s, x0s, cls)]))
+
+    def _row_items(self, s, row):
+        """Side row (cells, x, cL, cR at t = 0) -> its particles as arrays
+        (orbit id, t0, x0, cL), left to right."""
+        cells, x, cl, cr = row
+        key, dx = key_of_cells(cells, (cl + x) % TILE, (cr + x + len(cells)) % TILE)
+        info = self._row_cache.get(key)
+        if info is None:
+            rows = []
+            for pk, off in split(key):
+                kind, i, ph = self._resolve(pk)
+                if kind != PART:
+                    raise RuntimeError(f"side {'LR'[s]}: non-periodic piece at {x + dx + off}")
+                rows.append((i, ph, off, pk[2]))
+            info = self._row_cache[key] = np.array(rows, dtype=np.int64).reshape(-1, 4)
+        oid, ph, off, phl = info.T
+        ob, ooff, ow, op, od = self._orbit_flat()
+        lo = x + dx + off
+        return oid, -ph, lo - ooff[ob[oid] + ph], (phl - lo) % TILE
+
+    # -- the rope (gasc.c; PLAN.md phase 10b) -----------------------------------------
+    ROPE_SEP = 1600           # debris closer than this forms one unit (> ossifier span)
+    ROPE_MARGIN = 1 << 13     # cells kept between the cut and the rightmost ossifier
+
+    def _rope_draw(self):
+        """No ossifier in transit: put the train's next one behind the rope."""
+        row = self.sides[0].src()
+        if row is None:
+            raise RuntimeError("left side exhausted")
+        oid, t0, x0, cl = self._row_items(0, row)
+        for i in oid:
+            o = self.reg.orbits[int(i)]
+            if 3 * o.d != 2 * o.p:
+                raise RuntimeError(f"train row has a non-A particle (orbit {o.id})")
+        arrs = [_arr(oid, np.int32), _arr(t0, np.int64), _arr(x0, np.int64), _arr(cl, np.int32)]
+        self._check(_lib.gc_rope_push_ossifier(len(oid), *[a.ctypes.data for a in arrs], 0))
+
+    def _rope_unit(self):
+        """An unknown crossing: simulate the ossifier's gliders and the
+        unit's items, alone, with the reference engine (gas.Gas) from tau
+        until no event is left, and store the result in C."""
+        key = np.zeros(2 + 3 * (64 + 8), np.int32)
+        tau, ref = ctypes.c_int64(), ctypes.c_int64()
+        n = _lib.gc_unit_request(key.ctypes.data, ctypes.byref(tau), ctypes.byref(ref))
+        key = key[:n].tolist()
+        tau, ref = tau.value, ref.value
+        ng, nu = key[0], key[1]
+        g = gas.Gas(self.reg)
+        if not hasattr(self, "_sub_memo"):
+            self._sub_memo = {}
+        g.memo = self._sub_memo
+        prev = None
+        for q in range(ng + nu):
+            oid, ph, off = key[2 + 3 * q: 5 + 3 * q]
+            it = g._make(self.reg.orbits[oid].keys[ph], ref + off, tau)
+            g._link_after(prev, it)
+            prev = it
+        g.t = tau
+        g.start()
+        last = tau
+        import heapq
+        while g.heap:
+            t = g.heap[0][0]
+            before = g.n_events
+            g.advance_to(t)
+            if g.n_events > before:
+                last = t
+            if g.t - tau > (1 << 22):
+                raise RuntimeError(f"rope crossing at t={tau} does not settle")
+        items = list(g.items())
+        if any(it.orbit is None for it in items):
+            raise RuntimeError(f"rope crossing at t={tau}: a composite remains")
+        fam = ["A" if 3 * it.orbit.d == 2 * it.orbit.p else
+               "E" if 15 * it.orbit.d == -4 * it.orbit.p else "X" for it in items]
+        if fam.count("A") != ng or "X" in fam or fam[-ng:] != ["A"] * ng:
+            raise RuntimeError(f"rope crossing at t={tau}: outcome {''.join(fam)} "
+                               f"(expected E..E then {ng} A)")
+        out = [ng, len(items) - ng]
+        order = items[-ng:] + items[:-ng]                 # gliders first, as in the key
+        for it in order:
+            k, lo = it.at(last)
+            o = it.orbit
+            out += [o.id, (last - it.t0) % o.p, lo - ref]
+        self._push_orbits()
+        res = _arr(out, np.int32)
+        self._check(_lib.gc_set_unit(last - tau, res.ctypes.data, len(out)))
+
+    def rope_info(self):
+        out = np.zeros(6, np.int64)
+        _lib.gc_rope_info(out.ctypes.data)
+        return dict(zip(("units", "ossifiers", "wake", "crossings", "memo", "misses"),
+                        out.tolist()))
+
+    def rope_absorb(self, min_items=64):
+        """Move settled debris and the ossifiers among it from the left end
+        of the gas into the rope. Everything an ossifier has passed is
+        debris (moving data would have stopped it), so the cut lies left of
+        the rightmost A glider in the gas by ROPE_MARGIN; it falls after an
+        E particle followed by a gap of at least ROPE_SEP, with only E and
+        A particles before it and no ossifier cut in half or straddling a
+        unit. Returns the number of items moved."""
+        self._own()
+        t = self.t
+        kind, ids, ph, left, width, _, tc = self.list_items(-FAR, FAR)
+        if not len(kind) or kind[0] != SENL:
+            raise RuntimeError("rope: no left sentinel")
+        orbs = self.reg.orbits
+        fam = []
+        for k, i in zip(kind, ids):
+            if k != PART:
+                fam.append("X")
+                continue
+            o = orbs[int(i)]
+            fam.append("A" if 3 * o.d == 2 * o.p else "C" if o.d == 0
+                       else "E" if 15 * o.d == -4 * o.p else "X")
+        a_pos = [int(left[j]) for j, f in enumerate(fam) if f == "A"]
+        if not a_pos:
+            return 0
+        limit = max(a_pos) - self.ROPE_MARGIN
+        cut, open_oss = 0, None          # open_oss: left edge of the last A seen
+        for j in range(1, len(kind)):
+            f = fam[j]
+            if f not in "EA":
+                break
+            r = int(left[j]) + int(width[j])
+            if r > limit:
+                break
+            if f == "A":
+                open_oss = int(left[j])
+                continue
+            # an E: inside an ossifier's span means a crossing in progress
+            nxt = int(left[j + 1]) if j + 1 < len(kind) else None
+            if open_oss is not None and int(left[j]) - open_oss < self.ROPE_SEP:
+                if j + 1 < len(kind) and fam[j + 1] == "A" and nxt - open_oss < self.ROPE_SEP:
+                    break
+            if nxt is not None and kind[j + 1] != SENR and nxt - r >= self.ROPE_SEP:
+                # the gliders after this cut must not belong to an ossifier before it
+                cut = j
+        if cut < min_items:
+            return 0
+        i_last = int(ids[cut])
+        o = orbs[i_last]
+        hi_max = max(o.off[s] + o.w[s] - o.d * s / o.p for s in range(o.p))
+        s = int(ph[cut])
+        x_lin = int(left[cut]) - o.off[s] + o.d * s / o.p
+        b0 = int(np.ceil(x_lin + 4 * t / 15 + hi_max)) + 2
+        _lib.gc_set_side(0, b0, -4, 15)
+        self._check(_lib.gc_rope_absorb(cut, self.ROPE_SEP))
+        return cut
 
     def _orbit_flat(self):
         """Flat per-phase arrays of all orbits: base index per orbit,

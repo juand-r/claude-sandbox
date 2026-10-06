@@ -257,3 +257,31 @@ def test_stop_on_fail():
     assert gr.failed is not None and out[gr.failed] == "!"
     assert "!" not in out[:gr.failed]
     assert set(out[gr.failed + 1:]) <= {".", "Y", "N", "!"} and out.count(".") > 300
+
+
+def test_rope_equals_plain():
+    """The debris rope (gasc: ossifiers swept through absorbed debris by
+    memoized crossings) gives the plain engine's reads, census counts and
+    final gas, item for item, on a compiled Lisp program."""
+    import gasc
+    from gasrun import GasReads
+    from lisp_bus import LispBus
+    lb = LispBus("(car (quote (a b)))")
+    comp = lb.compile_bus()
+    tape = comp.pm.encode(comp.initial_tape(lb.values))
+    apps = comp.pm.appendants()
+    got = {}
+    for rope in (False, True):
+        er = GasReads(tape, apps, 99303, 600, log=lambda *a: None, rope=rope)
+        out = er.run_reads()
+        g = er.run
+        kind, ids, ph, left, _, _, _ = g.list_items(-gasc.FAR, gasc.FAR)
+        items = [(int(k), int(i), int(p), int(x)) for k, i, p, x in zip(kind, ids, ph, left)
+                 if k in (gasc.PART, gasc.COMP)]
+        got[rope] = (out, list(er.watch.n_ebar), g.t, items)
+        if rope:
+            info = g.rope_info()
+            assert info["crossings"] > 10_000 and info["units"] > 100, info
+    (o1, n1, t1, i1), (o2, n2, t2, i2) = got[False], got[True]
+    assert o1 == o2 and n1 == n2 and t1 == t2
+    assert i2 == [x for x in i1 if x[3] >= i2[0][3]]

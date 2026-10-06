@@ -25,7 +25,7 @@
 
 enum { DEAD = 0, PART = 1, COMP = 2, SENL = 3, SENR = 4 };
 enum { EV_C = 0, EV_M = 1, EV_S = 2 };
-enum { OK = 0, NEED_MERGE = 1, NEED_SIDE = 2, NEED_PIECE = 3, ERR = -1 };
+enum { OK = 0, NEED_MERGE = 1, NEED_SIDE = 2, NEED_PIECE = 3, NEED_UNIT = 4, ERR = -1 };
 
 typedef struct {
     int64_t t0, x0;
@@ -61,6 +61,37 @@ static int failed;
 /* merge counts by family (A: speed 2/3, C: 0, E: -4/15, X: other or a
    composite), for profiling */
 static int64_t fam_count[4][4];
+
+/* -- the rope (PLAN.md phase 10b): debris absorbed from the left end of
+   the gas, kept outside the event list as units (debris items closer
+   than the ossifier span), and the ossifiers (groups of A gliders) in
+   transit through it. The front ossifier is swept unit by unit; each
+   crossing (the ossifier's gliders and the unit's items, from the time the
+   lead glider comes within G_ENTRY of the unit until the last event) is
+   looked up by its exact relative configuration, and simulated by Python
+   (NEED_UNIT) when new. At its last crossing's end the ossifier is
+   emitted right after the left sentinel (the wake). Failure codes 40-49
+   are rope checks (fail loudly). */
+#define UMAX 64
+#define OMAX 8
+#define G_ENTRY 32
+typedef struct { int32_t n; int32_t it[UMAX]; int64_t tlast; } Unit;
+typedef struct { int32_t n; int32_t it[OMAX]; int64_t prog, t; } Oss;
+static int rope_on;
+static Unit *units; static int64_t n_units, cap_units;
+static Oss *oss; static int64_t n_oss, cap_oss;
+static int64_t wake = INT64_MAX;
+static int64_t rope_cross, rope_miss;
+/* crossing memo: key = [n_g, n_u, (orbit, phase, offset)...], result =
+   [dt_lo, dt_hi, n_g, n_u, (orbit, phase, offset)...] in an int32 pool */
+typedef struct { uint64_t h; int64_t kpos, rpos; int32_t klen, used; } UEnt;
+static UEnt *utab; static uint64_t ucap, uused;
+static int32_t *upool; static int64_t n_upool, cap_upool;
+static int32_t ukey[2 + 3 * (UMAX + OMAX)]; static int32_t ukey_len;
+static int64_t ureq_tau, ureq_ref;
+
+static int64_t dbg[8192]; static int64_t n_dbg;   /* unclean A x E merges (t, x) */
+int64_t gc_debug(int64_t *out) { memcpy(out, dbg, 2 * n_dbg * sizeof(int64_t)); return n_dbg; }
 
 /* pending request for Python */
 static int32_t req_a, req_b, req_k; static int64_t req_t;
@@ -293,6 +324,7 @@ static inline int64_t sen_bound(int side, int64_t t) {    /* side 0: L, 1: R */
    within MARGIN of it, or -1 */
 static int64_t sentinel_time(const Item *a, const Item *b, int64_t t) {
     int left = a->kind == SENL;
+
     const Item *it = left ? b : a;
     int32_t ph, w; int64_t l;
     state(it, t, &ph, &l, &w);
@@ -320,6 +352,17 @@ static int64_t sentinel_time(const Item *a, const Item *b, int64_t t) {
     if (gap <= 0) return t;
     int64_t tc = t + (int64_t)(gap / closing);
     if (end >= 0 && tc > end) return -1;
+    return tc;
+}
+
+/* the left sentinel's event: an emission at the wake time, or (an error
+   when the rope is on) something approaching */
+static int64_t sentinel_event(const Item *a, const Item *b, int64_t t) {
+    int64_t tc = sentinel_time(a, b, t);
+    if (a->kind == SENL && rope_on && wake != INT64_MAX) {
+        int64_t w = wake > t ? wake : t;
+        if (tc < 0 || w <= tc) return w;
+    }
     return tc;
 }
 
@@ -395,7 +438,7 @@ static int schedule_pair(int32_t a, int64_t t) {
     int64_t tc; int kind;
     if (ia->kind == SENL || ib->kind == SENR) {
         if (ia->kind == SENL && ib->kind == SENR) { failed = 2; return ERR; }
-        tc = sentinel_time(ia, ib, t); kind = EV_M;
+        tc = sentinel_event(ia, ib, t); kind = EV_M;
     } else if (groupable(ia, ib, t)) { tc = t; kind = EV_C; }   /* join now */
     else { tc = collision(ia, ib, t); kind = EV_C; }
     if (tc == -2) return ERR;
@@ -486,6 +529,17 @@ static int do_merge(int32_t a, int32_t b, int64_t t) {
     MEnt *m = mfind(k1, k2);
     if (!m->used) { req_a = a; req_b = b; req_t = t; return NEED_MERGE; }
     fam_count[family(&items[a])][family(&items[b])]++;
+    if (family(&items[a]) == 0 && family(&items[b]) == 2 && n_dbg < 4096 && m->kind == COMP) {
+        const Entry *e_ = &entries[m->id];
+        int clean = e_->np == 2;
+        if (clean) {
+            const Piece *p0 = &pieces[e_->pbase], *p1 = p0 + 1;
+            clean = p0->kind == PART && p1->kind == PART && p0->id >= 0 && p1->id >= 0 &&
+                    15 * orbits[p0->id].d == -4 * orbits[p0->id].p &&
+                    3 * orbits[p1->id].d == 2 * orbits[p1->id].p;
+        }
+        if (!clean) { dbg[2 * n_dbg] = t; dbg[2 * n_dbg + 1] = lb; n_dbg++; }
+    }
     int32_t n = piece_item(m->kind, m->id, m->phase, la + m->dx, t, items[a].cL);
     if (n < 0) return ERR;
     return replace(a, b, &n, 1, t);
@@ -521,6 +575,304 @@ static int do_split(int32_t a, int64_t t) {
     return r;
 }
 
+/* -- rope ------------------------------------------------------------------- */
+
+static int is_fam(const Item *it, int f) {
+    return it->kind == PART && family(it) == f;
+}
+
+/* first time >= t at which fewer than thr cells separate a and b (both
+   particles, a left of b), or -1 (-2: failure) */
+static int64_t gap_below(const Item *a, const Item *b, int64_t t, int64_t thr) {
+    int32_t pa, pb, wa, wb; int64_t la, lb;
+    state(a, t, &pa, &la, &wa); state(b, t, &pb, &lb, &wb);
+    const PEnt *e = pair_table(a->id, b->id, pa, pb);
+    if (!e) return -2;
+    int64_t G = lb - la;
+    const int32_t *h = pool + e->base;
+    if (G + e->hmin >= thr) {
+        if (e->delta >= 0) return -1;
+        int64_t D = -e->delta;
+        int64_t q = (G + e->hmin - thr) / D;
+        int64_t lim = (q + 1) * D - G + thr;
+        for (int32_t i = 0; i < e->L; i++)
+            if (h[i] < lim) return t + i + (q + 1) * e->L;
+        failed = 6; return -2;
+    }
+    for (int32_t i = 0; i < e->L; i++)
+        if (G + h[i] < thr) return t + i;
+    failed = 6; return -2;
+}
+
+static uint64_t hash_ints(const int32_t *k, int32_t n) {
+    uint64_t h = 0x9e3779b97f4a7c15ULL;
+    for (int32_t i = 0; i < n; i++) h = mix(h ^ (uint64_t)(uint32_t)k[i]) + (uint64_t)i;
+    return h;
+}
+
+static int ugrow(void) {
+    UEnt *old = utab; uint64_t oc = ucap;
+    ucap = oc ? 2 * oc : (1 << 12);
+    utab = calloc(ucap, sizeof(UEnt));
+    if (!utab) { failed = 1; return 0; }
+    for (uint64_t i = 0; i < oc; i++)
+        if (old[i].used) {
+            uint64_t m = ucap - 1, j = old[i].h & m;
+            while (utab[j].used) j = (j + 1) & m;
+            utab[j] = old[i];
+        }
+    free(old);
+    return 1;
+}
+
+static UEnt *ufind(const int32_t *k, int32_t n, uint64_t h) {
+    uint64_t m = ucap - 1, j = h & m;
+    while (utab[j].used) {
+        if (utab[j].h == h && utab[j].klen == n &&
+            !memcmp(upool + utab[j].kpos, k, n * sizeof(int32_t))) return &utab[j];
+        j = (j + 1) & m;
+    }
+    return &utab[j];
+}
+
+static int upool_add(const int32_t *x, int64_t n, int64_t *pos) {
+    if (n_upool + n > cap_upool) {
+        int64_t c = cap_upool ? 2 * cap_upool : (1 << 16);
+        while (c < n_upool + n) c *= 2;
+        int32_t *q = realloc(upool, c * sizeof(int32_t));
+        if (!q) { failed = 1; return 0; }
+        upool = q; cap_upool = c;
+    }
+    memcpy(upool + n_upool, x, n * sizeof(int32_t));
+    *pos = n_upool; n_upool += n;
+    return 1;
+}
+
+/* the particle orbit/phase at left edge lo, time t, into item i */
+static void set_state(int32_t i, int32_t orb, int32_t ph, int64_t lo, int64_t t) {
+    Item *it = &items[i];
+    const Orbit *o = &orbits[orb];
+    it->kind = PART; it->id = orb; it->t0 = t - ph;
+    it->x0 = lo - o_off[o->base + ph];
+    it->cL = (int8_t)mod14(o_phl[o->base + ph] - lo - SHIFT * t); it->tc = t;
+}
+
+static int64_t right_edge(const Item *it, int64_t t) {
+    int32_t ph, w; int64_t l;
+    state(it, t, &ph, &l, &w);
+    return l + w;
+}
+
+static int64_t left_edge(const Item *it, int64_t t) {
+    int32_t ph, w; int64_t l;
+    state(it, t, &ph, &l, &w);
+    return l;
+}
+
+/* sweep the front ossifier to the end of the rope; OK, NEED_UNIT (the
+   key is pending: gc_unit_request / gc_set_unit) or ERR */
+static int unit_sweep(void) {
+    if (!n_oss) return OK;
+    Oss *o = &oss[n_oss - 1];
+    while (o->prog < n_units) {
+        Unit *u = &units[o->prog];
+        const Item *lead = &items[o->it[o->n - 1]];
+        int64_t tau = gap_below(lead, &items[u->it[0]], o->t, G_ENTRY);
+        if (tau == -2) return ERR;
+        if (tau < 0) { failed = 40; return ERR; }
+        if (tau <= u->tlast) { req_t = tau; failed = 41; return ERR; }
+        /* key: gliders then items, at tau, offsets from the unit's first item */
+        int64_t ref = left_edge(&items[u->it[0]], tau);
+        int32_t *k = ukey; int32_t n = 0;
+        k[n++] = o->n; k[n++] = u->n;
+        for (int q = 0; q < o->n + u->n; q++) {
+            const Item *it = &items[q < o->n ? o->it[q] : u->it[q - o->n]];
+            int32_t ph, w; int64_t l;
+            state(it, tau, &ph, &l, &w);
+            k[n++] = it->id; k[n++] = ph; k[n++] = (int32_t)(l - ref);
+        }
+        ukey_len = n;
+        if (4 * (uused + 1) > 3 * ucap && !ugrow()) return ERR;
+        uint64_t h = hash_ints(k, n);
+        UEnt *ue = ufind(k, n, h);
+        if (!ue->used) { ureq_tau = tau; ureq_ref = ref; return NEED_UNIT; }
+        const int32_t *r = upool + ue->rpos;
+        int64_t T = tau + ((int64_t)(uint32_t)r[0] | ((int64_t)r[1] << 32));
+        int32_t ng = r[2], nu = r[3];
+        if (ng != o->n || nu > UMAX || nu < 1) { failed = 42; return ERR; }
+        r += 4;
+        for (int q = 0; q < ng; q++, r += 3) set_state(o->it[q], r[0], r[1], ref + r[2], T);
+        /* the unit's items: reuse, allocate or free item slots */
+        for (int q = nu; q < u->n; q++) free_item(u->it[q]);
+        for (int q = u->n; q < nu; q++) {
+            int32_t i = alloc_item();
+            if (i < 0) return ERR;
+            items[i].prev = items[i].next = -1; items[i].ptok = 0; items[i].uid = next_tok++;
+            u->it[q] = i;
+        }
+        u->n = nu;
+        for (int q = 0; q < nu; q++, r += 3) set_state(u->it[q], r[0], r[1], ref + r[2], T);
+        for (int q = 0; q < nu; q++)
+            if (!is_fam(&items[u->it[q]], 2)) { failed = 43; return ERR; }
+        /* the crossing must end before the lead glider nears the next unit */
+        if (o->prog + 1 < n_units) {
+            const Item *nx = &items[units[o->prog + 1].it[0]];
+            int64_t g = left_edge(nx, T) - right_edge(&items[o->it[o->n - 1]], T);
+            if (g <= G_ENTRY) { req_t = T; failed = 44; return ERR; }
+        }
+        u->tlast = T;
+        o->t = T;
+        o->prog++;
+        rope_cross++;
+    }
+    return OK;
+}
+
+/* the left sentinel's event with the rope on: emit the front ossifier if
+   due, sweep the next one, set the wake. NEED_SIDE: no ossifier in transit
+   (Python pushes the train's next); NEED_UNIT: an unknown crossing. The
+   event stays queued for all requests. */
+static int rope_event(int32_t sen, int64_t t) {
+    if (wake != INT64_MAX && t < wake) { failed = 45; return ERR; }   /* something approached */
+    if (n_oss && oss[n_oss - 1].prog == n_units && oss[n_oss - 1].t == t) {
+        Oss *o = &oss[n_oss - 1];
+        int32_t right = items[sen].next;
+        if (right >= 0 && items[right].kind != SENR &&
+            left_edge(&items[right], t) - right_edge(&items[o->it[o->n - 1]], t) < MIN_GAP) {
+            failed = 46; return ERR;
+        }
+        int32_t prev = sen;
+        for (int q = 0; q < o->n; q++) {          /* link left to right */
+            int32_t i = o->it[q];
+            items[i].prev = prev; items[prev].next = i; prev = i;
+        }
+        items[prev].next = right;
+        if (right >= 0) items[right].prev = prev; else tail = prev;
+        n_oss--;
+        wake = INT64_MAX;
+        for (int q = 0; q < o->n; q++)
+            if (schedule_item(o->it[q], t) != OK) return ERR;
+    }
+    if (!n_oss) return NEED_SIDE;
+    int r = unit_sweep();
+    if (r != OK) return r;
+    if (oss[n_oss - 1].t < t) { failed = 47; return ERR; }       /* exit in the past */
+    /* the bound follows the last unit, which crossings only move left:
+       b0 - 4t/15 covers its items' right edges from now on */
+    if (n_units && sen_num[0] == -4 && sen_den[0] == 15) {
+        const Unit *u = &units[n_units - 1];
+        int64_t b = INT64_MIN;
+        for (int q = 0; q < u->n; q++) {
+            const Item *it = &items[u->it[q]];
+            const Orbit *o = &orbits[it->id];
+            double x = (double)it->x0 + 4.0 * (double)it->t0 / 15.0 + o->hi_max;
+            int64_t bq = (int64_t)x + 3;
+            if (bq > b) b = bq;
+        }
+        if (b < sen_b0[0]) sen_b0[0] = b;
+    }
+    wake = oss[n_oss - 1].t;
+    return schedule_pair(sen, t);
+}
+
+int32_t gc_rope_on(void) { return rope_on; }
+
+/* rope sizes: units, ossifiers, wake, crossings, memo entries, misses */
+void gc_rope_info(int64_t *out) {
+    out[0] = n_units; out[1] = n_oss; out[2] = wake; out[3] = rope_cross;
+    out[4] = (int64_t)uused; out[5] = rope_miss;
+}
+
+/* the pending crossing: its key (returns its length), tau and ref */
+int32_t gc_unit_request(int32_t *key, int64_t *tau, int64_t *ref) {
+    memcpy(key, ukey, ukey_len * sizeof(int32_t));
+    *tau = ureq_tau; *ref = ureq_ref;
+    return ukey_len;
+}
+
+/* its result: dt, then [n_g, n_u, (orbit, phase, offset)...] at tau + dt */
+int gc_set_unit(int64_t dt, const int32_t *res, int32_t n) {
+    if (4 * (uused + 1) > 3 * ucap && !ugrow()) return ERR;
+    uint64_t h = hash_ints(ukey, ukey_len);
+    UEnt *ue = ufind(ukey, ukey_len, h);
+    if (ue->used) { failed = 48; return ERR; }
+    int32_t head2[2] = { (int32_t)(uint32_t)(dt & 0xffffffff), (int32_t)(dt >> 32) };
+    int64_t kpos, rpos, tmp;
+    if (!upool_add(ukey, ukey_len, &kpos) || !upool_add(head2, 2, &rpos) ||
+        !upool_add(res, n, &tmp)) return ERR;
+    ue->h = h; ue->kpos = kpos; ue->rpos = rpos; ue->klen = ukey_len; ue->used = 1;
+    uused++; rope_miss++;
+    return OK;
+}
+
+/* move the n items right of the left sentinel into the rope: E particles
+   into units (a new unit where the gap to the previous item is at least
+   sep), groups of A gliders (closer than sep) into ossifiers ahead of all
+   in transit. Python chooses n (gasc.CGas.rope_absorb). Wakes the
+   sentinel now. */
+int gc_rope_absorb(int64_t n, int64_t sep) {
+    if (head < 0 || items[head].kind != SENL) { failed = 30; return ERR; }
+    int32_t i = items[head].next;
+    int64_t last_r = INT64_MIN;          /* right edge of the last E absorbed */
+    int64_t last_a = INT64_MIN;          /* left edge of the last A absorbed */
+    if (n_units) {
+        Unit *u = &units[n_units - 1];
+        last_r = right_edge(&items[u->it[u->n - 1]], now);
+    }
+    for (int64_t c = 0; c < n; c++) {
+        if (i < 0) { failed = 31; return ERR; }
+        Item *it = &items[i];
+        int32_t nx = it->next;
+        it->ptok = 0; it->prev = it->next = -1;      /* its events are void */
+        int64_t l = left_edge(it, now);
+        if (is_fam(it, 2)) {
+            if (!n_units || l - last_r >= sep) {
+                GROW(units, n_units, cap_units, 1);
+                units[n_units].n = 0; units[n_units].tlast = 0; n_units++;
+            }
+            Unit *u = &units[n_units - 1];
+            if (u->n == UMAX) { failed = 32; return ERR; }
+            u->it[u->n++] = i;
+            if (it->tc > u->tlast) u->tlast = it->tc;
+            last_r = right_edge(it, now);
+        } else if (is_fam(it, 0)) {
+            if (!n_oss || l - last_a >= sep || oss[n_oss - 1].prog != n_units) {
+                GROW(oss, n_oss, cap_oss, 1);
+                oss[n_oss].n = 0; oss[n_oss].prog = n_units; oss[n_oss].t = now; n_oss++;
+            }
+            Oss *o = &oss[n_oss - 1];
+            if (o->n == OMAX) { failed = 33; return ERR; }
+            o->it[o->n++] = i;
+            last_a = l;
+        } else { failed = 34; return ERR; }
+        i = nx;
+    }
+    items[head].next = i;
+    if (i >= 0) items[i].prev = head; else tail = head;
+    rope_on = 1;
+    wake = now;
+    return schedule_pair(head, now);
+}
+
+/* put a train ossifier (n gliders, left to right) behind every ossifier in
+   transit; their states are valid from t */
+int gc_rope_push_ossifier(int32_t n, const int32_t *id, const int64_t *t0, const int64_t *x0,
+                          const int32_t *cL, int64_t t) {
+    if (n > OMAX) { failed = 35; return ERR; }
+    GROW(oss, n_oss, cap_oss, 1);
+    memmove(oss + 1, oss, n_oss * sizeof(Oss));
+    Oss *o = &oss[0];
+    o->n = n; o->prog = 0; o->t = t;
+    for (int q = 0; q < n; q++) {
+        int32_t i = new_item(PART, id[q], t0[q], x0[q], cL[q], 0);
+        if (i < 0) return ERR;
+        if (!is_fam(&items[i], 0)) { failed = 36; return ERR; }
+        o->it[q] = i;
+    }
+    n_oss++;
+    return OK;
+}
+
 /* -- API ---------------------------------------------------------------------- */
 
 int gc_reset(void) {
@@ -538,6 +890,10 @@ int gc_reset(void) {
     free(ptab); ptab = 0; pcap = pused = 0;
     free(pool); pool = 0; n_pool = cap_pool = 0;
     now = 0; n_events = 0; failed = 0;
+    free(units); units = 0; n_units = cap_units = 0;
+    free(oss); oss = 0; n_oss = cap_oss = 0; rope_on = 0; wake = INT64_MAX;
+    free(utab); utab = 0; ucap = uused = 0; free(upool); upool = 0; n_upool = cap_upool = 0;
+    rope_cross = rope_miss = 0; n_dbg = 0;
     memset(fam_count, 0, sizeof(fam_count));
     sen_den[0] = sen_den[1] = 1;
     return mgrow();
@@ -717,9 +1073,21 @@ int gc_advance(int64_t T) {
         Item *a = &items[e.a];
         int valid = e.kind == EV_S ? (a->kind == COMP && a->uid == e.tok)
                                    : (a->kind != DEAD && a->ptok == e.tok && a->next == e.b);
+        /* a rope emission relinks the sentinel's neighbour before a request
+           may interrupt the event: only its token counts */
+        if (e.kind == EV_M && rope_on && a->kind == SENL && a->ptok == e.tok) valid = 1;
         if (!valid) { pop(); continue; }
         now = e.t;
         int r;
+        if (e.kind == EV_M && rope_on && a->kind == SENL) {
+            req_a = e.a; req_b = e.b; req_t = e.t;
+            int r = rope_event(e.a, e.t);
+            if (r == NEED_UNIT || r == NEED_SIDE) return r;
+            if (r != OK) return ERR;
+            pop();
+            n_events++;
+            continue;
+        }
         if (e.kind == EV_M) {
             req_a = e.a; req_b = e.b; req_t = e.t;
             pop();
