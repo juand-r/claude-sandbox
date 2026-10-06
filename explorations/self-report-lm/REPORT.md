@@ -6,31 +6,45 @@ A small GPT-style model (4 layers, width 128, 1.35 million parameters) was
 trained on TinyStories to predict the next token and, at the same time, to
 answer "what is coordinate i of the embedding vector of token t?" with a number.
 The embedding table is shared between input and output (tied), so the weights
-it reports on are the weights it uses to read and write text. The numbers
-below are from the seed-0 run; a second seed (section 9) reproduces every
-qualitative result with weaker numbers (for example follow 0.67 instead of 0.75
-on held-out tokens); a control run is in section 10.
+it reports on are the weights it uses to read and write text. Three such runs
+were trained, all for 15,000 steps, with a language-model-only baseline:
 
-- It is a working language model: validation loss 2.248 nats per token, against
-  2.146 for the same model trained on language modelling alone with the same
-  data in the same order. The joint objective costs 0.102 nats per token, about
-  the difference between the baseline at step 9,700 and at step 15,000.
-- Its answers are locally close to reading the current embedding, but not
-  exact. For tokens never asked about in training, nudging coordinate i of the
-  embedding vector moves the answer about coordinate i 0.75 of the way on
-  average (follow 0.75), and the answers also move in other ways by about 0.4 of
-  the nudge. Follow is 0.83 for frequent such tokens and 0.34 for rare ones.
-- Whether reading works depends on the length of the embedding vector. Rare
-  held-out tokens have vectors 2.8 times longer than frequent ones, and are read
-  badly; rescaled to the frequent tokens' length, keeping their direction, they
-  are read well. Frequent ones rescaled to the rare length are read badly.
-- The model is almost blind to one direction, which LayerNorm hides from its
-  first block (section 6). This explains why changes of an embedding vector's
-  length are followed less than changes of its direction.
-- In the joint model, rare tokens that are asked about keep ordinary lengths,
-  while in the language-model-only model rare tokens' vectors grow long. Two
-  explanations fit; a control run that separates them is in progress (section
-  10).
+| run | what differs | validation loss | centred R², held-out tokens | follow, held-out tokens |
+|---|---|---|---|---|
+| language model only (seed 0) | no self-report | 2.146 | | |
+| joint, seed 0 | | 2.248 | 0.680 | 0.751 |
+| joint, seed 1 | another seed | 2.290 | 0.504 | 0.666 |
+| control, seed 0 | self-report cannot change the embedding table | 2.290 | 0.982 | 0.868 |
+
+(Held-out tokens are never asked about in training. Follow: how far the answer
+about coordinate i moves when coordinate i of the embedding vector is nudged; 1
+for exact reading. Centred R²: 1 for exact answers, 0 for answering each
+coordinate's average. Section 2 defines all terms.)
+
+- All three are working language models (coherent short stories). Self-report
+  costs 0.10 nats per token (joint, seed 0) or 0.14 (control) against the
+  baseline.
+- When the self-report cannot change the embedding table (control), it reads
+  the embedding well and generalizes fully: the same accuracy for tokens never
+  asked about as for tokens asked about (centred R² 0.982 and 0.982; follow
+  0.87 and 0.87).
+- When it can (joint runs), it reshapes the embedding vectors of the tokens it
+  is asked about, and the reading generalizes worse to the other tokens
+  (centred R² 0.68 and 0.50). The clearest case: language modelling makes the
+  embedding vectors of rare tokens long (about 4); in the joint runs, the rare
+  tokens that are asked about stay at ordinary length (about 1.5), the rare
+  tokens that are not stay long, and the reader, fitted to the ordinary ones,
+  fails on them. In the control, all rare vectors stay long, the reader sees
+  long ones in training, and reads them well.
+- In every run the answers follow changes of an embedding vector's direction
+  better than changes of its length; this is tied to a direction that
+  LayerNorm hides from the first block (section 6). An exact consequence of
+  LayerNorm (a change along the all-ones direction moves every answer by the
+  same amount) holds to rounding error.
+- Editing a token's embedding vector inside the model moves the self-report
+  about that token 0.72 to 0.83 of the way on average, depending on the run
+  (frequent tokens), and changes the language model's predictions mainly right
+  after that token.
 
 ## 1. The question
 
@@ -193,6 +207,9 @@ through one shared readout.
 
 ### 5.1 Reading depends on the length of the embedding vector
 
+(This and section 5.2 describe the joint run; section 10 shows how the control
+differs.)
+
 On held-out tokens, follow depends on how often a token occurs in the training
 text (counts in the 122 million training tokens; 64 tokens per bin):
 
@@ -238,7 +255,7 @@ not asked about stay long (3.95). Their directions changed too: the mean
 pairwise cosine of the rare asked-about vectors is 0.91, against 0.99 in the
 language-model-only model.
 
-Two explanations fit, and this run does not separate them:
+Two explanations fit this run:
 1. The self-report's gradient through its input pulls the asked-about vectors
    into the range where its reading works.
 2. An optimizer effect: with Adam and no weight decay on the embedding table, a
@@ -247,8 +264,10 @@ Two explanations fit, and this run does not separate them:
    rows (here, the self-report's) enlarges Adam's normalization for them and
    slows that drift, whatever its direction.
 
-The control run in section 10 (self-report with its input detached, so it cannot
-change the embedding table) separates them.
+The control run (section 10) shows that the self-report's gradient on the
+embedding table is what keeps the asked-about vectors short: without it, they
+grow long like the others. It does not separate the two explanations, since
+both act through that gradient.
 
 ## 6. The direction LayerNorm hides, and length versus direction
 
@@ -302,25 +321,28 @@ a relation between the two responses.
 
 ## 8. What this does and does not show
 
-- A small working language model answers questions about its own embedding
-  coordinates with answers that are locally close to reading (follow 0.75 to
-  0.85, other movement about 0.4), including for tokens never asked about, at a
-  cost of about 0.1 nats per token in language modelling under this optimizer.
-- The reading fails for embedding vectors much longer than those it was trained
-  on; length matters because of a direction the model is nearly blind to, which
-  pre-LayerNorm hides from the first block. That the architecture is why reading
-  is less exact than in the toy model is a hypothesis: the toy model also had
+This section takes the control (section 10) into account.
+
+- A small working language model can learn to answer questions about its own
+  embedding coordinates with answers that follow the current embedding: in the
+  control, follow 0.87 and centred R² 0.98 on tokens never asked about, at a
+  cost of 0.14 nats per token in language modelling under this optimizer.
+- If the self-report is allowed to change the embedding table, it changes the
+  vectors it is asked about, and its reading then generalizes worse to the
+  other tokens (follow 0.75 and 0.67, centred R² 0.68 and 0.50, in two seeds);
+  the language model pays less (0.10 nats per token, seed 0). The poor
+  generalization is a shift between the asked-about and the other embedding
+  vectors, created by the self-report itself.
+- Reading is not exact in any run: answers also move in other ways by 0.35 to
+  0.48 of a change, and changes of length are followed less than changes of
+  direction. Whether pre-LayerNorm is why reading is less exact than in the
+  toy model (follow 0.997 to 1.005) is a hypothesis: the toy model also had
   random embeddings, no language modelling, and a different budget.
-- Held-out tokens are the fair test of reading: training tokens' vectors were
-  reshaped during training (section 5.2), and the reader was fitted to them.
-  Random vectors drawn from the overall distribution give centred R² 0.81,
-  between training (0.98) and held-out (0.68) tokens.
 - As in the toy model, the embedding vector is the model's input at t's
   position, so this is reading an input. Weights that are not inputs remain the
   open case (PLAN.md, roadmap).
-- Not tested: a reader trained on a frozen language model (only the self-report
-  path trained), which would separate "the reader adapts" from "the embeddings
-  adapt to the reader"; other loss weights; other sizes.
+- Not tested: a reader trained on a frozen language model; other loss weights;
+  other sizes; a seed-1 control. One baseline seed.
 
 ## 9. Replication (seed 1)
 
@@ -358,4 +380,67 @@ one sample, not as estimates with known uncertainty.
 
 ## 10. Control: self-report with its input detached
 
-In progress; to be added.
+Same as the joint seed-0 run (same initial weights, same text, same questions
+in the same order), except that the self-report sees E[t] with its gradient
+blocked: it trains the reader (the blocks, the number head, the extra symbols'
+embedding vectors) but cannot change the text tokens' embedding vectors, which
+are then shaped by language modelling alone.
+
+| measure | joint, seed 0 | control, seed 0 |
+|---|---|---|
+| validation loss (baseline 2.146) | 2.248 | 2.290 |
+| centred R², training tokens | 0.976 | 0.982 |
+| centred R², held-out tokens | 0.680 | 0.982 |
+| centred R², random vectors | 0.813 | 0.821 |
+| follow, training / held-out tokens | 0.851 / 0.751 | 0.871 / 0.868 |
+| other movement, training / held-out | 0.41 / 0.40 | 0.35 / 0.35 |
+| response along E[t] (length), training / held-out | 0.66 / 0.49 | 0.75 / 0.75 |
+| response along the hidden direction c, training / held-out | 0.005 / 0.006 | 0.24 / 0.24 |
+| follow by frequency, held-out: below 100 / 100-9,999 / 10,000+ | 0.34 / 0.79 / 0.83 | 0.62 / 0.90 / 0.90 |
+| edit test: self-report finite-change follow, range (mean) | 0.73 to 0.90 (0.82) | 0.72 to 0.91 (0.83) |
+
+Mean length of E[t] by frequency (below 100 / 100-9,999 / 10,000+):
+
+| model | training tokens | held-out tokens |
+|---|---|---|
+| language model only | 4.68 / 1.65 / 1.44 | 4.77 / 1.68 / 1.46 |
+| joint | 1.53 / 1.44 / 1.33 | 3.95 / 1.75 / 1.41 |
+| control | 4.11 / 1.70 / 1.41 | 4.13 / 1.75 / 1.43 |
+
+Rescaling test on held-out vectors (score as in section 5.1):
+
+| held-out vectors | joint: as is → rescaled | control: as is → rescaled |
+|---|---|---|
+| rare, shrunk to the frequent length | −1.34 → 0.96 | 0.99 → 0.97 |
+| frequent, grown to the rare length | 0.94 → −1.67 | 0.97 → −1.45 |
+
+Observations.
+
+1. Without the self-report's gradient on the embedding table, training and
+   held-out tokens are read equally well (centred R² 0.982 and 0.982; follow
+   0.871 and 0.868). The gap between them in the joint run is gone.
+2. Rare tokens' vectors are long in the control whether asked about or not
+   (4.11 and 4.13), as in the language-model-only model. So in the joint run,
+   the self-report's gradient is what kept the asked-about rare vectors short.
+3. The control reads the long rare vectors well (0.99), because long rare
+   vectors are among its training tokens. It still fails on frequent vectors
+   grown to the rare length (−1.45): what matters is whether a vector lies in a
+   region the reader was trained on, not length as such. The rare vectors all
+   point in nearly the same direction (mean pairwise cosine 0.998), so "long"
+   means long in that one direction.
+4. The control is far less blind along the hidden direction c (0.24 against
+   0.005) and follows length changes better (0.75).
+5. The language model pays more in the control: 0.144 nats per token against
+   0.102.
+
+Interpretation. In the joint runs, the self-report found a cheaper solution
+than reading: it changed the embedding vectors it was asked about so that its
+reader works on them, at less cost to the language model. That solution does
+not carry over to the tokens it was not asked about, whose vectors kept the
+shape the language model gave them. When the self-report cannot change the
+embedding table, it has to learn to read the vectors as the language model
+makes them, and then it reads tokens it was never asked about just as well.
+This is one seed of the control; the size of the effect (0.68 against 0.98) is
+much larger than the difference between the two joint seeds (0.68 and 0.50
+are both far below 0.98).
+

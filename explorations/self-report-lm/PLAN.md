@@ -80,8 +80,9 @@ head; tied input and output embeddings.
 - [x] `lm.py`: model; `train.py`: joint training with logging and checkpoints.
 - [x] `measure.py`: measurements 1-4.
 - [x] Tests; independent code review by a separate Claude instance (NOTES.md).
-- [ ] Short trial run (canary), then the runs above.
-- [ ] REPORT.md, PDF.
+- [x] Short trial run (canary), then the runs above; added a control run with the
+      self-report's input detached (after the review of the report draft).
+- [x] REPORT.md, PDF.
 
 ## Roadmap: the other options, for later
 

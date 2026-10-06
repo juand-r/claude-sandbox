@@ -79,3 +79,19 @@ in REPORT.md. The ones that changed conclusions:
 - Added: linear probe on the language-model-only model (held-out centred R² 0.834,
   not like for like); centred R² on random vectors (0.813); zero-count tokens (88
   training, 47 held-out).
+
+## 2026-10-06: seed 1 and the control
+
+Seed 1 reproduces every qualitative result of seed 0 with weaker numbers
+(held-out centred R² 0.50 against 0.68; follow 0.67 against 0.75).
+
+Control (self-report input detached, seed 0): held-out tokens read as well as
+training tokens (centred R² 0.982 and 0.982; follow 0.87 and 0.87); rare
+vectors stay long (about 4.1) in both sets and are read well; language-model
+cost 0.144 against 0.102 for the joint run. So in the joint runs the
+self-report reshaped the asked-about embedding vectors, and that shift is what
+made the held-out tokens hard. Correction of mine: I wrote in the report that
+this control would separate the two explanations for the shortening (pull into
+the reader's range, or an Adam effect); it does not, since both act through
+the self-report's gradient on the embedding table. Report revised (summary,
+sections 5.2, 8, 10).
