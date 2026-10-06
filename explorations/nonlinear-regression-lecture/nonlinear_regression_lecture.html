@@ -488,8 +488,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <ul>
       <li data-step="1">Sort by the feature. Try a threshold between each pair of neighbors.</li>
       <li data-step="1">Each side predicts its average <span class="math">y</span>. Score the threshold by the sum of squared errors:<span class="math dm">SSE = Σ (yᵢ − ŷᵢ)²</span></li>
-      <li data-step="2">The SSE curve has more than one dip. Try every threshold.</li>
-      <li data-step="3">Keep the one with the smallest SSE.</li>
+      <li data-step="3">Keep the threshold with the lowest SSE.</li>
     </ul>
   </div>
   <div class="fig">
