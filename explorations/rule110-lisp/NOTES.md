@@ -1009,3 +1009,22 @@ focus on a more efficient solution". Design notes: INTERPRETER.md.
   192 bits; widest queued-copy gap 744,766 cells -> v > 66,497 by the gap
   rule. Glider run started at v = 99,303 (gap = 7.5 v):
   data/lisp_car_gas.log.
+- (cont.) car on gliders: 4,512/4,512 reads, value a, 115 s, 1.6e8 events.
+- cond/eq? run: first attempt OOM'd in setup (component_regions built a
+  2.7e9-cell row for 4 table periods; right_super_period up to 31). Fixed:
+  unused appendants are N^6 (never appended), geometry-only assemble,
+  super period only for > 4 periods.
+- Recursion: lambda/define inlined to a depth bound; bugs found and fixed:
+  nested conds shared the T register (now selection runs after all
+  clauses compile); free_uses skipped cond tests; lambda bodies lost
+  outer scope.
+- Lifetimes + dropping consumed blocks: last (a b c) 709 -> 362 passes,
+  read*queue 1.7e9 -> 6.8e7. Scheduler: an emitter may broadcast again at
+  its compensation pass (227 of 386 broadcasts were waiting for it).
+- Variable symbol width per read: estimated only 22% fewer reads (88% of
+  reads carry a broadcast bit, so need tags). Not done.
+- Junk: events per read grow linearly with reads in every glider run
+  (car, cond, and the 3-state TM of 3.9). 14.0M of 16.0M merges (car,
+  2,000 reads) are ossifiers x E objects, spread evenly left of the
+  queue, period 5 items. Item counts change between snapshots (merges
+  and splits), so a rigid-shift excision is not exact as is.

@@ -137,14 +137,28 @@ correct answers.
 For comparison, the old tower runs `(car (quote (a b)))` as 85.9M Turing
 machine steps on a 7.9M-symbol tag alphabet, ~1e19 generations or more.
 
-## 5. Plan
+## 5. Recursion, lifetimes, and the junk cost (summary; REPORT.md section 7)
+
+- lambda/define: inlined at compile time up to a depth bound (deeper ->
+  overflow marker -> decode raises). Variables are copied token by token,
+  except the last use, which takes the block.
+- Register lifetimes (busm): registers enter the queue at first use and
+  leave after the last, so only live registers cost reads.
+- On gliders the cost per read grows with the read count: ossifiers cross
+  all debris left of the queue (~8 x reads^2 events). For `last` of
+  (a b c), ~2e11 events. Remedy: an engine macro for an ossifier crossing
+  periodic debris (not built).
+
+## 6. Plan
 
 - [x] `phasem.py`: phase machines = the CTS read by symbols.
-- [x] `busm.py`: bus machines compiled into the CTS table.
-- [x] `lisp_bus.py`: variable-free Lisp, exact at the CTS level.
-- [ ] Run `(car (quote (a b)))` on gliders and read the value out
-      (`python experiments.py lisp-gliders "(car (quote (a b)))"`).
-- [ ] lambda/define (recursion): needs a heap or substitution with
-      copying; the open design question (section 6, to come).
+- [x] `busm.py`: bus machines compiled into the CTS table; lifetimes.
+- [x] `lisp_bus.py`: Lisp (variable-free, then lambda/define with a depth
+      bound), exact at the CTS level.
+- [x] `(car (quote (a b)))` on gliders, value read out (115 s).
+- [x] `lisp110.py`: command line entry point.
+- [ ] cond/eq? expression on gliders (running).
+- [ ] Options: engine macro for the junk sweep; a periodic interpreter
+      loop for unbounded recursion; constant-factor compiler work.
 
 Status log: NOTES.md (phase 10).
