@@ -313,3 +313,16 @@ def test_readwatch_pending_cursor():
             break
         j = rng.choice(live[:8])
         w.state[j] = rng.choice(nxt[w.state[j]])
+
+
+def test_census_missing_keys_beyond_table():
+    """A key index past the end of the census's single-particle table is
+    missing even when the table's last entry is filled (this broke the
+    resume of a long plain run: a key new since the checkpoint was never
+    rendered)."""
+    import numpy as np
+    from gascensus import ParticleCensus
+    pc = ParticleCensus.__new__(ParticleCensus)
+    pc._k_start = np.array([0, -1, 5], np.int64)
+    kid = np.array([0, 1, 2, 3, 7])
+    assert pc._missing(kid).tolist() == [False, True, False, True, True]

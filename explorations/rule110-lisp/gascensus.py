@@ -100,6 +100,13 @@ class ParticleCensus:
         return [(int(x0) + lo, kind) for x0, _, kind in census(_Rows(rows, hi - lo))]
 
     # -- memo of single particles, flat for vectorized lookup -----------------------
+    def _missing(self, kid):
+        """Mask of key indices not rendered yet (beyond the table, or -1)."""
+        out = kid >= len(self._k_start)
+        inside = ~out
+        out[inside] = self._k_start[kid[inside]] < 0
+        return out
+
     def _single(self, kid, oid, ph, T):
         """Clusters of one particle alone (orbit oid at phase ph), stored
         flat: kid -> rows of the flat offset / kind arrays."""
@@ -187,8 +194,7 @@ class ParticleCensus:
         single = rigid & in_span & (ends - starts == 1)
         si = starts[single]
         kid = ob[oid[si]] + phT[si]
-        for k in np.unique(kid[self._k_start[np.minimum(kid, len(self._k_start) - 1)] < 0]
-                           if len(self._k_start) else kid):
+        for k in np.unique(kid[self._missing(kid)]):
             j = si[np.nonzero(kid == k)[0][0]]
             self._single(int(k), int(oid[j]), int(phT[j]), T)
         if len(si):
