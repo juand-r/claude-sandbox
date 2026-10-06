@@ -33,6 +33,10 @@
     tree, supervised branch only, re-coloured to this deck's class colours; new icons for SVMs
     (today) and neural nets (next week, under both classification and regression).
 1. Title (text only).
+1b. Decision Boundaries (user's request): the user's two figures, images only. The tree figure
+    is tinted by `tint_tree_regions.py`: yellow where circles are the majority (R1, R3, R5),
+    blue where triangles are (R2, R4, R6). Counts read off the figure: R3 holds one circle and
+    no triangles; R1 has one triangle among many circles.
 2. Which line? Three separating lines (A, B, C), their streets, your own line, then the SVM.
 3. Hyperplane w·x + b = 0: sliders for w and b, the normal vector, the two sides, f(x) as a score.
 4. Distance to the hyperplane: r = f(x)/‖w‖, derived in three steps with a draggable point.

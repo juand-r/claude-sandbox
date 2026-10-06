@@ -1,6 +1,6 @@
 # Support vector machines: lecture slides
 
-A 19-slide interactive lecture for a machine learning class: hyperplanes and margins, the
+A 20-slide interactive lecture for a machine learning class: hyperplanes and margins, the
 hard-margin support vector classifier (SVC) and its derivation, the soft-margin SVC, kernels,
 and general properties of SVMs. Two classes only. It uses the same slide template and conventions
 as `../roc-auc-lecture/`.
@@ -18,7 +18,10 @@ Open `svm_lecture.html` in a browser. No server or install is needed.
 - `svm_lecture.html`: the deck. CSS, JS, data and the SVM solver are all in this one file.
 - `check_numbers.py`: compares the deck's solver with scikit-learn on every dataset in the
   slides and checks every number quoted on them.
-- `requirements.txt`: Python packages for `check_numbers.py` (use a virtualenv).
+- `requirements.txt`: Python packages for `check_numbers.py` and `tint_tree_regions.py` (use a virtualenv).
+- `tint_tree_regions.py`: colours the decision-tree figure's rectangles by majority class
+  (`assets/decision_tree_orig.png` → `assets/decision_tree_regions.png`).
+- `assets/`: images embedded in the deck (meme, the two decision-boundary figures).
 - `NOTES.md`: plan, slide outline and design decisions.
 - `tests/`: Playwright scripts (Node, uses the pre-installed Chromium), run from `tests/` with
   `NODE_PATH=$(npm root -g) node <script>.js`. Screenshots go to `tests/screenshots/`.
@@ -40,7 +43,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 ## Slides
 
-0. Opener: class-imbalance meme (image only). 0b. Announcements. 0c. Supervised learning: the story so far. 1. Title. 2. Which line? 3. A line is w·x + b = 0. 4. Distance to the hyperplane. 5. The margin.
+0. Opener: class-imbalance meme (image only). 0b. Announcements. 0c. Supervised learning: the story so far. 1. Title. 1b. Decision Boundaries (two images). 2. Which line? 3. A line is w·x + b = 0. 4. Distance to the hyperplane. 5. The margin.
 6. The hard-margin SVC. 7. Only the support vectors matter (drag points). 8. When no line
 separates (slack). 9. The role of C. 10. No line will do (lift to 3D). 11. The kernel trick.
 12. General properties. 13. Exercise. 14. Takeaways. 15. Bonus: slack is hinge loss. 16. Thanks.
