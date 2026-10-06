@@ -27,8 +27,8 @@
 - Naive Bayes row: a regression version exists (Frank, Trigg, Holmes & Witten, "Naive Bayes for
   regression", Machine Learning 41, 2000) but is rarely used and, by that paper's own results,
   performs poorly; Gaussian naive Bayes takes continuous features but still predicts a class. The
-  cell is a faint dash with a footnote marker; the footnote says "Naive Bayes regression exists
-  (does not work well, not commonly used)" and gives the reference (the user's wording and citation).
+  cell is a faint dash with a footnote marker; the footnote says "Naive Bayes regression exists,
+  but does not work well, not commonly used." and gives the reference (the user's wording and citation).
 
 ## Slide outline
 1. Announcements (3 cards).
