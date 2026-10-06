@@ -1,0 +1,224 @@
+{
+ "settings": {
+  "name": "lmonly_s0",
+  "lam": 0.0,
+  "seed": 0,
+  "steps": 15000,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128
+ },
+ "valid_loss": 2.146455079317093,
+ "r2_train": -2.5534078302828247,
+ "r2_centred_train": -4.399591876254834,
+ "r2_coord_mean_train": 0.3419117756085902,
+ "r2_held_out": -2.029223464874875,
+ "r2_centred_held_out": -3.514711155432673,
+ "r2_coord_mean_held_out": 0.32903271979432624,
+ "r2_random": -2.959871275120665,
+ "n_jacobian_tokens": 512,
+ "sum_w": 0.023993894457817078,
+ "jacobian_train": {
+  "follow": -0.000808558778246038,
+  "other": 3.1504354153294116,
+  "follow_length": 0.06673920484354312,
+  "follow_direction": -0.0013404309327483149,
+  "ones_mean": 0.023993903614609735,
+  "ones_sd": 4.2065816135972156e-07,
+  "follow_sd": 0.0013030446011102381
+ },
+ "jacobian_held_out": {
+  "follow": -0.0010042635771405628,
+  "other": 3.137051763944328,
+  "follow_length": 0.048841513016668614,
+  "follow_direction": -0.0013967500070130759,
+  "ones_mean": 0.023993901602807455,
+  "ones_sd": 4.2026613905621346e-07,
+  "follow_sd": 0.0013051117987224045
+ },
+ "finite_follow_median_train": 0.004883320303633809,
+ "finite_follow_mean_train": 0.0006148735907345326,
+ "finite_follow_median_held_out": -0.003172527300193906,
+ "finite_follow_mean_held_out": -0.021002533842732873,
+ "edit_test": [
+  {
+   "token": 304,
+   "count": 875,
+   "report_follow": -0.28831520676612854,
+   "kl_at_t": 0.0031198307406157255,
+   "kl_after_t_later": 0.00036306088441051543,
+   "kl_no_t": 0.00019183865515515208
+  },
+  {
+   "token": 279,
+   "count": 635,
+   "report_follow": 0.01616700366139412,
+   "kl_at_t": 0.0018320876406505704,
+   "kl_after_t_later": 0.000863625667989254,
+   "kl_no_t": 0.00025162455858662724
+  },
+  {
+   "token": 316,
+   "count": 589,
+   "report_follow": 0.13841746747493744,
+   "kl_at_t": 0.002409010659903288,
+   "kl_after_t_later": 0.0003205801185686141,
+   "kl_no_t": 0.00022697646636515856
+  },
+  {
+   "token": 328,
+   "count": 567,
+   "report_follow": 0.20595243573188782,
+   "kl_at_t": 0.0017527049640193582,
+   "kl_after_t_later": 0.00034374394454061985,
+   "kl_no_t": 0.00013184761337470263
+  },
+  {
+   "token": 341,
+   "count": 526,
+   "report_follow": 0.12284622341394424,
+   "kl_at_t": 0.002208292717114091,
+   "kl_after_t_later": 0.00042539648711681366,
+   "kl_no_t": 0.00011278406600467861
+  },
+  {
+   "token": 352,
+   "count": 518,
+   "report_follow": -0.008439465425908566,
+   "kl_at_t": 0.00503196706995368,
+   "kl_after_t_later": 0.0006788164027966559,
+   "kl_no_t": 0.0002056720550172031
+  },
+  {
+   "token": 356,
+   "count": 464,
+   "report_follow": 0.3525036871433258,
+   "kl_at_t": 0.0037588803097605705,
+   "kl_after_t_later": 0.0003738305240403861,
+   "kl_no_t": 0.00013738370034843683
+  },
+  {
+   "token": 0,
+   "count": 348,
+   "report_follow": 0.11855220794677734,
+   "kl_at_t": 0.003954180516302586,
+   "kl_after_t_later": 0.00060424511320889,
+   "kl_no_t": 9.416400280315429e-05
+  },
+  {
+   "token": 298,
+   "count": 333,
+   "report_follow": 0.09481854736804962,
+   "kl_at_t": 0.0050040315836668015,
+   "kl_after_t_later": 0.00017561600543558598,
+   "kl_no_t": 7.46457080822438e-05
+  },
+  {
+   "token": 416,
+   "count": 320,
+   "report_follow": -0.15580163896083832,
+   "kl_at_t": 0.00017826774273999035,
+   "kl_after_t_later": 0.0004321420274209231,
+   "kl_no_t": 5.5809050536481664e-05
+  },
+  {
+   "token": 405,
+   "count": 284,
+   "report_follow": -0.012339962646365166,
+   "kl_at_t": 0.00492702703922987,
+   "kl_after_t_later": 0.000199915433768183,
+   "kl_no_t": 6.055108678992838e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": -0.0010372739052399993,
+   "kl_at_t": 0.009320639073848724,
+   "kl_after_t_later": 0.003930871840566397,
+   "kl_no_t": 0.0009601819911040366
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.4739350974559784,
+   "kl_at_t": 0.005870448891073465,
+   "kl_after_t_later": 0.00047343329060822725,
+   "kl_no_t": 6.286132702371106e-05
+  },
+  {
+   "token": 427,
+   "count": 246,
+   "report_follow": 0.11936819553375244,
+   "kl_at_t": 0.004003266803920269,
+   "kl_after_t_later": 0.0003005177713930607,
+   "kl_no_t": 0.0001055335596902296
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": -0.22184091806411743,
+   "kl_at_t": 0.0032057466451078653,
+   "kl_after_t_later": 0.0005923350690864027,
+   "kl_no_t": 0.00012420389975886792
+  },
+  {
+   "token": 83,
+   "count": 231,
+   "report_follow": -0.19982939958572388,
+   "kl_at_t": 0.009406279772520065,
+   "kl_after_t_later": 0.00018903632008004934,
+   "kl_no_t": 7.376298162853345e-05
+  },
+  {
+   "token": 415,
+   "count": 228,
+   "report_follow": -0.04663494601845741,
+   "kl_at_t": 0.002476798603311181,
+   "kl_after_t_later": 0.0004275787796359509,
+   "kl_no_t": 9.337004303233698e-05
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.2133248746395111,
+   "kl_at_t": 0.00025212124455720186,
+   "kl_after_t_later": 5.152027006261051e-05,
+   "kl_no_t": 8.609059477748815e-06
+  },
+  {
+   "token": 469,
+   "count": 146,
+   "report_follow": 0.043480485677719116,
+   "kl_at_t": 0.010093199089169502,
+   "kl_after_t_later": 0.0011432233732193708,
+   "kl_no_t": 0.00021630895207636058
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.3103429675102234,
+   "kl_at_t": 0.01019466295838356,
+   "kl_after_t_later": 0.0002565672912169248,
+   "kl_no_t": 5.0553127948660403e-05
+  }
+ ],
+ "stories": [
+  "Once upon a time, there was a little boy named Timmy. Timmy loved to play with his toys and read stories with his toys. One day, he went to the park with his mom. While playing, they saw a boy who was sad. Timmy said, \"My name is Timmy.\"\n\n\"Don't worry, I'll help you,\" Timmy said.\n\nLater that day, Timmy and his mom went to the park to play. They saw a big dog with a funny face and a mask. Timmy wanted to get closer to the dog, so he leaned on top of the dog's arm",
+  "Once upon a time there was a brave knight. He was determined to find out what the sword could find. He tried to find out the sword but he never found out.\n\nSuddenly, a little girl came by and said to him: \"Let me help you for your sword! We can find a sword!\"\n\nThe knight was very happy and started to walk around, having fun. He was so excited to find out what the sword was looking for. But when he arrived, a kind lady saw what he had had done. She told him to take him to the swamp to find out what he",
+  "Once upon a time, there was a little girl named Lily. She loved to eat houses and flowers. One day, she saw a big, bright pink bird with bright flames on it and stars. Lily wanted to see the red bird, so she went to get her toy car.\n\nLily's mommy told her that it's important to follow where it means to come. Lily thought it would be a good way to fly. She ran to the window and followed the bird. When it got there, the bird saw the blue sky. It was so wonderful!\n\nLily moved her toy car around"
+ ]
+}
