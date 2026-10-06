@@ -1782,8 +1782,9 @@ function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
     for(let i=0;i<N;i++)for(let j=0;j<N;j++){const v=m.f([(i+.5)*h,(j+.5)*h]);
       el('rect',{x:api.sx(i*h),y:api.sy((j+1)*h),width:cw+.6,height:cw+.6,fill:v>0?'var(--pos)':'var(--mean)'},gHeat);}
     const F=[];for(let i=0;i<=NC;i++){F.push([]);for(let j=0;j<=NC;j++)F[i].push(m.f([i*10/NC,j*10/NC]));}
-    el('path',{d:contour(F,NC,0),fill:'none',stroke:'var(--model)','stroke-width':3,'stroke-linecap':'round'},gModel);
-    for(const c of [-1,1])el('path',{d:contour(F,NC,c),fill:'none',stroke:'var(--model)','stroke-width':1.8,'stroke-dasharray':'6 5',opacity:.8},gModel);
+    if(kern!=='linear'){   // no lines for the linear kernel: on rings and XOR its solution is flat (w = 0)
+      el('path',{d:contour(F,NC,0),fill:'none',stroke:'var(--model)','stroke-width':3,'stroke-linecap':'round'},gModel);
+      for(const c of [-1,1])el('path',{d:contour(F,NC,c),fill:'none',stroke:'var(--model)','stroke-width':1.8,'stroke-dasharray':'6 5',opacity:.8},gModel);}
     m.sv.forEach(i=>ring(api,gSV,X[i],{r:13,w:2.5}));
     drawPoints(api,gPts,X,y);
     const mistakes=X.filter((p,i)=>y[i]*m.f(p)<0).length;
