@@ -1654,7 +1654,7 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
   // width arrow centred on the point of f = 0 nearest to (1.5, 8.5), an empty part of the plot
   const t=-(dot(w,[1.5,8.5])+b)/(n*n),m=[1.5+t*w[0],8.5+t*w[1]],p0=[m[0]-u[0]/n,m[1]-u[1]/n],p1=[m[0]+u[0]/n,m[1]+u[1]/n];
   arrow(api,g3l,m,p1,{color:'var(--ink)',width:2});arrow(api,g3l,m,p0,{color:'var(--ink)',width:2});
-  txt(g3l,api.sx(p1[0])+10,api.sy(p1[1])+4,`ρ = 2/‖w‖ = ${(2/n).toFixed(2)}`,{fill:'var(--ink)','font-size':16,'font-weight':700,'font-family':MONO,'text-anchor':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});
+  txt(g3l,api.sx(p1[0])+10,api.sy(p1[1])+4,'ρ = 2/‖w‖',{fill:'var(--ink)','font-size':16,'font-weight':700,'font-family':MONO,'text-anchor':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});
   drawPoints(api,api.layer('pts'),X,y);
 }
 
