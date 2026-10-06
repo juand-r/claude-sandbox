@@ -345,8 +345,14 @@ Design: the left side becomes train + rope.
 - Validation: car with and without the rope: every read and every
   census count equal; value equal. Then speed on car/cond.
 
-- [ ] C: rope arrays, sweep, wake/emission, absorb API
-- [ ] Python: RopeSide (train draws), absorption, GasReads option
-- [ ] Exactness: car, rope vs no rope
-- [ ] Speed: car, cond
-- [ ] Run last (a b c) on gliders, monitored
+Changed during the work: a single A x E crossing is not a clean merge +
+split (the four A gliders of an ossifier pass an item through a
+multi-step reaction), so the unit of the sweep is a whole ossifier
+crossing a whole debris unit, memoized on its exact relative
+configuration at entry (NOTES phase 10b).
+
+- [x] C: rope arrays, sweep, wake/emission, absorb API
+- [x] Python: train draws, absorption, GasReads option
+- [x] Exactness: car, rope vs no rope (600 reads in tests; 2,448 full)
+- [x] Exactness and speed: cond (10,836 reads; 7.5e7 vs 9.3e8 events)
+- [ ] Run last (a b c) on gliders, monitored (started)

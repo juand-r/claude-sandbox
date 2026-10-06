@@ -1028,3 +1028,45 @@ focus on a more efficient solution". Design notes: INTERPRETER.md.
   2,000 reads) are ossifiers x E objects, spread evenly left of the
   queue, period 5 items. Item counts change between snapshots (merges
   and splits), so a rigid-shift excision is not exact as is.
+
+## Phase 10b: the debris rope (2026-10-06)
+
+Goal (user): remove the reads^2 junk cost (ossifiers crossing all debris
+left of the queue), then run `last` of (a b c) on gliders.
+
+Design as built (gasc.c rope section, gasc.py rope_absorb/_rope_unit):
+- A single A x E crossing is not clean (code 23 in the first attempt):
+  the 4 A gliders of an ossifier pass a debris item through a multi-step
+  reaction. So the sweep unit is ossifier x debris unit (items closer
+  than ROPE_SEP = 1600 cells), keyed by the exact relative configuration
+  when the lead glider first comes within G_ENTRY = 32 cells. Misses are
+  simulated by the Python reference engine (gas.Gas).
+- Debris left of the rightmost ossifier minus ROPE_MARGIN = 8192 is
+  absorbed every 25 reads; the front ossifier is swept lazily and
+  emitted at its last split time through the left sentinel's wake. The
+  sentinel bound moves at -4/15 and is tightened after each sweep.
+- Checks fail loudly (codes 30-49, gasc.c), e.g. 45: anything reaching
+  the left sentinel before the wake.
+
+Mistake worth recording: the first cond run with the rope failed (code
+45) at read ~4990, and I spent time on a "reaction zone" in the debris.
+It was a failed construction: I had reused v = 117,027 from the old
+compiler's cond run, but the current compiler's CTS has a widest gap of
+1,339,908 = 11.45 v, past the measured failure threshold (~11.05 v).
+The plain engine fails at the same place ("composite wider than 65536
+cells"). Lesson: always take v from the gap rule of the CTS being run
+(lisp_gliders does; my scratch script did not). The rope's code 45 was
+the correct loud failure.
+
+Results (v = 178,655 from the gap rule; scratchpad rope/one.py):
+
+| run | reads | events | wall | rope crossings | memo entries |
+|---|---|---|---|---|---|
+| cond, plain | 10,836 | 9.32e8 | 330 s | - | - |
+| cond, rope | 10,836 | 7.53e7 | 229 s | 5.35e7 | 2 |
+
+Rope vs plain: all 10,836 read outcomes and census counts equal, same
+final t, and the 2,909 items right of the rope cut identical item for
+item (the absorbed debris is not compared item by item; it is only
+reachable through the crossings, which are exact by construction and
+checked). Wall time is now dominated by the read check, not events.
