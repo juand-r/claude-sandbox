@@ -43,7 +43,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 ## Slides
 
-0. Opener: class-imbalance meme (image only). 0b. Announcements. 0c. Supervised learning: the story so far. 1. Title. 1b. Decision Boundaries (two images). 2. Which line? 3. A line is w·x + b = 0. 4. Distance to the hyperplane. 5. The margin.
+0. Opener: class-imbalance meme (image only). 0b. Announcements. 0c. Supervised learning: the story so far. 1. Title. 1b. Decision Boundaries (two images). 2. Which line? 3. A hyperplane is w·x + b = 0. 4. Distance to the hyperplane. 5. The margin.
 6. The hard-margin SVC. 7. Only the support vectors matter (drag points). 8. When no line
 separates (slack). 9. The role of C. 10. No line will do (lift to 3D). 11. The kernel trick.
 12. General properties. 13. Exercise. 14. Takeaways. 15. Bonus: slack is hinge loss. 16. Thanks.
