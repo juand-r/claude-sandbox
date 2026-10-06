@@ -89,3 +89,9 @@
   screen is worse. `tests/mathwrap.js` checks this at 1440×810, 1280×720, 1920×1080, 1024×768
   and 390×844; both decks pass. (The phone rule must come last in the stylesheet, or the
   later `.eq` and `.answer .math` rules override it; the first attempt failed for that reason.)
+- Lagrange multipliers (user's decision): the deck names the method but shows no α and no
+  w = Σ αᵢyᵢxᵢ, since that would be taken on faith. The hard-margin figure rings the support
+  vectors (at the step that names them) without α labels. The kernel slide says the solver
+  only needs pairwise similarities (dot products), and a new point is scored by a
+  similarity-weighted vote of the support vectors. check_numbers.py still verifies the α
+  values internally.

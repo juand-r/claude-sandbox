@@ -548,7 +548,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p><b class="cue">0</b>Same data. Now we turn "widest margin" into a problem a computer can solve.</p>
     <p><b class="cue">1</b>The constraints say: every point at least 1 in score on its correct side, which is the scale convention from the last slide. Among all such (w, b), take the one with the widest margin ρ.</p>
     <p><b class="cue">2</b>Maximizing 2/‖w‖ is minimizing ‖w‖, which is minimizing ½‖w‖². The square removes the square root and the ½ tidies the derivative. Quadratic objective, linear constraints: a constrained convex quadratic minimization problem, a well-studied class with reliable solvers.</p>
-    <p><b class="cue">3</b>We will not derive the multipliers. The result to keep: w is a weighted sum of the training points, and only the three ringed points get non-zero weight. Here α = 1/12, 1/6 and 1/4. Delete any other point and the solution stays the same.</p>
+    <p><b class="cue">3</b>We will not go into the solution method. The result to keep: the hyperplane is determined by the three ringed points alone. Delete any other point and the solution stays the same.</p>
   </div>
 </section>
 
@@ -662,8 +662,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>The kernel trick</h2>
     <ul>
       <li data-step="1">A linear SVM on the rings: no good boundary exists.</li>
-      <li data-step="2">In the Lagrange-multiplier solution, the points appear only in dot products <span class="math">x<sub>i</sub> · x<sub>j</sub></span>. Replace each by a <b data-hint="kernel">kernel</b> <span class="math">K(x<sub>i</sub>, x<sub>j</sub>)</span>, a similarity. The RBF kernel is <span class="math">exp(−γ ‖x − x′‖²)</span>.</li>
-      <li data-step="3">The score is<span class="math dm">f(x) = Σ α<sub>i</sub> y<sub>i</sub> K(x<sub>i</sub>, x) + b</span>Support vectors vote, weighted by similarity. Large <span class="math">γ</span> makes votes local and the boundary wiggly.</li>
+      <li data-step="2">The solver never needs the points themselves, only how similar each pair is: their dot products <span class="math">x<sub>i</sub> · x<sub>j</sub></span>. Replace that similarity with a <b data-hint="kernel">kernel</b> <span class="math">K(x<sub>i</sub>, x<sub>j</sub>)</span>, and the same solver draws curved boundaries. The RBF kernel is <span class="math">exp(−γ ‖x − x′‖²)</span>.</li>
+      <li data-step="3">To score a new point, each support vector votes, weighted by its similarity to the point. Large <span class="math">γ</span> makes votes local and the boundary wiggly.</li>
       <li data-step="4">The same machinery handles XOR, where no line works either.</li>
     </ul>
   </div>
@@ -686,7 +686,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p><b class="cue">0</b>Back to the rings. C = 10 throughout this slide.</p>
     <p><b class="cue">1</b>Linear kernel, the plain SVM. The shading shows the predicted class; nothing sensible comes out.</p>
     <p><b class="cue">2</b>On the last slide we built the new feature by hand. A kernel does it implicitly: K(x, x′) equals a dot product in some feature space, but we never compute those features. For the RBF kernel that space has infinitely many dimensions, yet K is one exponential.</p>
-    <p><b class="cue">3</b>This should feel familiar from k-NN: the prediction is a vote of nearby training points. The differences: only support vectors vote, and their weights α_i are learned. Slide γ up: each vote reaches less far and the boundary wraps around individual points, a sign of overfitting.</p>
+    <p><b class="cue">3</b>This should feel familiar from k-NN: the prediction is a vote of nearby training points. The differences: only support vectors vote, and their weights are learned. Slide γ up: each vote reaches less far and the boundary wraps around individual points, a sign of overfitting.</p>
     <p><b class="cue">4</b>XOR: positives in two opposite corners, negatives in the other two. Linear fails; RBF succeeds. Like C, γ is chosen on validation data.</p>
   </div>
 </section>
@@ -1336,7 +1336,7 @@ function presenterRender(){
 window.__HINTS = {
   /* hover cards: put data-hint="key" on any element and add a key here */
   qp:`<div class="ht">constrained convex quadratic minimization</div><p>Minimize a bowl-shaped quadratic function subject to linear inequality constraints. When the quadratic is bowl-shaped (convex), every local minimum is the global one.</p>`,
-  sv:`<div class="ht">support vectors</div><p>The training points with α > 0. In the hard-margin SVC they lie exactly on the margin lines, f(x) = ±1.</p>`,
+  sv:`<div class="ht">support vectors</div><p>The training points on the margin lines, f(x) = ±1; if they moved, the hyperplane would change. With a soft margin, every point with slack is one too.</p>`,
   kernel:`<div class="ht">kernel</div><p>A function K(x, x′) that equals a dot product φ(x)·φ(x′) in some feature space, without computing φ. Examples: (x·x′ + 1)², exp(−γ‖x − x′‖²).</p>`
 };
 /* ---------- hover helper cards ---------- */
@@ -1663,11 +1663,8 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
   const api=plane($('fig-hard'),{label:'hard-margin SVC'});
   const {X,y}=SEP,m=SEP_HARD;
   drawMargin(api,stepG(api.layer('heat'),1),m.w,m.b);
-  const g2=stepG(api.layer('anno'),2);
-  const FR={'0.08333':'1/12','0.16667':'1/6','0.25000':'1/4'},frac=v=>FR[v.toFixed(5)]||v.toFixed(3);
-  for(const i of m.sv){ring(api,g2,X[i]);
-    const p=X[i],left=y[i]<0;      // negatives: label to the lower left; positives: lower right
-    txt(g2,api.sx(p[0])+(left?-12:12),api.sy(p[1])+30,`α = ${frac(m.alpha[i])}`,{fill:'var(--hi)','font-size':16,'font-weight':700,'font-family':MONO,'text-anchor':left?'end':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});}
+  const g3=stepG(api.layer('anno'),3);   // support vectors ringed with the bullet that names them
+  for(const i of m.sv)ring(api,g3,X[i]);
   drawPoints(api,api.layer('pts'),X,y);
 }
 
