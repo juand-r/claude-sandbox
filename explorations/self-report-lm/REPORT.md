@@ -6,8 +6,10 @@ A small GPT-style model (4 layers, width 128, 1.35 million parameters) was
 trained on TinyStories to predict the next token and, at the same time, to
 answer "what is coordinate i of the embedding vector of token t?" with a number.
 The embedding table is shared between input and output (tied), so the weights
-it reports on are the weights it uses to read and write text. One seed is
-complete; a second seed and a control run are in progress (sections 9 and 10).
+it reports on are the weights it uses to read and write text. The numbers
+below are from the seed-0 run; a second seed (section 9) reproduces every
+qualitative result with weaker numbers (for example follow 0.67 instead of 0.75
+on held-out tokens); a control run is in section 10.
 
 - It is a working language model: validation loss 2.248 nats per token, against
   2.146 for the same model trained on language modelling alone with the same
