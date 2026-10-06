@@ -311,3 +311,42 @@ Status: tower complete and tested end-to-end (see REPORT.md).
 
 ## Reporting
 - [x] REPORT.md with measured blowup table and defect analysis
+
+# Phase 10b: the debris sweep ("rope") in the event engine (2026-10-06)
+
+User: "Do 1 first then start 3 and monitor it": build the engine-level
+fix for the debris cost, then run `last` of (a b c) on gliders.
+
+Facts (car run, read 1500; scratchpad rope/map.py):
+- Left of the newest tape character (C) the gas holds only E-family
+  debris (2,767 items, gaps >= 64 since closer ones are bound) and
+  ossifiers; an ossifier is 4 separate A gliders (orbit 0, p 3, d 2),
+  338-399 cells apart; ossifiers ~2.2e6 cells apart.
+- Debris is not repetitive (138 distinct item states, all 32-blocks
+  distinct), so a HashLife-style memo of stretches would not hit.
+- Each A x E crossing is a memoized merge + split (2 events, ~500 ns).
+
+Design: the left side becomes train + rope.
+- Rope: debris items absorbed from the left end of the C gas, kept in C
+  arrays outside the event list, plus in-transit gliders (each with the
+  index of the next rope item). The front glider is swept item by item
+  with the existing machinery (periodic collision time, merge table,
+  composite pieces), no heap or list work; unknown merges/pieces go to
+  Python as now. It is emitted into the gas right after the left
+  sentinel at its last split time (a sentinel wake time).
+- Checks (fail loudly): every crossing yields exactly [E', A'] (both
+  particles); the composite does not reach the neighbouring items before
+  it splits; a glider reaches an item only after the previous glider's
+  crossing of it has split; debris items stay >= BOUND_GAP apart.
+- Absorption (Python, every few reads): items right of the sentinel up
+  to a cut that is (a) left of where the front was when the newest tape
+  character was made (Ebar frame), minus a margin, (b) at a gap >= 256,
+  (c) with whole ossifiers only, all items particles.
+- Validation: car with and without the rope: every read and every
+  census count equal; value equal. Then speed on car/cond.
+
+- [ ] C: rope arrays, sweep, wake/emission, absorb API
+- [ ] Python: RopeSide (train draws), absorption, GasReads option
+- [ ] Exactness: car, rope vs no rope
+- [ ] Speed: car, cond
+- [ ] Run last (a b c) on gliders, monitored
