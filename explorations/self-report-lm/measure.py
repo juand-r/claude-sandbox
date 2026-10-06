@@ -87,12 +87,20 @@ def finite_follow(model, tokens, size, gen):
 
 @torch.no_grad()
 def r2_set(model, tokens):
+    """(R², centred R², R² of answering each coordinate's mean) over all questions about tokens.
+    Centred R² = 1 − Σ(a − y)² / Σ(y − ȳ_i)², with ȳ_i the mean of coordinate i over these
+    tokens: answering ȳ_i for every token scores 0. Needed because the embedding vectors share
+    a common component, so pooled R² is positive without reading (canary, NOTES.md)."""
     t = tokens.repeat_interleave(model.dim)
     i = torch.arange(model.dim).repeat(len(tokens))
     out = []
     for s in range(0, len(t), 32768):
         out.append(model.report(t[s:s + 32768], i[s:s + 32768]))
-    return lm.r2(torch.cat(out), model.E[t, i])
+    a = torch.cat(out).view(len(tokens), model.dim)
+    y = model.E[tokens]
+    coord_mean = y.mean(0, keepdim=True)
+    centred = 1 - (a - y).pow(2).sum().item() / (y - coord_mean).pow(2).sum().item()
+    return lm.r2(a.flatten(), y.flatten()), centred, lm.r2(coord_mean.expand_as(y).flatten(), y.flatten())
 
 
 @torch.no_grad()
@@ -175,8 +183,8 @@ def measure(name, quick=False):
     out = {"settings": s}
     with torch.no_grad():
         out["valid_loss"] = float(np.mean([T.lm_loss(m, x, y).item() for x, y in valid_batches]))
-    out["r2_train"] = r2_set(m, train_tokens)
-    out["r2_held_out"] = r2_set(m, held_out)
+    for nm, toks in (("train", train_tokens), ("held_out", held_out)):
+        out[f"r2_{nm}"], out[f"r2_centred_{nm}"], out[f"r2_coord_mean_{nm}"] = r2_set(m, toks)
     out["r2_random"] = r2_random(m, gen)
     n_jac = 32 if quick else N_JAC
     jac_train = train_tokens[torch.randperm(len(train_tokens), generator=gen)[:n_jac]]

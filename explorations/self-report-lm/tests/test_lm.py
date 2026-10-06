@@ -164,3 +164,18 @@ def test_edit_test_kl_matches_hand_computation():
         m.E[t] -= delta
     kl = (p1.exp() * (p1 - p0)).sum(-1)
     assert abs(row["kl_at_t"] - kl[xs == t].mean().item()) < 1e-5
+
+
+def test_centred_r2():
+    """A model answering each coordinate's mean gets centred R² 0; a perfect reader gets 1."""
+    m = Fake(lambda x: x)
+    with torch.no_grad():                       # offsets that differ between coordinates
+        m.E += torch.linspace(-4, 4, m.dim)
+    m.report = lambda t, i: m.E[t, i]
+    toks = torch.arange(20)
+    r2, centred, coord = Ms.r2_set(m, toks)
+    assert abs(r2 - 1) < 1e-6 and abs(centred - 1) < 1e-6
+    means = m.E[toks].mean(0)
+    m.report = lambda t, i: means[i]
+    r2, centred, coord = Ms.r2_set(m, toks)
+    assert abs(centred) < 1e-6 and abs(r2 - coord) < 1e-6 and coord > 0.5   # per-coordinate offsets
