@@ -72,3 +72,19 @@ def test_recursion_bound_fails_loudly():
         lb.run_reference()
     with pytest.raises(RecursionError):
         lb.decode(lb.compile_bus().run(lb.values))
+
+
+SCOPED = [
+    "((lambda (x) ((lambda (y) (cons (car y) x)) (cdr x))) (quote (a b)))",
+    "((lambda (l) (cond ((atom? (cdr l)) (car l)) (t (quote z)))) (quote (a)))",
+    "((lambda (x) (cons (car x) (cdr (cdr x)))) (quote (a b c)))",
+]
+
+
+@pytest.mark.parametrize("src", SCOPED)
+def test_lambda_scope_and_last_use(src):
+    """Lexical scope into applied lambdas; a variable's last use takes its
+    block instead of copying it."""
+    lb = LispBus(src, 3)
+    assert lb.run_reference() == run(src)
+    assert lb.decode(lb.compile_bus().run(lb.values)) == run(src)

@@ -140,8 +140,10 @@ def expand(forms, max_depth):
             return [op] + [go(a, bound, depth) for a in e[1:]]
         if isinstance(op, list) and op[0] == "lambda":
             params, body = op[1], op[2]
+            scope = bound | set(params)    # lexical: the body sees outer names
         elif isinstance(op, str) and op in defs:
             params, body = defs[op]
+            scope = set(params)            # top-level function
         else:
             raise ValueError(f"not supported: {e!r}")
         if len(params) != len(e) - 1:
@@ -150,8 +152,27 @@ def expand(forms, max_depth):
             return ["overflow"]
         args = [go(a, bound, depth) for a in e[1:]]
         return ["let", [[p, a] for p, a in zip(params, args)],
-                go(body, set(params), depth + 1)]
+                go(body, scope, depth + 1)]
     return go(forms[-1], set(), 0)
+
+
+def free_uses(name, e):
+    """Occurrences of ["var", name] in e that refer to the binding around
+    e (a let that rebinds name hides its body, not its arguments)."""
+    if not isinstance(e, list) or not e:
+        return 0
+    if e[0] == "var":
+        return int(e[1] == name)
+    if e[0] == "quote":
+        return 0
+    if e[0] == "let":
+        n = sum(free_uses(name, a) for _, a in e[1])
+        if all(p != name for p, _ in e[1]):
+            n += free_uses(name, e[2])
+        return n
+    if e[0] == "cond":
+        return sum(free_uses(name, x) for clause in e[1:] for x in clause)
+    return sum(free_uses(name, x) for x in e[1:])
 
 
 def max_value_size(expr):
@@ -279,12 +300,17 @@ class LispBus:
         if e == ["overflow"]:
             return [self.reg(tok_atom(OVERFLOW_CODE))]
         if isinstance(e, list) and e and e[0] == "var":
-            return self.copy(env[e[1]])
+            b = env[e[1]]
+            b["left"] -= 1
+            if b["left"] == 0:          # last use: take the block itself
+                return b["regs"]
+            return self.copy(b["regs"])
         if isinstance(e, list) and e and e[0] == "let":
             binds, body = e[1], e[2]
             env2 = dict(env)
             for name, arg in binds:
-                env2[name] = self.compile(arg, env)
+                env2[name] = {"regs": self.compile(arg, env),
+                              "left": free_uses(name, body)}
             # the argument blocks are not part of the value: they leave the
             # queue after their last copy (busm lifetimes)
             return self.compile(body, env2)
