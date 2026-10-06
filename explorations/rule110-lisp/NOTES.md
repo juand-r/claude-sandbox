@@ -1081,3 +1081,31 @@ reads and events at 6x the speed. Events per 10k reads / CTS queue sum
 over them: 17-21 throughout, i.e. linear in the program's work. Time
 per event rose 3.2 -> ~7 us: the crossings are still quadratic in count
 (C memo lookups). Log: data/lisp_last_gas.log.
+
+## Phase 10c: stretch jumps (linear rope) and the plain check of `last` (2026-10-06)
+
+Data (car; scratchpad rc/keys2.py, rc/disp.py). The rope memo has two
+entries. The ossifier's configuration at entry is identical in both;
+the unit is an E pair (orbit 1, p 30, d -8) with its second item at +337
+(phase 16) or +117 (phase 4). Both crossings move every debris item by
+(dt, dx) = (26, -32) mod (30, -8) and every A glider by (1, -116) mod
+(3, 2), and both pairs keep their shape. So an ossifier passage is a
+rigid translation of the debris.
+
+Built: gasc.c stretch jumps (see the comment above pre_V). Train
+ossifiers jump the verified prefix in O(1) when they are an exact
+translate of the reference ossifier (lattice check, code 50) and later
+than the previous crossing by more than the longest crossing (code 51).
+
+Checks so far:
+- ropecheck.py compare: negative control (one changed item) -> MISMATCH;
+  a compare with no common final.npz used to print ALL EQUAL (fixed: it
+  now fails). Plain run killed at read 1300 and resumed: same events.
+- Mutants of the jump (w off by (30, 0); exit shifted 2 cells; n off by
+  one): codes 50, bad merge, 50. All loud.
+- car 2,448 reads and cond 10,836 reads: jumps = plain at every snapshot
+  and at the end. cond: crossings 5.35e7 -> 10,224; wall 229 -> 163 s.
+- last 157,824 reads with jumps: 2,566 s (slow rope 7,196 s); crossings
+  160,152 plus 1.2354635e10 jumped = 12,354,795,124, the slow rope's
+  crossing count exactly; all reads equal the CTS; snapshots equal to
+  the slow rope (to read 100k so far) and to plain (to 40k so far).
