@@ -42,3 +42,33 @@ def test_table_does_not_depend_on_data():
         assert c1.decode(p1.run(c1.values)) == run(s1)
         assert c2.decode(p2.run(c2.values)) == run(s2)
         assert run(s1) != run(s2)
+
+
+LAST = "(define (last l) (cond ((atom? (cdr l)) (car l)) (t (last (cdr l)))))"
+APPEND = ("(define (append a b) (cond ((atom? a) b) "
+          "(t (cons (car a) (append (cdr a) b)))))")
+MEMBER = ("(define (member x l) (cond ((atom? l) (quote ())) "
+          "((eq? x (car l)) t) (t (member x (cdr l)))))")
+RECURSIVE = [
+    ("((lambda (x) (cons x (quote (b)))) (quote a))", 1),
+    (LAST + " (last (quote (a b c)))", 3),
+    (APPEND + " (append (quote (a b)) (quote (c)))", 3),
+    (MEMBER + " (member (quote b) (quote (a b c)))", 3),
+    (MEMBER + " (member (quote d) (quote (a b)))", 3),
+]
+
+
+@pytest.mark.parametrize("src,depth", RECURSIVE)
+def test_recursion(src, depth):
+    lb = LispBus(src, depth)
+    want = run(src)
+    assert lb.run_reference() == want
+    assert lb.decode(lb.compile_bus().run(lb.values)) == want
+
+
+def test_recursion_bound_fails_loudly():
+    lb = LispBus(LAST + " (last (quote (a b c d)))", 3)
+    with pytest.raises(RecursionError):
+        lb.run_reference()
+    with pytest.raises(RecursionError):
+        lb.decode(lb.compile_bus().run(lb.values))

@@ -103,19 +103,83 @@ def n_tokens(datum):
     return 2 + sum(n_tokens(x) for x in datum)
 
 
-def size_bound(expr):
-    """Upper bound on the token count of any value in the evaluation:
-    quoted sizes plus two per operation (cons adds one, atom?/eq?/cond's
-    fallback make two)."""
-    if isinstance(expr, str):
-        return 1
-    if expr[0] == "quote":
-        return n_tokens(expr[1])
-    total = 2
-    for a in expr[1:]:
-        for e in (a if expr[0] == "cond" else [a]):
-            total += size_bound(e)
-    return total
+OVERFLOW_ATOM = "*overflow*"
+OVERFLOW_CODE = (1 << 3) - 1
+
+
+def expand(forms, max_depth):
+    """Top-level forms (defines, then one expression) -> one expression in
+    the compiler's IR: the fragment's forms plus ["var", x],
+    ["let", [[x, e], ...], body] and ["overflow"]. Calls of define'd
+    functions and applied lambdas become lets, nested up to max_depth."""
+    defs = {}
+    for f in forms[:-1]:
+        if not (isinstance(f, list) and f[0] == "define" and isinstance(f[1], list)):
+            raise ValueError(f"expected (define (f args) body), got {f!r}")
+        defs[f[1][0]] = (f[1][1:], f[2])
+    prims = {"car", "cdr", "cons", "atom?", "eq?"}
+
+    def go(e, bound, depth):
+        if isinstance(e, str):
+            if e in bound:
+                return ["var", e]
+            if e == "t":
+                return e
+            raise ValueError(f"unbound symbol {e!r}")
+        if not e:
+            raise ValueError("() is not an expression; use (quote ())")
+        op = e[0]
+        if op == "quote":
+            return e
+        if op == "cond":
+            return ["cond"] + [[go(c[0], bound, depth), go(c[1], bound, depth)]
+                               for c in e[1:]]
+        if isinstance(op, str) and op in prims:
+            return [op] + [go(a, bound, depth) for a in e[1:]]
+        if isinstance(op, list) and op[0] == "lambda":
+            params, body = op[1], op[2]
+        elif isinstance(op, str) and op in defs:
+            params, body = defs[op]
+        else:
+            raise ValueError(f"not supported: {e!r}")
+        if len(params) != len(e) - 1:
+            raise TypeError(f"arity mismatch in {e!r}")
+        if depth >= max_depth:
+            return ["overflow"]
+        args = [go(a, bound, depth) for a in e[1:]]
+        return ["let", [[p, a] for p, a in zip(params, args)],
+                go(body, set(params), depth + 1)]
+    return go(forms[-1], set(), 0)
+
+
+def max_value_size(expr):
+    """Largest token count any value of the evaluation can have (bounds the
+    nesting depth car/cdr must track): quoted sizes plus two per operation,
+    with variables standing for their bound expressions."""
+    best = 0
+
+    def go(e, env):
+        nonlocal best
+        if isinstance(e, str) or e == ["overflow"]:
+            s = 1
+        elif e[0] == "var":
+            s = env[e[1]]
+        elif e[0] == "quote":
+            s = n_tokens(e[1])
+        elif e[0] == "let":
+            env2 = dict(env)
+            for name, a in e[1]:
+                env2[name] = go(a, env)
+            s = go(e[2], env2)
+        else:
+            s = 2
+            for a in e[1:]:
+                for x in (a if e[0] == "cond" else [a]):
+                    s += go(x, env)
+        best = max(best, s)
+        return s
+    go(expr, {})
+    return best
 
 
 class LispBus:
@@ -125,13 +189,16 @@ class LispBus:
     self.values: initial register values (data included).
     self.block: registers holding the result."""
 
-    def __init__(self, src):
+    def __init__(self, src, max_depth=4):
+        """max_depth: calls of define'd functions (and lambda applications)
+        are inlined up to this nesting depth at compile time; a deeper
+        call compiles to an overflow marker, which decode() reports as an
+        error. The bound is a resource parameter like a stack size; it does
+        not depend on the data."""
         forms = parse(src)
-        if len(forms) != 1:
-            raise ValueError("one expression expected")
-        self.expr = forms[0]
-        self.atoms = {"t": 0}
-        self.D = max(1, size_bound(self.expr) // 2)
+        self.expr = expand(forms, max_depth)
+        self.atoms = {"t": 0, OVERFLOW_ATOM: OVERFLOW_CODE}
+        self.D = max(1, max_value_size(self.expr) // 2)
         self.autos = {"first": first_auto(self.D), "head": head_auto(),
                       "firsttok": firsttok_auto()}
         self.S_states = [(name, st) for name, (sts, _, _) in
@@ -139,7 +206,7 @@ class LispBus:
         self.S_index = {x: i for i, x in enumerate(self.S_states)}
         self.values, self.ops, self.data_regs = [], [], set()
         self.S, self.CA, self.CB, self.T = (self.reg(0) for _ in range(4))
-        self.block = self.compile(self.expr)
+        self.block = self.compile(self.expr, {})
         self.n = len(self.values)
         self.V = max(4 * len(self.S_states), 4 * N_ATOMS, C_EQ + 2 * C_VALUES)
 
@@ -156,8 +223,8 @@ class LispBus:
     def atom_code(self, a):
         if a not in self.atoms:
             if len(self.atoms) == N_ATOMS:
-                raise ValueError(f"more than {N_ATOMS} atoms")
-            self.atoms[a] = len(self.atoms)
+                raise ValueError(f"more than {N_ATOMS - 2} atoms")
+            self.atoms[a] = len(self.atoms) - 1   # codes 1.., overflow last
         return self.atoms[a]
 
     # ---- S: value = 4 * state index + aux; aux 0/1 = answer, 2/3 = got bit0
@@ -204,9 +271,23 @@ class LispBus:
         return emit
 
     # ---- compilation ----
-    def compile(self, e):
+    def compile(self, e, env):
         if e == "t":
             return [self.reg(tok_atom(0))]
+        if e == ["overflow"]:
+            return [self.reg(tok_atom(OVERFLOW_CODE))]
+        if isinstance(e, list) and e and e[0] == "var":
+            return self.copy(env[e[1]])
+        if isinstance(e, list) and e and e[0] == "let":
+            binds, body = e[1], e[2]
+            blocks, env2 = [], dict(env)
+            for name, arg in binds:
+                b = self.compile(arg, env)
+                blocks += b
+                env2[name] = b
+            bb = self.compile(body, env2)
+            self.ops.append(Local({r: _const(PAD) for r in blocks}))
+            return blocks + bb
         if isinstance(e, str) or not e:
             raise ValueError(f"not in the fragment: {e!r}")
         op, args = e[0], e[1:]
@@ -214,7 +295,7 @@ class LispBus:
             return [self.data_reg(t) for t in self.tokens(args[0])]
         if op in ("car", "cdr"):
             (x,) = args
-            blk = self.compile(x)
+            blk = self.compile(x, env)
             if op == "car":
                 keep = lambda v, a: v if a else PAD
             else:
@@ -224,13 +305,13 @@ class LispBus:
         if op == "cons":
             x, y = args
             o = self.reg(OPEN)
-            bx, by = self.compile(x), self.compile(y)
+            bx, by = self.compile(x, env), self.compile(y, env)
             self.scan(by, "firsttok",
                       lambda r: {r: lambda v, a: PAD if a else v})
             return [o] + bx + by
         if op == "atom?":
             (x,) = args
-            bx = self.compile(x)
+            bx = self.compile(x, env)
             r0, r1 = self.reg(PAD), self.reg(PAD)
             self.scan(bx, "head")
             self.write_bool(self.s_state_bit(lambda st: st in ("ATOM", "NIL")),
@@ -239,7 +320,7 @@ class LispBus:
             return bx + [r0, r1]
         if op == "eq?":
             x, y = args
-            bx, by = self.compile(x), self.compile(y)
+            bx, by = self.compile(x, env), self.compile(y, env)
             r0, r1 = self.reg(PAD), self.reg(PAD)
             self.classify_into(bx, self.CA)
             self.classify_into(by, self.CB)
@@ -247,7 +328,7 @@ class LispBus:
             self.ops.append(Local({r: _const(PAD) for r in bx + by}))
             return bx + by + [r0, r1]
         if op == "cond":
-            return self.cond(args)
+            return self.cond(args, env)
         raise ValueError(f"not in the fragment: {op!r}")
 
     def tokens(self, datum):
@@ -257,6 +338,23 @@ class LispBus:
         for x in datum:
             out += self.tokens(x)
         return out + [CLOSE]
+
+    def copy(self, blk):
+        """A fresh block holding the same tokens as blk. Each token goes
+        over the bus kind first, then the atom code, so a destination
+        register only ever holds a token or a token missing code bits."""
+        out = []
+        for r in blk:
+            d = self.reg(PAD)
+            out.append(d)
+            for i in range(2):
+                self.ops.append(Bcast(r, lambda v, i=i: (kind(v) >> i) & 1,
+                                      {d: lambda v, b, i=i: v | (b << i)}))
+            for i in range(CODE_BITS):
+                self.ops.append(Bcast(r, lambda v, i=i: (code(v) >> i) & 1,
+                                      {d: lambda v, b, i=i: v | (b << (2 + i))
+                                       if kind(v) == ATOM else v}))
+        return out
 
     def write_bool(self, emit, src, r0, r1):
         """src broadcasts emit(v); r0 r1 become t (atom, PAD) or () ."""
@@ -295,16 +393,21 @@ class LispBus:
             return int(flag and x != C_CONS)
         self.write_bool(answer, CB, r0, r1)
 
-    def cond(self, clauses):
+    def cond(self, clauses, env):
         T = self.T
         blocks = []
-        self.ops.append(Local({T: _const(0)}))    # T = 2 * taken + truth
+        # compile every clause first: T is shared, and a cond nested in a
+        # later clause would otherwise reset it in the middle of this one
+        compiled = []
         for clause in clauses:
             if len(clause) != 2:
                 raise ValueError("cond clause must be (test expr)")
-            bp = self.compile(clause[0])
-            be = self.compile(clause[1])
+            bp = self.compile(clause[0], env)
+            be = self.compile(clause[1], env)
             blocks += bp + be
+            compiled.append((bp, be))
+        self.ops.append(Local({T: _const(0)}))    # T = 2 * taken + truth
+        for bp, be in compiled:
             self.scan(bp, "head")
             self.ops.append(Bcast(self.S,
                                   self.s_state_bit(lambda st: st != "NIL"),
@@ -330,6 +433,8 @@ class LispBus:
             t = toks[pos]
             pos += 1
             if kind(t) == ATOM:
+                if code(t) == OVERFLOW_CODE:
+                    raise RecursionError("recursion deeper than max_depth")
                 return names[code(t)]
             if t != OPEN:
                 raise ValueError(f"bad token stream {toks}")
