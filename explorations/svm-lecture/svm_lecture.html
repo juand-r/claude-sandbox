@@ -420,7 +420,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>Which line?</h2>
     <ul>
       <li data-step="1">Lines A, B and C all separate the training points. Training error is zero for each.</li>
-      <li data-step="2">They differ in how much room they leave: the width of the widest empty band around each line. That width is the <b>margin</b>, <span class="math">ρ</span>. Pick a line, or build your own with the sliders.</li>
+      <li data-step="2">They differ in how much room they leave. A hyperplane's <b>margin</b> <span class="math">ρ</span> is twice its distance to the closest point. Pick a line, or build your own with the sliders.</li>
       <li data-step="3">The support vector machine chooses the line with the widest <b>margin</b>, the largest <span class="math">ρ</span>. New points near the boundary are then least likely to land on the wrong side.</li>
     </ul>
   </div>
@@ -452,7 +452,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>A line is<br>w · x + b = 0</h2>
     <ul>
       <li>Pick a vector <span class="math">w</span> and a number <span class="math">b</span>. The points with<span class="math dm">f(x) = w · x + b = 0</span>form a line in 2D, a plane in 3D, a hyperplane in general.</li>
-      <li>The same form as linear regression: <span class="math">w</span> holds the slopes (the βs) and <span class="math">b</span> is the intercept, kept out of the vector. The goal differs: separate the classes rather than fit the points.</li>
+      <li>The same form as linear regression: <span class="math">w</span> holds the slopes (the βs) and <span class="math">b</span> is the intercept.</li>
       <li data-step="1"><span class="math">w</span> is perpendicular to the line. Changing <span class="math">b</span> slides the line without turning it.</li>
       <li data-step="2"><span class="math">f(x) &gt; 0</span> on one side, <span class="math">f(x) &lt; 0</span> on the other. Predict <span class="math">+1</span> when <span class="math">f(x) &gt; 0</span>.</li>
       <li data-step="3"><span class="math">f(x)</span> is a score, like the scores in the ROC lecture. The SVM's default threshold is 0.</li>
