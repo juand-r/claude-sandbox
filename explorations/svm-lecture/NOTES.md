@@ -26,6 +26,9 @@
    with 99% of the data in one class, a recap of class imbalance. Image only, embedded as
    base64; the source file is `assets/meme_accuracy.webp`.
 1. Title (text only).
+1b. Announcements (added at the user's request, styled like the Naive Bayes deck's slide):
+    HW 3 due Thursday; project proposal due Thursday; social impact presentation at the
+    end of class today. One card per step.
 2. Which line? Three separating lines (A, B, C), their streets, your own line, then the SVM.
 3. Hyperplane w·x + b = 0: sliders for w and b, the normal vector, the two sides, f(x) as a score.
 4. Distance to the hyperplane: r = f(x)/‖w‖, derived in three steps with a draggable point.
