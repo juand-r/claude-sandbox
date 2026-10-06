@@ -300,7 +300,9 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .eq .ind{padding-left:2ch}
 .eq{white-space:nowrap;overflow-x:auto;display:block;font-family:"JetBrains Mono",monospace;font-size:.88em;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--model);border-radius:8px;padding:.4em .8em;margin:.45em 0;line-height:1.55}
 .take.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:900px){.take.three{grid-template-columns:1fr}}
+.take.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.take.four .card p{font-size:.92em}
+@media (max-width:900px){.take.three,.take.four{grid-template-columns:1fr}}
 .extab{border-collapse:collapse;font-family:"JetBrains Mono",monospace;font-size:.9em}
 .extab th{text-align:left;font-weight:600;color:var(--muted);padding:.2em .8em .2em 0}
 .extab td{text-align:center;padding:.2em .5em;border-left:1px solid var(--line);white-space:nowrap}
@@ -389,7 +391,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p class="hook">Many lines can separate two classes. A support vector machine picks the one that leaves the most room on both sides.</p>
   </div>
   <div class="notes">
-    <p>Today: a classifier built from one geometric idea, the widest street between the classes. Two classes only; more than two classes comes later with ensembles.</p>
+    <p>Today: a classifier built from one geometric idea, the widest margin between the classes. Two classes only; more than two classes comes later with ensembles.</p>
   </div>
 </section>
 
@@ -400,14 +402,14 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>Which line?</h2>
     <ul>
       <li data-step="1">Lines A, B and C all separate the training points. Training error is zero for each.</li>
-      <li data-step="2">They differ in how much room they leave: the widest empty street around each line. Half its width, the distance to the closest point, is the <b>margin</b>. Pick a line, or build your own with the sliders.</li>
-      <li data-step="3">The support vector machine chooses the line with the widest street, which is the largest <b>margin</b>. New points near the boundary are then least likely to land on the wrong side.</li>
+      <li data-step="2">They differ in how much room they leave. The widest empty region around a line is its <b>margin</b>; its width is <span class="math">ρ</span>. Pick a line, or build your own with the sliders.</li>
+      <li data-step="3">The support vector machine chooses the line with the widest <b>margin</b>, the largest <span class="math">ρ</span>. New points near the boundary are then least likely to land on the wrong side.</li>
     </ul>
   </div>
   <div class="fig short">
     <div id="fig-which"></div>
     <div class="tiles" data-step="2">
-      <div class="tile"><div class="lbl">street width</div><div class="val k-model" id="v-which-w">–</div></div>
+      <div class="tile"><div class="lbl noup">margin width ρ</div><div class="val k-model" id="v-which-w">–</div></div>
       <div class="tile"><div class="lbl">mistakes</div><div class="val k-err" id="v-which-err">–</div></div>
     </div>
     <div class="toolbar" data-step="2">
@@ -420,8 +422,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   <div class="notes">
     <p><b class="cue">0</b>Fifteen training points, two classes. Green is positive, purple is negative. Ask the room: where would you draw the boundary?</p>
     <p><b class="cue">1</b>Three answers, all with zero training error. Training error cannot choose between them.</p>
-    <p><b class="cue">2</b>For each line, find the widest band around it that contains no point: the street. Click A, B, C. A and B are tilted, so the street hits points early. C has the right tilt but sits too close to the green points. Then try the sliders; a line that crosses a point shows the mistake ringed in orange.</p>
-    <p><b class="cue">3</b>The SVM line is the one with the widest possible street, 2.83 here, so its margin is 1.41. The rest of the lecture is how to find it, and what to do when no line separates the classes.</p>
+    <p><b class="cue">2</b>For each line, find the widest region around it that contains no point: its margin. Click A, B, C. A and B are tilted, so the margin hits points early. C has the right tilt but sits too close to the green points. Then try the sliders; a line that crosses a point shows the mistake ringed in orange.</p>
+    <p><b class="cue">3</b>The SVM line is the one with the widest possible margin, ρ = 2.83 here. The rest of the lecture is how to find it, and what to do when no line separates the classes.</p>
   </div>
 </section>
 
@@ -432,6 +434,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>A line is<br>w · x + b = 0</h2>
     <ul>
       <li>Pick a vector <span class="math">w</span> and a number <span class="math">b</span>. The points with<span class="math dm">f(x) = w · x + b = 0</span>form a line in 2D, a plane in 3D, a hyperplane in general.</li>
+      <li>The same form as linear regression: <span class="math">w</span> holds the slopes (the βs) and <span class="math">b</span> is the intercept, kept out of the vector. The goal differs: separate the classes rather than fit the points.</li>
       <li data-step="1"><span class="math">w</span> is perpendicular to the line. Changing <span class="math">b</span> slides the line without turning it.</li>
       <li data-step="2"><span class="math">f(x) &gt; 0</span> on one side, <span class="math">f(x) &lt; 0</span> on the other. Predict <span class="math">+1</span> when <span class="math">f(x) &gt; 0</span>.</li>
       <li data-step="3"><span class="math">f(x)</span> is a score, like the scores in the ROC lecture. The SVM's default threshold is 0.</li>
@@ -465,9 +468,9 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="eyebrow">1 · Hyperplanes</div>
     <h2>Distance to<br>the hyperplane</h2>
     <ul>
-      <li data-step="1">Let <span class="math">x<sub>p</sub></span> be the closest point on the line. The step from <span class="math">x<sub>p</sub></span> to <span class="math">x</span> runs along <span class="math">w</span>:<span class="math dm">x = x<sub>p</sub> + r · w / ‖w‖</span>where <span class="math">r</span> is the signed distance.</li>
-      <li data-step="2">Apply <span class="math">f</span>. Since <span class="math">f(x<sub>p</sub>) = 0</span> and <span class="math">w · w = ‖w‖²</span>:<span class="math dm">f(x) = r · ‖w‖</span></li>
-      <li data-step="3">So<span class="math dm">r = f(x) / ‖w‖</span>The sign says which side, the size says how far.</li>
+      <li data-step="1">Let <span class="math">x<sub>p</sub></span> be the closest point on the line. The step from <span class="math">x<sub>p</sub></span> to <span class="math">x</span> runs along <span class="math">w</span>, one way or the other:<span class="math dm">x = x<sub>p</sub> ± d · w / ‖w‖</span>where <span class="math">d</span> is the distance and <span class="math">‖w‖ = √(w₁² + w₂² + …)</span> is the length of <span class="math">w</span>.</li>
+      <li data-step="2">Apply <span class="math">f</span>. Since <span class="math">f(x<sub>p</sub>) = 0</span> and <span class="math">w · w = ‖w‖²</span>:<span class="math dm">f(x) = ± d · ‖w‖</span></li>
+      <li data-step="3">So<span class="math dm">d = |w · x + b| / ‖w‖</span>The sign of <span class="math">f(x)</span> says which side.</li>
     </ul>
   </div>
   <div class="fig short drag">
@@ -475,15 +478,15 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="tiles three" data-step="2">
       <div class="tile"><div class="lbl noup">f(x)</div><div class="val" id="v-di-f"></div></div>
       <div class="tile"><div class="lbl noup">‖w‖</div><div class="val" id="v-di-n"></div></div>
-      <div class="tile" data-step="3"><div class="lbl noup">r = f(x) / ‖w‖</div><div class="val k-hi" id="v-di-r"></div></div>
+      <div class="tile" data-step="3"><div class="lbl noup">d = |f(x)| / ‖w‖</div><div class="val k-hi" id="v-di-r"></div></div>
     </div>
     <p class="readout">w = (0.3, 0.4), b = −3.5 · drag the point x</p>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>We need distances because the margin is a distance. The line here is 0.3·x₁ + 0.4·x₂ − 3.5 = 0, chosen so that ‖w‖ = 0.5.</p>
-    <p><b class="cue">1</b>The shortest path from x to the line is perpendicular to it, so it runs along w. w/‖w‖ is the unit vector in that direction.</p>
-    <p><b class="cue">2</b>Plug in: f(x) = w·x_p + b + r·(w·w)/‖w‖. The first two terms are f(x_p) = 0. The last is r·‖w‖.</p>
-    <p><b class="cue">3</b>Drag the point and check the tiles: r is always f(x) divided by 0.5. Doubling w and b gives the same line but doubles f; the division by ‖w‖ undoes that, as a distance should.</p>
+    <p><b class="cue">0</b>We need distances because the margin width is a distance. The line here is 0.3·x₁ + 0.4·x₂ − 3.5 = 0, chosen so that ‖w‖ = 0.5.</p>
+    <p><b class="cue">1</b>The shortest path from x to the line is perpendicular to it, so it runs along w or against it. w/‖w‖ is the unit vector along w; the ± says which way.</p>
+    <p><b class="cue">2</b>Plug in: f(x) = w·x_p + b ± d·(w·w)/‖w‖. The first two terms are f(x_p) = 0. The last is ±d·‖w‖. Taking absolute values gives d.</p>
+    <p><b class="cue">3</b>Drag the point and check the tiles: d is always |f(x)| divided by 0.5, and the sign of f(x) flips when x crosses the line. Doubling w and b gives the same line but doubles f; the division by ‖w‖ undoes that, as a distance should.</p>
   </div>
 </section>
 
@@ -494,17 +497,17 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2>The margin</h2>
     <ul>
       <li>A line that separates the classes.</li>
-      <li data-step="1">Its margin is the distance to the closest training point:<span class="math dm">min<sub>i</sub> y<sub>i</sub> f(x<sub>i</sub>) / ‖w‖</span>with labels <span class="math">y<sub>i</sub> = ±1</span>.</li>
-      <li data-step="2"><span class="math">(w, b)</span> and <span class="math">(2w, 2b)</span> give the same line. Fix the scale so the closest points have <span class="math">y<sub>i</sub> f(x<sub>i</sub>) = 1</span>. The street's edges are then <span class="math">f = +1</span> and <span class="math">f = −1</span>.</li>
-      <li data-step="3">Each edge is at distance <span class="math">1/‖w‖</span>, so the street is <span class="math">2/‖w‖</span> wide.</li>
+      <li data-step="1">The closest training points, ringed, set the margin. Point <span class="math">x<sub>i</sub></span> is at distance <span class="math">|w · x<sub>i</sub> + b| / ‖w‖</span> from the line. Labels are <span class="math">y<sub>i</sub> = ±1</span>.</li>
+      <li data-step="2"><span class="math">(w, b)</span> and <span class="math">(2w, 2b)</span> give the same line. Fix the scale so the closest points have <span class="math">|w · x<sub>i</sub> + b| = 1</span>. The margin lines are then <span class="math">w · x + b = +1</span> and <span class="math">w · x + b = −1</span>.</li>
+      <li data-step="3">Each margin line is at distance <span class="math">1/‖w‖</span> from the line, so the margin width is<span class="math dm">ρ = 2/‖w‖</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-margin"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>The separable data from the start, with the best line already drawn. We first say what "room" means precisely.</p>
-    <p><b class="cue">1</b>y_i f(x_i) is positive exactly when point i is on its correct side, so y_i f(x_i)/‖w‖ is its distance to the line, counted positive when correct. The margin is the smallest of these. Three points tie here, ringed.</p>
+    <p><b class="cue">1</b>Each point's distance to the line is |w·x_i + b|/‖w‖. The margin is set by the smallest of these distances. Three points tie here, ringed.</p>
     <p><b class="cue">2</b>The scale of w is free. We use the freedom to make the closest points score exactly ±1. That is a convention, not a restriction.</p>
-    <p><b class="cue">3</b>From the last slide, a point with f = 1 is 1/‖w‖ away. Here w = (0.5, 0.5), ‖w‖ ≈ 0.71, so the margin is 1/‖w‖ ≈ 1.41 and the width about 2.83. A wide street means a short w.</p>
+    <p><b class="cue">3</b>From the last slide, a point with |f| = 1 is 1/‖w‖ away. Here w = (0.5, 0.5), ‖w‖ ≈ 0.71, so ρ = 2/‖w‖ ≈ 2.83. A wide margin means a short w.</p>
   </div>
 </section>
 
@@ -514,20 +517,19 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="eyebrow">2 · Hard margin</div>
     <h2>The hard-margin<br>SVC</h2>
     <ul>
-      <li data-step="1">The widest street with every point on its correct side, outside the street:
-        <span class="eq">maximize 2 / ‖w‖<br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1<br><span class="ind">for every i</span></span>
-        This is the same as maximizing the margin <span class="math" style="white-space:nowrap">1/‖w‖</span>.</li>
+      <li data-step="1">The widest margin with every point on its correct side, outside the margin:
+        <span class="eq">maximize ρ = 2 / ‖w‖<br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1<br><span class="ind">for every i</span></span></li>
       <li data-step="2">The same <span class="math">w</span> wins if we instead
         <span class="eq">minimize ½ ‖w‖²<br>subject to the same constraints</span>
-        A bowl-shaped objective with straight-line constraints: a <b data-hint="qp">quadratic program</b>. It has one best solution, and standard solvers find it.</li>
-      <li data-step="3">The usual solution method uses Lagrange multipliers, one <span class="math">α<sub>i</sub> ≥ 0</span> per point. It gives <span class="math">w = Σ α<sub>i</sub> y<sub>i</sub> x<sub>i</sub></span>, and <span class="math">α<sub>i</sub> &gt; 0</span> only for points on the edges: the <b data-hint="sv">support vectors</b>.</li>
+        A bowl-shaped objective with straight-line constraints: a <b data-hint="qp">constrained convex quadratic minimization problem</b>. It has one best solution, and standard solvers find it.</li>
+      <li data-step="3">The usual solution method uses Lagrange multipliers, one <span class="math">α<sub>i</sub> ≥ 0</span> per point. It gives <span class="math">w = Σ α<sub>i</sub> y<sub>i</sub> x<sub>i</sub></span>, and <span class="math">α<sub>i</sub> &gt; 0</span> only for points on the margin lines: the <b data-hint="sv">support vectors</b>.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-hard"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>Same data. Now we turn "widest street" into a problem a computer can solve.</p>
-    <p><b class="cue">1</b>The constraints say: every point at least 1 in score on its correct side, which is the scale convention from the last slide. Among all such (w, b), take the widest street.</p>
-    <p><b class="cue">2</b>Maximizing 2/‖w‖ is minimizing ‖w‖, which is minimizing ½‖w‖². The square removes the square root and the ½ tidies the derivative. Quadratic objective, linear constraints: a quadratic program, a well-studied problem class with reliable solvers.</p>
+    <p><b class="cue">0</b>Same data. Now we turn "widest margin" into a problem a computer can solve.</p>
+    <p><b class="cue">1</b>The constraints say: every point at least 1 in score on its correct side, which is the scale convention from the last slide. Among all such (w, b), take the one with the widest margin ρ.</p>
+    <p><b class="cue">2</b>Maximizing 2/‖w‖ is minimizing ‖w‖, which is minimizing ½‖w‖². The square removes the square root and the ½ tidies the derivative. Quadratic objective, linear constraints: a constrained convex quadratic minimization problem, a well-studied class with reliable solvers.</p>
     <p><b class="cue">3</b>We will not derive the multipliers. The result to keep: w is a weighted sum of the training points, and only the three ringed points get non-zero weight. Here α = 1/12, 1/6 and 1/4. Delete any other point and the solution stays the same.</p>
   </div>
 </section>
@@ -538,14 +540,14 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="eyebrow">2 · Hard margin</div>
     <h2>Only the support<br>vectors matter</h2>
     <ul>
-      <li data-step="1">Drag a point that is not ringed. As long as it stays outside the street, nothing changes.</li>
-      <li data-step="2">Drag a support vector. The street moves with it. Drag a point across the line and no street exists: the hard-margin problem has no solution.</li>
+      <li data-step="1">Drag a point that is not ringed. As long as it stays outside the margin, nothing changes.</li>
+      <li data-step="2">Drag a support vector. The margin moves with it. Drag a point across the line and no separating line exists: the hard-margin problem has no solution.</li>
     </ul>
   </div>
   <div class="fig short grab">
     <div id="fig-sv"></div>
     <div class="tiles" data-step="1">
-      <div class="tile"><div class="lbl">street width</div><div class="val k-model" id="v-sv-w"></div></div>
+      <div class="tile"><div class="lbl noup">margin width ρ</div><div class="val k-model" id="v-sv-w"></div></div>
       <div class="tile"><div class="lbl">support vectors</div><div class="val k-hi" id="v-sv-n"></div></div>
     </div>
     <p class="readout" id="rd-sv" data-step="1">drag any point</p>
@@ -553,8 +555,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   </div>
   <div class="notes">
     <p><b class="cue">0</b>The same fifteen points. From the next step the solver runs live: every time a point moves, the SVM is retrained.</p>
-    <p><b class="cue">1</b>Pull the far green point at the top right around. Nothing happens. The solution depends only on the points that touch the street.</p>
-    <p><b class="cue">2</b>Now pull a ringed point into the street: the street shrinks to make room. Pull a point all the way to the other side: no line separates the data and the hard-margin SVC has no answer. One mislabelled point can do this, which motivates the soft margin.</p>
+    <p><b class="cue">1</b>Pull the far green point at the top right around. Nothing happens. The solution depends only on the points on the margin lines.</p>
+    <p><b class="cue">2</b>Now pull a ringed point into the margin: the margin shrinks to make room. Pull a point all the way to the other side: no line separates the data and the hard-margin SVC has no answer. One mislabelled point can do this, which motivates the soft margin.</p>
   </div>
 </section>
 
@@ -567,15 +569,15 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
       <li data-step="1">Two points sit among the other class. No line separates the data, so the hard-margin problem has no solution.</li>
       <li data-step="2">Let point <span class="math">i</span> fall short by a slack <span class="math">ξ<sub>i</sub> ≥ 0</span>, and pay for it:
         <span class="eq">minimize ½ ‖w‖² + C Σ ξ<sub>i</sub><br>subject to y<sub>i</sub> (w · x<sub>i</sub> + b) ≥ 1 − ξ<sub>i</sub><br><span class="ind">and ξ<sub>i</sub> ≥ 0 for every i</span></span></li>
-      <li data-step="3"><span class="math">ξ<sub>i</sub> = 0</span>: outside the street. <span class="math">0 &lt; ξ<sub>i</sub> ≤ 1</span>: inside the street, correct side. <span class="math">ξ<sub>i</sub> &gt; 1</span>: wrong side, a training mistake.</li>
+      <li data-step="3"><span class="math">ξ<sub>i</sub> = 0</span>: outside the margin. <span class="math">0 &lt; ξ<sub>i</sub> ≤ 1</span>: inside the margin, correct side. <span class="math">ξ<sub>i</sub> &gt; 1</span>: wrong side, a training mistake.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-soft"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>The same fifteen points plus two more: a purple point among the greens and a green point among the purples.</p>
     <p><b class="cue">1</b>Real data is rarely separable: noise, overlapping classes, mislabelled examples. We need a version that tolerates some violations.</p>
-    <p><b class="cue">2</b>Each point gets its own slack ξ_i, how far its score falls short of 1. The objective now has two parts: a wide street (small ‖w‖) and little total slack. C sets the exchange rate. This is the soft-margin SVC; the figure shows the solution for C = 1.</p>
-    <p><b class="cue">3</b>The orange segments show each slack: the distance from the point to its own edge of the street is ξ_i/‖w‖. The two intruders have ξ &gt; 1; they are misclassified. Points with ξ &gt; 0 are support vectors too, as are points exactly on an edge.</p>
+    <p><b class="cue">2</b>Each point gets its own slack ξ_i, how far its score falls short of 1. The objective now has two parts: a wide margin (small ‖w‖) and little total slack. C sets the exchange rate. This is the soft-margin SVC; the figure shows the solution for C = 1.</p>
+    <p><b class="cue">3</b>The orange segments show each slack: the distance from the point to its own margin line is ξ_i/‖w‖. The two intruders have ξ &gt; 1; they are misclassified. Points with ξ &gt; 0 are support vectors too, as are points exactly on a margin line.</p>
   </div>
 </section>
 
@@ -585,15 +587,15 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="eyebrow">3 · Soft margin</div>
     <h2>The role of C</h2>
     <ul>
-      <li data-step="1">Large <span class="math">C</span>: slack is expensive. The street narrows to keep points out of it.</li>
-      <li data-step="2">Small <span class="math">C</span>: slack is cheap. The street widens and many points sit inside it, all of them support vectors.</li>
-      <li data-step="3"><span class="math">C</span> is a hyperparameter. Choose it on validation data, the way you choose <span class="math">k</span> for k-NN.</li>
+      <li data-step="1">Large <span class="math">C</span>: slack is expensive. The margin narrows to keep points out of it.</li>
+      <li data-step="2">Small <span class="math">C</span>: slack is cheap. The margin widens and many points sit inside it, all of them support vectors.</li>
+      <li data-step="3"><span class="math">C</span> is a hyperparameter. Tune it, together with the kernel, by grid search inside nested cross-validation, as for decision trees.</li>
     </ul>
   </div>
   <div class="fig short">
     <div id="fig-c"></div>
     <div class="tiles row">
-      <div class="tile"><div class="lbl">street width</div><div class="val k-model" id="v-c-w"></div></div>
+      <div class="tile"><div class="lbl noup">margin width ρ</div><div class="val k-model" id="v-c-w"></div></div>
       <div class="tile"><div class="lbl">support vectors</div><div class="val k-hi" id="v-c-n"></div></div>
       <div class="tile"><div class="lbl">mistakes</div><div class="val k-err" id="v-c-e"></div></div>
       <div class="tile"><div class="lbl noup">Σ ξ</div><div class="val" id="v-c-x"></div></div>
@@ -602,9 +604,9 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   </div>
   <div class="notes">
     <p><b class="cue">0</b>C = 1, the solution from the last slide. Ringed points are support vectors.</p>
-    <p><b class="cue">1</b>C = 100. The street is narrower: about 2.7 wide. The model works hard to fit the training points.</p>
-    <p><b class="cue">2</b>C = 0.01. The street is almost 8 wide and swallows most points. Fourteen of the seventeen are support vectors.</p>
-    <p><b class="cue">3</b>Neither end is right in general. Large C chases individual training points and can overfit; small C can underfit. As with k in k-NN, try several values and keep the one that does best on held-out data.</p>
+    <p><b class="cue">1</b>C = 100. The margin is narrower: ρ ≈ 2.7. The model works hard to fit the training points.</p>
+    <p><b class="cue">2</b>C = 0.01. The margin is almost 8 wide (ρ ≈ 7.9) and swallows most points. Fourteen of the seventeen are support vectors.</p>
+    <p><b class="cue">3</b>Neither end is right in general. Large C chases individual training points and can overfit; small C can underfit. Try a grid of C values (and kernels) and keep the combination that does best on the validation folds of nested cross-validation.</p>
   </div>
 </section>
 
@@ -631,7 +633,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p><b class="cue">1</b>Ask for a line. There is none: the green points lie inside the region enclosed by the purple ones, so any half-plane that holds all the purple points also holds the green ones.</p>
     <p><b class="cue">2</b>The new feature measures distance from the centre. Green points are close, so their z is small; purple points are far, so their z is large. Drag the 3D view to see the two layers.</p>
     <p><b class="cue">3</b>Now a horizontal-ish plane separates them. This is the same hard-margin SVC as before, run on three features.</p>
-    <p><b class="cue">4</b>The plane w₁x₁ + w₂x₂ + w₃z + b = 0, written in the original coordinates, is the equation of a circle. The dashed circles are the street edges f = ±1.</p>
+    <p><b class="cue">4</b>The plane w₁x₁ + w₂x₂ + w₃z + b = 0, written in the original coordinates, is the equation of a circle. The dashed circles are the margin lines f = ±1.</p>
   </div>
 </section>
 
@@ -676,13 +678,14 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   <div style="width:100%;max-width:72rem;margin:0 auto">
     <div class="eyebrow">5 · In practice</div>
     <h2 style="margin:.2em 0 .8em">General properties</h2>
-    <div class="take three">
+    <div class="take four">
       <div class="card"><h3>One best answer</h3><p>The objective is a bowl and the constraints are straight lines. There is a single best solution, and solvers find it.</p></div>
       <div class="card"><h3>Sparse</h3><p>Only support vectors shape the boundary. Prediction cost grows with their number, not with the size of the training set.</p></div>
-      <div class="card"><h3>Scale the features</h3><p>Margins are distances. A feature measured in thousands swamps one measured in units. Standardize first, as for k-NN.</p></div>
-      <div class="card"><h3>Hyperparameters</h3><p><span class="math">C</span>, the kernel and its parameters such as <span class="math">γ</span>. Choose them on validation data.</p></div>
+      <div class="card"><h3>Numeric, scaled features</h3><p>One-hot encode categorical features, then standardize, as for k-NN. On unscaled data the solver can be very slow or never finish.</p></div>
+      <div class="card"><h3>Hyperparameters</h3><p><span class="math">C</span>, the kernel and its parameters such as <span class="math">γ</span>. Tune them together by grid search inside nested cross-validation.</p></div>
       <div class="card"><h3>A score, not a probability</h3><p><span class="math">f(x)</span> ranks points. Thresholds other than 0 trade TPR against FPR and trace an ROC curve.</p></div>
       <div class="card"><h3>Training cost</h3><p>Kernel SVMs slow down sharply on large training sets: roughly quadratic or worse in the number of points. Linear SVMs scale much further.</p></div>
+      <div class="card"><h3>Many features</h3><p>Often work well with many features: in theory, generalization depends on the margin rather than on the number of features. Not a guarantee; a poor kernel or C can still overfit.</p></div>
     </div>
   </div>
   <div class="notes">
@@ -705,8 +708,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <ol>
       <li>Compute <span class="math">f(x)</span> and the predicted class of each point.
         <p class="answer" data-step="1">f = 3, −3, 0.4, 0, 1.4. Predicted +, −, +, on the line, +. E is a mistake.</p></li>
-      <li>How wide is the street?
-        <p class="answer" data-step="2">‖w‖ = 5, so the width is <span class="math">2/5 = 0.4</span>.</p></li>
+      <li>What is the margin width <span class="math">ρ</span>?
+        <p class="answer" data-step="2">‖w‖ = 5, so <span class="math">ρ = 2/5 = 0.4</span>.</p></li>
       <li>What is each point's slack?<span class="math dm">ξ = max(0, 1 − y f(x))</span>
         <p class="answer" data-step="3">ξ = 0, 0, 0.6, 1, 2.4.</p></li>
     </ol>
@@ -716,7 +719,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p><b class="cue">0</b>Give them five minutes. The slack formula in question 3 follows from the constraint y·f(x) ≥ 1 − ξ with the smallest ξ that satisfies it.</p>
     <p><b class="cue">1</b>A: 9 + 4 − 10 = 3. B: 3 + 4 − 10 = −3. C: 7.2 + 3.2 − 10 = 0.4. D: 6 + 4 − 10 = 0. E: 9 + 2.4 − 10 = 1.4, positive, but E is negative.</p>
     <p><b class="cue">2</b>2/‖w‖ with ‖w‖ = √(9 + 16) = 5.</p>
-    <p><b class="cue">3</b>A and B are outside the street: ξ = 0. C is inside on the correct side: 1 − 0.4 = 0.6. D is on the line: ξ = 1. E is on the wrong side: 1 + 1.4 = 2.4. One point per case from the soft-margin slide.</p>
+    <p><b class="cue">3</b>A and B are outside the margin: ξ = 0. C is inside on the correct side: 1 − 0.4 = 0.6. D is on the line: ξ = 1. E is on the wrong side: 1 + 1.4 = 2.4. One point per case from the soft-margin slide.</p>
   </div>
 </section>
 
@@ -727,13 +730,13 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <h2 style="margin:.2em 0 .8em">Takeaways</h2>
     <div class="take">
       <div class="card"><div class="eyebrow">Geometry</div><h3>Hyperplanes</h3><p><span class="math">f(x) = w · x + b</span>. Predict by its sign. The distance to the hyperplane is <span class="math">f(x)/‖w‖</span>.</p></div>
-      <div class="card"><div class="eyebrow">Hard margin</div><h3>The widest street</h3><p>Minimize <span class="math">½‖w‖²</span> subject to <span class="math">y<sub>i</sub> f(x<sub>i</sub>) ≥ 1</span>. The width is <span class="math">2/‖w‖</span>. Support vectors alone fix the answer.</p></div>
-      <div class="card"><div class="eyebrow">Soft margin</div><h3>Slack and C</h3><p>Slack <span class="math">ξ<sub>i</sub></span> lets points violate the street at a cost <span class="math">C Σ ξ<sub>i</sub></span>. C trades width against violations.</p></div>
+      <div class="card"><div class="eyebrow">Hard margin</div><h3>The widest margin</h3><p>Minimize <span class="math">½‖w‖²</span> subject to <span class="math">y<sub>i</sub> f(x<sub>i</sub>) ≥ 1</span>. The margin width is <span class="math">ρ = 2/‖w‖</span>. Support vectors alone fix the answer.</p></div>
+      <div class="card"><div class="eyebrow">Soft margin</div><h3>Slack and C</h3><p>Slack <span class="math">ξ<sub>i</sub></span> lets points violate the margin at a cost <span class="math">C Σ ξ<sub>i</sub></span>. C trades width against violations.</p></div>
       <div class="card"><div class="eyebrow">Kernels</div><h3>Curved boundaries</h3><p>Replace dot products by a kernel. Same solver, boundaries that are linear only in a hidden feature space.</p></div>
     </div>
   </div>
   <div class="notes">
-    <p>Four ideas. If students keep one sentence: an SVM picks the widest street, and only the points on its edge matter.</p>
+    <p>Four ideas. If students keep one sentence: an SVM picks the widest margin, and only the points on the margin lines matter.</p>
   </div>
 </section>
 
@@ -756,7 +759,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   </div>
   <div class="notes">
     <p><b class="cue">0</b>A slide to come back to later in the course. Given w and b, the best slack for point i is the smallest one that satisfies its constraint.</p>
-    <p><b class="cue">1</b>The horizontal axis is y·f(x): positive means correct, at least 1 means outside the street. The hinge is zero there and grows linearly below 1.</p>
+    <p><b class="cue">1</b>The horizontal axis is y·f(x): positive means correct, at least 1 means outside the margin. The hinge is zero there and grows linearly below 1.</p>
     <p><b class="cue">2</b>Read the objective as "fit the data, but keep w small". That pattern, loss plus penalty, will come back with other models.</p>
   </div>
 </section>
@@ -1314,8 +1317,8 @@ function presenterRender(){
 
 window.__HINTS = {
   /* hover cards: put data-hint="key" on any element and add a key here */
-  qp:`<div class="ht">quadratic program</div><p>Minimize a quadratic function subject to linear inequality constraints. When the quadratic is bowl-shaped (convex), every local minimum is the global one.</p>`,
-  sv:`<div class="ht">support vectors</div><p>The training points with α > 0. In the hard-margin SVC they lie exactly on the edges of the street, f(x) = ±1.</p>`,
+  qp:`<div class="ht">constrained convex quadratic minimization</div><p>Minimize a bowl-shaped quadratic function subject to linear inequality constraints. When the quadratic is bowl-shaped (convex), every local minimum is the global one.</p>`,
+  sv:`<div class="ht">support vectors</div><p>The training points with α > 0. In the hard-margin SVC they lie exactly on the margin lines, f(x) = ±1.</p>`,
   kernel:`<div class="ht">kernel</div><p>A function K(x, x′) that equals a dot product φ(x)·φ(x′) in some feature space, without computing φ. Examples: (x·x′ + 1)², exp(−γ‖x − x′‖²).</p>`
 };
 /* ---------- hover helper cards ---------- */
@@ -1479,8 +1482,8 @@ function drawLine(api,L,w,b,c,a={}){const e=lineEnds(api,w,b,c);if(!e)return nul
   return el('line',{x1:api.sx(e[0][0]),y1:api.sy(e[0][1]),x2:api.sx(e[1][0]),y2:api.sy(e[1][1]),stroke:'var(--model)','stroke-width':3,'stroke-linecap':'round',...a},L);}
 function drawBand(api,L,w,b,lo,hi,a={}){const P=band(api,w,b,lo,hi);if(P.length<3)return null;
   return el('path',{d:polyD(api,P),fill:'var(--model-soft)',stroke:'none',...a},L);}
-// the street of a linear SVM: shaded band, dashed edges f = ±1, solid line f = 0
-function drawStreet(api,L,w,b){drawBand(api,L,w,b,-1,1);
+// the margin of a linear SVM: shaded band, dashed margin lines f = ±1, solid line f = 0
+function drawMargin(api,L,w,b){drawBand(api,L,w,b,-1,1);
   for(const c of [-1,1])drawLine(api,L,w,b,c,{'stroke-width':2,'stroke-dasharray':'7 6',opacity:.85});
   drawLine(api,L,w,b,0);}
 const dotFill=yi=>yi>0?'var(--pos)':'var(--mean)';
@@ -1509,7 +1512,7 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
   const {X,y}=SEP;
   // a line in unit-normal form: u = (cos θ, sin θ), f(x) = u·x − c is the signed distance
   const unit=deg=>[Math.cos(deg*Math.PI/180),Math.sin(deg*Math.PI/180)];
-  const gap=(u,c)=>Math.min(...X.map((p,i)=>y[i]*(dot(u,p)-c)));          // > 0: half the street width
+  const gap=(u,c)=>Math.min(...X.map((p,i)=>y[i]*(dot(u,p)-c)));          // > 0: half the margin width
   function feasible(deg){const u=unit(deg),pr=X.map(p=>dot(u,p));
     return {u,lo:Math.max(...pr.filter((_,i)=>y[i]<0)),hi:Math.min(...pr.filter((_,i)=>y[i]>0))};}
   const LINES={};
@@ -1595,7 +1598,7 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
   const sq=el('path',{fill:'none',stroke:'var(--muted)','stroke-width':1.5},g1);
   const foot=el('circle',{r:7,fill:'var(--model)',stroke:'var(--surface)','stroke-width':2},g1);
   const fl=txt(g1,0,0,'xₚ',{fill:'var(--model)','font-size':18,'font-weight':700,'font-family':MONO});
-  const rl=txt(g1,0,0,'r',{fill:'var(--hi)','font-size':19,'font-weight':700,'font-family':MONO,'paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});
+  const rl=txt(g1,0,0,'d',{fill:'var(--hi)','font-size':19,'font-weight':700,'font-family':MONO,'paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});
   const px=el('circle',{r:10,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':2.5},gx);
   const pl=txt(gx,0,0,'x',{fill:'var(--hi)','font-size':18,'font-weight':700,'font-family':MONO});
   function draw(){
@@ -1608,7 +1611,7 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
     foot.setAttribute('cx',X1);foot.setAttribute('cy',Y1);fl.setAttribute('x',X1-34);fl.setAttribute('y',Y1+22);
     rl.setAttribute('x',(X0+X1)/2+10);rl.setAttribute('y',(Y0+Y1)/2-8);
     px.setAttribute('cx',X0);px.setAttribute('cy',Y0);pl.setAttribute('x',X0+14);pl.setAttribute('y',Y0-12);
-    $('v-di-f').textContent=f2(fx);$('v-di-n').textContent=n.toFixed(2);$('v-di-r').textContent=f2(r);
+    $('v-di-f').textContent=f2(fx);$('v-di-n').textContent=n.toFixed(2);$('v-di-r').textContent=f2(Math.abs(r));
   }
   const set=act('dist',p=>{x=p;draw();});
   draggable(api,px,p=>set(p));
@@ -1632,7 +1635,7 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
   // width arrow centred on the point of f = 0 nearest to (1.5, 8.5), an empty part of the plot
   const t=-(dot(w,[1.5,8.5])+b)/(n*n),m=[1.5+t*w[0],8.5+t*w[1]],p0=[m[0]-u[0]/n,m[1]-u[1]/n],p1=[m[0]+u[0]/n,m[1]+u[1]/n];
   arrow(api,g3l,m,p1,{color:'var(--ink)',width:2});arrow(api,g3l,m,p0,{color:'var(--ink)',width:2});
-  txt(g3l,api.sx(p1[0])+10,api.sy(p1[1])+4,`2/‖w‖ = ${(2/n).toFixed(2)}`,{fill:'var(--ink)','font-size':16,'font-weight':700,'font-family':MONO,'text-anchor':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});
+  txt(g3l,api.sx(p1[0])+10,api.sy(p1[1])+4,`ρ = 2/‖w‖ = ${(2/n).toFixed(2)}`,{fill:'var(--ink)','font-size':16,'font-weight':700,'font-family':MONO,'text-anchor':'start','paint-order':'stroke',stroke:'var(--surface)','stroke-width':4});
   drawPoints(api,api.layer('pts'),X,y);
 }
 
@@ -1640,7 +1643,7 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
 {
   const api=plane($('fig-hard'),{label:'hard-margin SVC'});
   const {X,y}=SEP,m=SEP_HARD;
-  drawStreet(api,stepG(api.layer('heat'),1),m.w,m.b);
+  drawMargin(api,stepG(api.layer('heat'),1),m.w,m.b);
   const g2=stepG(api.layer('anno'),2);
   const FR={'0.08333':'1/12','0.16667':'1/6','0.25000':'1/4'},frac=v=>FR[v.toFixed(5)]||v.toFixed(3);
   for(const i of m.sv){ring(api,g2,X[i]);
@@ -1660,7 +1663,7 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
     // no hard-margin solution: the solver fails to converge, or the best large-C fit violates the margin
     const m=svmSolve(X,y,{C:HARD_C,strict:false}),st=stats(m,X,y),separable=m.converged&&Math.min(...st.yf)>1-1e-3;
     dots.forEach((c,i)=>{c.setAttribute('cx',api.sx(X[i][0]));c.setAttribute('cy',api.sy(X[i][1]));});
-    if(separable){drawStreet(api,gS,m.w,m.b);m.sv.forEach(i=>ring(api,gR,X[i]));
+    if(separable){drawMargin(api,gS,m.w,m.b);m.sv.forEach(i=>ring(api,gR,X[i]));
       $('v-sv-w').textContent=st.width.toFixed(2);$('v-sv-n').textContent=st.nsv;$('rd-sv').textContent='ringed: support vectors';}
     else{$('v-sv-w').textContent='none';$('v-sv-n').textContent='–';
       $('rd-sv').innerHTML='<span class="k-err">no line separates these points: the hard-margin problem has no solution</span>';}
@@ -1672,7 +1675,7 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
 }
 
 /* ---------- slides 8–9: soft margin ---------- */
-// slack of point i as a segment from the point to its own street edge (length ξ/‖w‖)
+// slack of point i as a segment from the point to its own margin line (length ξ/‖w‖)
 function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
   X.forEach((p,i)=>{const xi=Math.max(0,1-y[i]*m.f(p));if(xi<1e-6)return;
     const q=[p[0]+y[i]*xi*m.w[0]/n2,p[1]+y[i]*xi*m.w[1]/n2];
@@ -1683,7 +1686,7 @@ function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
   const {X,y}=SOFT,m=svmSolve(X,y,{C:1});
   const g1=stepG(api.layer('anno'),1);
   [X.length-2,X.length-1].forEach(i=>ring(api,g1,X[i],{color:'var(--err)'}));
-  drawStreet(api,stepG(api.layer('heat'),2),m.w,m.b);
+  drawMargin(api,stepG(api.layer('heat'),2),m.w,m.b);
   drawSlack(api,stepG(api.layer('anno'),3),m,X,y);
   drawPoints(api,api.layer('pts'),X,y);
 }
@@ -1694,7 +1697,7 @@ function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
   const inp=$('r-c');
   const set=act('c',v=>{inp.value=v;const C=10**(v/100),m=svmSolve(X,y,{C}),st=stats(m,X,y);
     const gS=api.clear('heat'),gA=api.clear('anno');
-    drawStreet(api,gS,m.w,m.b);drawSlack(api,gA,m,X,y,{labels:false});m.sv.forEach(i=>ring(api,gA,X[i],{r:13,w:2.5}));
+    drawMargin(api,gS,m.w,m.b);drawSlack(api,gA,m,X,y,{labels:false});m.sv.forEach(i=>ring(api,gA,X[i],{r:13,w:2.5}));
     $('v-c-c').textContent=`C = ${C<1?C.toFixed(C<.1?3:2):C.toFixed(C<10?1:0)}`;
     $('v-c-w').textContent=st.width.toFixed(2);$('v-c-n').textContent=st.nsv;$('v-c-e').textContent=st.mistakes;$('v-c-x').textContent=st.sumXi.toFixed(2);});
   inp.addEventListener('input',()=>set(+inp.value));
@@ -1864,7 +1867,7 @@ function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
   poly:P=>{const r=rng(17);for(let i=0;i<10;i++){const u=.06+i*.095;dot(P,u,.15+2.6*u*(1-u)+(r()-.5)*.2,C.mu,1.9);}
     const path=el('path',{fill:'none',stroke:C.fit,'stroke-width':1.2},P.g);
     return p=>{let d='';for(let i=0;i<=30;i++){const u=i/30,v=lerp(.58,.15+2.6*u*(1-u),p);d+=(i?'L':'M')+P.X(u)+' '+P.Y(v)+' ';}path.setAttribute('d',d);};},
-  // new: SVM, the street u + v = 1 ± m breathes; points stay outside the widest street
+  // new: SVM icon, margin u + v = 1 ± m; points stay outside the widest margin
   svm:P=>{const r=rng(29);let k=0;
     while(k<7){const u=r(),v=r();if(u+v>1.42&&u<.97&&v<.97){dot(P,u,v,C.a);k++;}}
     k=0;while(k<7){const u=r(),v=r();if(u+v<.58&&u>.03&&v>.03){dot(P,u,v,C.b);k++;}}

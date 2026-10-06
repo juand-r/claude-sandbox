@@ -131,5 +131,5 @@ print("   ok  exercise: f = 3, -3, 0.4, 0, 1.4; xi = 0, 0, 0.6, 1, 2.4; width 0.
 
 # slide 4: distance example (w = (0.3, 0.4), b = -3.5, x = (8, 7))
 assert abs(math.hypot(.3, .4) - .5) < 1e-12 and abs((.3 * 8 + .4 * 7 - 3.5) / .5 - 3.4) < 1e-12
-print("   ok  distance slide: ||w|| = 0.5, f(8, 7) = 1.7, r = 3.4")
+print("   ok  distance slide: ||w|| = 0.5, f(8, 7) = 1.7, d = |f|/||w|| = 3.4")
 print("all checks passed")

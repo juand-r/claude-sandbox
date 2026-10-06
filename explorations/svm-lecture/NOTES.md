@@ -68,10 +68,16 @@
 - Plots are capped at 74vh (56vh on slides with tiles and controls) so slides never need shrinking.
 - Claim on the properties slide, "roughly quadratic or worse in the number of points" for kernel
   SVM training: standard in the literature, stated as approximate. Not measured here.
-- Definition of "margin": the deck uses the textbook one (CS229, ISLR): the distance from the
-  boundary to the closest training point, 1/‖w‖ after scaling, half the street. Some sources
-  (Wikipedia; Cortes and Vapnik 1995, from memory, not checked) call the full width 2/‖w‖
-  the margin. Slides 2, 5 and 6 were aligned to the textbook definition at the user's request.
+- Definition of "margin" (final, at the user's request): the deck follows the course's lecture 11.
+  The margin is the empty region between the margin lines w·x + b = ±1, and its width is
+  ρ = 2/‖w‖. (Textbooks such as CS229 and ISLR instead call the half-width 1/‖w‖ the margin.)
+  Distances are unsigned, |w·x + b|/‖w‖, as in lecture 11.
+- Terminology changes requested by the user: no "street" anywhere (now "margin", "margin lines");
+  "quadratic program" is now "constrained convex quadratic minimization problem".
+- Added from lecture 11: the link to linear regression (w as the slopes, b the intercept);
+  ‖w‖ defined as √(w₁² + w₂² + …); numeric features (one-hot encoding) and the slow or
+  non-finishing solver on unscaled data; tuning C and the kernel by grid search in nested
+  cross-validation; a hedged "many features" card.
 - Formula layout (user report: formulas broke mid-expression, e.g. "exp(−γ / ‖x − x′‖²)").
   Fix, in both decks: inline `.math` never wraps; formulas longer than about 18 characters
   sit on their own line (`.math.dm`); equation boxes break only at chosen points, with
