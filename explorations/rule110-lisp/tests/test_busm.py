@@ -54,5 +54,5 @@ def test_compiled_equals_cts():
     apps = comp.pm.appendants()
     B = comp.pm.B
     *_, (step, t, _) = cts.run(tape, apps, comp.p * B, sample=comp.p * B)
-    got = [c // 2 for c, _ in comp.pm.decode(t, step) if c >= 0]
+    got = comp.decode_letters([c for c, _ in comp.pm.decode(t, step) if c >= 0])
     assert got == run_reference(ops, vals, V)

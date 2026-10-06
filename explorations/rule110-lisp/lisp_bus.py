@@ -37,6 +37,9 @@ def tok_atom(code):
     return ATOM | (code << 2)
 
 
+TOKENS = {PAD, OPEN, CLOSE} | {ATOM | (c << 2) for c in range(1 << 3)}
+
+
 def kind(v):
     return v & 3
 
@@ -134,7 +137,7 @@ class LispBus:
         self.S_states = [(name, st) for name, (sts, _, _) in
                          self.autos.items() for st in sts]
         self.S_index = {x: i for i, x in enumerate(self.S_states)}
-        self.values, self.ops = [], []
+        self.values, self.ops, self.data_regs = [], [], set()
         self.S, self.CA, self.CB, self.T = (self.reg(0) for _ in range(4))
         self.block = self.compile(self.expr)
         self.n = len(self.values)
@@ -145,7 +148,9 @@ class LispBus:
         return len(self.values) - 1
 
     def data_reg(self, token):
+        """A register whose initial value is quoted data (tape content)."""
         r = self.reg(token)
+        self.data_regs.add(r)
         return r
 
     def atom_code(self, a):
@@ -201,7 +206,7 @@ class LispBus:
     # ---- compilation ----
     def compile(self, e):
         if e == "t":
-            return [self.data_reg(tok_atom(0))]
+            return [self.reg(tok_atom(0))]
         if isinstance(e, str) or not e:
             raise ValueError(f"not in the fragment: {e!r}")
         op, args = e[0], e[1:]
@@ -341,8 +346,14 @@ class LispBus:
     def run_reference(self):
         return self.decode(run_reference(self.ops, self.values, self.V))
 
+    def domains(self):
+        """Possible initial values per register: any token for quoted data
+        (so the table cannot depend on the data), the constant otherwise."""
+        return [TOKENS if r in self.data_regs else {v}
+                for r, v in enumerate(self.values)]
+
     def compile_bus(self):
-        return Compiled(self.n, self.V, self.ops)
+        return Compiled(self.n, self.V, self.ops, self.domains())
 
 
 def _const(c):

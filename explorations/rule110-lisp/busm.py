@@ -79,8 +79,13 @@ class Compiled:
     Attributes: pm (PhaseMachine), tape (initial letters), reads (symbol
     reads that complete the program), n, V, passes."""
 
-    def __init__(self, n, V, ops):
+    def __init__(self, n, V, ops, domains=None):
+        """domains: per register, the set of possible initial values
+        (default: all of range(V)). Letters are numbered per read over the
+        values reachable there, which keeps the symbol width B small."""
         self.n, self.V, self.ops = n, V, ops
+        self.init_domains = [set(range(V)) if domains is None else
+                             set(domains[k]) for k in range(n)]
         self._schedule()
         self._build()
 
@@ -153,26 +158,39 @@ class Compiled:
             nominal[(P, k)] = p + k
         self.p, self.nominal = p, nominal
 
-        V = self.V
-        B = 2 * V + (-2 * V) % 6
+        # values reachable at each read, and their letter numbering
+        dom = {(0, k): self.init_domains[k] for k in range(n)}
+        for s in range(P):
+            for k in range(n):
+                us = (0, 1) if (s, k) in self.unknown else (0,)
+                dom[(s + 1, k)] = {self._step(s, k, v, u)[0]
+                                   for v in dom[(s, k)] for u in us}
+        self.enc = {r: {v: i for i, v in enumerate(sorted(d))}
+                    for r, d in dom.items()}
+        width = max(len(d) for d in dom.values())
+        B = 2 * width + (-2 * width) % 6
         rules = {}
         for s in range(P):
             for k in range(n):
                 N = nominal[(s, k)]
                 us = (0, 1) if (s, k) in self.unknown else (0,)
                 for u in us:
-                    for v in range(V):
-                        letter = 2 * v + (N % 2)
-                        word = self._read(s, k, v, u)
+                    for v in dom[(s, k)]:
+                        letter = self._letter(s, k, v)
+                        v2, blank = self._step(s, k, v, u)
+                        word = (self._letter(s + 1, k, v2),) + (BLANK,) * blank
                         key = ((N + u) % p, letter)
                         if key in rules and rules[key] != word:
                             raise AssertionError(f"rule clash at {key}")
                         rules[key] = word
         self.pm = PhaseMachine(B, p, rules)
 
-    def _read(self, s, k, v, u):
-        """Output word of register k read at pass s with value v and
-        unknown bit u (the broadcast bit, if this read delivers one)."""
+    def _letter(self, s, k, v):
+        return 2 * self.enc[(s, k)][v] + self.nominal[(s, k)] % 2
+
+    def _step(self, s, k, v, u):
+        """Register k read at pass s with value v and unknown bit u (the
+        broadcast bit, if this read delivers one) -> (new value, blanks)."""
         acts = self.actions.get((s, k), [])
         blank = 0
         v_letter = v
@@ -190,13 +208,14 @@ class Compiled:
             elif a[0] == "emit":
                 _, _, emit = self.bcasts[a[1]]
                 blank += _bit(emit(v))
-        t = self.nominal[(s + 1, k)] % 2
-        return (2 * v + t,) + (BLANK,) * blank
+        return v, blank
 
     # ---- running ----------------------------------------------------------
     def initial_tape(self, values):
-        return [2 * _check(v, self.V) + (self.nominal[(0, k)] % 2)
-                for k, v in enumerate(values)]
+        for k, v in enumerate(values):
+            if v not in self.init_domains[k]:
+                raise ValueError(f"register {k}: {v} outside its domain")
+        return [self._letter(0, k, v) for k, v in enumerate(values)]
 
     def run(self, values):
         """Run the compiled phase machine through all passes; return the
@@ -208,7 +227,15 @@ class Compiled:
         out = [c for c, _ in q if c != BLANK]
         if len(out) != self.n or len(q) != self.n:
             raise AssertionError(f"queue {list(q)} is not {self.n} registers")
-        return [c // 2 for c in out]
+        return self.decode_letters(out)
+
+    def decode_letters(self, letters):
+        """Final letters (one per register, blanks removed) -> values."""
+        if len(letters) != self.n:
+            raise AssertionError(f"{len(letters)} letters for {self.n} registers")
+        dec = [{i: v for v, i in self.enc[(self.passes, k)].items()}
+               for k in range(self.n)]
+        return [dec[k][c // 2] for k, c in enumerate(letters)]
 
 
 def _bit(b):
