@@ -24,7 +24,25 @@ and cross-verified (noncts/round2/SUMMARY.md).
 
 Version 0.2, unreleased (v0.1.0 was tagged `rule110-lisp-v0.1.0`; v0.1.1 was not tagged; see CHANGELOG.md).
 
+## Lisp on Rule 110, directly (phase 10)
+
+A second, much cheaper route skips the Turing machine: a compiler writes
+the Lisp expression straight into a cyclic tag system whose table is the
+program ("bus machine", INTERPRETER.md, REPORT.md section 7).
+`(car (quote (a b)))` runs on Rule 110 gliders in about two minutes,
+every read checked, its value read off the glider field; the old tower
+needs ~1e19 generations for it.
+
+    python lisp110.py "(car (quote (a b)))"             # compile + run the CTS
+    python lisp110.py --gliders "(car (quote (a b)))"   # run on Rule 110 gliders
+    python lisp110.py --depth 3 "(define (last l) (cond ((atom? (cdr l)) (car l)) (t (last (cdr l))))) (last (quote (a b c)))"
+
+Supported: quote car cdr cons atom? eq? cond t, lambda, define (calls
+inlined up to --depth; deeper recursion is reported, not miscomputed).
+
 ## Documents
+
+- `INTERPRETER.md` - design of the direct compiler (phase machines, bus machines)
 
 - `REPORT.md` - results, evidence, open problems, cost of the tower
 - `DIRECTIONS.md` - options for faster / more direct constructions, with status
@@ -37,6 +55,10 @@ Version 0.2, unreleased (v0.1.0 was tagged `rule110-lisp-v0.1.0`; v0.1.1 was not
 | module | layer |
 |---|---|
 | `lisp.py` | reference mini-Lisp interpreter |
+| `lisp110.py` | command line: expression -> CTS -> value (CTS or gliders) |
+| `lisp_bus.py` | Lisp -> bus program (direct route) |
+| `busm.py` | bus machines -> phase machine (CTS table holds the program) |
+| `phasem.py` | phase machines: a CTS read by one-hot symbols |
 | `lisp_to_ski.py` | Lisp -> SKI compiler, value decoder |
 | `ski.py`, `ski_graph.py` | SKI engines: string (specification), graph (fast) |
 | `ski_tm.py` | Turing machine that normalizes SKI terms |
