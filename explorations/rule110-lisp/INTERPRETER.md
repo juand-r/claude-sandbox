@@ -78,20 +78,73 @@ prefix/suffix sum mod m per pass. With few senders this is a broadcast
 bus of log2(m) bits per pass over any distance; with many senders it is a
 parallel count (depth of nesting, rank among marked symbols).
 
-## 3. Plan
+## 3. The bus machine: put the program in the table
 
-Design the interpreter for that machine instead of compiling a Turing
-machine into it.
-- Layer A, `phasem.py`: phase machine <-> CTS. Done, tested.
-- Layer B: a small "bus machine" on top of phase machines: symbols with a
-  letter, a broadcast per pass, prefix/suffix counts, insert/delete.
-  Compiled to phase-machine rules automatically; checked by running the
-  rules.
-- Layer C: Lisp evaluation as a bus-machine program. Start with the
-  variable-free fragment (quote car cdr cons atom? eq? cond), whose
-  evaluation needs no copying; then lambda/define, where substitution
-  copies values one symbol per broadcast.
-- Measure passes, Q and sum(Q) per expression; then run the smallest on
-  gliders with the event engine and read the result out.
+*Idea.* If the queue's layout never depends on the data, the CTS table
+can know at every read which register it is serving and at which step of
+the program. Then the table itself is the program, unrolled pass by pass
+and register by register, and a symbol's letter only needs to hold that
+register's current value. Communication is a broadcast bus.
 
-Status log is in NOTES.md (phase 10).
+*Mechanism (`busm.py`).* Registers are symbols, read once per pass in a
+fixed order. To broadcast bit b, register j appends a blank after itself
+at pass s iff b = 1 and at pass s+1 iff b = 0. Either way exactly one
+blank is emitted, so the queue length and all later indices are data
+independent. In between, every symbol appended after the blank is one
+index late: registers after j at pass s+1 and registers up to j at pass
+s+2. Each letter carries the parity of its data-independent index (a
+tag), so a register reads b as (actual index - tag) mod 2, and the table
+entry knows from the index which register and pass it is serving. A
+read may carry at most one unknown bit; the scheduler enforces it, and
+consecutive broadcasts overlap when emitters do not move left.
+
+*Cost of the model.* One bit per pass on the bus, plus any local update
+of every register. Letters are numbered per read over the values the
+register can hold there (a reachability pass), so the symbol width B is
+2 x the largest such set, rounded up to a multiple of 6.
+
+*Checks.* 60 random bus programs agree with the reference semantics,
+and one with the bit-level CTS; a variant that decodes the wrong bit
+fails 92 of 240 runs (`tests/test_busm.py`).
+
+## 4. Variable-free Lisp on the bus machine (`lisp_bus.py`)
+
+Fragment: quote, car, cdr, cons, atom?, eq?, cond, t. A value is a block
+of token registers (PAD, OPEN, CLOSE, atom); every subexpression owns a
+contiguous range nested in its parent's, so operations work in place:
+car pads everything outside the first element, cons pads the second
+argument's OPEN and fronts a fresh OPEN, cond pads the unselected
+branches. Blocks are scanned token by token by a scan register S (two
+broadcast bits per token, a small automaton, one answer bit back).
+
+*Honesty of the translation.* The table is built from the expression with
+each quoted datum replaced by its size; data registers are given the full
+token domain. The data enter only as the CTS tape. A test checks that
+different data of equal size give the identical table and different,
+correct answers.
+
+*Measured, CTS level* (all equal to `lisp.py`; `tests/test_lisp_bus.py`):
+
+| expression | registers | B | passes | CTS reads | sum of queue over reads |
+|---|---|---|---|---|---|
+| `(car (quote (a b)))` | 8 | 24 | 22 | 4,512 | 8.7e5 |
+| `(cons (quote a) (quote (b)))` | 9 | 24 | 17 | 3,888 | 8.4e5 |
+| `(atom? (quote (a)))` | 9 | 24 | 13 | 2,976 | 6.4e5 |
+| `(eq? (quote a) (quote b))` | 8 | 42 | 38 | 13,650 | 4.6e6 |
+| `(cond ((eq? (quote a) (quote b)) (quote x)) (t (quote y)))` | 13 | 42 | 61 | 34,818 | 1.9e7 |
+| `(cdr (car (cdr (quote (a (b c) d)))))` | 12 | 36 | 122 | 55,296 | 2.4e7 |
+
+For comparison, the old tower runs `(car (quote (a b)))` as 85.9M Turing
+machine steps on a 7.9M-symbol tag alphabet, ~1e19 generations or more.
+
+## 5. Plan
+
+- [x] `phasem.py`: phase machines = the CTS read by symbols.
+- [x] `busm.py`: bus machines compiled into the CTS table.
+- [x] `lisp_bus.py`: variable-free Lisp, exact at the CTS level.
+- [ ] Run `(car (quote (a b)))` on gliders and read the value out
+      (`python experiments.py lisp-gliders "(car (quote (a b)))"`).
+- [ ] lambda/define (recursion): needs a heap or substitution with
+      copying; the open design question (section 6, to come).
+
+Status log: NOTES.md (phase 10).
