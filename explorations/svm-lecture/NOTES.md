@@ -22,6 +22,9 @@
 - Presenter name left blank; the template author's credit kept as "slide template".
 
 ## Slide outline
+0. Opener (added at the user's request): the "Running Away Balloon" meme on 99% accuracy
+   with 99% of the data in one class, a recap of class imbalance. Image only, embedded as
+   base64; the source file is `assets/meme_accuracy.webp`.
 1. Title (text only).
 2. Which line? Three separating lines (A, B, C), their streets, your own line, then the SVM.
 3. Hyperplane w·x + b = 0: sliders for w and b, the normal vector, the two sides, f(x) as a score.

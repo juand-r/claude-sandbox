@@ -1,6 +1,6 @@
 # Support vector machines: lecture slides
 
-A 16-slide interactive lecture for a machine learning class: hyperplanes and margins, the
+A 17-slide interactive lecture for a machine learning class: hyperplanes and margins, the
 hard-margin support vector classifier (SVC) and its derivation, the soft-margin SVC, kernels,
 and general properties of SVMs. Two classes only. It uses the same slide template and conventions
 as `../roc-auc-lecture/`.
@@ -40,7 +40,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 ## Slides
 
-1. Title. 2. Which line? 3. A line is w·x + b = 0. 4. Distance to the hyperplane. 5. The margin.
+0. Opener: class-imbalance meme (image only). 1. Title. 2. Which line? 3. A line is w·x + b = 0. 4. Distance to the hyperplane. 5. The margin.
 6. The hard-margin SVC. 7. Only the support vectors matter (drag points). 8. When no line
 separates (slack). 9. The role of C. 10. No line will do (lift to 3D). 11. The kernel trick.
 12. General properties. 13. Exercise. 14. Takeaways. 15. Bonus: slack is hinge loss. 16. Thanks.
