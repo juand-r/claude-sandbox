@@ -269,12 +269,13 @@ their standard deviation. Two directions are therefore special:
 The length response follows from the second point. A change along E[t]
 (lengthening it) is partly a change along c: the cosine between E[t] and c is
 0.62 (training tokens) and 0.68 (held-out tokens), because P[2] has length 1.36,
-comparable to E[t]. Measured responses along E[t]: 0.65 and 0.50, against
-follow 0.85 and 0.75 for the average direction. So answers follow changes of
-direction better than changes of length because the length direction overlaps
-the direction the model cannot see. This also fits section 5.1: a rare held-out
-vector 2.8 times too long differs from the vectors the reader learned mostly
-along a direction the reader is insensitive to.
+comparable to E[t]. Measured responses along E[t]: 0.65 and 0.50, against 0.85
+and 0.75 on average over the directions perpendicular to E[t]. So answers follow
+changes of direction better than changes of length, consistent with the length
+direction overlapping the direction the model cannot see. This may also be part
+of why the rare held-out vectors of section 5.1 are read badly: they differ from
+the vectors the reader learned mainly in length, and length lies partly along
+that direction. I have not tested this further.
 
 ## 7. Editing an embedding vector inside the model (a consistency check)
 
