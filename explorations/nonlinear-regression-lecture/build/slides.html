@@ -1,0 +1,385 @@
+<!-- ANNOUNCEMENTS -->
+<section class="slide one" id="s-ann" data-steps="3">
+  <div class="annslide">
+    <h2>Announcements</h2>
+    <div class="anncards three">
+      <div class="anncard hot" data-step="1">
+        <h3>HW 3 due midnight tonight</h3>
+      </div>
+      <div class="anncard hot" data-step="2">
+        <h3>Project proposal due midnight tonight</h3>
+      </div>
+      <div class="anncard go" data-step="3">
+        <h3>Social impact presentation</h3>
+        <p>Today, end of class.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">1</b>HW 3 is due at midnight tonight.</p>
+    <p><b class="cue">2</b>The project proposal is also due at midnight tonight.</p>
+    <p><b class="cue">3</b>Social impact presentation at the end of class today.</p>
+  </div>
+</section>
+
+<!-- THE STORY SO FAR · placeholder, to be redesigned -->
+<section class="slide one" id="s-tree" data-steps="4">
+  <div class="treeslide">
+    <div class="eyebrow">The map</div>
+    <h2>Supervised learning: the story so far</h2>
+    <div class="fig treewrap"><div id="fig-tree"></div></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Supervised learning: every training example comes with its answer.</p>
+    <p><b class="cue">1</b>Two kinds of answer: a category (classification) or a number (regression).</p>
+    <p><b class="cue">2</b>What we have covered: decision trees, nearest neighbor, naive Bayes and SVMs for classification; linear and polynomial regression.</p>
+    <p><b class="cue">3</b>Next week, neural networks, which do both classification and regression.</p>
+    <p><b class="cue">4</b>Today's path: supervised, regression.</p>
+  </div>
+</section>
+
+<!-- TITLE -->
+<section class="slide one" id="s-title" data-steps="0">
+  <div class="prose">
+    <div class="eyebrow">Machine learning · Regression</div>
+    <h1>Nonlinear<br>Regression</h1>
+    <p class="hook">Three classifiers we already know, turned into regressors.</p>
+  </div>
+  <div class="notes">
+    <p>Linear regression fits a line or a hyperplane. Today: what to do when the pattern is not linear, using decision trees, kNN and SVMs.</p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="slide" id="s-why" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">The problem</div>
+    <h2>Not every pattern is a line</h2>
+    <ul>
+      <li>Linear regression fits a line, or a hyperplane when there are many features.</li>
+      <li data-step="1">Here a line misses the pattern.</li>
+      <li data-step="2">Today, three classifiers we know, used for regression:
+        <ol><li>regression trees</li><li>kNN regression</li><li>support vector regression</li></ol></li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-why"></div>
+    <p class="legend"><span class="k-mean" data-step="1">━ linear regression</span><span class="k-model" data-step="2">━ regression tree</span></p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>One feature, the drug dosage, and a number to predict, how effective the drug is. Low doses do nothing, doses around 20 mg work almost perfectly, higher doses stop working.</p>
+    <p><b class="cue">1</b>The least-squares line. It is wrong almost everywhere.</p>
+    <p><b class="cue">2</b>A regression tree follows the pattern. It is the first of today's three methods.</p>
+  </div>
+</section>
+
+<!-- REGRESSION TREE -->
+<section class="slide one" id="s-rt" data-steps="3">
+  <div class="rtslide">
+  <div class="prose">
+    <div class="eyebrow">1 · Regression trees</div>
+    <h2>A regression tree</h2>
+    <ul>
+      <li data-step="1">Like a decision tree, each node compares a feature with a threshold. A categorical feature gets one branch per value.</li>
+      <li data-step="2">Each leaf predicts a number: the average <span class="math">y</span> of the training points that reach it.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="duo">
+      <div id="fig-rt"></div>
+      <div id="fig-rt-tree" data-step="1"></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The same dosage data.</p>
+    <p><b class="cue">1</b>A tree with three questions about the dosage. Internal nodes ask a question; leaves give an answer, here a number instead of a class.</p>
+    <p><b class="cue">2</b>Each leaf owns an interval of dosages. Its prediction is flat across that interval.</p>
+    <p><b class="cue">3</b>Example: dosages between 23.5 and 29 mg. Four training points land in this leaf; their average effectiveness, (66 + 60 + 50 + 45)/4 = 55.25, is the prediction.</p>
+  </div>
+</section>
+
+<!-- CHOOSING A SPLIT -->
+<section class="slide" id="s-split" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">1 · Regression trees</div>
+    <h2>Choosing a split</h2>
+    <ul>
+      <li data-step="1">Sort by the feature. Try a threshold between each pair of neighbors.</li>
+      <li data-step="1">Each side predicts its average <span class="math">y</span>. Score the threshold by the sum of squared errors:<span class="math dm">SSE = Σ (yᵢ − ŷᵢ)²</span></li>
+      <li data-step="2">The SSE curve has more than one dip. Try every threshold.</li>
+      <li data-step="3">Keep the one with the smallest SSE.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-split"></div>
+    <div id="fig-sse" data-step="1"></div>
+    <div class="tiles row" data-step="1">
+      <div class="tile"><div class="lbl">threshold</div><div class="val k-hi" id="v-sp-t"></div></div>
+      <div class="tile"><div class="lbl">left mean</div><div class="val k-model" id="v-sp-l"></div></div>
+      <div class="tile"><div class="lbl">right mean</div><div class="val k-model" id="v-sp-r"></div></div>
+      <div class="tile"><div class="lbl">SSE</div><div class="val k-err" id="v-sp-s"></div></div>
+    </div>
+    <div class="toolbar" data-step="1"><label>threshold <input type="range" id="r-split" min="0" max="16" value="0"></label></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>How do we pick the first question? With class labels we looked for a change of label. Here there are no labels, so every gap between neighbors is a candidate.</p>
+    <p><b class="cue">1</b>First candidate: 3 mg, between the first two points. Left side: one point, mean 0. Right side: the other 17, mean 38.7. The orange segments are the errors; square them and add them up over all 18 points.</p>
+    <p><b class="cue">2</b>One dot per candidate threshold. The curve is not a single bowl: the SSE rises near 20 mg, where a split cuts the high plateau in two and mixes high and low points on each side. So there is no formula for the minimum; we try them all.</p>
+    <p><b class="cue">3</b>The best threshold is 14.5 mg, SSE ≈ 19,500. That is the root of the tree. Trying every threshold is cheap: moving the threshold one point to the right moves one point from one average to the other.</p>
+  </div>
+</section>
+
+<!-- GROW AND STOP -->
+<section class="slide" id="s-grow" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">1 · Regression trees</div>
+    <h2>Grow, then stop</h2>
+    <ul>
+      <li>Split each side the same way, and repeat.</li>
+      <li data-step="1">Grown all the way, the tree reproduces every training point. It overfits.</li>
+      <li data-step="2">Stop early: do not split a node with 6 or fewer points. A maximum depth also works.</li>
+      <li data-step="3">Stop too early and the tree underfits.</li>
+      <li data-step="4">Tune the stopping rule with nested cross-validation.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-grow"></div>
+    <div class="tiles three" data-step="1">
+      <div class="tile"><div class="lbl">min points to split</div><div class="val k-hi" id="v-gr-m"></div></div>
+      <div class="tile"><div class="lbl">leaves</div><div class="val k-model" id="v-gr-n"></div></div>
+      <div class="tile"><div class="lbl">training SSE</div><div class="val k-err" id="v-gr-s"></div></div>
+    </div>
+    <div class="toolbar" data-step="1"><label>min points to split <input type="range" id="r-grow" min="2" max="19" value="7"></label></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>After the root split, each side is a smaller dataset. Run the same search on it: every feature, every threshold, smallest SSE.</p>
+    <p><b class="cue">1</b>Never stopping: training SSE 0. Every point has its own leaf, except where neighbouring points have the same y (14 leaves for 18 points). That is memorization.</p>
+    <p><b class="cue">2</b>The rule used for the tree two slides ago. Left of 14.5 mg there are 6 points: a leaf. Right of it, 12 points: split at 29 mg. Above 29 mg, 4 points: a leaf. Between 14.5 and 29 mg, 8 points: split at 23.5 mg, then both sides are small enough. The minimum number of points needed to split is the hyperparameter used most often for regression trees; max depth works too, and they can be combined.</p>
+    <p><b class="cue">3</b>Require 19 points and the root cannot split: one leaf, the overall average, 36.6.</p>
+    <p><b class="cue">4</b>Try several values and keep the one with the lowest SSE on the validation folds.</p>
+  </div>
+</section>
+
+<!-- MANY FEATURES -->
+<section class="slide" id="s-multi" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">1 · Regression trees</div>
+    <h2>Many features</h2>
+    <ul>
+      <li data-step="1">For each feature, find its best threshold. Keep the feature and threshold with the smallest SSE.</li>
+      <li data-step="2">A feature with two values, like F / M, has only one split.</li>
+      <li data-step="3">More values, like single / married / divorced: one-hot encode, and try each value against the rest.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="tabwrap"><table class="dtab">
+      <thead><tr><th>dosage (mg)</th><th>age</th><th>weight (lb)</th><th>sex</th><th class="yc">effective (%)</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>25</td><td>145</td><td>F</td><td class="yc">5</td></tr>
+        <tr><td>13</td><td>73</td><td>198</td><td>M</td><td class="yc">20</td></tr>
+        <tr><td>20</td><td>54</td><td>186</td><td>F</td><td class="yc">102</td></tr>
+        <tr><td>25</td><td>18</td><td>150</td><td>M</td><td class="yc">66</td></tr>
+        <tr><td>30</td><td>42</td><td>220</td><td>M</td><td class="yc">10</td></tr>
+        <tr><td>35</td><td>30</td><td>174</td><td>F</td><td class="yc">0</td></tr>
+        <tr><td>…</td><td>…</td><td>…</td><td>…</td><td class="yc">…</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Now four features predict effectiveness. Ages and weights here are made up for illustration.</p>
+    <p><b class="cue">1</b>Dosage: try every threshold, remember the best one and its SSE. Same for age and for weight. The node uses whichever of the three wins.</p>
+    <p><b class="cue">2</b>A two-valued feature splits one way only; compute its SSE and compare it with the others.</p>
+    <p><b class="cue">3</b>For three or more values, each one-hot column is a candidate split: married versus not married, and so on. Then recurse on each side until the stopping rule says stop.</p>
+  </div>
+</section>
+
+<!-- KNN REGRESSION -->
+<section class="slide" id="s-knn" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">2 · kNN regression</div>
+    <h2>kNN regression</h2>
+    <ul>
+      <li data-step="1">To predict at <span class="math">x</span>, find the <span class="math">k</span> training points nearest to <span class="math">x</span>. Predict the average of their <span class="math">y</span>.</li>
+      <li data-step="2">Do this at every <span class="math">x</span> to get the regression curve.</li>
+      <li data-step="3">Small <span class="math">k</span> follows every point. With <span class="math">k = 1</span> the curve passes through the data: it overfits.</li>
+      <li data-step="4">Large <span class="math">k</span> smooths. Too large underfits. Tune <span class="math">k</span> with nested cross-validation.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-knn"></div>
+    <div class="tiles three" data-step="1">
+      <div class="tile"><div class="lbl noup">k</div><div class="val k-hi" id="v-kn-k"></div></div>
+      <div class="tile"><div class="lbl">prediction at 40</div><div class="val k-model" id="v-kn-p"></div></div>
+      <div class="tile"><div class="lbl">training SSE</div><div class="val k-err" id="v-kn-s"></div></div>
+    </div>
+    <div class="toolbar" data-step="1"><label>k <input type="range" id="r-knn" min="1" max="56" value="9"></label></div>
+    <p class="fignote">Simulated data.</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>A new dataset: bone density against age, 56 people. It rises until about 30 and then falls.</p>
+    <p><b class="cue">1</b>Predict for a 40-year-old with k = 9. One feature, so "nearest" means the 9 closest ages. Their average bone density is the prediction.</p>
+    <p><b class="cue">2</b>Slide the query age along the axis and connect the predictions. That curve is the kNN regression model.</p>
+    <p><b class="cue">3</b>k = 1: each prediction is the single closest point. Training error is near zero and the curve is jagged.</p>
+    <p><b class="cue">4</b>k = 40: most of the data enters every average and the peak is flattened. The best k is somewhere between, and nested cross-validation finds it.</p>
+  </div>
+</section>
+
+<!-- KNN IN 2D -->
+<section class="slide wide" id="s-knn2" data-steps="1">
+  <div class="prose">
+    <div class="eyebrow">2 · kNN regression</div>
+    <h2>kNN with two features</h2>
+    <ul>
+      <li>Distance now uses both features. Colour shows the prediction.</li>
+      <li><span class="math">k = 1</span>: flat patches, one per training point.</li>
+      <li data-step="1"><span class="math">k = 9</span>: a smoother surface.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="duo">
+      <div><div id="fig-k1"></div><p class="legend">k = 1</p></div>
+      <div data-step="1"><div id="fig-k9"></div><p class="legend">k = 9</p></div>
+    </div>
+    <div class="cbar"><span>low y</span><i></i><span>high y</span></div>
+    <p class="fignote">Simulated data.</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Two features x₁ and x₂, 45 training points (the dots, coloured by their y). Every location in the plane gets the y of its nearest training point, so the prediction surface is a patchwork of flat pieces.</p>
+    <p><b class="cue">1</b>With k = 9 each prediction averages nine points, and the surface is smoother. It no longer reproduces every training point.</p>
+  </div>
+</section>
+
+<!-- SVR -->
+<section class="slide" id="s-svr" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">3 · Support vector regression</div>
+    <h2>Support vector regression</h2>
+    <ul>
+      <li>SVM classification: the widest margin between the classes.</li>
+      <li data-step="1">SVR: a tube of fixed half-width <span class="math">ε</span> around the line <span class="math">w · x + b</span>. The line is the prediction. Points inside the tube cost nothing.</li>
+      <li data-step="2">A point outside the tube has slack <span class="math">ξ</span>: its vertical distance beyond the tube.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-svr"></div>
+    <div class="tiles three" data-step="1">
+      <div class="tile"><div class="lbl noup">ε</div><div class="val k-hi" id="v-sv-e"></div></div>
+      <div class="tile"><div class="lbl">outside the tube</div><div class="val k-err" id="v-sv-n"></div></div>
+      <div class="tile"><div class="lbl">total slack</div><div class="val k-err" id="v-sv-x"></div></div>
+    </div>
+    <div class="toolbar" data-step="1"><label>ε <input type="range" id="r-svr" min="1" max="24" value="8"></label></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Data with a roughly linear trend. For classification we wanted the widest margin with the points outside it. For regression we want the points inside.</p>
+    <p><b class="cue">1</b>We choose ε, the error we are willing to tolerate: predictions within ε of the truth count as right. ε is measured vertically, in units of y, because it is an error in y. Here ε = 2.</p>
+    <p><b class="cue">2</b>Points above the tube and below it both get slack, always positive. Same idea as the soft-margin SVM, but measured vertically rather than perpendicular to the line.</p>
+  </div>
+</section>
+
+<!-- SVR OBJECTIVE -->
+<section class="slide" id="s-svrobj" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">3 · Support vector regression</div>
+    <h2>The SVR problem</h2>
+    <span class="eq">minimize ½ ‖w‖² + C Σ (ξᵢ + ξᵢ*)<br>subject to<br><span class="ind">yᵢ − (w · xᵢ + b) ≤ ε + ξᵢ</span><br><span class="ind">(w · xᵢ + b) − yᵢ ≤ ε + ξᵢ*</span><br><span class="ind">ξᵢ ≥ 0, ξᵢ* ≥ 0</span></span>
+    <ul>
+      <li data-step="1">The tube width is fixed, so <span class="math">½ ‖w‖²</span> keeps the slope small. A flatter model is less likely to overfit.</li>
+      <li data-step="2">Large <span class="math">C</span>: slack is expensive. Steeper fits that chase the points: more variance.</li>
+      <li data-step="3">Small <span class="math">C</span>: slack is cheap. Flatter fits: more bias.</li>
+      <li data-step="4"><span class="math">C</span> and <span class="math">ε</span> are hyperparameters.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-svrc"></div>
+    <div class="tiles three">
+      <div class="tile"><div class="lbl">slope w</div><div class="val k-model" id="v-sc-w"></div></div>
+      <div class="tile"><div class="lbl">outside the tube</div><div class="val k-err" id="v-sc-n"></div></div>
+      <div class="tile"><div class="lbl">total slack</div><div class="val k-err" id="v-sc-x"></div></div>
+    </div>
+    <div class="toolbar"><label>C <input type="range" id="r-svrc" min="-300" max="100" value="-100"></label><span class="mono" id="v-sc-c" style="color:var(--muted)"></span></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Same shape as the soft-margin SVM. The constraints say: the error is at most ε, plus slack. ξᵢ is for points above the tube, ξᵢ* for points below. C = 0.1, ε = 2.</p>
+    <p><b class="cue">1</b>In classification, minimizing ½‖w‖² widened the margin. Here the width is fixed, so it does something else: it keeps the coefficients small. As with linear regression, steep models are more likely to overfit.</p>
+    <p><b class="cue">2</b>C = 10: the solver avoids slack and accepts a steeper line. A steeper line reacts more to changes in x: more variance.</p>
+    <p><b class="cue">3</b>C = 0.01: slack is cheap, so the slope shrinks towards zero and many points fall outside the tube. Low variance, high bias: we are imposing an assumption, flatness, on the data.</p>
+    <p><b class="cue">4</b>Tune C, and ε too, with nested cross-validation, looking for the balance of bias and variance.</p>
+  </div>
+</section>
+
+<!-- KERNEL SVR -->
+<section class="slide" id="s-svrk" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">3 · Support vector regression</div>
+    <h2>Nonlinear SVR</h2>
+    <ul>
+      <li data-step="1">So far SVR fits a line, or a hyperplane with many features.</li>
+      <li data-step="2">Same fix as for SVMs: replace dot products with a kernel. The fit is linear in hidden features and curved in the original one.</li>
+      <li data-step="3">Choose the kernel and its settings, with <span class="math">C</span> and <span class="math">ε</span>, by grid search in nested cross-validation.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-svrk"></div>
+    <div class="tiles three" data-step="1">
+      <div class="tile"><div class="lbl">kernel</div><div class="val k-model" id="v-sk-k"></div></div>
+      <div class="tile"><div class="lbl">outside the tube</div><div class="val k-err" id="v-sk-n"></div></div>
+      <div class="tile"><div class="lbl">training SSE</div><div class="val k-err" id="v-sk-s"></div></div>
+    </div>
+    <div class="toolbar" data-step="1">
+      <button id="b-sk-linear" class="sel">linear</button><button id="b-sk-rbf">RBF</button>
+      <label>γ <input type="range" id="r-sk-g" min="-300" max="0" value="-170"></label><span class="mono" id="v-sk-g" style="color:var(--muted)"></span>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Back to the dosage data. C = 1000 and ε = 5 on this slide.</p>
+    <p><b class="cue">1</b>A linear SVR: a straight tube cannot follow the rise and fall.</p>
+    <p><b class="cue">2</b>The RBF kernel, K(x, x′) = exp(−γ (x − x′)²), with γ = 0.02. Think of mapping the data into a new space, fitting a linear SVR there, and mapping the fit back: it is curved. The kernel does this without computing the new features.</p>
+    <p><b class="cue">3</b>γ = 0.2: the curve bends more sharply around individual points. As with classification, a larger γ can overfit. Try several kernels and settings, like the list of kernels in the homework, and keep the best on validation data.</p>
+  </div>
+</section>
+
+<!-- TAKEAWAYS -->
+<section class="slide one" id="s-take" data-steps="0">
+  <div style="width:100%;max-width:72rem;margin:0 auto">
+    <div class="eyebrow">Summary</div>
+    <h2 style="margin:.2em 0 .8em">Takeaways</h2>
+    <div class="take three">
+      <div class="card"><h3>Regression trees</h3><p>Split where the SSE is smallest. A leaf predicts the average <span class="math">y</span> of its points.</p><p class="hp">Hyperparameters: minimum points to split, maximum depth.</p></div>
+      <div class="card"><h3>kNN regression</h3><p>Predict the average <span class="math">y</span> of the <span class="math">k</span> nearest training points.</p><p class="hp">Hyperparameter: <span class="math">k</span>.</p></div>
+      <div class="card"><h3>Support vector regression</h3><p>A tube of half-width <span class="math">ε</span>; points outside it pay slack. A kernel makes it curve.</p><p class="hp">Hyperparameters: <span class="math">C</span>, <span class="math">ε</span>, kernel.</p></div>
+    </div>
+    <p class="takeline">Each hyperparameter moves the model between underfitting and overfitting. Tune it with nested cross-validation.</p>
+  </div>
+  <div class="notes">
+    <p>Three classifiers, three regressors. In each the hyperparameter controls how closely the model follows the training points.</p>
+  </div>
+</section>
+
+<!-- NOTEBOOK -->
+<section class="slide one" id="s-nb" data-steps="0">
+  <div class="annslide">
+    <div class="eyebrow">In class</div>
+    <h2>Nonlinear regression notebook</h2>
+    <div class="anncards three" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:44rem;margin-left:0">
+      <div class="anncard go"><h3>Canvas → Assignments</h3><p>Open the notebook and try the three regressors.</p></div>
+      <div class="anncard"><h3>No laptop?</h3><p>Pair up and turn it in together.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p>The rest of class: the notebook. Walk around and help.</p>
+  </div>
+</section>
+
+<!-- THANKS -->
+<section class="slide one" id="s-thanks" data-steps="0">
+  <div style="text-align:center;width:100%">
+    <div class="eyebrow">Machine learning · Nonlinear regression</div>
+    <h1 style="margin:.15em 0 .1em">Thank you.</h1>
+    <p style="font-size:clamp(1.2rem,2vw,1.9rem);color:var(--model);font-weight:600;margin:.2em 0 .8em">Questions?</p>
+    <p class="rights">Slide template © 2026 Dori Litvak.</p>
+  </div>
+  <div class="notes">
+    <p>Questions now, in office hours, or on the forum.</p>
+  </div>
+</section>
