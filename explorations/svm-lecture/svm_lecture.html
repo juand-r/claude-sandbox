@@ -911,7 +911,8 @@ function animateEls(list,base=0,total=700){
     else e.style.opacity='';});},last);
 }
 function animateSlide(root,since){
-  const all=[...root.querySelectorAll('.fig svg *')].filter(e=>SHAPES.has(e.tagName)&&(!since||(e.__t||0)>=since));
+  // the map's tree has its own step fades; its non-scaling strokes break the dash draw-in
+  const all=[...root.querySelectorAll('.fig svg *')].filter(e=>SHAPES.has(e.tagName)&&!e.closest('.tree-svg')&&(!since||(e.__t||0)>=since));
   animateEls(all,0,all.length>200?900:650);
 }
 
@@ -1883,33 +1884,9 @@ function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
       E.forEach(({l,e})=>{const on=Math.max(0,1-Math.abs(t-(l+.5))*1.6);e.setAttribute('stroke',on>.05?C.fit:C.line);e.setAttribute('opacity',.45+.55*on);});
       N.forEach((layer,l)=>{const on=Math.max(0,1-Math.abs(t-l)*1.6);layer.forEach(c=>c.setAttribute('fill',on>.3?C.fit:'var(--surface)'));});};}
  };
- const FINE=matchMedia('(hover: hover) and (pointer: fine)').matches;
- const PANELS=[];
- function addPanel(g,render,{dur=9000,shape='pingpong',rest=.5}={}){
-   const a={g,render,dur,shape,rest,value:rest,target:rest,mode:'auto',phase:Math.random()};
-   render(rest);PANELS.push(a);
-   if(!FINE)return;
-   const prog=e=>{const r=g.getBoundingClientRect();return Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));};
-   const scrub=e=>{a.target=prog(e);a.mode='scrub';};
-   const release=()=>{a.mode='return';};
-   g.addEventListener('pointerenter',scrub);g.addEventListener('pointermove',scrub);
-   g.addEventListener('pointerleave',release);g.addEventListener('pointercancel',release);
- }
- const autoP=(a,now)=>{const c=now/a.dur+a.phase;return a.shape==='loop'?c-Math.floor(c):.5-.5*Math.cos(Math.PI*2*c);};
- let lastT=performance.now();
- (function tick(now){
-   const live=slides[cur]&&slides[cur].id==='s-tree'&&!document.hidden;
-   if(live){const dt=Math.min((now-lastT)/1000,.05);
-     for(const a of PANELS){let v=a.value;
-       if(a.mode==='scrub'){v+=(a.target-v)*Math.min(1,dt*8);}
-       else if(REDUCED){v=a.rest;}
-       else{const ap=autoP(a,now);if(a.mode==='return'){v+=(ap-v)*Math.min(1,dt*2);if(Math.abs(ap-v)<.008)a.mode='auto';}else v=ap;}
-       if(Math.abs(v-a.value)>1e-4){a.value=v;a.render(v);}}
-   }
-   lastT=now;
-   if(live)requestAnimationFrame(tick);else setTimeout(()=>requestAnimationFrame(tick),250);
- })(performance.now());
- const PANELOPT={supervised:{dur:12000},classification:{dur:11000},regression:{dur:8000,shape:'loop',rest:.62},
+ // icons are static: each is drawn once at its resting frame
+ function addPanel(g,render,{rest=.5}={}){render(rest);}
+ const PANELOPT={supervised:{dur:12000,rest:1},classification:{dur:11000},regression:{dur:8000,shape:'loop',rest:.62},
    tree:{dur:11000,rest:1},knn:{dur:10000,rest:.55},bayes:{dur:11000,rest:.6},poly:{dur:12000,rest:1},svm:{dur:9000,rest:.8},nnet:{dur:5000,shape:'loop',rest:.5}};
  // layout: one root, two branches, seven methods; neural networks sit under both branches
  const N={
@@ -1945,16 +1922,14 @@ function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
  }
  let prevStep=-1;
  hooks['s-tree']={step(s){
-   const fresh=[];
    for(const k in edges){const cs=N[k.split('>')[1]].s,shown=cs<=s,lit=s>=4&&ONEDGE.has(k);
      edges[k].style.opacity=shown?(s>=4&&!lit?.3:1):0;
      edges[k].setAttribute('stroke',lit?'var(--model)':'var(--muted)');
      edges[k].setAttribute('stroke-width',lit?2.6:1.8);
-     if(shown&&cs>prevStep)fresh.push(edges[k]);}
+   }
    for(const key in nodes){const ns=N[key].s,shown=ns<=s;
      nodes[key].style.opacity=shown?(s>=4&&!ONPATH.has(key)?.22:1):0;
-     if(shown&&ns>prevStep)fresh.push(...nodes[key].querySelectorAll('*'));}
-   if(s>prevStep)animateEls(fresh,0,1100);
+   }
    prevStep=s;
  },enter(){prevStep=-1;}};
 }
