@@ -661,9 +661,9 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="eyebrow">4 · Kernels</div>
     <h2>The kernel trick</h2>
     <ul>
-      <li data-step="1">A linear SVM on the rings: no good boundary exists.</li>
-      <li data-step="2">The solver never needs the points themselves, only how similar each pair is: their dot products <span class="math">x<sub>i</sub> · x<sub>j</sub></span>. Replace that similarity with a <b data-hint="kernel">kernel</b> <span class="math">K(x<sub>i</sub>, x<sub>j</sub>)</span>, and the same solver draws curved boundaries. The RBF kernel is <span class="math">exp(−γ ‖x − x′‖²)</span>.</li>
-      <li data-step="3">To score a new point, each support vector votes, weighted by its similarity to the point. Large <span class="math">γ</span> makes votes local and the boundary wiggly.</li>
+      <li data-step="1">Solved with Lagrange multipliers, the SVM uses the data only through dot products <span class="math">x<sub>i</sub> · x<sub>j</sub></span>.</li>
+      <li data-step="2">Instead of adding a derived feature by hand, as on the last slide, replace each dot product with a nonlinear function <span class="math">K(x<sub>i</sub>, x<sub>j</sub>)</span>, a <b data-hint="kernel">kernel</b>. It acts like a dot product of hidden derived features, so the boundary curves.</li>
+      <li data-step="3">A common choice is the RBF kernel<span class="math dm">K(x, x′) = exp(−γ ‖x − x′‖²)</span>Larger <span class="math">γ</span> gives a wigglier boundary that can overfit.</li>
       <li data-step="4">The same machinery handles XOR, where no line works either.</li>
     </ul>
   </div>
@@ -683,11 +683,11 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     </div>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>Back to the rings. C = 10 throughout this slide.</p>
-    <p><b class="cue">1</b>Linear kernel, the plain SVM. The shading shows the predicted class; nothing sensible comes out.</p>
-    <p><b class="cue">2</b>On the last slide we built the new feature by hand. A kernel does it implicitly: K(x, x′) equals a dot product in some feature space, but we never compute those features. For the RBF kernel that space has infinitely many dimensions, yet K is one exponential.</p>
-    <p><b class="cue">3</b>This should feel familiar from k-NN: the prediction is a vote of nearby training points. The differences: only support vectors vote, and their weights are learned. Slide γ up: each vote reaches less far and the boundary wraps around individual points, a sign of overfitting.</p>
-    <p><b class="cue">4</b>XOR: positives in two opposite corners, negatives in the other two. Linear fails; RBF succeeds. Like C, γ is chosen on validation data.</p>
+    <p><b class="cue">0</b>Back to the rings, with a linear SVM: no line works. C = 10 throughout this slide.</p>
+    <p><b class="cue">1</b>This is the one fact we take as given from the Lagrange-multiplier solution: training and prediction only ever use dot products between points, never the points on their own.</p>
+    <p><b class="cue">2</b>Swap each dot product for a kernel K. A check that a kernel really is a dot product of hidden features: in 2D, (x · x′)² = x₁²x₁′² + 2x₁x₂x₁′x₂′ + x₂²x₂′², which is φ(x) · φ(x′) for φ(x) = (x₁², √2·x₁x₂, x₂²). So squaring a dot product works in a space of squared features, like our z, without computing them. The figure now shows the RBF kernel: the circle is found without being told where the centre is.</p>
+    <p><b class="cue">3</b>The RBF kernel is 1 for identical points and near 0 for distant ones; its hidden feature space has infinitely many dimensions, yet K is one exponential. γ sets how far "near" reaches. The figure now uses a large γ: the boundary wraps around individual points.</p>
+    <p><b class="cue">4</b>XOR: positives in two opposite corners, negatives in the other two. Linear fails; RBF succeeds. Like C, γ is tuned by cross-validation.</p>
   </div>
 </section>
 
