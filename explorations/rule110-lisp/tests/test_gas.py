@@ -285,3 +285,22 @@ def test_rope_equals_plain():
     (o1, n1, t1, i1), (o2, n2, t2, i2) = got[False], got[True]
     assert o1 == o2 and n1 == n2 and t1 == t2
     assert i2 == [x for x in i1 if x[3] >= i2[0][3]]
+
+
+def test_readwatch_pending_cursor():
+    """ReadWatch.pending skips the settled prefix; it must equal the plain
+    definition (first `lookahead` regions in state '.' or 'r') while states
+    move forward ('.' -> 'r' -> Y/N/!) in any order."""
+    import random
+    from experiments import ReadWatch
+    rng = random.Random(1)
+    regs = [(None, None) if rng.random() < 0.1 else (i, i + 1) for i in range(300)]
+    w = ReadWatch(regs, apps=None, lookahead=4)
+    nxt = {".": "r", "r": "YN!"}
+    for _ in range(2000):
+        live = [j for j, s in enumerate(w.state) if s in ".r"]
+        assert w.pending() == live[:w.lookahead]
+        if not live:
+            break
+        j = rng.choice(live[:8])
+        w.state[j] = rng.choice(nxt[w.state[j]])

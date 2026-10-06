@@ -140,8 +140,21 @@ class ReadWatch:
         self.t_last = None            # time of the latest sample
 
     def pending(self):
-        """Reads happen in order: watch only the next few pending regions."""
-        return [j for j, s in enumerate(self.state) if s in ".r"][:self.lookahead]
+        """Reads happen in order: watch only the next few pending regions.
+        A state never returns to '.' or 'r', so the scan starts after the
+        settled prefix (a full scan per sample cost 77% of a 157k-read run)."""
+        st = self.state
+        lo = getattr(self, "_lo", 0)
+        while lo < len(st) and st[lo] not in ".r":
+            lo += 1
+        self._lo = lo
+        out = []
+        for j in range(lo, len(st)):
+            if st[j] in ".r":
+                out.append(j)
+                if len(out) == self.lookahead:
+                    break
+        return out
 
     def span(self, pending):
         return (min(self.regs[j][0] for j in pending) - READS_MARGIN,
