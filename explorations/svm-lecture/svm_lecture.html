@@ -1933,7 +1933,7 @@ function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
    if(Math.abs(c.cx-p.cx)<2){d=`M${p.cx} ${pb} V${ct}`;}
    else{const sg=Math.sign(c.cx-p.cx),R=Math.min(14,Math.abs(c.cx-p.cx)/2,(mid-pb),(ct-mid));
      d=`M${p.cx} ${pb} V${mid-R} Q${p.cx} ${mid} ${p.cx+sg*R} ${mid} H${c.cx-sg*R} Q${c.cx} ${mid} ${c.cx} ${mid+R} V${ct}`;}
-   edges[a+'>'+b]=el('path',{d,fill:'none',stroke:'var(--line)','stroke-width':1,'data-s':c.s,class:'tedge'},eg);
+   edges[a+'>'+b]=el('path',{d,fill:'none',stroke:'var(--muted)','stroke-width':1.8,'data-s':c.s,class:'tedge'},eg);
  }
  for(const key in N){
    const n=N[key],g=el('g',{'data-s':n.s},ng),L=n.cx-n.w/2,T=n.cy-n.h/2;
@@ -1947,9 +1947,9 @@ function drawSlack(api,L,m,X,y,{labels=true}={}){const n2=dot(m.w,m.w);
  hooks['s-tree']={step(s){
    const fresh=[];
    for(const k in edges){const cs=N[k.split('>')[1]].s,shown=cs<=s,lit=s>=4&&ONEDGE.has(k);
-     edges[k].style.opacity=shown?(s>=4&&!lit?.15:1):0;
-     edges[k].setAttribute('stroke',lit?'var(--model)':'var(--line)');
-     edges[k].setAttribute('stroke-width',lit?1.6:1);
+     edges[k].style.opacity=shown?(s>=4&&!lit?.3:1):0;
+     edges[k].setAttribute('stroke',lit?'var(--model)':'var(--muted)');
+     edges[k].setAttribute('stroke-width',lit?2.6:1.8);
      if(shown&&cs>prevStep)fresh.push(edges[k]);}
    for(const key in nodes){const ns=N[key].s,shown=ns<=s;
      nodes[key].style.opacity=shown?(s>=4&&!ONPATH.has(key)?.22:1):0;
