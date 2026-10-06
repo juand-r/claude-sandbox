@@ -6,8 +6,9 @@ Question. Can a language model learn to report the values of its own weights,
 with answers computed from the current weights rather than memorized? The
 weights asked about here are the token embeddings.
 
-Model and task. A small GPT-style transformer (4 blocks, internal states in
-ℝ¹²⁸, 1.35 million parameters) is trained on TinyStories, a corpus of simple
+Model and task. A small GPT-style transformer (4 blocks, 1.35 million
+parameters; the internal state at each position, passed from block to block, is
+a vector in ℝ¹²⁸) is trained on TinyStories, a corpus of simple
 children's stories, for 15,000 steps. Input and output embeddings are tied: each
 of the 4,096 tokens t has one embedding vector E[t] ∈ ℝ¹²⁸, used both to read
 text and to score the next token. Besides predicting the next token, the model
@@ -16,7 +17,7 @@ is trained on a self-report task: given the three input symbols
 coordinate i of t's embedding vector, through a linear output head. Questions
 are asked about 3,072 randomly chosen tokens (asked-about tokens). The other
 1,024 (never-asked tokens) are used only to test whether the answers generalize;
-they still occur in the text the model is trained on.
+all but 47 of them occur in the text the model is trained on.
 
 Runs.
 - LM-only (seed 0): next-token prediction only.
@@ -55,12 +56,15 @@ Findings.
      end with embedding vectors of norm about 4.7, against 1.4 to 1.7 for the
      others.
    - In joint seed 0, rare asked-about tokens end with norm 1.53, rare
-     never-asked tokens with 3.95. Answers about the latter are poor (follow
-     0.34). Rescaling those vectors to norm 1.41, keeping their direction,
-     makes the answers good.
-   - In the control, rare tokens end long whether asked about or not (4.11 and
-     4.13), so long vectors are among the questions in training, and answers
-     about rare never-asked tokens are good.
+     never-asked tokens with 3.95. Answers about the latter respond little to
+     their vectors (follow 0.34) and are inaccurate (rescaling score, defined in
+     section 6.2: −1.34, where 1 means exact). Rescaled to norm 1.41 (the mean
+     norm of frequent never-asked tokens), keeping their direction, they score
+     0.96.
+   - In the control, rare tokens end with large norms whether asked about or
+     not (4.11 and 4.13), so vectors with large norms are among the questions in
+     training. Answers about rare never-asked tokens score 0.99, although their
+     follow (0.62) is lower than for other tokens (0.90).
 
    Interpretation: when it can, the self-report task changes the asked-about
    embedding vectors so that the answers work for them; the never-asked vectors
@@ -68,7 +72,7 @@ Findings.
    over to them.
 4. Answers are never exact. For a small change δ of E[t], the 128 answers also
    move by 0.35 to 0.48 of |δ| in ways other than following δ. They respond less
-   to a change of the norm of E[t] than to changes of its direction (section 8).
+   to a change of the norm of E[t] than to changes of its direction (section 7).
 
 ## 1. The question
 
@@ -108,7 +112,8 @@ position 2 (counting from 0). The answer is w·h + b, where h is the internal
 state at position 2 after the last block and before the final LayerNorm, and w
 ∈ ℝ¹²⁸ and b are the weights of the output head. The target is E[t, i], the
 current value. The task loss on a batch of 256 questions is 1 − R² of the
-batch (R² with a single mean over the batch). No gradient flows through the
+batch, where this R² uses a single mean over the batch (uncentred R², unlike
+the centred R² used for measurement). No gradient flows through the
 targets.
 
 Asked-about and never-asked tokens. A random three quarters of the 4,096 tokens
@@ -121,8 +126,8 @@ warm-up steps, cosine decay to 2·10⁻⁴; weight decay 0.1 on the block and
 output-head matrices only; the norm of the combined gradient clipped at 1).
 Each step uses 32 windows of 128 tokens from the training text (61 million
 tokens seen in all), and, in the joint runs and the control, 256 random
-questions about asked-about tokens. Loss: next-token cross-entropy, plus the
-self-report loss with weight 1.
+questions about asked-about tokens. Loss: next-token cross-entropy plus λ times
+the self-report loss, with loss coefficient λ = 1.
 
 The four runs.
 
@@ -174,8 +179,8 @@ Joint seed 0 against LM-only during training (training-log windows):
 | 15,000 | 2.261 | 2.154 | 0.107 |
 
 The difference shrinks during the first half of training and stays between
-0.10 and 0.11 from step 7,500 on. LM-only reached joint seed 0's final loss at
-about step 9,700. This difference may come from the two tasks competing for
+0.10 and 0.11 from step 7,500 on. LM-only reached joint seed 0's final loss on
+these windows (2.261) at about step 9,700. This difference may come from the two tasks competing for
 model capacity, or from optimization: the two losses share Adam's running
 statistics and one gradient-norm clip. This experiment does not tell the two
 causes apart.
@@ -248,18 +253,18 @@ never-asked tokens of joint seed 0 and of the control), so they test essentially
 one direction, not dozens.
 
 Observations.
-- Next-token prediction alone makes rare tokens' vectors about three times
-  longer than the others' (LM-only).
+- Next-token prediction alone gives rare tokens' vectors about three times
+  the norm of the others' (LM-only).
 - In the joint runs, rare asked-about tokens end with ordinary norms; rare
-  never-asked tokens end long; and follow on the rare never-asked tokens is low
+  never-asked tokens end with large norms; and follow on the rare never-asked tokens is low
   (0.34, 0.27).
-- In the control, rare tokens end long in both groups, and follow is the same
+- In the control, rare tokens end with large norms in both groups, and follow is the same
   for both groups (0.62).
 
 ### 6.2 Rescaling test
 
 Each vector is rescaled to a given norm, keeping its direction, and the answers
-about it are scored by 1 − (mean over the vectors of the squared distance
+about it are scored by the rescaling score: 1 − (mean over the vectors of the squared distance
 between the 128 answers and the vector) / (mean squared distance of all 1,024
 never-asked vectors from their coordinate means).
 
@@ -275,36 +280,38 @@ Observations.
   own norm and well at the frequent tokens' norm.
 - In the control, the rare never-asked vectors are answered well at their own
   norm.
-- In all three runs, frequent vectors lengthened to the rare tokens' norm are
+- In all three runs, frequent vectors rescaled to the rare tokens' norm are
   answered badly.
 
-So the norm matters only together with the direction. A long vector is
-answered well only if long vectors in its direction were asked about in
-training. In the control, the long rare vectors (all nearly in one direction)
-include asked-about tokens. In the joint runs, no asked-about vector is long.
-Frequent vectors lengthened along their own directions are unlike anything
-asked about in any run.
+So whether a vector with a large norm is answered well depends on whether
+asked-about vectors of similar norm and direction existed in training. In the
+control, the rare vectors (norms about 4, all nearly in one direction) include
+asked-about tokens: 348 asked-about vectors have norm above 3. In the joint
+runs, no asked-about vector has norm above 1.87 (seed 0: 1.83), while
+never-asked vectors reach 4.06 (seed 0) and 4.45 (seed 1). Frequent vectors
+rescaled to norm about 4 along their own directions are unlike anything asked
+about in any run.
 
 ### 6.3 Interpretation and an open alternative
 
 Interpretation. In the joint runs, the self-report task changes the embedding
-vectors of the asked-about tokens: among other changes, it keeps the rare ones
-short. The answers are then fitted to asked-about vectors whose distribution
+vectors of the asked-about tokens: among other changes, it keeps the norms of
+the rare ones small. The answers are then fitted to asked-about vectors whose distribution
 differs from that of the never-asked vectors, and they do not carry over. In
 the control, asked-about and never-asked vectors come from the same
-distribution, and the answers carry over completely. The control also shows
-that this change of the asked-about vectors costs next-token prediction less
-(0.10 against 0.14 nats per token).
+distribution, and the answers carry over completely. Letting the self-report
+task change the embedding vectors costs less next-token loss than forbidding
+it: +0.10 nats per token (joint, seed 0) against +0.14 (control), one run each.
 
 What the control establishes: the gradient of the self-report loss on the token
-embedding vectors is what keeps the rare asked-about vectors short. What it does
-not establish is how. Two mechanisms fit:
+embedding vectors is what keeps the norms of the rare asked-about vectors
+small. What it does not establish is how. Two mechanisms fit:
 1. The gradient moves those vectors toward a region where the answers are
    accurate.
 2. An effect of Adam: Adam divides each parameter's step by a running average
    of the size of its recent gradients. A rarely used embedding vector with a
    small but consistent gradient from next-token prediction therefore takes
-   full-size steps and grows long. An additional, noisy gradient on the same
+   full-size steps and its norm grows. An additional, noisy gradient on the same
    vector (here from the self-report task) enlarges that average and slows the
    growth, whatever its direction.
 
@@ -342,9 +349,9 @@ per group):
 
 Observation. The joint models barely respond along u (0.005 to 0.022); the
 control responds partly (0.24). The near-insensitivity along u is therefore not
-forced by the architecture; it is what training produced in the joint runs. Its
-overlap with the direction of E[t] is consistent with the weaker response to the
-norm of E[t].
+forced by the architecture; it is what training produced in the joint runs. The
+overlap of u with the direction of E[t] is consistent with the weaker response
+to the norm of E[t].
 
 A second, exact fact, used as a check of the code: every LayerNorm subtracts the
 mean, so a change of E[t] along the all-ones direction (1, ..., 1) reaches the
@@ -381,9 +388,10 @@ possible next token at every position.
 
 To see how much information about E[t] the LM-only model's internal state
 already holds: a linear map from the internal state of the LM-only model at
-position 2 (question layout with COORD_0; the QUERY and COORD vectors of this
+position 2 (input [QUERY, COORD_0, t]; the QUERY and COORD vectors of this
 model are untrained) to E[t], fitted by ridge regression on the asked-about
-tokens, gives centred R² 0.834 on the never-asked tokens. This map has a
+tokens, gives centred R² 0.834 on the never-asked tokens (seed-0 split; 0.803
+with the seed-1 split). This map has a
 separate weight vector for each of the 128 coordinates; the models' output head
 is a single weight vector, and the coordinate asked about enters only through
 the COORD_i symbol. Takeaway: a simple readout of E[t] from an LM-only model's
@@ -407,7 +415,7 @@ answers (0.680, 0.504) and worse than the control's (0.982).
   reporting a value present in its own input. Weights that are not inputs (for
   example the feed-forward matrices) remain untested (PLAN.md, roadmap).
 - Not tested: training only the self-report path on top of a fixed LM-only
-  model; other weights of the self-report loss; other model sizes; more seeds
+  model; other values of the loss coefficient λ; other model sizes; more seeds
   (one control run and one LM-only run).
 
 ## 11. Checks
@@ -419,6 +427,8 @@ answers (0.680, 0.504) and worse than the control's (0.982).
   hand-made functions with known answers, the all-ones fact of section 7, and
   that the control's self-report loss gives no gradient to the token embedding
   vectors.
-- Scripts: `train.py`, `measure.py` (measures of section 5 and section 8),
-  `analyze_review.py` (sections 6.1 follow by frequency, 6.2, 7 gains along u,
-  9), `analyze_frequency.py`, `summarize.py`.
+- Scripts: `train.py`; `measure.py` (sections 5 and 8; files
+  results/measure_<run>.json); `analyze_review.py` (follow by frequency in 6.1,
+  6.2, gains along u in 7, section 9; files results/review_checks_<run>.json);
+  `norms_by_frequency.py` (norm tables in 6.1; results/norms_by_frequency.json);
+  `summarize.py`.

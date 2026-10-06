@@ -95,3 +95,17 @@ this control would separate the two explanations for the shortening (pull into
 the reader's range, or an Adam effect); it does not, since both act through
 the self-report's gradient on the embedding table. Report revised (summary,
 sections 5.2, 8, 10).
+
+## 2026-10-06: terminology review of REPORT.md
+
+The user could not follow my summary. A separate Claude instance reviewed the
+report's terms; the main problems were: "self-report" never defined; "training
+tokens", "reading", "frequent", "the hidden direction" each used for two things;
+joint-run results presented as general before the control showed otherwise
+("length alone decides" was wrong). Report rewritten with one vocabulary
+(asked-about / never-asked tokens; joint / control / LM-only runs; follow, gain
+along a direction, other movement, centred R², rescaling score), all four runs
+defined in the setup, and the argument in order. A second cold read found
+smaller problems (a wrong section reference, "weight" for the loss coefficient,
+"good" with no measure behind it, the probe compared across seeds); fixed.
+Added `norms_by_frequency.py` so the norm tables have a saved source.
