@@ -280,6 +280,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .maptab .st{font-family:"JetBrains Mono",monospace;font-size:.75em;letter-spacing:.06em;color:var(--muted)}
 .maptab td.today .nm,.maptab td.today .st{color:var(--model)}
 .maptab td.faint .mc{opacity:.4}
+.maptab .paren{font-weight:400;font-size:.85em}
+.treeslide .footnote{margin:.6em 0 0;font-size:.72em;color:var(--muted)}
 @media (max-width:620px){.maptab .st{display:none}.maptab .ico svg{width:56px}.maptab{width:calc(100% + 12px);border-spacing:6px 6px;margin:0 -6px}
   .maptab td{padding:6px 8px}.maptab .mc{flex-direction:column;align-items:flex-start;gap:4px}.maptab .nm{font-size:.85em}}
 /* ---------- SVM lecture: added components ---------- */
@@ -399,15 +401,16 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
         <tr><td class=""><div class="mc"><span class="ico" data-v="tree"></span><span class="nm">Decision trees</span><span class="st">covered</span></div></td><td class="today"><div class="mc" data-step="1"><span class="ico" data-v="rtree"></span><span class="nm">Regression trees</span><span class="st">today</span></div></td></tr>
         <tr><td class=""><div class="mc"><span class="ico" data-v="knn"></span><span class="nm">Nearest neighbors</span><span class="st">covered</span></div></td><td class="today"><div class="mc" data-step="2"><span class="ico" data-v="knnreg"></span><span class="nm">kNN regression</span><span class="st">today</span></div></td></tr>
         <tr><td class=""><div class="mc"><span class="ico" data-v="svm"></span><span class="nm">SVMs</span><span class="st">covered</span></div></td><td class="today"><div class="mc" data-step="3"><span class="ico" data-v="svr"></span><span class="nm">Support vector regression</span><span class="st">today</span></div></td></tr>
-        <tr><td class=""><div class="mc"><span class="ico" data-v="bayes"></span><span class="nm">Naive Bayes</span><span class="st">covered</span></div></td><td class="faint"><div class="mc"><span class="nm">—</span></div></td></tr>
+        <tr><td class=""><div class="mc"><span class="ico" data-v="bayes"></span><span class="nm">Naive Bayes</span><span class="st">covered</span></div></td><td class="faint"><div class="mc"><span class="nm">Naive Bayes regression<sup>1</sup> <span class="paren">(does not work well, not commonly used)</span></span></div></td></tr>
       </tbody>
     </table></div>
+    <p class="footnote"><sup>1</sup> Frank, Eibe, et al. "Naive Bayes for regression." Machine Learning 41.1 (2000): 5–25.</p>
   </div>
   <div class="notes">
     <p><b class="cue">0</b>Classifiers we have covered, each in a row. On the regression side so far only linear regression, whose classification partner, logistic regression, we have not covered.</p>
     <p><b class="cue">1</b>Today: a decision tree whose leaves predict numbers, the regression tree.</p>
     <p><b class="cue">2</b>kNN regression: average the neighbours' y instead of taking their majority class.</p>
-    <p><b class="cue">3</b>Support vector regression: a tube around a line instead of a margin between classes. Naive Bayes has no regression version that is commonly used.</p>
+    <p><b class="cue">3</b>Support vector regression: a tube around a line instead of a margin between classes. Naive Bayes does have a regression version (Frank et al., 2000), but it works poorly, because the independence assumption hurts more for regression than for classification, and it is rarely used.</p>
   </div>
 </section>
 
