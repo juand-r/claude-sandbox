@@ -1,0 +1,224 @@
+{
+ "settings": {
+  "name": "joint_s1",
+  "lam": 1.0,
+  "seed": 1,
+  "steps": 15000,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128
+ },
+ "valid_loss": 2.2901290321350096,
+ "r2_train": 0.9827151721253435,
+ "r2_centred_train": 0.9547605978486233,
+ "r2_coord_mean_train": 0.6179253691987505,
+ "r2_held_out": 0.7600730478940834,
+ "r2_centred_held_out": 0.5040495102532878,
+ "r2_coord_mean_held_out": 0.516228016573892,
+ "r2_random": 0.8684108919612136,
+ "n_jacobian_tokens": 512,
+ "sum_w": 0.8303914070129395,
+ "jacobian_train": {
+  "follow": 0.7448393140221015,
+  "other": 0.47998974920483306,
+  "follow_length": 0.5725197324645706,
+  "follow_direction": 0.7461961611209796,
+  "ones_mean": 0.8303914077114314,
+  "ones_sd": 1.1665838972607645e-07,
+  "follow_sd": 0.02669221321619848
+ },
+ "jacobian_held_out": {
+  "follow": 0.6663165960926563,
+  "other": 0.4629011324723251,
+  "follow_length": 0.4171779644457274,
+  "follow_direction": 0.6682783176016872,
+  "ones_mean": 0.8303914072457701,
+  "ones_sd": 1.1116060094629177e-07,
+  "follow_sd": 0.14538043229712733
+ },
+ "finite_follow_median_train": 0.7394954562187195,
+ "finite_follow_mean_train": 0.7415052811848,
+ "finite_follow_median_held_out": 0.6965930461883545,
+ "finite_follow_mean_held_out": 0.661236158979591,
+ "edit_test": [
+  {
+   "token": 199,
+   "count": 2816,
+   "report_follow": 0.6428187489509583,
+   "kl_at_t": 0.006651425734162331,
+   "kl_after_t_later": 0.0010775186819955707,
+   "kl_no_t": 0.0014213381800800562
+  },
+  {
+   "token": 12,
+   "count": 2761,
+   "report_follow": 0.6059921979904175,
+   "kl_at_t": 0.00404525687918067,
+   "kl_after_t_later": 0.001162227476015687,
+   "kl_no_t": 0.0006562485941685736
+  },
+  {
+   "token": 396,
+   "count": 285,
+   "report_follow": 0.7550349831581116,
+   "kl_at_t": 0.0017308531096205115,
+   "kl_after_t_later": 0.00012912743841297925,
+   "kl_no_t": 5.0235121307196096e-05
+  },
+  {
+   "token": 383,
+   "count": 275,
+   "report_follow": 0.6368300914764404,
+   "kl_at_t": 0.00819091871380806,
+   "kl_after_t_later": 0.0003549259272404015,
+   "kl_no_t": 5.807591151096858e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": 0.674626350402832,
+   "kl_at_t": 0.00974363088607788,
+   "kl_after_t_later": 0.0017150093335658312,
+   "kl_no_t": 0.0001945396070368588
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.7589593529701233,
+   "kl_at_t": 0.0058584511280059814,
+   "kl_after_t_later": 0.0007652821950614452,
+   "kl_no_t": 0.0001445044035790488
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": 0.6709421277046204,
+   "kl_at_t": 0.004980183206498623,
+   "kl_after_t_later": 0.0009338557720184326,
+   "kl_no_t": 0.0003167172253597528
+  },
+  {
+   "token": 360,
+   "count": 236,
+   "report_follow": 0.68857741355896,
+   "kl_at_t": 0.005096788518130779,
+   "kl_after_t_later": 0.0001569744199514389,
+   "kl_no_t": 3.553970964276232e-05
+  },
+  {
+   "token": 442,
+   "count": 219,
+   "report_follow": 0.7095596194267273,
+   "kl_at_t": 0.00354992737993598,
+   "kl_after_t_later": 0.0008572855149395764,
+   "kl_no_t": 0.0001063713789335452
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.7362877130508423,
+   "kl_at_t": 6.234995817067102e-05,
+   "kl_after_t_later": 5.589805368799716e-05,
+   "kl_no_t": 3.6688882119051414e-06
+  },
+  {
+   "token": 449,
+   "count": 201,
+   "report_follow": 0.7019525170326233,
+   "kl_at_t": 0.009288588538765907,
+   "kl_after_t_later": 0.00035704291076399386,
+   "kl_no_t": 4.5848151785321534e-05
+  },
+  {
+   "token": 358,
+   "count": 198,
+   "report_follow": 0.7364972233772278,
+   "kl_at_t": 0.010179557837545872,
+   "kl_after_t_later": 0.0004028301627840847,
+   "kl_no_t": 0.0002544657909311354
+  },
+  {
+   "token": 470,
+   "count": 196,
+   "report_follow": 0.7662191390991211,
+   "kl_at_t": 0.005104464013129473,
+   "kl_after_t_later": 0.00027942031738348305,
+   "kl_no_t": 5.075656736153178e-05
+  },
+  {
+   "token": 485,
+   "count": 164,
+   "report_follow": 0.7327082753181458,
+   "kl_at_t": 0.009897137992084026,
+   "kl_after_t_later": 0.00029511176398955286,
+   "kl_no_t": 8.69645009515807e-05
+  },
+  {
+   "token": 506,
+   "count": 156,
+   "report_follow": 0.7023806571960449,
+   "kl_at_t": 0.004840618930757046,
+   "kl_after_t_later": 0.0002447261940687895,
+   "kl_no_t": 5.846349449711852e-05
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.7830038070678711,
+   "kl_at_t": 0.011810691095888615,
+   "kl_after_t_later": 0.00028270934126339853,
+   "kl_no_t": 4.6826717152725905e-05
+  },
+  {
+   "token": 514,
+   "count": 145,
+   "report_follow": 0.8046807050704956,
+   "kl_at_t": 0.009810843504965305,
+   "kl_after_t_later": 0.00027449365006759763,
+   "kl_no_t": 5.653750849887729e-05
+  },
+  {
+   "token": 509,
+   "count": 145,
+   "report_follow": 0.6855264902114868,
+   "kl_at_t": 0.008307586424052715,
+   "kl_after_t_later": 0.0006012309459038079,
+   "kl_no_t": 0.00020734796999022365
+  },
+  {
+   "token": 483,
+   "count": 137,
+   "report_follow": 0.610388994216919,
+   "kl_at_t": 0.007634258829057217,
+   "kl_after_t_later": 0.00023898885410744697,
+   "kl_no_t": 4.120693483855575e-05
+  },
+  {
+   "token": 492,
+   "count": 133,
+   "report_follow": 0.9021854400634766,
+   "kl_at_t": 0.003591659478843212,
+   "kl_after_t_later": 0.0005962635623291135,
+   "kl_no_t": 3.1163424864644185e-05
+  }
+ ],
+ "stories": [
+  "Once upon a time, there was a shy little girl named Lily. She loved to play with her toys and eat tasty food. One day, she found a stick and made a new friend in it.\n\nLily was happy, but her friend said, \"I want the toy, Lily. It's boring and we don't want it. We want it.\" So, they put the stick in the box.\n\nLily said, \"But this is a toy, Lily. It is just a toy.\"\n\nLily said, \"It's a big meanore car. It's not fair to play",
+  "Once upon a time, there was a small girl named Lily. She loved to play outside in her garden. One day, she saw an old man who was playing with a ball. He wanted to play with it, but he didn't like it. \n\nLily ran over to the man and said, \"Hi, I'm Lily! I want to play with you.\" \n\nThe man looked at Lily with a smile and said, \"Wow, you all clean my ball!\" \n\nLily was so happy and she started playing with her ball. She threw it up into the garden, but it was too",
+  "Once upon a time there were two twins. One was named Daisy was playing in the park. Daisy was so excited and she wanted to watch a big slide.\n\n\"What are you doing in this wagon?\" Daisy asked.\n\n\"I'm going to watch the swings,\" said Mom.\n\n\"Well, how about today!\" said Daisy.\n\n\"I want to watch the swings,\" said Mom.\n\nSo Daisy asked a funny lady who asked.\n\nThe lady nodded and said \"I'll come down, please get a better watch.\"\n\nDaisy said, \"Please wait,"
+ ]
+}
