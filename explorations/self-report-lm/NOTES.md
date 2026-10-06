@@ -54,3 +54,28 @@ passes per token, about 69 s per token with the CPU shared). The first
 measurement ran 44 minutes without finishing one model; I stopped it. Fixed:
 each of the 128 question sequences gets its own copy of x, so one backward pass
 gives all rows of J (1 s per token, identical result; tested).
+
+## 2026-10-06: review of the report draft (separate Claude instance)
+
+All findings checked with `analyze_review.py` (results/review_checks_joint_s0.json) and fixed
+in REPORT.md. The ones that changed conclusions:
+- My section 6 explanation was wrong in its details. What block 0 cannot see is the
+  centred vector E[t] + P[2] − mean (P[2] has length 1.36, so LayerNorm does not hide
+  E[t]'s length as such). The trained model is nearly blind along it (response 0.005);
+  the weak length response follows from E[t] overlapping that direction (cosine
+  0.62-0.68).
+- My per-frequency centred R² used set-wide means while the definition used the
+  set's own; and the 97 rare held-out vectors are nearly identical (cosine 0.998).
+  Replaced by follow per bin (0.34 / 0.79 / 0.83 on held-out tokens) and a rescaling
+  test: rare held-out vectors rescaled to the frequent length are read well (score
+  −1.34 → 0.96); frequent ones grown to the rare length are read badly (0.94 → −1.67).
+- I had stated as fact that self-report pulls asked-about vectors into the reader's
+  range. An optimizer explanation (Adam on rarely used rows) also fits. Control run
+  started: self-report with its input detached (joint_detached_s0).
+- Two validation sets were mixed (training log 20 × 32 windows, measurement 100 × 32);
+  the cost is 0.102 on the measurement set, 0.107 on the log set.
+- The edit test is a consistency check (both changes are guaranteed in kind), not
+  evidence of a relation.
+- Added: linear probe on the language-model-only model (held-out centred R² 0.834,
+  not like for like); centred R² on random vectors (0.813); zero-count tokens (88
+  training, 47 held-out).
