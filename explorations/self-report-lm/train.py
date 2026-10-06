@@ -14,7 +14,11 @@ results/<name>_ckpt.pt, and training resumes from there if it exists, so a
 container restart loses at most EVAL_EVERY steps. The final model is
 results/<name>.pt with its log in results/<name>.json.
 
-Usage: python train.py <name> <lam> <seed> [steps]
+Control (review of REPORT.md): with detach_input, the self-report sees E[t] with its
+gradient blocked, so it trains the reader but cannot move the embedding table, which is
+then shaped by language modelling alone.
+
+Usage: python train.py <name> <lam> <seed> [steps] [detach]
 """
 import json
 import math
@@ -64,8 +68,9 @@ def lm_loss(m, x, y):
     return F.cross_entropy(m.lm_logits(x).reshape(-1, m.n_text), y.reshape(-1))
 
 
-def report_loss(m, t, i):
-    a, target = m.report(t, i), m.E[t, i].detach()
+def report_loss(m, t, i, detach_input=False):
+    a = m.answer(m.E[t].detach(), i) if detach_input else m.report(t, i)
+    target = m.E[t, i].detach()
     return ((a - target) ** 2).mean() / target.var(unbiased=False)
 
 
@@ -87,10 +92,10 @@ def make_optimizer(m):
                               {"params": rest, "weight_decay": 0.0}], lr=LR, betas=BETAS)
 
 
-def train(name, lam, seed, steps=STEPS, verbose=True):
+def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False):
     RESULTS.mkdir(exist_ok=True)
     ckpt_path = RESULTS / f"{name}_ckpt.pt"
-    settings = {"name": name, "lam": lam, "seed": seed, "steps": steps, "lm_batch": LM_BATCH,
+    settings = {"name": name, "lam": lam, "seed": seed, "steps": steps, "detach_input": detach_input, "lm_batch": LM_BATCH,
                 "report_batch": REPORT_BATCH, "lr": LR, "lr_min": LR_MIN, "warmup": WARMUP,
                 "weight_decay": WEIGHT_DECAY, "betas": list(BETAS), "clip": CLIP, "eval_every": EVAL_EVERY,
                 "n_text": lm.N_TEXT, "dim": lm.DIM, "n_layers": lm.N_LAYERS, "n_heads": lm.N_HEADS, "ctx": lm.CTX}
@@ -103,6 +108,7 @@ def train(name, lam, seed, steps=STEPS, verbose=True):
     start, log, seconds0 = 0, [], 0.0
     if ckpt_path.exists():
         ck = torch.load(ckpt_path)
+        ck["settings"].setdefault("detach_input", False)       # checkpoints written before the option existed
         if ck["settings"] != settings:
             raise RuntimeError(f"{ckpt_path} has different settings: {ck['settings']}")
         m.load_state_dict(ck["model"])
@@ -129,7 +135,7 @@ def train(name, lam, seed, steps=STEPS, verbose=True):
         if lam > 0:
             t = train_tokens[torch.randint(0, len(train_tokens), (REPORT_BATCH,), generator=gen_rep)]
             i = torch.randint(0, m.dim, (REPORT_BATCH,), generator=gen_rep)
-            loss_rep = report_loss(m, t, i)
+            loss_rep = report_loss(m, t, i, detach_input)
             loss = loss + lam * loss_rep
         if not torch.isfinite(loss):
             raise FloatingPointError(f"loss not finite at step {step}")
@@ -156,8 +162,9 @@ def train(name, lam, seed, steps=STEPS, verbose=True):
 def main():
     name, lam, seed = sys.argv[1], float(sys.argv[2]), int(sys.argv[3])
     steps = int(sys.argv[4]) if len(sys.argv) > 4 else STEPS
+    detach_input = len(sys.argv) > 5 and sys.argv[5] == "detach"
     torch.set_num_threads(2)
-    m, settings, log = train(name, lam, seed, steps)
+    m, settings, log = train(name, lam, seed, steps, detach_input=detach_input)
     torch.save({"model": m.state_dict(), "settings": settings}, RESULTS / f"{name}.pt")
     (RESULTS / f"{name}.json").write_text(json.dumps({"settings": settings, "log": log}, indent=1))
     print(f"wrote results/{name}.pt and .json")

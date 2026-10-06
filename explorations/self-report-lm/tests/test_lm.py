@@ -188,3 +188,11 @@ def test_fast_jacobian_equals_autograd_jacobian():
     x = m.E[7].detach()
     slow = torch.autograd.functional.jacobian(lambda v: Ms.answers_for(m, v), x)
     torch.testing.assert_close(Ms.jacobian(m, x), slow, atol=1e-6, rtol=1e-5)
+
+
+def test_detached_input_gives_embeddings_no_self_report_gradient():
+    m = small_model()
+    t, i = torch.tensor([1, 2, 3]), torch.tensor([0, 1, 2])
+    T.report_loss(m, t, i, detach_input=True).backward()
+    assert m.E.grad is None or m.E.grad[:m.n_text].abs().max() == 0      # text rows untouched
+    assert m.number_head.weight.grad.abs().max() > 0                         # the reader still learns
