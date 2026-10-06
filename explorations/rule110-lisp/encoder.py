@@ -201,10 +201,10 @@ def right_super_period(tape, appendants):
     (casim.layout checks the repetition cell for cell.)"""
     from math import gcd
     nr = len(_right_block_seq(appendants))
-    _, placed = assemble(tape, appendants, 0, 2)
+    _, placed = assemble(tape, appendants, 0, 2, bits=False)
     d = (placed[-nr].dy - placed[-2 * nr].dy) % 30
     m = 30 // gcd(d, 30)
-    _, placed = assemble(tape, appendants, 0, m + 1)
+    _, placed = assemble(tape, appendants, 0, m + 1, bits=False)
     first = len(placed) - (m + 1) * nr
     return m, placed[first + m * nr].gspan(0)[0] - placed[first].gspan(0)[0]
 
@@ -232,7 +232,7 @@ def _left_block_seq(appendants, v_override=None):
 
 
 def assemble(tape, appendants, left_periods=1, right_periods=1,
-             v_override=None, left_gaps=None):
+             v_override=None, left_gaps=None, bits=True):
     """Build the Rule 110 initial row for a cyclic tag system.
 
     tape: string of 'Y'/'N' (the CTS initial tape, must be nonempty).
@@ -277,9 +277,11 @@ def assemble(tape, appendants, left_periods=1, right_periods=1,
         left.append(_attach(left[-1], blocks[name], "L"))
     placed = left[:0:-1] + placed
 
-    bits = "".join(p.gbits(0) for p in placed)
     # seam sanity: contributions must be contiguous
     for a, b in zip(placed, placed[1:]):
         if a.gspan(0)[1] != b.gspan(0)[0]:
             raise AssertionError("non-contiguous t=0 row")
-    return np.frombuffer(bits.encode(), np.uint8) - ord("0"), placed
+    if not bits:                       # geometry only (long tables)
+        return None, placed
+    row = "".join(p.gbits(0) for p in placed)
+    return np.frombuffer(row.encode(), np.uint8) - ord("0"), placed

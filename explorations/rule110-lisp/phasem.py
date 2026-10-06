@@ -27,6 +27,7 @@ after it. This is the only way information moves between symbols
 from collections import deque
 
 BLANK = -1
+UNUSED = "N" * 6           # appendant of a (phase, letter) that never fires
 
 
 class PhaseMachine:
@@ -81,12 +82,16 @@ class PhaseMachine:
         return "".join(self.letter_word(c) for c in tape)
 
     def appendants(self):
-        """CTS appendant list, index f*B + c. Unused pairs get one blank."""
+        """CTS appendant list, index f*B + c. A pair with no rule is never
+        read as Y (run() raises if its letter is read), so its appendant is
+        never appended; it only has to be nonempty with a length that is a
+        multiple of 6 (Cook), and the shortest, N^6, keeps the table short."""
         out = []
         for f in range(self.m):
             for c in range(self.B):
-                word = self.rules.get((f, c), (BLANK,))
-                out.append("".join(self.letter_word(x) for x in word))
+                word = self.rules.get((f, c))
+                out.append(UNUSED if word is None else
+                           "".join(self.letter_word(x) for x in word))
         return out
 
     def decode(self, cts_tape, start):
