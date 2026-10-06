@@ -1,6 +1,6 @@
 # Nonlinear regression: lecture slides
 
-A 16-slide interactive lecture for a machine learning class, built from lecture 14 (slides and
+A 17-slide interactive lecture for a machine learning class, built from lecture 14 (slides and
 transcript): regression trees, kNN regression and support vector regression (SVR), linear and with
 kernels. Same slide template, engine and conventions as `../svm-lecture/`.
 
@@ -18,6 +18,8 @@ Open `nonlinear_regression_lecture.html` in a browser. No server or install is n
   this one file. This is the file to edit.
 - `check_numbers.py`: compares the deck's regression tree, kNN and SVR code with scikit-learn on every
   dataset in the slides, and checks the numbers quoted on the slides and in the notes.
+- `assets/meme_robot_uprising.png`: the opening comic (supplied by the user; top 3 pixel rows,
+  a sliver of the neighbouring panel, trimmed). Embedded in the deck as base64.
 - `make_data.py`: makes the datasets (`build/data.json`); describes each one.
 - `build/`: the one-time scaffold that produced the deck: `assemble.py` takes the SVM deck's engine
   and adds `slides.html`, `code.js`, `extra.css` and `data.json`. Kept so the first version is

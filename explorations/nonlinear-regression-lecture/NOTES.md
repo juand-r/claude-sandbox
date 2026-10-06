@@ -31,6 +31,8 @@
   but does not work well, not commonly used." and gives the reference (the user's wording and citation).
 
 ## Slide outline
+0. Opening comic (image only; supplied by the user): a robot uprising trained on historical data
+   brings spears and rocks.
 1. Announcements (3 cards).
 2. Supervised learning: the story so far (table: each classifier beside its regression version).
 3. Title: Nonlinear Regression.
@@ -82,7 +84,8 @@ These are said out loud in the lecture; the slides and notes avoid repeating the
   distance outside the tube (C Σ (ξ + ξ*)), plus ½‖w‖². The slides say this.
 - "Bone marrow density" in the transcript is bone (mineral) density; the slides say "bone density".
 - Left out: the opening remarks about the weekend's events, the memes on the first slide of the
-  original deck (ensembles and random forests, and "Scientists be like" on the title slide).
+  original deck (ensembles and random forests, and "Scientists be like" on the title slide). The
+  user supplied a different comic for the opening slide instead.
 
 ## Problems found in screenshots and fixed
 - Regression-tree slide too small and its outer leaves clipped: moved to one column with the plot
