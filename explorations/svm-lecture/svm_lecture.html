@@ -696,12 +696,10 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   <div style="width:100%;max-width:72rem;margin:0 auto">
     <div class="eyebrow">5 · In practice</div>
     <h2 style="margin:.2em 0 .8em">General properties</h2>
-    <div class="take four">
+    <div class="take three">
       <div class="card"><h3>One best answer</h3><p>The objective is a bowl and the constraints are straight lines. There is a single best solution, and solvers find it.</p></div>
-      <div class="card"><h3>Sparse</h3><p>Only support vectors shape the boundary. Prediction cost grows with their number, not with the size of the training set.</p></div>
       <div class="card"><h3>Numeric, scaled features</h3><p>One-hot encode categorical features, then standardize, as for k-NN. On unscaled data the solver can be very slow or never finish.</p></div>
       <div class="card"><h3>Hyperparameters</h3><p><span class="math">C</span>, the kernel and its parameters such as <span class="math">γ</span>. Tune them together by grid search inside nested cross-validation.</p></div>
-      <div class="card"><h3>A score, not a probability</h3><p><span class="math">f(x)</span> ranks points. Thresholds other than 0 trade TPR against FPR and trace an ROC curve.</p></div>
       <div class="card"><h3>Training cost</h3><p>Kernel SVMs slow down sharply on large training sets: roughly quadratic or worse in the number of points. Linear SVMs scale much further.</p></div>
       <div class="card"><h3>Many features</h3><p>Often work well with many features: in theory, generalization depends on the margin rather than on the number of features. Not a guarantee; a poor kernel or C can still overfit.</p></div>
     </div>
