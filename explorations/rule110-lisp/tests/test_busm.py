@@ -56,3 +56,24 @@ def test_compiled_equals_cts():
     *_, (step, t, _) = cts.run(tape, apps, comp.p * B, sample=comp.p * B)
     got = comp.decode_letters([c for c, _ in comp.pm.decode(t, step) if c >= 0])
     assert got == run_reference(ops, vals, V)
+
+
+def test_lifetimes_equal_reference():
+    """With register lifetimes (births by the live predecessor, deaths as
+    blanks), the kept registers still end with the reference values."""
+    rng = random.Random(11)
+    for trial in range(80):
+        n, V = rng.randint(2, 7), rng.randint(1, 5)
+        ops = _random_program(rng, n, V, rng.randint(0, 14))
+        start = {k for k in range(1, n) if rng.random() < 0.4}
+        keep = {k for k in range(n) if rng.random() < 0.5}
+        consts = [rng.randrange(V) for _ in range(n)]
+        domains = [set(range(V)) if k in start or k == 0 else {consts[k]}
+                   for k in range(n)]
+        comp = Compiled(n, V, ops, domains, keep=keep, start=start)
+        for _ in range(3):
+            vals = [rng.randrange(V) if k in start or k == 0 else consts[k]
+                    for k in range(n)]
+            got = comp.run(vals)
+            want = run_reference(ops, vals, V)
+            assert all(got[k] == want[k] for k in keep | {0}), trial

@@ -6,11 +6,13 @@ Fragment: quote, car, cdr, cons, atom?, eq?, cond, and the constant t
 Representation. A value is a block of consecutive registers holding
 tokens: PAD (ignored), OPEN, CLOSE, or an atom. Reading the non-PAD tokens
 of a block in order gives the value: () is OPEN CLOSE, (a b) is
-OPEN a b CLOSE. Every subexpression owns a contiguous range of registers,
-nested inside its parent's range, so an operation can work in place: car
-turns every token outside the first element into PAD; cons turns the
-second argument's OPEN into PAD and puts a fresh OPEN in front. Anything
-in a range that is not part of the value is PAD.
+OPEN a b CLOSE. A block's registers are in increasing register order (the
+order in which the bus program visits them), so an operation can work in
+place: car turns every token outside the first element into PAD; cons
+turns the second argument's OPEN into PAD and puts a fresh OPEN in front.
+Blocks that are consumed (an argument of atom?, eq?, a cond test, a let
+binding after its last use) are simply left out of the result; with busm
+register lifetimes they leave the queue after their last use.
 
 Operations scan blocks token by token with a scan register S: each token
 says its kind in two broadcast bits, S runs a small automaton and answers
@@ -280,14 +282,12 @@ class LispBus:
             return self.copy(env[e[1]])
         if isinstance(e, list) and e and e[0] == "let":
             binds, body = e[1], e[2]
-            blocks, env2 = [], dict(env)
+            env2 = dict(env)
             for name, arg in binds:
-                b = self.compile(arg, env)
-                blocks += b
-                env2[name] = b
-            bb = self.compile(body, env2)
-            self.ops.append(Local({r: _const(PAD) for r in blocks}))
-            return blocks + bb
+                env2[name] = self.compile(arg, env)
+            # the argument blocks are not part of the value: they leave the
+            # queue after their last copy (busm lifetimes)
+            return self.compile(body, env2)
         if isinstance(e, str) or not e:
             raise ValueError(f"not in the fragment: {e!r}")
         op, args = e[0], e[1:]
@@ -316,8 +316,7 @@ class LispBus:
             self.scan(bx, "head")
             self.write_bool(self.s_state_bit(lambda st: st in ("ATOM", "NIL")),
                             self.S, r0, r1)
-            self.ops.append(Local({r: _const(PAD) for r in bx}))
-            return bx + [r0, r1]
+            return [r0, r1]
         if op == "eq?":
             x, y = args
             bx, by = self.compile(x, env), self.compile(y, env)
@@ -325,8 +324,7 @@ class LispBus:
             self.classify_into(bx, self.CA)
             self.classify_into(by, self.CB)
             self.compare(r0, r1)
-            self.ops.append(Local({r: _const(PAD) for r in bx + by}))
-            return bx + by + [r0, r1]
+            return [r0, r1]
         if op == "cond":
             return self.cond(args, env)
         raise ValueError(f"not in the fragment: {op!r}")
@@ -404,7 +402,7 @@ class LispBus:
                 raise ValueError("cond clause must be (test expr)")
             bp = self.compile(clause[0], env)
             be = self.compile(clause[1], env)
-            blocks += bp + be
+            blocks += be
             compiled.append((bp, be))
         self.ops.append(Local({T: _const(0)}))    # T = 2 * taken + truth
         for bp, be in compiled:
@@ -415,7 +413,6 @@ class LispBus:
             self.ops.append(Bcast(T, lambda v: int(v == 1),
                                   {r: lambda v, s: v if s else PAD for r in be}))
             self.ops.append(Local({T: lambda v: 2 if v else 0}))
-            self.ops.append(Local({r: _const(PAD) for r in bp}))
         r0, r1 = self.reg(PAD), self.reg(PAD)
         self.ops.append(Bcast(T, lambda v: int(v == 0), {
             r0: lambda v, x: OPEN if x else PAD,
@@ -458,7 +455,8 @@ class LispBus:
                 for r, v in enumerate(self.values)]
 
     def compile_bus(self):
-        return Compiled(self.n, self.V, self.ops, self.domains())
+        return Compiled(self.n, self.V, self.ops, self.domains(),
+                        keep=set(self.block), start=self.data_regs)
 
 
 def _const(c):

@@ -520,14 +520,16 @@ def lisp_gliders(src, v=None, margin=7.5):
           f"t = {er.run.t}, {time.time() - t0:.0f}s", flush=True)
     last = comp.passes - 1
     letters = []
-    for k in range(lb.n):
+    for k in comp.live[last]:
         i = comp.nominal[(last, k)] * pm.B
         word = got[i:i + pm.B]
         if word.count("Y") != 1:
             raise ValueError(f"register {k}: word {word} is not one letter")
         letters.append(word.index("Y"))
-    dec = [{i: x for x, i in comp.enc[(last, k)].items()} for k in range(lb.n)]
-    value = lb.decode([dec[k][c // 2] for k, c in enumerate(letters)])
+    vals = [None] * lb.n
+    for k, c in zip(comp.live[last], letters):
+        vals[k] = {i: x for x, i in comp.enc[(last, k)].items()}[c // 2]
+    value = lb.decode(vals)
     print(f"value decoded from the glider reads: {value}\n"
           f"lisp.py:                            {lisp_run(src)}\n"
           f"{'MATCH' if value == lisp_run(src) else 'DIFFER'}", flush=True)
