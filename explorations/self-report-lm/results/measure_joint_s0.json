@@ -1,0 +1,224 @@
+{
+ "settings": {
+  "name": "joint_s0",
+  "lam": 1.0,
+  "seed": 0,
+  "steps": 15000,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128
+ },
+ "valid_loss": 2.248026640415192,
+ "r2_train": 0.98992000749931,
+ "r2_centred_train": 0.9762784624910004,
+ "r2_coord_mean_train": 0.5750700182538443,
+ "r2_held_out": 0.8383819392053775,
+ "r2_centred_held_out": 0.6804315141986961,
+ "r2_coord_mean_held_out": 0.4942615809272547,
+ "r2_random": 0.9138829427246404,
+ "n_jacobian_tokens": 512,
+ "sum_w": 0.7465510368347168,
+ "jacobian_train": {
+  "follow": 0.8508746452862397,
+  "other": 0.4104565919842571,
+  "follow_length": 0.6584784414153546,
+  "follow_direction": 0.8523895760253806,
+  "ones_mean": 0.7465510438196361,
+  "ones_sd": 1.2681810657166892e-07,
+  "follow_sd": 0.023714447301548012
+ },
+ "jacobian_held_out": {
+  "follow": 0.7508950179908425,
+  "other": 0.4013980333111249,
+  "follow_length": 0.4915860957771656,
+  "follow_direction": 0.7529368205279581,
+  "ones_mean": 0.7465510435868055,
+  "ones_sd": 1.1860267426500037e-07,
+  "follow_sd": 0.16166480287519522
+ },
+ "finite_follow_median_train": 0.8510149717330933,
+ "finite_follow_mean_train": 0.8475104063982144,
+ "finite_follow_median_held_out": 0.7978838682174683,
+ "finite_follow_mean_held_out": 0.7480359746259637,
+ "edit_test": [
+  {
+   "token": 304,
+   "count": 875,
+   "report_follow": 0.8699971437454224,
+   "kl_at_t": 0.002658495679497719,
+   "kl_after_t_later": 0.0002781696093734354,
+   "kl_no_t": 0.00017527224554214627
+  },
+  {
+   "token": 279,
+   "count": 635,
+   "report_follow": 0.8879179954528809,
+   "kl_at_t": 0.003619773080572486,
+   "kl_after_t_later": 0.00037906490615569055,
+   "kl_no_t": 7.464850932592526e-05
+  },
+  {
+   "token": 316,
+   "count": 589,
+   "report_follow": 0.7959431409835815,
+   "kl_at_t": 0.0022420906461775303,
+   "kl_after_t_later": 0.00023926750873215497,
+   "kl_no_t": 0.0001236621174030006
+  },
+  {
+   "token": 328,
+   "count": 567,
+   "report_follow": 0.7989264726638794,
+   "kl_at_t": 0.002209033817052841,
+   "kl_after_t_later": 0.0005504250875674188,
+   "kl_no_t": 0.000291964242933318
+  },
+  {
+   "token": 341,
+   "count": 526,
+   "report_follow": 0.8259887099266052,
+   "kl_at_t": 0.002856313483789563,
+   "kl_after_t_later": 0.00043056317372247577,
+   "kl_no_t": 0.00010696258686948568
+  },
+  {
+   "token": 352,
+   "count": 518,
+   "report_follow": 0.8110984563827515,
+   "kl_at_t": 0.00588076701387763,
+   "kl_after_t_later": 0.00048269974649883807,
+   "kl_no_t": 0.00010798384028021246
+  },
+  {
+   "token": 356,
+   "count": 464,
+   "report_follow": 0.9026922583580017,
+   "kl_at_t": 0.004096627235412598,
+   "kl_after_t_later": 0.00027061119908466935,
+   "kl_no_t": 0.00012009720376227051
+  },
+  {
+   "token": 0,
+   "count": 348,
+   "report_follow": 0.8345142006874084,
+   "kl_at_t": 0.0007364675984717906,
+   "kl_after_t_later": 0.00019064820662606508,
+   "kl_no_t": 6.658689380856231e-05
+  },
+  {
+   "token": 298,
+   "count": 333,
+   "report_follow": 0.7944890260696411,
+   "kl_at_t": 0.006418699864298105,
+   "kl_after_t_later": 0.0009222457883879542,
+   "kl_no_t": 0.0003630980208981782
+  },
+  {
+   "token": 416,
+   "count": 320,
+   "report_follow": 0.7338773012161255,
+   "kl_at_t": 7.535750773968175e-05,
+   "kl_after_t_later": 0.0003794578369706869,
+   "kl_no_t": 0.0002644966880325228
+  },
+  {
+   "token": 405,
+   "count": 284,
+   "report_follow": 0.7332707643508911,
+   "kl_at_t": 0.006704266648739576,
+   "kl_after_t_later": 0.00015567462833132595,
+   "kl_no_t": 3.830120476777665e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": 0.8379942178726196,
+   "kl_at_t": 0.006468623876571655,
+   "kl_after_t_later": 0.0011943250428885221,
+   "kl_no_t": 3.516900324029848e-05
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.7950176000595093,
+   "kl_at_t": 0.007508450653403997,
+   "kl_after_t_later": 0.0015318462392315269,
+   "kl_no_t": 0.0002967365726362914
+  },
+  {
+   "token": 427,
+   "count": 246,
+   "report_follow": 0.8056961894035339,
+   "kl_at_t": 0.007390901912003756,
+   "kl_after_t_later": 0.00033930255449377,
+   "kl_no_t": 7.682793511776254e-05
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": 0.7888399958610535,
+   "kl_at_t": 0.009779131039977074,
+   "kl_after_t_later": 0.0013950340216979384,
+   "kl_no_t": 0.0001380593894282356
+  },
+  {
+   "token": 83,
+   "count": 231,
+   "report_follow": 0.8464871048927307,
+   "kl_at_t": 0.011350485496222973,
+   "kl_after_t_later": 0.000340475351549685,
+   "kl_no_t": 0.00013198527449276298
+  },
+  {
+   "token": 415,
+   "count": 228,
+   "report_follow": 0.7764861583709717,
+   "kl_at_t": 0.002824728609994054,
+   "kl_after_t_later": 0.0010956577025353909,
+   "kl_no_t": 0.0004608134913723916
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.81944739818573,
+   "kl_at_t": 0.0003145515511278063,
+   "kl_after_t_later": 6.822736759204417e-05,
+   "kl_no_t": 5.6729386415099725e-06
+  },
+  {
+   "token": 469,
+   "count": 146,
+   "report_follow": 0.8236450552940369,
+   "kl_at_t": 0.005639915354549885,
+   "kl_after_t_later": 0.0004411126719787717,
+   "kl_no_t": 0.0001312295935349539
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.874749481678009,
+   "kl_at_t": 0.011766375973820686,
+   "kl_after_t_later": 0.000433927692938596,
+   "kl_no_t": 9.88999308901839e-05
+  }
+ ],
+ "stories": [
+  "Once upon a time, there was a little boy named Timmy. One day, Timmy went on a walk with his mommy and daddy. \n\nAs he walked, Timmy saw a big, big mailbox. He picked it up and took a few last look at it. But it was all dirty and his mommy knew it was which way to clean it up. \n\nTimmy's mommy came out and said, \"Timmy, we need to clean it up. I don't like it.\" \n\nTimmy didn't like the mailbox and his mommy helped him clean his toys. But when they got home, the mailbox was",
+  "Once upon a time there was a brave knight and the knight. The knight was always not sure to turn and be successful. One day the knight decided to never give up and explore and have a lot of fun in his ship. He was so excited that he had to join his friends!\n\nThe knight and the knight were very brave and strong. They always used their shiny, safe and careful, and they always kept the shield safe when he was looking at all the animals.\n\nThe knight was never afraid of the knight's heart, even though the pretending him special adventure is there to be something to be",
+  "Once upon a time, there was a little girl named Lily. She loved to play with her toys and her toys. One day, she went to the park with her mommy. She saw the big red ball that was round and shiny. Her mommy said, \"Let's take it home.\"\n\nLily was sad and started to cry. But then, she remembered what her mommy said and helped her mommy take a new toy. When they got home, Lily's mommy gave her a new toy to play with. They played with the ball and had lots of fun without their flashlight and couldn't wait to have it"
+ ]
+}
