@@ -34,7 +34,7 @@
 1. Announcements (3 cards).
 2. Supervised learning: the story so far (table: each classifier beside its regression version).
 3. Title: Nonlinear Regression.
-4. Not every pattern is a line: dosage data, the least-squares line, then a regression tree.
+4. Not every pattern is a line: dosage data, the least-squares line, then a regression tree. (The bullet listing today's three methods was removed at the user's request.)
 5. A regression tree: the tree (splits at 14.5, 29, 23.5 mg) beside its step-function fit; one leaf
    highlighted with its four points and their average, 55.25.
 6. Choosing a split: a threshold slider with the side means and residuals; the SSE of every
