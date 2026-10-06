@@ -55,6 +55,7 @@ def _load():
             ("gc_advance", i32, [i64]),
             ("gc_list", i64, [i64, i64, i64, p, p, p, p, p, p, p]),
             ("gc_debug", i64, [p]), ("gc_rope_on", i32, []), ("gc_rope_info", None, [p]),
+            ("gc_rope_jumps", i32, [i32]),
             ("gc_rope_absorb", i32, [i64, i64]),
             ("gc_rope_push_ossifier", i32, [i32, p, p, p, p, i64]),
             ("gc_unit_request", i32, [p, p, p]),
@@ -416,10 +417,15 @@ class CGas:
         self._check(_lib.gc_set_unit(last - tau, res.ctypes.data, len(out)))
 
     def rope_info(self):
-        out = np.zeros(6, np.int64)
+        out = np.zeros(9, np.int64)
         _lib.gc_rope_info(out.ctypes.data)
-        return dict(zip(("units", "ossifiers", "wake", "crossings", "memo", "misses"),
-                        out.tolist()))
+        return dict(zip(("units", "ossifiers", "wake", "crossings", "memo", "misses",
+                         "prefix", "jumps", "jumped"), out.tolist()))
+
+    def rope_jumps(self, on):
+        """Stretch jumps (gasc.c, pre_V): on by default; set before the
+        first absorption."""
+        self._check(_lib.gc_rope_jumps(1 if on else 0))
 
     def rope_absorb(self, min_items=64):
         """Move settled debris and the ossifiers among it from the left end

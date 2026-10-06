@@ -75,13 +75,39 @@ static int64_t fam_count[4][4];
 #define UMAX 64
 #define OMAX 8
 #define G_ENTRY 32
-typedef struct { int32_t n; int32_t it[UMAX]; int64_t tlast; } Unit;
-typedef struct { int32_t n; int32_t it[OMAX]; int64_t prog, t; } Oss;
+/* k: the jump count at which the items' states are valid (prefix units
+   only; their true state is that shifted by (jump_K - k) x D*) */
+typedef struct { int32_t n; int32_t it[UMAX]; int64_t tlast, k; } Unit;
+/* a_*: the gliders' trajectories when the ossifier entered the rope at
+   unit 0 (train ossifiers); eligible: -1 not started, 1 may extend the
+   verified prefix, 0 may not; k_after: the jump count after its own jump */
+typedef struct {
+    int32_t n; int32_t it[OMAX]; int64_t prog, t;
+    int32_t a_id[OMAX]; int64_t a_t0[OMAX], a_x0[OMAX];
+    int64_t k_after, serial; int32_t eligible;
+} Oss;
 static int rope_on;
 static Unit *units; static int64_t n_units, cap_units;
 static Oss *oss; static int64_t n_oss, cap_oss;
 static int64_t wake = INT64_MAX;
 static int64_t rope_cross, rope_miss;
+/* -- stretch jumps (PLAN.md phase 10c). Units [0, pre_V) are the verified
+   prefix: each was crossed unit by unit (all checks) by a train ossifier
+   that entered at unit 0, and every such crossing moved each item by D*
+   (mod the item's own period). A later train ossifier whose gliders are,
+   modulo the lattice spanned by an A period and (30, -8), the reference
+   ossifier's translated by n x D* (n: crossings of the prefix since the
+   reference) crosses the whole prefix as an exact translate of the
+   reference's crossing (Rule 110 is translation invariant and the prefix
+   moved rigidly). It is placed at the reference's exit state translated
+   by w in O(1), and the prefix units are shifted lazily. Checks: 50 (not
+   a translate), 51 (would start before the previous crossing ended). */
+static int jumps_on = 1;
+static int64_t pre_V, jump_K, n_jumps, jump_units, oss_serial, dt_max;
+static int have_D; static int64_t D_t, D_x;
+static int64_t ref_serial = -1, ref_k, ex_T, last_w_t;
+static int32_t ref_n, ref_id[OMAX], ex_id[OMAX];
+static int64_t ref_t0[OMAX], ref_x0[OMAX], ex_t0[OMAX], ex_x0[OMAX];
 /* crossing memo: key = [n_g, n_u, (orbit, phase, offset)...], result =
    [dt_lo, dt_hi, n_g, n_u, (orbit, phase, offset)...] in an int32 pool */
 typedef struct { uint64_t h; int64_t kpos, rpos; int32_t klen, used; } UEnt;
@@ -669,13 +695,95 @@ static int64_t left_edge(const Item *it, int64_t t) {
     return l;
 }
 
+/* item i on orbit orb with trajectory anchor (t0, x0), stated at time T */
+static void set_anchor(int32_t i, int32_t orb, int64_t t0, int64_t x0, int64_t T) {
+    const Orbit *o = &orbits[orb];
+    int64_t j = T - t0, k = fdiv(j, o->p);
+    int32_t s = (int32_t)(j - k * o->p);
+    set_state(i, orb, s, x0 + k * o->d + o_off[o->base + s], T);
+}
+
+/* (dt, dx) is a whole number of periods of orbit orb */
+static int on_lattice(int64_t dt, int64_t dx, int32_t orb) {
+    const Orbit *o = &orbits[orb];
+    int64_t k = fdiv(dt, o->p);
+    return k * o->p == dt && k * o->d == dx;
+}
+
+/* the front train ossifier jumps the verified prefix (see pre_V) */
+static int rope_jump(Oss *o) {
+    if (o->n != ref_n) { failed = 50; return ERR; }
+    for (int q = 0; q < o->n; q++)
+        if (o->a_id[q] != ref_id[q]) { failed = 50; return ERR; }
+    int64_t n = jump_K - ref_k;
+    int32_t L = o->n - 1;                       /* the lead glider */
+    const Orbit *a = &orbits[o->a_id[L]];
+    int64_t dt = o->a_t0[L] - ref_t0[L] - n * D_t, dx = o->a_x0[L] - ref_x0[L] - n * D_x;
+    /* (dt, dx) = alpha (p, d) + beta (30, -8) */
+    int64_t det = -8 * (int64_t)a->p - 30 * (int64_t)a->d;
+    int64_t na = -8 * dt - 30 * dx, nb = a->p * dx - a->d * dt;
+    if (det == 0 || na % det || nb % det) { failed = 50; return ERR; }
+    int64_t beta = nb / det;
+    int64_t w_t = n * D_t + 30 * beta, w_x = n * D_x - 8 * beta;
+    for (int q = 0; q < o->n; q++)
+        if (!on_lattice(o->a_t0[q] - ref_t0[q] - w_t, o->a_x0[q] - ref_x0[q] - w_x, o->a_id[q])) {
+            failed = 50; return ERR;
+        }
+    if (w_t - last_w_t <= dt_max) { req_t = ex_T + w_t; failed = 51; return ERR; }
+    for (int q = 0; q < o->n; q++)
+        set_anchor(o->it[q], ex_id[q], ex_t0[q] + w_t, ex_x0[q] + w_x, ex_T + w_t);
+    o->t = ex_T + w_t;
+    o->prog = pre_V;
+    jump_K++; last_w_t = w_t; n_jumps++; jump_units += pre_V;
+    if (pre_V < n_units) {                      /* as check 44 after a crossing */
+        int64_t g = left_edge(&items[units[pre_V].it[0]], o->t) -
+                    right_edge(&items[o->it[L]], o->t);
+        if (g <= G_ENTRY) { req_t = o->t; failed = 44; return ERR; }
+    }
+    return OK;
+}
+
+/* after the slow crossing of unit pre_V by an eligible ossifier: did every
+   item keep its orbit and move by D*? (bn/bid/bt0/bx0: the items before) */
+static int rigid(const Unit *u, int32_t bn, const int32_t *bid, const int64_t *bt0, const int64_t *bx0) {
+    if (u->n != bn) return 0;
+    for (int q = 0; q < bn; q++)
+        if (items[u->it[q]].id != bid[q]) return 0;
+    if (!have_D) {
+        for (int q = 0; q < bn; q++)
+            if (orbits[bid[q]].p == 30) {
+                D_t = items[u->it[q]].t0 - bt0[q]; D_x = items[u->it[q]].x0 - bx0[q];
+                have_D = 1; break;
+            }
+        if (!have_D) return 0;
+    }
+    for (int q = 0; q < bn; q++)
+        if (!on_lattice(items[u->it[q]].t0 - bt0[q] - D_t, items[u->it[q]].x0 - bx0[q] - D_x, bid[q]))
+            return 0;
+    return 1;
+}
+
 /* sweep the front ossifier to the end of the rope; OK, NEED_UNIT (the
    key is pending: gc_unit_request / gc_set_unit) or ERR */
 static int unit_sweep(void) {
     if (!n_oss) return OK;
     Oss *o = &oss[n_oss - 1];
+    if (o->eligible == -1) {                    /* a train ossifier, at unit 0 */
+        if (jumps_on && pre_V > 0) {
+            int r = rope_jump(o);
+            if (r != OK) return r;
+        }
+        o->eligible = jumps_on;
+        o->k_after = jump_K;
+    }
     while (o->prog < n_units) {
         Unit *u = &units[o->prog];
+        int verify = o->eligible == 1 && o->prog == pre_V;
+        int32_t bn = u->n, bid[UMAX]; int64_t bt0[UMAX], bx0[UMAX];
+        if (verify)
+            for (int q = 0; q < bn; q++) {
+                bid[q] = items[u->it[q]].id; bt0[q] = items[u->it[q]].t0; bx0[q] = items[u->it[q]].x0;
+            }
         const Item *lead = &items[o->it[o->n - 1]];
         int64_t tau = gap_below(lead, &items[u->it[0]], o->t, G_ENTRY);
         if (tau == -2) return ERR;
@@ -724,6 +832,23 @@ static int unit_sweep(void) {
         }
         u->tlast = T;
         o->t = T;
+        if (T - tau > dt_max) dt_max = T - tau;
+        if (verify) {
+            if (rigid(u, bn, bid, bt0, bx0)) {
+                u->k = o->k_after;
+                pre_V++;
+                if (ref_serial != o->serial) {   /* o becomes the reference */
+                    ref_serial = o->serial; ref_n = o->n; ref_k = o->k_after - 1; last_w_t = 0;
+                    for (int q = 0; q < o->n; q++) {
+                        ref_id[q] = o->a_id[q]; ref_t0[q] = o->a_t0[q]; ref_x0[q] = o->a_x0[q];
+                    }
+                }
+                for (int q = 0; q < o->n; q++) {
+                    ex_id[q] = items[o->it[q]].id; ex_t0[q] = items[o->it[q]].t0; ex_x0[q] = items[o->it[q]].x0;
+                }
+                ex_T = T;
+            } else o->eligible = 0;
+        }
         o->prog++;
         rope_cross++;
     }
@@ -763,11 +888,12 @@ static int rope_event(int32_t sen, int64_t t) {
        b0 - 4t/15 covers its items' right edges from now on */
     if (n_units && sen_num[0] == -4 && sen_den[0] == 15) {
         const Unit *u = &units[n_units - 1];
+        int64_t sh = n_units - 1 < pre_V ? jump_K - u->k : 0;   /* lazy prefix shift */
         int64_t b = INT64_MIN;
         for (int q = 0; q < u->n; q++) {
             const Item *it = &items[u->it[q]];
             const Orbit *o = &orbits[it->id];
-            double x = (double)it->x0 + 4.0 * (double)it->t0 / 15.0 + o->hi_max;
+            double x = (double)(it->x0 + sh * D_x) + 4.0 * (double)(it->t0 + sh * D_t) / 15.0 + o->hi_max;
             int64_t bq = (int64_t)x + 3;
             if (bq > b) b = bq;
         }
@@ -779,10 +905,19 @@ static int rope_event(int32_t sen, int64_t t) {
 
 int32_t gc_rope_on(void) { return rope_on; }
 
-/* rope sizes: units, ossifiers, wake, crossings, memo entries, misses */
+/* rope sizes: units, ossifiers, wake, crossings, memo entries, misses,
+   verified prefix, jumps, units jumped */
 void gc_rope_info(int64_t *out) {
     out[0] = n_units; out[1] = n_oss; out[2] = wake; out[3] = rope_cross;
     out[4] = (int64_t)uused; out[5] = rope_miss;
+    out[6] = pre_V; out[7] = n_jumps; out[8] = jump_units;
+}
+
+/* stretch jumps on (default) or off; only before the rope starts */
+int gc_rope_jumps(int32_t on) {
+    if (rope_on) { failed = 52; return ERR; }
+    jumps_on = on != 0;
+    return OK;
 }
 
 /* the pending crossing: its key (returns its length), tau and ref */
@@ -829,7 +964,7 @@ int gc_rope_absorb(int64_t n, int64_t sep) {
         if (is_fam(it, 2)) {
             if (n_units == first_unit || l - last_r >= sep) {
                 GROW(units, n_units, cap_units, 1);
-                units[n_units].n = 0; units[n_units].tlast = 0; n_units++;
+                units[n_units].n = 0; units[n_units].tlast = 0; units[n_units].k = jump_K; n_units++;
             }
             Unit *u = &units[n_units - 1];
             if (u->n == UMAX) { failed = 32; return ERR; }
@@ -839,7 +974,8 @@ int gc_rope_absorb(int64_t n, int64_t sep) {
         } else if (is_fam(it, 0)) {
             if (n_oss == first_oss || l - last_a >= sep || oss[n_oss - 1].prog != n_units) {
                 GROW(oss, n_oss, cap_oss, 1);
-                oss[n_oss].n = 0; oss[n_oss].prog = n_units; oss[n_oss].t = now; n_oss++;
+                oss[n_oss].n = 0; oss[n_oss].prog = n_units; oss[n_oss].t = now;
+                oss[n_oss].eligible = 0; oss[n_oss].serial = oss_serial++; n_oss++;
             }
             Oss *o = &oss[n_oss - 1];
             if (o->n == OMAX) { failed = 33; return ERR; }
@@ -865,12 +1001,13 @@ int gc_rope_push_ossifier(int32_t n, const int32_t *id, const int64_t *t0, const
     GROW(oss, n_oss, cap_oss, 1);
     memmove(oss + 1, oss, n_oss * sizeof(Oss));
     Oss *o = &oss[0];
-    o->n = n; o->prog = 0; o->t = t;
+    o->n = n; o->prog = 0; o->t = t; o->eligible = -1; o->serial = oss_serial++;
     for (int q = 0; q < n; q++) {
         int32_t i = new_item(PART, id[q], t0[q], x0[q], cL[q], 0);
         if (i < 0) return ERR;
         if (!is_fam(&items[i], 0)) { failed = 36; return ERR; }
         o->it[q] = i;
+        o->a_id[q] = items[i].id; o->a_t0[q] = items[i].t0; o->a_x0[q] = items[i].x0;
     }
     n_oss++;
     return OK;
@@ -897,6 +1034,8 @@ int gc_reset(void) {
     free(oss); oss = 0; n_oss = cap_oss = 0; rope_on = 0; wake = INT64_MAX;
     free(utab); utab = 0; ucap = uused = 0; free(upool); upool = 0; n_upool = cap_upool = 0;
     rope_cross = rope_miss = 0; n_dbg = 0;
+    jumps_on = 1; pre_V = jump_K = n_jumps = jump_units = oss_serial = dt_max = 0;
+    have_D = 0; D_t = D_x = 0; ref_serial = -1; ref_k = ex_T = last_w_t = 0; ref_n = 0;
     memset(fam_count, 0, sizeof(fam_count));
     sen_den[0] = sen_den[1] = 1;
     return mgrow();

@@ -356,3 +356,44 @@ configuration at entry (NOTES phase 10b).
 - [x] Exactness: car, rope vs no rope (600 reads in tests; 2,448 full)
 - [x] Exactness and speed: cond (10,836 reads; 7.5e7 vs 9.3e8 events)
 - [x] Run last (a b c) on gliders, monitored: 157,824/157,824 reads, value c, 2.0 h
+
+# Phase 10c: linear rope, and the rope checked against the plain engine on `last` (2026-10-06)
+
+User: build the memo over whole stretches of debris (the rope's crossing
+count was still quadratic: 1.24e10 for `last`), and check the rope
+against the original engine on `last` (about a day). A couple of days.
+
+Facts that decide the design (scratchpad rc/keys2.py, rc/disp.py, car):
+- The rope memo has two keys. Both have the same ossifier configuration
+  at entry; the unit is an E pair with gap 337 or 117.
+- Both crossings move each debris item by (dt, dx) = (26, -32) mod its
+  period (30, -8), and each A glider by (1, -116) mod (3, 2). So an
+  ossifier passage moves the debris rigidly.
+
+Design (gasc.c "stretch jumps"):
+- Verified prefix: units [0, V) each crossed unit by unit (all checks) by
+  a train ossifier entering at unit 0, with every item moved by D*.
+- A later train ossifier jumps the prefix when its gliders are the
+  reference ossifier's translated by n D* modulo the lattice spanned by
+  (p_A, d_A) and (30, -8) (code 50 otherwise), and its translation is
+  later in time than the previous crossing by more than the longest
+  crossing (code 51). It is placed at the reference's exit state
+  translated by w. Prefix units are shifted lazily.
+- Argument for exactness: Rule 110 is translation invariant; the prefix
+  plus ossifier is an exact translate of the reference's crossing.
+
+Validation:
+- ropecheck.py: snapshots every N reads (same t in all modes), suffix
+  comparison right of the rope, outcomes and census counts at the end;
+  negative control (one changed item -> MISMATCH); plain run resumes from
+  its checkpoint.
+- Mutation tests of the jump (wrong w, shifted exit, wrong n): all fail
+  loudly.
+
+- [x] Data: memo keys and displacements (car)
+- [x] ropecheck.py (driver + compare), negative control, resume test
+- [x] C: stretch jumps; Python: rope_jumps option; info fields
+- [x] Mutation tests (3 of 3 caught)
+- [x] car (2,448 reads) and cond (10,836 reads): jumps = plain, all snapshots
+- [ ] last: plain (running, ~14 h), slow rope (running), jumps (running)
+- [ ] compare all three on last; tests; report 7.6; notes; changelog

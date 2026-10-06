@@ -261,8 +261,9 @@ def test_stop_on_fail():
 
 def test_rope_equals_plain():
     """The debris rope (gasc: ossifiers swept through absorbed debris by
-    memoized crossings) gives the plain engine's reads, census counts and
-    final gas, item for item, on a compiled Lisp program."""
+    memoized crossings), with and without stretch jumps, gives the plain
+    engine's reads, census counts and final gas, item for item, on a
+    compiled Lisp program."""
     import gasc
     from gasrun import GasReads
     from lisp_bus import LispBus
@@ -271,20 +272,28 @@ def test_rope_equals_plain():
     tape = comp.pm.encode(comp.initial_tape(lb.values))
     apps = comp.pm.appendants()
     got = {}
-    for rope in (False, True):
-        er = GasReads(tape, apps, 99303, 600, log=lambda *a: None, rope=rope)
+    for mode in ("plain", "slow", "jumps"):
+        er = GasReads(tape, apps, 99303, 600, log=lambda *a: None,
+                      rope=(mode != "plain"), rope_jumps=(mode == "jumps"))
         out = er.run_reads()
         g = er.run
         kind, ids, ph, left, _, _, _ = g.list_items(-gasc.FAR, gasc.FAR)
         items = [(int(k), int(i), int(p), int(x)) for k, i, p, x in zip(kind, ids, ph, left)
                  if k in (gasc.PART, gasc.COMP)]
-        got[rope] = (out, list(er.watch.n_ebar), g.t, items)
-        if rope:
+        got[mode] = (out, list(er.watch.n_ebar), g.t, items)
+        if mode == "slow":
             info = g.rope_info()
-            assert info["crossings"] > 10_000 and info["units"] > 100, info
-    (o1, n1, t1, i1), (o2, n2, t2, i2) = got[False], got[True]
-    assert o1 == o2 and n1 == n2 and t1 == t2
-    assert i2 == [x for x in i1 if x[3] >= i2[0][3]]
+            assert info["crossings"] > 10_000 and info["units"] > 100 and info["jumps"] == 0, info
+        if mode == "jumps":
+            # each unit crossed one by one about once, the rest by jumps
+            info = g.rope_info()
+            assert info["jumps"] > 100 and info["jumped"] > 10_000, info
+            assert info["crossings"] < 2 * info["units"], info
+    o1, n1, t1, i1 = got["plain"]
+    for mode in ("slow", "jumps"):
+        o2, n2, t2, i2 = got[mode]
+        assert o1 == o2 and n1 == n2 and t1 == t2, mode
+        assert i2 == [x for x in i1 if x[3] >= i2[0][3]], mode
 
 
 def test_readwatch_pending_cursor():

@@ -234,7 +234,7 @@ class GasReads:
 
     def __init__(self, tape, apps, v, n_reads, sample_bits=17, log=print, engine="c",
                  checkpoint=None, ckpt_every=500, census="particles", stop_on_fail=True,
-                 rope=False, rope_every=25):
+                 rope=False, rope_every=25, rope_jumps=True):
         """census: "cells" (experiments.sample: census() of the rendered
         span), "particles" (gascensus: the same clusters from the
         particles, C engine only), or "both" (raise on any difference in
@@ -265,6 +265,8 @@ class GasReads:
             self._resume()
         else:
             self.run = build(self.lay, self.n_all, engine)
+            if rope:
+                self.run.rope_jumps(rope_jumps)
         self.t_wall = time.time()
         if census != "cells":
             from gascensus import ParticleCensus
