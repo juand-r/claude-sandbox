@@ -1563,7 +1563,8 @@ const SEP_HARD=svmSolve(SEP.X,SEP.y,{C:HARD_C});
     if(pos.length>2)el('path',{d:polyD(api,pos),fill:'var(--pos)',opacity:.1},gReg);
     if(neg.length>2)el('path',{d:polyD(api,neg),fill:'var(--mean)',opacity:.1},gReg);
     const cen=P=>[P.reduce((s,p)=>s+p[0],0)/P.length,P.reduce((s,p)=>s+p[1],0)/P.length];
-    if(pos.length>2){const c=cen(pos);txt(gRegLab,api.sx(c[0]),api.sy(c[1]),'f(x) > 0',{fill:'var(--pos)','font-size':17,'font-weight':700,'font-family':MONO,'text-anchor':'middle'});}
+    if(pos.length>2){const c=cen(pos);txt(gRegLab,api.sx(c[0]),Math.max(api.sy(10)+26,api.sy(c[1])-90),'f(x) > 0',   // raised 90px, clear of the w arrow
+      {fill:'var(--pos)','font-size':17,'font-weight':700,'font-family':MONO,'text-anchor':'middle'});}
     if(neg.length>2){const c=cen(neg);txt(gRegLab,api.sx(c[0]),api.sy(c[1]),'f(x) < 0',{fill:'var(--mean)','font-size':17,'font-weight':700,'font-family':MONO,'text-anchor':'middle'});}
     drawLine(api,gLine,w,b,0);
     // w drawn from the point of the line closest to the centre of the box; length 3·‖w‖ for visibility
