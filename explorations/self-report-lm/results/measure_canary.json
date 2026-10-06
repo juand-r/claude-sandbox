@@ -1,0 +1,214 @@
+{
+ "settings": {
+  "name": "canary",
+  "lam": 1.0,
+  "seed": 0,
+  "steps": 300,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128
+ },
+ "valid_loss": 4.348583250045777,
+ "r2_train": 0.33522310758928475,
+ "r2_held_out": 0.47802820011237745,
+ "r2_random": 0.23854552999242096,
+ "n_jacobian_tokens": 32,
+ "sum_w": 0.03565903753042221,
+ "jacobian_train": {
+  "follow": 0.007392672632704489,
+  "other": 0.09176256274804473,
+  "follow_length": 0.13017108338681282,
+  "follow_direction": 0.00642591349290836,
+  "ones_mean": 0.03565903741400689,
+  "ones_sd": 1.4721125429772997e-08,
+  "follow_sd": 0.003371953068390317
+ },
+ "jacobian_held_out": {
+  "follow": 0.004242508064635331,
+  "other": 0.06402047316078097,
+  "follow_length": 0.0649997034779517,
+  "follow_direction": 0.0037641049511446508,
+  "ones_mean": 0.035659039043821394,
+  "ones_sd": 1.035164141904854e-08,
+  "follow_sd": 0.002981963455946708
+ },
+ "finite_follow_median_train": 0.003224818268790841,
+ "finite_follow_mean_train": 0.007556591615838215,
+ "finite_follow_median_held_out": 0.002071158494800329,
+ "finite_follow_mean_held_out": 0.004296712138597059,
+ "edit_test": [
+  {
+   "token": 304,
+   "count": 875,
+   "report_follow": 0.007006522733718157,
+   "kl_at_t": 0.000644253334030509,
+   "kl_after_t_later": 1.7151300198747776e-05,
+   "kl_no_t": 1.7303607819485478e-05
+  },
+  {
+   "token": 279,
+   "count": 635,
+   "report_follow": 0.0019593448378145695,
+   "kl_at_t": 0.0006492805550806224,
+   "kl_after_t_later": 6.300691438809736e-06,
+   "kl_no_t": 6.096704055380542e-06
+  },
+  {
+   "token": 316,
+   "count": 589,
+   "report_follow": 0.001769548049196601,
+   "kl_at_t": 0.0007659558905288577,
+   "kl_after_t_later": 5.383623829402495e-06,
+   "kl_no_t": 4.362707841210067e-06
+  },
+  {
+   "token": 328,
+   "count": 567,
+   "report_follow": 0.005701160058379173,
+   "kl_at_t": 0.0006566242664121091,
+   "kl_after_t_later": 3.2588824979029596e-05,
+   "kl_no_t": 3.0426042940234765e-05
+  },
+  {
+   "token": 341,
+   "count": 526,
+   "report_follow": 0.0023984306026250124,
+   "kl_at_t": 0.0003550240071490407,
+   "kl_after_t_later": 1.6770649381214753e-05,
+   "kl_no_t": 1.2469058674469125e-05
+  },
+  {
+   "token": 352,
+   "count": 518,
+   "report_follow": 0.013384648598730564,
+   "kl_at_t": 0.0014594196109101176,
+   "kl_after_t_later": 1.9879042156389914e-05,
+   "kl_no_t": 1.752774005581159e-05
+  },
+  {
+   "token": 356,
+   "count": 464,
+   "report_follow": 0.0001891793799586594,
+   "kl_at_t": 0.0005554285016842186,
+   "kl_after_t_later": 7.3960427471320145e-06,
+   "kl_no_t": 6.223118361958768e-06
+  },
+  {
+   "token": 0,
+   "count": 348,
+   "report_follow": 0.004006537608802319,
+   "kl_at_t": 0.0012045527109876275,
+   "kl_after_t_later": 2.9046616418781923e-06,
+   "kl_no_t": 3.0071289529587375e-06
+  },
+  {
+   "token": 298,
+   "count": 333,
+   "report_follow": 0.009009799920022488,
+   "kl_at_t": 0.0010528748389333487,
+   "kl_after_t_later": 1.6269473235297482e-06,
+   "kl_no_t": 9.030925411934732e-07
+  },
+  {
+   "token": 416,
+   "count": 320,
+   "report_follow": 0.001984585775062442,
+   "kl_at_t": 0.0008577181142754853,
+   "kl_after_t_later": 2.604731525934767e-05,
+   "kl_no_t": 2.9443959647323936e-05
+  },
+  {
+   "token": 405,
+   "count": 284,
+   "report_follow": -0.0018474201206117868,
+   "kl_at_t": 0.0017071013571694493,
+   "kl_after_t_later": 1.2722036444756668e-05,
+   "kl_no_t": 1.2924740985909011e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": 0.004104949533939362,
+   "kl_at_t": 0.0012744383420795202,
+   "kl_after_t_later": 1.139754294854356e-05,
+   "kl_no_t": 5.274704108160222e-06
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.0017065061256289482,
+   "kl_at_t": 0.0016354663530364633,
+   "kl_after_t_later": 2.9847522455384023e-05,
+   "kl_no_t": 1.9369013898540288e-05
+  },
+  {
+   "token": 427,
+   "count": 246,
+   "report_follow": -0.010973278433084488,
+   "kl_at_t": 0.002042782958596945,
+   "kl_after_t_later": 2.693300302780699e-05,
+   "kl_no_t": 2.0190011127851903e-05
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": 0.0026476227212697268,
+   "kl_at_t": 0.0004364865308161825,
+   "kl_after_t_later": 6.07232595939422e-06,
+   "kl_no_t": 3.558936896297382e-06
+  },
+  {
+   "token": 83,
+   "count": 231,
+   "report_follow": 0.015022581443190575,
+   "kl_at_t": 0.0014316890155896544,
+   "kl_after_t_later": 9.348908861284144e-06,
+   "kl_no_t": 7.000128334766487e-06
+  },
+  {
+   "token": 415,
+   "count": 228,
+   "report_follow": 0.0007337108254432678,
+   "kl_at_t": 0.00045812627649866045,
+   "kl_after_t_later": 1.767046887835022e-05,
+   "kl_no_t": 1.2434431482688524e-05
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.00193877296987921,
+   "kl_at_t": 0.0002634389093145728,
+   "kl_after_t_later": 2.0335512544988887e-06,
+   "kl_no_t": 5.358546786737861e-06
+  },
+  {
+   "token": 469,
+   "count": 146,
+   "report_follow": 0.004999798722565174,
+   "kl_at_t": 0.003371169790625572,
+   "kl_after_t_later": 6.6697662077785935e-06,
+   "kl_no_t": 4.16466946262517e-06
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.0024539020378142595,
+   "kl_at_t": 0.00044171398621983826,
+   "kl_after_t_later": 9.109751772484742e-06,
+   "kl_no_t": 7.73449119151337e-06
+  }
+ ],
+ "stories": [
+  "Once upon a time, she was a girl says, there was so he said,, he could drive in her mom. She decided to J mo answ day, \"It's mom was so happy that he loved to play his go on it. She could make her. She loved to be very much fun.\n\n\n\nAfter a big time, scared and Tom said there was only excited to play his toys. They had heard a time, we beath and ran around the fr. They means, but it and she looked trouble in the forest.",
+  "Once upon a time there was very happy.",
+  "Once upon a time there was excited. One day, his mom was a jew on the park. It was a time she had lots of your big new little girl was sad and not want to keep the squirrel and said, \"Be having a good time, calm and said to have a time he felt sad!\"\nOne day, it. They get it to for a time, there with her beh. He saw a lot of her mom and never made to her friend, she got a special and they liked to her dog said, he was a raced follow something a little girl sometimes it to play with. It"
+ ]
+}
