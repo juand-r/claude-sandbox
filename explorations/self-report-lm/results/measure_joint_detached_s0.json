@@ -1,0 +1,225 @@
+{
+ "settings": {
+  "name": "joint_detached_s0",
+  "lam": 1.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128
+ },
+ "valid_loss": 2.290023972988129,
+ "r2_train": 0.9900213970026868,
+ "r2_centred_train": 0.9823983416268534,
+ "r2_coord_mean_train": 0.43308733837620816,
+ "r2_held_out": 0.9896536989487011,
+ "r2_centred_held_out": 0.981683068025952,
+ "r2_coord_mean_held_out": 0.43515098129109364,
+ "r2_random": 0.9016976669020027,
+ "n_jacobian_tokens": 512,
+ "sum_w": 1.0189554691314697,
+ "jacobian_train": {
+  "follow": 0.8712116421665996,
+  "other": 0.3509841556660831,
+  "follow_length": 0.7521117827855051,
+  "follow_direction": 0.8721494363349547,
+  "ones_mean": 1.018955350620672,
+  "ones_sd": 1.5502949250734144e-07,
+  "follow_sd": 0.10563152795785473
+ },
+ "jacobian_held_out": {
+  "follow": 0.8681011765729636,
+  "other": 0.35014376492472365,
+  "follow_length": 0.74760958540719,
+  "follow_direction": 0.8690499292593082,
+  "ones_mean": 1.0189553499221802,
+  "ones_sd": 1.5396881150597785e-07,
+  "follow_sd": 0.10530737165653128
+ },
+ "finite_follow_median_train": 0.8949262499809265,
+ "finite_follow_mean_train": 0.8659450942650437,
+ "finite_follow_median_held_out": 0.8858018517494202,
+ "finite_follow_mean_held_out": 0.8614714838331565,
+ "edit_test": [
+  {
+   "token": 304,
+   "count": 875,
+   "report_follow": 0.7859777808189392,
+   "kl_at_t": 0.004061770625412464,
+   "kl_after_t_later": 0.0004898629267700016,
+   "kl_no_t": 0.00022796036500949413
+  },
+  {
+   "token": 279,
+   "count": 635,
+   "report_follow": 0.8422889709472656,
+   "kl_at_t": 0.0032572257332503796,
+   "kl_after_t_later": 0.00045137552660889924,
+   "kl_no_t": 8.996315591502935e-05
+  },
+  {
+   "token": 316,
+   "count": 589,
+   "report_follow": 0.8187512159347534,
+   "kl_at_t": 0.003927150741219521,
+   "kl_after_t_later": 0.00041352721746079624,
+   "kl_no_t": 0.00013158046931494027
+  },
+  {
+   "token": 328,
+   "count": 567,
+   "report_follow": 0.8446899652481079,
+   "kl_at_t": 0.0027123133186250925,
+   "kl_after_t_later": 0.00024630414554849267,
+   "kl_no_t": 0.00010699217091314495
+  },
+  {
+   "token": 341,
+   "count": 526,
+   "report_follow": 0.865779459476471,
+   "kl_at_t": 0.0035208414774388075,
+   "kl_after_t_later": 0.0003555644943844527,
+   "kl_no_t": 8.494091889588162e-05
+  },
+  {
+   "token": 352,
+   "count": 518,
+   "report_follow": 0.8105688095092773,
+   "kl_at_t": 0.010041551664471626,
+   "kl_after_t_later": 0.0006046584458090365,
+   "kl_no_t": 0.00011562805593712255
+  },
+  {
+   "token": 356,
+   "count": 464,
+   "report_follow": 0.8881760239601135,
+   "kl_at_t": 0.005545568186789751,
+   "kl_after_t_later": 0.00024013286747504026,
+   "kl_no_t": 9.790556214284152e-05
+  },
+  {
+   "token": 0,
+   "count": 348,
+   "report_follow": 0.7171720266342163,
+   "kl_at_t": 0.00221072044223547,
+   "kl_after_t_later": 0.00047042311052791774,
+   "kl_no_t": 0.0001361396280117333
+  },
+  {
+   "token": 298,
+   "count": 333,
+   "report_follow": 0.8650250434875488,
+   "kl_at_t": 0.01024600863456726,
+   "kl_after_t_later": 0.0005352933658286929,
+   "kl_no_t": 6.286467396421358e-05
+  },
+  {
+   "token": 416,
+   "count": 320,
+   "report_follow": 0.7822433710098267,
+   "kl_at_t": 0.00020125217270106077,
+   "kl_after_t_later": 0.0017017757054418325,
+   "kl_no_t": 0.0015449401689693332
+  },
+  {
+   "token": 405,
+   "count": 284,
+   "report_follow": 0.8504903316497803,
+   "kl_at_t": 0.005181899759918451,
+   "kl_after_t_later": 0.00023352344578597695,
+   "kl_no_t": 8.729255205253139e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": 0.8592192530632019,
+   "kl_at_t": 0.008780884556472301,
+   "kl_after_t_later": 0.001545270555652678,
+   "kl_no_t": 0.0001279707794310525
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.8061060309410095,
+   "kl_at_t": 0.008604130707681179,
+   "kl_after_t_later": 0.0006024255999363959,
+   "kl_no_t": 0.00012483123282436281
+  },
+  {
+   "token": 427,
+   "count": 246,
+   "report_follow": 0.8773041367530823,
+   "kl_at_t": 0.007690994534641504,
+   "kl_after_t_later": 0.0004074667813256383,
+   "kl_no_t": 0.0001073270250344649
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": 0.823962390422821,
+   "kl_at_t": 0.005983037408441305,
+   "kl_after_t_later": 0.0009019769495353103,
+   "kl_no_t": 0.00013127746933605522
+  },
+  {
+   "token": 83,
+   "count": 231,
+   "report_follow": 0.7551977038383484,
+   "kl_at_t": 0.010197942145168781,
+   "kl_after_t_later": 0.0002996955008711666,
+   "kl_no_t": 0.00010922762157861143
+  },
+  {
+   "token": 415,
+   "count": 228,
+   "report_follow": 0.8523461818695068,
+   "kl_at_t": 0.0018014578381553292,
+   "kl_after_t_later": 0.0006231683073565364,
+   "kl_no_t": 0.00014312339772004634
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.7713768482208252,
+   "kl_at_t": 0.0006124309147708118,
+   "kl_after_t_later": 7.832756091374904e-05,
+   "kl_no_t": 6.788001337554306e-05
+  },
+  {
+   "token": 469,
+   "count": 146,
+   "report_follow": 0.8513785600662231,
+   "kl_at_t": 0.00998551957309246,
+   "kl_after_t_later": 0.0010085839312523603,
+   "kl_no_t": 0.00014575209934264421
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.9052730202674866,
+   "kl_at_t": 0.0093259047716856,
+   "kl_after_t_later": 0.0003259049844928086,
+   "kl_no_t": 8.311360579682514e-05
+  }
+ ],
+ "stories": [
+  "Once upon a time, there was a little boy named Timmy. One day, Timmy went to the park with his mom. They played on the swings, the slide and started to roll down the slide. Suddenly, Timmy accidentally dropped his head and it broke! \n\nTimmy was sad and started to cry. But then, which's not fun. They had to clean their toys and begged for a fun time.\n\nWhen Timmy got to the park, he met his mom, she told him that Timmy needed to clean up. Timmy was very sad and didn't want to do what he be doing. \n",
+  "Once upon a time there was a brave knight and a knight. The knight was always not sure to turn the wall to turn on the lawn. The knight was calm and sure to keep the world from ear to turn in. \n\nThe knight was so curious and tried to move the lawn on the hallway. He did not see the liquense, but he had gotten far away, than before. \n\nThe knight was so scared and he quickly said, \"No it wasn't. You have to be careful with the lawn\". The knight was very happy and went around the forest",
+  "Once upon a time, there was a little girl named Lily. She loved to eat yummy juice. One day, she saw a big drink of juice in her backpack. She wanted to eat it and eat it. But then, she remembered that she had to be quiet and not forget to listen to before that.\n\nLily's dad told her that it's okay and that Lily was still ashamed to share the juice with her. Lily felt bad for being honest and picked up the drink from her mom and dad's shirt and made her feel better. From that day on, Lily and her dad decided to have some"
+ ]
+}
