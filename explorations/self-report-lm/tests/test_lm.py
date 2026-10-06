@@ -94,6 +94,73 @@ def test_jacobian_measures_on_known_functions():
 def test_finite_follow_restores_E():
     m = Fake(lambda x: 0.5 * x)
     E0 = m.E.detach().clone()
-    med, ratios = Ms.finite_follow(m, torch.arange(10), 0.1, torch.Generator().manual_seed(0))
-    assert abs(med - 0.5) < 1e-5
+    med, mean = Ms.finite_follow(m, torch.arange(10), 0.1, torch.Generator().manual_seed(0))
+    assert abs(med - 0.5) < 1e-5 and abs(mean - 0.5) < 1e-5
     assert torch.equal(m.E.detach(), E0)
+
+
+def test_report_reads_last_position_before_final_layernorm():
+    """Manual forward pass: the answer is number_head(h[:, 2]) with h the residual stream
+    after the last block, without ln_f."""
+    m = small_model()
+    t, i = torch.tensor([3, 9]), torch.tensor([2, 5])
+    with torch.no_grad():
+        h = torch.stack([m.E[m.n_text].expand(2, -1), m.E[m.n_text + 1 + i], m.E[t]], dim=1) + m.P[:3]
+        for b in m.blocks:
+            h = b(h)
+        manual = h[:, 2] @ m.number_head.weight[0] + m.number_head.bias[0]
+        torch.testing.assert_close(m.report(t, i), manual)
+        assert not torch.allclose(m.report(t, i), m.number_head(m.ln_f(h[:, 2])).squeeze(-1))
+
+
+def test_ones_direction_moves_every_answer_by_sum_w():
+    """LayerNorm removes the mean, so J·1 = (Σw)·1 exactly (review finding)."""
+    m = small_model()
+    with torch.no_grad():
+        m.number_head.weight.normal_()
+    x = m.E[5].detach()
+    J = torch.autograd.functional.jacobian(lambda v: Ms.answers_for(m, v), x)
+    torch.testing.assert_close(J.sum(dim=1), torch.full((m.dim,), m.number_head.weight.sum().item()),
+                               atol=1e-5, rtol=1e-4)
+
+
+def test_lm_batch_targets_are_next_tokens():
+    tokens = __import__("numpy").arange(1000, dtype="uint16")
+    x, y = T.lm_batch(tokens, 64, torch.Generator().manual_seed(0))
+    assert torch.equal(y, x + 1) and x.shape == (64, lm.CTX)
+    assert int(x.max()) + 1 <= 999
+
+
+def test_weight_decay_groups():
+    m = small_model()
+    opt = T.make_optimizer(m)
+    decayed = {id(p) for p in opt.param_groups[0]["params"]}
+    names = {n for n, p in m.named_parameters() if id(p) in decayed}
+    assert names == {n for n, p in m.named_parameters()
+                     if p.dim() == 2 and n.startswith(("blocks", "number_head"))}
+    assert "E" not in names and "P" not in names and not any("ln" in n or "bias" in n for n in names)
+    assert len(opt.param_groups[0]["params"]) + len(opt.param_groups[1]["params"]) == len(list(m.parameters()))
+
+
+def test_edit_test_kl_matches_hand_computation():
+    m = small_model()
+    gen = torch.Generator().manual_seed(1)
+    batches = [(torch.randint(0, 64, (4, 8), generator=gen), None) for _ in range(2)]
+    held_out = torch.arange(64)
+    old = Ms.N_EDIT_TOKENS
+    Ms.N_EDIT_TOKENS = 1
+    try:
+        row = Ms.edit_test(m, batches, held_out, torch.Generator().manual_seed(2))[0]
+    finally:
+        Ms.N_EDIT_TOKENS = old
+    t = row["token"]
+    xs = torch.cat([x for x, _ in batches])
+    delta = torch.randn(m.dim, generator=torch.Generator().manual_seed(2))
+    delta *= Ms.FINITE_SIZE * m.E[t].norm() / delta.norm()
+    with torch.no_grad():
+        p0 = torch.log_softmax(m.lm_logits(xs), -1)
+        m.E[t] += delta
+        p1 = torch.log_softmax(m.lm_logits(xs), -1)
+        m.E[t] -= delta
+    kl = (p1.exp() * (p1 - p0)).sum(-1)
+    assert abs(row["kl_at_t"] - kl[xs == t].mean().item()) < 1e-5

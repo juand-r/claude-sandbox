@@ -18,6 +18,7 @@ Usage: python train.py <name> <lam> <seed> [steps]
 """
 import json
 import math
+import os
 import sys
 import time
 from pathlib import Path
@@ -30,10 +31,11 @@ import lm
 
 HERE = Path(__file__).parent
 DATA, RESULTS = HERE / "data", HERE / "results"
-STEPS = 9000
+STEPS = 15000
 LM_BATCH = 32
 REPORT_BATCH = 256
 LR, LR_MIN, WARMUP = 2e-3, 2e-4, 200
+BETAS = (0.9, 0.95)
 WEIGHT_DECAY = 0.1
 CLIP = 1.0
 EVAL_EVERY = 250
@@ -53,7 +55,7 @@ def load_tokens(name):
 
 
 def lm_batch(tokens, n, gen):
-    starts = torch.randint(0, len(tokens) - lm.CTX - 1, (n,), generator=gen).numpy()
+    starts = torch.randint(0, len(tokens) - lm.CTX, (n,), generator=gen).numpy()   # windows of CTX + 1 tokens
     win = torch.from_numpy(np.stack([tokens[s:s + lm.CTX + 1] for s in starts]).astype(np.int64))
     return win[:, :-1], win[:, 1:]
 
@@ -82,7 +84,7 @@ def make_optimizer(m):
     decay = [p for n, p in m.named_parameters() if p.dim() == 2 and n.startswith(("blocks", "number_head"))]
     rest = [p for n, p in m.named_parameters() if not (p.dim() == 2 and n.startswith(("blocks", "number_head")))]
     return torch.optim.AdamW([{"params": decay, "weight_decay": WEIGHT_DECAY},
-                              {"params": rest, "weight_decay": 0.0}], lr=LR, betas=(0.9, 0.95))
+                              {"params": rest, "weight_decay": 0.0}], lr=LR, betas=BETAS)
 
 
 def train(name, lam, seed, steps=STEPS, verbose=True):
@@ -90,39 +92,43 @@ def train(name, lam, seed, steps=STEPS, verbose=True):
     ckpt_path = RESULTS / f"{name}_ckpt.pt"
     settings = {"name": name, "lam": lam, "seed": seed, "steps": steps, "lm_batch": LM_BATCH,
                 "report_batch": REPORT_BATCH, "lr": LR, "lr_min": LR_MIN, "warmup": WARMUP,
-                "weight_decay": WEIGHT_DECAY, "n_text": lm.N_TEXT, "dim": lm.DIM, "n_layers": lm.N_LAYERS,
-                "n_heads": lm.N_HEADS, "ctx": lm.CTX}
+                "weight_decay": WEIGHT_DECAY, "betas": list(BETAS), "clip": CLIP, "eval_every": EVAL_EVERY,
+                "n_text": lm.N_TEXT, "dim": lm.DIM, "n_layers": lm.N_LAYERS, "n_heads": lm.N_HEADS, "ctx": lm.CTX}
     torch.manual_seed(seed)
     m = lm.SelfReportLM()
     opt = make_optimizer(m)
     train_tokens, held_out = lm.split_tokens(seed)
-    gen = torch.Generator().manual_seed(seed)
-    start, log = 0, []
+    gen_lm = torch.Generator().manual_seed(seed)              # text windows: the same for every lam
+    gen_rep = torch.Generator().manual_seed(seed + 10_000)    # self-report questions
+    start, log, seconds0 = 0, [], 0.0
     if ckpt_path.exists():
         ck = torch.load(ckpt_path)
         if ck["settings"] != settings:
             raise RuntimeError(f"{ckpt_path} has different settings: {ck['settings']}")
         m.load_state_dict(ck["model"])
         opt.load_state_dict(ck["opt"])
-        gen.set_state(ck["gen"])
+        gen_lm.set_state(ck["gen_lm"])
+        gen_rep.set_state(ck["gen_rep"])
         start, log = ck["step"], ck["log"]
+        seconds0 = log[-1]["seconds"] if log else 0.0
         print(f"resumed at step {start}", flush=True)
     train_data, valid_data = load_tokens("train"), load_tokens("valid")
     vgen = torch.Generator().manual_seed(1234)                 # same validation windows for every run
     valid_batches = [lm_batch(valid_data, LM_BATCH, vgen) for _ in range(EVAL_LM_BATCHES)]
-    eval_perm = torch.randperm(len(train_tokens), generator=torch.Generator().manual_seed(99))
-    eval_train = train_tokens[eval_perm]
+    # random subsets for monitoring (held_out is sorted; its first ids are mostly rare byte tokens)
+    eval_train = train_tokens[torch.randperm(len(train_tokens), generator=torch.Generator().manual_seed(99))]
+    eval_held_out = held_out[torch.randperm(len(held_out), generator=torch.Generator().manual_seed(98))]
 
     t0 = time.time()
     for step in range(start, steps):
         for g in opt.param_groups:
             g["lr"] = lr_at(step, steps)
-        x, y = lm_batch(train_data, LM_BATCH, gen)
+        x, y = lm_batch(train_data, LM_BATCH, gen_lm)
         loss_lm = lm_loss(m, x, y)
         loss = loss_lm
         if lam > 0:
-            t = train_tokens[torch.randint(0, len(train_tokens), (REPORT_BATCH,), generator=gen)]
-            i = torch.randint(0, m.dim, (REPORT_BATCH,), generator=gen)
+            t = train_tokens[torch.randint(0, len(train_tokens), (REPORT_BATCH,), generator=gen_rep)]
+            i = torch.randint(0, m.dim, (REPORT_BATCH,), generator=gen_rep)
             loss_rep = report_loss(m, t, i)
             loss = loss + lam * loss_rep
         if not torch.isfinite(loss):
@@ -134,10 +140,12 @@ def train(name, lam, seed, steps=STEPS, verbose=True):
         if (step + 1) % EVAL_EVERY == 0 or step + 1 == steps:
             row = {"step": step + 1, "train_lm_loss": loss_lm.item(),
                    "train_report_loss": loss_rep.item() if lam > 0 else None,
-                   **evaluate(m, valid_batches, eval_train, held_out), "seconds": time.time() - t0}
+                   **evaluate(m, valid_batches, eval_train, eval_held_out), "seconds": seconds0 + time.time() - t0}
             log.append(row)
-            torch.save({"model": m.state_dict(), "opt": opt.state_dict(), "gen": gen.get_state(),
-                        "step": step + 1, "log": log, "settings": settings}, ckpt_path)
+            tmp = ckpt_path.with_suffix(".tmp")                # atomic: a kill mid-write keeps the old checkpoint
+            torch.save({"model": m.state_dict(), "opt": opt.state_dict(), "gen_lm": gen_lm.get_state(),
+                        "gen_rep": gen_rep.get_state(), "step": step + 1, "log": log, "settings": settings}, tmp)
+            os.replace(tmp, ckpt_path)
             if verbose:
                 print(f"step {step + 1:5d}  valid loss {row['valid_loss']:.4f}  R² train {row['r2_train']:.4f}  "
                       f"held-out {row['r2_held_out']:.4f}  E rms {row['E_rms_text']:.4f}  "

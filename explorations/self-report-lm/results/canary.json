@@ -1,0 +1,41 @@
+{
+ "settings": {
+  "name": "canary",
+  "lam": 1.0,
+  "seed": 0,
+  "steps": 300,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128
+ },
+ "log": [
+  {
+   "step": 250,
+   "train_lm_loss": 4.515890598297119,
+   "train_report_loss": 0.7619591951370239,
+   "valid_loss": 4.519386672973633,
+   "r2_train": 0.2914539958495247,
+   "r2_held_out": 0.4011954427396388,
+   "E_rms_text": 0.039100270718336105,
+   "seconds": 126.32297420501709
+  },
+  {
+   "step": 300,
+   "train_lm_loss": 4.326567649841309,
+   "train_report_loss": 0.7295886874198914,
+   "valid_loss": 4.343253111839294,
+   "r2_train": 0.3373059290106515,
+   "r2_held_out": 0.4133537318612629,
+   "E_rms_text": 0.04118267074227333,
+   "seconds": 159.9513759613037
+  }
+ ]
+}

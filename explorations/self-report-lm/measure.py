@@ -8,6 +8,10 @@ x = E[t]; x̂ = E[t] / |E[t]|.
   other movement   |J − follow·I|_F / √DIM                     (0 for reading)
   follow, length   x̂ᵀ J x̂: response to a change along E[t]
   follow, direction (tr(J) − x̂ᵀ J x̂) / (DIM − 1): average response to changes across E[t]
+  ones direction   J·1/DIM: every LayerNorm subtracts the mean, so the blocks cannot see a
+                   change along 1 = (1, …, 1); the answers then all move by exactly Σw
+                   (w = number-head weight), i.e. J·1 = (Σw)·1. Reported: mean and spread
+                   of the entries of J·1, and Σw.
   finite follow    Δa·δ / |δ|², for δ in a random direction with |δ| = 10% of |E[t]|
 
 Edit test: E[t] ← E[t] + δ in the model itself (so the language model sees the
@@ -15,9 +19,11 @@ change too, at input and output); report the finite follow of the self-report
 and the KL divergence between next-token distributions before and after the
 edit, at positions in validation text right after t and at all other positions.
 
-Usage: python measure.py <name> [<name> ...]   writes results/measure_<name>.json
+Usage: python measure.py [--quick] <name> [<name> ...]   writes results/measure_<name>.json
+  --quick: 32 tokens per set for the Jacobian measures (for checking the pipeline)
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -30,7 +36,7 @@ import lm
 import train as T
 
 HERE = Path(__file__).parent
-N_JAC_TRAIN = 512           # training tokens used for Jacobian measures (all held-out tokens are used)
+N_JAC = 512                 # random tokens per set (training, held-out) for the Jacobian measures
 N_RANDOM = 1024             # random vectors for R²
 FINITE_SIZE = 0.10
 N_EDIT_TOKENS = 20          # most frequent held-out tokens in the validation windows
@@ -45,7 +51,7 @@ def answers_for(model, x):
 
 def jacobian_measures(model, tokens):
     d = model.E.shape[1]
-    rows = {"follow": [], "other": [], "follow_length": [], "follow_direction": []}
+    rows = {"follow": [], "other": [], "follow_length": [], "follow_direction": [], "ones_mean": [], "ones_sd": []}
     with torch.enable_grad():
         for t in tokens.tolist():
             x = model.E[t].detach().clone()
@@ -57,6 +63,9 @@ def jacobian_measures(model, tokens):
             rows["other"].append(((J - f * torch.eye(d)).norm() / d ** 0.5).item())
             rows["follow_length"].append(radial)
             rows["follow_direction"].append((J.trace().item() - radial) / (d - 1))
+            ones = J.sum(dim=1)                                # J·1
+            rows["ones_mean"].append(ones.mean().item())
+            rows["ones_sd"].append(ones.std().item())
     return {k: float(np.mean(v)) for k, v in rows.items()} | {"follow_sd": float(np.std(rows["follow"]))}
 
 
@@ -73,7 +82,7 @@ def finite_follow(model, tokens, size, gen):
         after = answers_for(model, model.E[t])
         model.E[t] = original
         ratios.append(((after - before) @ delta / (delta @ delta)).item())
-    return float(np.median(ratios)), ratios
+    return float(np.median(ratios)), float(np.mean(ratios))
 
 
 @torch.no_grad()
@@ -97,26 +106,37 @@ def r2_random(model, gen):
 
 @torch.no_grad()
 def edit_test(model, valid_batches, held_out, gen):
-    """Edit the embedding vectors of the N_EDIT_TOKENS most frequent held-out tokens, one at a time."""
+    """Edit the embedding vectors of the N_EDIT_TOKENS most frequent held-out tokens, one at a time.
+    KL(edited ‖ original) of the next-token distribution, per position, split three ways:
+    at positions whose input is t (the prediction right after t); later positions in a
+    window that contains t earlier; positions in windows without t before them.
+    Computed batch by batch (full log-prob tensors for all batches needed about 7 GB)."""
     xs = torch.cat([x for x, _ in valid_batches])
     counts = torch.bincount(xs.flatten(), minlength=model.n_text)
     tokens = held_out[counts[held_out].argsort(descending=True)[:N_EDIT_TOKENS]]
-    base_logp = torch.cat([F.log_softmax(model.lm_logits(x), -1) for x, _ in valid_batches])
     rows = []
     for t in tokens.tolist():
         original = model.E[t].clone()
         before = answers_for(model, original)
         delta = torch.randn(model.dim, generator=gen)
         delta *= FINITE_SIZE * original.norm() / delta.norm()
+        kls = []
+        for x, _ in valid_batches:
+            base_logp = F.log_softmax(model.lm_logits(x), -1)
+            model.E[t] = original + delta
+            logp = F.log_softmax(model.lm_logits(x), -1)
+            model.E[t] = original
+            kls.append((logp.exp() * (logp - base_logp)).sum(-1))  # KL(edited ‖ original) per position
         model.E[t] = original + delta
         after = answers_for(model, model.E[t])
-        logp = torch.cat([F.log_softmax(model.lm_logits(x), -1) for x, _ in valid_batches])
         model.E[t] = original
-        kl = (logp.exp() * (logp - base_logp)).sum(-1)              # KL(edited ‖ original) per position
-        after_t = xs == t
+        kl = torch.cat(kls)
+        at_t = xs == t
+        seen = (at_t.cumsum(dim=1) > 0) & ~at_t
         rows.append({"token": t, "count": int(counts[t]),
                      "report_follow": ((after - before) @ delta / (delta @ delta)).item(),
-                     "kl_after_t": kl[after_t].mean().item(), "kl_elsewhere": kl[~after_t].mean().item()})
+                     "kl_at_t": kl[at_t].mean().item(), "kl_after_t_later": kl[seen].mean().item(),
+                     "kl_no_t": kl[~at_t & ~seen].mean().item()})
     return rows
 
 
@@ -125,9 +145,12 @@ def generate(model, tok, gen):
     stories = []
     for _ in range(N_STORIES):
         ids = torch.tensor([tok.encode(GEN_PROMPT).ids])
+        eos = tok.token_to_id("<|eos|>")
         for _ in range(GEN_TOKENS):
             logits = model.lm_logits(ids[:, -model.ctx:])[0, -1] / 0.8
             nxt = torch.multinomial(F.softmax(logits, -1), 1, generator=gen)
+            if nxt.item() == eos:
+                break
             ids = torch.cat([ids, nxt.view(1, 1)], dim=1)
         stories.append(tok.decode(ids[0].tolist()))
     return stories
@@ -141,10 +164,10 @@ def load(name):
     return m.eval(), s
 
 
-def measure(name):
+def measure(name, quick=False):
     m, s = load(name)
     gen = torch.Generator().manual_seed(s["seed"])
-    train_tokens, held_out = lm.split_tokens(s["seed"])
+    train_tokens, held_out = lm.split_tokens(s["seed"], s["n_text"])
     valid = T.load_tokens("valid")
     vgen = torch.Generator().manual_seed(4321)
     valid_batches = [T.lm_batch(valid, T.LM_BATCH, vgen) for _ in range(N_VALID_BATCHES)]
@@ -155,12 +178,15 @@ def measure(name):
     out["r2_train"] = r2_set(m, train_tokens)
     out["r2_held_out"] = r2_set(m, held_out)
     out["r2_random"] = r2_random(m, gen)
-    jac_train = train_tokens[torch.randperm(len(train_tokens), generator=gen)[:N_JAC_TRAIN]]
+    n_jac = 32 if quick else N_JAC
+    jac_train = train_tokens[torch.randperm(len(train_tokens), generator=gen)[:n_jac]]
+    jac_held_out = held_out[torch.randperm(len(held_out), generator=gen)[:n_jac]]
+    out["n_jacobian_tokens"] = n_jac
+    out["sum_w"] = m.number_head.weight.sum().item()
     out["jacobian_train"] = jacobian_measures(m, jac_train)
-    out["jacobian_held_out"] = jacobian_measures(m, held_out)
-    for nm, toks in (("train", jac_train), ("held_out", held_out)):
-        med, _ = finite_follow(m, toks, FINITE_SIZE, gen)
-        out[f"finite_follow_median_{nm}"] = med
+    out["jacobian_held_out"] = jacobian_measures(m, jac_held_out)
+    for nm, toks in (("train", jac_train), ("held_out", jac_held_out)):
+        out[f"finite_follow_median_{nm}"], out[f"finite_follow_mean_{nm}"] = finite_follow(m, toks, FINITE_SIZE, gen)
     out["edit_test"] = edit_test(m, valid_batches[:20], held_out, gen)
     out["stories"] = generate(m, Tokenizer.from_file(str(T.DATA / "tokenizer.json")), gen)
     if not torch.equal(m.E.detach(), E_before):
@@ -169,9 +195,10 @@ def measure(name):
 
 
 def main():
-    torch.set_num_threads(4)
-    for name in sys.argv[1:]:
-        out = measure(name)
+    torch.set_num_threads(int(os.environ.get("THREADS", "4")))
+    quick = "--quick" in sys.argv
+    for name in [a for a in sys.argv[1:] if a != "--quick"]:
+        out = measure(name, quick)
         (HERE / "results" / f"measure_{name}.json").write_text(json.dumps(out, indent=1))
         print(name, {k: (round(v, 4) if isinstance(v, float) else v) for k, v in out.items()
                      if k not in ("stories", "edit_test", "settings")}, flush=True)
