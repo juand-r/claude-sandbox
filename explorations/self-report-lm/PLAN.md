@@ -33,24 +33,26 @@ head; tied input and output embeddings.
   is a linear function of the internal state at the last position (t's
   position), taken before the final LayerNorm. Correct answer E[t, i], current
   value, no gradient through it.
-- Design note (found while planning). The order puts t last on purpose. With
-  pre-LayerNorm, every attention and feed-forward block sees its input divided
-  by its standard deviation, so information about the length of E[t] can only
-  reach another position approximately. At t's own position, the internal state
-  still contains E[t] itself, unnormalized, so reading there is possible. Even
-  so, picking out coordinate i requires the blocks, which see only normalized
-  inputs; exact reading is therefore not guaranteed by the architecture, only
-  approximately possible. (I told the user earlier that reading before the final
-  norm makes exact reading possible; that was too strong.) Prediction to test:
-  answers follow changes of the direction of E[t] better than changes of its
-  length.
+- Design note (found while planning; corrected after the code review). The
+  question puts t last. With pre-LayerNorm every block sees its input
+  normalized; the unnormalized E[t] in the residual stream at t's position
+  reaches the answer only through the fixed number-head readout w·x, the same
+  for every coordinate, so picking out coordinate i must go through the blocks.
+  Exact consequence: LayerNorm subtracts the mean, so a change of E[t] along the
+  all-ones direction is invisible to the blocks and moves every answer by
+  exactly Σw. Length is not strictly hidden: LayerNorm of x plus a large
+  constant is nearly linear in x. So exact reading is not guaranteed;
+  "direction tracked better than length" is a prediction to test. (I told the
+  user earlier that reading before the final norm makes exact reading
+  possible; that was too strong.)
 - Tokens asked about: three quarters of the 4,096 text tokens (training
   tokens); the other quarter are held-out tokens, which appear in the language
   modelling data but are never asked about.
 - Loss: cross-entropy (language modelling) + λ · (1 − R² of the self-report
   batch), λ = 1.
 - Each step: one language-modelling batch (32 sequences × 128 tokens) and one
-  self-report batch (256 questions).
+  self-report batch (256 questions). 15,000 steps (61M tokens), AdamW, learning
+  rate 2e-3 with 200 warm-up steps and cosine decay to 2e-4.
 
 ## Runs
 
@@ -74,10 +76,10 @@ head; tied input and output embeddings.
 
 ## Steps
 
-- [ ] `prepare.py`: tokenizer and token files.
-- [ ] `lm.py`: model; `train.py`: joint training with logging and checkpoints.
-- [ ] `measure.py`: measurements 1-4.
-- [ ] Tests; independent code review by a separate Claude instance.
+- [x] `prepare.py`: tokenizer and token files.
+- [x] `lm.py`: model; `train.py`: joint training with logging and checkpoints.
+- [x] `measure.py`: measurements 1-4.
+- [x] Tests; independent code review by a separate Claude instance (NOTES.md).
 - [ ] Short trial run (canary), then the runs above.
 - [ ] REPORT.md, PDF.
 
