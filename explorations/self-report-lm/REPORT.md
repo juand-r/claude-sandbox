@@ -322,7 +322,37 @@ a relation between the two responses.
 
 ## 9. Replication (seed 1)
 
-In progress; to be added.
+A second joint run with seed 1: different initial weights, different text
+order, and a different random choice of the 1,024 held-out tokens. There is no
+language-model-only run with seed 1, so its language-modelling cost cannot be
+measured directly.
+
+| measure | seed 0 | seed 1 |
+|---|---|---|
+| validation loss | 2.248 | 2.290 |
+| centred R², training tokens | 0.976 | 0.955 |
+| centred R², held-out tokens | 0.680 | 0.504 |
+| centred R², random vectors | 0.813 | 0.699 |
+| follow, training tokens | 0.851 | 0.745 |
+| follow, held-out tokens | 0.751 | 0.666 |
+| other movement, training / held-out | 0.41 / 0.40 | 0.48 / 0.46 |
+| response along E[t] (length), training / held-out | 0.66 / 0.49 | 0.57 / 0.42 |
+| response along the hidden direction c, training / held-out | 0.005 / 0.006 | 0.022 / 0.015 |
+| follow by frequency, held-out: below 100 / 100-9,999 / 10,000+ | 0.34 / 0.79 / 0.83 | 0.27 / 0.68 / 0.73 |
+| mean length, rare held-out / rare training | 3.95 / 1.53 | 4.33 / 1.66 |
+| rescaling test, rare held-out: as is → shrunk | −1.34 → 0.96 | −3.47 → 0.90 |
+| rescaling test, frequent held-out: as is → grown | 0.94 → −1.67 | 0.91 → −2.75 |
+| edit test: self-report finite-change follow, range (mean) | 0.73 to 0.90 (0.82) | 0.61 to 0.90 (0.72) |
+| edit test: KL right after the token / with no earlier occurrence | 32 times (19 of 20 tokens) | 34 times (20 of 20 tokens) |
+
+Observation. Every qualitative result of seed 0 holds for seed 1: partial
+reading, weaker for held-out tokens; near-blindness along the hidden direction;
+weaker response to length than to direction; failure on long rare held-out
+vectors that disappears when they are rescaled; ordinary lengths for rare
+asked-about vectors. The size of the effects varies a lot between the two
+seeds: centred R² on held-out tokens is 0.68 against 0.50, and follow 0.75
+against 0.67. With two seeds, the numbers in sections 4 to 7 should be read as
+one sample, not as estimates with known uncertainty.
 
 ## 10. Control: self-report with its input detached
 
