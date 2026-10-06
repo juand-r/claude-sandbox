@@ -142,7 +142,11 @@ class Compiled:
                 self.actions.setdefault((deliv[k], k), []).append(
                     ("recv", i, f))
                 ready[k] = deliv[k]
-            ready[j] = max(ready[j], s + 2)    # emitter busy through s+1
+            # later ops on j go to s+1 or later: the compensation at s+1
+            # reads j's letter, which must still give emit's bit. A new
+            # broadcast by j at s+1 is fine: its window starts where this
+            # one's ends (the scheduler's window check)
+            ready[j] = max(ready[j], s + 1)
             last_s = s
         self.unknown = unknown
         end = max([s + 3 for s, _, _ in self.bcasts] + [s + 1 for s, _ in
