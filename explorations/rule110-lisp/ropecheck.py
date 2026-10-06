@@ -94,15 +94,21 @@ def _suffix_equal(a, b):
     return sub.shape == a.shape and bool((sub == a).all()), a.shape[1]
 
 
-def compare(da, db):
+def compare(da, db, partial=False):
+    """partial: compare the snapshots both runs have so far (runs still
+    going); otherwise both must have finished."""
     names = sorted(set(os.listdir(da)) & set(os.listdir(db)))
-    if "final.npz" not in names:
+    snaps0 = [n for n in names if n.startswith("snap_")]
+    if partial and not snaps0:
+        print("MISMATCH: no common snapshot")
+        return False
+    if not partial and "final.npz" not in names:
         print(f"MISMATCH: final.npz missing in {da if 'final.npz' not in os.listdir(da) else db}")
         return False
     snaps = sorted((n for n in names if n.startswith("snap_")),
                    key=lambda n: int(n[5:-4]))
     ok = True
-    for n in snaps + (["final.npz"] if "final.npz" in names else []):
+    for n in snaps + (["final.npz"] if "final.npz" in names and not partial else []):
         a, b = np.load(os.path.join(da, n)), np.load(os.path.join(db, n))
         same_t = int(a["t"]) == int(b["t"])
         eq, m = _suffix_equal(a["items"], b["items"])
@@ -115,7 +121,7 @@ def compare(da, db):
             good = good and o and e
         ok = ok and good
         print(line)
-    print("ALL EQUAL" if ok else "MISMATCH")
+    print(("ALL EQUAL" + (" (so far)" if partial else "")) if ok else "MISMATCH")
     return ok
 
 
@@ -133,11 +139,12 @@ def main():
     c = sub.add_parser("compare")
     c.add_argument("a")
     c.add_argument("b")
+    c.add_argument("--partial", action="store_true")
     a = ap.parse_args()
     if a.cmd == "run":
         run(a.mode, a.outdir, a.src, a.every, a.depth, a.v, a.ckpt_every)
     else:
-        sys.exit(0 if compare(a.a, a.b) else 1)
+        sys.exit(0 if compare(a.a, a.b, a.partial) else 1)
 
 
 if __name__ == "__main__":
