@@ -540,7 +540,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
       <li data-step="2">The same <span class="math">w</span> wins if we instead
         <span class="eq">minimize ½ ‖w‖²<br>subject to the same constraints</span>
         A bowl-shaped objective with straight-line constraints: a <b data-hint="qp">constrained convex quadratic minimization problem</b>. It has one best solution, and standard solvers find it.</li>
-      <li data-step="3">The usual solution method uses Lagrange multipliers, one <span class="math">α<sub>i</sub> ≥ 0</span> per point. It gives <span class="math">w = Σ α<sub>i</sub> y<sub>i</sub> x<sub>i</sub></span>, and <span class="math">α<sub>i</sub> &gt; 0</span> only for points on the margin lines: the <b data-hint="sv">support vectors</b>.</li>
+      <li data-step="3">The usual solution method uses Lagrange multipliers, and the solution <b>only</b> depends on the <b data-hint="sv">support vectors</b>.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-hard"></div></div>
