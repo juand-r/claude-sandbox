@@ -107,15 +107,13 @@ def component_regions(tape, apps, right_periods):
     """Global column ranges (t = 0) of each appendant copy's components, in
     read order; (None, None) for empty appendants. Beyond one super-period
     (encoder.right_super_period) the regions repeat, shifted."""
-    from encoder import assemble, right_super_period
+    from encoder import right_placement, right_super_period
     # the super-period can be 30 periods long; only worth it for many periods
     m, w = right_super_period(tape, apps) if right_periods > 4 else (0, 0)
-    _, placed = assemble(tape, apps, 0, min(right_periods, m + 1) if m else right_periods,
-                         bits=False)
-    names = [p.block.name for p in placed]
-    leaders = [i for i, n in enumerate(names) if n in "GKL"]
-    regs = [(placed[a + 1].gspan(0)[0], placed[b - 1].gspan(0)[1])
-            if b - a > 1 else (None, None)
+    rp = right_placement(tape, apps, min(right_periods, m + 1) if m else right_periods)
+    leaders = [i for i, n in enumerate(rp.names) if chr(n) in "GKL"]
+    # blocks are contiguous: a copy's components end where block b starts
+    regs = [(int(rp.start[a + 1]), int(rp.start[b])) if b - a > 1 else (None, None)
             for a, b in zip(leaders, leaders[1:])]
     n = right_periods * len(apps)
     per = m * len(apps)
@@ -243,7 +241,7 @@ def block_gaps(tape, apps, n_reads):
     b, with the t = 0 spatial gap between their component regions. The
     first predicted failure at spacing v is the first R with
     gap > GAP_PER_V * v."""
-    regs = component_regions(tape, apps, n_reads // len(apps) + 3)
+    regs = component_regions(tape, apps, -(-(n_reads + 3) // len(apps)) + 1)
     q = deque((-1, ch) for ch in tape)
     origin = []
     for r in range(n_reads):

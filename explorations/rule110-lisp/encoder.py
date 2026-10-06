@@ -98,6 +98,8 @@ def load_blocks():
 class Placed:
     """A block instance at offset (dy, dx): patch (r, c) -> global (r+dy, c+dx)."""
 
+    __slots__ = ("block", "dy", "dx")      # long tables place millions
+
     def __init__(self, block, dy, dx):
         self.block, self.dy, self.dx = block, dy, dx
 
@@ -231,6 +233,81 @@ def _left_block_seq(appendants, v_override=None):
     return OSSIFIER + "A" * v
 
 
+class RightPlacement:
+    """The central and right blocks of assemble() (left_periods = 0), kept
+    compactly for long tables: block names, row offsets dy and column
+    offsets dx in arrays, and each block's first t = 0 column. Cells are
+    rendered on demand (cells), so a table of millions of blocks costs
+    tens of bytes per block instead of a Python object and its cells."""
+
+    def __init__(self, tape, appendants, right_periods):
+        blocks, t0 = load_blocks()
+        self.blocks = blocks
+        central = "".join("FD" if c == "Y" else "ED" for c in tape)
+        central = "C" + central[:-1] + "G"
+        right_seq = _right_block_seq(appendants)
+        n = len(central) + right_periods * len(right_seq)
+        names = bytearray(n)
+        dy = np.zeros(n, np.int32)
+        dx = np.zeros(n, np.int64)
+        start = np.zeros(n + 1, np.int64)
+        prev = Placed(blocks["C"], -t0, 0)
+        k = 0
+        seq = iter(central[1:])
+
+        def put(p, name):
+            nonlocal k
+            names[k] = ord(name)
+            dy[k], dx[k] = p.dy, p.dx
+            s, e_ = p.gspan(0)
+            start[k] = s
+            if k and start[k] != end[0]:
+                raise AssertionError("non-contiguous t=0 row")
+            end[0] = e_
+            k += 1
+        end = [None]
+        put(prev, "C")
+        for name in seq:
+            prev = _attach(prev, blocks[name], "R")
+            put(prev, name)
+        for _ in range(right_periods):
+            for name in right_seq:
+                prev = _attach(prev, blocks[name], "R")
+                put(prev, name)
+        start[n] = end[0]
+        self.names, self.dy, self.dx, self.start = bytes(names), dy, dx, start
+        self.lo, self.hi = int(start[0]), int(start[n])
+
+    def __len__(self):
+        return len(self.names)
+
+    def placed(self, k):
+        return Placed(self.blocks[chr(self.names[k])], int(self.dy[k]), int(self.dx[k]))
+
+    def cells(self, a, b):
+        """uint8 cells [a, b) of the t = 0 row (within [lo, hi))."""
+        if a < self.lo or b > self.hi or a > b:
+            raise ValueError(f"cells [{a}, {b}) outside [{self.lo}, {self.hi})")
+        k0 = int(np.searchsorted(self.start, a, side="right")) - 1
+        k1 = int(np.searchsorted(self.start, b, side="left"))
+        row = "".join(self.placed(k).gbits(0) for k in range(k0, k1)).encode()
+        s = int(self.start[k0])
+        return np.frombuffer(row, np.uint8)[a - s:b - s] - ord("0")
+
+
+_PLACEMENTS = {}
+
+
+def right_placement(tape, appendants, right_periods):
+    """RightPlacement, cached per program (block_gaps and the engines of one
+    run share it)."""
+    key = (tape, tuple(appendants), right_periods)
+    if key not in _PLACEMENTS:
+        _PLACEMENTS.clear()
+        _PLACEMENTS[key] = RightPlacement(tape, appendants, right_periods)
+    return _PLACEMENTS[key]
+
+
 def assemble(tape, appendants, left_periods=1, right_periods=1,
              v_override=None, left_gaps=None, bits=True):
     """Build the Rule 110 initial row for a cyclic tag system.
@@ -283,5 +360,5 @@ def assemble(tape, appendants, left_periods=1, right_periods=1,
             raise AssertionError("non-contiguous t=0 row")
     if not bits:                       # geometry only (long tables)
         return None, placed
-    row = "".join(p.gbits(0) for p in placed)
-    return np.frombuffer(row.encode(), np.uint8) - ord("0"), placed
+    row = "".join(p.gbits(0) for p in placed).encode()
+    return np.frombuffer(row, np.uint8) - ord("0"), placed

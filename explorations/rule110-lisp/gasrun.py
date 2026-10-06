@@ -254,7 +254,9 @@ class GasReads:
         self.every = 1 << sample_bits
         self.key = (tape, tuple(apps), v, n_reads)
         self.checkpoint, self.ckpt_every = checkpoint, ckpt_every
-        rp = n_reads // len(apps) + 3
+        # table periods the reads and their lookahead (2 reads) touch, and
+        # one more for the data in flight (long tables cost GBs per period)
+        rp = -(-(n_reads + 3) // len(apps)) + 1
         self.n_all = 2 * (n_reads + 3) + 10
         self.lay = layout(tape, apps, self.n_all, rp, v_override=v)
         self.regs = component_regions(tape, apps, rp)

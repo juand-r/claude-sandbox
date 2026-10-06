@@ -683,6 +683,8 @@ static int unit_sweep(void) {
         if (tau <= u->tlast) { req_t = tau; failed = 41; return ERR; }
         /* key: gliders then items, at tau, offsets from the unit's first item */
         int64_t ref = left_edge(&items[u->it[0]], tau);
+        for (int q = 0; q < o->n; q++)          /* every glider still before the unit */
+            if (right_edge(&items[o->it[q]], tau) > ref) { req_t = tau; failed = 49; return ERR; }
         int32_t *k = ukey; int32_t n = 0;
         k[n++] = o->n; k[n++] = u->n;
         for (int q = 0; q < o->n + u->n; q++) {
@@ -813,12 +815,11 @@ int gc_set_unit(int64_t dt, const int32_t *res, int32_t n) {
 int gc_rope_absorb(int64_t n, int64_t sep) {
     if (head < 0 || items[head].kind != SENL) { failed = 30; return ERR; }
     int32_t i = items[head].next;
+    /* this call's items start new units: an in-transit ossifier may
+       already have swept the last old unit (its sweep runs ahead of now) */
     int64_t last_r = INT64_MIN;          /* right edge of the last E absorbed */
     int64_t last_a = INT64_MIN;          /* left edge of the last A absorbed */
-    if (n_units) {
-        Unit *u = &units[n_units - 1];
-        last_r = right_edge(&items[u->it[u->n - 1]], now);
-    }
+    int64_t first_unit = n_units, first_oss = n_oss;
     for (int64_t c = 0; c < n; c++) {
         if (i < 0) { failed = 31; return ERR; }
         Item *it = &items[i];
@@ -826,7 +827,7 @@ int gc_rope_absorb(int64_t n, int64_t sep) {
         it->ptok = 0; it->prev = it->next = -1;      /* its events are void */
         int64_t l = left_edge(it, now);
         if (is_fam(it, 2)) {
-            if (!n_units || l - last_r >= sep) {
+            if (n_units == first_unit || l - last_r >= sep) {
                 GROW(units, n_units, cap_units, 1);
                 units[n_units].n = 0; units[n_units].tlast = 0; n_units++;
             }
@@ -836,7 +837,7 @@ int gc_rope_absorb(int64_t n, int64_t sep) {
             if (it->tc > u->tlast) u->tlast = it->tc;
             last_r = right_edge(it, now);
         } else if (is_fam(it, 0)) {
-            if (!n_oss || l - last_a >= sep || oss[n_oss - 1].prog != n_units) {
+            if (n_oss == first_oss || l - last_a >= sep || oss[n_oss - 1].prog != n_units) {
                 GROW(oss, n_oss, cap_oss, 1);
                 oss[n_oss].n = 0; oss[n_oss].prog = n_units; oss[n_oss].t = now; n_oss++;
             }
@@ -847,6 +848,8 @@ int gc_rope_absorb(int64_t n, int64_t sep) {
         } else { failed = 34; return ERR; }
         i = nx;
     }
+    for (int64_t q = first_oss; q < n_oss; q++)
+        if (oss[q].n != 4) { failed = 37; return ERR; }       /* an ossifier cut apart */
     items[head].next = i;
     if (i >= 0) items[i].prev = head; else tail = head;
     rope_on = 1;

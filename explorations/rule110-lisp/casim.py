@@ -81,6 +81,22 @@ def padded_row(tape, appendants, left_periods, right_periods, left_pad,
 A_ROW_CELLS = 28              # t=0 width of one A block (checked below)
 
 
+class _LazyRow:
+    """Cells [lo, hi) of an encoder.RightPlacement as a sliceable row."""
+
+    def __init__(self, placement, lo, hi):
+        self.p, self.lo, self.hi = placement, lo, hi
+
+    def __len__(self):
+        return self.hi - self.lo
+
+    def __getitem__(self, s):
+        if not isinstance(s, slice) or s.step not in (None, 1):
+            raise TypeError("only plain slices of a lazy row")
+        a, b, _ = s.indices(self.hi - self.lo)
+        return self.p.cells(self.lo + a, self.lo + b)
+
+
 class Layout:
     """The t=0 row as non-ether segments and the ether between them.
 
@@ -168,11 +184,16 @@ def layout(tape, appendants, left_periods, right_periods, v_override=None):
     for ether at both ends."""
     from encoder import (OSSIFIER, Placed, _attach, _left_v, _right_block_seq,
                          load_blocks, right_super_period)
-    m, w = right_super_period(tape, appendants) if right_periods > 2 else (0, 0)
+    # the super-period costs m + 1 periods of placement; only for many periods
+    m, w = right_super_period(tape, appendants) if right_periods > 4 else (0, 0)
     if not m or right_periods <= m + 1:
-        bits, placed = assemble(tape, appendants, 0, right_periods)
-        x_c = placed[0].gspan(0)[0]
-        bits = trim_right_to_ether(bits)
+        from encoder import right_placement
+        rp = right_placement(tape, appendants, right_periods)
+        placed = [rp.placed(0)]
+        x_c = rp.lo
+        tail = min(rp.hi - rp.lo, 1 << 14)
+        hi = rp.hi - tail + len(trim_right_to_ether(rp.cells(rp.hi - tail, rp.hi)))
+        bits = _LazyRow(rp, x_c, hi)               # rendered on demand
         right = [(x_c, bits)]
     else:
         # one super-period of m periods, repeated (shared, not copied)

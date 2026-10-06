@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from casim import Run, StreamRun, padded_row
+from casim import Run, StreamRun, layout, padded_row
 
 
 def test_stream_run_matches_full_run():
@@ -117,3 +117,28 @@ def test_periodic_right_side():
     direct = [(placed[a + 1].gspan(0)[0], placed[b - 1].gspan(0)[1])
               for a, b in zip(lead, lead[1:])]
     assert component_regions(tape, apps, rp) == direct
+
+
+def test_lazy_right_side_equals_assemble():
+    """casim.layout renders the central and right sides on demand
+    (encoder.RightPlacement): the same cells as assemble(), and the same
+    component regions as the Placed list gives."""
+    from encoder import assemble
+    from experiments import component_regions
+    from lisp_bus import LispBus
+    lb = LispBus("(car (quote (a b)))")
+    comp = lb.compile_bus()
+    tape = comp.pm.encode(comp.initial_tape(lb.values))
+    apps = comp.pm.appendants()
+    bits, placed = assemble(tape, apps, 0, 2)
+    lay = layout(tape, apps, 3, 2)
+    x_c = placed[0].gspan(0)[0]
+    seg = [b for x, b in lay.segments if x == x_c][0]
+    n = len(seg)
+    assert n <= len(bits) and np.array_equal(seg[0:n], bits[:n])
+    assert np.array_equal(lay.cells(x_c + 1000, x_c + 5000), bits[1000:5000])
+    names = [p.block.name for p in placed]
+    leaders = [i for i, c in enumerate(names) if c in "GKL"]
+    old = [(placed[a + 1].gspan(0)[0], placed[b - 1].gspan(0)[1]) if b - a > 1 else (None, None)
+           for a, b in zip(leaders, leaders[1:])]
+    assert component_regions(tape, apps, 2)[:len(old)] == old
