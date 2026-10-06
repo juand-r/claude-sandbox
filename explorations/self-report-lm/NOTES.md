@@ -43,3 +43,14 @@ No bug that would have invalidated the runs. Fixed before the main runs:
 Canary (300 steps, joint): 0.5 s per step with 2 threads; validation loss 4.52
 (step 250) and 4.34 (step 300); self-report R² 0.34 (training tokens) and 0.41
 (held-out, biased subset). Main runs set to 15,000 steps (61M tokens).
+
+## 2026-10-06: main runs
+
+joint_s0 and lmonly_s0 finished (15,000 steps each; validation loss 2.261 and
+2.154). Seed-1 joint run started when the baseline finished.
+
+Mistake: the Jacobian measurement used a generic autograd jacobian (128 backward
+passes per token, about 69 s per token with the CPU shared). The first
+measurement ran 44 minutes without finishing one model; I stopped it. Fixed:
+each of the 128 question sequences gets its own copy of x, so one backward pass
+gives all rows of J (1 s per token, identical result; tested).

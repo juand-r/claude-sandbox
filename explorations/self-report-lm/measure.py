@@ -49,13 +49,26 @@ def answers_for(model, x):
     return model.answer(x.unsqueeze(0).expand(d, d), torch.arange(d))
 
 
+def jacobian(model, x):
+    """J = ∂a/∂x for the DIM answers about a vector x. The answer to question i comes from its
+    own sequence, so giving each sequence its own copy of x makes one backward pass return all
+    rows: row i of J is the gradient of answer i with respect to copy i. (A generic
+    autograd jacobian needed DIM backward passes per token and was about 100 times slower.)"""
+    d = x.shape[0]
+    with torch.enable_grad():
+        copies = x.detach().unsqueeze(0).repeat(d, 1).requires_grad_(True)
+        a = model.answer(copies, torch.arange(d))
+        (grad,) = torch.autograd.grad(a.sum(), copies)
+    return grad
+
+
 def jacobian_measures(model, tokens):
     d = model.E.shape[1]
     rows = {"follow": [], "other": [], "follow_length": [], "follow_direction": [], "ones_mean": [], "ones_sd": []}
     with torch.enable_grad():
         for t in tokens.tolist():
             x = model.E[t].detach().clone()
-            J = torch.autograd.functional.jacobian(lambda v: answers_for(model, v), x)
+            J = jacobian(model, x)
             f = J.trace().item() / d
             xh = x / x.norm()
             radial = (xh @ J @ xh).item()

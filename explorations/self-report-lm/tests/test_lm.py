@@ -179,3 +179,12 @@ def test_centred_r2():
     m.report = lambda t, i: means[i]
     r2, centred, coord = Ms.r2_set(m, toks)
     assert abs(centred) < 1e-6 and abs(r2 - coord) < 1e-6 and coord > 0.5   # per-coordinate offsets
+
+
+def test_fast_jacobian_equals_autograd_jacobian():
+    m = small_model()
+    with torch.no_grad():
+        m.number_head.weight.normal_()
+    x = m.E[7].detach()
+    slow = torch.autograd.functional.jacobian(lambda v: Ms.answers_for(m, v), x)
+    torch.testing.assert_close(Ms.jacobian(m, x), slow, atol=1e-6, rtol=1e-5)
