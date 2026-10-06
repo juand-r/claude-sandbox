@@ -144,10 +144,11 @@ machine steps on a 7.9M-symbol tag alphabet, ~1e19 generations or more.
   except the last use, which takes the block.
 - Register lifetimes (busm): registers enter the queue at first use and
   leave after the last, so only live registers cost reads.
-- On gliders the cost per read grows with the read count: ossifiers cross
-  all debris left of the queue (~8 x reads^2 events). For `last` of
-  (a b c), ~2e11 events. Remedy: an engine macro for an ossifier crossing
-  periodic debris (not built).
+- On gliders the cost per read grew with the read count: ossifiers cross
+  all debris left of the queue (~8 x reads^2 events). Remedy built: the
+  debris rope (REPORT 7.6), memoized ossifier x debris crossings outside
+  the event list. `last` of (a b c) on gliders: 157,824 reads, value c,
+  1.35e9 events, 2.0 h.
 
 ## 6. Plan
 
@@ -157,8 +158,10 @@ machine steps on a 7.9M-symbol tag alphabet, ~1e19 generations or more.
       bound), exact at the CTS level.
 - [x] `(car (quote (a b)))` on gliders, value read out (115 s).
 - [x] `lisp110.py`: command line entry point.
-- [ ] cond/eq? expression on gliders (running).
-- [ ] Options: engine macro for the junk sweep; a periodic interpreter
-      loop for unbounded recursion; constant-factor compiler work.
+- [x] cond/eq? expression on gliders.
+- [x] Engine macro for the junk sweep (the debris rope).
+- [x] `last` of (a b c) on gliders (recursive, depth 3).
+- [ ] Options: a periodic interpreter loop for unbounded recursion;
+      constant-factor compiler work.
 
 Status log: NOTES.md (phase 10).

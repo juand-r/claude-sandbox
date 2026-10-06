@@ -355,4 +355,4 @@ configuration at entry (NOTES phase 10b).
 - [x] Python: train draws, absorption, GasReads option
 - [x] Exactness: car, rope vs no rope (600 reads in tests; 2,448 full)
 - [x] Exactness and speed: cond (10,836 reads; 7.5e7 vs 9.3e8 events)
-- [ ] Run last (a b c) on gliders, monitored (started)
+- [x] Run last (a b c) on gliders, monitored: 157,824/157,824 reads, value c, 2.0 h

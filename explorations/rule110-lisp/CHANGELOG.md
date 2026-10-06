@@ -18,6 +18,13 @@ Lisp on Rule 110 without the tower (REPORT 7; INTERPRETER.md; phase 10)
   115 s (old tower: ~1e19 generations).
 - Found: on gliders the cost per read grows with reads (ossifiers cross
   accumulated debris), ~8 x reads^2 events; dominates small queues.
+- Debris rope (gasc.c, gasc.py): debris left of the ossifiers leaves the
+  event list; ossifier x debris-unit crossings are memoized on their
+  exact configuration. Exact against the plain engine on car and cond
+  (12x fewer events on cond). ReadWatch.pending no longer rescans all
+  reads (77% of the wall time on long runs).
+- (last (quote (a b c))) with a recursive define, on gliders:
+  157,824/157,824 reads, value c, 1.35e9 events, 2.0 h.
 
 An event engine (REPORT 5; PLAN.md phase 9, item 1)
 - gas.py (reference, Python), gasc.c/gasc.py (C event loop),

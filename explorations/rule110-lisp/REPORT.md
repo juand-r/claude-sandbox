@@ -98,9 +98,9 @@ The main claims, in decreasing order of the strength of their evidence:
    115 s (4,512 reads, all correct, value read off the gliders) and a
    cond/eq? expression in 37 min (34,818 reads). The old tower needs
    ~1e19 generations for the first. lambda and define work with a
-   compile-time recursion bound, exact at the CTS level; on gliders,
-   long runs cost about reads² because ossifiers cross accumulated
-   debris (section 7.6).
+   compile-time recursion bound; the recursive `last` of (a b c) ran on
+   gliders in 2.0 h (157,824 reads, value `c`), after debris crossings
+   were taken out of the event list and memoized (section 7.6).
 11. **A programmable Rule 110 computer that is not a cyclic tag system
    exists; a universal one was not found.** A one-counter machine driven
    by a fixed glider stream branches on zero and runs compiled loop
@@ -1234,18 +1234,21 @@ at 7.5 v (failures were measured above ~11.05 v). Command:
 |---|---|---|---|---|---|---|---|---|
 | `(car (quote (a b)))` | before lifetimes | 4,512 | 99,303 | 4,512 / 4,512 | `a` | 1.35e10 | 1.6e8 | 115 s |
 | `(cond ((eq? (quote a) (quote b)) (quote x)) (t (quote y)))` | before lifetimes | 34,818 | 117,027 | 34,818 / 34,818 | `y` | 1.23e11 | 9.6e9 | 37 min |
+| `(define (last l) (cond ((atom? (cdr l)) (car l)) (t (last (cdr l))))) (last (quote (a b c)))`, depth 3 | lifetimes, debris rope (7.6) | 157,824 | 108,214 | 157,824 / 157,824 | `c` | 5.14e11 | 1.35e9 | 2.0 h |
 
 *Interpretation.* A Lisp expression typed by the user is translated into
 a Rule 110 initial condition, Rule 110 evolves, and the value is read
 out of the glider field. The compiler, the schedule, the read check and
 the decoding are exact and tested at every level.
 
-Both runs used the compiler before register lifetimes and the scheduler
-fix; the current compiler needs 2,448 and 14,238 reads for them. The
-logs are `data/lisp_car_gas.log` and `data/lisp_cond_gas.log`.
+The first two runs used the compiler before register lifetimes and the
+scheduler fix; the current compiler needs 2,448 and 10,836 reads for
+them. The third is a recursive program (inlined to depth 3) and ran
+with the debris rope of 7.6. The logs are `data/lisp_car_gas.log`,
+`data/lisp_cond_gas.log` and `data/lisp_last_gas.log`.
 
-*Scope.* Two expressions were run on gliders; the recursive programs
-were checked at the CTS level only (next paragraph). The bus compiler
+*Scope.* Three expressions were run on gliders, one of them recursive
+(`last`, with the recursion inlined at compile time). The bus compiler
 supports lambda and define only with a compile-time depth bound;
 unbounded recursion would need a periodic interpreter loop, which is not
 built.
@@ -1267,10 +1270,59 @@ the queue is small, as it is here. A fit to the `car` run gives about
 8 x reads² events. For `last` (157,824 reads) that is about 2e11
 events, a day of simulation, against about 3e9 for the queue crossings.
 
-*Recommendation.* An engine-level macro step for an ossifier crossing a
-long periodic stretch of debris would make long runs roughly linear.
-Item counts change between snapshots (the debris objects merge and
-split), so this needs real engine work, not a rigid-shift shortcut.
+*The remedy built: the debris rope.* The debris left of the rightmost
+ossifier is taken out of the event list into a separate structure, the
+rope. It is grouped into units: runs of debris items closer than 1,600
+cells to each other. Ossifiers are swept through the rope one unit at a
+time, and each ossifier x unit crossing is looked up in a memo keyed by
+the exact relative configuration (orbit, phase and offset of every
+glider and item) at the moment the lead glider comes within 32 cells of
+the unit. A key not yet in the memo is simulated once by the reference
+engine. When an ossifier has crossed the whole rope it re-enters the
+event list at the left edge. A single glider x item crossing could not
+be used as the unit, because the four gliders of an ossifier pass an
+item through a multi-step reaction. Every assumption the rope makes is
+checked at run time and stops the run with an error code when it fails
+(gasc.c, codes 30-49).
+
+*Exactness check.* The rope was compared with the plain engine on two
+programs, at the spacing set by the gap rule:
+
+| program | reads | plain: events, wall | rope: events, wall | rope crossings | memo entries |
+|---|---|---|---|---|---|
+| `car` (test, 600 reads) | 600 | - | - | > 10,000 | - |
+| `cond` (current compiler) | 10,836 | 9.32e8, 330 s | 7.53e7, 229 s | 5.35e7 | 2 |
+
+In both, every read outcome and every census count are equal, the final
+time is equal, and the gas right of the rope is equal item for item.
+The debris inside the rope is not compared item by item; it changes
+only through memoized crossings, each of which was simulated exactly
+once.
+
+*Result on a long program.* With the rope, `last` of (a b c) ran all
+157,824 reads correctly in 2.0 h with 1.35e9 events (7.5). Without the
+rope the fit above predicts about 2e11 events; that run was not made.
+Events per block of 10,000 reads stayed at 17 to 21 times the CTS queue
+summed over the block's reads. That ratio is the cost of the program's
+own work, and it no longer grows with the read count.
+
+*Interpretation.* The quadratic growth has moved, not vanished. The
+number of crossings is still quadratic (1.24e10 for `last`), but a
+crossing is a memo lookup in C, far cheaper than an event. It shows as
+a slowly rising time per event, from 3.2 µs early in the `last` run to
+about 7 µs at the end. Only two distinct crossing configurations
+occurred in either program, so the debris is far more regular, seen
+from an ossifier, than its raw item list suggests.
+
+*Remaining uncertainty.* The rope was checked against the plain engine
+on `car` and `cond` only. On `last` it was checked against the CTS (every
+read) but not against the plain engine, which would need about a day.
+
+*A pitfall met on the way.* A first `cond` run with the rope stopped
+with a rope error at read ~4,990. The cause was a spacing v reused from
+the old compiler's run, at which the current CTS has a gap of 11.45 v,
+past the failure threshold of 3.8. The plain engine fails at the same
+place. The rope's check caught a failing construction, as it should.
 
 ## 8. What comes next
 
@@ -1296,10 +1348,9 @@ gliders, value read out.
 
 Open, roughly in order of value:
 
-- The debris sweep (7.6): an engine macro step for an ossifier crossing
-  a long periodic stretch of debris would make long glider runs roughly
-  linear in reads instead of quadratic. Needed for recursive programs on
-  gliders (`last` of (a b c): ~2e11 events now).
+- Done: the debris sweep (7.6). Open: the number of rope crossings is
+  still quadratic in reads (cheap, but it dominates very long runs); a
+  unit-level memo of whole stretches would remove it.
 - Unbounded recursion: a periodic interpreter loop in the bus machine
   (memory bounded by a register file), instead of compile-time inlining.
 

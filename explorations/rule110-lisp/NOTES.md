@@ -1070,3 +1070,14 @@ final t, and the 2,909 items right of the rope cut identical item for
 item (the absorbed debris is not compared item by item; it is only
 reachable through the crossings, which are exact by construction and
 checked). Wall time is now dominated by the read check, not events.
+
+`last` of (a b c) on gliders (lisp110.py --gliders --depth 3, rope on,
+v = 108,214 by the gap rule): 157,824/157,824 reads MATCH, value c =
+lisp.py, t = 5.14e11, 1.35e9 events, 7,196 s. Rope: 1.24e10 crossings,
+2 memo entries, 157,156 units at the end. First attempt was correct but
+projected 4 h: ReadWatch.pending rescanned all 315k read slots at every
+sample (77% of samples, py-spy); a settled-prefix cursor gave the same
+reads and events at 6x the speed. Events per 10k reads / CTS queue sum
+over them: 17-21 throughout, i.e. linear in the program's work. Time
+per event rose 3.2 -> ~7 us: the crossings are still quadratic in count
+(C memo lookups). Log: data/lisp_last_gas.log.
