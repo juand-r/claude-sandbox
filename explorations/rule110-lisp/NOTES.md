@@ -1109,3 +1109,14 @@ Checks so far:
   160,152 plus 1.2354635e10 jumped = 12,354,795,124, the slow rope's
   crossing count exactly; all reads equal the CTS; snapshots equal to
   the slow rope (to read 100k so far) and to plain (to 40k so far).
+- Container restart at ~18:45 killed all runs. The plain run resumed from
+  its checkpoint (read 50,000) after a census fix: a key index past the
+  end of the single-particle table was not flagged as missing when the
+  table's last entry was filled (gascensus._missing; regression test).
+- last, slow rope (rerun, no jumps) vs jumps: all 16 snapshots and the
+  end equal; outcomes and census counts equal. Slow rope 12,336 s (CPU
+  shared with two other runs), jumps 2,566 s alone.
+- lisp110.py --gliders with jumps (default now): value c, 157,824/157,824
+  reads (3,946 s, CPU shared).
+- Where the time goes now (py-spy, cond with jumps): 82% the read check
+  (census sampling and rendering), 11-13% the event engine.
