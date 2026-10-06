@@ -9,7 +9,7 @@
   and notes (`check_numbers.py`).
 - [x] Screenshot every step of every slide; fix layout and build-up problems (list below).
 - [x] Dark mode, phone width, presenter view, formula wrapping.
-- [ ] Redesign "the story so far" with the user (the current slide is a placeholder).
+- [x] Redesign "the story so far" as a table, as the user asked (details below).
 
 ## Requests that shaped the deck
 - Same style as the SVM deck. Title "Nonlinear Regression".
@@ -17,12 +17,21 @@
   social-impact card is kept as it was in the SVM deck ("Today, end of class.").
 - Cover everything in the lecture, without the banter; lean slides, since the questions to the class
   are said out loud; no instructions on how to use the widgets.
-- "The story so far" will be redesigned later. For now it is the SVM deck's map with SVMs marked
-  covered and the path lit to regression.
+- "The story so far" (user's design): a table instead of a tree. Classification on the left,
+  regression on the right; each classifier beside its regression version. Rows: logistic regression
+  (faint, not covered) | linear regression; decision trees | regression trees; nearest neighbors |
+  kNN regression; SVMs | support vector regression; Naive Bayes | a faint dash. The three regression
+  versions fill in one per click, in lecture order. Polynomial regression and neural networks are
+  left out. Icons are static: the classification ones from the Naive Bayes deck; logistic regression,
+  regression trees, kNN regression and SVR are new, in the same style.
+- Naive Bayes row: a regression version exists (Frank, Trigg, Holmes & Witten, "Naive Bayes for
+  regression", Machine Learning 41, 2000) but is rarely used and, by that paper's own results,
+  performs poorly; Gaussian naive Bayes takes continuous features but still predicts a class. The
+  user is undecided; the cell is a faint dash for now.
 
 ## Slide outline
 1. Announcements (3 cards).
-2. Supervised learning: the story so far (placeholder).
+2. Supervised learning: the story so far (table: each classifier beside its regression version).
 3. Title: Nonlinear Regression.
 4. Not every pattern is a line: dosage data, the least-squares line, then a regression tree.
 5. A regression tree: the tree (splits at 14.5, 29, 23.5 mg) beside its step-function fit; one leaf

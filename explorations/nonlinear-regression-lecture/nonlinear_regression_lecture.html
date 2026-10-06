@@ -265,18 +265,23 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .hook{font-size:1.15em;color:var(--muted);margin:.75em 0 0;max-width:33rem}
 
 
-/* supervised-learning map: technical-drawing tree, adapted from the Naive Bayes deck */
-.treeslide{width:100%}
+/* supervised-learning map: classifiers beside their regression versions, with the Naive Bayes deck's icons */
+.treeslide{width:100%;max-width:64rem;margin:0 auto}
 .treewrap{margin-top:clamp(12px,2vh,20px);background:transparent;border:0;box-shadow:none;padding:0}
-#fig-tree svg{max-height:min(64vh,580px);margin:0 auto;display:block;overflow:visible}
 .tree-svg [stroke]{vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;shape-rendering:geometricPrecision}
-.tree-svg .thit{pointer-events:all}
-.tree-svg .tl{font-family:"Source Sans 3",system-ui,sans-serif;font-size:13.5px;font-weight:600;letter-spacing:.1em;fill:var(--muted)}
-.tree-svg .tl.today,.tree-svg .tc.today{fill:var(--model)}
-.tree-svg .tl.done{fill:var(--ink)}
-.tree-svg .tc{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.06em;fill:var(--muted);opacity:.8}
-#fig-tree g[data-s]{transition:opacity .5s ease}
-#fig-tree path[data-s]{transition:opacity .5s ease,stroke .5s ease,stroke-width .5s ease}
+.maptab{width:calc(100% + 28px);border-collapse:separate;border-spacing:14px 9px;margin:0 -14px}
+.maptab th{text-align:left;font-family:"JetBrains Mono",monospace;font-size:.86em;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:0 4px}
+.maptab td{width:50%;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:7px 12px;height:clamp(58px,9.4vh,84px)}
+.maptab td.today{border-style:dashed}
+.maptab td.today:has(.mc:not(.pending)){border-style:solid;border-color:var(--model);background:var(--model-soft)}
+.maptab .mc{display:flex;align-items:center;gap:14px}
+.maptab .ico svg{display:block;width:clamp(78px,8vw,112px);height:auto}
+.maptab .nm{font-weight:600;font-size:1.05em;flex:1}
+.maptab .st{font-family:"JetBrains Mono",monospace;font-size:.75em;letter-spacing:.06em;color:var(--muted)}
+.maptab td.today .nm,.maptab td.today .st{color:var(--model)}
+.maptab td.faint .mc{opacity:.4}
+@media (max-width:620px){.maptab .st{display:none}.maptab .ico svg{width:56px}.maptab{width:calc(100% + 12px);border-spacing:6px 6px;margin:0 -6px}
+  .maptab td{padding:6px 8px}.maptab .mc{flex-direction:column;align-items:flex-start;gap:4px}.maptab .nm{font-size:.85em}}
 /* ---------- SVM lecture: added components ---------- */
 .boundslide{width:100%}
 .boundimgs{display:flex;gap:clamp(14px,2vw,32px);justify-content:center;align-items:center;margin-top:clamp(14px,2.4vh,28px)}
@@ -382,19 +387,27 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   </div>
 </section>
 
-<!-- THE STORY SO FAR · placeholder, to be redesigned -->
-<section class="slide one" id="s-tree" data-steps="4">
+<!-- THE STORY SO FAR · each classifier next to its regression version -->
+<section class="slide one" id="s-tree" data-steps="3">
   <div class="treeslide">
     <div class="eyebrow">The map</div>
     <h2>Supervised learning: the story so far</h2>
-    <div class="fig treewrap"><div id="fig-tree"></div></div>
+    <div class="fig treewrap"><table class="maptab" id="fig-map">
+      <thead><tr><th>Classification</th><th>Regression</th></tr></thead>
+      <tbody>
+        <tr><td class="faint"><div class="mc"><span class="ico" data-v="logit"></span><span class="nm">Logistic regression</span><span class="st">not covered</span></div></td><td class=""><div class="mc"><span class="ico" data-v="regression"></span><span class="nm">Linear regression</span><span class="st">covered</span></div></td></tr>
+        <tr><td class=""><div class="mc"><span class="ico" data-v="tree"></span><span class="nm">Decision trees</span><span class="st">covered</span></div></td><td class="today"><div class="mc" data-step="1"><span class="ico" data-v="rtree"></span><span class="nm">Regression trees</span><span class="st">today</span></div></td></tr>
+        <tr><td class=""><div class="mc"><span class="ico" data-v="knn"></span><span class="nm">Nearest neighbors</span><span class="st">covered</span></div></td><td class="today"><div class="mc" data-step="2"><span class="ico" data-v="knnreg"></span><span class="nm">kNN regression</span><span class="st">today</span></div></td></tr>
+        <tr><td class=""><div class="mc"><span class="ico" data-v="svm"></span><span class="nm">SVMs</span><span class="st">covered</span></div></td><td class="today"><div class="mc" data-step="3"><span class="ico" data-v="svr"></span><span class="nm">Support vector regression</span><span class="st">today</span></div></td></tr>
+        <tr><td class=""><div class="mc"><span class="ico" data-v="bayes"></span><span class="nm">Naive Bayes</span><span class="st">covered</span></div></td><td class="faint"><div class="mc"><span class="nm">—</span></div></td></tr>
+      </tbody>
+    </table></div>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>Supervised learning: every training example comes with its answer.</p>
-    <p><b class="cue">1</b>Two kinds of answer: a category (classification) or a number (regression).</p>
-    <p><b class="cue">2</b>What we have covered: decision trees, nearest neighbor, naive Bayes and SVMs for classification; linear and polynomial regression.</p>
-    <p><b class="cue">3</b>Next week, neural networks, which do both classification and regression.</p>
-    <p><b class="cue">4</b>Today's path: supervised, regression.</p>
+    <p><b class="cue">0</b>Classifiers we have covered, each in a row. On the regression side so far only linear regression, whose classification partner, logistic regression, we have not covered.</p>
+    <p><b class="cue">1</b>Today: a decision tree whose leaves predict numbers, the regression tree.</p>
+    <p><b class="cue">2</b>kNN regression: average the neighbours' y instead of taking their majority class.</p>
+    <p><b class="cue">3</b>Support vector regression: a tube around a line instead of a margin between classes. Naive Bayes has no regression version that is commonly used.</p>
   </div>
 </section>
 
@@ -1633,126 +1646,69 @@ const LX=LIN.x.map(v=>[v]);
   set(PRESET[0]);
 }
 
-/* ---------- supervised-learning map (adapted from the Naive Bayes deck's taxonomy tree) ----------
-   Only the supervised branch. Steps: 0 root, 1 classification / regression, 2 methods covered,
-   3 neural networks (next week), 4 the path to today's topic, regression. */
+/* ---------- supervised-learning map: classifiers beside their regression versions ----------
+   Static icons, drawn once. Classification icons are the Naive Bayes deck's (via the SVM deck);
+   logistic regression and the three regression versions are new, in the same style. */
 {
- const host=document.getElementById('fig-tree');
- const W=1300,H=500;
- const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Supervised learning splits into classification and regression. Decision trees, nearest neighbor, naive Bayes and support vector machines (covered) sit under classification; linear and polynomial regression (covered) under regression; neural networks (next week) under both.'},host);
- svg.setAttribute('class','tree-svg');
- const eg=el('g',{},svg),ng=el('g',{},svg);
  const rng=seed=>{let t=seed>>>0;return()=>{t+=0x6D2B79F5;let r=Math.imul(t^t>>>15,1|t);r^=r+Math.imul(r^r>>>7,61|r);return((r^r>>>14)>>>0)/4294967296;};};
- // class colours follow this deck: positives green, negatives purple; fitted curves teal
  const C={a:'var(--pos)',b:'var(--mean)',fit:'var(--model)',d:'var(--hi)',ink:'var(--ink)',mu:'var(--muted)',line:'var(--line)'};
- const lerp=(a,b,t)=>a+(b-a)*t;
- function plot(g,x,y,w,h,accent,{axes=true}={}){
-   el('rect',{x,y,width:w,height:h,rx:8,fill:'var(--surface)',stroke:accent||'var(--line)','stroke-width':1,class:'tframe'},g);
-   const p=10,X=u=>x+p+u*(w-2*p),Y=v=>y+h-p-v*(h-2*p);
+ const W=150,H=74;
+ function plot(svg,{axes=true}={}){
+   const g=el('g',{},svg);
+   el('rect',{x:0,y:0,width:W,height:H,rx:8,fill:'var(--surface)',stroke:'var(--line)','stroke-width':1},g);
+   const p=10,X=u=>p+u*(W-2*p),Y=v=>H-p-v*(H-2*p);
    if(axes)el('path',{d:`M${X(0)} ${Y(1)} V${Y(0)} H${X(1)}`,fill:'none',stroke:C.line,'stroke-width':1,opacity:.75},g);
    return {X,Y,g};
  }
  const dot=(P,u,v,c,r=2)=>el('circle',{cx:P.X(u),cy:P.Y(v),r,fill:c},P.g);
  const ring=(P,u,v,c,r=2.2)=>el('circle',{cx:P.X(u),cy:P.Y(v),r,fill:'var(--surface)',stroke:c,'stroke-width':1},P.g);
- const cloud=(n,s)=>{const r=rng(s);return Array.from({length:n},()=>[r(),r()]);};
- const VIZ={
-  supervised:P=>{const pts=cloud(14,11).map(([u,v])=>({u,v,c:dot(P,u,v,C.mu)}));
-    return p=>{const n=Math.round(p*pts.length);pts.forEach((q,i)=>q.c.setAttribute('fill',i<n?(q.u+q.v>1?C.a:C.b):C.mu));};},
-  classification:P=>{const r=rng(5);for(let i=0;i<7;i++){dot(P,.08+r()*.42,.5+r()*.45,C.a);ring(P,.5+r()*.45,.08+r()*.42,C.b);}
-    const ln=el('line',{stroke:C.ink,'stroke-width':1,'stroke-dasharray':'3 3'},P.g);
-    return p=>{const a=Math.PI/4+(p-.5)*.5,d=.62;ln.setAttribute('x1',P.X(.5-d*Math.cos(a)));ln.setAttribute('y1',P.Y(.5-d*Math.sin(a)));ln.setAttribute('x2',P.X(.5+d*Math.cos(a)));ln.setAttribute('y2',P.Y(.5+d*Math.sin(a)));};},
+ const path=(P,f,a={})=>{let d='';for(let i=0;i<=40;i++){const u=i/40;d+=(i?'L':'M')+P.X(u)+' '+P.Y(f(u))+' ';}return el('path',{d,fill:'none',stroke:C.fit,'stroke-width':1.3,...a},P.g);};
+ // a bump-shaped cloud for the three nonlinear regression icons
+ const bump=u=>.12+.72*Math.exp(-(((u-.45)/.17)**2));
+ const bumpPts=(P,s)=>{const r=rng(s);for(let i=0;i<13;i++){const u=.04+i*.077;dot(P,u,bump(u)+(r()-.5)*.14,C.mu,1.9);}};
+ const ICON={
   regression:P=>{const r=rng(3);for(let i=0;i<10;i++){const u=.06+i*.095;dot(P,u,.15+.7*u+(r()-.5)*.28,C.mu,1.9);}
-    el('line',{x1:P.X(.02),y1:P.Y(.16),x2:P.X(.98),y2:P.Y(.84),stroke:C.fit,'stroke-width':1.2},P.g);
-    const guide=el('line',{stroke:C.fit,'stroke-width':.8,'stroke-dasharray':'2 3',opacity:.8},P.g);
-    const m=el('circle',{r:3,fill:C.fit,stroke:'var(--surface)','stroke-width':1.2},P.g);
-    return p=>{const u=.04+.92*p,v=.16+(u-.02)*(.68/.96);m.setAttribute('cx',P.X(u));m.setAttribute('cy',P.Y(v));guide.setAttribute('x1',P.X(u));guide.setAttribute('x2',P.X(u));guide.setAttribute('y1',P.Y(v));guide.setAttribute('y2',P.Y(0));};},
-  tree:P=>{const rT=el('rect',{x:P.X(.5),y:P.Y(1),width:P.X(1)-P.X(.5),height:P.Y(.5)-P.Y(1),fill:C.b,opacity:0},P.g);
-    const rL=el('rect',{x:P.X(0),y:P.Y(1),width:P.X(.5)-P.X(0),height:P.Y(0)-P.Y(1),fill:C.a,opacity:.07},P.g);
-    const rB=el('rect',{x:P.X(.5),y:P.Y(.5),width:P.X(1)-P.X(.5),height:P.Y(0)-P.Y(.5),fill:C.a,opacity:0},P.g);
-    const v=el('line',{x1:P.X(.5),y1:P.Y(1),x2:P.X(.5),y2:P.Y(1),stroke:C.ink,'stroke-width':1},P.g);
-    const h=el('line',{x1:P.X(.5),y1:P.Y(.5),x2:P.X(.5),y2:P.Y(.5),stroke:C.ink,'stroke-width':1},P.g);
-    const r=rng(7);for(let i=0;i<5;i++){dot(P,.06+r()*.38,.1+r()*.8,C.a,1.9);ring(P,.56+r()*.38,.58+r()*.34,C.b,2);dot(P,.56+r()*.38,.08+r()*.34,C.a,1.9);}
-    return p=>{const f1=Math.min(1,p/.5),f2=Math.max(0,(p-.5)/.5);v.setAttribute('y2',P.Y(1-f1));h.setAttribute('x2',P.X(.5+.5*f2));rL.setAttribute('opacity',.07*f1);rT.setAttribute('opacity',.07*f2);rB.setAttribute('opacity',.07*f2);};},
-  knn:P=>{const r=rng(13);const pts=[];for(let i=0;i<6;i++){pts.push(dot(P,.08+r()*.5,.1+r()*.8,C.a,1.9));pts.push(ring(P,.5+r()*.45,.1+r()*.8,C.b,2));}
-    const rg=el('circle',{cx:P.X(.5),cy:P.Y(.5),r:17,fill:'none',stroke:C.ink,'stroke-width':.9,'stroke-dasharray':'2 3'},P.g);
-    el('circle',{cx:P.X(.5),cy:P.Y(.5),r:3,fill:C.d},P.g);
-    const cx=P.X(.5),cy=P.Y(.5);
-    return p=>{const R=lerp(7,24,p);rg.setAttribute('r',R);pts.forEach(e=>{const x=+e.getAttribute('cx'),y=+e.getAttribute('cy');e.setAttribute('opacity',Math.hypot(x-cx,y-cy)<=R?1:.3);});};},
-  bayes:P=>{const mk=c=>({area:el('path',{fill:c,opacity:.10},P.g),line:el('path',{fill:'none',stroke:c,'stroke-width':1.1},P.g)});
-    const g1=mk(C.a),g2=mk(C.b);
-    const draw=(gg,m,s)=>{let d='';for(let i=0;i<=40;i++){const u=i/40,v=Math.exp(-((u-m)**2)/(2*s*s));d+=(i?'L':'M')+P.X(u)+' '+P.Y(v*.9)+' ';}gg.line.setAttribute('d',d);gg.area.setAttribute('d',d+`L${P.X(1)} ${P.Y(0)} L${P.X(0)} ${P.Y(0)} Z`);};
-    return p=>{const sep=lerp(.05,.2,p);draw(g1,.5-sep,.15);draw(g2,.5+sep,.15);};},
-  poly:P=>{const r=rng(17);for(let i=0;i<10;i++){const u=.06+i*.095;dot(P,u,.15+2.6*u*(1-u)+(r()-.5)*.2,C.mu,1.9);}
-    const path=el('path',{fill:'none',stroke:C.fit,'stroke-width':1.2},P.g);
-    return p=>{let d='';for(let i=0;i<=30;i++){const u=i/30,v=lerp(.58,.15+2.6*u*(1-u),p);d+=(i?'L':'M')+P.X(u)+' '+P.Y(v)+' ';}path.setAttribute('d',d);};},
-  // new: SVM icon, margin u + v = 1 ± m; points stay outside the widest margin
-  svm:P=>{const r=rng(29);let k=0;
+    el('line',{x1:P.X(.02),y1:P.Y(.16),x2:P.X(.98),y2:P.Y(.84),stroke:C.fit,'stroke-width':1.2},P.g);},
+  logit:P=>{const r=rng(9);for(let i=0;i<7;i++){const u=.04+r()*.5;dot(P,u,.04,C.b);}for(let i=0;i<7;i++){const u=.46+r()*.5;dot(P,u,.96,C.a);}
+    path(P,u=>.04+.92/(1+Math.exp(-(u-.5)*14)));},
+  tree:P=>{el('rect',{x:P.X(0),y:P.Y(1),width:P.X(.5)-P.X(0),height:P.Y(0)-P.Y(1),fill:C.a,opacity:.07},P.g);
+    el('rect',{x:P.X(.5),y:P.Y(1),width:P.X(1)-P.X(.5),height:P.Y(.5)-P.Y(1),fill:C.b,opacity:.07},P.g);
+    el('rect',{x:P.X(.5),y:P.Y(.5),width:P.X(1)-P.X(.5),height:P.Y(0)-P.Y(.5),fill:C.a,opacity:.07},P.g);
+    el('line',{x1:P.X(.5),y1:P.Y(1),x2:P.X(.5),y2:P.Y(0),stroke:C.ink,'stroke-width':1},P.g);
+    el('line',{x1:P.X(.5),y1:P.Y(.5),x2:P.X(1),y2:P.Y(.5),stroke:C.ink,'stroke-width':1},P.g);
+    const r=rng(7);for(let i=0;i<5;i++){dot(P,.06+r()*.38,.1+r()*.8,C.a,1.9);ring(P,.56+r()*.38,.58+r()*.34,C.b,2);dot(P,.56+r()*.38,.08+r()*.34,C.a,1.9);}},
+  rtree:P=>{bumpPts(P,21);
+    const S=[[0,.24,.14],[.24,.34,.5],[.34,.58,.8],[.58,.7,.45],[.7,1,.14]];
+    el('path',{d:S.map(([a,b,v],k)=>(k?'L':'M')+P.X(a)+' '+P.Y(v)+'H'+P.X(b)).join(''),fill:'none',stroke:C.fit,'stroke-width':1.3},P.g);},
+  knn:P=>{const r=rng(13),cx=P.X(.5),cy=P.Y(.5),R=17;
+    for(let i=0;i<6;i++){for(const [u,v,pos] of [[.08+r()*.5,.1+r()*.8,1],[.5+r()*.45,.1+r()*.8,0]]){
+      const e=pos?dot(P,u,v,C.a,1.9):ring(P,u,v,C.b,2);if(Math.hypot(P.X(u)-cx,P.Y(v)-cy)>R)e.setAttribute('opacity',.3);}}
+    el('circle',{cx,cy,r:R,fill:'none',stroke:C.ink,'stroke-width':.9,'stroke-dasharray':'2 3'},P.g);
+    el('circle',{cx,cy,r:3,fill:C.d},P.g);},
+  knnreg:P=>{bumpPts(P,23);
+    const q=.45;el('line',{x1:P.X(q),x2:P.X(q),y1:P.Y(0),y2:P.Y(1),stroke:C.d,'stroke-width':.8,'stroke-dasharray':'2 3'},P.g);
+    path(P,u=>{let s=0,w=0;for(let k=-2;k<=2;k++){const t=Math.min(1,Math.max(0,u+k*.06));s+=bump(t);w++;}return s/w;});
+    dot(P,q,bump(q)-.03,C.d,3);},
+  bayes:P=>{for(const [m,c] of [[.36,C.a],[.64,C.b]]){let d='';for(let i=0;i<=40;i++){const u=i/40;d+=(i?'L':'M')+P.X(u)+' '+P.Y(.9*Math.exp(-((u-m)**2)/(2*.15*.15)))+' ';}
+    el('path',{d:d+`L${P.X(1)} ${P.Y(0)} L${P.X(0)} ${P.Y(0)} Z`,fill:c,opacity:.10},P.g);el('path',{d,fill:'none',stroke:c,'stroke-width':1.1},P.g);}},
+  svm:P=>{const r=rng(29),m=.29;let k=0;
     while(k<7){const u=r(),v=r();if(u+v>1.42&&u<.97&&v<.97){dot(P,u,v,C.a);k++;}}
     k=0;while(k<7){const u=r(),v=r();if(u+v<.58&&u>.03&&v>.03){dot(P,u,v,C.b);k++;}}
-    const band=el('path',{fill:C.fit,opacity:.12},P.g);
-    const lo=el('line',{stroke:C.fit,'stroke-width':.9,'stroke-dasharray':'3 3'},P.g),hi=el('line',{stroke:C.fit,'stroke-width':.9,'stroke-dasharray':'3 3'},P.g);
-    el('line',{x1:P.X(0),y1:P.Y(1),x2:P.X(1),y2:P.Y(0),stroke:C.fit,'stroke-width':1.3},P.g);
-    const set=(ln,a,b)=>{ln.setAttribute('x1',P.X(a[0]));ln.setAttribute('y1',P.Y(a[1]));ln.setAttribute('x2',P.X(b[0]));ln.setAttribute('y2',P.Y(b[1]));};
-    return p=>{const m=lerp(.12,.36,p);
-      set(hi,[m,1],[1,m]);set(lo,[0,1-m],[1-m,0]);
-      band.setAttribute('d',`M${P.X(0)} ${P.Y(1-m)} L${P.X(0)} ${P.Y(1)} L${P.X(m)} ${P.Y(1)} L${P.X(1)} ${P.Y(m)} L${P.X(1)} ${P.Y(0)} L${P.X(1-m)} ${P.Y(0)} Z`);};},
-  // new: neural network, a pulse travels from the inputs through a hidden layer to the output
-  nnet:P=>{const L=[[.3,.7].map(v=>[.08,v]).concat([[.08,.5]]).sort((a,b)=>a[1]-b[1]),[.15,.38,.62,.85].map(v=>[.5,v]),[[.92,.5]]];
-    const E=[];
-    for(let l=0;l<2;l++)for(const a of L[l])for(const b of L[l+1])E.push({l,e:el('line',{x1:P.X(a[0]),y1:P.Y(a[1]),x2:P.X(b[0]),y2:P.Y(b[1]),stroke:C.line,'stroke-width':.9},P.g)});
-    const N=L.map((layer,l)=>layer.map(([u,v])=>el('circle',{cx:P.X(u),cy:P.Y(v),r:3.6,fill:'var(--surface)',stroke:C.ink,'stroke-width':1},P.g)));
-    return p=>{const t=p*3;
-      E.forEach(({l,e})=>{const on=Math.max(0,1-Math.abs(t-(l+.5))*1.6);e.setAttribute('stroke',on>.05?C.fit:C.line);e.setAttribute('opacity',.45+.55*on);});
-      N.forEach((layer,l)=>{const on=Math.max(0,1-Math.abs(t-l)*1.6);layer.forEach(c=>c.setAttribute('fill',on>.3?C.fit:'var(--surface)'));});};}
+    el('path',{d:`M${P.X(0)} ${P.Y(1-m)} L${P.X(0)} ${P.Y(1)} L${P.X(m)} ${P.Y(1)} L${P.X(1)} ${P.Y(m)} L${P.X(1)} ${P.Y(0)} L${P.X(1-m)} ${P.Y(0)} Z`,fill:C.fit,opacity:.12},P.g);
+    for(const [a,b] of [[[m,1],[1,m]],[[0,1-m],[1-m,0]]])el('line',{x1:P.X(a[0]),y1:P.Y(a[1]),x2:P.X(b[0]),y2:P.Y(b[1]),stroke:C.fit,'stroke-width':.9,'stroke-dasharray':'3 3'},P.g);
+    el('line',{x1:P.X(0),y1:P.Y(1),x2:P.X(1),y2:P.Y(0),stroke:C.fit,'stroke-width':1.3},P.g);},
+  svr:P=>{const r=rng(31),e=.13,f=u=>.15+.65*u;
+    el('path',{d:`M${P.X(0)} ${P.Y(f(0)+e)} L${P.X(1)} ${P.Y(f(1)+e)} L${P.X(1)} ${P.Y(f(1)-e)} L${P.X(0)} ${P.Y(f(0)-e)} Z`,fill:C.fit,opacity:.12},P.g);
+    for(const s of [1,-1])el('line',{x1:P.X(0),y1:P.Y(f(0)+s*e),x2:P.X(1),y2:P.Y(f(1)+s*e),stroke:C.fit,'stroke-width':.9,'stroke-dasharray':'3 3'},P.g);
+    el('line',{x1:P.X(0),y1:P.Y(f(0)),x2:P.X(1),y2:P.Y(f(1)),stroke:C.fit,'stroke-width':1.3},P.g);
+    for(let i=0;i<11;i++){const u=.05+i*.09;dot(P,u,f(u)+(r()-.5)*.24,C.mu,1.9);}
+    // one point outside the tube, with its slack
+    const u=.62,v=f(u)+e+.17;el('line',{x1:P.X(u),x2:P.X(u),y1:P.Y(v),y2:P.Y(f(u)+e),stroke:'var(--err)','stroke-width':1.7},P.g);dot(P,u,v,C.mu,1.9);}
  };
- // icons are static: each is drawn once at its resting frame
- function addPanel(g,render,{rest=.5}={}){render(rest);}
- const PANELOPT={supervised:{dur:12000,rest:1},classification:{dur:11000},regression:{dur:8000,shape:'loop',rest:.62},
-   tree:{dur:11000,rest:1},knn:{dur:10000,rest:.55},bayes:{dur:11000,rest:.6},poly:{dur:12000,rest:1},svm:{dur:9000,rest:.8},nnet:{dur:5000,shape:'loop',rest:.5}};
- // layout: one root, two branches, seven methods; neural networks sit under both branches
- const N={
-  sup :{cx:690 ,cy:60 ,w:176,h:110,t:'Supervised'       ,sub:'labels attached'   ,k:'br1'  ,s:0,v:'supervised'},
-  cls :{cx:350 ,cy:225,w:168,h:110,t:'Classification'   ,sub:'predict a category',k:'leaf1',s:1,v:'classification'},
-  reg :{cx:1070,cy:225,w:168,h:110,t:'Regression'       ,sub:'predict a number'  ,k:'leaf1',s:1,v:'regression'},
-  dt  :{cx:95  ,cy:395,w:150,h:104,t:'Decision trees'   ,sub:'covered'  ,k:'done' ,s:2,v:'tree'},
-  nn  :{cx:265 ,cy:395,w:150,h:104,t:'Nearest neighbor' ,sub:'covered'  ,k:'done' ,s:2,v:'knn'},
-  nb  :{cx:435 ,cy:395,w:150,h:104,t:'Naive Bayes'      ,sub:'covered'  ,k:'done' ,s:2,v:'bayes'},
-  svm :{cx:605 ,cy:395,w:150,h:104,t:'SVMs'             ,sub:'covered'  ,k:'done' ,s:2,v:'svm'},
-  net :{cx:800 ,cy:395,w:150,h:104,t:'Neural nets'      ,sub:'next week',k:'next' ,s:3,v:'nnet'},
-  lr  :{cx:995 ,cy:395,w:150,h:104,t:'Linear regression',sub:'covered'  ,k:'done' ,s:2,v:'regression'},
-  pol :{cx:1165,cy:395,w:150,h:104,t:'Polynomial'       ,sub:'covered'  ,k:'done' ,s:2,v:'poly'}
- };
- const E=[['sup','cls'],['sup','reg'],['cls','dt'],['cls','nn'],['cls','nb'],['cls','svm'],['cls','net'],['reg','net'],['reg','lr'],['reg','pol']];
- const ONPATH=new Set(['sup','reg']),ONEDGE=new Set(['sup>reg']);
- const nodes={},edges={};
- for(const [a,b] of E){
-   const p=N[a],c=N[b],pb=p.cy+p.h/2+6,ct=c.cy-c.h/2-4,mid=(pb+ct)/2;
-   let d;
-   if(Math.abs(c.cx-p.cx)<2){d=`M${p.cx} ${pb} V${ct}`;}
-   else{const sg=Math.sign(c.cx-p.cx),R=Math.min(14,Math.abs(c.cx-p.cx)/2,(mid-pb),(ct-mid));
-     d=`M${p.cx} ${pb} V${mid-R} Q${p.cx} ${mid} ${p.cx+sg*R} ${mid} H${c.cx-sg*R} Q${c.cx} ${mid} ${c.cx} ${mid+R} V${ct}`;}
-   edges[a+'>'+b]=el('path',{d,fill:'none',stroke:'var(--muted)','stroke-width':1.8,'data-s':c.s,class:'tedge'},eg);
- }
- for(const key in N){
-   const n=N[key],g=el('g',{'data-s':n.s},ng),L=n.cx-n.w/2,T=n.cy-n.h/2;
-   el('rect',{x:L-8,y:T-8,width:n.w+16,height:n.h+16,rx:10,fill:'transparent',class:'thit'},g);
-   const P=plot(g,L,T,n.w,74,n.k==='today'?'var(--model)':null,{axes:n.v!=='nnet'});addPanel(g,VIZ[n.v](P),PANELOPT[n.v]);
-   const t=el('text',{x:n.cx,y:T+92,'text-anchor':'middle',class:'tl '+n.k},g);t.textContent=n.t.toUpperCase();
-   const s2=el('text',{x:n.cx,y:T+106,'text-anchor':'middle',class:'tc '+n.k},g);s2.textContent=n.sub;
-   nodes[key]=g;
- }
- let prevStep=-1;
- hooks['s-tree']={step(s){
-   for(const k in edges){const cs=N[k.split('>')[1]].s,shown=cs<=s,lit=s>=4&&ONEDGE.has(k);
-     edges[k].style.opacity=shown?(s>=4&&!lit?.3:1):0;
-     edges[k].setAttribute('stroke',lit?'var(--model)':'var(--muted)');
-     edges[k].setAttribute('stroke-width',lit?2.6:1.8);
-   }
-   for(const key in nodes){const ns=N[key].s,shown=ns<=s;
-     nodes[key].style.opacity=shown?(s>=4&&!ONPATH.has(key)?.22:1):0;
-   }
-   prevStep=s;
- },enter(){prevStep=-1;}};
+ document.querySelectorAll('#fig-map .ico').forEach(host=>{
+   const v=host.dataset.v,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,class:'tree-svg','aria-hidden':'true'},host);
+   ICON[v](plot(svg));
+ });
 }
 
 /* ---------- fit every slide to the screen: no slide ever needs scrolling ---------- */
