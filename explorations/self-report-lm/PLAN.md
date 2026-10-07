@@ -139,11 +139,12 @@ Phase 3 (continuations of ft_lam4_jit, λ = 4, perturbed questions):
 - [x] full measurement and review checks of ft_slope: follow 0.994 / 0.992, other movement 0.14.
 - [x] code review (separate instance): chained continuations replayed their parent's data; fixed
       (finetune.data_offset), report corrected.
-- [ ] clean slope comparison with new data from ft_lam4_jit: fresh_noslope, fresh_slope (running).
+- [x] clean slope comparison with new data from ft_lam4_jit: fresh_noslope 0.975 / 0.973, fresh_slope 0.987 / 0.986.
 
 Phase 4 (from scratch):
 - [x] control_slope_s0: λ = 4, perturbed questions, slope loss, 15,000 steps: follow 0.997 / 0.998,
       other movement 0.05, centred R² 0.998, validation loss 2.275. Best model.
+- [x] control_slope_lam1_s0: the same with λ = 1: follow 0.999 / 0.999. The slope loss is what matters.
 
 ## Stage 2 (asked for by the user): answers written as text
 
@@ -157,5 +158,5 @@ setting, only the 13 answer characters' output rows trained by the self-report l
 - [x] text_jit_lam4_long: 6,000 more: 0.943 / 0.942 (replayed data, see review).
 - [x] text_jit_lam4_long2: 6,000 more, new data: 0.965 / 0.961, centred R² 0.992 / 0.989
       (ft_slope on the same test: 0.970 / 0.972).
-- [ ] text_scratch_jit: from scratch, λ = 4, perturbed questions (running).
+- [x] text_scratch_jit: from scratch, λ = 4, perturbed questions: follow 0.835 / 0.829, worse than continuing.
 - [x] full measurement (measure_text.py) of each text model above.

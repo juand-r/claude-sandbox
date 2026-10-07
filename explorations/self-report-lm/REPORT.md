@@ -89,8 +89,8 @@ Findings.
    perturbed questions, loss coefficient λ = 4 and the slope loss (control_slope)
    gives follow 0.997 / 0.998, other movement 0.05 and centred R² 0.998, with
    validation loss 2.275 (control: 2.290). Perturbed questions alone, from
-   scratch, gave only 0.885. Which of λ = 4 and the slope loss is needed is not
-   established; one seed.
+   scratch, gave only 0.885; adding the slope loss at λ = 1 gave 0.999, so the
+   slope loss is the change that matters (section 10.4); one seed each.
 6. The model can write its answers as text, with its own output layer: five
    characters such as "-0.13" (section 11). After training with perturbed
    questions, the text answers have centred R² 0.992 / 0.989 and follow 0.96
@@ -550,13 +550,35 @@ perturbed questions) raised follow from 0.886 to 0.929 (128 + 128 tokens),
 while the same continuation of the control raised it from 0.870 to 0.959. I do
 not know why perturbed questions alone did so much better as a continuation.
 
-control_slope differs from control_jit in two settings at once, λ = 4 and the
-slope loss, so these runs do not say which of the two matters, or whether both
-are needed. In the continuations, λ = 4 without perturbed questions added little
-(ft_lam4: 0.896 against 0.893 for ft_more). Perturbed questions gave the
-largest single gain (ft_jit: 0.959). Added on top of perturbed questions, the
-slope loss gave a further gain, smaller with new data (section 10.5) but present
-on every measure. One run per setting, seed 0.
+control_slope differs from control_jit in two settings, λ = 4 and the slope
+loss. A third run from scratch, control_slope_lam1, separates them: it is
+control_jit plus the slope loss, with λ = 1. Measured as in 10.3:
+
+| measure | control_jit (λ = 1, perturbed questions) | control_slope_lam1 (λ = 1, perturbed questions, slope loss) | control_slope (λ = 4, perturbed questions, slope loss) |
+|---|---|---|---|
+| follow, asked-about / never-asked | 0.885 / 0.883 | 0.999 / 0.999 | 0.997 / 0.998 |
+| other movement | 0.34 | 0.06 | 0.05 |
+| gain along E[t] | 0.84 / 0.84 | 0.95 / 0.95 | 0.97 / 0.97 |
+| gain along u | 0.22 | 0.94 | 0.93 |
+| centred R², asked-about / never-asked | 0.970 / 0.970 | 0.997 / 0.997 | 0.998 / 0.998 |
+| centred R², random vectors | 0.852 | 0.989 | 0.995 |
+| rescaling score, frequent vectors grown to the rare tokens' norm | −0.26 | 0.30 | 0.81 |
+| edit test: finite-change follow of the edited tokens, range (mean) | 0.73 to 0.94 (0.84) | 0.94 to 0.99 (0.97) | 0.96 to 1.01 (0.98) |
+| validation loss | 2.298 | 2.286 | 2.275 |
+
+Observations.
+
+- control_jit and control_slope_lam1 differ only in the slope loss. Adding it
+  raises follow from 0.885 to 0.999 and lowers other movement from 0.34 to
+  0.06. In these runs, the slope loss is what makes training from scratch work.
+- λ = 4 instead of 1 changes little, except on frequent tokens' vectors grown to
+  the rare tokens' norm (rescaling score 0.81 against 0.30), inputs far from any
+  embedding vector seen in training.
+- One run per setting, seed 0.
+
+In the continuations of section 10.2, perturbed questions gave the largest
+single gain (ft_jit: 0.959); added on top of them, the slope loss gave a further
+gain, smaller with new data (section 10.5) but present on every measure.
 
 ### 10.5 Clean rerun of the slope comparison
 
@@ -716,11 +738,11 @@ Observations.
   asked-about and never-asked tokens alike, at the same cost in next-token
   prediction as the control (section 10). The answers then respond almost
   equally to changes of the norm and of the direction of E[t] (gain along E[t]
-  0.97), and are accurate on random vectors too (centred R² 0.995). Which of
-  the three changes are needed is not established (section 10.4).
-- Perturbed questions alone, from scratch, helped little (follow 0.885); the
-  same training helped much more as a continuation of a finished model. Why is
-  not known.
+  0.97), and are accurate on random vectors too (centred R² 0.995). With
+  λ = 1 the result is the same (follow 0.999); without the slope loss it is not
+  (0.885). So, from scratch, the slope loss is what matters (section 10.4).
+- Perturbed questions alone helped little from scratch but much more as a
+  continuation of a finished model. Why is not known.
 - The answers can be written as text, by the model's own output layer, in a
   fixed five-character format. After continued training with perturbed
   questions they are about as accurate as the best number answers (centred R²

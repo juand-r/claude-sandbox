@@ -229,3 +229,12 @@ measure_text.py, quick_measure.py and the tests.
 - Clean slope comparison (REPORT 10.5): fresh_noslope follow 0.975 / 0.973, other movement 0.224;
   fresh_slope 0.987 / 0.986, 0.135. The slope loss helps with new data too, less than the
   confounded comparison suggested.
+
+### 2026-10-07 ~18:40 UTC: ablation from scratch
+- control_slope_lam1_s0 (λ = 1, perturbed questions, slope loss): follow 0.999 / 0.999, other movement
+  0.062, centred R² 0.997, validation loss 2.286. Same as λ = 4 except the rescaling score for frequent
+  vectors grown to rare-token norm (0.30 vs 0.81). Against control_jit_s0 (no slope loss, follow 0.885),
+  a single-change comparison: the slope loss is what makes the from-scratch recipe work.
+- text_scratch_jit (text answers from scratch, λ = 4, perturbed questions): centred R² 0.941, follow at 30%
+  0.835 / 0.829, validation loss 2.240: worse than the continued text model (0.992, 0.965, 2.193).
+- The container restarted at ~17:35; the training process survived; only the monitor had to be re-armed.
