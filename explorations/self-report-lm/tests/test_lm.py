@@ -279,3 +279,20 @@ def test_text_answer_tokens_match_the_tokenizer_and_decoder_matches_teacher_forc
             mask = torch.full_like(logits[:, k], float("-inf"))
             mask[:, fmt.allowed[k]] = 0
             assert torch.equal((logits[:, k] + mask).argmax(-1), ids[:, k])
+
+
+def test_slope_loss_is_zero_for_an_exact_reader_and_one_for_constant_answers():
+    import finetune as Fn
+    m = small_model()
+    t, i = torch.tensor([1, 2, 3, 4]), torch.tensor([0, 1, 2, 3])
+    class Exact(torch.nn.Module):
+        def __init__(self, base):
+            super().__init__()
+            self.E, self.dim = base.E, base.dim
+        def answer(self, x, i):
+            return x[torch.arange(len(x)), i]
+    class Constant(Exact):
+        def answer(self, x, i):
+            return torch.zeros(len(x))
+    assert Fn.slope_loss(Exact(m), t, i, torch.Generator().manual_seed(0)).item() < 1e-10
+    assert abs(Fn.slope_loss(Constant(m), t, i, torch.Generator().manual_seed(0)).item() - 1) < 1e-6
