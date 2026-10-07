@@ -1,0 +1,80 @@
+{
+ "settings": {
+  "name": "text_jit",
+  "answer": "text",
+  "lam": 1.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128,
+  "source": "text_s0",
+  "finetune_steps": 3000,
+  "jitter_max": 0.5,
+  "finetune_lr": 0.0002
+ },
+ "log": [
+  {
+   "step": 0,
+   "valid_loss": 2.1929744720458983,
+   "r2c_asked": 0.9156002593519604,
+   "r2c_never": 0.9490147131019455,
+   "E_rms_text": 0.1929946094751358,
+   "follow_mean_asked": 0.7594852200709283,
+   "follow_median_asked": 0.7841192483901978,
+   "follow_mean_never": 0.7387324296869338,
+   "follow_median_never": 0.7692053318023682
+  },
+  {
+   "step": 1000,
+   "valid_loss": 2.191694605350494,
+   "r2c_asked": 0.9124366396258496,
+   "r2c_never": 0.9483611160824442,
+   "E_rms_text": 0.1936032772064209,
+   "follow_mean_asked": 0.7993685747496784,
+   "follow_median_asked": 0.8133602142333984,
+   "follow_mean_never": 0.7810726724565029,
+   "follow_median_never": 0.7946887016296387,
+   "seconds": 636.7009177207947
+  },
+  {
+   "step": 2000,
+   "valid_loss": 2.1876187086105348,
+   "r2c_asked": 0.9245100785903988,
+   "r2c_never": 0.954619691174012,
+   "E_rms_text": 0.19415494799613953,
+   "follow_mean_asked": 0.7886793501675129,
+   "follow_median_asked": 0.8062753677368164,
+   "follow_mean_never": 0.7769825025461614,
+   "follow_median_never": 0.7888154983520508,
+   "seconds": 1281.2815325260162
+  },
+  {
+   "step": 3000,
+   "valid_loss": 2.1859920263290404,
+   "r2c_asked": 0.9306011040455678,
+   "r2c_never": 0.9581285704999987,
+   "E_rms_text": 0.19486351311206818,
+   "follow_mean_asked": 0.8169028265401721,
+   "follow_median_asked": 0.8280298411846161,
+   "follow_mean_never": 0.8067177683115005,
+   "follow_median_never": 0.8152824342250824,
+   "seconds": 1928.1966955661774
+  }
+ ]
+}
