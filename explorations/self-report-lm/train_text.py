@@ -5,7 +5,9 @@ self-report loss is the cross-entropy of the five answer tokens, in the control 
 (the self-report task cannot change the token embedding vectors; textanswer.py). The 13
 answer characters are not asked about. Checkpoints and resume as in train.py.
 
-Usage: python train_text.py <name> <lam> <seed> [steps]
+With jitter_max > 0: perturbed questions (textanswer.text_report_loss).
+
+Usage: python train_text.py <name> <lam> <seed> [steps] [jitter_max]
 """
 import json
 import os
@@ -35,10 +37,10 @@ def evaluate(m, fmt, valid_batches, eval_asked, eval_never):
     return out
 
 
-def train(name, lam, seed, steps=T.STEPS, verbose=True):
+def train(name, lam, seed, steps=T.STEPS, verbose=True, jitter_max=0.0):
     T.RESULTS.mkdir(exist_ok=True)
     ckpt_path = T.RESULTS / f"{name}_ckpt.pt"
-    settings = {"name": name, "answer": "text", "lam": lam, "seed": seed, "steps": steps, "detach_input": True,
+    settings = {"name": name, "answer": "text", "lam": lam, "seed": seed, "steps": steps, "detach_input": True, "jitter_max": jitter_max,
                 "lm_batch": T.LM_BATCH, "report_batch": T.REPORT_BATCH, "lr": T.LR, "lr_min": T.LR_MIN,
                 "warmup": T.WARMUP, "weight_decay": T.WEIGHT_DECAY, "betas": list(T.BETAS), "clip": T.CLIP,
                 "eval_every": T.EVAL_EVERY, "n_text": lm.N_TEXT, "dim": lm.DIM, "n_layers": lm.N_LAYERS,
@@ -54,6 +56,7 @@ def train(name, lam, seed, steps=T.STEPS, verbose=True):
     start, log, seconds0 = 0, [], 0.0
     if ckpt_path.exists():
         ck = torch.load(ckpt_path)
+        ck["settings"].setdefault("jitter_max", 0.0)     # checkpoints written before this option existed
         if ck["settings"] != settings:
             raise RuntimeError(f"{ckpt_path} has different settings: {ck['settings']}")
         m.load_state_dict(ck["model"])
@@ -79,7 +82,7 @@ def train(name, lam, seed, steps=T.STEPS, verbose=True):
         if lam > 0:
             t = asked[torch.randint(0, len(asked), (T.REPORT_BATCH,), generator=gen_rep)]
             i = torch.randint(0, m.dim, (T.REPORT_BATCH,), generator=gen_rep)
-            loss_rep = TA.text_report_loss(m, t, i, fmt)
+            loss_rep = TA.text_report_loss(m, t, i, fmt, jitter_max=jitter_max, gen=gen_rep)
             loss = loss_lm + lam * loss_rep
         if not torch.isfinite(loss):
             raise FloatingPointError(f"loss not finite at step {step}")
@@ -106,8 +109,9 @@ def train(name, lam, seed, steps=T.STEPS, verbose=True):
 def main():
     name, lam, seed = sys.argv[1], float(sys.argv[2]), int(sys.argv[3])
     steps = int(sys.argv[4]) if len(sys.argv) > 4 else T.STEPS
+    jitter_max = float(sys.argv[5]) if len(sys.argv) > 5 else 0.0
     torch.set_num_threads(2)
-    m, settings, log = train(name, lam, seed, steps)
+    m, settings, log = train(name, lam, seed, steps, jitter_max=jitter_max)
     torch.save({"model": m.state_dict(), "settings": settings}, T.RESULTS / f"{name}.pt")
     (T.RESULTS / f"{name}.json").write_text(json.dumps({"settings": settings, "log": log}, indent=1))
     print(f"wrote results/{name}.pt and .json")
