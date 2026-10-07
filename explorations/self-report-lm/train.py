@@ -68,6 +68,13 @@ def lm_loss(m, x, y):
     return F.cross_entropy(m.lm_logits(x).reshape(-1, m.n_text), y.reshape(-1))
 
 
+def perturb(x, jitter_max, gen):
+    """x + δ for each row: δ in a random direction, |δ| = s·|x|, s uniform in [0, jitter_max]."""
+    d = torch.randn(x.shape, generator=gen)
+    s = torch.rand(len(x), 1, generator=gen) * jitter_max
+    return x + d / d.norm(dim=1, keepdim=True) * s * x.norm(dim=1, keepdim=True)
+
+
 def report_loss(m, t, i, detach_input=False, jitter_max=0.0, gen=None):
     """1 − uncentred R² of the batch. With jitter_max > 0 (perturbed questions; requires
     detach_input): each question uses x = E[t] + δ, δ in a random direction with
@@ -75,10 +82,7 @@ def report_loss(m, t, i, detach_input=False, jitter_max=0.0, gen=None):
     if jitter_max > 0:
         if not detach_input:
             raise ValueError("perturbed questions are implemented for the control setting only")
-        x = m.E[t].detach()
-        d = torch.randn(x.shape, generator=gen)
-        s = torch.rand(len(t), 1, generator=gen) * jitter_max
-        x = x + d / d.norm(dim=1, keepdim=True) * s * x.norm(dim=1, keepdim=True)
+        x = perturb(m.E[t].detach(), jitter_max, gen)
         target = x[torch.arange(len(t)), i]
         a = m.answer(x, i)
         return ((a - target) ** 2).mean() / target.var(unbiased=False)

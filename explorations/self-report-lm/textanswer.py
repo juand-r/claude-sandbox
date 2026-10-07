@@ -22,6 +22,8 @@ import torch.nn.functional as F
 
 from tokenizers import Tokenizer
 
+import train as T
+
 N_ANSWER = 5
 MAX_ABS = 9.99
 
@@ -94,9 +96,17 @@ def question_tokens(tokens, fmt):
     return tokens[~torch.isin(tokens, fmt.chars)]
 
 
-def text_report_loss(m, t, i, fmt, detach_input=True):
-    x = m.E[t].detach() if detach_input else m.E[t]
-    target = fmt.encode(m.E[t, i].detach())
+def text_report_loss(m, t, i, fmt, detach_input=True, jitter_max=0.0, gen=None):
+    """With jitter_max > 0 (perturbed questions, as train.report_loss; control setting only):
+    the vector at position 2 is x = E[t] + δ and the target is x_i written as text."""
+    if jitter_max > 0:
+        if not detach_input:
+            raise ValueError("perturbed questions are implemented for the control setting only")
+        x = T.perturb(m.E[t].detach(), jitter_max, gen)
+        target = fmt.encode(x[torch.arange(len(t)), i])
+    else:
+        x = m.E[t].detach() if detach_input else m.E[t]
+        target = fmt.encode(m.E[t, i].detach())
     logits = answer_logits(m, x, i, target, fmt)
     return F.cross_entropy(logits.reshape(-1, logits.shape[-1]), target.reshape(-1))
 

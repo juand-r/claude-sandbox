@@ -296,3 +296,28 @@ def test_slope_loss_is_zero_for_an_exact_reader_and_one_for_constant_answers():
             return torch.zeros(len(x))
     assert Fn.slope_loss(Exact(m), t, i, torch.Generator().manual_seed(0)).item() < 1e-10
     assert abs(Fn.slope_loss(Constant(m), t, i, torch.Generator().manual_seed(0)).item() - 1) < 1e-6
+
+
+def test_perturbed_text_questions_target_the_perturbed_coordinate_and_stop_gradient():
+    import torch.nn.functional as F
+    import textanswer as TA
+    fmt = TA.Format(T.DATA / "tokenizer.json")
+    torch.manual_seed(0)
+    m = lm.SelfReportLM(n_text=4096, dim=16, n_layers=2, n_heads=2, ctx=8)
+    with torch.no_grad():
+        m.E.mul_(20)                                   # coordinates of size ~0.4, so 0.01 rounding is small
+    t, i = torch.tensor([100, 200, 300, 400]), torch.tensor([0, 1, 2, 3])
+    loss = TA.text_report_loss(m, t, i, fmt, jitter_max=0.5, gen=torch.Generator().manual_seed(3))
+    # hand computation with the same random draws
+    x = T.perturb(m.E[t].detach(), 0.5, torch.Generator().manual_seed(3))
+    target = fmt.encode(x[torch.arange(4), i])
+    assert not torch.equal(target, fmt.encode(m.E[t, i].detach()))   # the perturbation changes the answers
+    logits = TA.answer_logits(m, x, i, target, fmt)
+    torch.testing.assert_close(loss, F.cross_entropy(logits.reshape(-1, logits.shape[-1]), target.reshape(-1)))
+    # jitter_max = 0 is the ordinary loss
+    torch.testing.assert_close(TA.text_report_loss(m, t, i, fmt, jitter_max=0.0),
+                               TA.text_report_loss(m, t, i, fmt))
+    loss.backward()
+    others = torch.ones(m.n_text, dtype=torch.bool)
+    others[fmt.chars] = False
+    assert m.E.grad[:m.n_text][others].abs().max() == 0
