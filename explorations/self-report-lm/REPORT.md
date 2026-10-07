@@ -428,7 +428,15 @@ directions.
 
 Each run below continues training from a finished model for a further number of
 steps, with a fresh optimizer at a constant learning rate of 2·10⁻⁴ (the
-control's final learning rate) and new random text windows and questions.
+control's final learning rate). The four runs that start from the control see
+text windows and questions that the control did not see. A code review found
+that the two runs that start from ft_lam4_jit did not get new data: because of
+a seeding error, ft2_lam4_jit's first 3,000 steps repeat ft_lam4_jit's text
+windows and questions exactly, and ft_slope repeats its text windows (its
+questions differ after the first step, because the slope loss draws extra random
+numbers). Measurements are not affected (they use their own tokens and
+directions), but the comparison of ft2_lam4_jit with ft_slope is confounded by
+this; a clean rerun of that comparison is in section 10.5.
 Measured on 128 asked-about and 128 never-asked tokens (the same tokens for every
 run), with quick_measure.py:
 
@@ -449,8 +457,8 @@ Observations.
   about ±0.02 from one evaluation to the next (every 1,000 steps), so single
   evaluations of these runs differ by more than the differences among the
   last rows of this table; the 6,000-step trend is small.
-- The slope loss, started from the same model with otherwise the same settings,
-  gives 0.994 / 0.988 after 3,000 steps and lowers other movement to 0.14, the
+- The slope loss, started from the same model with otherwise the same settings
+  (but see the data caveat above), gives 0.994 / 0.988 after 3,000 steps and lowers other movement to 0.14, the
   lowest of all runs here.
 - Centred R² does not fall, and the validation loss stays within 2.290 to 2.307.
 
@@ -505,6 +513,12 @@ why. One difference: the continuations run at a constant learning rate of
 2·10⁻⁴ with a fresh optimizer, while the from-scratch run used the cosine
 schedule from 2·10⁻³; a from-scratch run with the slope loss was not tried.
 
+### 10.5 Clean rerun of the slope comparison
+
+Running: from ft_lam4_jit, 3,000 steps, λ = 4, perturbed questions, new text
+windows and questions for both, without (fresh_noslope) and with (fresh_slope)
+the slope loss.
+
 ## 11. Answers written as text
 
 ### 11.1 Design
@@ -557,11 +571,15 @@ answers are not differentiable.
   text windows and the same schedule), with the text answer in place of the
   number head.
 - Continuations of it, as in section 10 (fresh optimizer, constant learning
-  rate 2·10⁻⁴), all with perturbed questions (target: the perturbed vector's
-  coordinate, written as text): text_jit (3,000 steps, λ = 1), then
-  text_jit_lam4 (3,000 steps, λ = 4), then text_jit_lam4_long (6,000 steps,
-  λ = 4). The slope loss of section 10 needs differentiable answers and was not
+  rate 2·10⁻⁴), all with perturbed questions; the target is the perturbed
+  vector's coordinate, written as text. text_jit: 3,000 steps, λ = 1. Then
+  text_jit_lam4: 3,000 steps, λ = 4. Then text_jit_lam4_long: 6,000 steps,
+  λ = 4. The slope loss of section 10 needs differentiable answers and was not
   used.
+- Because of the seeding error described in section 10.2, text_jit_lam4
+  repeats text_jit's 3,000 batches (text windows, questions and perturbations),
+  and text_jit_lam4_long repeats them once more in its first 3,000 steps. The
+  12,000 continuation steps therefore contain 6,000 distinct batches.
 
 ### 11.3 Results
 
@@ -634,6 +652,15 @@ Observations.
   known.
 - If the self-report task may change the embedding vectors it is asked about,
   it does, and its answers then generalize much worse to the other tokens.
+- In the control setting the self-report gradient never reaches the token
+  embedding vectors, but the self-report task still affects how they are
+  trained, in two indirect ways: it trains the blocks through which the
+  next-token gradient reaches the embedding vectors, and the gradient norm is
+  clipped for the sum of both losses, so the self-report loss changes the size of
+  each update (for one batch, the clip factor is 0.59 for the control's combined
+  loss against 0.89 for its next-token loss alone, and 0.06 against 0.67 for the
+  last text model). "Shaped by next-token prediction alone" in the summary
+  should be read with this qualification.
 - The embedding vector of t is the input at t's position, so the model is
   reporting a value present in its own input. Weights that are not inputs (for
   example the feed-forward matrices) remain untested (PLAN.md, roadmap).
