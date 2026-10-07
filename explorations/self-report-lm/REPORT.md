@@ -636,7 +636,9 @@ answers are not differentiable.
   vector's coordinate, written as text. text_jit: 3,000 steps, λ = 1. Then
   text_jit_lam4: 3,000 steps, λ = 4. Then text_jit_lam4_long: 6,000 steps,
   λ = 4. Then text_jit_lam4_long2: 6,000 steps, λ = 4, with new text windows
-  and questions (after the seeding error below was fixed). The slope loss of
+  and questions (after the seeding error below was fixed).
+- text_scratch_jit: trained from scratch like text, but with λ = 4 and
+  perturbed questions from the start. The slope loss of
   section 10 needs differentiable answers and was not used.
 - Because of the seeding error described in section 10.2, text_jit_lam4
   repeats text_jit's 3,000 batches (text windows, questions and perturbations),
@@ -658,8 +660,10 @@ coordinates per set.
 | text_jit_lam4 (+ 6,000 steps) | 0.975 / 0.973 | 0.862 / 0.855 | 1.00 / 1.00 | 2.180 |
 | text_jit_lam4_long (+ 12,000 steps) | 0.989 / 0.986 | 0.943 / 0.942 | 1.00 / 1.00 | 2.187 |
 | text_jit_lam4_long2 (+ 18,000 steps) | 0.992 / 0.989 | 0.965 / 0.961 | 1.00 / 1.00 | 2.193 |
+| text_scratch_jit (from scratch, λ = 4, perturbed questions) | 0.941 / 0.941 | 0.835 / 0.829 | 1.00 / 1.00 | 2.240 |
 | number head: control | 0.982 / 0.982 | 0.841 / 0.837 | | 2.290 |
 | number head: ft_slope | 0.990 / 0.990 | 0.970 / 0.972 | | 2.289 |
+| number head: control_slope (section 10.3) | 0.998 / 0.998 | 0.989 / 0.990 | | 2.275 |
 | LM-only | | | | 2.146 |
 
 Observations.
@@ -675,6 +679,13 @@ Observations.
   0.970 / 0.972 for ft_slope, on the same tokens and changes.
 - At this size of change ft_slope's follow is 0.97, lower than its 0.99 at 10%:
   its answers respond slightly less to large changes than to small ones.
+  control_slope keeps 0.99 at 30%.
+- Text answers trained from scratch with λ = 4 and perturbed questions
+  (text_scratch_jit) are worse than the continued text model on every measure:
+  centred R² 0.941, follow 0.83, and validation loss 2.240. This matches the
+  number head, where perturbed questions alone from scratch also helped little
+  (control_jit, section 10.4). The slope loss, which made the difference for the
+  number head from scratch, has no text counterpart here.
 - During the last continuation, follow on the 64 + 64 tokens checked every
   1,000 steps varied between 0.94 and 0.99 (asked-about tokens) without a clear
   trend, so these 6,000 steps may have added little; the full measurement
