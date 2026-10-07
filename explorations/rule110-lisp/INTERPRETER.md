@@ -147,8 +147,10 @@ machine steps on a 7.9M-symbol tag alphabet, ~1e19 generations or more.
 - On gliders the cost per read grew with the read count: ossifiers cross
   all debris left of the queue (~8 x reads^2 events). Remedy built: the
   debris rope (REPORT 7.6), memoized ossifier x debris crossings outside
-  the event list. `last` of (a b c) on gliders: 157,824 reads, value c,
-  1.35e9 events, 2.0 h.
+  the event list, and stretch jumps (REPORT 7.7) that cross the checked
+  debris in one exact translated step. `last` of (a b c) on gliders:
+  157,824 reads, value c, 1.35e9 events, 43 min; equal to the plain
+  engine (1.996e11 events) at every snapshot.
 
 ## 6. Plan
 

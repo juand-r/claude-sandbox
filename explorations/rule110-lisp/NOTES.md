@@ -1120,3 +1120,12 @@ Checks so far:
   reads (3,946 s, CPU shared).
 - Where the time goes now (py-spy, cond with jumps): 82% the read check
   (census sampling and rendering), 11-13% the event engine.
+- Plain `last` finished: 1.996e11 events, t = 514036317366, outcomes as
+  the CTS. Compute ~47,500 s over five segments (container restarts at
+  ~18:45, ~00:15, ~02:25 and ~03:00; the last two came a few minutes
+  after this session went idle, so the run was then kept under a monitor
+  printing every 1,000 reads, and checkpoints every 1,000 reads). Plain
+  = jumps = slow rope at all 16 snapshots and the end
+  (data/last_ropecheck.txt).
+- Lesson: on this host, a long run needs checkpoints and an active
+  session; a background waiter alone did not keep the container.

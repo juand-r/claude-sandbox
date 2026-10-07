@@ -395,5 +395,7 @@ Validation:
 - [x] C: stretch jumps; Python: rope_jumps option; info fields
 - [x] Mutation tests (3 of 3 caught)
 - [x] car (2,448 reads) and cond (10,836 reads): jumps = plain, all snapshots
-- [ ] last: plain (running, ~14 h), slow rope (running), jumps (running)
-- [ ] compare all three on last; tests; report 7.6; notes; changelog
+- [x] last: plain (1.996e11 events, ~13 h over three container restarts,
+      resumed from checkpoints), slow rope (12,336 s), jumps (2,566 s)
+- [x] compare all three on last: all 16 snapshots and the end equal
+      (data/last_ropecheck.txt); tests; REPORT 7.7; notes; changelog

@@ -25,6 +25,15 @@ Lisp on Rule 110 without the tower (REPORT 7; INTERPRETER.md; phase 10)
   reads (77% of the wall time on long runs).
 - (last (quote (a b c))) with a recursive define, on gliders:
   157,824/157,824 reads, value c, 1.35e9 events, 2.0 h.
+- Stretch jumps (gasc.c): a train ossifier crosses the checked debris
+  prefix in one step as an exact translate of a checked crossing (lattice
+  check, code 50; time order, code 51). last: 43 min; crossings one by
+  one 1.24e10 -> 160,152.
+- ropecheck.py: rope vs plain snapshots with checkpointed plain runs.
+  last: plain engine (1.996e11 events), rope and rope with jumps equal
+  at all 16 snapshots and at the end.
+- Fixed: the particle census did not render a particle type first seen
+  after a checkpoint resume.
 
 An event engine (REPORT 5; PLAN.md phase 9, item 1)
 - gas.py (reference, Python), gasc.c/gasc.py (C event loop),

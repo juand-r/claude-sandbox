@@ -99,8 +99,10 @@ The main claims, in decreasing order of the strength of their evidence:
    cond/eq? expression in 37 min (34,818 reads). The old tower needs
    ~1e19 generations for the first. lambda and define work with a
    compile-time recursion bound; the recursive `last` of (a b c) ran on
-   gliders in 2.0 h (157,824 reads, value `c`), after debris crossings
-   were taken out of the event list and memoized (section 7.6).
+   gliders in 43 min (157,824 reads, value `c`), after debris crossings
+   were taken out of the event list, memoized, and finally jumped as
+   exact translates (sections 7.6, 7.7). The result equals the plain
+   engine's (1.996e11 events, 148x more) at every snapshot.
 11. **A programmable Rule 110 computer that is not a cyclic tag system
    exists; a universal one was not found.** A one-counter machine driven
    by a fixed glider stream branches on zero and runs compiled loop
@@ -1234,7 +1236,7 @@ at 7.5 v (failures were measured above ~11.05 v). Command:
 |---|---|---|---|---|---|---|---|---|
 | `(car (quote (a b)))` | before lifetimes | 4,512 | 99,303 | 4,512 / 4,512 | `a` | 1.35e10 | 1.6e8 | 115 s |
 | `(cond ((eq? (quote a) (quote b)) (quote x)) (t (quote y)))` | before lifetimes | 34,818 | 117,027 | 34,818 / 34,818 | `y` | 1.23e11 | 9.6e9 | 37 min |
-| `(define (last l) (cond ((atom? (cdr l)) (car l)) (t (last (cdr l))))) (last (quote (a b c)))`, depth 3 | lifetimes, debris rope (7.6) | 157,824 | 108,214 | 157,824 / 157,824 | `c` | 5.14e11 | 1.35e9 | 2.0 h |
+| `(define (last l) (cond ((atom? (cdr l)) (car l)) (t (last (cdr l))))) (last (quote (a b c)))`, depth 3 | lifetimes, debris rope with jumps (7.6, 7.7) | 157,824 | 108,214 | 157,824 / 157,824 | `c` | 5.14e11 | 1.35e9 | 43 min (2.0 h without jumps) |
 
 *Interpretation.* A Lisp expression typed by the user is translated into
 a Rule 110 initial condition, Rule 110 evolves, and the value is read
@@ -1314,15 +1316,109 @@ about 7 µs at the end. Only two distinct crossing configurations
 occurred in either program, so the debris is far more regular, seen
 from an ossifier, than its raw item list suggests.
 
-*Remaining uncertainty.* The rope was checked against the plain engine
-on `car` and `cond` only. On `last` it was checked against the CTS (every
-read) but not against the plain engine, which would need about a day.
+*Remaining uncertainty at this point.* The rope was checked against the
+plain engine on `car` and `cond` only. Section 7.7 removes the quadratic
+crossing count and checks both rope variants against the plain engine
+on `last`.
 
 *A pitfall met on the way.* A first `cond` run with the rope stopped
 with a rope error at read ~4,990. The cause was a spacing v reused from
 the old compiler's run, at which the current CTS has a gap of 11.45 v,
 past the failure threshold of 3.8. The plain engine fails at the same
 place. The rope's check caught a failing construction, as it should.
+
+### 7.7 Stretch jumps: a linear rope
+
+*The problem left by 7.6.* With the rope, events grow only with the
+program's queue, but every ossifier still crosses every absorbed debris
+unit, one memo lookup per crossing. For `last` that is 1.24e10 lookups,
+and the time per event rose from 3.2 µs to about 7 µs over the run.
+
+*Observation: an ossifier passage moves the debris rigidly.* The rope
+memo held only two entries in every run. Both have the same ossifier
+configuration at entry; the unit is an E pair whose second item sits 337
+or 117 cells after the first. In both, the crossing moves every debris
+item by (Δt, Δx) = (26, −32) modulo the E period (30, −8), and every A
+glider of the ossifier by (1, −116) modulo the A period (3, 2). Each pair
+keeps its shape. So, seen from the ossifiers, the debris is a rigid body
+that each ossifier shifts by the same vector.
+
+*Mechanism.* Rule 110 is translation invariant. If a whole configuration
+(the debris units plus an ossifier) is an exact translate of one whose
+evolution is known, its evolution is the known one, translated. The
+engine uses this as follows (gasc.c, "stretch jumps"):
+
+- A *verified prefix* of the rope is kept: units that a train ossifier
+  entering at the first unit has crossed one by one, with all the
+  rope's run-time checks, and where every item moved by exactly
+  D* = (26, −32) modulo its period.
+- A later train ossifier is compared with the ossifier that verified the
+  prefix (the reference). Since the reference passed, every prefix unit
+  has been shifted by n D*, where n counts the ossifiers that crossed
+  since. The new ossifier's gliders, minus the reference's, minus n D*,
+  must lie in the lattice spanned by the A period and (30, −8). Then
+  there is a unique translation w that maps the reference's whole
+  crossing onto the new one. Otherwise the run stops (code 50).
+- The new crossing must also start later than the previous crossing of
+  the same units by more than the longest crossing (code 51), the
+  translated form of the per-unit ordering check.
+- The ossifier is then placed at the reference's exit state, translated
+  by w, in one step. The prefix units are not touched; their true state
+  is their stored state shifted by (jumps since) × D*, computed only
+  where it is needed (the bound of the left sentinel).
+- Units absorbed after the reference are crossed one by one, and extend
+  the prefix when they pass the same checks.
+
+*Checks that the mechanism fails loudly.* Three deliberate errors in the
+jump (a translation off by one E period in time, an exit shifted by 2
+cells, a wrong n) each stop the run: two with code 50, one with a failed
+merge right after the ossifier leaves the rope.
+
+*Exactness.* The comparison tool (`ropecheck.py`) saves the gas every N
+reads at the same time t in every mode, and compares the items right of
+the rope item by item, then the read outcomes and census counts at the
+end. A changed item makes it report a mismatch (negative control).
+
+| program | reads | compared with | snapshots equal | end equal |
+|---|---|---|---|---|
+| `car` | 2,448 | plain engine | 5 / 5 | yes |
+| `cond` | 10,836 | plain engine | 11 / 11 | yes |
+| `last` | 157,824 | rope without jumps | 16 / 16 | yes |
+| `last` | 157,824 | plain engine | 16 / 16 | yes |
+
+The `last` runs also agree in a count the two modes compute differently:
+the rope without jumps made 12,354,795,124 crossings; the rope with
+jumps made 160,152 one by one and covered 12,354,634,972 by jumps, the
+same total.
+
+*The plain run.* The plain engine needed 1.996e11 events for `last`,
+148 times the rope's 1.35e9, and about 13 hours of compute. The
+container was restarted three times during it; each time the run
+resumed from its last checkpoint (every 5,000, later every 1,000 reads),
+redoing about 5,300 reads in all. Resuming exposed one bug, in the read
+check rather than the engine: the particle census did not render a
+particle type first seen after the checkpoint (fixed, with a test). The
+comparison output is `data/last_ropecheck.txt`.
+
+*What the rope's debris check covers.* Debris inside the rope is not
+compared item by item with the plain engine. Every absorbed unit is
+crossed by every later ossifier, and the ossifiers leave the rope into
+the compared region, so a wrong unit would change a later ossifier's
+exit and show up there. Only the debris state after the last ossifier
+of a run escapes this argument.
+
+*Cost.* For `last` the rope with jumps took 2,566 s against 7,196 s
+without them, with the same 1.35e9 events. One-by-one crossings fell
+from 1.24e10 to 160,152, about one per unit. The time per read is now
+flat. A profile of `cond` shows where it goes: 82% in the read check
+(the particle census and the rendering around it), 11–13% in the event
+engine. The cost of a glider run is now linear in the program's work,
+and most of it is the check that every read is right.
+
+*Scope.* The two crossing types and the rigid shift were measured on
+three programs at their gap-rule spacings. A program whose debris moves
+non-rigidly would keep exactness (the prefix stops growing at the first
+unit that fails the check) but lose the speed.
 
 ## 8. What comes next
 
@@ -1348,9 +1444,10 @@ gliders, value read out.
 
 Open, roughly in order of value:
 
-- Done: the debris sweep (7.6). Open: the number of rope crossings is
-  still quadratic in reads (cheap, but it dominates very long runs); a
-  unit-level memo of whole stretches would remove it.
+- Done: the debris sweep (7.6) and its linear form (7.7), checked against
+  the plain engine on `last`. Open: the read check is now 82% of a glider
+  run's time; a lighter check (or a sampled one) could speed runs up
+  by up to about five times, at the cost of checking less.
 - Unbounded recursion: a periodic interpreter loop in the bus machine
   (memory bounded by a register file), instead of compile-time inlining.
 
