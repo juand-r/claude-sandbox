@@ -1,0 +1,227 @@
+{
+ "settings": {
+  "name": "control_slope_lam1_s0",
+  "lam": 1.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "jitter_max": 0.5,
+  "slope_weight": 1.0,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128
+ },
+ "valid_loss": 2.285569922924042,
+ "r2_train": 0.9983227969061605,
+ "r2_centred_train": 0.9972405865477652,
+ "r2_coord_mean_train": 0.3921885491711832,
+ "r2_held_out": 0.9983988271713697,
+ "r2_centred_held_out": 0.9973811653442526,
+ "r2_coord_mean_held_out": 0.3885933863307366,
+ "r2_random": 0.9935317634769975,
+ "n_jacobian_tokens": 512,
+ "sum_w": 1.0097525119781494,
+ "jacobian_train": {
+  "follow": 0.999316087923944,
+  "other": 0.062490029784385115,
+  "follow_length": 0.9525804200675339,
+  "follow_direction": 0.9996840853086402,
+  "ones_mean": 1.0097523927688599,
+  "ones_sd": 1.499123165882299e-07,
+  "follow_sd": 0.013499839791992181
+ },
+ "jacobian_held_out": {
+  "follow": 0.9994373358786106,
+  "other": 0.06267960984405363,
+  "follow_length": 0.9524142101872712,
+  "follow_direction": 0.999807596710826,
+  "ones_mean": 1.0097523932345212,
+  "ones_sd": 1.5041651321712202e-07,
+  "follow_sd": 0.014033327528026544
+ },
+ "finite_follow_median_train": 0.9981640577316284,
+ "finite_follow_mean_train": 0.9978790894383565,
+ "finite_follow_median_held_out": 0.9978280663490295,
+ "finite_follow_mean_held_out": 0.9974446590058506,
+ "edit_test": [
+  {
+   "token": 304,
+   "count": 875,
+   "report_follow": 0.9501708149909973,
+   "kl_at_t": 0.00399712985381484,
+   "kl_after_t_later": 0.00040274893399327993,
+   "kl_no_t": 0.0002666905347723514
+  },
+  {
+   "token": 279,
+   "count": 635,
+   "report_follow": 0.9779344797134399,
+   "kl_at_t": 0.0029558036476373672,
+   "kl_after_t_later": 0.0006327410228550434,
+   "kl_no_t": 0.00016304111341014504
+  },
+  {
+   "token": 316,
+   "count": 589,
+   "report_follow": 0.9715992212295532,
+   "kl_at_t": 0.0036933147348463535,
+   "kl_after_t_later": 0.00031988570117391646,
+   "kl_no_t": 0.00017320534971076995
+  },
+  {
+   "token": 328,
+   "count": 567,
+   "report_follow": 0.9658242464065552,
+   "kl_at_t": 0.0029047769494354725,
+   "kl_after_t_later": 0.001217185752466321,
+   "kl_no_t": 0.0007491859723813832
+  },
+  {
+   "token": 341,
+   "count": 526,
+   "report_follow": 0.9731438159942627,
+   "kl_at_t": 0.003057666588574648,
+   "kl_after_t_later": 0.0008176967967301607,
+   "kl_no_t": 0.00023507463629357517
+  },
+  {
+   "token": 352,
+   "count": 518,
+   "report_follow": 0.9754618406295776,
+   "kl_at_t": 0.008314112201333046,
+   "kl_after_t_later": 0.0006475528352893889,
+   "kl_no_t": 0.00015400824486277997
+  },
+  {
+   "token": 356,
+   "count": 464,
+   "report_follow": 0.9569852352142334,
+   "kl_at_t": 0.002187275793403387,
+   "kl_after_t_later": 0.00017001490050461143,
+   "kl_no_t": 6.544822099385783e-05
+  },
+  {
+   "token": 0,
+   "count": 348,
+   "report_follow": 0.9482668042182922,
+   "kl_at_t": 0.003462454304099083,
+   "kl_after_t_later": 0.00043559144251048565,
+   "kl_no_t": 0.0005389706348069012
+  },
+  {
+   "token": 298,
+   "count": 333,
+   "report_follow": 0.9590274095535278,
+   "kl_at_t": 0.006489953491836786,
+   "kl_after_t_later": 0.0007389067905023694,
+   "kl_no_t": 0.0001864290243247524
+  },
+  {
+   "token": 416,
+   "count": 320,
+   "report_follow": 0.9640068411827087,
+   "kl_at_t": 0.00011100319534307346,
+   "kl_after_t_later": 0.0037131942808628082,
+   "kl_no_t": 0.0024922688025981188
+  },
+  {
+   "token": 405,
+   "count": 284,
+   "report_follow": 0.9738657474517822,
+   "kl_at_t": 0.0035316734574735165,
+   "kl_after_t_later": 0.00012873196101281792,
+   "kl_no_t": 6.176507304189727e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": 0.9859976768493652,
+   "kl_at_t": 0.008852544240653515,
+   "kl_after_t_later": 0.003459753468632698,
+   "kl_no_t": 0.0007550742593593895
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.9602822065353394,
+   "kl_at_t": 0.00797366164624691,
+   "kl_after_t_later": 0.0005324825178831816,
+   "kl_no_t": 7.477892359020188e-05
+  },
+  {
+   "token": 427,
+   "count": 246,
+   "report_follow": 0.9763604402542114,
+   "kl_at_t": 0.007746733259409666,
+   "kl_after_t_later": 0.0004486408724915236,
+   "kl_no_t": 0.00017677061259746552
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": 0.972374677658081,
+   "kl_at_t": 0.008812008425593376,
+   "kl_after_t_later": 0.0009161250782199204,
+   "kl_no_t": 0.00015771720791235566
+  },
+  {
+   "token": 83,
+   "count": 231,
+   "report_follow": 0.9428949952125549,
+   "kl_at_t": 0.011138316243886948,
+   "kl_after_t_later": 0.00020334804139565676,
+   "kl_no_t": 6.502366159111261e-05
+  },
+  {
+   "token": 415,
+   "count": 228,
+   "report_follow": 0.9589183926582336,
+   "kl_at_t": 0.004204159136861563,
+   "kl_after_t_later": 0.000726564263459295,
+   "kl_no_t": 0.0001552788889966905
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.9623939394950867,
+   "kl_at_t": 0.00042956386459991336,
+   "kl_after_t_later": 6.177540490170941e-05,
+   "kl_no_t": 1.2034837709506974e-05
+  },
+  {
+   "token": 469,
+   "count": 146,
+   "report_follow": 0.9749066233634949,
+   "kl_at_t": 0.015876468271017075,
+   "kl_after_t_later": 0.00031166375265456736,
+   "kl_no_t": 6.426241452572867e-05
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.991267740726471,
+   "kl_at_t": 0.006748259533196688,
+   "kl_after_t_later": 0.00025364712928421795,
+   "kl_no_t": 5.214633347350173e-05
+  }
+ ],
+ "stories": [
+  "Once upon a time, there was a little boy named Timmy. One day, Timmy went to the park with his mommy and daddy. \n\nWhile he was playing, Timmy caught his toy car. He loved to play with his toy cars and trucks.\n\nAfter playing with his toy car, his mommy told him to go on his own trip with him. Timmy was excited to go on a trip to the beach. While he was driving, he saw a big fish.\n\nTimmy asked his mommy, \"What's that big fish?\"\n\nHis mom said, \"That's a fish, Timmy.",
+  "Once upon a time there was a brave knight and a knight. One day, he had a fight. The knight was very sad. He had no one to play with. One day, the knight had to go to a new place to live. He wanted to be brave like the knight and he ran to the castle.\n\nThe knight knocked on the castle to a navy swings and a castle. The knight was scared, but the knight was brave. He wanted to show his brave knight to be brave. He said no, no God had to keep him special.\n\nThe dragon agreed and the",
+  "Once upon a time, there was a little girl named Lily. She loved to play with her toys and books. One day, she was playing with her toy car when she accidentally dropped it from her toy car. Lily was sad because she couldn't play with it anymore. \n\nLater that day, Lily's mommy came to get a new toy car. She saw that it was broken and had to find the toy car. Lily wanted to play with it, but her mommy said no. Lily was sad because she couldn't play with her toy car anymore. \n\nFrom then on, Max decided to be a"
+ ]
+}
