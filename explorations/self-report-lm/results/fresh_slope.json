@@ -1,0 +1,85 @@
+{
+ "settings": {
+  "name": "fresh_slope",
+  "lam": 4.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128,
+  "source": "ft_lam4_jit",
+  "finetune_steps": 3000,
+  "jitter_max": 0.5,
+  "finetune_lr": 0.0002,
+  "data_offset": 1554,
+  "slope_weight": 1.0
+ },
+ "log": [
+  {
+   "step": 0,
+   "valid_loss": 2.306768071651459,
+   "r2c_asked": 0.9792957806871303,
+   "follow_asked": 0.968137679155916,
+   "other_asked": 0.27116315450984985,
+   "length_asked": 0.8694586921483278,
+   "r2c_never": 0.979354012871094,
+   "follow_never": 0.958677236456424,
+   "other_never": 0.2717134876875207,
+   "length_never": 0.864495609421283
+  },
+  {
+   "step": 1000,
+   "valid_loss": 2.307168209552765,
+   "r2c_asked": 0.9857390459999198,
+   "follow_asked": 0.9627719549462199,
+   "other_asked": 0.21511156694032252,
+   "length_asked": 0.906503570266068,
+   "r2c_never": 0.9858771785846503,
+   "follow_never": 0.9574407413601875,
+   "other_never": 0.215692070662044,
+   "length_never": 0.9006415572948754,
+   "seconds": 1398.7629890441895
+  },
+  {
+   "step": 2000,
+   "valid_loss": 2.3055914998054505,
+   "r2c_asked": 0.9889625753468945,
+   "follow_asked": 0.9813252817839384,
+   "other_asked": 0.16936954448465258,
+   "length_asked": 0.932472366373986,
+   "r2c_never": 0.9892859965711246,
+   "follow_never": 0.9754924606531858,
+   "other_never": 0.1702658475842327,
+   "length_never": 0.9250415628775954,
+   "seconds": 2043.813003063202
+  },
+  {
+   "step": 3000,
+   "valid_loss": 2.2992182970046997,
+   "r2c_asked": 0.9915318926739561,
+   "follow_asked": 0.9874623930081725,
+   "other_asked": 0.1338488138280809,
+   "length_asked": 0.9395423363894224,
+   "r2c_never": 0.9915943903119693,
+   "follow_never": 0.9823492774739861,
+   "other_never": 0.1350644293706864,
+   "length_never": 0.9329702751711011,
+   "seconds": 2694.9686093330383
+  }
+ ]
+}
