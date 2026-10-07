@@ -658,8 +658,8 @@ Observations.
   next-token gradient reaches the embedding vectors, and the gradient norm is
   clipped for the sum of both losses, so the self-report loss changes the size of
   each update (for one batch, the clip factor is 0.59 for the control's combined
-  loss against 0.89 for its next-token loss alone, and 0.06 against 0.67 for the
-  last text model). "Shaped by next-token prediction alone" in the summary
+  loss against 0.89 for its next-token loss alone, and about 0.05 against 0.67
+  for the last text model, whose self-report gradient is much larger). "Shaped by next-token prediction alone" in the summary
   should be read with this qualification.
 - The embedding vector of t is the input at t's position, so the model is
   reporting a value present in its own input. Weights that are not inputs (for
