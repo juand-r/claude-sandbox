@@ -136,3 +136,9 @@ the property directly. That is the intended property (answers computed from the 
 value), but it should be stated plainly in the report.
 Phase 2 started 05:55: control_jit_s0 (from scratch, perturbed questions, λ = 1) and the
 stage-2 text run text_s0, in parallel.
+
+Phase 2, first result: control_jit_s0 (from scratch, perturbed questions, λ = 1) has follow
+0.886 / 0.880 (128 + 128 tokens), centred R² 0.970, validation loss 2.315; the original
+control 0.870 / 0.854, 0.982, 2.307. Much less than the 3,000-step continuation with
+perturbed questions (0.959 / 0.949). Not understood. Started 08:20: ft2_lam4_jit, 6,000
+more steps from ft_lam4_jit (λ = 4, perturbed questions), to see whether follow keeps rising.
