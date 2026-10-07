@@ -220,3 +220,12 @@ measure_text.py, quick_measure.py and the tests.
   clipping acts on the combined gradient, so the self-report loss changes the size of the language
   model's update (measured clip factors: control 0.59 vs 0.89 for the LM loss alone; text model 0.06
   vs 0.67). The report's "shaped by next-token prediction alone" should be read with this in mind.
+
+### 2026-10-07 ~15:40 UTC: process mistake
+- The λ = 1 ablation (control_slope_lam1_s0) was launched at the end of a `commit && push && nohup ...`
+  chain. GitHub returned 500 on the push, so the launch never ran; this went unnoticed for about
+  35 minutes because the monitor watches log files and there was no log. Started at ~15:40.
+  Rule: launch long runs in their own command, separate from git, and check `ps` for the process.
+- Clean slope comparison (REPORT 10.5): fresh_noslope follow 0.975 / 0.973, other movement 0.224;
+  fresh_slope 0.987 / 0.986, 0.135. The slope loss helps with new data too, less than the
+  confounded comparison suggested.
