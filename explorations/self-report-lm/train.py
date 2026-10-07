@@ -20,7 +20,7 @@ then shaped by language modelling alone.
 
 slope_weight > 0 adds the slope loss (slope_loss below; REPORT.md section 10.1), control setting only.
 
-Usage: python train.py <name> <lam> <seed> [steps] [detach] [jitter_max] [slope_weight]
+Usage: python train.py <name> <lam> <seed> [steps] [detach|joint] [jitter_max] [slope_weight]
 """
 import json
 import math
@@ -129,6 +129,8 @@ def make_optimizer(m):
 def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False, jitter_max=0.0, slope_weight=0.0):
     if slope_weight > 0 and not detach_input:
         raise ValueError("the slope loss is implemented for the control setting only")
+    if slope_weight > 0 and lam == 0:
+        raise ValueError("the slope loss is only applied together with the self-report loss (lam > 0)")
     RESULTS.mkdir(exist_ok=True)
     ckpt_path = RESULTS / f"{name}_ckpt.pt"
     settings = {"name": name, "lam": lam, "seed": seed, "steps": steps, "detach_input": detach_input,
@@ -203,6 +205,8 @@ def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False, jitter
 def main():
     name, lam, seed = sys.argv[1], float(sys.argv[2]), int(sys.argv[3])
     steps = int(sys.argv[4]) if len(sys.argv) > 4 else STEPS
+    if len(sys.argv) > 5 and sys.argv[5] not in ("detach", "joint"):
+        raise ValueError(f"argument 5 must be 'detach' or 'joint', got {sys.argv[5]!r}")
     detach_input = len(sys.argv) > 5 and sys.argv[5] == "detach"
     jitter_max = float(sys.argv[6]) if len(sys.argv) > 6 else 0.0
     slope_weight = float(sys.argv[7]) if len(sys.argv) > 7 else 0.0

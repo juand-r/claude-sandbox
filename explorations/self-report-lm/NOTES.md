@@ -191,3 +191,32 @@ text_s0, over all asked-about / never-asked tokens (answer characters excluded):
 - measure_text.py now takes several number-head references (to compare with ft_slope as well).
 - analyze_review's random-vector centred R² (used in the report) and measure.py's r2_random
   (one mean over all answers, as in the training loss) are different measures; the report uses the former.
+
+### 2026-10-07 ~12:10 UTC: code review of stages 1 and 2; one real bug
+A separate Claude instance reviewed train.py, finetune.py, textanswer.py, train_text.py, finetune_text.py,
+measure_text.py, quick_measure.py and the tests.
+- Bug: finetune.py and finetune_text.py seeded their data generators with seed + 777 for every
+  continuation. A continuation of a continuation therefore replayed its parent's text windows and
+  questions. Affected: ft2_lam4_jit (first 3,000 steps = ft_lam4_jit's batches), ft_slope (same
+  text windows as ft_lam4_jit; its questions diverge after step 1 because the slope loss draws extra
+  random numbers), text_jit_lam4 and text_jit_lam4_long (replaying text_jit's batches), and the run
+  in progress, text_jit_lam4_long2 (killed after about 700 steps; log in trash/).
+  Measurements use their own tokens and directions, so the measured numbers stand; the report's
+  statement "new random text windows and questions" was false for these runs, and the ft2_lam4_jit
+  vs ft_slope comparison is confounded (ft2 repeated its parent's questions, ft_slope did not).
+- Fix: finetune.data_offset(): each continuation uses its source's offset + 777 and records it in
+  settings["data_offset"] (old continuations without the key count as 777). Test added (23 pass).
+  Canary: 2-step text continuation from text_jit_lam4_long starts at its final numbers; offset 1554.
+- Observation from the canary: with a fresh AdamW, the first 2 steps lower centred R² 0.982 -> 0.956
+  and follow 0.960 -> 0.879 (64 + 64 tokens). Adam's first steps move every parameter by about the
+  learning rate. Every continuation started this way; all recovered within 1,000 steps.
+- Reruns (run_fresh.sh): text_jit_lam4_long2 with new data; a clean slope comparison from ft_lam4_jit
+  with new data, without (fresh_noslope) and with (fresh_slope) the slope loss.
+- Minor fixes: train.py refuses slope_weight > 0 with lam = 0 (it was silently ignored) and
+  refuses argument 5 other than 'detach' or 'joint' (a typo silently meant the joint setting);
+  finetune.py refuses a text-answer source.
+- Not fixed, noted: one generator draws questions, perturbations and slope directions, so runs with
+  different options see the same text windows but different questions after step 1. Gradient
+  clipping acts on the combined gradient, so the self-report loss changes the size of the language
+  model's update (measured clip factors: control 0.59 vs 0.89 for the LM loss alone; text model 0.06
+  vs 0.67). The report's "shaped by next-token prediction alone" should be read with this in mind.

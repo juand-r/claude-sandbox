@@ -321,3 +321,16 @@ def test_perturbed_text_questions_target_the_perturbed_coordinate_and_stop_gradi
     others = torch.ones(m.n_text, dtype=torch.bool)
     others[fmt.chars] = False
     assert m.E.grad[:m.n_text][others].abs().max() == 0
+
+
+def test_each_continuation_in_a_chain_gets_new_data_seeds():
+    import finetune as Fn
+    base = {"seed": 0}                                     # a train.py run
+    old_child = {"seed": 0, "source": "x"}                 # continuation made before offsets were recorded (used 777)
+    a = Fn.data_offset(base)
+    b = Fn.data_offset({**base, "source": "y", "data_offset": a})
+    assert a == Fn.DATA_SEED_STEP and b == 2 * Fn.DATA_SEED_STEP
+    assert Fn.data_offset(old_child) == 2 * Fn.DATA_SEED_STEP
+    _, g1, _ = Fn.generators(base)
+    _, g2, _ = Fn.generators({**base, "source": "y", "data_offset": a})
+    assert not torch.equal(torch.randint(0, 10**6, (5,), generator=g1), torch.randint(0, 10**6, (5,), generator=g2))

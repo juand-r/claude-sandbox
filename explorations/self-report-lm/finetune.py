@@ -35,7 +35,22 @@ import train as T
 
 HERE = Path(__file__).parent
 EVAL_EVERY = 1000
-DATA_SEED_OFFSET = 777            # text windows and questions differ from the source run's
+DATA_SEED_STEP = 777
+
+
+def data_offset(source_settings):
+    """Seed offset for a continuation's text windows and questions: the source's offset plus
+    DATA_SEED_STEP, so that every run in a chain of continuations sees new data. A run from
+    train.py / train_text.py has offset 0. Continuations made before the offset was recorded
+    (they have a "source" but no "data_offset") all used DATA_SEED_STEP."""
+    parent = source_settings.get("data_offset", DATA_SEED_STEP if "source" in source_settings else 0)
+    return parent + DATA_SEED_STEP
+
+
+def generators(source_settings):
+    offset = data_offset(source_settings)
+    seed = source_settings["seed"]
+    return offset, torch.Generator().manual_seed(seed + offset), torch.Generator().manual_seed(seed + offset + 10_000)
 
 
 def jittered_report_loss(m, t, i, jitter_max, gen):
@@ -45,15 +60,16 @@ def jittered_report_loss(m, t, i, jitter_max, gen):
 
 def finetune(source, name, steps, lam, jitter_max, lr=T.LR_MIN, verbose=True, slope_weight=0.0):
     m, s = Ms.load(source)
+    if s.get("answer") == "text":
+        raise ValueError(f"{source} is a text-answer run; use finetune_text.py")
     m.train()
-    settings = {**s, "name": name, "source": source, "finetune_steps": steps, "lam": lam,
+    offset, gen_lm, gen_rep = generators(s)
+    settings = {**s, "data_offset": offset, "name": name, "source": source, "finetune_steps": steps, "lam": lam,
                 "jitter_max": jitter_max, "finetune_lr": lr, "detach_input": True, "slope_weight": slope_weight}
     opt = T.make_optimizer(m)
     for g in opt.param_groups:
         g["lr"] = lr
     train_tokens, held_out = lm.split_tokens(s["seed"], s["n_text"])
-    gen_lm = torch.Generator().manual_seed(s["seed"] + DATA_SEED_OFFSET)
-    gen_rep = torch.Generator().manual_seed(s["seed"] + DATA_SEED_OFFSET + 10_000)
     train_data = T.load_tokens("train")
     log = [{"step": 0, **Q.quick_measure(m, s["seed"])}]
     if verbose:

@@ -22,6 +22,7 @@ import numpy as np
 import torch
 
 import lm
+import finetune as Fn
 import measure as Ms
 import measure_text as MT
 import textanswer as TA
@@ -30,7 +31,6 @@ import train_text as TT
 
 EVAL_EVERY = 1000
 N_FOLLOW = 64
-DATA_SEED_OFFSET = 777
 
 
 @torch.no_grad()
@@ -53,15 +53,14 @@ def finetune(source, name, steps, lam, jitter_max, lr=T.LR_MIN):
     m, s = Ms.load(source)
     if s.get("answer") != "text":
         raise ValueError(f"{source} is not a text-answer run")
-    settings = {**s, "name": name, "source": source, "finetune_steps": steps, "lam": lam,
+    offset, gen_lm, gen_rep = Fn.generators(s)
+    settings = {**s, "data_offset": offset, "name": name, "source": source, "finetune_steps": steps, "lam": lam,
                 "jitter_max": jitter_max, "finetune_lr": lr}
     opt = T.make_optimizer(m)
     for g in opt.param_groups:
         g["lr"] = lr
     asked, never = lm.split_tokens(s["seed"], s["n_text"])
     asked, never = TA.question_tokens(asked, fmt), TA.question_tokens(never, fmt)
-    gen_lm = torch.Generator().manual_seed(s["seed"] + DATA_SEED_OFFSET)
-    gen_rep = torch.Generator().manual_seed(s["seed"] + DATA_SEED_OFFSET + 10_000)
     train_data, valid_data = T.load_tokens("train"), T.load_tokens("valid")
     vgen = torch.Generator().manual_seed(1234)
     valid_batches = [T.lm_batch(valid_data, T.LM_BATCH, vgen) for _ in range(T.EVAL_LM_BATCHES)]
