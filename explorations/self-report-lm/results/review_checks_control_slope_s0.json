@@ -1,0 +1,106 @@
+{
+ "blind_direction": {
+  "train": {
+   "blind": 0.9330602176487446,
+   "length": 0.9779897201806307,
+   "cos_x_c": 0.41794636426493526
+  },
+  "held_out": {
+   "blind": 0.9363760063424706,
+   "length": 0.9764656042680144,
+   "cos_x_c": 0.41780107910744846
+  }
+ },
+ "P2_length": 2.594719409942627,
+ "bins": [
+  {
+   "set": "train",
+   "count_from": 0,
+   "count_below": 100,
+   "n_tokens": 248,
+   "centred_r2_own_means": 0.8094136375922545,
+   "follow": 0.9912679847329855,
+   "other": 0.045683679170906544,
+   "mean_length": 3.724109172821045,
+   "mean_pairwise_cos": 0.9968776106834412
+  },
+  {
+   "set": "train",
+   "count_from": 100,
+   "count_below": 10000,
+   "n_tokens": 1935,
+   "centred_r2_own_means": 0.9975925910653273,
+   "follow": 1.0000411523506045,
+   "other": 0.053160736337304115,
+   "mean_length": 1.7603341341018677,
+   "mean_pairwise_cos": 0.6027226448059082
+  },
+  {
+   "set": "train",
+   "count_from": 10000,
+   "count_below": 1000000000000,
+   "n_tokens": 889,
+   "centred_r2_own_means": 0.9969990118929416,
+   "follow": 0.9949681581929326,
+   "other": 0.05964548897463828,
+   "mean_length": 1.4931823015213013,
+   "mean_pairwise_cos": 0.3835010528564453
+  },
+  {
+   "set": "held_out",
+   "count_from": 0,
+   "count_below": 100,
+   "n_tokens": 97,
+   "centred_r2_own_means": 0.747915992351746,
+   "follow": 0.9911839421838522,
+   "other": 0.04587639175588265,
+   "mean_length": 3.7352867126464844,
+   "mean_pairwise_cos": 0.9976398944854736
+  },
+  {
+   "set": "held_out",
+   "count_from": 100,
+   "count_below": 10000,
+   "n_tokens": 629,
+   "centred_r2_own_means": 0.997658612361686,
+   "follow": 0.9998421594500542,
+   "other": 0.05330129835056141,
+   "mean_length": 1.796325922012329,
+   "mean_pairwise_cos": 0.6047959327697754
+  },
+  {
+   "set": "held_out",
+   "count_from": 10000,
+   "count_below": 1000000000000,
+   "n_tokens": 298,
+   "centred_r2_own_means": 0.9967890950823259,
+   "follow": 0.9934840193018317,
+   "other": 0.06003119033994153,
+   "mean_length": 1.5170320272445679,
+   "mean_pairwise_cos": 0.4067469537258148
+  }
+ ],
+ "rescaling": {
+  "baseline": "1 - mean squared error per vector / mean squared distance of held-out vectors from their coordinate means",
+  "rare_mean_length": 3.7352867126464844,
+  "frequent_mean_length": 1.5170320272445679,
+  "rare_as_is": 0.9956006603875099,
+  "rare_shrunk_to_frequent_length": 0.9980185716616429,
+  "frequent_as_is": 0.9979272215380875,
+  "frequent_grown_to_rare_length": 0.8081137413543601
+ },
+ "linear_probe_lm_only_centred_r2_held_out": 0.8339024626877606,
+ "random_vectors_centred_r2": 0.995274101334398,
+ "edit_test": {
+  "ratio_of_token_means": 21.8842724068266,
+  "mean_of_token_ratios": 45.851677416316186,
+  "pooled_kl_at_t": 0.004484871643937584,
+  "tokens_with_ratio_above_1": 18,
+  "n_tokens": 20,
+  "pooled_ratio": 19.634903668080717
+ },
+ "zero_count_tokens": {
+  "train": 88,
+  "held_out": 47
+ }
+}
