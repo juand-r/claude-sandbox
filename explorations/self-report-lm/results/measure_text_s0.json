@@ -1,0 +1,46 @@
+{
+ "settings": {
+  "name": "text_s0",
+  "answer": "text",
+  "lam": 1.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128
+ },
+ "finite_size": 0.3,
+ "valid_loss": 2.1803725957870483,
+ "r2c_asked": 0.9506943296401764,
+ "valid_format_rate_asked": 1.0,
+ "finite_follow_mean_asked": 0.7562308992492035,
+ "finite_follow_median_asked": 0.7828916609287262,
+ "ref_joint_detached_s0_finite_follow_mean_asked": 0.8410267751896754,
+ "ref_joint_detached_s0_finite_follow_median_asked": 0.856892466545105,
+ "r2c_never": 0.9484444665178299,
+ "valid_format_rate_never": 1.0,
+ "finite_follow_mean_never": 0.739456961164251,
+ "finite_follow_median_never": 0.7673067152500153,
+ "ref_joint_detached_s0_finite_follow_mean_never": 0.8369865218410268,
+ "ref_joint_detached_s0_finite_follow_median_never": 0.864780455827713,
+ "stories": [
+  "Once upon a time there was a very happy little bear who lived on a farm. He was always very careful when he loved to sit and play in the barn. One day, he decided to go outside and play. He looked all around but he missed his basketball. He thought it looked interesting so much fun. \n\nThen, he saw something shiny. It was a shiny red ball! He ran over to it and asked what it was. He wanted it, but his friend said no because it was too powerful to have it. It was the best ball he ever had. But he was happy that he",
+  "Once upon a time, there was an old man. He was very special and he had no teeth coming to the fire. But he was very weak and he had a very bad charge.\n\nOne day, a little girl was walking through the park. She saw a big tree with leaves and he wanted to climb it. He went up to the tree and lifted the tree. But the tree was not quiet. The girl asked the boy why he was so weak.\n\nThe boy said it was a bad ending. The boy asked the girl what she needed. The boy said she was sorry to the",
+  "Once upon a time, there was a little girl named Lily. She loved to walk in the park with her mommy. One day, Lily saw a big doll outside her window. It was a lady's hair that had pretty hair and a long neck. \n\nLily was so happy to have her mommy to go inside and play with her toys. And eating her favorite candy, she started to feel a bit sick. She was sad because she loved her mommy very much. \n\nLily's mommy helped her out a big juicy peel for Lily. Lily was very happy and said, \"Goodbye, mommy!\""
+ ]
+}
