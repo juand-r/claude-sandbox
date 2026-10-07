@@ -238,3 +238,23 @@ measure_text.py, quick_measure.py and the tests.
 - text_scratch_jit (text answers from scratch, λ = 4, perturbed questions): centred R² 0.941, follow at 30%
   0.835 / 0.829, validation loss 2.240: worse than the continued text model (0.992, 0.965, 2.193).
 - The container restarted at ~17:35; the training process survived; only the monitor had to be re-armed.
+
+### 2026-10-07 ~19:30 UTC: second report review (sections 10 to 13, summary)
+A separate Claude instance checked every number of the new sections against results/. Nearly all
+matched. Fixed in REPORT.md:
+- Stale "best number-head model" (it meant ft_slope; control_slope is better) in 11.3 and 12.
+- Test count (now 24: added a test that the slope loss gives no gradient to token embedding vectors).
+- "best on every measure" (not validation loss), "in the toy model's range" (slightly below),
+  the edit-test gap (present in every run, smaller in control_slope).
+- "The slope loss's effect is smaller with new data": wrong; compared at equal steps the
+  confounded and clean comparisons agree. Rewritten.
+- Rescaling score: analyze_review grows frequent vectors to the run's own rare-token norm, which
+  differs between runs (3.7 to 4.4). Cross-run comparisons were confounded (λ = 4 vs 1: 0.81 vs 0.30;
+  at a common norm 4: 0.71 vs 0.56). New script common_checks.py computes the score at fixed norms
+  3, 4, 5 and the clip factors over 5 batches; the report's cross-run tables use norm 4.
+- Clip factors: one batch was not representative; now 5 batches. The argument rewritten:
+  Adam cancels a steady factor; what remains is a reweighting of steps.
+- Overclaims softened ("the slope loss is what matters" -> "in this one-seed comparison, ...";
+  caveats on shared random generator, slope loss adding gradient, no slope-without-perturbation run).
+- Terms defined: continuation, number head, slope loss (summary); run-name parts (section 10);
+  fresh optimizer; clip factor; teacher forcing.

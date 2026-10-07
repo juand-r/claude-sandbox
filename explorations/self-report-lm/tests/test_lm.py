@@ -334,3 +334,11 @@ def test_each_continuation_in_a_chain_gets_new_data_seeds():
     _, g1, _ = Fn.generators(base)
     _, g2, _ = Fn.generators({**base, "source": "y", "data_offset": a})
     assert not torch.equal(torch.randint(0, 10**6, (5,), generator=g1), torch.randint(0, 10**6, (5,), generator=g2))
+
+
+def test_slope_loss_gives_no_gradient_to_token_embedding_vectors():
+    m = small_model()
+    t, i = torch.tensor([1, 2, 3, 4]), torch.tensor([0, 1, 2, 3])
+    T.slope_loss(m, t, i, torch.Generator().manual_seed(0)).backward()
+    assert m.E.grad[:m.n_text].abs().max() == 0
+    assert m.E.grad[m.n_text:].abs().max() > 0          # the QUERY and COORD vectors are trained
