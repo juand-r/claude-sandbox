@@ -1,0 +1,229 @@
+{
+ "settings": {
+  "name": "ft2_lam4_jit",
+  "lam": 4.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128,
+  "source": "ft_lam4_jit",
+  "finetune_steps": 6000,
+  "jitter_max": 0.5,
+  "finetune_lr": 0.0002
+ },
+ "valid_loss": 2.2740948843955993,
+ "r2_train": 0.9939628077837379,
+ "r2_centred_train": 0.9888666701009738,
+ "r2_coord_mean_train": 0.457737058812012,
+ "r2_held_out": 0.9939535257592401,
+ "r2_centred_held_out": 0.988908238961394,
+ "r2_coord_mean_held_out": 0.454867967339491,
+ "r2_random": 0.9762246423230256,
+ "n_jacobian_tokens": 512,
+ "sum_w": 0.9966568946838379,
+ "jacobian_train": {
+  "follow": 0.979341231402941,
+  "other": 0.18015509290853515,
+  "follow_length": 0.9198147376300767,
+  "follow_direction": 0.9798099439523338,
+  "ones_mean": 0.9966569077223539,
+  "ones_sd": 1.3854317504335967e-07,
+  "follow_sd": 0.0268199145268842
+ },
+ "jacobian_held_out": {
+  "follow": 0.9770513193216175,
+  "other": 0.17983403377002105,
+  "follow_length": 0.9151190597331151,
+  "follow_direction": 0.9775389749089286,
+  "ones_mean": 0.9966569059761241,
+  "ones_sd": 1.3820494557115204e-07,
+  "follow_sd": 0.027014757060695224
+ },
+ "finite_follow_median_train": 0.9784528315067291,
+ "finite_follow_mean_train": 0.9764970180112869,
+ "finite_follow_median_held_out": 0.9746445417404175,
+ "finite_follow_mean_held_out": 0.9733364385319874,
+ "edit_test": [
+  {
+   "token": 304,
+   "count": 875,
+   "report_follow": 0.912291944026947,
+   "kl_at_t": 0.0049493080005049706,
+   "kl_after_t_later": 0.0006223971140570939,
+   "kl_no_t": 0.0003100013709627092
+  },
+  {
+   "token": 279,
+   "count": 635,
+   "report_follow": 0.918860673904419,
+   "kl_at_t": 0.0040656570345163345,
+   "kl_after_t_later": 0.0005124988383613527,
+   "kl_no_t": 0.00010238468530587852
+  },
+  {
+   "token": 316,
+   "count": 589,
+   "report_follow": 0.8830813765525818,
+   "kl_at_t": 0.005081540439277887,
+   "kl_after_t_later": 0.0005900583928450942,
+   "kl_no_t": 0.00017018674407154322
+  },
+  {
+   "token": 328,
+   "count": 567,
+   "report_follow": 0.9240830540657043,
+   "kl_at_t": 0.0036765742115676403,
+   "kl_after_t_later": 0.000629774178378284,
+   "kl_no_t": 0.0003124033974017948
+  },
+  {
+   "token": 341,
+   "count": 526,
+   "report_follow": 0.9522496461868286,
+   "kl_at_t": 0.004935963544994593,
+   "kl_after_t_later": 0.00034170461003668606,
+   "kl_no_t": 7.682936848141253e-05
+  },
+  {
+   "token": 352,
+   "count": 518,
+   "report_follow": 0.905986487865448,
+   "kl_at_t": 0.013759547844529152,
+   "kl_after_t_later": 0.0007269639172591269,
+   "kl_no_t": 0.00014557020040228963
+  },
+  {
+   "token": 356,
+   "count": 464,
+   "report_follow": 1.0057625770568848,
+   "kl_at_t": 0.006477669347077608,
+   "kl_after_t_later": 0.00032722181640565395,
+   "kl_no_t": 0.00010612145706545562
+  },
+  {
+   "token": 0,
+   "count": 348,
+   "report_follow": 0.9035849571228027,
+   "kl_at_t": 0.006006214302033186,
+   "kl_after_t_later": 0.0006457205163314939,
+   "kl_no_t": 0.00017586798639968038
+  },
+  {
+   "token": 298,
+   "count": 333,
+   "report_follow": 0.9356129169464111,
+   "kl_at_t": 0.012115896679461002,
+   "kl_after_t_later": 0.0005268259556032717,
+   "kl_no_t": 6.869828212074935e-05
+  },
+  {
+   "token": 416,
+   "count": 320,
+   "report_follow": 0.917875349521637,
+   "kl_at_t": 0.00027306651463732123,
+   "kl_after_t_later": 0.0021547989454120398,
+   "kl_no_t": 0.0016379975713789463
+  },
+  {
+   "token": 405,
+   "count": 284,
+   "report_follow": 0.8893789052963257,
+   "kl_at_t": 0.007142473477870226,
+   "kl_after_t_later": 0.00026169363991357386,
+   "kl_no_t": 9.450493234908208e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": 0.9562239646911621,
+   "kl_at_t": 0.013000107370316982,
+   "kl_after_t_later": 0.002117641270160675,
+   "kl_no_t": 0.00015629715926479548
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.9203135371208191,
+   "kl_at_t": 0.01109472569078207,
+   "kl_after_t_later": 0.0006400703568942845,
+   "kl_no_t": 0.00014144684246275574
+  },
+  {
+   "token": 427,
+   "count": 246,
+   "report_follow": 0.9435677528381348,
+   "kl_at_t": 0.012021828442811966,
+   "kl_after_t_later": 0.0007752186502330005,
+   "kl_no_t": 0.0002449522144161165
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": 0.9367035627365112,
+   "kl_at_t": 0.010666007176041603,
+   "kl_after_t_later": 0.0010683964937925339,
+   "kl_no_t": 0.00016473136201966554
+  },
+  {
+   "token": 83,
+   "count": 231,
+   "report_follow": 0.8854162693023682,
+   "kl_at_t": 0.014401807449758053,
+   "kl_after_t_later": 0.0003600325435400009,
+   "kl_no_t": 0.00010948604176519439
+  },
+  {
+   "token": 415,
+   "count": 228,
+   "report_follow": 0.9532958269119263,
+   "kl_at_t": 0.0027643945068120956,
+   "kl_after_t_later": 0.0007675234810449183,
+   "kl_no_t": 0.0001686161122051999
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.90723717212677,
+   "kl_at_t": 0.0008111537899821997,
+   "kl_after_t_later": 9.933621186064556e-05,
+   "kl_no_t": 0.00013636484800372273
+  },
+  {
+   "token": 469,
+   "count": 146,
+   "report_follow": 0.9324372410774231,
+   "kl_at_t": 0.012664750218391418,
+   "kl_after_t_later": 0.0012808958999812603,
+   "kl_no_t": 0.00018804727005772293
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.9741663336753845,
+   "kl_at_t": 0.012181345373392105,
+   "kl_after_t_later": 0.0005237275618128479,
+   "kl_no_t": 0.00015651006833650172
+  }
+ ],
+ "stories": [
+  "Once upon a time, there was a little boy named Timmy. One day, Timmy went to the park with his mom. Timmy saw a big, thick slide and it started to roll down the slide. Suddenly, he accidentally rubbed himself and got upset.\n\nAfter a little while, Timmy's mom came into the room and saw his toys. She had heard that Timmy had to be scared and sad.\n\n\"Timmy, you have to come back to my house. You have to respect your toys.\"\n\nTimmy felt sorry for being angry and his mom. He felt sorry for being ignorant and he didn",
+  "Once upon a time, there was a little girl named Lily. She loved to play with her toys, especially her toy cars. One day, she and her mommy were playing in the park when it started to rain. Lily's mommy told her that the rain was dirty for her toys, but it was too wet to go to the store.\n\nLily didn't want to, but she wanted to play with the rain. She said to her mommy, \"Mommy, can we do sometimes?\" her mommy smiled. \"Of course, we can build another game. But first, please stay on the swings and get",
+  "Once upon a time, there was a little girl named Lily. She loved to eat pasta with her mommy. She would make pasta with cheese and cups. One day, Lily's mommy asked her for tomatoes. Lily said, \"I can use flour, but I have to ask her mommy before you don't like it.\"\n\nLily thought about it and said, \"I want to make it bigger!\" She took out a big bowl of pasta and gave it to her mommy. Her mommy smiled and said, \"Dear, you have to share this bowl with your friends!\" Max felt happy and proud"
+ ]
+}
