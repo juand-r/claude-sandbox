@@ -1,0 +1,84 @@
+{
+ "settings": {
+  "name": "ft_slope",
+  "lam": 4.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128,
+  "source": "ft_lam4_jit",
+  "finetune_steps": 3000,
+  "jitter_max": 0.5,
+  "finetune_lr": 0.0002,
+  "slope_weight": 1.0
+ },
+ "log": [
+  {
+   "step": 0,
+   "valid_loss": 2.306768071651459,
+   "r2c_asked": 0.9792957806871303,
+   "follow_asked": 0.968137679155916,
+   "other_asked": 0.27116315450984985,
+   "length_asked": 0.8694586921483278,
+   "r2c_never": 0.979354012871094,
+   "follow_never": 0.958677236456424,
+   "other_never": 0.2717134876875207,
+   "length_never": 0.864495609421283
+  },
+  {
+   "step": 1000,
+   "valid_loss": 2.3088096976280212,
+   "r2c_asked": 0.9831321252356578,
+   "follow_asked": 0.9845444303937256,
+   "other_asked": 0.2199930865317583,
+   "length_asked": 0.9267527651973069,
+   "r2c_never": 0.9831777852414278,
+   "follow_never": 0.9782961825840175,
+   "other_never": 0.22061301139183342,
+   "length_never": 0.9163961815647781,
+   "seconds": 656.4943716526031
+  },
+  {
+   "step": 2000,
+   "valid_loss": 2.304638397693634,
+   "r2c_asked": 0.9887230169173393,
+   "follow_asked": 0.9896429455839097,
+   "other_asked": 0.17264028487261385,
+   "length_asked": 0.9311627224087715,
+   "r2c_never": 0.9887016846744626,
+   "follow_never": 0.9836768563836813,
+   "other_never": 0.1735619120299816,
+   "length_never": 0.9249874297529459,
+   "seconds": 1310.3080475330353
+  },
+  {
+   "step": 3000,
+   "valid_loss": 2.3035454392433166,
+   "r2c_asked": 0.989621236523034,
+   "follow_asked": 0.9937443397939205,
+   "other_asked": 0.13838598894653842,
+   "length_asked": 0.925290918443352,
+   "r2c_never": 0.9897950717563373,
+   "follow_never": 0.9878102033399045,
+   "other_never": 0.13938958157086745,
+   "length_never": 0.9169650794938207,
+   "seconds": 1962.9116711616516
+  }
+ ]
+}
