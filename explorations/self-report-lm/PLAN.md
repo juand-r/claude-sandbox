@@ -129,7 +129,22 @@ Measured: validation loss, centred R², follow, other movement, gain along E[t].
 Phase 2 (`run_phase2.sh`): perturbed questions (jitter_max 0.5, λ = 1; one change
 from the control) trained from scratch, seed 0, 15,000 steps (control_jit_s0),
 measured with measure.py; in parallel the stage-2 text run (text_s0).
+- [x] control_jit_s0: follow 0.885 / 0.883 (512 tokens); the gain is in rare tokens only.
+- [x] ft_jit_from_jit (3,000 more steps of it, λ = 1, perturbed): 0.929 / 0.923.
+
+Phase 3 (continuations of ft_lam4_jit, λ = 4, perturbed questions):
+- [x] ft2_lam4_jit, 6,000 steps: 0.980 / 0.973 (128 + 128); full measurement 0.979 / 0.977.
+- [x] ft_slope, 3,000 steps with the slope loss added (finetune.py, slope_weight 1):
+      0.994 / 0.988, other movement 0.138.
+- [ ] full measurement and review checks of ft_slope (queued).
 
 ## Stage 2 (asked for by the user): answers written as text
 
-After stage 1. The model writes the number as digit tokens; to be designed.
+Design in `textanswer.py`: five characters (sign, digit, '.', digit, digit), control
+setting, only the 13 answer characters' output rows trained by the self-report loss.
+- [x] text_s0, 15,000 steps from scratch: centred R² 0.951 / 0.948, valid-format rate 1.0,
+      follow at a 30% change 0.756 / 0.739 (number-head control 0.841 / 0.837), validation
+      loss 2.180.
+- [x] text_jit: 3,000 steps of perturbed questions (finetune_text.py): follow 0.817 / 0.807 (64 + 64).
+- [ ] text_jit_lam4: 3,000 more with λ = 4 (running).
+- [ ] full measurement (measure_text.py) of the best text model.
