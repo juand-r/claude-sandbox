@@ -465,53 +465,65 @@ Observations.
 ### 10.3 Full measurements
 
 The same measures as in section 5, on 512 asked-about and 512 never-asked
-tokens, for the control, the two best continuations, and one more run,
-control_jit: trained from scratch for 15,000 steps exactly like the control,
-except with perturbed questions (λ = 1).
+tokens, for the control, the two best continuations, and two runs trained from
+scratch for 15,000 steps exactly like the control except as stated:
+- control_jit: perturbed questions (λ = 1);
+- control_slope: perturbed questions, λ = 4, and the slope loss, the settings of
+  ft_slope's last 3,000 steps.
 
-| measure | control | control_jit (from scratch) | ft2_lam4_jit | ft_slope |
-|---|---|---|---|---|
-| follow, asked-about / never-asked | 0.871 / 0.868 | 0.885 / 0.883 | 0.979 / 0.977 | 0.994 / 0.992 |
-| standard deviation of follow over tokens | 0.11 | 0.04 | 0.03 | 0.03 |
-| finite-change follow (10% change), mean | 0.866 / 0.861 | 0.885 / 0.882 | 0.976 / 0.973 | 0.991 / 0.989 |
-| other movement | 0.35 | 0.34 | 0.18 | 0.14 |
-| gain along E[t] (section 7) | 0.75 / 0.75 | 0.84 / 0.84 | 0.92 / 0.92 | 0.93 / 0.92 |
-| gain along u, the direction the first block cannot see (section 7) | 0.24 | 0.22 | 0.56 | 0.66 |
-| follow by frequency: rare / common / frequent (asked-about) | 0.62 / 0.90 / 0.90 | 0.82 / 0.90 / 0.89 | 0.94 / 0.99 / 0.98 | 0.98 / 1.00 / 0.98 |
-| centred R², asked-about / never-asked | 0.982 / 0.982 | 0.970 / 0.970 | 0.989 / 0.989 | 0.990 / 0.990 |
-| centred R², random vectors (section 5) | 0.821 | 0.852 | 0.955 | 0.967 |
-| rescaling score, frequent vectors grown to the rare tokens' norm (section 6.2) | −1.45 | −0.26 | 0.20 | 0.24 |
-| edit test (section 8): finite-change follow of the edited tokens, range (mean) | 0.72 to 0.91 (0.83) | 0.73 to 0.94 (0.84) | 0.88 to 1.01 (0.93) | 0.86 to 1.01 (0.93) |
-| validation loss (100 × 32 windows) | 2.290 | 2.298 | 2.274 | 2.289 |
+| measure | control | control_jit (from scratch) | ft2_lam4_jit | ft_slope | control_slope (from scratch) |
+|---|---|---|---|---|---|
+| follow, asked-about / never-asked | 0.871 / 0.868 | 0.885 / 0.883 | 0.979 / 0.977 | 0.994 / 0.992 | 0.997 / 0.998 |
+| standard deviation of follow over tokens | 0.11 | 0.04 | 0.03 | 0.03 | 0.01 |
+| finite-change follow (10% change), mean | 0.866 / 0.861 | 0.885 / 0.882 | 0.976 / 0.973 | 0.991 / 0.989 | 0.997 / 0.997 |
+| other movement | 0.35 | 0.34 | 0.18 | 0.14 | 0.05 |
+| gain along E[t] (section 7) | 0.75 / 0.75 | 0.84 / 0.84 | 0.92 / 0.92 | 0.93 / 0.92 | 0.97 / 0.97 |
+| gain along u, the direction the first block cannot see (section 7) | 0.24 | 0.22 | 0.56 | 0.66 | 0.93 |
+| follow by frequency: rare / common / frequent (asked-about) | 0.624 / 0.899 / 0.901 | 0.815 / 0.899 / 0.886 | 0.943 / 0.990 / 0.976 | 0.978 / 1.003 / 0.985 | 0.991 / 1.000 / 0.995 |
+| centred R², asked-about / never-asked | 0.982 / 0.982 | 0.970 / 0.970 | 0.989 / 0.989 | 0.990 / 0.990 | 0.998 / 0.998 |
+| centred R², random vectors (section 5) | 0.821 | 0.852 | 0.955 | 0.967 | 0.995 |
+| rescaling score, frequent vectors grown to the rare tokens' norm (section 6.2) | −1.45 | −0.26 | 0.20 | 0.24 | 0.81 |
+| edit test (section 8): finite-change follow of the edited tokens, range (mean) | 0.72 to 0.91 (0.83) | 0.73 to 0.94 (0.84) | 0.88 to 1.01 (0.93) | 0.86 to 1.01 (0.93) | 0.96 to 1.01 (0.98) |
+| validation loss (100 × 32 windows) | 2.290 | 2.298 | 2.274 | 2.289 | 2.275 |
 
 Observations.
-- In ft_slope, follow is 0.99 for asked-about and never-asked tokens alike, and
-  finite-change follow agrees.
-- Rare tokens, whose follow was lowest in the control (0.62), reach 0.98.
-- The answers are also more accurate on inputs that are not embedding vectors:
-  random vectors (0.967) and frequent tokens' vectors grown to the rare tokens'
-  norm (0.24, against −1.45 for the control). The second is still far from 1.
-- The response to the norm of E[t] is still weaker than the response to its
-  direction (gain along E[t] 0.93 against follow 0.99), and the gain along u is
-  0.66. The architectural fact of section 7 does not forbid a response along u;
-  training raises it, but it has not reached 1.
-- The edited tokens of section 8 (the 20 most frequent never-asked tokens) have
-  lower follow (mean 0.93) than frequent tokens in general (0.98). I have not
-  looked into why.
-- Validation loss is no worse than the control's.
+- control_slope, trained from scratch, is the best model on every measure in
+  the table: follow 0.997 / 0.998, other movement 0.05, centred R² 0.998. Its
+  other movement is in the range of the toy model of
+  `../self-report-embeddings/` (0.06 to 0.10).
+- Follow is close to 1 for rare, common and frequent tokens alike (0.99 to
+  1.00), and for asked-about and never-asked tokens alike.
+- Its answers are also accurate on inputs that are not embedding vectors:
+  random vectors (centred R² 0.995) and frequent tokens' vectors grown to the
+  rare tokens' norm (rescaling score 0.81, where 1 means exact; the control
+  scores −1.45).
+- The response to the norm of E[t] is now close to the response to its
+  direction (gain along E[t] 0.97), and the gain along u is 0.93. So the
+  architectural fact of section 7, that the first block cannot see changes
+  along u, does not prevent the model as a whole from responding along u.
+- In the continuations, the edited tokens of section 8 (the 20 most frequent
+  never-asked tokens) have lower follow (mean 0.93) than frequent tokens in
+  general (0.98); in control_slope they do not (0.98). I have not looked into
+  why.
+- Validation loss is no worse than the control's (2.275 against 2.290), so the
+  added training costs nothing measurable in next-token prediction; the cost
+  relative to LM-only is 0.13 nats per token.
 
-### 10.4 Training from scratch with perturbed questions
+### 10.4 What made the difference
 
-control_jit, trained from scratch with perturbed questions, gained little
-(follow 0.885 against 0.871), and only for rare tokens (0.82 against 0.62);
-common and frequent tokens stayed at 0.90. Continuing it for 3,000 steps exactly
-like ft_jit (λ = 1, perturbed questions) raised follow from 0.886 to 0.929 (128 +
-128 tokens), while the same continuation of the control raised it from 0.870 to
-0.959. So the perturbed questions work much better as a continuation of a model
-trained on ordinary questions than from the start, in these runs. I do not know
-why. One difference: the continuations run at a constant learning rate of
-2·10⁻⁴ with a fresh optimizer, while the from-scratch run used the cosine
-schedule from 2·10⁻³; a from-scratch run with the slope loss was not tried.
+control_jit, trained from scratch with perturbed questions alone (λ = 1),
+gained little (follow 0.885 against 0.871), and only for rare tokens (0.82
+against 0.62). Continuing it for 3,000 steps exactly like ft_jit (λ = 1,
+perturbed questions) raised follow from 0.886 to 0.929 (128 + 128 tokens),
+while the same continuation of the control raised it from 0.870 to 0.959. I do
+not know why perturbed questions alone did so much better as a continuation.
+
+control_slope differs from control_jit in two settings at once, λ = 4 and the
+slope loss, so these runs do not say which of the two matters, or whether both
+are needed. In the continuations, λ = 4 without perturbed questions added little
+(ft_lam4: 0.896 against 0.893 for ft_more), and the slope loss added the most
+of any single change (section 10.2; see 10.5 for the clean comparison). One run
+per setting, seed 0.
 
 ### 10.5 Clean rerun of the slope comparison
 
@@ -638,15 +650,16 @@ Observations.
   vector and are as accurate for tokens never asked about as for tokens asked
   about. In the control, follow is 0.87 and centred R² 0.982, at a cost of 0.14
   nats per token in next-token prediction.
-- Continued training with perturbed questions and the slope loss raises follow
-  to 0.99 for asked-about and never-asked tokens alike, with centred R² 0.990
-  and no further cost in next-token prediction (section 10). The answers are
-  still not exact: other movement is 0.14, the response to a change of the norm
-  of E[t] is weaker than to a change of its direction, and follow is lower for
-  large changes (0.97 at 30% of |E[t]|) than for small ones.
-- In these runs, the training that raises follow worked as a continuation of a
-  model trained on ordinary questions, and much less when used from the start
-  (section 10.4; one from-scratch run with perturbed questions only).
+- Training with perturbed questions, λ = 4 and the slope loss, from scratch,
+  gives follow 0.997 / 0.998, other movement 0.05 and centred R² 0.998, for
+  asked-about and never-asked tokens alike, at the same cost in next-token
+  prediction as the control (section 10). The answers then respond almost
+  equally to changes of the norm and of the direction of E[t] (gain along E[t]
+  0.97), and are accurate on random vectors too (centred R² 0.995). Which of
+  the three changes are needed is not established (section 10.4).
+- Perturbed questions alone, from scratch, helped little (follow 0.885); the
+  same training helped much more as a continuation of a finished model. Why is
+  not known.
 - The answers can be written as text, by the model's own output layer, in a
   fixed five-character format. After continued training with perturbed
   questions they are about as accurate as the best number answers (centred R²
