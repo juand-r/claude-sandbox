@@ -125,3 +125,14 @@ control setting. Found while testing: with tied embeddings, the answer's cross-e
 reaches every token's embedding vector through the output layer, so stopping the gradient
 at the input is not enough for a control. Fixed: in the answer loss only the 13 answer
 characters' rows of the output layer receive gradient; these 13 tokens are not asked about.
+
+Stage 1, phase 1 results (3,000 more steps from the control; follow on the same 128
+asked-about / 128 never-asked tokens; start 0.870 / 0.854):
+more training 0.893 / 0.878; λ = 4 0.896 / 0.880; perturbed questions 0.959 / 0.949;
+both 0.968 / 0.959. Validation loss 2.295 to 2.307 in all four (start 2.307).
+Interpretation: perturbed questions ask for correct answers near each embedding vector,
+not only at it, which is the property follow measures; so the gain is from training for
+the property directly. That is the intended property (answers computed from the current
+value), but it should be stated plainly in the report.
+Phase 2 started 05:55: control_jit_s0 (from scratch, perturbed questions, λ = 1) and the
+stage-2 text run text_s0, in parallel.
