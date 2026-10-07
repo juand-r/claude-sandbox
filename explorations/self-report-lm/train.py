@@ -18,7 +18,9 @@ Control (review of REPORT.md): with detach_input, the self-report sees E[t] with
 gradient blocked, so it trains the reader but cannot move the embedding table, which is
 then shaped by language modelling alone.
 
-Usage: python train.py <name> <lam> <seed> [steps] [detach] [jitter_max]
+slope_weight > 0 adds the slope loss (slope_loss below; REPORT.md section 10.1), control setting only.
+
+Usage: python train.py <name> <lam> <seed> [steps] [detach] [jitter_max] [slope_weight]
 """
 import json
 import math
@@ -75,6 +77,21 @@ def perturb(x, jitter_max, gen):
     return x + d / d.norm(dim=1, keepdim=True) * s * x.norm(dim=1, keepdim=True)
 
 
+SLOPE_SIZE = 0.05
+
+
+def slope_loss(m, t, i, gen):
+    """For δ in a random direction with |δ| = SLOPE_SIZE·|E[t]|, the answer about coordinate i
+    should change by δ_i: mean((a_i(E[t] + δ) − a_i(E[t]) − δ_i)²) / mean(δ_i²). The gradient
+    is stopped at E[t]."""
+    x = m.E[t].detach()
+    d = torch.randn(x.shape, generator=gen)
+    delta = d / d.norm(dim=1, keepdim=True) * SLOPE_SIZE * x.norm(dim=1, keepdim=True)
+    di = delta[torch.arange(len(t)), i]
+    change = m.answer(x + delta, i) - m.answer(x, i)
+    return ((change - di) ** 2).mean() / (di ** 2).mean()
+
+
 def report_loss(m, t, i, detach_input=False, jitter_max=0.0, gen=None):
     """1 − uncentred R² of the batch. With jitter_max > 0 (perturbed questions; requires
     detach_input): each question uses x = E[t] + δ, δ in a random direction with
@@ -109,11 +126,13 @@ def make_optimizer(m):
                               {"params": rest, "weight_decay": 0.0}], lr=LR, betas=BETAS)
 
 
-def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False, jitter_max=0.0):
+def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False, jitter_max=0.0, slope_weight=0.0):
+    if slope_weight > 0 and not detach_input:
+        raise ValueError("the slope loss is implemented for the control setting only")
     RESULTS.mkdir(exist_ok=True)
     ckpt_path = RESULTS / f"{name}_ckpt.pt"
     settings = {"name": name, "lam": lam, "seed": seed, "steps": steps, "detach_input": detach_input,
-                "jitter_max": jitter_max, "lm_batch": LM_BATCH,
+                "jitter_max": jitter_max, "slope_weight": slope_weight, "lm_batch": LM_BATCH,
                 "report_batch": REPORT_BATCH, "lr": LR, "lr_min": LR_MIN, "warmup": WARMUP,
                 "weight_decay": WEIGHT_DECAY, "betas": list(BETAS), "clip": CLIP, "eval_every": EVAL_EVERY,
                 "n_text": lm.N_TEXT, "dim": lm.DIM, "n_layers": lm.N_LAYERS, "n_heads": lm.N_HEADS, "ctx": lm.CTX}
@@ -128,6 +147,7 @@ def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False, jitter
         ck = torch.load(ckpt_path)
         ck["settings"].setdefault("detach_input", False)       # checkpoints written before these options existed
         ck["settings"].setdefault("jitter_max", 0.0)
+        ck["settings"].setdefault("slope_weight", 0.0)
         if ck["settings"] != settings:
             raise RuntimeError(f"{ckpt_path} has different settings: {ck['settings']}")
         m.load_state_dict(ck["model"])
@@ -156,6 +176,8 @@ def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False, jitter
             i = torch.randint(0, m.dim, (REPORT_BATCH,), generator=gen_rep)
             loss_rep = report_loss(m, t, i, detach_input, jitter_max, gen_rep)
             loss = loss + lam * loss_rep
+            if slope_weight > 0:
+                loss = loss + slope_weight * slope_loss(m, t, i, gen_rep)
         if not torch.isfinite(loss):
             raise FloatingPointError(f"loss not finite at step {step}")
         opt.zero_grad()
@@ -183,8 +205,10 @@ def main():
     steps = int(sys.argv[4]) if len(sys.argv) > 4 else STEPS
     detach_input = len(sys.argv) > 5 and sys.argv[5] == "detach"
     jitter_max = float(sys.argv[6]) if len(sys.argv) > 6 else 0.0
+    slope_weight = float(sys.argv[7]) if len(sys.argv) > 7 else 0.0
     torch.set_num_threads(2)
-    m, settings, log = train(name, lam, seed, steps, detach_input=detach_input, jitter_max=jitter_max)
+    m, settings, log = train(name, lam, seed, steps, detach_input=detach_input, jitter_max=jitter_max,
+                            slope_weight=slope_weight)
     torch.save({"model": m.state_dict(), "settings": settings}, RESULTS / f"{name}.pt")
     (RESULTS / f"{name}.json").write_text(json.dumps({"settings": settings, "log": log}, indent=1))
     print(f"wrote results/{name}.pt and .json")

@@ -7,7 +7,7 @@ embedding vectors), with two possible changes:
 
 - lam: the self-report loss coefficient λ;
 - slope_weight μ: a loss on the slope of the answers. For a small change δ of E[t]
-  (random direction, |δ| = SLOPE_SIZE·|E[t]|), the change of the answer about coordinate i
+  (random direction, |δ| = train.SLOPE_SIZE·|E[t]|; train.slope_loss), the change of the answer about coordinate i
   should be δ_i: loss = mean((a_i(x + δ) − a_i(x) − δ_i)²) / mean(δ_i²). This pushes
   J toward I along random directions, which is what follow and other movement measure.
 - jitter_max: perturbed questions. Each question (t, i) uses x = E[t] + δ in place of E[t],
@@ -36,21 +36,11 @@ import train as T
 HERE = Path(__file__).parent
 EVAL_EVERY = 1000
 DATA_SEED_OFFSET = 777            # text windows and questions differ from the source run's
-SLOPE_SIZE = 0.05
 
 
 def jittered_report_loss(m, t, i, jitter_max, gen):
     """Self-report loss on perturbed copies of E[t], gradient stopped at E[t] (train.report_loss)."""
     return T.report_loss(m, t, i, detach_input=True, jitter_max=jitter_max, gen=gen)
-
-
-def slope_loss(m, t, i, gen):
-    x = m.E[t].detach()
-    d = torch.randn(x.shape, generator=gen)
-    delta = d / d.norm(dim=1, keepdim=True) * SLOPE_SIZE * x.norm(dim=1, keepdim=True)
-    di = delta[torch.arange(len(t)), i]
-    change = m.answer(x + delta, i) - m.answer(x, i)
-    return ((change - di) ** 2).mean() / (di ** 2).mean()
 
 
 def finetune(source, name, steps, lam, jitter_max, lr=T.LR_MIN, verbose=True, slope_weight=0.0):
@@ -75,7 +65,7 @@ def finetune(source, name, steps, lam, jitter_max, lr=T.LR_MIN, verbose=True, sl
         i = torch.randint(0, m.dim, (T.REPORT_BATCH,), generator=gen_rep)
         loss = T.lm_loss(m, x, y) + lam * jittered_report_loss(m, t, i, jitter_max, gen_rep)
         if slope_weight > 0:
-            loss = loss + slope_weight * slope_loss(m, t, i, gen_rep)
+            loss = loss + slope_weight * T.slope_loss(m, t, i, gen_rep)
         if not torch.isfinite(loss):
             raise FloatingPointError(f"loss not finite at step {step}")
         opt.zero_grad()

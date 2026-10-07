@@ -294,8 +294,8 @@ def test_slope_loss_is_zero_for_an_exact_reader_and_one_for_constant_answers():
     class Constant(Exact):
         def answer(self, x, i):
             return torch.zeros(len(x))
-    assert Fn.slope_loss(Exact(m), t, i, torch.Generator().manual_seed(0)).item() < 1e-10
-    assert abs(Fn.slope_loss(Constant(m), t, i, torch.Generator().manual_seed(0)).item() - 1) < 1e-6
+    assert T.slope_loss(Exact(m), t, i, torch.Generator().manual_seed(0)).item() < 1e-10
+    assert abs(T.slope_loss(Constant(m), t, i, torch.Generator().manual_seed(0)).item() - 1) < 1e-6
 
 
 def test_perturbed_text_questions_target_the_perturbed_coordinate_and_stop_gradient():
