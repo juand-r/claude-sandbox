@@ -109,3 +109,19 @@ defined in the setup, and the argument in order. A second cold read found
 smaller problems (a wrong section reference, "weight" for the loss coefficient,
 "good" with no measure behind it, the probe compared across seeds); fixed.
 Added `norms_by_frequency.py` so the norm tables have a saved source.
+
+## 2026-10-07: overnight work (stage 1: raise follow; stage 2: answers as text)
+
+Stage 1, phase 1 started 04:50: four 3,000-step continuations of the control model
+(finetune.py; quick_measure.py). Mistake: run_stage1.sh passes the step count where the
+run name was meant (`$2` for `$1`) in the log path and the skip check, so both runs of a
+pair log, interleaved, to logs/3000.log. The results files are named correctly (finetune.py
+gets the right name) and hold each run's measurements. Not edited while running; fixed after.
+
+Stage 2 code written (textanswer.py, train_text.py, measure_text.py). Design decisions
+(mine; the user is asleep): five answer tokens (sign, digit, '.', digit, digit; resolution
+0.01; clipped to ±9.99), all single-character tokens of the tokenizer; ordinary output layer;
+control setting. Found while testing: with tied embeddings, the answer's cross-entropy
+reaches every token's embedding vector through the output layer, so stopping the gradient
+at the input is not enough for a control. Fixed: in the answer loss only the 13 answer
+characters' rows of the output layer receive gradient; these 13 tokens are not asked about.

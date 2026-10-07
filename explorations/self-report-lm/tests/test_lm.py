@@ -216,3 +216,47 @@ def test_jittered_questions_target_the_perturbed_vector_and_stop_gradient():
     assert loss.item() < 1e-12
     Fn.jittered_report_loss(m, t, i, 0.5, torch.Generator().manual_seed(1)).backward()
     assert m.E.grad is None or m.E.grad[:m.n_text].abs().max() == 0
+
+
+def test_text_answer_format_round_trip():
+    import textanswer as TA
+    fmt = TA.Format(T.DATA / "tokenizer.json")
+    v = torch.tensor([-0.127, 0.0, 0.004, 1.236, -9.999, 12.0, -0.006])
+    ids = fmt.encode(v)
+    assert ids.shape == (7, 5)
+    back = fmt.decode(ids)
+    torch.testing.assert_close(back, torch.tensor([-0.13, 0.0, 0.0, 1.24, -9.99, 9.99, -0.01]), atol=1e-6, rtol=0)
+    bad = ids.clone()
+    bad[0, 2] = fmt.digit[1]                      # '.' replaced by a digit: not a valid number
+    assert torch.isnan(fmt.decode(bad)[0])
+
+
+def test_text_answer_teacher_forcing_positions():
+    """answer_logits at position k must equal the logits of a plain forward pass on the full sequence."""
+    import textanswer as TA
+    fmt = TA.Format(T.DATA / "tokenizer.json")
+    torch.manual_seed(0)
+    m = lm.SelfReportLM(n_text=4096, dim=16, n_layers=2, n_heads=2, ctx=8)
+    t, i = torch.tensor([5, 9]), torch.tensor([0, 3])
+    target = fmt.encode(m.E[t, i].detach())
+    with torch.no_grad():
+        logits = TA.answer_logits(m, m.E[t], i, target)
+        ids = torch.cat([torch.full((2, 1), m.query_id), m.coord_id(i).unsqueeze(1), t.unsqueeze(1), target[:, :-1]], dim=1)
+        full = m.lm_logits(ids)
+    torch.testing.assert_close(logits, full[:, 2:])
+    ans = TA.generate(m, m.E[t].detach(), i, fmt)
+    assert not torch.isnan(fmt.decode(ans)).any()   # constrained decoding always gives a valid number
+
+
+def test_text_report_loss_stops_gradient_at_E_t():
+    import textanswer as TA
+    fmt = TA.Format(T.DATA / "tokenizer.json")
+    torch.manual_seed(0)
+    m = lm.SelfReportLM(n_text=4096, dim=16, n_layers=2, n_heads=2, ctx=8)
+    t = torch.tensor([100, 200, 300])                 # not digit or sign tokens
+    TA.text_report_loss(m, t, torch.tensor([0, 1, 2]), fmt).backward()
+    others = torch.ones(m.n_text, dtype=torch.bool)
+    others[fmt.chars] = False
+    assert m.E.grad[:m.n_text][others].abs().max() == 0   # no text row but the 13 answer characters
+    assert m.E.grad[fmt.chars].abs().max() > 0             # the answer characters are trained
+    assert set(TA.question_tokens(torch.arange(4096), fmt).tolist()).isdisjoint(fmt.chars.tolist())
