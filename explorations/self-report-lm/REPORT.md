@@ -505,37 +505,160 @@ why. One difference: the continuations run at a constant learning rate of
 2·10⁻⁴ with a fresh optimizer, while the from-scratch run used the cosine
 schedule from 2·10⁻³; a from-scratch run with the slope loss was not tried.
 
-## 11. What this does and does not show
+## 11. Answers written as text
+
+### 11.1 Design
+
+In sections 2 to 10 the answer is a number produced by a separate output head.
+Here the model writes the answer with its ordinary output layer, as text.
+
+Format. The answer to question (t, i) is E[t, i] rounded to two decimals and
+written with five single-character tokens: a sign ('+' or '-'), a digit, '.',
+and two digits; for example −0.127 is written "-0.13". Values are clipped to
+±9.99 (no coordinate of these models comes close). All five characters are
+single tokens of the tokenizer (checked: the tokenizer encodes "-0.13" as the
+five tokens '-', '0', '.', '1', '3').
+
+Sequence and loss. The full sequence is [QUERY, COORD_i, t, a₀, a₁, a₂, a₃, a₄],
+where a₀ ... a₄ are the answer characters. The model predicts each answer
+character from the symbols before it, exactly as it predicts the next token of
+a story: the output at position 2 predicts a₀, the output at position 3
+predicts a₁, and so on. The self-report loss is the cross-entropy of the five
+answer characters, averaged. λ = 1 unless stated.
+
+Reading an answer. Greedy decoding: at each of the five positions take the most
+likely token, restricted to the characters allowed at that position (sign,
+digit, '.', digit, digit). Section 11.3 also measures how often the
+unrestricted most likely tokens form a valid answer.
+
+Control setting. As in the control of section 2, the self-report task must not
+change the token embedding vectors it is asked about. With tied embeddings
+there are two paths by which it could: the input E[t] at position 2, and the
+output layer, which scores every token by its embedding vector, so the
+cross-entropy reaches every token's vector. The gradient is stopped at the
+input, and in the output layer only the vectors of the 13 answer characters
+(sign, digits, '.') receive gradient from the self-report loss. Those 13 tokens
+are never asked about and are left out of all measurements. A test checks that
+the self-report loss gives no gradient to any other token's embedding vector.
+
+Follow for text answers. The answers move in steps of 0.01. In the text
+model, the median norm of a token's embedding vector is 1.56, so its
+coordinates have root-mean-square size 0.14; a change of 10% of |E[t]| moves
+each coordinate by about 0.014 (root mean square), close to the rounding step.
+Follow is therefore measured with finite changes of 30% of |E[t]| (section 3
+used 10%), over 256 asked-about and 256 never-asked tokens. The same tokens and
+the same random changes are given to the number-head models, for a paired
+comparison. The Jacobian measures of section 3 do not apply, because the text
+answers are not differentiable.
+
+### 11.2 Runs
+
+- text: trained from scratch like the control (15,000 steps, seed 0, the same
+  text windows and the same schedule), with the text answer in place of the
+  number head.
+- Continuations of it, as in section 10 (fresh optimizer, constant learning
+  rate 2·10⁻⁴), all with perturbed questions (target: the perturbed vector's
+  coordinate, written as text): text_jit (3,000 steps, λ = 1), then
+  text_jit_lam4 (3,000 steps, λ = 4), then text_jit_lam4_long (6,000 steps,
+  λ = 4). The slope loss of section 10 needs differentiable answers and was not
+  used.
+
+### 11.3 Results
+
+Measured with measure_text.py. Centred R² is over all asked-about and all
+never-asked tokens. Follow is finite-change follow with changes of 30% of
+|E[t]|, as described in 11.1; every model here gets the same 256 + 256 tokens
+and the same changes. Valid-format rate: the fraction of answers whose
+unrestricted most likely tokens form a valid answer, over 64 tokens × 128
+coordinates per set.
+
+| model | centred R²: asked-about / never-asked | follow (30% change), mean: asked-about / never-asked | valid-format rate | validation loss (100 × 32 windows) |
+|---|---|---|---|---|
+| text | 0.951 / 0.948 | 0.756 / 0.739 | 1.00 / 1.00 | 2.180 |
+| text_jit_lam4 (+ 6,000 steps) | 0.975 / 0.973 | 0.862 / 0.855 | 1.00 / 1.00 | 2.180 |
+| text_jit_lam4_long (+ 12,000 steps) | 0.989 / 0.986 | 0.943 / 0.942 | 1.00 / 1.00 | 2.187 |
+| number head: control | 0.982 / 0.982 | 0.841 / 0.837 | | 2.290 |
+| number head: ft_slope | 0.990 / 0.990 | 0.970 / 0.972 | | 2.289 |
+| LM-only | | | | 2.146 |
+
+Observations.
+- The text model writes a well-formed answer every time, even without the
+  restriction to allowed characters.
+- Trained from scratch like the control, the text answers are less accurate
+  than the control's number answers (0.951 against 0.982) and follow less
+  (0.756 against 0.841).
+- Continuing with perturbed questions raises both. After 12,000 more steps the
+  text answers are about as accurate as the best number-head model (0.989 /
+  0.986 against 0.990 / 0.990), and follow is 0.94, against 0.97 for ft_slope
+  on the same tokens and changes. At this size of change ft_slope's follow is
+  0.97, lower than its 0.99 at 10%: the answers respond slightly less to large
+  changes than to small ones.
+- Follow was still rising at the end of the last continuation (at the 64 + 64
+  tokens checked every 1,000 steps: 0.874, 0.879, 0.910, 0.908, 0.929, 0.940,
+  0.960 for asked-about tokens).
+- The text model's validation loss is 2.180 to 2.187, against 2.290 for the
+  number-head control and 2.146 for LM-only. So the self-report task, written as
+  text, costs the language model 0.03 to 0.04 nats per token, against 0.14 with
+  the number head. I have not found the reason. One difference: the number
+  head's loss (1 − R² of the batch) and the text loss (cross-entropy) have
+  different sizes and gradients, so λ = 1 is not the same weight in the two
+  cases. Another: the number head reads the internal state before the final
+  LayerNorm and must express E[t] linearly there, while the text answer goes
+  through the same final LayerNorm and output layer as next-token prediction.
+  Neither has been tested.
+- Stories from the text models are fluent children's-story text with lapses in
+  coherence, like those of every other run (three per model in
+  `results/measure_<model>.json`).
+
+## 12. What this does and does not show
 
 - A small language model can be trained to answer questions about its own
   embedding coordinates with answers that respond to the current embedding
-  vector (follow 0.87 in the control) and are as accurate for tokens never
-  asked about as for tokens asked about (centred R² 0.982), at a cost of 0.14
+  vector and are as accurate for tokens never asked about as for tokens asked
+  about. In the control, follow is 0.87 and centred R² 0.982, at a cost of 0.14
   nats per token in next-token prediction.
+- Continued training with perturbed questions and the slope loss raises follow
+  to 0.99 for asked-about and never-asked tokens alike, with centred R² 0.990
+  and no further cost in next-token prediction (section 10). The answers are
+  still not exact: other movement is 0.14, the response to a change of the norm
+  of E[t] is weaker than to a change of its direction, and follow is lower for
+  large changes (0.97 at 30% of |E[t]|) than for small ones.
+- In these runs, the training that raises follow worked as a continuation of a
+  model trained on ordinary questions, and much less when used from the start
+  (section 10.4; one from-scratch run with perturbed questions only).
+- The answers can be written as text, by the model's own output layer, in a
+  fixed five-character format. After continued training with perturbed
+  questions they are about as accurate as the best number answers (centred R²
+  0.989 / 0.986) and follow 0.94 at a 30% change (section 11). This version
+  cost the language model much less (0.03 to 0.04 nats per token); why is not
+  known.
 - If the self-report task may change the embedding vectors it is asked about,
   it does, and its answers then generalize much worse to the other tokens.
-- The answers are never exact: other movement is 0.35 to 0.48 in every run.
-  Whether LayerNorm is why the answers are less exact than in the toy model is a
-  hypothesis only: the toy model also had random embedding vectors, no
-  next-token prediction, and a different training budget.
 - The embedding vector of t is the input at t's position, so the model is
   reporting a value present in its own input. Weights that are not inputs (for
   example the feed-forward matrices) remain untested (PLAN.md, roadmap).
 - Not tested: training only the self-report path on top of a fixed LM-only
-  model; other values of the loss coefficient λ; other model sizes; more seeds
-  (one control run and one LM-only run).
+  model; other model sizes; more seeds (one run per setting, except the joint
+  runs).
 
-## 12. Checks
+## 13. Checks
 
 - A separate Claude instance reviewed the code before the runs, another a draft
   of this report, and a third the terms used in it; their findings were checked
   and the fixes are recorded in NOTES.md.
-- 15 tests (`tests/test_lm.py`), including checks of every measure on
+- 22 tests (`tests/test_lm.py`), including checks of every measure on
   hand-made functions with known answers, the all-ones fact of section 7, and
-  that the control's self-report loss gives no gradient to the token embedding
-  vectors.
+  that the control's self-report losses (number head, perturbed questions, text
+  answers) give no gradient to the token embedding vectors of text tokens other
+  than the 13 answer characters. The slope loss is tested on an exact reader
+  (loss 0) and a constant one (loss 1); the text format on encoding, decoding,
+  the tokenizer, and teacher-forcing positions.
+- Before the text continuations, a 2-step run of finetune_text.py was checked
+  against the numbers of the model it starts from (they agreed).
 - Scripts: `train.py`; `measure.py` (sections 5 and 8; files
   results/measure_<run>.json); `analyze_review.py` (follow by frequency in 6.1,
   6.2, gains along u in 7, section 9; files results/review_checks_<run>.json);
   `norms_by_frequency.py` (norm tables in 6.1; results/norms_by_frequency.json);
-  `summarize.py`.
+  `summarize.py`. Section 10: `finetune.py` and `quick_measure.py` (logs in
+  results/<run>.json). Section 11: `textanswer.py`, `train_text.py`,
+  `finetune_text.py`, `measure_text.py` (results/measure_<model>.json).
