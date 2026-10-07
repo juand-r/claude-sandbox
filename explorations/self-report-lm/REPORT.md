@@ -20,14 +20,21 @@ are asked about 3,072 randomly chosen tokens (asked-about tokens). The other
 all but 47 of them occur in the text the model is trained on.
 
 Runs.
+
 - LM-only (seed 0): next-token prediction only.
 - Joint (seeds 0 and 1): next-token prediction plus the self-report task; both
   tasks update all parameters, including the token embedding vectors.
 - Control (seed 0): as joint seed 0, except that the self-report task cannot
   change the token embedding vectors (its gradient is stopped there). The token
-  embedding vectors are then shaped by next-token prediction alone.
+  embedding vectors then receive gradient from next-token prediction alone
+  (section 12 notes two indirect effects of the self-report task on them).
+- Later runs (sections 10 and 11), all in the control setting: training with
+  perturbed questions (the vector asked about is moved slightly and the target
+  moves with it), a larger loss coefficient, and a loss on the slope of the
+  answers; and a version in which the model writes its answer as text.
 
 Measures.
+
 - Centred R²: 1 − Σ(answer − target)² / Σ(target − that coordinate's mean over
   the tokens tested)². It is 1 for exact answers and 0 for always answering the
   coordinate's mean.
@@ -36,6 +43,9 @@ Measures.
   tokens: the average amount by which the answer about coordinate i moves when
   coordinate i of E[t] moves by one unit. It is 1 if each answer moves exactly
   with its coordinate, and 0 if the answers do not respond to E[t].
+- Other movement: how much the answers move in ways other than following the
+  change of E[t], as a fraction of the size of the change (section 3). 0 for
+  exact answers.
 
 | run | validation loss (nats per token) | centred R², asked-about / never-asked tokens | follow, asked-about / never-asked tokens |
 |---|---|---|---|
@@ -43,8 +53,10 @@ Measures.
 | joint, seed 0 | 2.248 | 0.976 / 0.680 | 0.851 / 0.751 |
 | joint, seed 1 | 2.290 | 0.955 / 0.504 | 0.745 / 0.666 |
 | control, seed 0 | 2.290 | 0.982 / 0.982 | 0.871 / 0.868 |
+| control_slope, seed 0 (section 10) | 2.275 | 0.998 / 0.998 | 0.997 / 0.998 |
 
 Findings.
+
 1. The self-report task raises the validation loss by 0.10 nats per token
    (joint, seed 0) or 0.14 (control), compared with LM-only. There is no LM-only
    run with seed 1.
@@ -70,9 +82,22 @@ Findings.
    embedding vectors so that the answers work for them; the never-asked vectors
    keep the shape next-token prediction gave them, and the answers do not carry
    over to them.
-4. Answers are never exact. For a small change δ of E[t], the 128 answers also
-   move by 0.35 to 0.48 of |δ| in ways other than following δ. They respond less
-   to a change of the norm of E[t] than to changes of its direction (section 7).
+4. In the joint runs and the control, answers are far from exact: other movement is 0.35
+   to 0.48, and the answers respond less to a change of the norm of E[t] than to
+   changes of its direction (section 7).
+5. Follow can be raised close to 1 (section 10). Training from scratch with
+   perturbed questions, loss coefficient λ = 4 and the slope loss (control_slope)
+   gives follow 0.997 / 0.998, other movement 0.05 and centred R² 0.998, with
+   validation loss 2.275 (control: 2.290). Perturbed questions alone, from
+   scratch, gave only 0.885. Which of λ = 4 and the slope loss is needed is not
+   established; one seed.
+6. The model can write its answers as text, with its own output layer: five
+   characters such as "-0.13" (section 11). After training with perturbed
+   questions, the text answers have centred R² 0.992 / 0.989 and follow 0.96
+   when E[t] changes by 30% of its norm, against 0.97 for the best number-head
+   continuation (ft_slope) on the same test; every answer is well-formed.
+   Validation loss is 2.193, closer to LM-only (2.146) than any number-head
+   model; why is not known.
 
 ## 1. The question
 
@@ -211,6 +236,7 @@ position 2 in place of E[t]; question i asks for their coordinate i. LM-only is
 not in the table: its output head was never trained (its follow is −0.001).
 
 Observations.
+
 - In the control, the answers are equally accurate for asked-about and
   never-asked tokens (0.982 and 0.982), and equally responsive (follow 0.871
   and 0.868).
@@ -253,6 +279,7 @@ never-asked tokens of joint seed 0 and of the control), so they test essentially
 one direction, not dozens.
 
 Observations.
+
 - Next-token prediction alone gives rare tokens' vectors about three times
   the norm of the others' (LM-only).
 - In the joint runs, rare asked-about tokens end with ordinary norms; rare
@@ -276,6 +303,7 @@ never-asked vectors from their coordinate means).
 | frequent, rescaled to the norm of the rare ones | −1.67 | −2.75 | −1.45 |
 
 Observations.
+
 - In the joint runs, the rare never-asked vectors are answered badly at their
   own norm and well at the frequent tokens' norm.
 - In the control, the rare never-asked vectors are answered well at their own
@@ -306,6 +334,7 @@ it: +0.10 nats per token (joint, seed 0) against +0.14 (control), one run each.
 What the control establishes: the gradient of the self-report loss on the token
 embedding vectors is what keeps the norms of the rare asked-about vectors
 small. What it does not establish is how. Two mechanisms fit:
+
 1. The gradient moves those vectors toward a region where the answers are
    accurate.
 2. An effect of Adam: Adam divides each parameter's step by a running average
@@ -451,6 +480,7 @@ run), with quick_measure.py:
 | ft_slope | ft_lam4_jit | 3,000 | 4 | yes | yes | 0.994 / 0.988 | 0.14 | 0.990 | 2.304 |
 
 Observations.
+
 - More training and a larger λ raise follow only a little (to about 0.89).
 - Perturbed questions raise it to 0.96 to 0.97 within 3,000 steps.
 - Continuing ft_lam4_jit for 6,000 more steps adds about 0.01. Follow moves by
@@ -467,6 +497,7 @@ Observations.
 The same measures as in section 5, on 512 asked-about and 512 never-asked
 tokens, for the control, the two best continuations, and two runs trained from
 scratch for 15,000 steps exactly like the control except as stated:
+
 - control_jit: perturbed questions (λ = 1);
 - control_slope: perturbed questions, λ = 4, and the slope loss, the settings of
   ft_slope's last 3,000 steps.
@@ -487,6 +518,7 @@ scratch for 15,000 steps exactly like the control except as stated:
 | validation loss (100 × 32 windows) | 2.290 | 2.298 | 2.274 | 2.289 | 2.275 |
 
 Observations.
+
 - control_slope, trained from scratch, is the best model on every measure in
   the table: follow 0.997 / 0.998, other movement 0.05, centred R² 0.998. Its
   other movement is in the range of the toy model of
@@ -614,6 +646,7 @@ coordinates per set.
 | LM-only | | | | 2.146 |
 
 Observations.
+
 - The text model writes a well-formed answer every time, even without the
   restriction to allowed characters.
 - Trained from scratch like the control, the text answers are less accurate
