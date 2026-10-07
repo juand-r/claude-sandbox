@@ -684,8 +684,8 @@ Observations.
   (text_scratch_jit) are worse than the continued text model on every measure:
   centred R² 0.941, follow 0.83, and validation loss 2.240. This matches the
   number head, where perturbed questions alone from scratch also helped little
-  (control_jit, section 10.4). The slope loss, which made the difference for the
-  number head from scratch, has no text counterpart here.
+  (control_jit, section 10.4). The best from-scratch number-head run
+  (control_slope) also used the slope loss, which has no text counterpart here.
 - During the last continuation, follow on the 64 + 64 tokens checked every
   1,000 steps varied between 0.94 and 0.99 (asked-about tokens) without a clear
   trend, so these 6,000 steps may have added little; the full measurement
