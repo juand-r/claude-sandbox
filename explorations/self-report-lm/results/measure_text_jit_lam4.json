@@ -1,0 +1,50 @@
+{
+ "settings": {
+  "name": "text_jit_lam4",
+  "answer": "text",
+  "lam": 4.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128,
+  "source": "text_jit",
+  "finetune_steps": 3000,
+  "jitter_max": 0.5,
+  "finetune_lr": 0.0002
+ },
+ "finite_size": 0.3,
+ "valid_loss": 2.1799484157562254,
+ "r2c_asked": 0.9753103516931286,
+ "valid_format_rate_asked": 1.0,
+ "finite_follow_mean_asked": 0.8620107513852417,
+ "finite_follow_median_asked": 0.8724749088287354,
+ "ref_joint_detached_s0_finite_follow_mean_asked": 0.8410267751896754,
+ "ref_joint_detached_s0_finite_follow_median_asked": 0.856892466545105,
+ "r2c_never": 0.9729736834810424,
+ "valid_format_rate_never": 1.0,
+ "finite_follow_mean_never": 0.8546744011109695,
+ "finite_follow_median_never": 0.8598359227180481,
+ "ref_joint_detached_s0_finite_follow_mean_never": 0.8369865218410268,
+ "ref_joint_detached_s0_finite_follow_median_never": 0.864780455827713,
+ "stories": [
+  "Once upon a time there was a little boy named Tim who liked to play naughty things. One day, Tim decided to play a game of hide-and-seek.\n\nTim saw a small bush on the ground and decided to pick it up. He put the bush high shelf in the hole, and started to jump out of it. But the bush was too strong to get up there. Tim was very sad because he couldn't jump in the hole!\n\nWhen he got to the hole, his powerfulsed to come out of the hole. He saw a little bird with sharp wings and knew that",
+  "Once upon a time, there was an old man. He was very special and he had no friends. He was three years old and was very weak. He had a very own charge way to help the old man.\n\nOne day, the man had a long beard. He had a special surprise for him to give him a nice and special present. He was so excited that he felt very proud of what he had done.\n\nThe man put his90 and took the present. He was so proud of whatever he had atwards. He was so proud of himself.\n\nThe",
+  "Once upon a time, there was a little girl named Lily. She loved to play outside and explore the world around her. One day, she found a big, old a shiny lollipop. She was so happy and sat down on it. \n\nSuddenly, a friendly fox appeared. He said, \"I found a new lollipop. It's just so pretty!\" \n\nLily was amazed. She asked the fox why it was so pretty and it made her a happy smile. The owl said, \"You are very unusual, but I can also keep it safe.\" The fox smiled and said, \"I will keep"
+ ]
+}
