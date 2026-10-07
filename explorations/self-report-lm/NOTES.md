@@ -142,3 +142,13 @@ Phase 2, first result: control_jit_s0 (from scratch, perturbed questions, λ = 1
 control 0.870 / 0.854, 0.982, 2.307. Much less than the 3,000-step continuation with
 perturbed questions (0.959 / 0.949). Not understood. Started 08:20: ft2_lam4_jit, 6,000
 more steps from ft_lam4_jit (λ = 4, perturbed questions), to see whether follow keeps rising.
+
+### 2026-10-07 ~08:55 UTC: ft2_lam4_jit finished
+- 6,000 more steps from ft_lam4_jit (λ = 4, perturbed questions up to 50% of |E[t]|, lr 2e-4).
+- Follow (asked/never, 128+128 tokens) by step: 0.968/0.959, 0.964/0.956, 0.952/0.945, 0.978/0.970,
+  0.968/0.961, 0.990/0.984, 0.980/0.973. It moves by about ±0.02 between evaluations, so single
+  evaluations are noisy; the trend over 6,000 steps is up by about 0.01 to 0.02.
+- Other movement falls steadily: 0.271 -> 0.180. Centred R² rises: 0.979 -> 0.989. Validation loss 2.307 -> 2.290.
+- Process mistake: the monitor for this run used `declare -A` and was apparently run by a shell
+  without it; it delivered no events for 30 minutes. Rule: wrap monitor commands in `bash -c '...'`,
+  and check that the first event arrives.
