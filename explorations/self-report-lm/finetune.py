@@ -35,16 +35,8 @@ DATA_SEED_OFFSET = 777            # text windows and questions differ from the s
 
 
 def jittered_report_loss(m, t, i, jitter_max, gen):
-    """Self-report loss (1 − uncentred R² of the batch) on perturbed copies of E[t];
-    the gradient is stopped at E[t] (control setting)."""
-    x = m.E[t].detach()
-    if jitter_max > 0:
-        d = torch.randn(x.shape, generator=gen)
-        s = torch.rand(len(t), 1, generator=gen) * jitter_max
-        x = x + d / d.norm(dim=1, keepdim=True) * s * x.norm(dim=1, keepdim=True)
-    target = x[torch.arange(len(t)), i]
-    a = m.answer(x, i)
-    return ((a - target) ** 2).mean() / target.var(unbiased=False)
+    """Self-report loss on perturbed copies of E[t], gradient stopped at E[t] (train.report_loss)."""
+    return T.report_loss(m, t, i, detach_input=True, jitter_max=jitter_max, gen=gen)
 
 
 def finetune(source, name, steps, lam, jitter_max, lr=T.LR_MIN, verbose=True):

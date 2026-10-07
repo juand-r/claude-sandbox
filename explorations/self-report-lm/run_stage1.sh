@@ -3,7 +3,7 @@
 # variants, two at a time (2 threads each). See PLAN.md.
 set -u
 cd "$(dirname "$0")"
-run() { [ -f results/$2.json ] || .venv/bin/python finetune.py joint_detached_s0 "$@" >> logs/$2.log 2>&1 || echo "FAILED $2"; }
+run() { [ -f results/$1.json ] || .venv/bin/python finetune.py joint_detached_s0 "$@" >> logs/$1.log 2>&1 || echo "FAILED $1"; }
 run ft_more 3000 1 0 &
 run ft_lam4 3000 4 0 &
 wait

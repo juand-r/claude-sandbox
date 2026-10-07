@@ -18,7 +18,7 @@ Control (review of REPORT.md): with detach_input, the self-report sees E[t] with
 gradient blocked, so it trains the reader but cannot move the embedding table, which is
 then shaped by language modelling alone.
 
-Usage: python train.py <name> <lam> <seed> [steps] [detach]
+Usage: python train.py <name> <lam> <seed> [steps] [detach] [jitter_max]
 """
 import json
 import math
@@ -68,7 +68,20 @@ def lm_loss(m, x, y):
     return F.cross_entropy(m.lm_logits(x).reshape(-1, m.n_text), y.reshape(-1))
 
 
-def report_loss(m, t, i, detach_input=False):
+def report_loss(m, t, i, detach_input=False, jitter_max=0.0, gen=None):
+    """1 − uncentred R² of the batch. With jitter_max > 0 (perturbed questions; requires
+    detach_input): each question uses x = E[t] + δ, δ in a random direction with
+    |δ| = s·|E[t]|, s uniform in [0, jitter_max], and the target is x_i."""
+    if jitter_max > 0:
+        if not detach_input:
+            raise ValueError("perturbed questions are implemented for the control setting only")
+        x = m.E[t].detach()
+        d = torch.randn(x.shape, generator=gen)
+        s = torch.rand(len(t), 1, generator=gen) * jitter_max
+        x = x + d / d.norm(dim=1, keepdim=True) * s * x.norm(dim=1, keepdim=True)
+        target = x[torch.arange(len(t)), i]
+        a = m.answer(x, i)
+        return ((a - target) ** 2).mean() / target.var(unbiased=False)
     a = m.answer(m.E[t].detach(), i) if detach_input else m.report(t, i)
     target = m.E[t, i].detach()
     return ((a - target) ** 2).mean() / target.var(unbiased=False)
@@ -92,10 +105,11 @@ def make_optimizer(m):
                               {"params": rest, "weight_decay": 0.0}], lr=LR, betas=BETAS)
 
 
-def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False):
+def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False, jitter_max=0.0):
     RESULTS.mkdir(exist_ok=True)
     ckpt_path = RESULTS / f"{name}_ckpt.pt"
-    settings = {"name": name, "lam": lam, "seed": seed, "steps": steps, "detach_input": detach_input, "lm_batch": LM_BATCH,
+    settings = {"name": name, "lam": lam, "seed": seed, "steps": steps, "detach_input": detach_input,
+                "jitter_max": jitter_max, "lm_batch": LM_BATCH,
                 "report_batch": REPORT_BATCH, "lr": LR, "lr_min": LR_MIN, "warmup": WARMUP,
                 "weight_decay": WEIGHT_DECAY, "betas": list(BETAS), "clip": CLIP, "eval_every": EVAL_EVERY,
                 "n_text": lm.N_TEXT, "dim": lm.DIM, "n_layers": lm.N_LAYERS, "n_heads": lm.N_HEADS, "ctx": lm.CTX}
@@ -108,7 +122,8 @@ def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False):
     start, log, seconds0 = 0, [], 0.0
     if ckpt_path.exists():
         ck = torch.load(ckpt_path)
-        ck["settings"].setdefault("detach_input", False)       # checkpoints written before the option existed
+        ck["settings"].setdefault("detach_input", False)       # checkpoints written before these options existed
+        ck["settings"].setdefault("jitter_max", 0.0)
         if ck["settings"] != settings:
             raise RuntimeError(f"{ckpt_path} has different settings: {ck['settings']}")
         m.load_state_dict(ck["model"])
@@ -135,7 +150,7 @@ def train(name, lam, seed, steps=STEPS, verbose=True, detach_input=False):
         if lam > 0:
             t = train_tokens[torch.randint(0, len(train_tokens), (REPORT_BATCH,), generator=gen_rep)]
             i = torch.randint(0, m.dim, (REPORT_BATCH,), generator=gen_rep)
-            loss_rep = report_loss(m, t, i, detach_input)
+            loss_rep = report_loss(m, t, i, detach_input, jitter_max, gen_rep)
             loss = loss + lam * loss_rep
         if not torch.isfinite(loss):
             raise FloatingPointError(f"loss not finite at step {step}")
@@ -163,8 +178,9 @@ def main():
     name, lam, seed = sys.argv[1], float(sys.argv[2]), int(sys.argv[3])
     steps = int(sys.argv[4]) if len(sys.argv) > 4 else STEPS
     detach_input = len(sys.argv) > 5 and sys.argv[5] == "detach"
+    jitter_max = float(sys.argv[6]) if len(sys.argv) > 6 else 0.0
     torch.set_num_threads(2)
-    m, settings, log = train(name, lam, seed, steps, detach_input=detach_input)
+    m, settings, log = train(name, lam, seed, steps, detach_input=detach_input, jitter_max=jitter_max)
     torch.save({"model": m.state_dict(), "settings": settings}, RESULTS / f"{name}.pt")
     (RESULTS / f"{name}.json").write_text(json.dumps({"settings": settings, "log": log}, indent=1))
     print(f"wrote results/{name}.pt and .json")

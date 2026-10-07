@@ -117,15 +117,18 @@ its accuracy was still rising when training stopped.
 Phase 1 (`run_stage1.sh`, `finetune.py`, `quick_measure.py`): continue the
 control model for 3,000 steps at constant learning rate 2·10⁻⁴, self-report
 gradient stopped at the token embedding vectors, under four variants:
-- [ ] more training only (λ = 1);
-- [ ] self-report loss coefficient λ = 4;
-- [ ] perturbed questions: x = E[t] + δ with |δ| = s·|E[t]|, s uniform in [0, 0.5],
-      target x_i (λ = 1);
-- [ ] λ = 4 and perturbed questions.
+- [x] more training only (λ = 1): follow 0.893 / 0.878;
+- [x] self-report loss coefficient λ = 4: 0.896 / 0.880;
+- [x] perturbed questions: x = E[t] + δ with |δ| = s·|E[t]|, s uniform in [0, 0.5],
+      target x_i (λ = 1): 0.959 / 0.949;
+- [x] λ = 4 and perturbed questions: 0.968 / 0.959.
+(Start: 0.870 / 0.854 on the same 128 + 128 tokens. Validation loss 2.295 to 2.307
+in all four.)
 Measured: validation loss, centred R², follow, other movement, gain along E[t].
 
-Phase 2: the best variant trained from scratch (seed 0, 15,000 steps), measured
-with measure.py and compared with the control.
+Phase 2 (`run_phase2.sh`): perturbed questions (jitter_max 0.5, λ = 1; one change
+from the control) trained from scratch, seed 0, 15,000 steps (control_jit_s0),
+measured with measure.py; in parallel the stage-2 text run (text_s0).
 
 ## Stage 2 (asked for by the user): answers written as text
 
