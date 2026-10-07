@@ -514,7 +514,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 <section class="slide" id="s-grow" data-steps="4">
   <div class="prose">
     <div class="eyebrow">1 · Regression trees</div>
-    <h2>Grow, then stop</h2>
+    <h2>Recurse</h2>
     <ul>
       <li>Split each side the same way, and repeat.</li>
       <li data-step="1">Grown all the way, the tree reproduces every training point. It overfits.</li>
@@ -1534,7 +1534,7 @@ const DOSE_TREE=growTree(DOSE.x,DOSE.y,{minSplit:7});
   set(0);
 }
 
-/* ---------- grow, then stop ---------- */
+/* ---------- recurse (grow, then stop) ---------- */
 {
   const {x,y}=DOSE,api=dosePlot($('fig-grow'),{label:'regression tree fit for a chosen stopping rule'});
   const gFit=stepG(api.layer('fit'),1),gThr=stepG(api.layer('extra'),1),inp=$('r-grow');

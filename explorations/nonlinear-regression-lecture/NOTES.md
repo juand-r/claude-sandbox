@@ -41,7 +41,7 @@
    highlighted with its four points and their average, 55.25.
 6. Choosing a split: a threshold slider with the side means and residuals; the SSE of every
    candidate threshold (two local minima, at 14.5 and 29); best 14.5, SSE 19,523.
-7. Grow, then stop: slider for the minimum number of points needed to split. 2: training SSE 0
+7. Recurse (titled "Grow, then stop" until the user renamed it): slider for the minimum number of points needed to split. 2: training SSE 0
    (overfit); 7 (do not split 6 or fewer, the lecture's example): 4 leaves; 19: one leaf (underfit).
 8. Many features: a table like the lecture's (dosage, age, weight, sex); best threshold per feature; binary and multi-valued
    categoricals (one-hot, one value against the rest).
@@ -91,6 +91,6 @@ These are said out loud in the lecture; the slides and notes avoid repeating the
 - Regression-tree slide too small and its outer leaves clipped: moved to one column with the plot
   and tree side by side below the bullets.
 - 2D kNN maps were not square, so the colour cells were taller than wide; fixed the chart size.
-- kNN and "grow, then stop" showed tiles and a fit before anything was introduced; now points first.
+- kNN and "Recurse" showed tiles and a fit before anything was introduced; now points first.
 - The split slide became too tall without height caps and the whole slide shrank; caps restored.
 - The features table overflowed at phone width; it now scrolls inside its box.
