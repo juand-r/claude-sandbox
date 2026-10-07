@@ -1,0 +1,230 @@
+{
+ "settings": {
+  "name": "ft_slope",
+  "lam": 4.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128,
+  "source": "ft_lam4_jit",
+  "finetune_steps": 3000,
+  "jitter_max": 0.5,
+  "finetune_lr": 0.0002,
+  "slope_weight": 1.0
+ },
+ "valid_loss": 2.2888647317886353,
+ "r2_train": 0.9943018221199633,
+ "r2_centred_train": 0.989621236523034,
+ "r2_coord_mean_train": 0.4509771908105572,
+ "r2_held_out": 0.99438371749395,
+ "r2_centred_held_out": 0.9897950717563373,
+ "r2_coord_mean_held_out": 0.44964997578128996,
+ "r2_random": 0.9821695299013014,
+ "n_jacobian_tokens": 512,
+ "sum_w": 0.9847760200500488,
+ "jacobian_train": {
+  "follow": 0.9939092647982761,
+  "other": 0.13910943547671195,
+  "follow_length": 0.9263413354055956,
+  "follow_direction": 0.994441295738376,
+  "ones_mean": 0.9847760201664641,
+  "ones_sd": 1.3624745882900857e-07,
+  "follow_sd": 0.026310780638495426
+ },
+ "jacobian_held_out": {
+  "follow": 0.992233122466132,
+  "other": 0.1387121971056331,
+  "follow_length": 0.9231280784588307,
+  "follow_direction": 0.9927772566709139,
+  "ones_mean": 0.9847760199336335,
+  "ones_sd": 1.3601119751294188e-07,
+  "follow_sd": 0.026215948856583942
+ },
+ "finite_follow_median_train": 0.9917251467704773,
+ "finite_follow_mean_train": 0.9913341464707628,
+ "finite_follow_median_held_out": 0.9895856976509094,
+ "finite_follow_mean_held_out": 0.9891615863889456,
+ "edit_test": [
+  {
+   "token": 304,
+   "count": 875,
+   "report_follow": 0.9060882329940796,
+   "kl_at_t": 0.005156535655260086,
+   "kl_after_t_later": 0.0005615883274003863,
+   "kl_no_t": 0.0002841646200977266
+  },
+  {
+   "token": 279,
+   "count": 635,
+   "report_follow": 0.9345230460166931,
+   "kl_at_t": 0.004028988070785999,
+   "kl_after_t_later": 0.0005335357855074108,
+   "kl_no_t": 0.00010037237370852381
+  },
+  {
+   "token": 316,
+   "count": 589,
+   "report_follow": 0.8837916254997253,
+   "kl_at_t": 0.004364061634987593,
+   "kl_after_t_later": 0.0005271672853268683,
+   "kl_no_t": 0.00016383071488235146
+  },
+  {
+   "token": 328,
+   "count": 567,
+   "report_follow": 0.9349061250686646,
+   "kl_at_t": 0.0033630277030169964,
+   "kl_after_t_later": 0.0004516031185630709,
+   "kl_no_t": 0.00019830533710774034
+  },
+  {
+   "token": 341,
+   "count": 526,
+   "report_follow": 0.9461452960968018,
+   "kl_at_t": 0.004635172430425882,
+   "kl_after_t_later": 0.0003578862815629691,
+   "kl_no_t": 8.48245617817156e-05
+  },
+  {
+   "token": 352,
+   "count": 518,
+   "report_follow": 0.9265973567962646,
+   "kl_at_t": 0.013210822828114033,
+   "kl_after_t_later": 0.0007385048666037619,
+   "kl_no_t": 0.00014986337919253856
+  },
+  {
+   "token": 356,
+   "count": 464,
+   "report_follow": 1.0147732496261597,
+   "kl_at_t": 0.00564258499071002,
+   "kl_after_t_later": 0.00030243731453083456,
+   "kl_no_t": 9.481106826569885e-05
+  },
+  {
+   "token": 0,
+   "count": 348,
+   "report_follow": 0.8982130885124207,
+   "kl_at_t": 0.006139108445495367,
+   "kl_after_t_later": 0.0006872216472402215,
+   "kl_no_t": 0.00017182258307002485
+  },
+  {
+   "token": 298,
+   "count": 333,
+   "report_follow": 0.9389038681983948,
+   "kl_at_t": 0.011151902377605438,
+   "kl_after_t_later": 0.0005142638692632318,
+   "kl_no_t": 6.103693158365786e-05
+  },
+  {
+   "token": 416,
+   "count": 320,
+   "report_follow": 0.9282499551773071,
+   "kl_at_t": 0.00023034491459839046,
+   "kl_after_t_later": 0.0017615016549825668,
+   "kl_no_t": 0.0014231709064915776
+  },
+  {
+   "token": 405,
+   "count": 284,
+   "report_follow": 0.9252446293830872,
+   "kl_at_t": 0.006409299094229937,
+   "kl_after_t_later": 0.0002711366396397352,
+   "kl_no_t": 8.94465993042104e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": 0.9186534285545349,
+   "kl_at_t": 0.010160397738218307,
+   "kl_after_t_later": 0.0018895191606134176,
+   "kl_no_t": 0.00014514067152049392
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.9055564999580383,
+   "kl_at_t": 0.011735889129340649,
+   "kl_after_t_later": 0.0005833784816786647,
+   "kl_no_t": 0.0001096960695576854
+  },
+  {
+   "token": 427,
+   "count": 246,
+   "report_follow": 0.9469729661941528,
+   "kl_at_t": 0.010778434574604034,
+   "kl_after_t_later": 0.000660346238873899,
+   "kl_no_t": 0.00017586455214768648
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": 0.9308522939682007,
+   "kl_at_t": 0.010255277156829834,
+   "kl_after_t_later": 0.0010221736738458276,
+   "kl_no_t": 0.00013350474182516336
+  },
+  {
+   "token": 83,
+   "count": 231,
+   "report_follow": 0.8605830073356628,
+   "kl_at_t": 0.013897431083023548,
+   "kl_after_t_later": 0.00029028442804701626,
+   "kl_no_t": 9.8909113148693e-05
+  },
+  {
+   "token": 415,
+   "count": 228,
+   "report_follow": 0.9340673685073853,
+   "kl_at_t": 0.002445366932079196,
+   "kl_after_t_later": 0.0007452727877534926,
+   "kl_no_t": 0.00017037132056429982
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.911575436592102,
+   "kl_at_t": 0.0011262203333899379,
+   "kl_after_t_later": 0.00010170070891035721,
+   "kl_no_t": 8.191706001525745e-05
+  },
+  {
+   "token": 469,
+   "count": 146,
+   "report_follow": 0.9430829286575317,
+   "kl_at_t": 0.01162399910390377,
+   "kl_after_t_later": 0.001202575396746397,
+   "kl_no_t": 0.00019681715639308095
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.9704552292823792,
+   "kl_at_t": 0.010671686381101608,
+   "kl_after_t_later": 0.00047759979497641325,
+   "kl_no_t": 0.00013900430349167436
+  }
+ ],
+ "stories": [
+  "Once upon a time, there was a little boy named Timmy. One day, Timmy went to the park with his mom and saw a big, happy girl. Timmy asked her mom, \"Can I play with you?\" His mom smiled and said, \"Sure, Timmy. You can play with you and you can play with your friends. Do you want to play with me?\" \n\nTimmy was very happy and started playing with his friends. He thought the car was nice. But then, he remembered that he had to clean his room before he could play his toys. He went to the kitchen and found some words",
+  "Once upon a time, there was a little girl named Lily. One day, she went to the store with her mommy. She saw a little girl and wanted to buy a new vase. Her mommy said, \"You can't be me on the table.\"\n\nLily didn't understand why her mommy was so upset. She asked her mommy why she wanted the vase so she was sad. Her mommy told her not to worry, but she still wanted to buy the new vase. So Lily went to her mommy and asked her what the mean mommy told her. Her mommy explained that the vase was important to be kind",
+  "Once upon a time, there was a little girl named Lily. She loved to eat yummy juice, especially her favorite cookie. One day, Lily's mom told her they were going to the city and they were happy. Lily was so excited that she ran outside to play with her friends.\n\nLily's mom said, \"Lily, we allows where we go and see the big barber burper! It is so big and his mom and dad, dad. Lily was very happy because they were so busy. But then, Lily started to get tired from his nap. Max decided to go for"
+ ]
+}
