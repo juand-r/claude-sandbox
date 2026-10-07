@@ -196,3 +196,23 @@ def test_detached_input_gives_embeddings_no_self_report_gradient():
     T.report_loss(m, t, i, detach_input=True).backward()
     assert m.E.grad is None or m.E.grad[:m.n_text].abs().max() == 0      # text rows untouched
     assert m.number_head.weight.grad.abs().max() > 0                         # the reader still learns
+
+
+def test_jittered_questions_target_the_perturbed_vector_and_stop_gradient():
+    import finetune as Fn
+    m = small_model()
+    t, i = torch.tensor([1, 2, 3, 4]), torch.tensor([0, 1, 2, 3])
+    gen = torch.Generator().manual_seed(0)
+    # with jitter_max = 0 the loss equals the ordinary control loss
+    torch.testing.assert_close(Fn.jittered_report_loss(m, t, i, 0.0, gen), T.report_loss(m, t, i, detach_input=True))
+    # with jitter, the target is the perturbed coordinate: a model answering x_i exactly scores 0
+    class Exact(torch.nn.Module):
+        def __init__(self, base):
+            super().__init__()
+            self.E, self.dim = base.E, base.dim
+        def answer(self, x, i):
+            return x[torch.arange(len(x)), i]
+    loss = Fn.jittered_report_loss(Exact(m), t, i, 0.5, torch.Generator().manual_seed(1))
+    assert loss.item() < 1e-12
+    Fn.jittered_report_loss(m, t, i, 0.5, torch.Generator().manual_seed(1)).backward()
+    assert m.E.grad is None or m.E.grad[:m.n_text].abs().max() == 0

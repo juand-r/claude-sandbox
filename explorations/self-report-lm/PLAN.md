@@ -108,3 +108,25 @@ Each is a separate experiment, to be started only with the user's agreement.
 6. Length versus direction. If measurement 3 confirms that answers track the
    direction of E[t] better than its length, test architectures without the
    normalization that causes it.
+
+## Stage 1 (asked for by the user, 2026-10-07): raise follow above 0.87
+
+Follow of the control model is 0.871 / 0.868 (asked-about / never-asked tokens);
+its accuracy was still rising when training stopped.
+
+Phase 1 (`run_stage1.sh`, `finetune.py`, `quick_measure.py`): continue the
+control model for 3,000 steps at constant learning rate 2·10⁻⁴, self-report
+gradient stopped at the token embedding vectors, under four variants:
+- [ ] more training only (λ = 1);
+- [ ] self-report loss coefficient λ = 4;
+- [ ] perturbed questions: x = E[t] + δ with |δ| = s·|E[t]|, s uniform in [0, 0.5],
+      target x_i (λ = 1);
+- [ ] λ = 4 and perturbed questions.
+Measured: validation loss, centred R², follow, other movement, gain along E[t].
+
+Phase 2: the best variant trained from scratch (seed 0, 15,000 steps), measured
+with measure.py and compared with the control.
+
+## Stage 2 (asked for by the user): answers written as text
+
+After stage 1. The model writes the number as digit tokens; to be designed.
