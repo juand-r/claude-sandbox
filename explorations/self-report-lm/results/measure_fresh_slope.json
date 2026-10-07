@@ -1,0 +1,231 @@
+{
+ "settings": {
+  "name": "fresh_slope",
+  "lam": 4.0,
+  "seed": 0,
+  "steps": 15000,
+  "detach_input": true,
+  "lm_batch": 32,
+  "report_batch": 256,
+  "lr": 0.002,
+  "lr_min": 0.0002,
+  "warmup": 200,
+  "weight_decay": 0.1,
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "clip": 1.0,
+  "eval_every": 250,
+  "n_text": 4096,
+  "dim": 128,
+  "n_layers": 4,
+  "n_heads": 4,
+  "ctx": 128,
+  "source": "ft_lam4_jit",
+  "finetune_steps": 3000,
+  "jitter_max": 0.5,
+  "finetune_lr": 0.0002,
+  "data_offset": 1554,
+  "slope_weight": 1.0
+ },
+ "valid_loss": 2.283671989440918,
+ "r2_train": 0.9953469099417658,
+ "r2_centred_train": 0.9915318926739561,
+ "r2_coord_mean_train": 0.4505159324181497,
+ "r2_held_out": 0.9953717165877135,
+ "r2_centred_held_out": 0.9915943903119693,
+ "r2_coord_mean_held_out": 0.4493815934759635,
+ "r2_random": 0.9825195535386125,
+ "n_jacobian_tokens": 512,
+ "sum_w": 0.9942366480827332,
+ "jacobian_train": {
+  "follow": 0.9874088381184265,
+  "other": 0.13468386547174305,
+  "follow_length": 0.9406503380741924,
+  "follow_direction": 0.9877770152841292,
+  "ones_mean": 0.9942365834722295,
+  "ones_sd": 1.492172569256267e-07,
+  "follow_sd": 0.02289216362918322
+ },
+ "jacobian_held_out": {
+  "follow": 0.9861281514167786,
+  "other": 0.13432949408888817,
+  "follow_length": 0.9379673538496718,
+  "follow_direction": 0.9865073702952598,
+  "ones_mean": 0.9942365828901529,
+  "ones_sd": 1.488360241164166e-07,
+  "follow_sd": 0.02356318186897017
+ },
+ "finite_follow_median_train": 0.9850006699562073,
+ "finite_follow_mean_train": 0.9853812999790534,
+ "finite_follow_median_held_out": 0.9845382571220398,
+ "finite_follow_mean_held_out": 0.9830103458371013,
+ "edit_test": [
+  {
+   "token": 304,
+   "count": 875,
+   "report_follow": 0.9077538847923279,
+   "kl_at_t": 0.004626340698450804,
+   "kl_after_t_later": 0.0005612539243884385,
+   "kl_no_t": 0.00027558792498894036
+  },
+  {
+   "token": 279,
+   "count": 635,
+   "report_follow": 0.9176520705223083,
+   "kl_at_t": 0.0040278248488903046,
+   "kl_after_t_later": 0.0005183247267268598,
+   "kl_no_t": 9.951865649782121e-05
+  },
+  {
+   "token": 316,
+   "count": 589,
+   "report_follow": 0.8817389607429504,
+   "kl_at_t": 0.0039765555411577225,
+   "kl_after_t_later": 0.0005264409119263291,
+   "kl_no_t": 0.0001600624673301354
+  },
+  {
+   "token": 328,
+   "count": 567,
+   "report_follow": 0.9464749693870544,
+   "kl_at_t": 0.0032996763475239277,
+   "kl_after_t_later": 0.000491259153932333,
+   "kl_no_t": 0.00024319955264218152
+  },
+  {
+   "token": 341,
+   "count": 526,
+   "report_follow": 0.9538477063179016,
+   "kl_at_t": 0.004521485883742571,
+   "kl_after_t_later": 0.0003435031685512513,
+   "kl_no_t": 8.060973777901381e-05
+  },
+  {
+   "token": 352,
+   "count": 518,
+   "report_follow": 0.9278476238250732,
+   "kl_at_t": 0.012516663409769535,
+   "kl_after_t_later": 0.0006590192206203938,
+   "kl_no_t": 0.00012292969040572643
+  },
+  {
+   "token": 356,
+   "count": 464,
+   "report_follow": 1.0036919116973877,
+   "kl_at_t": 0.007547652814537287,
+   "kl_after_t_later": 0.00027425927692092955,
+   "kl_no_t": 9.305171988671646e-05
+  },
+  {
+   "token": 0,
+   "count": 348,
+   "report_follow": 0.8990593552589417,
+   "kl_at_t": 0.004453890025615692,
+   "kl_after_t_later": 0.000674799841362983,
+   "kl_no_t": 0.00016160216182470322
+  },
+  {
+   "token": 298,
+   "count": 333,
+   "report_follow": 0.9299944639205933,
+   "kl_at_t": 0.010653262957930565,
+   "kl_after_t_later": 0.0004999908851459622,
+   "kl_no_t": 4.872916542808525e-05
+  },
+  {
+   "token": 416,
+   "count": 320,
+   "report_follow": 0.9145293831825256,
+   "kl_at_t": 0.0002302291541127488,
+   "kl_after_t_later": 0.001689714496023953,
+   "kl_no_t": 0.0014479132369160652
+  },
+  {
+   "token": 405,
+   "count": 284,
+   "report_follow": 0.9137967228889465,
+   "kl_at_t": 0.006631297525018454,
+   "kl_after_t_later": 0.00025916105369105935,
+   "kl_no_t": 9.838879486778751e-05
+  },
+  {
+   "token": 2,
+   "count": 258,
+   "report_follow": 0.927872359752655,
+   "kl_at_t": 0.010611423291265965,
+   "kl_after_t_later": 0.001837814343161881,
+   "kl_no_t": 0.0001643322320887819
+  },
+  {
+   "token": 334,
+   "count": 258,
+   "report_follow": 0.9124968647956848,
+   "kl_at_t": 0.010596008971333504,
+   "kl_after_t_later": 0.0006389593472704291,
+   "kl_no_t": 0.00012308830628171563
+  },
+  {
+   "token": 427,
+   "count": 246,
+   "report_follow": 0.9257885217666626,
+   "kl_at_t": 0.009833595715463161,
+   "kl_after_t_later": 0.0006079917657189071,
+   "kl_no_t": 0.00016242341371253133
+  },
+  {
+   "token": 425,
+   "count": 244,
+   "report_follow": 0.9558996558189392,
+   "kl_at_t": 0.00866771675646305,
+   "kl_after_t_later": 0.0009534324053674936,
+   "kl_no_t": 0.00013289482740219682
+  },
+  {
+   "token": 83,
+   "count": 231,
+   "report_follow": 0.8697306513786316,
+   "kl_at_t": 0.01278910506516695,
+   "kl_after_t_later": 0.0003150890697725117,
+   "kl_no_t": 9.936200513038784e-05
+  },
+  {
+   "token": 415,
+   "count": 228,
+   "report_follow": 0.9409544467926025,
+   "kl_at_t": 0.002756447996944189,
+   "kl_after_t_later": 0.0007487511029466987,
+   "kl_no_t": 0.0001903626834973693
+  },
+  {
+   "token": 447,
+   "count": 205,
+   "report_follow": 0.9098626375198364,
+   "kl_at_t": 0.0009263143292628229,
+   "kl_after_t_later": 0.00011084497964475304,
+   "kl_no_t": 0.00010041855421150103
+  },
+  {
+   "token": 469,
+   "count": 146,
+   "report_follow": 0.9296950697898865,
+   "kl_at_t": 0.011340136639773846,
+   "kl_after_t_later": 0.0011182629968971014,
+   "kl_no_t": 0.00016481640341226012
+  },
+  {
+   "token": 516,
+   "count": 146,
+   "report_follow": 0.9745791554450989,
+   "kl_at_t": 0.0104295639321208,
+   "kl_after_t_later": 0.0005195511621423066,
+   "kl_no_t": 0.00014942645793780684
+  }
+ ],
+ "stories": [
+  "Once upon a time, there was a little duck named Benny. One day, Benny saw a big bird stuck in a tree. He looked sad and he felt better. Benny caught the bird's nest for a little while. He took a small nest and sat down on the tree. Benny saw a big, shiny thing, which was not a toy. He thought it was a great idea.\n\nSuddenly, Benny flew down to the tree. It was so big that Benny had no paw to reach. Benny was so happy that he got to climb the tree, and he climbed up the tree. Benny climbed the",
+  "Once upon a time there was a little girl named Lily. She loved to play outside and explore the world around her. One day, she found a big rock on the ground. She picked it up and felt very happy. \n\nLily said, \"Thank you! Can I play with you?\" \n\nThe rock said, \"Sure, Lily. I don't need to play with you. I need to play here.\" \n\nLily nodded, but she still couldn't. So, her mom took her on a search of the rock. They found a needle on the rock and the rock. \n\nWhen",
+  "Once upon a time, there was a little girl named Lily. She loved to eat yummy juice every day. She would make lemonade in one cups. One day, while she ate the juice, she noticed that one was very nice. \n\nLily was sad and started to cry. Her mum gave her a hug and said, \"Don't worry, we will clean this cup instead. We can clean it with some more juice.\" \n\nLily felt happy and ate the juice. She said, \"That's my dream! I'm glad you like it.\" The little girl smiled and decided to have some"
+ ]
+}
