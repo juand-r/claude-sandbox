@@ -31,6 +31,7 @@ def evaluate(m, fmt, valid_batches, eval_asked, eval_never):
         a = TA.text_answers(m, m.E[t], i, fmt).view(len(toks), m.dim)
         y = m.E[toks]
         out[f"r2c_{name}"] = 1 - (a - y).pow(2).sum().item() / (y - y.mean(0)).pow(2).sum().item()
+    out["E_rms_text"] = m.E[:m.n_text].pow(2).mean().sqrt().item()
     return out
 
 
@@ -74,10 +75,12 @@ def train(name, lam, seed, steps=T.STEPS, verbose=True):
             g["lr"] = T.lr_at(step, steps)
         x, y = T.lm_batch(train_data, T.LM_BATCH, gen_lm)
         loss_lm = T.lm_loss(m, x, y)
-        t = asked[torch.randint(0, len(asked), (T.REPORT_BATCH,), generator=gen_rep)]
-        i = torch.randint(0, m.dim, (T.REPORT_BATCH,), generator=gen_rep)
-        loss_rep = TA.text_report_loss(m, t, i, fmt)
-        loss = loss_lm + lam * loss_rep
+        loss, loss_rep = loss_lm, torch.tensor(float("nan"))
+        if lam > 0:
+            t = asked[torch.randint(0, len(asked), (T.REPORT_BATCH,), generator=gen_rep)]
+            i = torch.randint(0, m.dim, (T.REPORT_BATCH,), generator=gen_rep)
+            loss_rep = TA.text_report_loss(m, t, i, fmt)
+            loss = loss_lm + lam * loss_rep
         if not torch.isfinite(loss):
             raise FloatingPointError(f"loss not finite at step {step}")
         opt.zero_grad()

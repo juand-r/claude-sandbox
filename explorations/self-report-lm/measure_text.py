@@ -88,15 +88,20 @@ def main():
         out["valid_loss"] = float(np.mean([T.lm_loss(m, x, y).item()
                                            for x, y in (T.lm_batch(valid, T.LM_BATCH, vgen) for _ in range(Ms.N_VALID_BATCHES))]))
     pick = lambda toks, n: toks[torch.randperm(len(toks), generator=gen)[:n]]
-    for set_name, toks in (("asked", asked), ("never", never)):
+    if ref:
+        mr, sr = Ms.load(ref)
+        if sr["seed"] != s["seed"]:
+            raise ValueError(f"reference {ref} has seed {sr['seed']}, text run has {s['seed']}: different token splits")
+    for k, (set_name, toks) in enumerate((("asked", asked), ("never", never))):
         out[f"r2c_{set_name}"] = centred_r2(m, fmt, toks)
         out[f"valid_format_rate_{set_name}"] = valid_format_rate(m, fmt, pick(toks, N_FMT))
         ft = pick(toks, N_FOLLOW)
-        out[f"finite_follow_mean_{set_name}"], out[f"finite_follow_median_{set_name}"] = finite_follow_text(m, fmt, ft, gen)
+        # same tokens and the same random directions of change for both models (paired comparison)
+        out[f"finite_follow_mean_{set_name}"], out[f"finite_follow_median_{set_name}"] = \
+            finite_follow_text(m, fmt, ft, torch.Generator().manual_seed(1000 + k))
         if ref:
-            mr, _ = Ms.load(ref)
             out[f"ref_{ref}_finite_follow_mean_{set_name}"], out[f"ref_{ref}_finite_follow_median_{set_name}"] = \
-                finite_follow_number(mr, ft, torch.Generator().manual_seed(s["seed"] + 556))
+                finite_follow_number(mr, ft, torch.Generator().manual_seed(1000 + k))
         print(set_name, {k: round(v, 4) for k, v in out.items() if isinstance(v, float)}, flush=True)
     out["stories"] = Ms.generate(m, Tokenizer.from_file(str(T.DATA / "tokenizer.json")), gen)
     (Ms.HERE / "results" / f"measure_{name}.json").write_text(json.dumps(out, indent=1))

@@ -39,6 +39,8 @@ class Format:
 
     def encode(self, values):
         """(n,) floats -> (n, 5) token ids."""
+        if not torch.isfinite(values).all():
+            raise FloatingPointError("non-finite value to encode (embedding table not finite?)")
         v = values.clamp(-MAX_ABS, MAX_ABS)
         cents = (v.abs() * 100).round().long().clamp(max=999)
         sign = torch.where(v < 0, torch.tensor(self.minus), torch.tensor(self.plus))

@@ -260,3 +260,22 @@ def test_text_report_loss_stops_gradient_at_E_t():
     assert m.E.grad[:m.n_text][others].abs().max() == 0   # no text row but the 13 answer characters
     assert m.E.grad[fmt.chars].abs().max() > 0             # the answer characters are trained
     assert set(TA.question_tokens(torch.arange(4096), fmt).tolist()).isdisjoint(fmt.chars.tolist())
+
+
+def test_text_answer_tokens_match_the_tokenizer_and_decoder_matches_teacher_forcing():
+    import textanswer as TA
+    from tokenizers import Tokenizer
+    tok = Tokenizer.from_file(str(T.DATA / "tokenizer.json"))
+    fmt = TA.Format(T.DATA / "tokenizer.json")
+    assert tok.decode(fmt.encode(torch.tensor([-0.127]))[0].tolist()) == "-0.13"
+    assert fmt.encode(torch.tensor([-0.127]))[0].tolist() == tok.encode("-0.13").ids
+    torch.manual_seed(3)
+    m = lm.SelfReportLM(n_text=4096, dim=16, n_layers=2, n_heads=2, ctx=8)
+    t, i = torch.tensor([5, 9, 40]), torch.tensor([0, 3, 7])
+    with torch.no_grad():
+        ids = TA.generate(m, m.E[t], i, fmt)
+        logits = TA.answer_logits(m, m.E[t], i, ids)
+        for k in range(TA.N_ANSWER):
+            mask = torch.full_like(logits[:, k], float("-inf"))
+            mask[:, fmt.allowed[k]] = 0
+            assert torch.equal((logits[:, k] + mask).argmax(-1), ids[:, k])
