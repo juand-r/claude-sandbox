@@ -574,8 +574,9 @@ answers are not differentiable.
   rate 2·10⁻⁴), all with perturbed questions; the target is the perturbed
   vector's coordinate, written as text. text_jit: 3,000 steps, λ = 1. Then
   text_jit_lam4: 3,000 steps, λ = 4. Then text_jit_lam4_long: 6,000 steps,
-  λ = 4. The slope loss of section 10 needs differentiable answers and was not
-  used.
+  λ = 4. Then text_jit_lam4_long2: 6,000 steps, λ = 4, with new text windows
+  and questions (after the seeding error below was fixed). The slope loss of
+  section 10 needs differentiable answers and was not used.
 - Because of the seeding error described in section 10.2, text_jit_lam4
   repeats text_jit's 3,000 batches (text windows, questions and perturbations),
   and text_jit_lam4_long repeats them once more in its first 3,000 steps. The
@@ -595,6 +596,7 @@ coordinates per set.
 | text | 0.951 / 0.948 | 0.756 / 0.739 | 1.00 / 1.00 | 2.180 |
 | text_jit_lam4 (+ 6,000 steps) | 0.975 / 0.973 | 0.862 / 0.855 | 1.00 / 1.00 | 2.180 |
 | text_jit_lam4_long (+ 12,000 steps) | 0.989 / 0.986 | 0.943 / 0.942 | 1.00 / 1.00 | 2.187 |
+| text_jit_lam4_long2 (+ 18,000 steps) | 0.992 / 0.989 | 0.965 / 0.961 | 1.00 / 1.00 | 2.193 |
 | number head: control | 0.982 / 0.982 | 0.841 / 0.837 | | 2.290 |
 | number head: ft_slope | 0.990 / 0.990 | 0.970 / 0.972 | | 2.289 |
 | LM-only | | | | 2.146 |
@@ -605,18 +607,19 @@ Observations.
 - Trained from scratch like the control, the text answers are less accurate
   than the control's number answers (0.951 against 0.982) and follow less
   (0.756 against 0.841).
-- Continuing with perturbed questions raises both. After 12,000 more steps the
-  text answers are about as accurate as the best number-head model (0.989 /
-  0.986 against 0.990 / 0.990), and follow is 0.94, against 0.97 for ft_slope
-  on the same tokens and changes. At this size of change ft_slope's follow is
-  0.97, lower than its 0.99 at 10%: the answers respond slightly less to large
-  changes than to small ones.
-- Follow was still rising at the end of the last continuation (at the 64 + 64
-  tokens checked every 1,000 steps: 0.874, 0.879, 0.910, 0.908, 0.929, 0.940,
-  0.960 for asked-about tokens).
-- The text model's validation loss is 2.180 to 2.187, against 2.290 for the
+- Continuing with perturbed questions raises both. After 18,000 more steps the
+  text answers are as accurate as the best number-head model (centred R² 0.992 /
+  0.989 against 0.990 / 0.990) and follow almost as well: 0.965 / 0.961 against
+  0.970 / 0.972 for ft_slope, on the same tokens and changes.
+- At this size of change ft_slope's follow is 0.97, lower than its 0.99 at 10%:
+  its answers respond slightly less to large changes than to small ones.
+- During the last continuation, follow on the 64 + 64 tokens checked every
+  1,000 steps varied between 0.94 and 0.99 (asked-about tokens) without a clear
+  trend, so these 6,000 steps may have added little; the full measurement
+  (256 + 256 tokens) rose from 0.943 to 0.965.
+- The text model's validation loss is 2.180 to 2.193, against 2.290 for the
   number-head control and 2.146 for LM-only. So the self-report task, written as
-  text, costs the language model 0.03 to 0.04 nats per token, against 0.14 with
+  text, costs the language model 0.03 to 0.05 nats per token, against 0.14 with
   the number head. I have not found the reason. One difference: the number
   head's loss (1 − R² of the batch) and the text loss (cross-entropy) have
   different sizes and gradients, so λ = 1 is not the same weight in the two
@@ -647,8 +650,9 @@ Observations.
 - The answers can be written as text, by the model's own output layer, in a
   fixed five-character format. After continued training with perturbed
   questions they are about as accurate as the best number answers (centred R²
-  0.989 / 0.986) and follow 0.94 at a 30% change (section 11). This version
-  cost the language model much less (0.03 to 0.04 nats per token); why is not
+  0.992 / 0.989) and follow 0.96 at a 30% change, close to the best number
+  answers on the same test (0.97; section 11). This version
+  cost the language model much less (0.03 to 0.05 nats per token); why is not
   known.
 - If the self-report task may change the embedding vectors it is asked about,
   it does, and its answers then generalize much worse to the other tokens.
