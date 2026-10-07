@@ -152,3 +152,27 @@ more steps from ft_lam4_jit (λ = 4, perturbed questions), to see whether follow
 - Process mistake: the monitor for this run used `declare -A` and was apparently run by a shell
   without it; it delivered no events for 30 minutes. Rule: wrap monitor commands in `bash -c '...'`,
   and check that the first event arrives.
+- Correction to the monitor note above: the real cause was `awk` (here mawk 1.3.4), which reads a
+  pipe in large blocks, so `... | awk '!x[$0]++'` printed nothing until its buffer filled. Two later
+  monitors failed the same way. Replaced by a small bash watcher that dedupes with a seen-file
+  (scratchpad/watch.sh), tested by hand before arming.
+
+### 2026-10-07 ~09:00 UTC: stage 2 (text answers), first full measurement of text_s0
+Validation loss on measure.py's 100 × 32 windows (seed 4321), same windows for every run:
+
+| run | answer | validation loss |
+|---|---|---|
+| lmonly_s0 | none | 2.146 |
+| joint_detached_s0 (control) | number head | 2.290 |
+| control_jit_s0 | number head, perturbed questions | 2.298 |
+| text_s0 | text, 5 characters | 2.180 |
+
+text_s0, over all asked-about / never-asked tokens (answer characters excluded):
+- centred R² 0.951 / 0.948;
+- valid-format rate without the character restriction: 1.0 / 1.0 (64 tokens × 128 coordinates each);
+- finite-change follow at 30% of |E[t]| (256 tokens per set): mean 0.756 / 0.739, median 0.783 / 0.767.
+  The number-head control on the same tokens and directions: mean 0.841 / 0.837, median 0.857 / 0.865.
+- Observation: the text answers cost the language model much less than the number head
+  (2.180 vs 2.290; LM-only 2.146). Not yet understood. Note the number-head control's
+  centred R² is higher (0.982), so the comparison is not at equal accuracy.
+- Next: continue text_s0 with perturbed questions (finetune_text.py, text_jit), as in stage 1.
