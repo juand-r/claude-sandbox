@@ -6,10 +6,10 @@
 - valid-format rate without the restriction, on N_FMT tokens × all coordinates;
 - finite-change follow at FINITE_SIZE (30% of |E[t]|; the answers move in steps of 0.01, so
   small changes would mostly round away): mean and median over N_FOLLOW tokens per set.
-  The same measure for a number-head model given as reference, for comparison;
+  The same measure for number-head models given as references, for comparison;
 - three stories.
 
-Usage: python measure_text.py <text run> [<number-head reference run>]
+Usage: python measure_text.py <text run> [<number-head reference run> ...]
 Writes results/measure_<text run>.json
 """
 import json
@@ -74,7 +74,7 @@ def valid_format_rate(m, fmt, toks):
 
 def main():
     name = sys.argv[1]
-    ref = sys.argv[2] if len(sys.argv) > 2 else None
+    refs = sys.argv[2:]
     torch.set_num_threads(int(os.environ.get("THREADS", "4")))
     fmt = TA.Format(T.DATA / "tokenizer.json")
     m, s = Ms.load(name)
@@ -88,10 +88,12 @@ def main():
         out["valid_loss"] = float(np.mean([T.lm_loss(m, x, y).item()
                                            for x, y in (T.lm_batch(valid, T.LM_BATCH, vgen) for _ in range(Ms.N_VALID_BATCHES))]))
     pick = lambda toks, n: toks[torch.randperm(len(toks), generator=gen)[:n]]
-    if ref:
+    ref_models = {}
+    for ref in refs:
         mr, sr = Ms.load(ref)
         if sr["seed"] != s["seed"]:
             raise ValueError(f"reference {ref} has seed {sr['seed']}, text run has {s['seed']}: different token splits")
+        ref_models[ref] = mr
     for k, (set_name, toks) in enumerate((("asked", asked), ("never", never))):
         out[f"r2c_{set_name}"] = centred_r2(m, fmt, toks)
         out[f"valid_format_rate_{set_name}"] = valid_format_rate(m, fmt, pick(toks, N_FMT))
@@ -99,7 +101,7 @@ def main():
         # same tokens and the same random directions of change for both models (paired comparison)
         out[f"finite_follow_mean_{set_name}"], out[f"finite_follow_median_{set_name}"] = \
             finite_follow_text(m, fmt, ft, torch.Generator().manual_seed(1000 + k))
-        if ref:
+        for ref, mr in ref_models.items():
             out[f"ref_{ref}_finite_follow_mean_{set_name}"], out[f"ref_{ref}_finite_follow_median_{set_name}"] = \
                 finite_follow_number(mr, ft, torch.Generator().manual_seed(1000 + k))
         print(set_name, {k: round(v, 4) for k, v in out.items() if isinstance(v, float)}, flush=True)
