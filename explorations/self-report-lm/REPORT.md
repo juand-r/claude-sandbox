@@ -553,15 +553,32 @@ not know why perturbed questions alone did so much better as a continuation.
 control_slope differs from control_jit in two settings at once, λ = 4 and the
 slope loss, so these runs do not say which of the two matters, or whether both
 are needed. In the continuations, λ = 4 without perturbed questions added little
-(ft_lam4: 0.896 against 0.893 for ft_more), and the slope loss added the most
-of any single change (section 10.2; see 10.5 for the clean comparison). One run
-per setting, seed 0.
+(ft_lam4: 0.896 against 0.893 for ft_more). Perturbed questions gave the
+largest single gain (ft_jit: 0.959). Added on top of perturbed questions, the
+slope loss gave a further gain, smaller with new data (section 10.5) but present
+on every measure. One run per setting, seed 0.
 
 ### 10.5 Clean rerun of the slope comparison
 
-Running: from ft_lam4_jit, 3,000 steps, λ = 4, perturbed questions, new text
-windows and questions for both, without (fresh_noslope) and with (fresh_slope)
-the slope loss.
+Two continuations of ft_lam4_jit, 3,000 steps each, λ = 4, perturbed questions,
+both with text windows and questions that no earlier run saw (the same text
+windows for both; the questions differ after the first step, because the slope
+loss draws extra random numbers): fresh_noslope without the slope loss,
+fresh_slope with it. Measured on 512 + 512 tokens:
+
+| measure | fresh_noslope | fresh_slope |
+|---|---|---|
+| follow, asked-about / never-asked | 0.975 / 0.973 | 0.987 / 0.986 |
+| finite-change follow (10% change), mean | 0.972 / 0.969 | 0.985 / 0.983 |
+| other movement | 0.224 | 0.135 |
+| gain along E[t] | 0.89 / 0.89 | 0.94 / 0.94 |
+| centred R² | 0.987 / 0.987 | 0.992 / 0.992 |
+| validation loss | 2.287 | 2.284 |
+
+With new data, the slope loss still helps on every measure: follow rises by
+0.012, and other movement falls from 0.22 to 0.13. The difference in follow is
+smaller than in the confounded comparison of section 10.2 (0.994 against
+0.980, on 128 + 128 tokens). One run each.
 
 ## 11. Answers written as text
 
