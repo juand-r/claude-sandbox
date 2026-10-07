@@ -176,3 +176,18 @@ text_s0, over all asked-about / never-asked tokens (answer characters excluded):
   (2.180 vs 2.290; LM-only 2.146). Not yet understood. Note the number-head control's
   centred R² is higher (0.982), so the comparison is not at equal accuracy.
 - Next: continue text_s0 with perturbed questions (finetune_text.py, text_jit), as in stage 1.
+
+### 2026-10-07 ~10:40 UTC: stage 1 result; stage 2 progress
+- ft_slope (ft_lam4_jit + 3,000 steps with λ = 4, perturbed questions, slope loss weight 1):
+  full measurement follow 0.994 / 0.992, other movement 0.139, centred R² 0.990 / 0.990,
+  validation loss 2.289. Written up in REPORT.md section 10.
+- Open: why perturbed questions help so much less from scratch (control_jit_s0: 0.885) than as a
+  continuation (ft_jit: 0.959 on 128 + 128). Started control_slope_s0: the full recipe
+  (λ = 4, perturbed questions 0.5, slope loss 1) from scratch, 15,000 steps, seed 0.
+  The slope loss was moved from finetune.py into train.py for this (tests pass; 2-step smoke run ok).
+- Text: text_jit_lam4 (text_s0 + 3,000 perturbed λ = 1 + 3,000 perturbed λ = 4), full measurement:
+  centred R² 0.975 / 0.973, valid-format rate 1.0, follow at 30% 0.862 / 0.855 (number-head control,
+  paired: 0.841 / 0.837), validation loss 2.180. Running: 6,000 more steps (text_jit_lam4_long).
+- measure_text.py now takes several number-head references (to compare with ft_slope as well).
+- analyze_review's random-vector centred R² (used in the report) and measure.py's r2_random
+  (one mean over all answers, as in the training loss) are different measures; the report uses the former.
