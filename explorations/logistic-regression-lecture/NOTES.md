@@ -30,6 +30,10 @@ networks lecture the following week:
    points past the margin pay nothing. Figure: 0–1 and hinge loss against y·f(x).
 3. Log loss: log(1 + e^(−y f(x))) beside the hinge; logistic regression as ½‖w‖² + C Σ log loss.
 4. The sigmoid: σ(z); p(y = +1 | x) = σ(w · x + b); p(true class) = σ(y f); log loss = −log p(true class).
+4a. Sigmoid and log loss (added at the user's request): 1 − σ(f) = σ(−f), so the true class gets σ(y f);
+    −log σ(y f) = log(1 + e^(−y f)); the sigmoid's inverse is the log-odds, z = log(p/(1 − p)), so the score
+    is the log-odds. (The user asked to show the two are "inverses"; they are not. The inverse pair is the
+    sigmoid and the log-odds, and the log loss is −log of the sigmoid.)
 5. A fitted model: hours of study → pass (simulated, 20 students); fitted curve; p = 0.5 at 5.4 h;
    threshold slider with TPR and FPR, linking to the ROC lecture.
 6. Still a hyperplane: the SVM deck's soft-margin data; probability shading, p = 0.1 / 0.5 / 0.9

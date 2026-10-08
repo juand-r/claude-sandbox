@@ -1,6 +1,6 @@
 # Logistic regression: lecture slides
 
-An 11-slide interactive lecture for a machine learning class, meant to follow the nonlinear regression
+A 12-slide interactive lecture for a machine learning class, meant to follow the nonlinear regression
 deck in the same class and lead into neural networks the following week. It opens with loss functions (what earlier methods minimize; why not the training error). Logistic regression is
 presented as the linear SVM's score with log loss in place of hinge loss; the sigmoid turns the score
 into a probability; one neuron is a logistic regression. Binary classification only. How the weights

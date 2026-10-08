@@ -131,6 +131,36 @@
   </div>
 </section>
 
+<!-- WORKING IT OUT -->
+<section class="slide one" id="s-algebra" data-steps="3">
+  <div style="width:100%;max-width:74rem;margin:0 auto">
+    <div class="eyebrow">Working it out</div>
+    <h2 style="margin:.2em 0 .6em">Sigmoid and log loss</h2>
+    <div class="duo alg">
+      <div>
+        <h3>The true class gets σ(y f)</h3>
+        <span class="eq">p(y = −1) = 1 − σ(f)<br><span class="ind">= e<sup>−f</sup> / (1 + e<sup>−f</sup>)</span><br><span class="ind">= 1 / (e<sup>f</sup> + 1)</span><br><span class="ind">= σ(−f)</span></span>
+        <div data-step="1">
+          <h3>Its −log is the log loss</h3>
+          <span class="eq">−log p(true class)<br><span class="ind">= −log σ(y f)</span><br><span class="ind">= −log [1 / (1 + e<sup>−y f</sup>)]</span><br><span class="ind">= log(1 + e<sup>−y f</sup>)</span></span>
+          <p class="fine">using −log(1/a) = log a</p>
+        </div>
+      </div>
+      <div data-step="2">
+        <h3>The inverse of the sigmoid</h3>
+        <span class="eq">p = 1 / (1 + e<sup>−z</sup>)<br>1 + e<sup>−z</sup> = 1/p<br>e<sup>−z</sup> = (1 − p) / p<br>z = log(p / (1 − p))</span>
+        <p class="takeline alg-take" data-step="3">The score <span class="math">w · x + b</span> is the log-odds of the positive class.</p>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Why the true class gets σ(y·f): for y = +1 it is σ(f) by definition. For y = −1, multiply the top and bottom of e^(−f)/(1 + e^(−f)) by e^f. So one formula covers both classes.</p>
+    <p><b class="cue">1</b>Take −log of that probability. The sigmoid is one over something, and −log of one over a is log a. Out comes exactly the log loss of slide 5. Minimizing log loss means giving high probability to the true class of every training point.</p>
+    <p><b class="cue">2</b>Now run the sigmoid backwards: given a probability p, which score z produced it? Solve for z. The answer, log(p/(1 − p)), is called the log-odds or logit.</p>
+    <p><b class="cue">3</b>So the linear score has a meaning: it is the log-odds. A score of 0 is even odds, p = 0.5; each extra unit of score multiplies the odds by e ≈ 2.7. Logistic regression models the log-odds as a linear function of x; that is where "regression" in the name comes from.</p>
+  </div>
+</section>
+
 <!-- 1D FIT -->
 <section class="slide" id="s-fit" data-steps="3">
   <div class="prose">

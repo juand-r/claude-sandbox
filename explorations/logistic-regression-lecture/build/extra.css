@@ -13,3 +13,7 @@
 .cm td.ok{background:var(--model-soft);color:var(--model)}
 .cm td.bad{background:var(--err-soft);color:var(--err)}
 .fine{display:block;font-size:.85em;color:var(--muted)}
+.duo.alg{align-items:start;gap:clamp(16px,3vw,48px)}
+.duo.alg h3{margin:.6em 0 .2em}
+.duo.alg .eq{font-size:1em}
+.alg-take{text-align:left;margin-top:1em}

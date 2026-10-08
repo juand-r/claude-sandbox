@@ -56,6 +56,14 @@ for z in [-3, -1, 0, 0.5, 2]:
     assert abs(math.log(1 + math.exp(-z)) + math.log(sig(z))) < 1e-12   # log loss = −log σ(y f)
 assert abs(-math.log(0.01) - 4.6) < 0.01
 print("   ok  σ(−2), σ(0), σ(2) = 0.12, 0.50, 0.88; log(1 + e^−z) = −log σ(z); −log 0.01 = 4.61")
+for f in [-3.0, -0.4, 0.0, 1.7, 5.0]:   # slide 7, step by step
+    assert abs((1 - sig(f)) - math.exp(-f) / (1 + math.exp(-f))) < 1e-12 and abs(math.exp(-f) / (1 + math.exp(-f)) - 1 / (math.exp(f) + 1)) < 1e-12
+    assert abs(1 / (math.exp(f) + 1) - sig(-f)) < 1e-12
+for p in [0.01, 0.2, 0.5, 0.9]:
+    z = math.log(p / (1 - p))
+    assert abs(sig(z) - p) < 1e-12 and abs(math.exp(-z) - (1 - p) / p) < 1e-12
+assert abs(math.exp(1) - 2.7) < 0.02
+print("   ok  1 − σ(f) = e^−f/(1 + e^−f) = 1/(e^f + 1) = σ(−f); σ(log(p/(1 − p))) = p; e ≈ 2.7")
 # far on the wrong side both losses have slope −1
 z = -30.0
 assert abs((math.log(1 + math.exp(-z)) - math.log(1 + math.exp(-(z - 1)))) - (-1)) < 1e-6
