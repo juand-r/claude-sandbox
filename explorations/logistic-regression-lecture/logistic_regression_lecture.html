@@ -321,6 +321,16 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .fignote{margin:.3em 0 0;text-align:right;font-size:.78em;color:var(--muted)}
 #fig-hinge svg,#fig-loss svg,#fig-sig svg,#fig-fit svg,#fig-neuron svg{max-height:60vh;width:auto;max-width:100%;margin:0 auto}
 #fig-2d svg{max-height:68vh}
+.lede{color:var(--muted);margin:.2em 0 0}
+.takeline{margin:1.2em 0 0;font-size:1.05em;text-align:center}
+.cm{border-collapse:separate;border-spacing:10px;margin:0 auto;font-family:"JetBrains Mono",monospace;font-size:clamp(1.1rem,2vw,1.9rem)}
+.cm th{color:var(--muted);font-weight:600;padding:.2em .6em;text-align:center}
+.cm thead tr:first-child th{font-family:"Source Sans 3",system-ui,sans-serif;font-size:.7em;letter-spacing:.08em;text-transform:uppercase}
+.cm tbody th{font-size:1em}
+.cm td{width:3.2em;height:2.6em;text-align:center;border-radius:12px;font-size:1.3em;font-weight:700}
+.cm td.ok{background:var(--model-soft);color:var(--model)}
+.cm td.bad{background:var(--err-soft);color:var(--err)}
+.fine{display:block;font-size:.85em;color:var(--muted)}
 
 </style>
 </head>
@@ -351,6 +361,58 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   </div>
   <div class="notes">
     <p>A classifier, despite the name. Two classes only. It is also the building block of next week's neural networks.</p>
+  </div>
+</section>
+
+<!-- WHAT ARE WE MINIMIZING -->
+<section class="slide one" id="s-what" data-steps="4">
+  <div style="width:100%;max-width:72rem;margin:0 auto">
+    <div class="eyebrow">Loss functions</div>
+    <h2 style="margin:.2em 0 .3em">What are we minimizing?</h2>
+    <p class="lede">Each method so far chose its model by making some quantity as small as possible.</p>
+    <div class="take three" style="margin-top:1em">
+      <div class="card" data-step="1"><h3>Linear regression</h3><p>Squared errors:<span class="math dm">Σ (yᵢ − ŷᵢ)²</span></p></div>
+      <div class="card" data-step="2"><h3>PCA</h3><p>Reconstruction error:<span class="math dm">Σ ‖xᵢ − x̂ᵢ‖²</span>x̂ᵢ is the projection of xᵢ onto the components.</p></div>
+      <div class="card" data-step="3"><h3>SVM</h3><p>Wide margin, little slack:<span class="math dm">½ ‖w‖² + C Σ ξᵢ</span></p></div>
+    </div>
+    <p class="takeline" data-step="4">The quantity is the <b>loss</b>. Training means finding the model with the smallest loss on the training data.</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Ask the class: for each method we have seen, what did it make as small as possible?</p>
+    <p><b class="cue">1</b>Linear regression: the sum of squared differences between the true and predicted values.</p>
+    <p><b class="cue">2</b>PCA: the squared distance from each point to its projection onto the chosen components. Minimizing it is the same as keeping as much variance as possible.</p>
+    <p><b class="cue">3</b>SVM: a wide margin (small ‖w‖) and as little slack as possible, traded off by C.</p>
+    <p><b class="cue">4</b>Different methods, different losses. Today: what loss should a classifier use?</p>
+  </div>
+</section>
+
+<!-- MINIMIZE THE TRAINING ERROR? -->
+<section class="slide" id="s-err" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Loss functions</div>
+    <h2>Minimize the training error?</h2>
+    <ul>
+      <li>Binary case: each prediction is right or wrong.</li>
+      <li data-step="1">For a threshold <span class="math">t</span>, we want<span class="math dm">f(xᵢ) &gt; t for yᵢ = +1</span><span class="math dm">f(xᵢ) &lt; t for yᵢ = −1</span><span class="fine">f is a score or a probability.</span></li>
+      <li data-step="2">Count the points that break their condition: the training error. Each point costs 1 if wrong, 0 if right: the <b>0–1 loss</b>.</li>
+      <li data-step="3">For a score with <span class="math">t = 0</span>, both conditions say <span class="math">yᵢ f(xᵢ) &gt; 0</span>.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <table class="cm">
+      <thead><tr><th></th><th colspan="2">predicted</th></tr><tr><th>actual</th><th>+1</th><th>−1</th></tr></thead>
+      <tbody>
+        <tr><th>+1</th><td class="ok">✓</td><td class="bad">✗</td></tr>
+        <tr><th>−1</th><td class="bad">✗</td><td class="ok">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Rows are the true class, columns the prediction. Two ways to be right, two ways to be wrong.</p>
+    <p><b class="cue">1</b>Positives should score above the threshold, negatives below it. Same picture as the ROC lecture.</p>
+    <p><b class="cue">2</b>The natural loss for a classifier: the number of training mistakes.</p>
+    <p><b class="cue">3</b>Multiply by the label and both conditions become one: y·f(x) &gt; 0 means correct. This is the horizontal axis of the next slide.</p>
+    <p>If asked "why not minimize the 0–1 loss directly?": (1) It gives no direction. Nudging w usually changes no prediction, so the count stays flat and then jumps; there is no slope to follow. (2) It is computationally hard: finding the line with the fewest training mistakes is NP-hard in general, as the number of features grows (Ben-David, Eiron and Long, 2003). (3) It has no preference among the many lines with the same count, for example for a wide margin. So we minimize a smooth or convex stand-in that is easy to minimize and still punishes mistakes: the hinge loss, or the log loss.</p>
   </div>
 </section>
 

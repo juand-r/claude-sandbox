@@ -19,6 +19,13 @@ networks lecture the following week:
 
 ## Slide outline
 1. Title: Logistic regression.
+1a. What are we minimizing? (added at the user's request) Linear regression: squared errors; PCA:
+    reconstruction error; SVM: ½‖w‖² + C Σ ξᵢ. The quantity is the loss.
+1b. Minimize the training error? (added at the user's request) The binary actual/predicted table with
+    ✓/✗; for a threshold t, f(xᵢ) > t for yᵢ = +1 and < t for yᵢ = −1; the count of mistakes is the
+    0–1 loss; with t = 0 both read yᵢ f(xᵢ) > 0. The speaker notes answer "why not minimize the 0–1
+    loss directly?": no direction (flat, then jumps), NP-hard in general as the number of features grows
+    (Ben-David, Eiron & Long 2003), no preference among equally good lines; hence hinge or log loss.
 2. The SVM as a loss: score f(x) = w · x + b; hinge loss; soft-margin SVM as ½‖w‖² + C Σ hinge;
    points past the margin pay nothing. Figure: 0–1 and hinge loss against y·f(x).
 3. Log loss: log(1 + e^(−y f(x))) beside the hinge; logistic regression as ½‖w‖² + C Σ log loss.

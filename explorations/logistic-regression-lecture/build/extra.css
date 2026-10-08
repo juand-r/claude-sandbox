@@ -3,3 +3,13 @@
 .fignote{margin:.3em 0 0;text-align:right;font-size:.78em;color:var(--muted)}
 #fig-hinge svg,#fig-loss svg,#fig-sig svg,#fig-fit svg,#fig-neuron svg{max-height:60vh;width:auto;max-width:100%;margin:0 auto}
 #fig-2d svg{max-height:68vh}
+.lede{color:var(--muted);margin:.2em 0 0}
+.takeline{margin:1.2em 0 0;font-size:1.05em;text-align:center}
+.cm{border-collapse:separate;border-spacing:10px;margin:0 auto;font-family:"JetBrains Mono",monospace;font-size:clamp(1.1rem,2vw,1.9rem)}
+.cm th{color:var(--muted);font-weight:600;padding:.2em .6em;text-align:center}
+.cm thead tr:first-child th{font-family:"Source Sans 3",system-ui,sans-serif;font-size:.7em;letter-spacing:.08em;text-transform:uppercase}
+.cm tbody th{font-size:1em}
+.cm td{width:3.2em;height:2.6em;text-align:center;border-radius:12px;font-size:1.3em;font-weight:700}
+.cm td.ok{background:var(--model-soft);color:var(--model)}
+.cm td.bad{background:var(--err-soft);color:var(--err)}
+.fine{display:block;font-size:.85em;color:var(--muted)}
