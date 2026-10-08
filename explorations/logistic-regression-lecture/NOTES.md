@@ -62,3 +62,11 @@ networks lecture the following week:
   covered in the same class. Not changed (not asked).
 - The nonlinear regression deck ends with the notebook and thanks slides; if this deck follows in the
   same class, the user may want to drop or move them.
+- Notation pass (user's request): the loss box reads min over θ of ℒ(θ; D), D the training data
+  (not ℒ(θ | D), which reads as a likelihood). Objectives on the SVM and log-loss slides are written
+  ℒ = … like the loss slide's cards. The SVM slide names the model: f(x) = w · x + b with θ = (w, b).
+  p(y = +1 | x) = σ(f(x)). Predict positive when p > t (strict, as on the training-error slide; the
+  slider tiles and check_numbers.py follow). The 0–1 loss counts y f(x) ≤ 0 as a mistake, in the
+  formula and in the plot. The algebra slide states that f stands for f(x) = w · x + b.
+  One overload remains: on the loss slide f(xᵢ | θ) is the prediction ŷᵢ; for classifiers f is the
+  score and the prediction is its sign (or its comparison with t).

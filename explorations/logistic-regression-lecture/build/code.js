@@ -84,7 +84,7 @@ const SOFT_SVM=svmSolve(SOFT.X,SOFT.y,{C:1});
 window.__lr={HOURS,SOFT,logisticFit,svmSolve,HOURS_FIT,SOFT_LR,SOFT_SVM};   // used by tests/export.js
 
 /* ---------- loss curves against y·f(x) ---------- */
-const LOSSES={zero:z=>z<0?1:0,hinge:z=>Math.max(0,1-z),log:z=>Math.log(1+Math.exp(-z))};
+const LOSSES={zero:z=>z<=0?1:0,hinge:z=>Math.max(0,1-z),log:z=>Math.log(1+Math.exp(-z))};
 function lossPlot(host,label){
   const api=chart(host,{W:640,H:420,ml:62,fs:1.35,xmin:-3,xmax:3,ymin:0,ymax:4,xticks:[-3,-2,-1,0,1,2,3],yticks:[0,1,2,3,4],
     xfmt:v=>String(v).replace('-','−'),xlabel:'y · f(x)',ylabel:'loss',label});
@@ -137,7 +137,7 @@ function lossPlot(host,label){
     el('line',{x1:api.sx(0),x2:api.sx(10),y1:api.sy(t),y2:api.sy(t),stroke:'var(--hi)','stroke-width':2,'stroke-dasharray':'6 5'},gT);
     el('line',{x1:api.sx(xs),x2:api.sx(xs),y1:api.sy(-.06),y2:api.sy(1.06),stroke:'var(--hi)','stroke-width':2,'stroke-dasharray':'6 5'},gT);
     label(gT,api.sx(xs)+8,api.sy(.5)+(t>.5?40:-14),`${xs.toFixed(1)} h`,{fill:'var(--hi)'});
-    const tp=x.filter((v,i)=>y[i]>0&&m.p([v])>=t).length,fp=x.filter((v,i)=>y[i]<0&&m.p([v])>=t).length;
+    const tp=x.filter((v,i)=>y[i]>0&&m.p([v])>t).length,fp=x.filter((v,i)=>y[i]<0&&m.p([v])>t).length;   // positive when p > t, as on slide 3
     $('v-ft-t').textContent=t.toFixed(2);$('v-ft-tpr').textContent=`${tp}/${nP}`;$('v-ft-fpr').textContent=`${fp}/${nN}`;});
   inp.addEventListener('input',()=>set(+inp.value));
   hooks['s-fit']={step(s){const v={0:50,1:50,2:50,3:30}[s];if(v!==undefined)set(v);}};

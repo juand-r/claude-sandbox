@@ -46,7 +46,7 @@ assert abs(-b / w - 5.4) < 0.05
 print(f"   ok  hours: classes overlap from {pos.min()} to {neg.max()}; p = 0.5 at {-b / w:.2f} h")
 p = 1 / (1 + np.exp(-(w * hx[:, 0] + b)))
 for r in OUT["thr"]:
-    tp, fp = int(((p >= r["t"]) & (hy > 0)).sum()), int(((p >= r["t"]) & (hy < 0)).sum())
+    tp, fp = int(((p > r["t"]) & (hy > 0)).sum()), int(((p > r["t"]) & (hy < 0)).sum())
     assert (tp, fp) == (r["tp"], r["fp"]), r
     assert abs(1 / (1 + math.exp(-(w * r["xs"] + b))) - r["t"]) < 1e-9
 print("   ok  thresholds:", ", ".join(f"t = {r['t']:.2f} → x = {r['xs']:.1f} h, TPR {r['tp']}/10, FPR {r['fp']}/10" for r in OUT["thr"]))

@@ -24,7 +24,7 @@
     <p class="takeline" data-step="4">The quantity is the <b>loss</b>. Training means finding the model with the smallest loss on the training data.</p>
     <div class="take mlbox">
       <div class="card" data-step="5"><h3>Model</h3><p><span class="math dm">ŷᵢ = f(xᵢ | θ)</span>A function of xᵢ with parameters θ.</p></div>
-      <div class="card" data-step="6"><h3>Loss</h3><p><span class="math dm">min<sub>θ</sub> ℒ(θ)</span>Choose the parameters with the smallest loss on the training data.</p></div>
+      <div class="card" data-step="6"><h3>Loss</h3><p><span class="math dm">min<sub>θ</sub> ℒ(θ; D)</span>The parameters with the smallest loss on the training data D.</p></div>
     </div>
   </div>
   <div class="notes">
@@ -75,9 +75,9 @@
     <div class="eyebrow">Recap</div>
     <h2>The SVM as a loss</h2>
     <ul>
-      <li>The score <span class="math">f(x) = w · x + b</span>. Its sign is the prediction; <span class="math">y f(x) &gt; 0</span> means correct.</li>
+      <li>The model is the score <span class="math">f(x) = w · x + b</span>, with <span class="math">θ = (w, b)</span>. Its sign is the prediction; <span class="math">y f(x) &gt; 0</span> means correct.</li>
       <li data-step="1">Each point pays the <b>hinge loss</b>:<span class="math dm">max(0, 1 − y f(x))</span></li>
-      <li data-step="2">The soft-margin SVM:<span class="eq">minimize ½ ‖w‖²<br><span class="ind">+ C Σ max(0, 1 − yᵢ f(xᵢ))</span></span></li>
+      <li data-step="2">The soft-margin SVM minimizes<span class="eq">ℒ = ½ ‖w‖²<br><span class="ind">+ C Σ max(0, 1 − yᵢ f(xᵢ))</span></span></li>
       <li data-step="3">Points beyond the margin pay nothing.</li>
     </ul>
   </div>
@@ -101,7 +101,7 @@
     <ul>
       <li>Replace the hinge with the <b>log loss</b>:<span class="math dm">log(1 + e<sup>−y f(x)</sup>)</span></li>
       <li data-step="1">It is never exactly zero: every point counts a little. Far on the wrong side it grows linearly, like the hinge.</li>
-      <li data-step="2">Logistic regression:<span class="eq">minimize ½ ‖w‖²<br><span class="ind">+ C Σ log(1 + e<sup>−yᵢ f(xᵢ)</sup>)</span></span></li>
+      <li data-step="2">Logistic regression minimizes<span class="eq">ℒ = ½ ‖w‖²<br><span class="ind">+ C Σ log(1 + e<sup>−yᵢ f(xᵢ)</sup>)</span></span></li>
     </ul>
   </div>
   <div class="fig">
@@ -122,7 +122,7 @@
     <h2>The sigmoid</h2>
     <ul>
       <li>The sigmoid squashes any score into (0, 1):<span class="math dm">σ(z) = 1 / (1 + e<sup>−z</sup>)</span></li>
-      <li data-step="1">Logistic regression reads the score as a probability:<span class="math dm">p(y = +1 | x) = σ(w · x + b)</span></li>
+      <li data-step="1">Logistic regression reads the score as a probability:<span class="math dm">p(y = +1 | x) = σ(f(x))</span></li>
       <li data-step="2">The probability of the true class is <span class="math">σ(y f(x))</span>.</li>
       <li data-step="3">So the log loss is <span class="math">−log p(true class)</span>. Confident and wrong costs a lot.</li>
     </ul>
@@ -145,6 +145,7 @@
     <h2 style="margin:.2em 0 .6em">Sigmoid and log loss</h2>
     <div class="duo alg">
       <div>
+        <p class="fine">f stands for the score f(x) = w · x + b.</p>
         <h3>The true class gets σ(y f)</h3>
         <span class="eq">p(y = −1) = 1 − σ(f)<br><span class="ind">= e<sup>−f</sup> / (1 + e<sup>−f</sup>)</span><br><span class="ind">= 1 / (e<sup>f</sup> + 1)</span><br><span class="ind">= σ(−f)</span></span>
         <div data-step="1">
@@ -175,7 +176,7 @@
     <h2>A fitted model</h2>
     <ul>
       <li data-step="1">The fitted curve gives a probability for every <span class="math">x</span>.</li>
-      <li data-step="2">Predict positive when <span class="math">p ≥ 0.5</span>, that is, when <span class="math">w · x + b ≥ 0</span>.</li>
+      <li data-step="2">Predict positive when <span class="math">p &gt; 0.5</span>, that is, when <span class="math">f(x) = w · x + b &gt; 0</span>.</li>
       <li data-step="3">Any other threshold works too. Each one is a point on the ROC curve.</li>
     </ul>
   </div>
