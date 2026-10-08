@@ -98,3 +98,8 @@ These are said out loud in the lecture; the slides and notes avoid repeating the
   textbook pair ξᵢ, ξᵢ*. The two forms have the same solution: a point cannot be above and below the
   tube at once, so at most one of ξᵢ, ξᵢ* is positive and ξᵢ + ξᵢ* = max(0, |yᵢ − f(xᵢ)| − ε). The
   deck's solver still uses the standard two-multiplier dual.
+- kNN with two features slide: the deck's own colour maps (k = 1, k = 9) were replaced by the user's
+  image of the two 3D prediction surfaces (`assets/knn_2d_surfaces.webp`, embedded as base64), and
+  "Simulated data." and "Colour shows the prediction." were removed. The heat-map drawing code and
+  its colour-bar CSS were deleted. The TWO dataset stays in the deck only because check_numbers.py
+  still uses it to test the deck's kNN code in two dimensions.
