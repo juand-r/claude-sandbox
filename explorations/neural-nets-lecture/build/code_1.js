@@ -37,20 +37,6 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
 }
 
 /* ---------- the loss landscape: a cartoon with two valleys; gradient descent from a draggable start ---------- */
-// ℒ(a, b) = 1.6 − 1.0 exp(−|θ − m₁|²/1.2) − 0.65 exp(−|θ − m₂|²/0.8) + 0.04|θ|², m₁ = (1.2, 0.9), m₂ = (−1.4, −1.1)
-const CART={m1:[1.2,.9],s1:1.2,a1:1.0,m2:[-1.4,-1.1],s2:.8,a2:.65,c:.04};
-function cartoon([a,b]){const q1=((a-CART.m1[0])**2+(b-CART.m1[1])**2)/CART.s1,q2=((a-CART.m2[0])**2+(b-CART.m2[1])**2)/CART.s2;
-  return 1.6-CART.a1*Math.exp(-q1)-CART.a2*Math.exp(-q2)+CART.c*(a*a+b*b);}
-function cartoonGrad([a,b]){const e1=CART.a1*Math.exp(-(((a-CART.m1[0])**2+(b-CART.m1[1])**2)/CART.s1)),e2=CART.a2*Math.exp(-(((a-CART.m2[0])**2+(b-CART.m2[1])**2)/CART.s2));
-  return [e1*2*(a-CART.m1[0])/CART.s1+e2*2*(a-CART.m2[0])/CART.s2+2*CART.c*a, e1*2*(b-CART.m1[1])/CART.s1+e2*2*(b-CART.m2[1])/CART.s2+2*CART.c*b];}
-function cartoonPath(t0,{eta=.25,steps=120}={}){const P=[t0.slice()];let t=t0.slice();
-  for(let k=0;k<steps;k++){const g=cartoonGrad(t);t=[t[0]-eta*g[0],t[1]-eta*g[1]];P.push(t);}return P;}
-window.__nn={cartoon,cartoonGrad,cartoonPath,CART};   // used by tests/export.js
-function cartoonGrid(n=60){const w=[],b=[],L=[];for(let i=0;i<=n;i++){w.push(-3+6*i/n);b.push(-3+6*i/n);}
-  for(const a of w)L.push(b.map(v=>cartoon([a,v])));return {w,b,L};}
-function cartoonPlot(host,{H=440,label='a made-up loss surface with two valleys'}={}){
-  const api=chart(host,{W:H,H,ml:58,fs:1.3,xmin:-3,xmax:3,ymin:-3,ymax:3,xticks:[-3,0,3],yticks:[-3,0,3],xfmt:v=>String(v).replace('-','−'),yfmt:v=>String(v).replace('-','−'),xlabel:'θ₁',ylabel:'θ₂',label});
-  api.svg.classList.add('sq');landscape(api,api.layer('heat'),cartoonGrid(),[.7,.8,.9,1,1.1,1.2,1.3,1.4,1.5]);return api;}
 {
   const api=cartoonPlot($('fig-land')),gA=api.layer('anno'),g1=stepG(gA,1),g2=stepG(gA,2),g3=stepG(gA,3);
   const A=[1.9,-1.7],B=[-2.6,.6];   // these two starts end in different valleys (check_numbers.py)

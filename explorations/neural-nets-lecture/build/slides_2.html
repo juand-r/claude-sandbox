@@ -1,0 +1,374 @@
+<!-- TITLE -->
+<section class="slide one" id="s-title" data-steps="0">
+  <div class="prose">
+    <div class="eyebrow">Machine learning</div>
+    <h1>Neural<br>networks</h1>
+    <p class="hook">Part 2: training a network.</p>
+  </div>
+  <div class="notes">
+    <p>Last class we built the network and trained it with gradient descent, taking the gradient as given. Today: where the gradient comes from, and how training is done in practice.</p>
+  </div>
+</section>
+
+<!-- RECAP -->
+<section class="slide" id="s-recap" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Last time</div>
+    <h2>Forward propagation</h2>
+    <span class="eq">h = σ(W₁ x + b₁)<br>z = W₂ h + b₂<br>p = softmax(z)</span>
+    <ul>
+      <li data-step="1">Train by gradient descent:<span class="math dm">θ ← θ − η ∇ℒ(θ)</span></li>
+      <li data-step="2">We need <span class="math">∂ℒ/∂w</span> for every weight <span class="math">w</span>. Where does it come from?</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-recap"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>The network from last time: a hidden layer of sigmoids, then a softmax. The loss is the cross-entropy, −log of the probability of the true class, summed over the training data.</p>
+    <p><b class="cue">1</b>θ is all the weights and biases together. The XOR network had 17 of them; real networks have millions.</p>
+    <p><b class="cue">2</b>One partial derivative per weight. Writing out the loss as one formula and differentiating it by hand does not scale. Backpropagation is a way to get all of them at once, for about the cost of one more pass through the network.</p>
+  </div>
+</section>
+
+<!-- CHAIN RULE -->
+<section class="slide" id="s-chain" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>The chain rule</h2>
+    <ul>
+      <li>A weight changes the loss through a chain of functions. Multiply the derivatives along the chain:<span class="math dm">∂ℒ/∂v = ∂ℒ/∂p · ∂p/∂z · ∂z/∂v</span></li>
+      <li data-step="1">One output neuron, label <span class="math">y = 1</span> or <span class="math">0</span>:<span class="math dm">z = v₁h₁ + v₂h₂ + c,  p = σ(z)</span><span class="math dm">ℒ = −y log p − (1 − y) log(1 − p)</span></li>
+      <li data-step="2">The two factors:<span class="math dm">∂ℒ/∂p = −y/p + (1 − y)/(1 − p)</span><span class="math dm">∂p/∂z = σ′(z) = p(1 − p)</span></li>
+      <li data-step="3">Multiply them; it simplifies:<span class="math dm">∂ℒ/∂z = p − y</span></li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-chain"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>The rule from calculus: if ℒ depends on p, p on z, and z on v, the effects multiply. We will apply it again and again.</p>
+    <p><b class="cue">1</b>Two classes with one score and a sigmoid, which last class showed is the same as the two-class softmax. y is the first entry of the one-hot label: 1 for class 1, 0 for class 2. The loss is the cross-entropy written out.</p>
+    <p><b class="cue">2</b>The first is the derivative of the log terms. The second is the derivative of the sigmoid, σ(z)(1 − σ(z)), which is p(1 − p).</p>
+    <p><b class="cue">3</b>Multiplied out: −y(1 − p) + (1 − y)p. The y·p terms cancel and leave p − y: the prediction minus the label. If the network says 0.9 and the label is 1, this is −0.1. The same is true for softmax with C classes: ∂ℒ/∂zₖ = pₖ − yₖ.</p>
+  </div>
+</section>
+
+<!-- OUTPUT WEIGHTS -->
+<section class="slide" id="s-out" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>Output-layer weights</h2>
+    <ul>
+      <li>A small network: two inputs, two hidden units, one output.</li>
+      <li data-step="1">The weight <span class="math">vⱼ</span> reaches the loss through <span class="math">z</span>, and <span class="math">∂z/∂vⱼ = hⱼ</span>:<span class="math dm">∂ℒ/∂vⱼ = (p − y) · hⱼ</span></li>
+      <li data-step="2">The error at the output times the input to the weight.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-out"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>Same notation as the last slide: hidden units h₁ and h₂, output weights v₁ and v₂, output bias c.</p>
+    <p><b class="cue">1</b>The highlighted path is how v₁ affects the loss. Two factors: p − y from the last slide, and h₁, because z is linear in v₁. The bias c has ∂z/∂c = 1, so ∂ℒ/∂c = p − y.</p>
+    <p><b class="cue">2</b>Compare the perceptron rule from last class: also "error times input". If h₁ is near 0, v₁ barely matters for this point, and its gradient is near 0.</p>
+  </div>
+</section>
+
+<!-- ONE LAYER DEEPER -->
+<section class="slide" id="s-deep" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>One layer deeper</h2>
+    <ul>
+      <li>The weight <span class="math">wⱼᵢ</span> connects input <span class="math">xᵢ</span> to hidden unit <span class="math">hⱼ = σ(aⱼ)</span>, with <span class="math">aⱼ = wⱼ₁x₁ + wⱼ₂x₂ + bⱼ</span>.</li>
+      <li data-step="1">Follow the chain from the loss back to <span class="math">wⱼᵢ</span>:<span class="math dm">∂ℒ/∂wⱼᵢ = (p − y) · vⱼ · hⱼ(1 − hⱼ) · xᵢ</span></li>
+      <li data-step="2">The first factor, <span class="math">p − y</span>, was already computed for the output layer. Reuse it.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-deep"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>Now a weight in the first layer. It is two steps away from the output.</p>
+    <p><b class="cue">1</b>Four factors, one per link of the chain: ∂ℒ/∂z = p − y; ∂z/∂hⱼ = vⱼ; ∂hⱼ/∂aⱼ = hⱼ(1 − hⱼ), the sigmoid's derivative; ∂aⱼ/∂wⱼᵢ = xᵢ.</p>
+    <p><b class="cue">2</b>Going backwards, each layer's factor builds on the one after it. Computing from the output towards the input never repeats work. This is the idea of backpropagation.</p>
+  </div>
+</section>
+
+<!-- SEVERAL PATHS -->
+<section class="slide" id="s-paths" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>Several paths: add them</h2>
+    <ul>
+      <li>With two outputs, <span class="math">hⱼ</span> feeds both. A hidden weight reaches the loss along two paths.</li>
+      <li data-step="1">Add the paths:<span class="math dm">∂ℒ/∂wⱼᵢ = Σₖ (pₖ − yₖ) vₖⱼ</span><span class="math dm">         · hⱼ(1 − hⱼ) · xᵢ</span></li>
+      <li data-step="2">In matrix form, with <span class="math">⊙</span> the entrywise product:<span class="math dm">δ₂ = p − y,  δ₁ = (W₂ᵀ δ₂) ⊙ h ⊙ (1 − h)</span></li>
+      <li data-step="3">Then:<span class="math dm">∂ℒ/∂W₂ = δ₂ hᵀ,  ∂ℒ/∂W₁ = δ₁ xᵀ</span>The biases get <span class="math">δ₂</span> and <span class="math">δ₁</span>.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-paths"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>Softmax with two outputs. vₖⱼ is the weight from hidden unit j to output k. A change in w₁₁ changes h₁, which changes both z₁ and z₂.</p>
+    <p><b class="cue">1</b>The multivariable chain rule: when a variable affects the loss through several routes, the effects add.</p>
+    <p><b class="cue">2</b>δ is the error signal at a layer: the derivative of the loss with respect to that layer's sums. δ₂ has one entry per output; δ₁ has one per hidden unit. W₂ᵀ sends the output errors back along the same edges, weighted by the same weights.</p>
+    <p><b class="cue">3</b>Each weight's gradient is the δ at its end times the value at its start. These are for one training point; for the whole training set, add over the points. check_numbers.py compares these formulas with numerical derivatives; they agree to about 10⁻¹⁰.</p>
+  </div>
+</section>
+
+<!-- RECIPE -->
+<section class="slide" id="s-recipe" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>The recipe</h2>
+    <ol>
+      <li><b>Forward pass</b>: compute and store <span class="math">h</span> and <span class="math">p</span>.</li>
+      <li data-step="1"><b>Error at the output</b>: <span class="math">δ₂ = p − y</span>.</li>
+      <li data-step="2"><b>Backward pass</b>: <span class="math">δ₁ = (W₂ᵀ δ₂) ⊙ h ⊙ (1 − h)</span>.</li>
+      <li data-step="3"><b>Gradients</b>: <span class="math">δ₂ hᵀ</span>, <span class="math">δ₁ xᵀ</span>, and the δs for the biases.</li>
+      <li data-step="4"><b>Update</b> every weight, <span class="math">θ ← θ − η ∇ℒ</span>, using the old weights throughout.</li>
+    </ol>
+  </div>
+  <div class="fig"><div id="fig-recipe"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>Run the network on the training points as usual, but keep the hidden values: the backward pass needs them.</p>
+    <p><b class="cue">1</b>Prediction minus label, one entry per class.</p>
+    <p><b class="cue">2</b>Send the error back through W₂, then multiply by the sigmoid's derivative at each hidden unit. With more layers, repeat this step once per layer.</p>
+    <p><b class="cue">3</b>Each weight: δ at its end times the value at its start.</p>
+    <p><b class="cue">4</b>Compute every gradient first, then update. If you updated W₂ before computing δ₁, δ₁ would use the new W₂, which is wrong. The backward pass costs about as much as the forward pass, so one gradient costs about two passes through the network, however many weights there are.</p>
+  </div>
+</section>
+
+<!-- UPDATE RULE AND LEARNING RATE -->
+<section class="slide" id="s-lr" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Training in practice</div>
+    <h2>The learning rate</h2>
+    <ul>
+      <li>The update:<span class="math dm">θ ← θ − η ∇ℒ(θ)</span>Too small: slow. Too large: it overshoots. (Last class.)</li>
+      <li data-step="1">Large steps help early; small steps help near the end.</li>
+      <li data-step="2">A <b>learning-rate schedule</b> lowers <span class="math">η</span> as training goes on.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-lr"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>η = 0.1, 1 and 20 on the hours data from last class: too slow, about right, bouncing.</p>
+    <p><b class="cue">1</b>Far from the minimum the gradient points roughly the right way and big steps save time. Near the minimum they make it jump back and forth.</p>
+    <p><b class="cue">2</b>Three common shapes, all starting at η₀: constant; step decay, which halves η every 30 epochs here; and 1/t decay, η₀ / (1 + t/20). The numbers are examples; like η itself, they are tuned.</p>
+  </div>
+</section>
+
+<!-- MOMENTUM -->
+<section class="slide wide" id="s-mom" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Training in practice</div>
+    <h2>Momentum</h2>
+    <ul>
+      <li>A long, narrow valley: plain gradient descent zigzags across it.</li>
+      <li data-step="1">Keep a running sum of past gradients:<span class="math dm">v ← β v + ∇ℒ,  θ ← θ − η v</span></li>
+      <li data-step="2">The zigzags cancel; the steady downhill part adds up.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="duo gdduo">
+      <div id="fig-mom"></div>
+      <div id="fig-momloss"></div>
+    </div>
+    <div class="tiles three">
+      <div class="tile"><div class="lbl">step</div><div class="val" id="v-mom-k"></div></div>
+      <div class="tile"><div class="lbl">plain loss</div><div class="val k-hi" id="v-mom-gd"></div></div>
+      <div class="tile" data-step="1"><div class="lbl">momentum loss</div><div class="val k-err" id="v-mom-m"></div></div>
+    </div>
+    <div class="toolbar"><button id="b-mom-play" class="primary">▶</button><label>step <input type="range" id="r-mom" min="0" max="150" value="0"></label></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Logistic regression on the hours data again, but with the hours left in hours (not standardized). The loss surface is a long, thin valley: its curvature is about 350 times larger across the valley than along it. Near the minimum, plain gradient descent is stable only for η below about 0.36, and at that size its steps along the valley are tiny. Here η = 0.2: after 150 steps the loss is 0.555; the minimum is 0.495.</p>
+    <p><b class="cue">1</b>v is a velocity. β = 0.9 means each past gradient keeps 90% of its weight from one step to the next. Here η = 0.05.</p>
+    <p><b class="cue">2</b>Across the valley the gradient flips sign every step, so those parts cancel in v. Along the valley it keeps the same sign, so v grows in that direction. After 150 steps: 0.500. The idea goes back to Polyak's "heavy ball" method (1964).</p>
+  </div>
+</section>
+
+<!-- ADAM -->
+<section class="slide wide" id="s-adam" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Training in practice</div>
+    <h2>Adam</h2>
+    <ul>
+      <li>Momentum, plus a separate step size for each parameter.</li>
+      <li data-step="1">Divide each parameter's step by a running average of its squared gradients:<span class="math dm">m ← β₁m + (1 − β₁)∇ℒ</span><span class="math dm">s ← β₂s + (1 − β₂)(∇ℒ)²</span><span class="math dm">θ ← θ − η m / √s</span></li>
+      <li data-step="2">The usual default in practice.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="duo gdduo">
+      <div id="fig-adam"></div>
+      <div id="fig-adamloss"></div>
+    </div>
+    <div class="tiles three">
+      <div class="tile"><div class="lbl">plain loss</div><div class="val k-hi" id="v-adam-gd"></div></div>
+      <div class="tile"><div class="lbl">momentum loss</div><div class="val k-err" id="v-adam-m"></div></div>
+      <div class="tile"><div class="lbl">Adam loss</div><div class="val k-model" id="v-adam-a"></div></div>
+    </div>
+    <div class="toolbar"><button id="b-adam-play" class="primary">▶</button><label>step <input type="range" id="r-adam" min="0" max="150" value="0"></label></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The same valley. A parameter with steep gradients gets small steps, one with shallow gradients gets large steps.</p>
+    <p><b class="cue">1</b>m is the momentum term, s the running average of squared gradients, both per parameter. (The real method also corrects m and s for starting at 0, and adds a tiny ε to √s.) Defaults from the paper: β₁ = 0.9, β₂ = 0.999. Here η = 0.15. Kingma and Ba, 2014.</p>
+    <p><b class="cue">2</b>Adam reaches the minimum, 0.495, in about 80 steps. Each method here has its own η, picked by hand so that it behaves well; the comparison is a picture of how they move, not a benchmark.</p>
+  </div>
+</section>
+
+<!-- LOCAL MINIMA -->
+<section class="slide wide" id="s-local" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Training in practice</div>
+    <h2>Local minima</h2>
+    <ul>
+      <li>Gradient descent stops in the valley it starts in.</li>
+      <li data-step="1">Restart from several starting points; keep the lowest loss.</li>
+      <li data-step="2">Momentum can roll through a shallow valley.</li>
+      <li data-step="3">It happens on real networks: the XOR network from a different start stalls.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="duo trainduo">
+      <div id="fig-local"></div>
+      <div id="fig-stuck" data-step="3"></div>
+    </div>
+    <div class="tiles three" data-step="3">
+      <div class="tile"><div class="lbl">steps</div><div class="val">4000</div></div>
+      <div class="tile"><div class="lbl">loss</div><div class="val k-err" id="v-st-l"></div></div>
+      <div class="tile"><div class="lbl">accuracy</div><div class="val k-model" id="v-st-a"></div></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The cartoon surface from last class. From the bottom-left corner, plain gradient descent goes into the shallow valley and stays there.</p>
+    <p><b class="cue">1</b>Eight starting points, each run to the end. The star marks the lowest final loss. Starting weights in a network are random for the same reason: different starts, different answers.</p>
+    <p><b class="cue">2</b>Same start, same η, with momentum β = 0.9: it builds up speed, passes through the shallow valley and settles in the deep one. It can also roll out of a good valley; there is no guarantee either way.</p>
+    <p><b class="cue">3</b>The same 2-3-2 network and the same η = 2 as last class, from another random start. After 4,000 steps the loss is 0.35 and 14 of 24 points are right. This is a flat region more than a true minimum: it keeps creeping down very slowly. Fixes in practice: other starts, more hidden units, a different optimizer.</p>
+  </div>
+</section>
+
+<!-- STOCHASTIC, MINI-BATCH, BATCH -->
+<section class="slide wide" id="s-sgd" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Training in practice</div>
+    <h2>How much data per step?</h2>
+    <ul>
+      <li><b>Batch</b>: the gradient from all the training points. One step per pass.</li>
+      <li data-step="1"><b>Stochastic</b>: from one point at a time. Many cheap, noisy steps.</li>
+      <li data-step="2"><b>Mini-batch</b>: from a few points, here 5. In between.</li>
+      <li data-step="3">An <b>epoch</b> is one pass through the training data.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-sgd"></div>
+    <div class="tiles three">
+      <div class="tile"><div class="lbl">points per step</div><div class="val k-hi" id="v-sgd-bs"></div></div>
+      <div class="tile"><div class="lbl">steps per epoch</div><div class="val" id="v-sgd-u"></div></div>
+      <div class="tile"><div class="lbl">loss after 6 epochs</div><div class="val k-err" id="v-sgd-l"></div></div>
+    </div>
+    <div class="toolbar">
+      <button id="b-sgd-batch">batch</button><button id="b-sgd-sgd">stochastic</button><button id="b-sgd-mini">mini-batch</button>
+      <button id="b-sgd-play" class="primary">▶</button>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Back to the standardized hours data, 20 students, same start as last class. Six epochs of batch gradient descent with η = 1: six steps. Loss 0.59; the minimum is 0.495.</p>
+    <p><b class="cue">1</b>One student per step, η = 0.5, in a shuffled order each epoch: 120 steps in six epochs. Each step follows one student, so the path wanders. Loss 0.50.</p>
+    <p><b class="cue">2</b>Five students per step, η = 1: 24 steps. Smoother than stochastic, more steps than batch. Loss 0.50. With large data sets, a full-batch gradient is too expensive to compute at every step; mini-batches of tens to hundreds of points are the norm. The name "stochastic gradient descent" is often used for the mini-batch version too.</p>
+    <p><b class="cue">3</b>Per epoch: 1 step for batch, 4 for mini-batches of 5, 20 for stochastic. Training time is usually counted in epochs.</p>
+  </div>
+</section>
+
+<!-- WHEN TO STOP -->
+<section class="slide wide" id="s-stop" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">Training in practice</div>
+    <h2>When to stop</h2>
+    <ul>
+      <li>A maximum number of epochs; the weights stop changing; the loss is low enough.</li>
+      <li data-step="1">The training loss keeps going down.</li>
+      <li data-step="2">The validation loss goes down, then up: the network starts to overfit.</li>
+      <li data-step="3"><b>Early stopping</b>: keep the weights from the epoch with the lowest validation loss.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="duo trainduo">
+      <div id="fig-stop"></div>
+      <div id="fig-stopmap"></div>
+    </div>
+    <div class="tiles three">
+      <div class="tile"><div class="lbl">epoch</div><div class="val" id="v-stop-e"></div></div>
+      <div class="tile"><div class="lbl">training accuracy</div><div class="val k-hi" id="v-stop-tr"></div></div>
+      <div class="tile"><div class="lbl">validation accuracy</div><div class="val k-err" id="v-stop-va"></div></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>A harder data set: two interleaved half-moons with noise. Only 30 training points, and a big network: 40 hidden units. 400 more points held out for validation. Adam, η = 0.02, full batch, 3,000 epochs. The map shows the network after the last epoch.</p>
+    <p><b class="cue">1</b>The training loss falls almost to zero: 0.05 at the end.</p>
+    <p><b class="cue">2</b>Validation loss is lowest at epoch 443 (0.33) and then climbs to 1.37. The network is fitting the noise in the 30 points.</p>
+    <p><b class="cue">3</b>The map at epoch 443: a smooth boundary. Training accuracy 80%, validation 89%. At the end: training 93%, validation 77%. The validation set chooses the epoch, so it is part of training; report performance on a separate test set, as with any tuned hyperparameter.</p>
+  </div>
+</section>
+
+<!-- CHARACTERISTICS -->
+<section class="slide one" id="s-char" data-steps="1">
+  <div style="width:100%;max-width:76rem;margin:0 auto">
+    <div class="eyebrow">Summary</div>
+    <h2 style="margin:.2em 0 .8em">Neural networks: characteristics</h2>
+    <div class="take">
+      <div class="card"><h3 class="k-model">Strengths</h3><ul>
+        <li>Very flexible: one hidden layer with enough units can approximate any continuous function on a bounded region.</li>
+        <li>They learn their own features, so less hand-made feature design.</li>
+        <li>They improve with more data and computing power, and handle many outputs at once.</li>
+      </ul></div>
+      <div class="card" data-step="1"><h3 class="k-err">Weaknesses</h3><ul>
+        <li>Non-convex training: the answer depends on the start, with no guarantee of the best weights.</li>
+        <li>Many choices to tune: layers, units, η, optimizer, epochs.</li>
+        <li>They need a lot of data, overfit small data sets, and are hard to interpret.</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The approximation result is Cybenko (1989) and Hornik, Stinchcombe and White (1989). It says such weights exist; it says nothing about how many units are needed or whether gradient descent finds them.</p>
+    <p><b class="cue">1</b>Compare with the SVM: a convex problem with one answer, fewer choices, works well on small data, but the features come from a hand-chosen kernel. (Draft slide: edit to taste.)</p>
+  </div>
+</section>
+
+<!-- FAMILY TREE -->
+<section class="slide one" id="s-tree" data-steps="2">
+  <div style="width:100%;max-width:80rem;margin:0 auto">
+    <div class="eyebrow">Where this goes</div>
+    <h2 style="margin:.2em 0 .5em">The family tree</h2>
+    <div class="fig"><div id="fig-tree"></div></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Rosenblatt's perceptron, 1958. The multilayer perceptron trained with backpropagation, popularized by Rumelhart, Hinton and Williams in 1986. That is what we covered.</p>
+    <p><b class="cue">1</b>Two branches that build structure into the network. Convolutional networks for images: LeCun and colleagues, 1989, the same small weights reused across the image. Recurrent networks for sequences: Elman, 1990, a hidden layer that feeds back into itself. LSTM, Hochreiter and Schmidhuber, 1997, and the GRU, Cho and colleagues, 2014, make recurrent networks trainable on long sequences.</p>
+    <p><b class="cue">2</b>Attention: Bahdanau, Cho and Bengio, 2014, an encoder–decoder built on GRU units for translation. The Transformer, Vaswani and colleagues, 2017, keeps the attention and drops the recurrence. Every Transformer layer also contains an MLP like ours. Next lecture. The tree is simplified: these ideas have more parents than shown.</p>
+  </div>
+</section>
+
+<!-- TAKEAWAYS -->
+<section class="slide one" id="s-take" data-steps="0">
+  <div style="width:100%;max-width:76rem;margin:0 auto">
+    <div class="eyebrow">Summary</div>
+    <h2 style="margin:.2em 0 .8em">Takeaways</h2>
+    <div class="take four">
+      <div class="card"><h3>Backpropagation</h3><p>The chain rule, from the output back. <span class="math">δ₂ = p − y</span>; each weight's gradient is δ at its end times the value at its start.</p></div>
+      <div class="card"><h3>Optimizers</h3><p>Learning-rate schedules, momentum, Adam.</p></div>
+      <div class="card"><h3>Batches</h3><p>Batch, mini-batch, stochastic. An epoch is one pass through the data.</p></div>
+      <div class="card"><h3>Stopping</h3><p>Watch the validation loss; stop early.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p>Next lecture: network architectures, the branches of the tree.</p>
+  </div>
+</section>
+
+<!-- THANKS -->
+<section class="slide one" id="s-thanks" data-steps="0">
+  <div style="text-align:center;width:100%">
+    <div class="eyebrow">Machine learning · Neural networks, part 2</div>
+    <h1 style="margin:.15em 0 .1em">Thank you.</h1>
+    <p style="font-size:clamp(1.2rem,2vw,1.9rem);color:var(--model);font-weight:600;margin:.2em 0 .8em">Questions?</p>
+    <p class="rights">Slide template © 2026 Dori Litvak.</p>
+  </div>
+  <div class="notes">
+    <p>Questions now, in office hours, or on the forum.</p>
+  </div>
+</section>

@@ -39,13 +39,31 @@ function star(api,L,p,{color='var(--ink)'}={}){const cx=api.sx(p[0]),cy=api.sy(p
   for(let k=0;k<10;k++){const r=k%2?4.5:10,a=-Math.PI/2+k*Math.PI/5;pts.push([cx+r*Math.cos(a),cy+r*Math.sin(a)].map(v=>v.toFixed(1)).join(','));}
   el('polygon',{points:pts.join(' '),fill:color,stroke:'var(--surface)','stroke-width':1.5},L);}
 
+/* ---------- the cartoon loss surface (both decks) ---------- */
+// ℒ(a, b) = 1.6 − 1.0 exp(−|θ − m₁|²/1.2) − 0.65 exp(−|θ − m₂|²/0.8) + 0.04|θ|², m₁ = (1.2, 0.9), m₂ = (−1.4, −1.1)
+const CART={m1:[1.2,.9],s1:1.2,a1:1.0,m2:[-1.4,-1.1],s2:.8,a2:.65,c:.04};
+function cartoon([a,b]){const q1=((a-CART.m1[0])**2+(b-CART.m1[1])**2)/CART.s1,q2=((a-CART.m2[0])**2+(b-CART.m2[1])**2)/CART.s2;
+  return 1.6-CART.a1*Math.exp(-q1)-CART.a2*Math.exp(-q2)+CART.c*(a*a+b*b);}
+function cartoonGrad([a,b]){const e1=CART.a1*Math.exp(-(((a-CART.m1[0])**2+(b-CART.m1[1])**2)/CART.s1)),e2=CART.a2*Math.exp(-(((a-CART.m2[0])**2+(b-CART.m2[1])**2)/CART.s2));
+  return [e1*2*(a-CART.m1[0])/CART.s1+e2*2*(a-CART.m2[0])/CART.s2+2*CART.c*a, e1*2*(b-CART.m1[1])/CART.s1+e2*2*(b-CART.m2[1])/CART.s2+2*CART.c*b];}
+// gradient descent on the cartoon; beta > 0 adds momentum (v ← βv + ∇ℒ, θ ← θ − ηv)
+function cartoonPath(t0,{eta=.25,steps=120,beta=0}={}){const P=[t0.slice()];let t=t0.slice(),v=[0,0];
+  for(let k=0;k<steps;k++){const g=cartoonGrad(t);v=[beta*v[0]+g[0],beta*v[1]+g[1]];t=[t[0]-eta*v[0],t[1]-eta*v[1]];P.push(t);}return P;}
+function cartoonGrid(n=60){const w=[],b=[],L=[];for(let i=0;i<=n;i++){w.push(-3+6*i/n);b.push(-3+6*i/n);}
+  for(const a of w)L.push(b.map(v=>cartoon([a,v])));return {w,b,L};}
+function cartoonPlot(host,{H=440,label='a made-up loss surface with two valleys'}={}){
+  const api=chart(host,{W:H,H,ml:58,fs:1.3,xmin:-3,xmax:3,ymin:-3,ymax:3,xticks:[-3,0,3],yticks:[-3,0,3],xfmt:v=>String(v).replace('-','−'),yfmt:v=>String(v).replace('-','−'),xlabel:'θ₁',ylabel:'θ₂',label});
+  api.svg.classList.add('sq');landscape(api,api.layer('heat'),cartoonGrid(),[.7,.8,.9,1,1.1,1.2,1.3,1.4,1.5]);return api;}
+
 /* ---------- decision map of an MLP on the XOR box (inputs scaled u = (x − 5) / 2.5) ---------- */
 function xorPlot(host,label,{H=430,fs=1.3}={}){
   const api=chart(host,{W:H*1.0,H,ml:58,fs,xmin:0,xmax:10,ymin:0,ymax:10,xticks:[0,5,10],yticks:[0,5,10],xlabel:'x₁',ylabel:'x₂',label});
   api.svg.classList.add('sq');return api;}
-function drawMap(api,L,pfn,{N=40}={}){L.textContent='';L.classList.add('noanim');const h=10/N,cw=api.sx(h)-api.sx(0),ch=api.sy(0)-api.sy(h);
-  for(let i=0;i<N;i++)for(let j=0;j<N;j++){const p=pfn([(i+.5)*h,(j+.5)*h]);
-    el('rect',{x:api.sx(i*h),y:api.sy((j+1)*h),width:cw,height:ch,'shape-rendering':'crispEdges',fill:p>=.5?'var(--pos)':'var(--mean)',opacity:(.04+.32*Math.abs(p-.5)*2).toFixed(3)},L);}}
+// shade the chart's box by p(green) = pfn(x): green where p ≥ 0.5, purple below, stronger when surer
+function drawMap(api,L,pfn,{N=40}={}){L.textContent='';L.classList.add('noanim');
+  const hx=(api.xmax-api.xmin)/N,hy=(api.ymax-api.ymin)/N,cw=api.sx(api.xmin+hx)-api.sx(api.xmin),ch=api.sy(api.ymin)-api.sy(api.ymin+hy);
+  for(let i=0;i<N;i++)for(let j=0;j<N;j++){const x=api.xmin+i*hx,y=api.ymin+j*hy,p=pfn([x+hx/2,y+hy/2]);
+    el('rect',{x:api.sx(x),y:api.sy(y+hy),width:cw,height:ch,'shape-rendering':'crispEdges',fill:p>=.5?'var(--pos)':'var(--mean)',opacity:(.04+.32*Math.abs(p-.5)*2).toFixed(3)},L);}}
 function drawPts(api,L,X,y,{r=7}={}){X.forEach((p,i)=>el('circle',{cx:api.sx(p[0]),cy:api.sy(p[1]),r,fill:y[i]>0?'var(--pos)':'var(--mean)',stroke:'var(--surface)','stroke-width':2},L));}
 const xorP=P=>x=>mlpForward(P,[(x[0]-5)/2.5,(x[1]-5)/2.5]).p[0];
 

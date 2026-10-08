@@ -31,3 +31,5 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 .dtab th{color:var(--muted);font-weight:600}
 .dtab td.yc{color:var(--model);font-weight:700}
 @media (max-width:620px){.dtab{font-size:.7rem}.dtab th,.dtab td{padding:.3em .2em}}
+#fig-sgd svg{max-height:56vh;width:auto;max-width:100%;margin:0 auto}
+#fig-chain svg,#fig-recap svg,#fig-out svg,#fig-deep svg,#fig-paths svg,#fig-recipe svg,#fig-lr svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}

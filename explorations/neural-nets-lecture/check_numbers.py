@@ -175,3 +175,125 @@ first_all = min(f["it"] for f in F if f["acc"] == 1.0)
 assert first_all <= 60 and all(f["acc"] == 1.0 for f in F if f["it"] >= 60)
 print(f"ok  XOR: all 24 points correct from frame step {first_all} on (quoted: by step 60)")
 close(round(F[-1]["loss"], 4), 0.0006, 1e-9, "XOR final loss")
+
+# ---------------------------------------------------------------- the decks' own constants agree with the ones checked here
+import re
+CODE1 = (Path(__file__).parent / "build" / "code_1.js").read_text()
+CODE2 = (Path(__file__).parent / "build" / "code_2.js").read_text()
+assert "const A=[1.9,-1.7],B=[-2.6,.6];" in CODE1, "class 1 landscape starts changed: update the checks above"
+assert "const SCHED={epochs:100,step:30,tdecay:20};" in CODE2, "schedule constants changed: update the notes"
+m = re.search(r"const LOCAL=\{start:(\[[^\]]*\]),eta:([\d.]+),beta:([\d.]+),\s*restarts:(\[.*?\]\])\}", CODE2, re.S)
+LOCAL = {"start": json.loads(m.group(1)), "eta": float(m.group(2)), "beta": float(m.group(3)),
+         "restarts": json.loads(re.sub(r"(?<![\d])\.(\d)", r"0.\1", m.group(4)))}
+print("    class 2 local-minima constants:", LOCAL)
+
+# ================================================================ class 2
+# ---------------------------------------------------------------- backprop formulas on a 2-2-1 sigmoid network and a 2-2-2 softmax network
+rng = np.random.default_rng(3)
+x, W, b, v, c = rng.normal(size=2), rng.normal(size=(2, 2)), rng.normal(size=2), rng.normal(size=2), rng.normal()
+for yy in [0.0, 1.0]:
+    def L221(th):
+        W_, b_, v_, c_ = th[:4].reshape(2, 2), th[4:6], th[6:8], th[8]
+        pp = sig(v_ @ sig(W_ @ x + b_) + c_)
+        return -yy * np.log(pp) - (1 - yy) * np.log(1 - pp)
+    h = sig(W @ x + b); pp = sig(v @ h + c)
+    zfd = (lambda e: (-yy * np.log(sig(v @ h + c + e)) - (1 - yy) * np.log(1 - sig(v @ h + c + e))))
+    close((zfd(1e-6) - zfd(-1e-6)) / 2e-6, pp - yy, 1e-8, f"dL/dz = p - y (y={yy:.0f})")
+    th = np.r_[W.ravel(), b, v, c]; g = fd(L221, th)
+    close(np.abs(g[6:8] - (pp - yy) * h).max(), 0, 1e-8, "dL/dv_j = (p - y) h_j")
+    close(np.abs(g[:4] - ((pp - yy) * v * h * (1 - h))[:, None].dot(x[None, :]).ravel()).max(), 0, 1e-8,
+          "dL/dw_ji = (p - y) v_j h_j (1 - h_j) x_i")
+V, cc, yv = rng.normal(size=(2, 2)), rng.normal(size=2), np.array([0.0, 1.0])
+def L222(th):
+    W_, b_, V_, c_ = th[:4].reshape(2, 2), th[4:6], th[6:10].reshape(2, 2), th[10:12]
+    zz = V_ @ sig(W_ @ x + b_) + c_; pr = np.exp(zz - zz.max()); pr /= pr.sum()
+    return -np.log(pr @ yv)
+h = sig(W @ x + b); zz = V @ h + cc; pr = np.exp(zz - zz.max()); pr /= pr.sum()
+d2 = pr - yv; d1 = (V.T @ d2) * h * (1 - h)
+g = fd(L222, np.r_[W.ravel(), b, V.ravel(), cc])
+close(np.abs(g - np.r_[np.outer(d1, x).ravel(), d1, np.outer(d2, h).ravel(), d2]).max(), 0, 1e-8,
+      "matrix form: delta2 = p - y, delta1 = (W2^T delta2) h (1 - h); grads delta2 h^T, delta1 x^T")
+
+# ---------------------------------------------------------------- the raw-hours valley: plain GD, momentum, Adam
+lossr = lambda t: np.mean(np.logaddexp(0, t[0] * HX + t[1]) - HY * (t[0] * HX + t[1]))
+gradr = lambda t: np.array([np.mean((sig(t[0] * HX + t[1]) - HY) * HX), np.mean(sig(t[0] * HX + t[1]) - HY)])
+R = D["lr_raw"]; to = np.array(R["opt"]); pr_ = sig(to[0] * HX + to[1]); wq = pr_ * (1 - pr_)
+ev = np.linalg.eigvalsh(np.array([[np.mean(wq * HX * HX), np.mean(wq * HX)], [np.mean(wq * HX), np.mean(wq)]]))
+close(np.abs(gradr(to)).max(), 0, 1e-6, "raw optimum has zero gradient")
+close(round(lossr(to), 3), 0.495, 1e-9, "raw minimum is the same 0.495")
+close(round(ev[1] / ev[0], -1), 350, 1e-9, "curvature ratio across / along the valley, about 350")
+close(round(2 / ev[1], 2), 0.36, 1e-9, "plain GD stable near the minimum for eta < 2 / lambda_max")
+assert R["start"] == [-0.3, 2.0]
+t, vv, mm, ss = {k: np.array([-0.3, 2.0]) for k in "gma"}, np.zeros(2), np.zeros(2), np.zeros(2)
+Lr = {k: [lossr(t[k])] for k in "gma"}
+for k in range(1, 151):
+    t["g"] = t["g"] - 0.2 * gradr(t["g"])
+    vv = 0.9 * vv + gradr(t["m"]); t["m"] = t["m"] - 0.05 * vv
+    gg = gradr(t["a"]); mm = 0.9 * mm + 0.1 * gg; ss = 0.999 * ss + 0.001 * gg * gg
+    t["a"] = t["a"] - 0.15 * (mm / (1 - 0.9 ** k)) / (np.sqrt(ss / (1 - 0.999 ** k)) + 1e-8)
+    for q in "gma": Lr[q].append(lossr(t[q]))
+for q, name in [("g", "gd"), ("m", "momentum"), ("a", "adam")]:
+    close(np.abs(np.array(R["runs"][name]["loss"]) - Lr[q]).max(), 0, 1e-4, f"{name}: replayed losses match a fresh run")
+assert R["params"] == {"gd": {"eta": 0.2}, "momentum": {"eta": 0.05, "beta": 0.9}, "adam": {"eta": 0.15, "beta1": 0.9, "beta2": 0.999}}
+close(round(Lr["g"][150], 3), 0.555, 1e-9, "plain GD loss after 150 steps")
+close(round(Lr["m"][150], 3), 0.500, 1e-9, "momentum loss after 150 steps")
+close(round(Lr["a"][150], 3), 0.495, 1e-9, "Adam loss after 150 steps")
+close(round(Lr["a"][80], 3), 0.495, 1e-9, "Adam at the minimum (3 d.p.) by step 80")
+assert round(Lr["a"][60], 3) > 0.495
+
+# ---------------------------------------------------------------- local minima on the cartoon
+def path(t, eta, beta=0.0, steps=120):
+    t, v_ = np.array(t, float), np.zeros(2)
+    for _ in range(steps):
+        v_ = beta * v_ + cart_grad(t); t = t - eta * v_
+    return t
+end = path(LOCAL["start"], LOCAL["eta"])
+assert np.linalg.norm(end - M2) < .2, "plain GD from the corner ends in the shallow valley"
+endm = path(LOCAL["start"], LOCAL["eta"], LOCAL["beta"], 400)
+assert np.linalg.norm(endm - M1) < .2, "momentum from the same corner ends in the deep valley"
+print("ok  cartoon: plain GD from", LOCAL["start"], "-> shallow valley; momentum -> deep valley")
+ends = [path(s, LOCAL["eta"]) for s in LOCAL["restarts"]]
+assert len(ends) == 8 and LOCAL["restarts"][0] == LOCAL["start"]
+best = min(ends, key=cart)
+assert np.linalg.norm(best - M1) < .2, "the best of the restarts is in the deep valley"
+print(f"ok  restarts: {sum(np.linalg.norm(e - M1) < .2 for e in ends)} of 8 reach the deep valley; the best does")
+St = D["xor"]["runs"]["stuck"]["frames"][-1]
+assert St["it"] == 4000 and abs(St["acc"] * 24 - 14) < 1e-9
+close(round(St["loss"], 2), 0.35, 1e-9, "stalled XOR run: loss after 4,000 steps (14 of 24 right)")
+
+# ---------------------------------------------------------------- batch / mini-batch / stochastic
+S = D["sgd"]
+assert S["start"] == [-1.5, 2.0] and len(S["orders"]) == 6
+for name, bs, eta, quote in [("batch", 20, 1.0, 0.59), ("mini", 5, 1.0, 0.50), ("sgd", 1, 0.5, 0.50)]:
+    t, n = np.array([-1.5, 2.0]), 0
+    for order in S["orders"]:
+        assert sorted(order) == list(range(20))
+        for i in range(0, 20, bs):
+            idx = order[i:i + bs]; p_ = sig(t[0] * XS[idx] + t[1])
+            t = t - eta * np.array([np.mean((p_ - HY[idx]) * XS[idx]), np.mean(p_ - HY[idx])]); n += 1
+    r = S["runs"][name]
+    assert r["batch_size"] == bs and r["eta"] == eta and r["updates_per_epoch"] == 20 // bs and n == 6 * (20 // bs)
+    close(np.abs(np.array(r["path"][-1]) - t).max(), 0, 1e-4, f"{name}: replayed path ends where a fresh run ends")
+    close(round(lr_loss(t), 2), quote, 1e-9, f"{name}: loss after 6 epochs ({n} steps)")
+
+# ---------------------------------------------------------------- early stopping (validation loss recomputed on 400 fresh points)
+from sklearn.datasets import make_moons
+O = D["overfit"]
+Xa, ya = make_moons(430, noise=0.35, random_state=0)
+assert np.allclose(np.array(O["train_X"]), Xa[:30], atol=1e-5) and O["train_y"] == ya[:30].tolist()
+Xv, Yv = Xa[30:], np.eye(2)[ya[30:]]
+assert len(Xv) == 400 and O["hidden"] == 40 and O["eta"] == 0.02 and O["epochs"] == 3000
+def mlp_loss_acc(P, Xq, Yq):
+    W1, b1, W2, b2 = [np.array(p) for p in P]
+    Z = sig(Xq @ W1.T + b1) @ W2.T + b2; E = np.exp(Z - Z.max(1, keepdims=True)); Pq = E / E.sum(1, keepdims=True)
+    return -np.mean(np.log((Pq * Yq).sum(1))), np.mean(Pq.argmax(1) == Yq.argmax(1))
+best = O["best_epoch"]
+assert best == 443 and int(np.argmin(O["val_loss"])) + 1 == best
+lv, av = mlp_loss_acc(O["P_best"], Xv, Yv); lt, at = mlp_loss_acc(O["P_best"], Xa[:30], np.eye(2)[ya[:30]])
+close(lv, O["val_loss"][best - 1], 1e-4, "validation loss at epoch 443, recomputed on the 400 points")
+close(round(lv, 2), 0.33, 1e-9, "lowest validation loss"); close(round(100 * at), 80, 0, "training accuracy at epoch 443 (%)")
+close(round(100 * av), 89, 0, "validation accuracy at epoch 443 (%)")
+lv, av = mlp_loss_acc(O["P_end"], Xv, Yv); lt, at = mlp_loss_acc(O["P_end"], Xa[:30], np.eye(2)[ya[:30]])
+close(round(lv, 2), 1.37, 1e-9, "validation loss at the end"); close(round(lt, 2), 0.05, 1e-9, "training loss at the end")
+close(round(100 * at), 93, 0, "training accuracy at the end (%)"); close(round(100 * av), 77, 0, "validation accuracy at the end (%)")
+print("all checks passed")
