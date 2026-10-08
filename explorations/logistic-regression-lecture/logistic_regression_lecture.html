@@ -335,6 +335,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 .duo.alg h3{margin:.6em 0 .2em}
 .duo.alg .eq{font-size:1em}
 .alg-take{text-align:left;margin-top:1em}
+.take.mlbox{grid-template-columns:repeat(2,minmax(0,1fr));max-width:48rem;margin:1em auto 0}
+@media (max-width:620px){.take.mlbox{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -369,17 +371,21 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
 </section>
 
 <!-- WHAT ARE WE MINIMIZING -->
-<section class="slide one" id="s-what" data-steps="4">
+<section class="slide one" id="s-what" data-steps="6">
   <div style="width:100%;max-width:72rem;margin:0 auto">
     <div class="eyebrow">Loss functions</div>
     <h2 style="margin:.2em 0 .3em">What are we minimizing?</h2>
     <p class="lede">Each method so far chose its model by making some quantity as small as possible.</p>
     <div class="take three" style="margin-top:1em">
-      <div class="card" data-step="1"><h3>Linear regression</h3><p>Squared errors:<span class="math dm">Σ (yᵢ − ŷᵢ)²</span></p></div>
-      <div class="card" data-step="2"><h3>PCA</h3><p>Reconstruction error:<span class="math dm">Σ ‖xᵢ − x̂ᵢ‖²</span>x̂ᵢ is the projection of xᵢ onto the components.</p></div>
-      <div class="card" data-step="3"><h3>SVM</h3><p>Wide margin, little slack:<span class="math dm">½ ‖w‖² + C Σ ξᵢ</span></p></div>
+      <div class="card" data-step="1"><h3>Linear regression</h3><p>Squared errors:<span class="math dm">ℒ = Σ (yᵢ − ŷᵢ)²</span></p></div>
+      <div class="card" data-step="2"><h3>PCA</h3><p>Reconstruction error:<span class="math dm">ℒ = Σ ‖xᵢ − x̂ᵢ‖²</span>x̂ᵢ is the projection of xᵢ onto the components.</p></div>
+      <div class="card" data-step="3"><h3>SVM</h3><p>Wide margin, little slack:<span class="math dm">ℒ = ½ ‖w‖² + C Σ ξᵢ</span></p></div>
     </div>
     <p class="takeline" data-step="4">The quantity is the <b>loss</b>. Training means finding the model with the smallest loss on the training data.</p>
+    <div class="take mlbox">
+      <div class="card" data-step="5"><h3>Model</h3><p><span class="math dm">ŷᵢ = f(xᵢ | θ)</span>A function of xᵢ with parameters θ.</p></div>
+      <div class="card" data-step="6"><h3>Loss</h3><p><span class="math dm">min<sub>θ</sub> ℒ(θ)</span>Choose the parameters with the smallest loss on the training data.</p></div>
+    </div>
   </div>
   <div class="notes">
     <p><b class="cue">0</b>Ask the class: for each method we have seen, what did it make as small as possible?</p>
@@ -387,6 +393,9 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p><b class="cue">2</b>PCA: the squared distance from each point to its projection onto the chosen components. Minimizing it is the same as keeping as much variance as possible.</p>
     <p><b class="cue">3</b>SVM: a wide margin (small ‖w‖) and as little slack as possible, traded off by C.</p>
     <p><b class="cue">4</b>Different methods, different losses. Today: what loss should a classifier use?</p>
+    <p><b class="cue">5</b>Every method has a model: a formula that turns an input into a prediction, with parameters θ to be chosen.</p>
+    <p><b class="cue">6</b>And a loss that scores each choice of θ on the training data. Training is finding the θ with the smallest loss.</p>
+    <p>If asked "what is the model in each case?": Linear regression: ŷᵢ = w · xᵢ + b, so θ = (w, b). PCA: the prediction is the reconstruction x̂ᵢ = μ + V Vᵀ(xᵢ − μ), where V holds the k component directions as orthonormal columns and μ is the mean; θ = V (and μ). It is unsupervised: the model predicts each point from only k numbers. SVM: the score f(xᵢ) = w · xᵢ + b and the prediction ŷᵢ = sign(f(xᵢ)), so θ = (w, b); the slacks ξᵢ are extra variables the optimizer also sets, but they are determined by w and b.</p>
   </div>
 </section>
 
