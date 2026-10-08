@@ -1,0 +1,182 @@
+<!-- TITLE -->
+<section class="slide one" id="s-title" data-steps="0">
+  <div class="prose">
+    <div class="eyebrow">Machine learning · Classifiers</div>
+    <h1>Logistic<br>regression</h1>
+    <p class="hook">The SVM's linear score with a different loss. The score becomes a probability.</p>
+  </div>
+  <div class="notes">
+    <p>A classifier, despite the name. Two classes only. It is also the building block of next week's neural networks.</p>
+  </div>
+</section>
+
+<!-- THE SVM AS A LOSS -->
+<section class="slide" id="s-hinge" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Recap</div>
+    <h2>The SVM as a loss</h2>
+    <ul>
+      <li>The score <span class="math">f(x) = w · x + b</span>. Its sign is the prediction; <span class="math">y f(x) &gt; 0</span> means correct.</li>
+      <li data-step="1">Each point pays the <b>hinge loss</b>:<span class="math dm">max(0, 1 − y f(x))</span></li>
+      <li data-step="2">The soft-margin SVM:<span class="eq">minimize ½ ‖w‖²<br><span class="ind">+ C Σ max(0, 1 − yᵢ f(xᵢ))</span></span></li>
+      <li data-step="3">Points beyond the margin pay nothing.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-hinge"></div>
+    <p class="legend"><span class="k-err">━ 0–1 loss (mistake or not)</span><span class="k-model" data-step="1">━ hinge loss</span></p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Horizontal axis: y·f(x), the score times the true label. Positive means correct; at least 1 means outside the margin. The 0–1 loss counts mistakes.</p>
+    <p><b class="cue">1</b>The hinge is zero from 1 on and grows linearly below 1. Mistakes cost more the further they are on the wrong side.</p>
+    <p><b class="cue">2</b>At the solution the slack ξᵢ equals the hinge loss of point i (the bonus slide at the end of the SVM deck), so the soft-margin SVM reads as "fit the data, keep w small".</p>
+    <p><b class="cue">3</b>Once a point is past the margin it has no influence. Only points on or inside the margin, the support vectors, matter.</p>
+  </div>
+</section>
+
+<!-- ANOTHER LOSS -->
+<section class="slide" id="s-loss" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Same score, another loss</div>
+    <h2>Log loss</h2>
+    <ul>
+      <li>Replace the hinge with the <b>log loss</b>:<span class="math dm">log(1 + e<sup>−y f(x)</sup>)</span></li>
+      <li data-step="1">It is never exactly zero: every point counts a little. Far on the wrong side it grows linearly, like the hinge.</li>
+      <li data-step="2">Logistic regression:<span class="eq">minimize ½ ‖w‖²<br><span class="ind">+ C Σ log(1 + e<sup>−yᵢ f(xᵢ)</sup>)</span></span></li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-loss"></div>
+    <p class="legend"><span class="k-err">━ 0–1 loss</span><span class="k-model">━ hinge loss</span><span class="k-hi">━ log loss</span></p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Same horizontal axis. The new curve is smooth: no corner at 1.</p>
+    <p><b class="cue">1</b>Correct points far from the boundary still pay a tiny amount, so all points have some say in where the line goes, not only the support vectors.</p>
+    <p><b class="cue">2</b>Same form as the SVM: a loss on the data plus a penalty on w, with C trading them off. This is exactly what scikit-learn's LogisticRegression minimizes (the intercept is not penalized). Why this loss? The next slide.</p>
+  </div>
+</section>
+
+<!-- SIGMOID -->
+<section class="slide" id="s-sigmoid" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">From score to probability</div>
+    <h2>The sigmoid</h2>
+    <ul>
+      <li>The sigmoid squashes any score into (0, 1):<span class="math dm">σ(z) = 1 / (1 + e<sup>−z</sup>)</span></li>
+      <li data-step="1">Logistic regression reads the score as a probability:<span class="math dm">p(y = +1 | x) = σ(w · x + b)</span></li>
+      <li data-step="2">The probability of the true class is <span class="math">σ(y f(x))</span>.</li>
+      <li data-step="3">So the log loss is <span class="math">−log p(true class)</span>. Confident and wrong costs a lot.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-sig"></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Score 0 gives 0.5. Large positive scores give probabilities near 1, large negative near 0.</p>
+    <p><b class="cue">1</b>Same linear score as before. The sigmoid changes how we read it, not where the boundary is.</p>
+    <p><b class="cue">2</b>For y = −1: p(y = −1) = 1 − σ(f) = σ(−f). So in both cases the true class gets σ(y·f).</p>
+    <p><b class="cue">3</b>−log σ(y f) = log(1 + e^(−y f)), the log loss of the last slide. Minimizing it makes the model give high probability to what actually happened. A point predicted at 0.01 for its true class costs −log 0.01 ≈ 4.6.</p>
+  </div>
+</section>
+
+<!-- 1D FIT -->
+<section class="slide" id="s-fit" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">One feature</div>
+    <h2>A fitted model</h2>
+    <ul>
+      <li data-step="1">The fitted curve gives a probability for every <span class="math">x</span>.</li>
+      <li data-step="2">Predict positive when <span class="math">p ≥ 0.5</span>, that is, when <span class="math">w · x + b ≥ 0</span>.</li>
+      <li data-step="3">Any other threshold works too. Each one is a point on the ROC curve.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-fit"></div>
+    <div class="tiles three" data-step="2">
+      <div class="tile"><div class="lbl">threshold</div><div class="val k-hi" id="v-ft-t"></div></div>
+      <div class="tile"><div class="lbl">TPR</div><div class="val k-pos" id="v-ft-tpr"></div></div>
+      <div class="tile"><div class="lbl">FPR</div><div class="val k-mean" id="v-ft-fpr"></div></div>
+    </div>
+    <div class="toolbar" data-step="3"><label>threshold <input type="range" id="r-ft" min="5" max="95" value="50"></label></div>
+    <p class="fignote">Simulated data.</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Hours of study for 20 students: green passed, purple failed. The classes overlap between about 3 and 7.5 hours. Fitted without the ½‖w‖² term here, just the log loss.</p>
+    <p><b class="cue">1</b>The fitted curve. How the computer finds w and b is next week's topic, gradient descent; today we take the fitted model as given.</p>
+    <p><b class="cue">2</b>p = 0.5 exactly where the score is 0: at about 5.4 hours. Points to the right are predicted to pass.</p>
+    <p><b class="cue">3</b>Same as the ROC lecture: lowering the threshold catches more positives and more false alarms. The SVM's score can be thresholded the same way; the difference is that logistic regression's score is meant to be a probability.</p>
+  </div>
+</section>
+
+<!-- 2D BOUNDARY -->
+<section class="slide" id="s-2d" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Two features</div>
+    <h2>Still a hyperplane</h2>
+    <ul>
+      <li data-step="1">The boundary <span class="math">p = 0.5</span> is the hyperplane <span class="math">w · x + b = 0</span>. Probability changes smoothly across it.</li>
+      <li data-step="2">The SVM, on the same data, draws a different line: only its support vectors count.</li>
+      <li data-step="3">Both give a score you can threshold. Logistic regression's score is a probability.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-2d"></div>
+    <p class="legend"><span class="k-model" data-step="1">━ logistic regression, p = 0.5</span><span class="k-ink" data-step="2">┅ SVM, f = 0</span></p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The soft-margin data from the SVM lecture: two points on the wrong side.</p>
+    <p><b class="cue">1</b>Logistic regression with C = 1. Shading shows p(green); the thin lines are p = 0.1 and p = 0.9. The band between them is where the model is unsure.</p>
+    <p><b class="cue">2</b>The soft-margin SVM with the same C = 1. Different losses, different lines: every point pulls on the logistic line, only the support vectors on the SVM's.</p>
+    <p><b class="cue">3</b>An SVM can be given probabilities too, by fitting a sigmoid to its scores afterwards (Platt scaling). Logistic regression has them built in.</p>
+  </div>
+</section>
+
+<!-- ONE NEURON -->
+<section class="slide" id="s-neuron" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Next week</div>
+    <h2>One neuron</h2>
+    <ul>
+      <li>Weighted sum of the inputs, plus <span class="math">b</span>, through the sigmoid. That is logistic regression, and it is one artificial neuron.</li>
+      <li data-step="1">Feed neurons into other neurons: a neural network.</li>
+      <li data-step="2">Next week: networks, and how to find the weights.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-neuron"></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Read the diagram left to right: inputs, weights, sum, sigmoid, probability. Nothing new, just a picture of σ(w · x + b).</p>
+    <p><b class="cue">1</b>The hidden neurons compute new features from the inputs, and the last neuron is a logistic regression on those features. With kernels we chose the features; a network learns them.</p>
+    <p><b class="cue">2</b>Logistic regression has no formula for the best w. Next week: gradient descent, which is how neural networks are trained too.</p>
+  </div>
+</section>
+
+<!-- TAKEAWAYS -->
+<section class="slide one" id="s-take" data-steps="0">
+  <div style="width:100%;max-width:72rem;margin:0 auto">
+    <div class="eyebrow">Summary</div>
+    <h2 style="margin:.2em 0 .8em">Takeaways</h2>
+    <div class="take three">
+      <div class="card"><h3>Same score</h3><p>Logistic regression and the linear SVM both use <span class="math">f(x) = w · x + b</span> and draw a hyperplane.</p></div>
+      <div class="card"><h3>Different loss</h3><p>Hinge loss for the SVM, log loss for logistic regression. Each adds <span class="math">½ ‖w‖²</span>.</p></div>
+      <div class="card"><h3>A probability</h3><p>The score becomes a probability, <span class="math">p = σ(f(x))</span>. Threshold it at 0.5, or anywhere else.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p>Logistic regression is a classifier with a probabilistic score, and a single neuron. Next week we stack them.</p>
+  </div>
+</section>
+
+<!-- THANKS -->
+<section class="slide one" id="s-thanks" data-steps="0">
+  <div style="text-align:center;width:100%">
+    <div class="eyebrow">Machine learning · Logistic regression</div>
+    <h1 style="margin:.15em 0 .1em">Thank you.</h1>
+    <p style="font-size:clamp(1.2rem,2vw,1.9rem);color:var(--model);font-weight:600;margin:.2em 0 .8em">Questions?</p>
+    <p class="rights">Slide template © 2026 Dori Litvak.</p>
+  </div>
+  <div class="notes">
+    <p>Questions now, in office hours, or on the forum.</p>
+  </div>
+</section>

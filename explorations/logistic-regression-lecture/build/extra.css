@@ -1,0 +1,5 @@
+/* ---------- logistic regression lecture: added components ---------- */
+.k-ink{color:var(--ink)}
+.fignote{margin:.3em 0 0;text-align:right;font-size:.78em;color:var(--muted)}
+#fig-hinge svg,#fig-loss svg,#fig-sig svg,#fig-fit svg,#fig-neuron svg{max-height:60vh;width:auto;max-width:100%;margin:0 auto}
+#fig-2d svg{max-height:68vh}
