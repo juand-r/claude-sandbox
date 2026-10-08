@@ -407,8 +407,8 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <ul>
       <li>Binary case: each prediction is right or wrong.</li>
       <li data-step="1">For a threshold <span class="math">t</span>, we want<span class="math dm">f(xᵢ) &gt; t for yᵢ = +1</span><span class="math dm">f(xᵢ) &lt; t for yᵢ = −1</span><span class="fine">f is a score or a probability.</span></li>
-      <li data-step="2">Count the points that break their condition: the training error. Each point costs 1 if wrong, 0 if right: the <b>0–1 loss</b>.</li>
-      <li data-step="3">For a score with <span class="math">t = 0</span>, both conditions say <span class="math">yᵢ f(xᵢ) &gt; 0</span>.</li>
+      <li data-step="2">Count the points that break their condition: the training error.</li>
+      <li data-step="3">The <b>0–1 loss</b> is:<span class="math dm">ℒ = Σ 𝟙[yᵢ f(xᵢ) ≤ 0]</span><span class="fine">𝟙[·] is 1 if true, 0 if false. Here f is a score with t = 0.</span></li>
     </ul>
   </div>
   <div class="fig">
@@ -424,7 +424,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <p><b class="cue">0</b>Rows are the true class, columns the prediction. Two ways to be right, two ways to be wrong.</p>
     <p><b class="cue">1</b>Positives should score above the threshold, negatives below it. Same picture as the ROC lecture.</p>
     <p><b class="cue">2</b>The natural loss for a classifier: the number of training mistakes.</p>
-    <p><b class="cue">3</b>Multiply by the label and both conditions become one: y·f(x) &gt; 0 means correct. This is the horizontal axis of the next slide.</p>
+    <p><b class="cue">3</b>With a score and t = 0, multiply by the label and both conditions become one: y·f(x) &gt; 0 means correct, so y·f(x) ≤ 0 is a mistake. Each mistake costs 1, each correct point 0. y·f(x) is the horizontal axis of the next slide.</p>
     <p>If asked "why not minimize the 0–1 loss directly?": (1) It gives no direction. Nudging w usually changes no prediction, so the count stays flat and then jumps; there is no slope to follow. (2) It is computationally hard: finding the line with the fewest training mistakes is NP-hard in general, as the number of features grows (Ben-David, Eiron and Long, 2003). (3) It has no preference among the many lines with the same count, for example for a wide margin. So we minimize a smooth or convex stand-in that is easy to minimize and still punishes mistakes: the hinge loss, or the log loss.</p>
   </div>
 </section>
