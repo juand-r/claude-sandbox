@@ -1,0 +1,33 @@
+/* ---------- neural networks lectures: added components ---------- */
+.k-ink{color:var(--ink)}
+.fignote{margin:.3em 0 0;text-align:right;font-size:.78em;color:var(--muted)}
+.takeline{margin:1.2em 0 0;font-size:1.05em;text-align:center}
+.fine{display:block;font-size:.85em;color:var(--muted)}
+.take.mlbox{grid-template-columns:repeat(2,minmax(0,1fr));max-width:64rem;margin:0 auto}
+@media (max-width:620px){.take.mlbox{grid-template-columns:1fr}}
+/* opener image and photos with captions */
+.opener{margin:0 auto;text-align:center}
+.opener img{max-height:76vh;max-width:100%;width:auto;height:auto;border-radius:12px;box-shadow:var(--shadow);background:#fff}
+figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
+.opener figcaption{max-width:52rem;margin:.6em auto 0}
+.fig.photo{margin:0;text-align:center}
+.fig.photo img{max-height:66vh;max-width:100%;width:auto;border-radius:10px}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2.5vw,40px);align-items:end}
+.trio figure{margin:0;text-align:center}
+.trio img{max-height:52vh;max-width:100%;width:auto;border-radius:10px;box-shadow:var(--shadow)}
+/* recap: model and loss boxes above the neuron */
+.recap{display:grid;gap:1.2em}
+.recap .fig svg{max-height:34vh;width:auto;max-width:100%;margin:0 auto}
+/* figures that must fit beside the text */
+#fig-onehot svg,#fig-softmax svg,#fig-hidden svg,#fig-fwd svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
+.gdduo svg,.trainduo svg{max-height:56vh;width:auto;max-width:100%;margin:0 auto}
+.grab svg circle[style*="grab"]{touch-action:none}
+#fig-land svg{touch-action:pan-y}
+/* hidden-layer animation */
+.hcopy,.fadein{transition:transform .7s ease,opacity .6s ease}
+/* the XOR-by-hand table */
+.dtab{border-collapse:collapse;margin:0 auto;font-family:"JetBrains Mono",monospace;font-size:clamp(1rem,1.8vw,1.6rem)}
+.dtab th,.dtab td{padding:.45em .9em;text-align:center;border-bottom:1px solid var(--line)}
+.dtab th{color:var(--muted);font-weight:600}
+.dtab td.yc{color:var(--model);font-weight:700}
+@media (max-width:620px){.dtab{font-size:.7rem}.dtab th,.dtab td{padding:.3em .2em}}

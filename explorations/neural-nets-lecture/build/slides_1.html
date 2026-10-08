@@ -1,0 +1,348 @@
+<!-- OPENER · image with caption -->
+<section class="slide one" id="s-pand" data-steps="0">
+  <figure class="opener">
+    <img alt="Cartoon of Selfridge's Pandemonium: an image demon passes the letter A to feature demons, cognitive demons for R, A, B, M, 4 shout with different loudness, and a decision demon listens." src="{{IMG:pandemonium.webp}}">
+    <figcaption>Selfridge's Pandemonium (1959): layers of "demons" that each shout when they detect their feature. Drawing from Lindsay &amp; Norman, Human Information Processing.</figcaption>
+  </figure>
+  <div class="notes">
+    <p>While people settle in. An early picture of layered pattern recognition: simple detectors feed more abstract ones, and a final unit decides. Today's networks have the same shape.</p>
+  </div>
+</section>
+
+<!-- TITLE -->
+<section class="slide one" id="s-title" data-steps="0">
+  <div class="prose">
+    <div class="eyebrow">Machine learning</div>
+    <h1>Neural<br>networks</h1>
+    <p class="hook">Part 1: from one neuron to a network.</p>
+  </div>
+  <div class="notes">
+    <p>Today: from logistic regression to many classes, how training works in outline, why one neuron is not enough, and what a network computes. Next class: how the network finds its weights.</p>
+  </div>
+</section>
+
+<!-- RECAP -->
+<section class="slide one" id="s-recap" data-steps="2">
+  <div style="width:100%;max-width:72rem;margin:0 auto">
+    <div class="eyebrow">Last time</div>
+    <h2 style="margin:.2em 0 .6em">Logistic regression</h2>
+    <div class="recap">
+      <div class="take mlbox">
+        <div class="card"><h3>Model</h3><p><span class="math dm">p(y = +1 | x) = σ(w · x + b)</span>One score, squashed into a probability.</p></div>
+        <div class="card" data-step="1"><h3>Loss</h3><p><span class="math dm">ℒ(θ; D) = Σ log(1 + e<sup>−yᵢ f(xᵢ)</sup>)</span>Log loss on the training data D = {(xᵢ, yᵢ)}, with yᵢ = ±1.</p></div>
+      </div>
+      <div class="fig" data-step="2"><div id="fig-recap"></div></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The model from last time: a linear score f(x) = w · x + b, through the sigmoid.</p>
+    <p><b class="cue">1</b>The loss: log loss summed over the training data. (Last time we also added ½‖w‖²; we drop it from now on to keep the formulas short.)</p>
+    <p><b class="cue">2</b>And the picture: one neuron. Today we change two things: more than two classes, and more than one neuron.</p>
+  </div>
+</section>
+
+<!-- ONE-HOT -->
+<section class="slide" id="s-onehot" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Two classes, rewritten</div>
+    <h2>Labels as one-hot vectors</h2>
+    <ul>
+      <li>Write the label as a vector with a 1 for the true class:<span class="math dm">y = (1, 0) or y = (0, 1)</span></li>
+      <li data-step="1">Give the two classes the scores <span class="math">(f, 0)</span>. The <b>softmax</b> turns scores into probabilities:<span class="math dm">p₁ = e<sup>f</sup> / (e<sup>f</sup> + e<sup>0</sup>) = σ(f)</span></li>
+      <li data-step="2">The <b>cross-entropy</b> loss:<span class="math dm">ℒ = −Σₖ yₖ log pₖ = −log p(true class)</span>This is last lecture's log loss.</li>
+      <li data-step="3">So logistic regression is softmax with two classes.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-onehot"></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Same data, different bookkeeping. Instead of y = +1 or −1, a vector with one entry per class.</p>
+    <p><b class="cue">1</b>Divide top and bottom by e^f: 1/(1 + e^(−f)), the sigmoid. Fixing the second score at 0 loses nothing: only the difference of the two scores matters.</p>
+    <p><b class="cue">2</b>Only the true class's term survives, because the other entries of y are 0. −log σ(f) for a positive, −log(1 − σ(f)) for a negative: the log loss we derived last time.</p>
+    <p><b class="cue">3</b>This rewriting is what lets us go to more than two classes on the next slide.</p>
+  </div>
+</section>
+
+<!-- SOFTMAX -->
+<section class="slide" id="s-softmax" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">More than two classes</div>
+    <h2>Softmax and cross-entropy</h2>
+    <ul>
+      <li>One score per class:<span class="math dm">zₖ = wₖ · x + bₖ,  k = 1, …, C</span></li>
+      <li data-step="1">Softmax:<span class="math dm">pₖ = e<sup>zₖ</sup> / Σⱼ e<sup>zⱼ</sup></span>Positive, and they sum to 1.</li>
+      <li data-step="2">Cross-entropy:<span class="math dm">ℒ = −Σᵢ log p(true class of i)</span></li>
+      <li data-step="3">Example: <span class="math">z = (2, 1, −1)</span> gives <span class="math">p = (0.71, 0.26, 0.04)</span>. If the true class is 1, the loss is <span class="math">−log 0.71 = 0.35</span>.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-softmax"></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>N input features on the left, C outputs on the right. Each output has its own weight vector: C logistic regressions side by side.</p>
+    <p><b class="cue">1</b>Exponentiate and normalize. The largest score gets the largest probability; the exponential makes them positive.</p>
+    <p><b class="cue">2</b>For one point it is −log of the probability given to the class it really belongs to. Confident and wrong is expensive: −log 0.01 ≈ 4.6.</p>
+    <p><b class="cue">3</b>e² ≈ 7.39, e¹ ≈ 2.72, e⁻¹ ≈ 0.37, sum ≈ 10.48. If the true class were 3, the loss would be −log 0.035 ≈ 3.3.</p>
+  </div>
+</section>
+
+<!-- LOSS LANDSCAPE -->
+<section class="slide" id="s-land" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">How to train it?</div>
+    <h2>The loss landscape</h2>
+    <ul>
+      <li>The loss depends on the parameters θ. Picture it as a surface over θ.</li>
+      <li data-step="1">The gradient is the vector of partial derivatives:<span class="math dm">∇ℒ = (∂ℒ/∂θ₁, ∂ℒ/∂θ₂)</span>It points uphill, the steepest way up.</li>
+      <li data-step="2">Step the other way, again and again: <b>gradient descent</b>.</li>
+      <li data-step="3">A different start can end in a different minimum.</li>
+      <li data-step="4">Logistic regression's loss is a single bowl: one minimum. A network's loss is not.</li>
+    </ul>
+  </div>
+  <div class="fig grab">
+    <div id="fig-land"></div>
+    <p class="fignote">A made-up loss surface with two parameters.</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>A cartoon: real models have thousands of parameters, but two are enough to draw. Darker means lower loss. Two valleys.</p>
+    <p><b class="cue">1</b>Each partial derivative is the slope in one direction. Together they form an arrow pointing uphill. Its length is how steep it is.</p>
+    <p><b class="cue">2</b>From the amber start, take a small step against the gradient, recompute, repeat. The path follows the slope down into the nearest valley. The start point can be dragged.</p>
+    <p><b class="cue">3</b>Start somewhere else and the same procedure ends in the other, shallower valley: a local minimum. Gradient descent only sees the slope where it stands.</p>
+    <p><b class="cue">4</b>Logistic regression's loss is convex: any start reaches the same answer. Neural networks lose that guarantee. We come back to this next class.</p>
+  </div>
+</section>
+
+<!-- GRADIENT DESCENT AND THE LEARNING RATE -->
+<section class="slide wide" id="s-gd" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">How to train it?</div>
+    <h2>Gradient descent</h2>
+    <ul>
+      <li>Update all parameters at once:<span class="math dm">θ ← θ − η ∇ℒ(θ)</span><span class="math">η</span> is the <b>learning rate</b>.</li>
+      <li data-step="1">Too small: many tiny steps.</li>
+      <li data-step="2">About right: a few steps to the minimum.</li>
+      <li data-step="3">Too large: it overshoots and the loss goes back up.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="duo gdduo">
+      <div id="fig-gd"></div>
+      <div id="fig-gdloss"></div>
+    </div>
+    <div class="tiles three">
+      <div class="tile"><div class="lbl noup">η</div><div class="val k-hi" id="v-gd-eta"></div></div>
+      <div class="tile"><div class="lbl">step</div><div class="val" id="v-gd-k"></div></div>
+      <div class="tile"><div class="lbl">loss</div><div class="val k-err" id="v-gd-l"></div></div>
+    </div>
+    <div class="toolbar">
+      <button id="b-gd-small">η = 0.1</button><button id="b-gd-good">η = 1</button><button id="b-gd-large">η = 20</button>
+      <button id="b-gd-play" class="primary">▶</button>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>A real loss this time: logistic regression on last lecture's hours-of-study data, with the hours standardized (mean 0, SD 1). Two parameters, w and b, so we can draw it. The star is the minimum. Every run starts at (w, b) = (−1.5, 2) and takes 40 steps. The loss shown is the average over the 20 students, the sum divided by 20; the minimum is in the same place.</p>
+    <p><b class="cue">1</b>η = 0.1: after 40 steps it is still far from the star (loss 0.78; the minimum is 0.495).</p>
+    <p><b class="cue">2</b>η = 1: close to the star within about ten steps (loss 0.52 at step 10).</p>
+    <p><b class="cue">3</b>η = 20: the first step jumps far past the minimum. After that it bounces back and forth across the valley, and the loss jumps up and down between about 0.5 and 1.2 (0.69 after 40 steps). Choosing η is part of tuning, like choosing k or C.</p>
+  </div>
+</section>
+
+<!-- PERCEPTRON -->
+<section class="slide" id="s-perc" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">History</div>
+    <h2>The perceptron (1958)</h2>
+    <ul>
+      <li>Rosenblatt's perceptron uses the same score <span class="math">f(x) = w · x + b</span>.</li>
+      <li data-step="1">A step instead of the sigmoid: predict the sign of <span class="math">f(x)</span>.</li>
+      <li data-step="2">Its learning rule, on a mistake:<span class="math dm">w ← w + η yᵢ xᵢ,  b ← b + η yᵢ</span></li>
+      <li data-step="3">That is gradient descent, one point at a time, on the loss <span class="math">max(0, −y f(x))</span>.</li>
+    </ul>
+  </div>
+  <figure class="fig photo">
+    <img alt="Frank Rosenblatt adjusting the random wiring of the Mark I Perceptron." src="{{IMG:rosenblatt_mark1.webp}}">
+    <figcaption>Frank Rosenblatt wiring the Mark I Perceptron, Cornell Aeronautical Laboratory.</figcaption>
+  </figure>
+  <div class="notes">
+    <p><b class="cue">0</b>Frank Rosenblatt, at the Cornell Aeronautical Laboratory. The Mark I Perceptron was a machine: photocells for the input, motor-driven potentiometers for the weights, and wires like these. Same linear score as logistic regression and the SVM.</p>
+    <p><b class="cue">1</b>No probability: the output is +1 or −1.</p>
+    <p><b class="cue">2</b>Labels ±1. When a point is misclassified, move the line towards classifying it correctly. Correct points change nothing.</p>
+    <p><b class="cue">3</b>The loss is 0 for correct points and −y f(x) for wrong ones: the hinge loss without the margin. Same model family as logistic regression and the SVM; a different loss and a different way to minimize it.</p>
+  </div>
+</section>
+
+<!-- XOR -->
+<section class="slide" id="s-xor" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">The limit</div>
+    <h2>No line separates XOR</h2>
+    <ul>
+      <li>Green in two opposite corners, purple in the other two.</li>
+      <li data-step="1">The best logistic regression gives up: <span class="math">w = 0</span>, so <span class="math">p = 0.5</span> everywhere.</li>
+      <li data-step="2">The perceptron and logistic regression draw one line. XOR needs two.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-xor"></div>
+    <div class="tiles three" data-step="1">
+      <div class="tile"><div class="lbl">model</div><div class="val k-model">one line</div></div>
+      <div class="tile"><div class="lbl noup">p</div><div class="val k-hi">0.50</div></div>
+      <div class="tile"><div class="lbl">accuracy</div><div class="val k-err">50%</div></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The XOR data from the SVM lecture: 24 points, 6 per corner. Any line puts at least one corner on the wrong side.</p>
+    <p><b class="cue">1</b>Fitted with no penalty. The data are symmetric, so every tilt of the line is as bad as its mirror image; the best compromise is w = 0. The model says "50–50" for every point.</p>
+    <p><b class="cue">2</b>With the SVM we fixed this with a kernel, a hand-chosen feature map. Today: let the model build its own features.</p>
+  </div>
+</section>
+
+<!-- PERCEPTRONS 1969 -->
+<section class="slide one" id="s-mp" data-steps="1">
+  <div style="width:100%;max-width:74rem;margin:0 auto">
+    <div class="eyebrow">History</div>
+    <h2 style="margin:.2em 0 .7em">Perceptrons (1969)</h2>
+    <div class="trio">
+      <figure><img alt="Marvin Minsky." src="{{IMG:minsky.webp}}"><figcaption>Marvin Minsky</figcaption></figure>
+      <figure><img alt="Cover of Perceptrons: An Introduction to Computational Geometry, by Marvin Minsky and Seymour Papert." src="{{IMG:perceptrons_cover.png}}"><figcaption>Perceptrons, MIT Press, 1969</figcaption></figure>
+      <figure><img alt="Seymour Papert with a Logo turtle robot." src="{{IMG:papert.webp}}"><figcaption>Seymour Papert</figcaption></figure>
+    </div>
+    <p class="takeline" data-step="1">They proved what single-layer perceptrons cannot compute. XOR is the simplest example.</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Marvin Minsky and Seymour Papert, both at MIT. Their book analyzed exactly what a single layer of perceptrons can and cannot represent.</p>
+    <p><b class="cue">1</b>Careful with the popular story. Networks with more layers were known to be more powerful; what was missing was a practical way to train them. That came with backpropagation, popularized in 1986, which is next class. How much the book itself caused the drop in funding that followed is debated by historians.</p>
+  </div>
+</section>
+
+<!-- HIDDEN LAYER -->
+<section class="slide" id="s-hidden" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Fixing XOR</div>
+    <h2>Add a hidden layer</h2>
+    <ul>
+      <li>Start from one neuron.</li>
+      <li data-step="1">Copy it: each hidden neuron is a logistic regression on the inputs.</li>
+      <li data-step="2">Feed the hidden neurons to the outputs: a softmax on the hidden neurons.</li>
+      <li data-step="3">Feed-forward and fully connected: a <b>multilayer perceptron</b> (MLP).</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-hidden"></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>One neuron: two inputs, a weighted sum, a sigmoid.</p>
+    <p><b class="cue">1</b>Three copies, each with its own weights. Each one draws its own line through the input space and reports which side a point is on, softly.</p>
+    <p><b class="cue">2</b>The output layer combines those reports. It is the softmax model from earlier, applied to new features that the hidden layer computes.</p>
+    <p><b class="cue">3</b>Feed-forward: information flows left to right, no loops. Fully connected: every node feeds every node of the next layer. "Perceptron" is historical; the units are sigmoids, not steps.</p>
+  </div>
+</section>
+
+<!-- FORWARD PROPAGATION -->
+<section class="slide" id="s-fwd" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">What the network computes</div>
+    <h2>Forward propagation</h2>
+    <span class="eq">h = σ(W₁ x + b₁)<br>z = W₂ h + b₂<br>p = softmax(z)</span>
+    <ul>
+      <li data-step="1">Shapes: <span class="math">x</span> has N entries, <span class="math">W₁</span> is H × N, <span class="math">W₂</span> is C × H. The parameters are <span class="math">θ = (W₁, b₁, W₂, b₂)</span>.</li>
+      <li data-step="2">The loss is the same cross-entropy.</li>
+      <li data-step="3">Why the sigmoid? Without it, the layers collapse into one linear layer:<span class="math dm">W₂(W₁x + b₁) + b₂</span><span class="math dm">= (W₂W₁) x + (W₂b₁ + b₂)</span></li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-fwd"></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Three lines. Multiply by a matrix, add a vector, apply σ to every entry; then the output layer. Propagating forward means evaluating these left to right.</p>
+    <p><b class="cue">1</b>For XOR: N = 2 inputs, H = 3 hidden units, C = 2 classes, so W₁ is 3 × 2 and W₂ is 2 × 3. 17 numbers in total, counting the biases.</p>
+    <p><b class="cue">2</b>Nothing new: −log of the probability of the true class, summed over the training data.</p>
+    <p><b class="cue">3</b>A product of matrices is a matrix. Without a nonlinearity between them, any number of layers is still one linear model, one line, and XOR stays unsolved.</p>
+  </div>
+</section>
+
+<!-- XOR BY HAND -->
+<section class="slide" id="s-hand" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Check it by hand</div>
+    <h2>XOR with two hidden units</h2>
+    <ul>
+      <li>Inputs 0 or 1.</li>
+      <li data-step="1"><span class="math">h₁ = σ(20x₁ + 20x₂ − 10)</span>: about 1 if either input is 1. That is OR.</li>
+      <li data-step="2"><span class="math">h₂ = σ(20x₁ + 20x₂ − 30)</span>: about 1 only if both are. That is AND.</li>
+      <li data-step="3"><span class="math">f = 20h₁ − 20h₂ − 10</span>, <span class="math">p = σ(f)</span>: OR and not AND. That is XOR.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <table class="dtab hand">
+      <thead><tr><th>x₁</th><th>x₂</th><th data-step="1">h₁ (OR)</th><th data-step="2">h₂ (AND)</th><th data-step="3">f</th><th data-step="3">p</th></tr></thead>
+      <tbody id="t-hand"></tbody>
+    </table>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Four possible inputs. We will set the weights by hand, not train them.</p>
+    <p><b class="cue">1</b>σ(−10) ≈ 0.00005 and σ(10) ≈ 0.99995. With both inputs 0 the score is −10; with one or two inputs on it is +10 or +30.</p>
+    <p><b class="cue">2</b>Same weights, bias −30: only both inputs together get the score above 0.</p>
+    <p><b class="cue">3</b>One output score with a sigmoid is the two-class softmax with scores (f, 0) from earlier. p is the probability of "XOR = 1". Each hidden unit draws one line; the output combines the two lines. Training finds weights like these on its own.</p>
+  </div>
+</section>
+
+<!-- TRAINING ON XOR -->
+<section class="slide wide" id="s-train" data-steps="1">
+  <div class="prose">
+    <div class="eyebrow">Gradient descent on a network</div>
+    <h2>Training learns XOR</h2>
+    <ul>
+      <li>Three hidden units, random starting weights, gradient descent on the cross-entropy.</li>
+      <li data-step="1">The decision region bends until every point is on the right side.</li>
+    </ul>
+    <p class="fine" data-step="1">How to compute the gradient for every weight: next class.</p>
+  </div>
+  <div class="fig">
+    <div class="duo trainduo">
+      <div id="fig-train"></div>
+      <div id="fig-trainloss"></div>
+    </div>
+    <div class="tiles three">
+      <div class="tile"><div class="lbl">step</div><div class="val" id="v-tr-k"></div></div>
+      <div class="tile"><div class="lbl">loss</div><div class="val k-err" id="v-tr-l"></div></div>
+      <div class="tile"><div class="lbl">accuracy</div><div class="val k-model" id="v-tr-a"></div></div>
+    </div>
+    <div class="toolbar"><button id="b-tr-play" class="primary">▶</button><label>step <input type="range" id="r-tr" min="0" max="60" value="0"></label></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Starting weights drawn uniformly between −1 and 1. The shading is the network's p(green) at the start: almost no information.</p>
+    <p><b class="cue">1</b>4,000 steps of full-batch gradient descent, η = 2 (the step axis is logarithmic). For about the first thirty steps the loss barely moves (0.72 to 0.66). Then the region splits into the two diagonal corners, and by step 60 all 24 points are correct. The remaining steps make the network more confident: final loss 0.0006. With this small a network, some starting points get stuck instead; next class shows one.</p>
+  </div>
+</section>
+
+<!-- TAKEAWAYS -->
+<section class="slide one" id="s-take" data-steps="0">
+  <div style="width:100%;max-width:76rem;margin:0 auto">
+    <div class="eyebrow">Summary</div>
+    <h2 style="margin:.2em 0 .8em">Takeaways</h2>
+    <div class="take four">
+      <div class="card"><h3>Softmax</h3><p>One score per class, softmax for probabilities, cross-entropy as the loss. Two classes: logistic regression.</p></div>
+      <div class="card"><h3>Gradient descent</h3><p><span class="math">θ ← θ − η ∇ℒ</span>. The learning rate sets the step size.</p></div>
+      <div class="card"><h3>One line is not enough</h3><p>The perceptron and logistic regression cannot do XOR.</p></div>
+      <div class="card"><h3>Hidden layers</h3><p><span class="math">h = σ(W₁x + b₁)</span>, then softmax. The hidden units learn the features.</p></div>
+    </div>
+  </div>
+  <div class="notes">
+    <p>Next class: backpropagation, the way to get ∇ℒ for every weight, and the practical side of training.</p>
+  </div>
+</section>
+
+<!-- THANKS -->
+<section class="slide one" id="s-thanks" data-steps="0">
+  <div style="text-align:center;width:100%">
+    <div class="eyebrow">Machine learning · Neural networks, part 1</div>
+    <h1 style="margin:.15em 0 .1em">Thank you.</h1>
+    <p style="font-size:clamp(1.2rem,2vw,1.9rem);color:var(--model);font-weight:600;margin:.2em 0 .8em">Questions?</p>
+    <p class="rights">Slide template © 2026 Dori Litvak.</p>
+  </div>
+  <div class="notes">
+    <p>Questions now, in office hours, or on the forum.</p>
+  </div>
+</section>
