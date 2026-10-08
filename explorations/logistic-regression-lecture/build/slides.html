@@ -199,7 +199,7 @@
 </section>
 
 <!-- 2D BOUNDARY -->
-<section class="slide" id="s-2d" data-steps="3">
+<section class="slide" id="s-2d" data-steps="4">
   <div class="prose">
     <div class="eyebrow">Two features</div>
     <h2>Still a hyperplane</h2>
@@ -210,14 +210,18 @@
     </ul>
   </div>
   <div class="fig">
-    <div id="fig-2d"></div>
-    <p class="legend"><span class="k-model" data-step="1">━ logistic regression, p = 0.5</span><span class="k-ink" data-step="2">┅ SVM, f = 0</span></p>
+    <div class="swap">
+      <div id="fig-2d"></div>
+      <div id="fig-3d" class="off"></div>
+    </div>
+    <p class="legend"><span class="k-model" data-step="1">━ logistic regression, p = 0.5</span><span class="k-ink" data-step="2" id="lg-svm">┅ SVM, f = 0</span></p>
   </div>
   <div class="notes">
     <p><b class="cue">0</b>The soft-margin data from the SVM lecture: two points on the wrong side.</p>
     <p><b class="cue">1</b>Logistic regression with C = 1. Shading shows p(green): pale near the line, where the model is unsure, darker further away.</p>
     <p><b class="cue">2</b>The soft-margin SVM with the same C = 1. Different losses, different lines: every point pulls on the logistic line, only the support vectors on the SVM's.</p>
     <p><b class="cue">3</b>An SVM can be given probabilities too, by fitting a sigmoid to its scores afterwards (Platt scaling). Logistic regression has them built in.</p>
+    <p><b class="cue">4</b>The same model in 3D: height is p(green). The surface is a sigmoid along the direction of w and flat along the boundary, always between 0 and 1. Green points sit at 1, purple at 0; the teal line is where the surface crosses 0.5. The view can be turned by dragging.</p>
   </div>
 </section>
 

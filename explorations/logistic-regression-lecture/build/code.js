@@ -161,6 +161,52 @@ function lossPlot(host,label){
   X.forEach((p,i)=>el('circle',{cx:api.sx(p[0]),cy:api.sy(p[1]),r:8,fill:y[i]>0?'var(--pos)':'var(--mean)',stroke:'var(--surface)','stroke-width':2},api.layer('pts')));
 }
 
+/* ---------- the same model in 3D: height = p(green); drag to turn ---------- */
+{
+  const {X,y}=SOFT,m=SOFT_LR,W=520,H=500,S=34,ZS=6;   // ZS: height of p = 1 in x-units
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'the probability surface over the two features, between 0 and 1; green points at height 1, purple at 0'},$('fig-3d'));
+  svg.classList.add('noanim');
+  const gAx=el('g',{},svg),gLow=el('g',{},svg),gSurf=el('g',{},svg),gTop=el('g',{},svg);
+  let yaw=-.8,pitch=.3;   // looking roughly along the boundary, so the sigmoid profile shows
+  const proj=([px,py,pz])=>{const a=px-5,b2=py-5,c=pz*ZS,cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+    const Xr=a*cy-b2*sy,Yr=a*sy+b2*cy;return [W/2+30+Xr*S,H*.7-(c*cp-Yr*sp)*S,c*sp+Yr*cp];};   // +30: room for the p ticks
+  const N=24,h=10/N;
+  const seg=(L,p,q,a)=>{const A=proj(p),B=proj(q);return el('line',{x1:A[0],y1:A[1],x2:B[0],y2:B[1],...a},L);};
+  function draw3(){
+    for(const g of [gAx,gLow,gSurf,gTop])g.textContent='';
+    // floor grid, box edges and axes
+    for(let v=0;v<=10;v+=2.5){seg(gAx,[v,0,0],[v,10,0],{stroke:'var(--grid)','stroke-width':1.2});seg(gAx,[0,v,0],[10,v,0],{stroke:'var(--grid)','stroke-width':1.2});}
+    const ax=(p,q,s,dx=6,dy=4)=>{seg(gAx,p,q,{stroke:'var(--line)','stroke-width':1.5});const B=proj(q);txt(gAx,B[0]+dx,B[1]+dy,s,{fill:'var(--muted)','font-size':16,'font-weight':700,'font-family':MONO});};
+    ax([0,0,0],[10.8,0,0],'x₁');ax([0,0,0],[0,10.8,0],'x₂');ax([0,0,0],[0,0,1.12],'p',-4,-8);
+    for(const v of [0,.5,1]){const A=proj([0,0,v]);seg(gAx,[0,0,v],[-.25,0,v],{stroke:'var(--line)','stroke-width':1.5});
+      txt(gAx,A[0]-12,A[1]+5,String(v),{fill:'var(--muted)','font-size':14,'text-anchor':'end','font-family':MONO});}
+    seg(gAx,[0,0,1],[10,0,1],{stroke:'var(--line)','stroke-width':1,'stroke-dasharray':'3 5',opacity:.7});
+    seg(gAx,[0,0,1],[0,10,1],{stroke:'var(--line)','stroke-width':1,'stroke-dasharray':'3 5',opacity:.7});
+    // purple points at p = 0 go under the surface, green points at p = 1 above it
+    const dotAt=(L,p,yi)=>{const P=proj([p[0],p[1],yi>0?1:0]);el('circle',{cx:P[0],cy:P[1],r:7,fill:yi>0?'var(--pos)':'var(--mean)',stroke:'var(--surface)','stroke-width':1.5},L);};
+    X.forEach((p,i)=>{if(y[i]<0)dotAt(gLow,p,y[i]);});
+    // the surface as small quads, far ones first
+    const quads=[];
+    for(let i=0;i<N;i++)for(let j=0;j<N;j++){const cs=[[i,j],[i+1,j],[i+1,j+1],[i,j+1]].map(([a,b2])=>{const u=a*h,v=b2*h;return proj([u,v,m.p([u,v])]);});
+      const pc=m.p([(i+.5)*h,(j+.5)*h]);quads.push({cs,pc,d:cs.reduce((s2,q)=>s2+q[2],0)/4});}
+    quads.sort((A,B)=>B.d-A.d);
+    for(const q of quads)el('polygon',{points:q.cs.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' '),fill:q.pc>=.5?'var(--pos)':'var(--mean)','fill-opacity':(.22+.5*Math.abs(q.pc-.5)*2).toFixed(3),stroke:'var(--surface)','stroke-width':.5,'stroke-opacity':.6},gSurf);
+    // the p = 0.5 line: w·x + b = 0 inside the square, lifted to height 0.5
+    const x2=x1=>-(m.b+m.w[0]*x1)/m.w[1],ends=[];
+    for(const x1 of [0,10]){const v=x2(x1);if(v>=0&&v<=10)ends.push([x1,v]);}
+    for(const v of [0,10]){const x1=-(m.b+m.w[1]*v)/m.w[0];if(x1>0&&x1<10)ends.push([x1,v]);}
+    if(ends.length>=2)seg(gTop,[...ends[0],.5],[...ends[1],.5],{stroke:'var(--model)','stroke-width':3.5,'stroke-linecap':'round'});
+    X.forEach((p,i)=>{if(y[i]>0)dotAt(gTop,p,y[i]);});
+  }
+  let drag=null;
+  svg.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,yaw,pitch];try{svg.setPointerCapture(e.pointerId);}catch(_){}});
+  svg.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag[2]+(e.clientX-drag[0])/150;pitch=clamp(drag[3]+(e.clientY-drag[1])/220,.05,1.3);draw3();});
+  svg.addEventListener('pointerup',()=>{drag=null;});svg.addEventListener('pointercancel',()=>{drag=null;});
+  draw3();
+  // step 4 swaps the 2D figure for the 3D one; the text stays
+  hooks['s-2d']={step(s){const on3=s>=4;$('fig-2d').classList.toggle('off',on3);$('fig-3d').classList.toggle('off',!on3);$('lg-svm').classList.toggle('off',on3);}};
+}
+
 /* ---------- one neuron, then a small network ---------- */
 {
   const W=640,H=470,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'inputs x1, x2, x3 with weights w1, w2, w3 feed a sum plus b, then a sigmoid, giving p; below, a small network with a hidden layer'},$('fig-neuron'));

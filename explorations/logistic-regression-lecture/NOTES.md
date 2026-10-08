@@ -70,3 +70,8 @@ networks lecture the following week:
   formula and in the plot. The algebra slide states that f stands for f(x) = w · x + b.
   One overload remains: on the loss slide f(xᵢ | θ) is the prediction ŷᵢ; for classifiers f is the
   score and the prediction is its sign (or its comparison with t).
+- 2D slide, step 4 (user's request): the text stays and the figure is replaced by the same model in
+  3D, height = p(green), so the surface visibly stays between 0 and 1. Green points at height 1,
+  purple at 0, the p = 0.5 line in teal; the SVM line and its legend entry are hidden in this view.
+  Drag turns it (code adapted from the SVM deck's 3D lift slide). The starting view looks roughly
+  along the boundary, so the sigmoid profile shows.
