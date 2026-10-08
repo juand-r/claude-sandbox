@@ -662,7 +662,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   <div class="prose">
     <div class="eyebrow">3 · Support vector regression</div>
     <h2>The SVR problem</h2>
-    <span class="eq">minimize ½ ‖w‖² + C Σ (ξᵢ + ξᵢ*)<br>subject to<br><span class="ind">yᵢ − (w · xᵢ + b) ≤ ε + ξᵢ</span><br><span class="ind">(w · xᵢ + b) − yᵢ ≤ ε + ξᵢ*</span><br><span class="ind">ξᵢ ≥ 0, ξᵢ* ≥ 0</span></span>
+    <span class="eq">minimize ½ ‖w‖² + C Σ ξᵢ<br>subject to<br><span class="ind">yᵢ − (w · xᵢ + b) ≤ ε + ξᵢ</span><br><span class="ind">(w · xᵢ + b) − yᵢ ≤ ε + ξᵢ</span><br><span class="ind">ξᵢ ≥ 0</span></span>
     <ul>
       <li data-step="1">The tube width is fixed, so <span class="math">½ ‖w‖²</span> keeps the slope small. A flatter model is less likely to overfit.</li>
       <li data-step="2">Large <span class="math">C</span>: slack is expensive. Steeper fits that chase the points: more variance.</li>
@@ -680,7 +680,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
     <div class="toolbar"><label>C <input type="range" id="r-svrc" min="-300" max="100" value="-100"></label><span class="mono" id="v-sc-c" style="color:var(--muted)"></span></div>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>Same shape as the soft-margin SVM. The constraints say: the error is at most ε, plus slack. ξᵢ is for points above the tube, ξᵢ* for points below. C = 0.1, ε = 2.</p>
+    <p><b class="cue">0</b>Same shape as the soft-margin SVM. The constraints say: the error is at most ε, plus slack. The first constraint is for points above the tube, the second for points below. One slack per point is enough, because a point cannot be on both sides. C = 0.1, ε = 2.</p>
     <p><b class="cue">1</b>In classification, minimizing ½‖w‖² widened the margin. Here the width is fixed, so it does something else: it keeps the coefficients small. As with linear regression, steep models are more likely to overfit.</p>
     <p><b class="cue">2</b>C = 10: the solver avoids slack and accepts a steeper line. A steeper line reacts more to changes in x: more variance.</p>
     <p><b class="cue">3</b>C = 0.01: slack is cheap, so the slope shrinks towards zero and many points fall outside the tube. Low variance, high bias: we are imposing an assumption, flatness, on the data.</p>

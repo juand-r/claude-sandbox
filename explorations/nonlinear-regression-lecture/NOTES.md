@@ -81,7 +81,7 @@ These are said out loud in the lecture; the slides and notes avoid repeating the
 - ε is measured vertically, along the y-axis, because it is an error in y. The transcript says
   "perpendicular to our y-axis" once, then (for slack) "parallel to the y-axis".
 - SVR does not maximize the number of points inside the tube. It penalizes the total vertical
-  distance outside the tube (C Σ (ξ + ξ*)), plus ½‖w‖². The slides say this.
+  distance outside the tube (C Σ ξ), plus ½‖w‖². The slides say this.
 - "Bone marrow density" in the transcript is bone (mineral) density; the slides say "bone density".
 - Left out: the opening remarks about the weekend's events, the memes on the first slide of the
   original deck (ensembles and random forests, and "Scientists be like" on the title slide). The
@@ -94,3 +94,7 @@ These are said out loud in the lecture; the slides and notes avoid repeating the
 - kNN and "Recurse" showed tiles and a fit before anything was introduced; now points first.
 - The split slide became too tall without height caps and the whole slide shrank; caps restored.
 - The features table overflowed at phone width; it now scrolls inside its box.
+- SVR problem slide (user's choice): one slack ξᵢ per point, used in both constraints, instead of the
+  textbook pair ξᵢ, ξᵢ*. The two forms have the same solution: a point cannot be above and below the
+  tube at once, so at most one of ξᵢ, ξᵢ* is positive and ξᵢ + ξᵢ* = max(0, |yᵢ − f(xᵢ)| − ε). The
+  deck's solver still uses the standard two-multiplier dual.
