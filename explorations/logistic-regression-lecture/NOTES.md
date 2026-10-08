@@ -39,8 +39,8 @@ networks lecture the following week:
     sigmoid and the log-odds, and the log loss is −log of the sigmoid.)
 5. A fitted model: hours of study → pass (simulated, 20 students); fitted curve; p = 0.5 at 5.4 h;
    threshold slider with TPR and FPR, linking to the ROC lecture.
-6. Still a hyperplane: the SVM deck's soft-margin data; probability shading, p = 0.1 / 0.5 / 0.9
-   lines; the soft-margin SVM's line (C = 1) overlaid; Platt scaling in the notes.
+6. Still a hyperplane: the SVM deck's soft-margin data; probability shading and the p = 0.5
+   line (the p = 0.1 and 0.9 lines were removed at the user's request: they looked like margins); the soft-margin SVM's line (C = 1) overlaid; Platt scaling in the notes.
 7. One neuron: inputs → weights → Σ + b → σ → p; then a small network; "next week: networks and how
    to find the weights".
 8. Takeaways. 9. Thanks.

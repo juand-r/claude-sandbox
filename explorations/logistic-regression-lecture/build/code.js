@@ -156,7 +156,6 @@ function lossPlot(host,label){
   // the line w·x + b = c across the plot (w₂ ≠ 0 for both models here)
   const line=(w,b,c,a,L)=>el('line',{x1:api.sx(0),y1:api.sy((c-b)/w[1]),x2:api.sx(10),y2:api.sy((c-b-10*w[0])/w[1]),...a},L);
   const g1=stepG(api.layer('fit'),1);
-  for(const p of [.1,.9])line(m.w,m.b,Math.log(p/(1-p)),{stroke:'var(--model)','stroke-width':1.5,opacity:.8},g1);
   line(m.w,m.b,0,{stroke:'var(--model)','stroke-width':3.5,'stroke-linecap':'round'},g1);
   line(s.w,s.b,0,{stroke:'var(--ink)','stroke-width':2.5,'stroke-dasharray':'8 6'},stepG(api.layer('fit'),2));
   X.forEach((p,i)=>el('circle',{cx:api.sx(p[0]),cy:api.sy(p[1]),r:8,fill:y[i]>0?'var(--pos)':'var(--mean)',stroke:'var(--surface)','stroke-width':2},api.layer('pts')));

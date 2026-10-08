@@ -575,7 +575,7 @@ button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px so
   </div>
   <div class="notes">
     <p><b class="cue">0</b>The soft-margin data from the SVM lecture: two points on the wrong side.</p>
-    <p><b class="cue">1</b>Logistic regression with C = 1. Shading shows p(green); the thin lines are p = 0.1 and p = 0.9. The band between them is where the model is unsure.</p>
+    <p><b class="cue">1</b>Logistic regression with C = 1. Shading shows p(green): pale near the line, where the model is unsure, darker further away.</p>
     <p><b class="cue">2</b>The soft-margin SVM with the same C = 1. Different losses, different lines: every point pulls on the logistic line, only the support vectors on the SVM's.</p>
     <p><b class="cue">3</b>An SVM can be given probabilities too, by fitting a sigmoid to its scores afterwards (Platt scaling). Logistic regression has them built in.</p>
   </div>
@@ -1378,7 +1378,6 @@ function lossPlot(host,label){
   // the line w·x + b = c across the plot (w₂ ≠ 0 for both models here)
   const line=(w,b,c,a,L)=>el('line',{x1:api.sx(0),y1:api.sy((c-b)/w[1]),x2:api.sx(10),y2:api.sy((c-b-10*w[0])/w[1]),...a},L);
   const g1=stepG(api.layer('fit'),1);
-  for(const p of [.1,.9])line(m.w,m.b,Math.log(p/(1-p)),{stroke:'var(--model)','stroke-width':1.5,opacity:.8},g1);
   line(m.w,m.b,0,{stroke:'var(--model)','stroke-width':3.5,'stroke-linecap':'round'},g1);
   line(s.w,s.b,0,{stroke:'var(--ink)','stroke-width':2.5,'stroke-dasharray':'8 6'},stepG(api.layer('fit'),2));
   X.forEach((p,i)=>el('circle',{cx:api.sx(p[0]),cy:api.sy(p[1]),r:8,fill:y[i]>0?'var(--pos)':'var(--mean)',stroke:'var(--surface)','stroke-width':2},api.layer('pts')));
