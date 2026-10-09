@@ -1246,8 +1246,9 @@ function txt(parent,x,y,s,a={}){const t=el('text',{x,y,...a},parent);t.textConte
 // ℒ is the script L (upright:true keeps every letter upright, for units), and subscripts are written with Unicode (x₁, wⱼᵢ) or as _N (x_N).
 // Each run of characters gets its own <tspan>; subscripts are smaller and lowered.
 const MATH_SCALE=1.15;   // KaTeX's glyphs are smaller than the mono font's at the same size
-const SUB={'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','ᵢ':'i','ⱼ':'j','ₖ':'k'},SUP={'ᵀ':'T'};
-const isLatin=c=>/[A-Za-z]/.test(c||''),GREEK_IT='αβγδεηθλμπσφω';
+const SUB={'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','ᵢ':'i','ⱼ':'j','ₖ':'k','ₚ':'p'},SUP={'ᵀ':'T'};
+const KATEX_CHAR={'·':'⋅','‖':'∥'};   // the characters KaTeX's fonts have for these
+const isLatin=c=>/[A-Za-z]/.test(c||''),GREEK_IT='αβγδεζηθικλμνξπρστυφχψω';
 function mathRuns(s,upright=false){
   const runs=[],push=(t,fam,it,shift)=>{const r=runs[runs.length-1];
     if(r&&r.fam===fam&&r.it===it&&r.shift===shift)r.t+=t;else runs.push({t,fam,it,shift});};
@@ -1259,7 +1260,8 @@ function mathRuns(s,upright=false){
     if(c==='ℒ')push('L','KaTeX_Caligraphic',false,shift);
     else if(isLatin(c)&&!word&&!upright)push(c,'KaTeX_Math',true,shift);
     else if(GREEK_IT.includes(c))push(c,'KaTeX_Math',true,shift);
-    else push(c==='·'?'⋅':c,'KaTeX_Main',false,shift);}
+    else if(c==='-'&&/[\d.]/.test(s[i+1]||''))push('−','KaTeX_Main',false,shift);   // a minus sign, not a hyphen
+    else push(KATEX_CHAR[c]||c,'KaTeX_Main',false,shift);}
   return runs;}
 function mtxt(parent,x,y,s,a={}){
   const {upright,...rest}=a,fs=(+a['font-size']||16)*MATH_SCALE,t=el('text',{x,y,...rest,'font-size':fs.toFixed(1)},parent);

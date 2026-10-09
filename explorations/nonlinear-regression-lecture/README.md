@@ -16,6 +16,9 @@ Open `nonlinear_regression_lecture.html` in a browser. No server or install is n
 
 - `nonlinear_regression_lecture.html`: the deck. CSS, JS, data, the tree, kNN and SVR code are all in
   this one file. This is the file to edit.
+  Formulas are written in LaTeX inside the slides, as `\( … \)` (inline) or `\[ … \]` (display).
+  KaTeX 0.16.28, embedded near the end of `<main>` with its fonts, typesets them when the page opens,
+  so the deck needs no network. Figure labels use the same fonts (`mtxt()` in the deck's code).
 - `check_numbers.py`: compares the deck's regression tree, kNN and SVR code with scikit-learn on every
   dataset in the slides, and checks the numbers quoted on the slides and in the notes.
 - `assets/meme_robot_uprising.png`: the opening comic (supplied by the user; top 3 pixel rows,

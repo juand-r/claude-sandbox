@@ -16,6 +16,11 @@ Open `svm_lecture.html` in a browser. No server or install is needed.
 ## Files
 
 - `svm_lecture.html`: the deck. CSS, JS, data and the SVM solver are all in this one file.
+  Formulas are written in LaTeX inside the slides, as `\( … \)` (inline) or `\[ … \]` (display).
+  KaTeX 0.16.28, embedded near the end of `<main>` with its fonts, typesets them when the page opens,
+  so the deck needs no network. Figure labels use the same fonts (`mtxt()` in the deck's code).
+  Keep that block inside `<main>`: the logistic regression and neural nets decks build their engine by
+  cutting this file at marker lines, and everything inside `<main>` stays out of those cuts.
 - `check_numbers.py`: compares the deck's solver with scikit-learn on every dataset in the
   slides and checks every number quoted on them.
 - `requirements.txt`: Python packages for `check_numbers.py` and `tint_tree_regions.py` (use a virtualenv).

@@ -103,3 +103,20 @@ These are said out loud in the lecture; the slides and notes avoid repeating the
   "Simulated data." and "Colour shows the prediction." were removed. The heat-map drawing code and
   its colour-bar CSS were deleted. The TWO dataset stays in the deck only because check_numbers.py
   still uses it to test the deck's kNN code in two dimensions.
+
+## Math typesetting (2026-10-09)
+
+At the user's request, the same math fonts as the logistic regression and neural nets decks (see
+`../neural-nets-lecture/NOTES.md` for why: the old math font lacked the subscripts and several
+symbols, so browsers mixed in fallback fonts).
+
+- This deck has no build step (the HTML file is the source), so KaTeX typesets the formulas when the
+  page opens, not at build time. The LaTeX stays readable in the HTML. KaTeX's library and fonts are
+  embedded (about 0.65 MB), so nothing loads from the network.
+- The formulas were converted from Unicode to LaTeX with a small script, and every conversion was
+  reviewed by eye. Slider labels, tile labels and table headers with math are converted too; the
+  numeric read-outs stay in the monospace font.
+- Figure labels and chart axes use the KaTeX fonts (`mtxt()`), with italic variables and real
+  subscripts.
+- Checked: no page errors; Chrome's font report shows only KaTeX fonts in formulas and figure labels;
+  formula wrapping passes at five screen sizes; check_numbers.py passes on fresh deck output.

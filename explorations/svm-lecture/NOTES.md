@@ -95,3 +95,23 @@
   only needs pairwise similarities (dot products), and a new point is scored by a
   similarity-weighted vote of the support vectors. check_numbers.py still verifies the α
   values internally.
+
+## Math typesetting (2026-10-09)
+
+At the user's request, the same math fonts as the logistic regression and neural nets decks (see
+`../neural-nets-lecture/NOTES.md` for why: the old math font lacked the subscripts and several
+symbols, so browsers mixed in fallback fonts).
+
+- This deck has no build step (the HTML file is the source), so KaTeX typesets the formulas when the
+  page opens, not at build time. The LaTeX stays readable in the HTML. KaTeX's library and fonts are
+  embedded (about 0.65 MB), so nothing loads from the network.
+- The formulas were converted from Unicode to LaTeX with a small script, and every conversion was
+  reviewed by eye. Slider labels, tile labels and table headers with math are converted too; the
+  numeric read-outs stay in the monospace font.
+- Figure labels and chart axes use the KaTeX fonts (`mtxt()`), with italic variables and real
+  subscripts.
+- Checked: no page errors; Chrome's font report shows only KaTeX fonts in formulas and figure labels;
+  formula wrapping passes at five screen sizes; check_numbers.py passes on fresh deck output.
+- On phones, two long objectives (soft margin, hinge form) have a second, narrower line-breaking.
+- The KaTeX block sits inside `<main>`, outside the marker cuts the logistic regression and neural nets
+  builds take from this file. After the change those three decks still rebuild byte for byte.
