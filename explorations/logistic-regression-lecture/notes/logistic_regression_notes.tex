@@ -228,11 +228,12 @@ Example 3 shows the trick at work: its score is negative, but so is its label, s
 positive and the prediction is correct. Two of the five examples are mistakes, an error rate of 40\%.
 We will reuse these five examples for the other two losses.
 
-\subsection{The margin $m = y f(x)$}
+\subsection{The signed score $m = y f(x)$}
 
-The product $y f(x)$ will appear in every loss from now on, so it gets a name here: the margin of an
-example, $m = y f(x)$. (The SVM's margin, the width of the band around the line, is a related but
-different quantity.) Its sign says whether the example is classified correctly. Its size says how
+The product $y f(x)$ will appear in every loss from now on, so it gets a name here: the signed score
+of an example, $m = y f(x)$. It is the score, with its sign flipped for negative examples. (Many books
+call $y f(x)$ the margin. We avoid that word here, because in the SVM lecture the margin is the width
+of the band around the line.) Its sign says whether the example is classified correctly. Its size says how
 far the score is from the boundary: a large positive $m$ is a confident correct prediction, a large
 negative $m$ is a confident mistake.
 
@@ -264,7 +265,7 @@ hinge loss, logistic regression uses the log loss.
 \section{The SVM as a loss: the hinge}\label{sec:hinge}
 %======================================================================
 
-The hinge loss of one example with margin $m = y f(x)$ is
+The hinge loss of one example with signed score $m = y f(x)$ is
 \[
   \max(0,\, 1 - m) =
   \begin{cases}
@@ -272,8 +273,8 @@ The hinge loss of one example with margin $m = y f(x)$ is
     1 - m & \text{if } m < 1 .
   \end{cases}
 \]
-Here $\max(a, b)$ is the larger of the two numbers. An example with margin at least 1 pays nothing.
-Below 1, the cost grows by 1 for each unit of margin: $m = 0.5$ costs 0.5, $m = 0$ costs 1,
+Here $\max(a, b)$ is the larger of the two numbers. An example with signed score at least 1 pays
+nothing. Below 1, the cost grows by 1 for each unit that $m$ drops: $m = 0.5$ costs 0.5, $m = 0$ costs 1,
 $m = -1$ costs 2, $m = -2$ costs 3. So mistakes cost more the further they are on the wrong side,
 and even correct examples pay a little if they are too close to the boundary ($0 < m < 1$).
 
@@ -303,7 +304,7 @@ Here $\log$ is the natural logarithm. Some values:
 \begin{center}
 \begin{tabular}{rccccccc}
   \toprule
-  margin $m$ & $-2$ & $-1$ & $0$ & $0.5$ & $1$ & $2$ & $4$ \\
+  signed score $m$ & $-2$ & $-1$ & $0$ & $0.5$ & $1$ & $2$ & $4$ \\
   \midrule
   0--1 loss      & 1     & 1     & 1     & 0     & 0     & 0     & 0 \\
   hinge loss     & 3     & 2     & 1     & 0.5   & 0     & 0     & 0 \\
@@ -327,7 +328,7 @@ Three things to notice, comparing with the hinge (Figure~\ref{fig:losses}):
 \centering
 \begin{tikzpicture}
 \begin{axis}[width=0.8\textwidth, height=0.42\textwidth, xmin=-3, xmax=3, ymin=0, ymax=4, xtick={-3,...,3},
-  xlabel={margin $m = y\,f(x)$}, ylabel={loss}, axis lines=left, grid=major, grid style={gray!20},
+  xlabel={signed score $m = y\,f(x)$}, ylabel={loss}, axis lines=left, grid=major, grid style={gray!20},
   legend style={draw=none, at={(0.98,0.95)}, anchor=north east}, legend cell align=left]
   \addplot[zeroone, very thick, const plot] coordinates {(-3,1) (0,1) (0,0) (3,0)};
   \addlegendentry{0--1 loss}
@@ -337,7 +338,7 @@ Three things to notice, comparing with the hinge (Figure~\ref{fig:losses}):
   \addlegendentry{log loss}
 \end{axis}
 \end{tikzpicture}
-\caption{The three losses as functions of the margin $m = y f(x)$. Positive $m$ means a correct
+\caption{The three losses as functions of the signed score $m = y f(x)$. Positive $m$ means a correct
 prediction. Unlike the 0--1 loss, the hinge and the log loss have a slope that points towards fewer
 mistakes, and both are convex (bowl-shaped), which makes them easy to minimize.}
 \label{fig:losses}
