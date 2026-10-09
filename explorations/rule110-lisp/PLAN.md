@@ -399,3 +399,39 @@ Validation:
       resumed from checkpoints), slow rope (12,336 s), jumps (2,566 s)
 - [x] compare all three on last: all 16 snapshots and the end equal
       (data/last_ropecheck.txt); tests; REPORT 7.7; notes; changelog
+
+# Phase 10d: a lighter read check (2026-10-09)
+
+User: make the read check lighter (or sampled) so glider runs get faster.
+
+Facts (cond with jumps, scratchpad light/count.py): 5.1 samples per read,
+2.08 ms per sample (particle census: list, flag, render clumps, census);
+sampling is 87% of the run, the engine 12%. 78% of the samples wait for
+the read to start (the jump lands 3 samples early).
+
+Design:
+- Light census (gascensus.LightCensus): a region's state from the
+  engine's particles without rendering: every E-family particle (the
+  table and the moving data move at Ebar speed) as (Ebar-frame left edge
+  at T = 0 mod 30, 'E'), every other particle or composite as '?'.
+  ReadWatch is unchanged: a read starts when the region's entries change
+  and settles when they stop changing with no '?' inside; Y/N by the
+  number of E entries (calibration on car: E particles = census Ebar
+  clusters exactly, 95-288 per Y region).
+- Spot check: the full particle census on every k-th read (default 64),
+  with its own ReadWatch; its outcome must equal the light outcome
+  (AssertionError otherwise). Jumps wait while a spot read is open.
+- GasReads(census="light", spot_every=k); lisp110 uses it by default,
+  --full-check for the old check.
+
+Validation:
+- car, cond, last: light outcomes = full outcomes (all reads), value.
+- Negative controls: a corrupted light census is caught by the spot
+  check; a failing construction still stops with '!'.
+- Speed: cond, last.
+
+- [x] Measure the current check (count.py) and calibrate (calib.py, car)
+- [x] LightCensus + spot check in GasReads; options in lisp110/ropecheck
+- [x] Tests: light = full (De Mol, car); stops on fail; spot check catches a corrupted light census
+- [ ] cond and last: outcomes equal the full check; speed
+- [ ] Report, notes, changelog

@@ -326,3 +326,60 @@ def test_census_missing_keys_beyond_table():
     pc._k_start = np.array([0, -1, 5], np.int64)
     kid = np.array([0, 1, 2, 3, 7])
     assert pc._missing(kid).tolist() == [False, True, False, True, True]
+
+
+def _demol_reads(v, n, census, **kw):
+    from cts import fill_empty_appendants
+    from experiments import DEMOL_APPS, DEMOL_TAPE
+    from gasrun import GasReads
+    gr = GasReads(DEMOL_TAPE, fill_empty_appendants(DEMOL_APPS), v, n, sample_bits=14,
+                  log=lambda *a: None, census=census, **kw)
+    return gr, gr.run_reads()
+
+
+def test_light_check_equals_full_check():
+    """census="light" (particles, no rendering) gives the full check's
+    read outcomes and Ebar counts, on De Mol's program and on a compiled
+    Lisp program with the rope; its spot checks ran and agreed."""
+    full, out_f = _demol_reads(12216, 120, "particles")
+    light, out_l = _demol_reads(12216, 120, "light", spot_every=8)
+    assert out_l == out_f and "." not in out_l and "!" not in out_l
+    assert light.watch.n_ebar == full.watch.n_ebar
+    assert light.spot_stats["checked"] >= 14 and light.spot_stats["count_differs"] == 0
+    from gasrun import GasReads
+    from lisp_bus import LispBus
+    lb = LispBus("(car (quote (a b)))")
+    comp = lb.compile_bus()
+    tape, apps = comp.pm.encode(comp.initial_tape(lb.values)), comp.pm.appendants()
+    got = {}
+    for census in ("particles", "light"):
+        gr = GasReads(tape, apps, 99303, 600, log=lambda *a: None, rope=True,
+                      census=census, spot_every=16)
+        got[census] = (gr.run_reads(), gr.watch.n_ebar)
+    assert got["light"] == got["particles"] and "Y" in got["light"][0]
+
+
+def test_light_check_stops_on_fail():
+    """The light check stops a failing construction at the same read as
+    the full check (De Mol below half of Cook's v, as test_stop_on_fail)."""
+    full, out_f = _demol_reads(4000, 556, "particles")
+    light, out_l = _demol_reads(4000, 556, "light")
+    assert full.failed is not None and light.failed == full.failed
+    assert out_l[:light.failed + 1] == out_f[:full.failed + 1]
+
+
+def test_spot_check_catches_a_wrong_light_census(monkeypatch):
+    """Negative control: a light census that loses every other Ebar makes
+    an accepted read come out wrong; the spot check must raise."""
+    import pytest
+    import gascensus
+    rel = gascensus.LightCensus.rel
+
+    def lossy(self, watch, pending, depth):
+        T, out = rel(self, watch, pending, depth)
+        es = [e for e in out if e[1] == "E"]
+        drop = set(es[1::2])
+        return T, [e for e in out if e not in drop]
+    monkeypatch.setattr(gascensus.LightCensus, "rel", lossy)
+    with pytest.raises(AssertionError, match="spot check"):
+        _demol_reads(12216, 40, "light", spot_every=1, stop_on_fail=False)

@@ -35,6 +35,9 @@ def main():
     ap.add_argument("--v", type=int, default=None, help="ossifier spacing")
     ap.add_argument("--no-rope", action="store_true",
                     help="simulate the debris left of the queue event by event")
+    ap.add_argument("--full-check", action="store_true",
+                    help="read every read with the full census (default: the light "
+                         "check, with the full census on every 64th read)")
     a = ap.parse_args()
 
     t0 = time.time()
@@ -54,7 +57,8 @@ def main():
           f"(~{est / 2.3e6 / 60:.0f} min at 2.3e6 events/s)")
     if a.gliders:
         from experiments import lisp_gliders
-        lisp_gliders(a.src, a.v, depth=a.depth, rope=not a.no_rope)
+        lisp_gliders(a.src, a.v, depth=a.depth, rope=not a.no_rope,
+                     check="full" if a.full_check else "light")
         return
     value = lb.decode(comp.run(lb.values))
     print(f"value (CTS): {value}")

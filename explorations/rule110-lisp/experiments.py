@@ -130,8 +130,9 @@ class ReadWatch:
     waiting, 'r' reading, then 'Y', 'N' or '!' once settled, '-' for an
     empty appendant (no region)."""
 
-    def __init__(self, regs, apps, lookahead=READS_LOOKAHEAD):
+    def __init__(self, regs, apps, lookahead=READS_LOOKAHEAD, verbose=True):
         self.regs, self.apps, self.lookahead = regs, apps, lookahead
+        self.verbose = verbose            # print each read as it settles
         self.before = [None] * len(regs)
         self.state = ["." if a is not None else "-" for a, _ in regs]
         self.read_at = [None] * len(regs)
@@ -190,8 +191,9 @@ class ReadWatch:
                     self.state[j] = "Y"
                 else:
                     self.state[j] = "!"
-                print(f"read {j}: at t~{self.read_at[j]}, {n_e} Ebar clusters "
-                      f"remain: {self.state[j]}", flush=True)
+                if self.verbose:
+                    print(f"read {j}: at t~{self.read_at[j]}, {n_e} Ebar clusters "
+                          f"remain: {self.state[j]}", flush=True)
                 # a settled region is never watched again: keep its count,
                 # drop its censuses (they made long runs' memory grow)
                 self.n_ebar[j] = n_e
@@ -484,7 +486,7 @@ def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8, engine="hash"):
         os.remove(ckpt)
 
 
-def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True):
+def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True, check="light"):
     """Evaluate a variable-free Lisp expression on Rule 110 gliders.
 
     lisp_bus compiles it to a bus program, hence to a CTS (tape +
@@ -497,7 +499,10 @@ def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True):
     `margin` (the gap rule of REPORT 3.8 fails above ~11.2 v).
     rope: sweep ossifiers through the debris left of the queue by memoized
     crossings (gasc rope; exact, checked against the plain engine), so the
-    cost stops growing with the square of the reads. No checkpoints then."""
+    cost stops growing with the square of the reads. No checkpoints then.
+    check: "light" (each read from the engine's particles; the full census
+    on every 64th read must agree, gasrun.GasReads) or "full" (the
+    particle census on every read)."""
     from gasrun import GasReads
     from lisp import run as lisp_run
     from lisp_bus import LispBus
@@ -524,7 +529,8 @@ def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True):
           flush=True)
     t0 = time.time()
     ckpt = None if rope else "lisp_gliders.ckpt"
-    er = GasReads(tape, apps, v, n_reads, checkpoint=ckpt, rope=rope)
+    census = {"light": "light", "full": "particles"}[check]
+    er = GasReads(tape, apps, v, n_reads, checkpoint=ckpt, rope=rope, census=census)
     got = er.run_reads()
     if er.failed is not None:
         print(f"FAILED: read {er.failed} settled as '!'; checkpoint {ckpt} kept")
@@ -532,6 +538,8 @@ def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True):
     same = sum(g == r for g, r in zip(got, ref))
     print(f"reads: {'MATCH' if got == ref else 'DIFFER'} ({same}/{n_reads}), "
           f"t = {er.run.t}, {time.time() - t0:.0f}s", flush=True)
+    if check == "light":
+        print(f"spot checks (full census = light check): {er.spot_stats}", flush=True)
     last = comp.passes - 1
     letters = []
     for k in comp.live[last]:

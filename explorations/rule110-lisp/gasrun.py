@@ -225,6 +225,8 @@ def _side(name, s, speed):
 
 FIRST_GAP = 0.9 * 30           # as epochrun: a safe underestimate (x v)
 JUMP_MARGIN = 3
+SPOT_EVERY = 64                # census="light": full census on every 64th read
+SPOT_SETTLE_SAMPLES = 64       # ... which must settle this soon after the light check
 
 
 class GasReads:
@@ -234,15 +236,18 @@ class GasReads:
 
     def __init__(self, tape, apps, v, n_reads, sample_bits=17, log=print, engine="c",
                  checkpoint=None, ckpt_every=500, census="particles", stop_on_fail=True,
-                 rope=False, rope_every=25, rope_jumps=True):
+                 rope=False, rope_every=25, rope_jumps=True, spot_every=SPOT_EVERY):
         """census: "cells" (experiments.sample: census() of the rendered
         span), "particles" (gascensus: the same clusters from the
-        particles, C engine only), or "both" (raise on any difference in
-        the watched regions). stop_on_fail: stop at the first read that
+        particles, C engine only), "both" (raise on any difference in
+        the watched regions), or "light" (gascensus.LightCensus: the
+        regions' particles, no rendering; every spot_every-th read is also
+        read by the particle census, and the two outcomes must agree; 0:
+        no spot check). stop_on_fail: stop at the first read that
         settles as '!' (the construction has failed; what follows is
         debris), keeping the last checkpoint."""
-        if census not in ("cells", "particles", "both"):
-            raise ValueError(f"census must be cells, particles or both, not {census!r}")
+        if census not in ("cells", "particles", "both", "light"):
+            raise ValueError(f"census must be cells, particles, both or light, not {census!r}")
         if census != "cells" and engine != "c":
             raise ValueError("the particle census needs the C engine")
         self.census, self.stop_on_fail = census, stop_on_fail
@@ -269,8 +274,18 @@ class GasReads:
                 self.run.rope_jumps(rope_jumps)
         self.t_wall = time.time()
         if census != "cells":
-            from gascensus import ParticleCensus
+            from gascensus import LightCensus, ParticleCensus
             self.pc = ParticleCensus(self.run)
+        self.spot_every = spot_every if census == "light" else 0
+        if census == "light":
+            self.lc = LightCensus(self.run)
+            # spot reads have their own watch; after a resume only reads
+            # whose regions it can see before they are read
+            self.spot = ReadWatch(self.regs[:n_reads], apps, lookahead=2, verbose=False)
+            first = self.watch.pending()
+            self._spot_from = first[0] + 2 if first and self.run.t > 0 else 0
+            self._spot_open, self._spot_done = set(), {}
+            self.spot_stats = {"checked": 0, "count_differs": 0}
 
     _WATCH = ("before", "state", "read_at", "last", "t_last", "n_ebar")
 
@@ -327,7 +342,10 @@ class GasReads:
             if self.rope and pending[0] % self.rope_every == 0 and pending[0] != getattr(self, "_roped", -1):
                 self._roped = pending[0]
                 g.rope_absorb()
-            t = max(g.t, self._due(pending[0]) or 0, (w.t_last or 0) // 30 * 30)
+            # no jump while a spot read is under way: its census must see the
+            # region settle (before it starts, a jump is safe, as for any read)
+            due = None if self.spot_every and self._spot_busy() else self._due(pending[0])
+            t = max(g.t, due or 0, (w.t_last or 0) // 30 * 30)
             while w.pending() == pending:
                 g.advance_to(t)
                 depth = MAX_DT + (-(t + MAX_DT)) % 30
@@ -339,12 +357,69 @@ class GasReads:
                 self.log(f"[gas] read {bad[0]} settled as '!': the construction failed; "
                          f"stopping at t={g.t} (last checkpoint kept)")
                 return w.outcome()
+        # the last spot reads: sample on until they settle
+        t = g.t
+        while self.spot_every and (self._spot_open or self._spot_done):
+            t += self.every
+            g.advance_to(t)
+            self._sample([], MAX_DT + (-(t + MAX_DT)) % 30)
         return w.outcome()
+
+    def _spot_busy(self):
+        """A spot read the census has seen start, or the light check settle."""
+        return any(self.spot.state[j] == "r" or self.watch.state[j] in "YN!"
+                   for j in self._spot_open)
+
+    def _spot_sample(self, pending, depth):
+        """The spot check of census="light": the particle census on the
+        spot reads among the pending ones (and on those still open), with
+        its own ReadWatch; once both have settled a read, their outcomes
+        must agree."""
+        w, sw = self.watch, self.spot
+        cand = sorted({j for j in pending if j % self.spot_every == 0 and j >= self._spot_from
+                       and sw.state[j] in ".r"} | self._spot_open)
+        if cand:
+            T, rel = self.pc.rel(sw, cand, depth)
+            sw.observe(T, cand, rel)
+            for j in cand:
+                if sw.state[j] in ".r":
+                    self._spot_open.add(j)
+                else:
+                    self._spot_open.discard(j)
+                    self._spot_done[j] = 0
+        for j in list(self._spot_open):           # light settled, census not yet
+            if w.state[j] in "YN!":
+                self._spot_done[j] = self._spot_done.get(j, 0)
+        for j in list(self._spot_done):
+            if w.state[j] not in "YN!" or sw.state[j] not in "YN!":
+                self._spot_done[j] += 1
+                if self._spot_done[j] > SPOT_SETTLE_SAMPLES:
+                    raise AssertionError(
+                        f"spot check, read {j}: light check {w.state[j]!r}, census "
+                        f"{sw.state[j]!r} after {SPOT_SETTLE_SAMPLES} more samples")
+                continue
+            if sw.state[j] != w.state[j]:
+                raise AssertionError(
+                    f"spot check, read {j}: light check {w.state[j]} ({w.n_ebar[j]} E), "
+                    f"census {sw.state[j]} ({sw.n_ebar[j]} Ebar clusters)")
+            self.spot_stats["checked"] += 1
+            if sw.n_ebar[j] != w.n_ebar[j]:
+                self.spot_stats["count_differs"] += 1
+                self.log(f"[gas] spot check, read {j}: {w.n_ebar[j]} E particles, "
+                         f"{sw.n_ebar[j]} Ebar clusters (same outcome {w.state[j]})")
+            del self._spot_done[j]
 
     def _sample(self, pending, depth):
         w, g = self.watch, self.run
         if self.census == "cells":
             sample(g, w, pending, depth, advance=False)
+            return
+        if self.census == "light":
+            if pending:
+                T, rel = self.lc.rel(w, pending, depth)
+                w.observe(T, pending, rel)
+            if self.spot_every:
+                self._spot_sample(pending, depth)
             return
         T, rel = self.pc.rel(w, pending, depth)
         if self.census == "both":

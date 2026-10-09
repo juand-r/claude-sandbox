@@ -40,7 +40,7 @@ def _items(g):
     return np.stack([kind[keep], ids[keep], ph[keep], left[keep]]).astype(np.int64)
 
 
-def run(mode, outdir, src, every, depth, v, ckpt_every=CKPT_EVERY):
+def run(mode, outdir, src, every, depth, v, ckpt_every=CKPT_EVERY, census="particles"):
     os.makedirs(outdir, exist_ok=True)
     lb = LispBus(src, depth)
     comp = lb.compile_bus()
@@ -70,7 +70,7 @@ def run(mode, outdir, src, every, depth, v, ckpt_every=CKPT_EVERY):
     t0 = time.time()
     er = GasReads(tape, apps, v, n_reads, log=log, checkpoint=ckpt,
                   ckpt_every=ckpt_every, rope=(mode != "plain"),
-                  rope_jumps=(mode == "rope"))
+                  rope_jumps=(mode == "rope"), census=census)
     out = er.run_reads()
     g = er.run
     np.savez(os.path.join(outdir, "final.npz"), t=g.t, events=g.n_events,
@@ -136,13 +136,15 @@ def main():
     r.add_argument("--depth", type=int, default=4)
     r.add_argument("--v", type=int, default=None)
     r.add_argument("--ckpt-every", type=int, default=CKPT_EVERY)
+    r.add_argument("--census", default="particles", choices=("particles", "light"),
+                   help="the read check (gasrun.GasReads census)")
     c = sub.add_parser("compare")
     c.add_argument("a")
     c.add_argument("b")
     c.add_argument("--partial", action="store_true")
     a = ap.parse_args()
     if a.cmd == "run":
-        run(a.mode, a.outdir, a.src, a.every, a.depth, a.v, a.ckpt_every)
+        run(a.mode, a.outdir, a.src, a.every, a.depth, a.v, a.ckpt_every, a.census)
     else:
         sys.exit(0 if compare(a.a, a.b, a.partial) else 1)
 

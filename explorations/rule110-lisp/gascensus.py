@@ -253,3 +253,62 @@ class ParticleCensus:
         o = np.lexsort((k, x))
         sh = g.ebar_frame(T)
         return T, list(zip((x[o] - sh).tolist(), [KINDS[i] for i in k[o].tolist()]))
+
+
+class LightCensus:
+    """A lighter read check: the watched regions' contents from the
+    engine's particles, without rendering cells.
+
+    The table's components and the moving data made from them are
+    E-family particles (Ebar speed), static in the Ebar frame until a read
+    touches them. Each is listed as (its Ebar-frame left edge at T, "E"),
+    with T = t + depth = 0 mod 30 as for the census, so an untouched
+    particle gives the same entry at every sample. Every other item
+    (another velocity, or a composite: a sweep or crossing under way) is
+    listed as (its Ebar-frame left edge at t, "?"), which ReadWatch reads
+    as "not settled". ReadWatch then works unchanged: a read starts when a
+    region's entries change, settles when they stop changing with no "?"
+    inside, and is Y or N by the number of "E" entries (one per census
+    Ebar cluster: measured equal on every Y read of car, 95-288 each).
+
+    It is not the census: it trusts the engine's particle bookkeeping
+    instead of looking at cells. gasrun.GasReads(census="light") checks
+    it against the census on every spot_every-th read."""
+
+    REACH = 64         # cells listed beyond the span (items straddling it)
+
+    def __init__(self, g):
+        self.g = g
+        self._efam = np.zeros(0, bool)
+
+    def _e_family(self):
+        ob, ooff, ow, op, od = self.g._orbit_flat()
+        if len(self._efam) != len(op):
+            self._efam = 15 * od == -4 * op
+        return self._efam
+
+    def rel(self, watch, pending, depth):
+        """(T, sorted [(Ebar-frame x, "E" or "?")]) for the pending span."""
+        g = self.g
+        t, T = g.t, g.t + depth
+        if T % 30:
+            raise ValueError(f"light census at t={T}: not 0 mod 30")
+        lo_g, hi_g = watch.span(pending)
+        sh_t, sh_T = g.ebar_frame(t), g.ebar_frame(T)
+        lo, hi = lo_g + sh_t - self.REACH - depth, hi_g + sh_t + self.REACH + depth
+        g.ensure(lo, hi)
+        kind, ids, ph, left, _, _, _ = g.list_items(lo, hi)
+        keep = kind < 3                                    # no sentinels
+        kind, ids, ph, left = kind[keep], ids[keep].astype(np.int64), ph[keep].astype(np.int64), left[keep]
+        efam = self._e_family()
+        ob, ooff, ow, op, od = g._orbit_flat()
+        part = kind == 1
+        oid = np.where(part, ids, 0)
+        e = part & efam[oid]
+        oe, pe = oid[e], ph[e]
+        q, sT = np.divmod(pe + depth, op[oe])
+        xe = left[e] - ooff[ob[oe] + pe] + q * od[oe] + ooff[ob[oe] + sT] - sh_T
+        xo = left[~e] - sh_t
+        out = list(zip(xe.tolist(), ["E"] * len(xe))) + list(zip(xo.tolist(), ["?"] * len(xo)))
+        out.sort()
+        return T, out
