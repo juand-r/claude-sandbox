@@ -29,9 +29,11 @@ Version 0.2, unreleased (v0.1.0 was tagged `rule110-lisp-v0.1.0`; v0.1.1 was not
 A second, much cheaper route skips the Turing machine: a compiler writes
 the Lisp expression straight into a cyclic tag system whose table is the
 program ("bus machine", INTERPRETER.md, REPORT.md section 7).
-`(car (quote (a b)))` runs on Rule 110 gliders in about two minutes,
-every read checked, its value read off the glider field; the old tower
-needs ~1e19 generations for it.
+`(car (quote (a b)))` runs on Rule 110 gliders in about ten seconds and
+the recursive `last` of (a b c) in 13 minutes (157,824 reads), every
+read checked (from the particles, with the cell census on every 64th
+read; REPORT 7.8), the value read off the glider field; the old tower
+needs ~1e19 generations for `car`.
 
     python lisp110.py "(car (quote (a b)))"             # compile + run the CTS
     python lisp110.py --gliders "(car (quote (a b)))"   # run on Rule 110 gliders

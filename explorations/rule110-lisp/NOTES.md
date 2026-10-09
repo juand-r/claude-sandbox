@@ -1129,3 +1129,32 @@ Checks so far:
   (data/last_ropecheck.txt).
 - Lesson: on this host, a long run needs checkpoints and an active
   session; a background waiter alone did not keep the container.
+
+## Phase 10d: a lighter read check (2026-10-09)
+
+Measured (cond with jumps, scratchpad light/count.py): 5.1 samples per
+read, 2.08 ms per sample, sampling 87% of the run; 78% of the samples
+wait for the read to start (the jump lands JUMP_MARGIN = 3 samples
+early).
+
+Calibration (light/calib.py, car, both checks fed the same samples):
+light outcomes = census outcomes on all 2,448 reads; E-family particles
+in a settled Y region = census Ebar clusters exactly (95-288); read start
+seen at a different sample on 2 reads.
+
+Built: gascensus.LightCensus; GasReads(census="light", spot_every=64)
+with a second ReadWatch for the spot reads (quiet); ReadWatch(verbose).
+
+Mistake: the first version suppressed read-time jumps whenever a spot
+read was open, and a spot read opens when its region is first seen,
+one read early: spot reads then sampled every 2^17 steps for a whole
+read period (18% of cond's time). Fixed: suppress only once the census
+has seen the read start or the light check has settled it.
+
+Results: car 30.0 -> 10.9 s, cond 130.8 -> 45.0 s, last 2,566 -> 772 s
+(CPU shared with a second run); outcomes and Ebar counts equal to the
+full check on all; 2,466 spot checks on last, all agree; value c.
+Profile of cond with the light check: table materialization (ensure ->
+split) ~40%, engine ~23%, spot checks ~6%, light check ~4%, setup ~7%.
+So the read check's 82% earlier included ~24 s of table cutting that
+the run needs anyway; the speed-up is ~3x, not ~5x.

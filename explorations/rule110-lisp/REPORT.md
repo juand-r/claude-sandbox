@@ -99,9 +99,10 @@ The main claims, in decreasing order of the strength of their evidence:
    cond/eq? expression in 37 min (34,818 reads). The old tower needs
    ~1e19 generations for the first. lambda and define work with a
    compile-time recursion bound; the recursive `last` of (a b c) ran on
-   gliders in 43 min (157,824 reads, value `c`), after debris crossings
+   gliders in 13 min (157,824 reads, value `c`), after debris crossings
    were taken out of the event list, memoized, and finally jumped as
-   exact translates (sections 7.6, 7.7). The result equals the plain
+   exact translates (sections 7.6, 7.7), and with a lighter read check
+   spot-checked by the census (7.8). The result equals the plain
    engine's (1.996e11 events, 148x more) at every snapshot.
 11. **A programmable Rule 110 computer that is not a cyclic tag system
    exists; a universal one was not found.** A one-counter machine driven
@@ -1236,7 +1237,7 @@ at 7.5 v (failures were measured above ~11.05 v). Command:
 |---|---|---|---|---|---|---|---|---|
 | `(car (quote (a b)))` | before lifetimes | 4,512 | 99,303 | 4,512 / 4,512 | `a` | 1.35e10 | 1.6e8 | 115 s |
 | `(cond ((eq? (quote a) (quote b)) (quote x)) (t (quote y)))` | before lifetimes | 34,818 | 117,027 | 34,818 / 34,818 | `y` | 1.23e11 | 9.6e9 | 37 min |
-| `(define (last l) (cond ((atom? (cdr l)) (car l)) (t (last (cdr l))))) (last (quote (a b c)))`, depth 3 | lifetimes, debris rope with jumps (7.6, 7.7) | 157,824 | 108,214 | 157,824 / 157,824 | `c` | 5.14e11 | 1.35e9 | 43 min (2.0 h without jumps) |
+| `(define (last l) (cond ((atom? (cdr l)) (car l)) (t (last (cdr l))))) (last (quote (a b c)))`, depth 3 | lifetimes, debris rope with jumps (7.6, 7.7) | 157,824 | 108,214 | 157,824 / 157,824 | `c` | 5.14e11 | 1.35e9 | 13 min with the light check (7.8); 43 min with the full check; 2.0 h without jumps |
 
 *Interpretation.* A Lisp expression typed by the user is translated into
 a Rule 110 initial condition, Rule 110 evolves, and the value is read
@@ -1420,6 +1421,73 @@ three programs at their gap-rule spacings. A program whose debris moves
 non-rigidly would keep exactness (the prefix stops growing at the first
 unit that fails the check) but lose the speed.
 
+### 7.8 A lighter read check
+
+*The problem left by 7.7.* With the rope linear, a glider run is mostly
+its read check. Every read is watched by sampling the census of its
+region every 2^17 generations around the predicted read time: on `cond`
+5.1 samples per read at 2.1 ms each, 87% of the run. Each sample lists
+the particles near the region, renders every clump that is not a known
+rigid one, and runs the census on the cells.
+
+*Observation that makes a lighter check possible.* A region's table
+components, and the moving data an accepted read turns them into, are
+particles of the E family (Ebar speed), static in the Ebar frame until a
+read touches them. On every accepted read of `car` the number of
+E-family particles in the settled region equals the census's number of
+Ebar clusters (95 to 288 per region).
+
+*Mechanism (gascensus.LightCensus).* The light check lists each
+E-family particle of the watched span as (its Ebar-frame left edge at
+the census time, "E"), from its orbit in closed form, and every other
+item (another velocity, or a composite: a sweep or crossing under way)
+as "?". The read watcher is unchanged: a read starts when its region's
+entries change, settles when they stop changing with no "?" inside, and
+is Y or N by the number of "E" entries with the census's thresholds.
+Nothing is rendered.
+
+*What it gives up, and the spot check.* The census looks at cells; the
+light check trusts the engine's particle bookkeeping. The engine itself
+is exact (sections 5, 7.6, 7.7), but the light check's reading of
+particles as Ebars is a separate claim. So every 64th read is also read
+by the full census, with its own watcher, and the two outcomes must
+agree (AssertionError otherwise; a census that has not settled 64
+samples after the light check is an error too). Read-time jumps wait
+while a spot read is under way, so its census sees the region settle.
+
+*Evidence.*
+
+| program | reads | full check | light check | outcomes | Ebar counts | spot checks |
+|---|---|---|---|---|---|---|
+| De Mol (test) | 120 | — | — | equal | equal | 15, agree |
+| `car` | 2,448 | 30.0 s | 10.9 s | equal | equal | 39, agree |
+| `cond` | 10,836 | 130.8 s | 45.0 s | equal | equal | 170, agree |
+| `last` | 157,824 | 2,566 s | 772 s* | equal | equal | 2,466, agree |
+
+\* two runs shared the machine; the full-check time is from a run alone.
+
+The light check also stops a failing construction (De Mol below half of
+Cook's spacing) at the same read as the full check. As a negative
+control, a light census that loses every other Ebar is caught by the
+spot check. The read times a run records are sample times; they differ
+between the two checks (they see some reads start at different
+samples), so the two runs sample, absorb debris and stop at slightly
+different times. Outcomes and counts do not depend on that.
+
+*Interpretation.* The read check now costs about 10% of a run (light
+check about 4%, spot checks about 6%, on `cond`). The speed-up is
+about 3x rather than the 5x that the earlier 82% suggested: about a
+fifth of that 82% (24 of 134 s on `cond`) was not the census but the
+lazy table being cut into particles (`ensure`, called from the census),
+which the run needs anyway. It is now the largest single cost (about
+40% on `cond`), ahead of the event engine (about 23%).
+
+*Scope.* The equality of E-family particles and Ebar clusters was
+measured on these programs; on another construction it may fail, in
+which case the light check classifies wrongly and the spot check
+raises. `lisp110.py --gliders` uses the light check by default;
+`--full-check` restores the census on every read.
+
 ## 8. What comes next
 
 Done in v0.1.1:
@@ -1445,9 +1513,10 @@ gliders, value read out.
 Open, roughly in order of value:
 
 - Done: the debris sweep (7.6) and its linear form (7.7), checked against
-  the plain engine on `last`. Open: the read check is now 82% of a glider
-  run's time; a lighter check (or a sampled one) could speed runs up
-  by up to about five times, at the cost of checking less.
+  the plain engine on `last`; a lighter read check spot-checked by the
+  census (7.8). Open: cutting the lazy table into particles is now the
+  largest cost (about 40% on `cond`); the table repeats, so the cut
+  could be memoized per block.
 - Unbounded recursion: a periodic interpreter loop in the bus machine
   (memory bounded by a register file), instead of compile-time inlining.
 

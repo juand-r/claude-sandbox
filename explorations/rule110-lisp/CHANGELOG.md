@@ -34,6 +34,11 @@ Lisp on Rule 110 without the tower (REPORT 7; INTERPRETER.md; phase 10)
   at all 16 snapshots and at the end.
 - Fixed: the particle census did not render a particle type first seen
   after a checkpoint resume.
+- Light read check (gascensus.LightCensus, GasReads census="light"):
+  reads from the engine's particles without rendering; the census on
+  every 64th read must agree. Equal to the full check on De Mol, car,
+  cond and last (outcomes and Ebar counts). last: 13 min (was 43).
+  Default in lisp110.py; --full-check for the census on every read.
 
 An event engine (REPORT 5; PLAN.md phase 9, item 1)
 - gas.py (reference, Python), gasc.c/gasc.py (C event loop),

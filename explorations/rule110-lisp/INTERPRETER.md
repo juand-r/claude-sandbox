@@ -150,7 +150,8 @@ machine steps on a 7.9M-symbol tag alphabet, ~1e19 generations or more.
   the event list, and stretch jumps (REPORT 7.7) that cross the checked
   debris in one exact translated step. `last` of (a b c) on gliders:
   157,824 reads, value c, 1.35e9 events, 43 min; equal to the plain
-  engine (1.996e11 events) at every snapshot.
+  engine (1.996e11 events) at every snapshot. With the light read check
+  (REPORT 7.8; the census on every 64th read): 13 min.
 
 ## 6. Plan
 

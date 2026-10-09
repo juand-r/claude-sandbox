@@ -433,5 +433,6 @@ Validation:
 - [x] Measure the current check (count.py) and calibrate (calib.py, car)
 - [x] LightCensus + spot check in GasReads; options in lisp110/ropecheck
 - [x] Tests: light = full (De Mol, car); stops on fail; spot check catches a corrupted light census
-- [ ] cond and last: outcomes equal the full check; speed
-- [ ] Report, notes, changelog
+- [x] cond and last: outcomes and Ebar counts equal the full check; cond
+      131 -> 45 s, last 2,566 -> 772 s (data/last_light_check.txt)
+- [x] Report (7.8), notes, changelog

@@ -1,0 +1,17 @@
+# (last (quote (a b c))), depth 3, v = 108,214: rope with jumps; full check (census=particles) vs light check (census=light, spot check every 64th read)
+reads: 157824 157824
+outcomes equal: True
+Ebar counts equal on every read: True
+final t (sampling schedules differ): 514036317366 514036402600
+events to final t: 1345300147 1344969387
+# light run tail (ropecheck.py run rope --census light)
+rope: 157824 reads, v = 108214
+rope: {'units': 157126, 'ossifiers': 1, 'wake': 514039397316, 'crossings': 160518, 'memo': 2, 'misses': 2, 'prefix': 157126, 'jumps': 157526, 'jumped': 12354655271}
+rope done: 772s, t = 514036402600, 1344969387 events, outcome 6240 Y 151584 N 0 ! 0 unread
+# lisp110.py --gliders --depth 3 (light check, default)
+reads: MATCH (157824/157824), t = 514036402600, 772s
+spot checks (full census = light check): {'checked': 2466, 'count_differs': 0}
+value decoded from the glider reads: c
+lisp.py:                            c
+MATCH
+rope: {'units': 157126, 'ossifiers': 1, 'wake': 514039397316, 'crossings': 160518, 'memo': 2, 'misses': 2, 'prefix': 157126, 'jumps': 157526, 'jumped': 12354655271}, 1344969387 events
