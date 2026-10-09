@@ -17,14 +17,14 @@
     <h2 style="margin:.2em 0 .3em">What are we minimizing?</h2>
     <p class="lede">Each method so far chose its model by making some quantity as small as possible.</p>
     <div class="take three" style="margin-top:1em">
-      <div class="card" data-step="1"><h3>Linear regression</h3><p>Squared errors:<span class="math dm">ℒ = Σ (yᵢ − ŷᵢ)²</span></p></div>
-      <div class="card" data-step="2"><h3>PCA</h3><p>Reconstruction error:<span class="math dm">ℒ = Σ ‖xᵢ − x̂ᵢ‖²</span>x̂ᵢ is the projection of xᵢ onto the components.</p></div>
-      <div class="card" data-step="3"><h3>SVM</h3><p>Wide margin, little slack:<span class="math dm">ℒ = ½ ‖w‖² + C Σ ξᵢ</span></p></div>
+      <div class="card" data-step="1"><h3>Linear regression</h3><p>Squared errors:<span class="math dm">\[\mathcal{L} = \sum_i (y_i - \hat y_i)^2\]</span></p></div>
+      <div class="card" data-step="2"><h3>PCA</h3><p>Reconstruction error:<span class="math dm">\[\mathcal{L} = \sum_i \|x_i - \hat x_i\|^2\]</span><span class="math">\(\hat x_i\)</span> is the projection of <span class="math">\(x_i\)</span> onto the components.</p></div>
+      <div class="card" data-step="3"><h3>SVM</h3><p>Wide margin, little slack:<span class="math dm">\[\mathcal{L} = \tfrac12 \|w\|^2 + C \sum_i \xi_i\]</span></p></div>
     </div>
     <p class="takeline" data-step="4">The quantity is the <b>loss</b>. Training means finding the model with the smallest loss on the training data.</p>
     <div class="take mlbox">
-      <div class="card" data-step="5"><h3>Model</h3><p><span class="math dm">ŷᵢ = f(xᵢ | θ)</span>A function of xᵢ with parameters θ.</p></div>
-      <div class="card" data-step="6"><h3>Loss</h3><p><span class="math dm">min<sub>θ</sub> ℒ(θ; D)</span>The parameters with the smallest loss on the training data <span class="math">D = {(xᵢ, yᵢ)}</span>.</p></div>
+      <div class="card" data-step="5"><h3>Model</h3><p><span class="math dm">\[\hat y_i = f(x_i \mid \theta)\]</span>A function of <span class="math">\(x_i\)</span> with parameters <span class="math">\(\theta\)</span>.</p></div>
+      <div class="card" data-step="6"><h3>Loss</h3><p><span class="math dm">\[\min_\theta \mathcal{L}(\theta; D)\]</span>The parameters with the smallest loss on the training data <span class="math">\(D = \{(x_i, y_i)\}\)</span>.</p></div>
     </div>
   </div>
   <div class="notes">
@@ -46,9 +46,9 @@
     <h2>Minimize the training error?</h2>
     <ul>
       <li>Binary case: each prediction is right or wrong.</li>
-      <li data-step="1">For a threshold <span class="math">t</span>, we want<span class="math dm">f(xᵢ) &gt; t for yᵢ = +1</span><span class="math dm">f(xᵢ) &lt; t for yᵢ = −1</span><span class="fine">f is a score or a probability.</span></li>
+      <li data-step="1">For a threshold <span class="math">\(t\)</span>, we want<span class="math dm">\[f(x_i) \gt t \quad \text{for } y_i = +1\]</span><span class="math dm">\[f(x_i) \lt t \quad \text{for } y_i = -1\]</span><span class="fine"><span class="math">\(f\)</span> is a score or a probability.</span></li>
       <li data-step="2">Count the points that break their condition: the training error.</li>
-      <li data-step="3">The <b>0–1 loss</b> is:<span class="math dm">ℒ = Σ 𝟙[yᵢ f(xᵢ) ≤ 0]</span><span class="fine">𝟙[·] is 1 if true, 0 if false. Here f is a score with t = 0.</span></li>
+      <li data-step="3">The <b>0–1 loss</b> is:<span class="math dm">\[\mathcal{L} = \sum_i \mathbf{1}\bigl[y_i f(x_i) \le 0\bigr]\]</span><span class="fine"><span class="math">\(\mathbf{1}[\cdot]\)</span> is 1 if true, 0 if false. Here <span class="math">\(f\)</span> is a score with <span class="math">\(t = 0\)</span>.</span></li>
     </ul>
   </div>
   <div class="fig">
@@ -75,9 +75,9 @@
     <div class="eyebrow">Recap</div>
     <h2>The SVM as a loss</h2>
     <ul>
-      <li>The model is the score <span class="math">f(x) = w · x + b</span>, with <span class="math">θ = (w, b)</span>. Its sign is the prediction; <span class="math">y f(x) &gt; 0</span> means correct.</li>
-      <li data-step="1">Each point pays the <b>hinge loss</b>:<span class="math dm">max(0, 1 − y f(x))</span></li>
-      <li data-step="2">The soft-margin SVM minimizes<span class="eq">ℒ = ½ ‖w‖²<br><span class="ind">+ C Σ max(0, 1 − yᵢ f(xᵢ))</span></span></li>
+      <li>The model is the score <span class="math">\(f(x) = w \cdot x + b\)</span>, with <span class="math">\(\theta = (w, b)\)</span>. Its sign is the prediction; <span class="math">\(y\, f(x) \gt 0\)</span> means correct.</li>
+      <li data-step="1">Each point pays the <b>hinge loss</b>:<span class="math dm">\[\max\bigl(0, 1 - y\, f(x)\bigr)\]</span></li>
+      <li data-step="2">The soft-margin SVM minimizes<span class="eq"><span class="eq-wide">\[\begin{aligned} \mathcal{L} = {} &amp; \tfrac12 \|w\|^2 \\ &amp; + C \sum_i \max\bigl(0, 1 - y_i f(x_i)\bigr) \end{aligned}\]</span><span class="eq-narrow">\[\begin{aligned} \mathcal{L} = {} &amp; \tfrac12 \|w\|^2 \\ &amp; + C \sum_i \max\bigl(0, \\ &amp; \quad 1 - y_i f(x_i)\bigr) \end{aligned}\]</span></span></li>
       <li data-step="3">Points beyond the margin pay nothing.</li>
     </ul>
   </div>
@@ -99,9 +99,9 @@
     <div class="eyebrow">Same score, another loss</div>
     <h2>Log loss</h2>
     <ul>
-      <li>Replace the hinge with the <b>log loss</b>:<span class="math dm">log(1 + e<sup>−y f(x)</sup>)</span></li>
+      <li>Replace the hinge with the <b>log loss</b>:<span class="math dm">\[\log\bigl(1 + e^{-y f(x)}\bigr)\]</span></li>
       <li data-step="1">It is never exactly zero: every point counts a little. Far on the wrong side it grows linearly, like the hinge.</li>
-      <li data-step="2">Logistic regression minimizes<span class="eq">ℒ = ½ ‖w‖²<br><span class="ind">+ C Σ log(1 + e<sup>−yᵢ f(xᵢ)</sup>)</span></span></li>
+      <li data-step="2">Logistic regression minimizes<span class="eq"><span class="eq-wide">\[\begin{aligned} \mathcal{L} = {} &amp; \tfrac12 \|w\|^2 \\ &amp; + C \sum_i \log\bigl(1 + e^{-y_i f(x_i)}\bigr) \end{aligned}\]</span><span class="eq-narrow">\[\begin{aligned} \mathcal{L} = {} &amp; \tfrac12 \|w\|^2 \\ &amp; + C \sum_i \log\bigl(1 \\ &amp; \quad + e^{-y_i f(x_i)}\bigr) \end{aligned}\]</span></span></li>
     </ul>
   </div>
   <div class="fig">
@@ -121,10 +121,10 @@
     <div class="eyebrow">From score to probability</div>
     <h2>The sigmoid</h2>
     <ul>
-      <li>The sigmoid squashes any score into (0, 1):<span class="math dm">σ(z) = 1 / (1 + e<sup>−z</sup>)</span></li>
-      <li data-step="1">Logistic regression reads the score as a probability:<span class="math dm">p(y = +1 | x) = σ(f(x))</span></li>
-      <li data-step="2">The probability of the true class is <span class="math">σ(y f(x))</span>.</li>
-      <li data-step="3">So the log loss is <span class="math">−log p(true class)</span>. Confident and wrong costs a lot.</li>
+      <li>The sigmoid squashes any score into (0, 1):<span class="math dm">\[\sigma(z) = \frac{1}{1 + e^{-z}}\]</span></li>
+      <li data-step="1">Logistic regression reads the score as a probability:<span class="math dm">\[p(y = +1 \mid x) = \sigma\bigl(f(x)\bigr)\]</span></li>
+      <li data-step="2">The probability of the true class is <span class="math">\(\sigma\bigl(y\, f(x)\bigr)\)</span>.</li>
+      <li data-step="3">So the log loss is <span class="math">\(-\log p(\text{true class})\)</span>. Confident and wrong costs a lot.</li>
     </ul>
   </div>
   <div class="fig">
@@ -145,19 +145,19 @@
     <h2 style="margin:.2em 0 .6em">Sigmoid and log loss</h2>
     <div class="duo alg">
       <div>
-        <p class="fine">f stands for the score f(x) = w · x + b.</p>
-        <h3>The true class gets σ(y f)</h3>
-        <span class="eq">p(y = −1) = 1 − σ(f)<br><span class="ind">= e<sup>−f</sup> / (1 + e<sup>−f</sup>)</span><br><span class="ind">= 1 / (e<sup>f</sup> + 1)</span><br><span class="ind">= σ(−f)</span></span>
+        <p class="fine"><span class="math">\(f\)</span> stands for the score <span class="math">\(f(x) = w \cdot x + b\)</span>.</p>
+        <h3>The true class gets <span class="math">\(\sigma(y f)\)</span></h3>
+        <span class="eq">\[\begin{aligned} p(y = -1) &amp;= 1 - \sigma(f) \\ &amp;= \frac{e^{-f}}{1 + e^{-f}} \\ &amp;= \frac{1}{e^{f} + 1} \\ &amp;= \sigma(-f) \end{aligned}\]</span>
         <div data-step="1">
-          <h3>Its −log is the log loss</h3>
-          <span class="eq">−log p(true class)<br><span class="ind">= −log σ(y f)</span><br><span class="ind">= −log [1 / (1 + e<sup>−y f</sup>)]</span><br><span class="ind">= log(1 + e<sup>−y f</sup>)</span></span>
-          <p class="fine">using −log(1/a) = log a</p>
+          <h3>Its <span class="math">\(-\log\)</span> is the log loss</h3>
+          <span class="eq">\[\begin{aligned} -\log p(\text{true class}) &amp;= -\log \sigma(y f) \\ &amp;= -\log \frac{1}{1 + e^{-y f}} \\ &amp;= \log\bigl(1 + e^{-y f}\bigr) \end{aligned}\]</span>
+          <p class="fine">using <span class="math">\(-\log(1/a) = \log a\)</span></p>
         </div>
       </div>
       <div data-step="2">
         <h3>The inverse of the sigmoid</h3>
-        <span class="eq">p = 1 / (1 + e<sup>−z</sup>)<br>1 + e<sup>−z</sup> = 1/p<br>e<sup>−z</sup> = (1 − p) / p<br>z = log(p / (1 − p))</span>
-        <p class="takeline alg-take" data-step="3">The score <span class="math">w · x + b</span> is the log-odds of the positive class.</p>
+        <span class="eq">\[\begin{aligned} p &amp;= \frac{1}{1 + e^{-z}} \\ 1 + e^{-z} &amp;= \frac{1}{p} \\ e^{-z} &amp;= \frac{1 - p}{p} \\ z &amp;= \log \frac{p}{1 - p} \end{aligned}\]</span>
+        <p class="takeline alg-take" data-step="3">The score <span class="math">\(w \cdot x + b\)</span> is the log-odds of the positive class.</p>
       </div>
     </div>
   </div>
@@ -175,8 +175,8 @@
     <div class="eyebrow">One feature</div>
     <h2>A fitted model</h2>
     <ul>
-      <li data-step="1">The fitted curve gives a probability for every <span class="math">x</span>.</li>
-      <li data-step="2">Predict positive when <span class="math">p &gt; 0.5</span>, that is, when <span class="math">f(x) = w · x + b &gt; 0</span>.</li>
+      <li data-step="1">The fitted curve gives a probability for every <span class="math">\(x\)</span>.</li>
+      <li data-step="2">Predict positive when <span class="math">\(p \gt 0.5\)</span>, that is, when <span class="math">\(f(x) = w \cdot x + b \gt 0\)</span>.</li>
       <li data-step="3">Any other threshold works too. Each one is a point on the ROC curve.</li>
     </ul>
   </div>
@@ -204,7 +204,7 @@
     <div class="eyebrow">Two features</div>
     <h2>Still a hyperplane</h2>
     <ul>
-      <li data-step="1">The boundary <span class="math">p = 0.5</span> is the hyperplane <span class="math">w · x + b = 0</span>. Probability changes smoothly across it.</li>
+      <li data-step="1">The boundary <span class="math">\(p = 0.5\)</span> is the hyperplane <span class="math">\(w \cdot x + b = 0\)</span>. Probability changes smoothly across it.</li>
       <li data-step="2">The SVM, on the same data, draws a different line: only its support vectors count.</li>
       <li data-step="3">Both give a score you can threshold. Logistic regression's score is a probability.</li>
     </ul>
@@ -214,7 +214,7 @@
       <div id="fig-2d"></div>
       <div id="fig-3d" class="off"></div>
     </div>
-    <p class="legend"><span class="k-model" data-step="1">━ logistic regression, p = 0.5</span><span class="k-ink" data-step="2" id="lg-svm">┅ SVM, f = 0</span></p>
+    <p class="legend"><span class="k-model" data-step="1">━ logistic regression, <span class="math">\(p = 0.5\)</span></span><span class="k-ink" data-step="2" id="lg-svm">┅ SVM, <span class="math">\(f = 0\)</span></span></p>
   </div>
   <div class="notes">
     <p><b class="cue">0</b>The soft-margin data from the SVM lecture: two points on the wrong side.</p>
@@ -231,7 +231,7 @@
     <div class="eyebrow">Next week</div>
     <h2>One neuron</h2>
     <ul>
-      <li>Weighted sum of the inputs, plus <span class="math">b</span>, through the sigmoid. That is logistic regression, and it is one artificial neuron.</li>
+      <li>Weighted sum of the inputs, plus <span class="math">\(b\)</span>, through the sigmoid. That is logistic regression, and it is one artificial neuron.</li>
       <li data-step="1">Feed neurons into other neurons: a neural network.</li>
       <li data-step="2">Next week: networks, and how to find the weights.</li>
     </ul>
@@ -252,9 +252,9 @@
     <div class="eyebrow">Summary</div>
     <h2 style="margin:.2em 0 .8em">Takeaways</h2>
     <div class="take three">
-      <div class="card"><h3>Same score</h3><p>Logistic regression and the linear SVM both use <span class="math">f(x) = w · x + b</span> and draw a hyperplane.</p></div>
-      <div class="card"><h3>Different loss</h3><p>Hinge loss for the SVM, log loss for logistic regression. Each adds <span class="math">½ ‖w‖²</span>.</p></div>
-      <div class="card"><h3>A probability</h3><p>The score becomes a probability, <span class="math">p = σ(f(x))</span>. Threshold it at 0.5, or anywhere else.</p></div>
+      <div class="card"><h3>Same score</h3><p>Logistic regression and the linear SVM both use <span class="math">\(f(x) = w \cdot x + b\)</span> and draw a hyperplane.</p></div>
+      <div class="card"><h3>Different loss</h3><p>Hinge loss for the SVM, log loss for logistic regression. Each adds <span class="math">\(\tfrac12 \|w\|^2\)</span>.</p></div>
+      <div class="card"><h3>A probability</h3><p>The score becomes a probability, <span class="math">\(p = \sigma\bigl(f(x)\bigr)\)</span>. Threshold it at 0.5, or anywhere else.</p></div>
     </div>
   </div>
   <div class="notes">

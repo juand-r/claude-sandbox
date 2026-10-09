@@ -24,3 +24,9 @@
 .swap>.off,.legend .off{opacity:0;pointer-events:none}
 #fig-3d svg{max-height:68vh;width:auto;max-width:100%;margin:0 auto;display:block;cursor:grab;touch-action:none;user-select:none}
 #fig-3d svg:active{cursor:grabbing}
+/* KaTeX formulas (typeset at build time) */
+.math .katex,.eq .katex{font-size:1.12em}
+.eq{font-size:1em}
+@media (max-width:620px){.eq .katex{font-size:.75em}.eq{font-size:.85em;padding:.4em .45em}}
+.eq-narrow{display:none}
+@media (max-width:620px){.eq-wide{display:none}.eq-narrow{display:inline}.math .katex{font-size:.92em}}

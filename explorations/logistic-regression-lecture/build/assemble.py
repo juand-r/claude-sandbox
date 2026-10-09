@@ -4,8 +4,10 @@ chart helper) plus this folder's slides.html, code.js and extra.css.
     python3 build/assemble.py logistic_regression_lecture.html
 
 It cuts the SVM deck at marker lines, so it reproduces the deck only against the SVM deck as of the
-commit that added this folder. After that the HTML file is the source; edit it directly.
+commit that added this folder. Formulas in slides.html are LaTeX, \( … \) inline or \[ … \] display;
+build/tex.js typesets them with KaTeX (run `npm install` in build/ once first).
 """
+import subprocess
 import sys
 from pathlib import Path
 
@@ -41,7 +43,10 @@ engine = sub(engine, "const api={svg,sx,sy,layer,clear,W,H,", "const api={svg,sx
 engine = sub(engine, "!e.closest('.tree-svg')", "!e.closest('.tree-svg,.noanim')")
 rest = L(find('/* ---------- hover helper cards ---------- */'), find('/* ================= SVM lecture ================= */') - 1)
 fitboot = L(find('/* ---------- fit every slide to the screen'), len(svm))
-out = '\n'.join([head, (here / 'extra.css').read_text(), body_open, '', (here / 'slides.html').read_text(), footer,
+# formulas written as \( … \) or \[ … \] are typeset by KaTeX now (build/tex.js), with its fonts embedded
+tex = lambda *a: subprocess.run(['node', str(here / 'tex.js'), *a], check=True, capture_output=True, text=True).stdout
+slides, katex_css = tex(str(here / 'slides.html')), tex('--css')
+out = '\n'.join([head, katex_css, (here / 'extra.css').read_text(), body_open, '', slides, footer,
                  engine, 'window.__HINTS = {};', '', rest, (here / 'code.js').read_text(), fitboot])
 Path(sys.argv[1]).write_text(out)
 print('wrote', sys.argv[1], len(out))

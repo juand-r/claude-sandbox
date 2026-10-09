@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "description": "Build-time dependency: KaTeX renders the slides' formulas to HTML when assemble.py runs.",
+  "dependencies": { "katex": "0.16.28" }
+}

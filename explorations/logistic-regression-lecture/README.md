@@ -17,12 +17,15 @@ Open `logistic_regression_lecture.html` in a browser. No server or install is ne
 
 ## Files
 
-- `logistic_regression_lecture.html`: the deck (CSS, JS, data and the fitting code in one file). This
-  is the file to edit.
+- `logistic_regression_lecture.html`: the deck (CSS, JS, data and the fitting code in one file). It is
+  built from `build/`; edit the files there and rebuild (see below).
 - `check_numbers.py`: compares the deck's logistic regression (Newton's method) and SVM fits with
   scikit-learn, and checks the numbers on the slides and in the notes.
-- `build/`: the one-time scaffold that produced the deck (`assemble.py` + `slides.html`, `code.js`,
-  `extra.css`); see the note at the top of `assemble.py`.
+- `build/`: the sources of the deck (`assemble.py` + `slides.html`, `code.js`, `extra.css`). Rebuild
+  with `python3 build/assemble.py logistic_regression_lecture.html`. Formulas in `slides.html` are
+  LaTeX, `\( … \)` inline or `\[ … \]` display; `build/tex.js` typesets them with KaTeX (version
+  pinned in `build/package.json`) and embeds its fonts, so the deck needs no network. Run
+  `npm install` in `build/` once first. Figure labels use the same fonts (`mtxt()` in `code.js`).
 - `requirements.txt`: Python packages (use a virtualenv).
 - `NOTES.md`: plan, slide outline and decisions.
 - `tests/`: Playwright scripts, run from `tests/` with `NODE_PATH=$(npm root -g) node <script>.js`:

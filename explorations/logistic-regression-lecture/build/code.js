@@ -1,12 +1,47 @@
 /* ================= Logistic regression lecture ================= */
 const $=id=>document.getElementById(id);
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const MONO='JetBrains Mono,monospace';
 function txt(parent,x,y,s,a={}){const t=el('text',{x,y,...a},parent);t.textContent=s;return t;}
+/* ---------- math labels in SVG, in the KaTeX fonts (embedded by build/tex.js) ---------- */
+// Write labels as plain text: single letters become italic variables, words and digits stay upright,
+// ℒ is the script L (upright:true keeps every letter upright, for units), and subscripts are written with Unicode (x₁, wⱼᵢ) or as _N (x_N).
+// Each run of characters gets its own <tspan>; subscripts are smaller and lowered.
+const MATH_SCALE=1.15;   // KaTeX's glyphs are smaller than the mono font's at the same size
+const SUB={'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','ᵢ':'i','ⱼ':'j','ₖ':'k'},SUP={'ᵀ':'T'};
+const isLatin=c=>/[A-Za-z]/.test(c||''),GREEK_IT='αβγδεηθλμπσφω';
+function mathRuns(s,upright=false){
+  const runs=[],push=(t,fam,it,shift)=>{const r=runs[runs.length-1];
+    if(r&&r.fam===fam&&r.it===it&&r.shift===shift)r.t+=t;else runs.push({t,fam,it,shift});};
+  for(let i=0;i<s.length;i++){let c=s[i],shift=0;
+    if(c==='_'&&i+1<s.length){c=s[++i];shift=1;}
+    else if(SUB[c]){c=SUB[c];shift=1;}
+    else if(SUP[c]){c=SUP[c];shift=-1;}
+    const word=shift===0&&isLatin(c)&&(isLatin(s[i-1])||isLatin(s[i+1]));
+    if(c==='ℒ')push('L','KaTeX_Caligraphic',false,shift);
+    else if(isLatin(c)&&!word&&!upright)push(c,'KaTeX_Math',true,shift);
+    else if(GREEK_IT.includes(c))push(c,'KaTeX_Math',true,shift);
+    else push(c==='·'?'⋅':c,'KaTeX_Main',false,shift);}
+  return runs;}
+function mtxt(parent,x,y,s,a={}){
+  const {upright,...rest}=a,fs=(+a['font-size']||16)*MATH_SCALE,t=el('text',{x,y,...rest,'font-size':fs.toFixed(1)},parent);
+  let cur=0;   // the current baseline offset in px
+  for(const r of mathRuns(String(s),a.upright)){const off=r.shift===1?.28*fs:r.shift===-1?-.4*fs:0;
+    const sp=el('tspan',{'font-family':r.fam,'font-style':r.it?'italic':'normal',dy:(off-cur).toFixed(1)},t);
+    if(r.shift)sp.setAttribute('font-size',(.72*fs).toFixed(1));
+    sp.textContent=r.t;cur=off;}
+  t.setAttribute('aria-label',s);return t;}
 const dot=(a,b)=>{let s=0;for(let k=0;k<a.length;k++)s+=a[k]*b[k];return s;};
 const stepG=(parent,k)=>el('g',{'data-step':k},parent);
 const sigmoid=z=>1/(1+Math.exp(-z));
-const label=(L,x,y,s,a={})=>txt(L,x,y,s,{'font-size':16,'font-weight':700,'font-family':MONO,'paint-order':'stroke',stroke:'var(--surface)','stroke-width':5,...a});
+const label=(L,x,y,s,a={})=>mtxt(L,x,y,s,{'font-size':16,'font-weight':700,'paint-order':'stroke',stroke:'var(--surface)','stroke-width':5,...a});
+
+// the engine's chart() draws tick numbers and axis names in its own fonts; redraw them as math labels
+const engineChart=chart;
+chart=function(host,o){const api=engineChart(host,o);
+  for(const t of [...api.svg.querySelectorAll('text')]){const a={};
+    for(const at of t.attributes)if(at.name!=='font-family')a[at.name]=at.value;
+    t.replaceWith(mtxt(t.parentNode,a.x,a.y,t.textContent,a));}
+  return api;};
 
 /* ---------- datasets ----------
    HOURS: hours of study → pass (+1) or fail (−1), 10 each, overlapping between 3.3 and 7.4 hours (simulated).
@@ -136,7 +171,7 @@ function lossPlot(host,label){
     el('rect',{x:api.sx(xs),y:api.sy(1.06),width:api.sx(10)-api.sx(xs),height:api.sy(-.06)-api.sy(1.06),fill:'var(--pos)',opacity:.08},gR);
     el('line',{x1:api.sx(0),x2:api.sx(10),y1:api.sy(t),y2:api.sy(t),stroke:'var(--hi)','stroke-width':2,'stroke-dasharray':'6 5'},gT);
     el('line',{x1:api.sx(xs),x2:api.sx(xs),y1:api.sy(-.06),y2:api.sy(1.06),stroke:'var(--hi)','stroke-width':2,'stroke-dasharray':'6 5'},gT);
-    label(gT,api.sx(xs)+8,api.sy(.5)+(t>.5?40:-14),`${xs.toFixed(1)} h`,{fill:'var(--hi)'});
+    label(gT,api.sx(xs)+8,api.sy(.5)+(t>.5?40:-14),`${xs.toFixed(1)} h`,{fill:'var(--hi)',upright:true});
     const tp=x.filter((v,i)=>y[i]>0&&m.p([v])>t).length,fp=x.filter((v,i)=>y[i]<0&&m.p([v])>t).length;   // positive when p > t, as on slide 3
     $('v-ft-t').textContent=t.toFixed(2);$('v-ft-tpr').textContent=`${tp}/${nP}`;$('v-ft-fpr').textContent=`${fp}/${nN}`;});
   inp.addEventListener('input',()=>set(+inp.value));
@@ -176,10 +211,10 @@ function lossPlot(host,label){
     for(const g of [gAx,gLow,gSurf,gTop])g.textContent='';
     // floor grid, box edges and axes
     for(let v=0;v<=10;v+=2.5){seg(gAx,[v,0,0],[v,10,0],{stroke:'var(--grid)','stroke-width':1.2});seg(gAx,[0,v,0],[10,v,0],{stroke:'var(--grid)','stroke-width':1.2});}
-    const ax=(p,q,s,dx=6,dy=4)=>{seg(gAx,p,q,{stroke:'var(--line)','stroke-width':1.5});const B=proj(q);txt(gAx,B[0]+dx,B[1]+dy,s,{fill:'var(--muted)','font-size':16,'font-weight':700,'font-family':MONO});};
+    const ax=(p,q,s,dx=6,dy=4)=>{seg(gAx,p,q,{stroke:'var(--line)','stroke-width':1.5});const B=proj(q);mtxt(gAx,B[0]+dx,B[1]+dy,s,{fill:'var(--muted)','font-size':16,'font-weight':700});};
     ax([0,0,0],[10.8,0,0],'x₁');ax([0,0,0],[0,10.8,0],'x₂');ax([0,0,0],[0,0,1.12],'p',-4,-8);
     for(const v of [0,.5,1]){const A=proj([0,0,v]);seg(gAx,[0,0,v],[-.25,0,v],{stroke:'var(--line)','stroke-width':1.5});
-      txt(gAx,A[0]-12,A[1]+5,String(v),{fill:'var(--muted)','font-size':14,'text-anchor':'end','font-family':MONO});}
+      mtxt(gAx,A[0]-12,A[1]+5,String(v),{fill:'var(--muted)','font-size':14,'text-anchor':'end'});}
     seg(gAx,[0,0,1],[10,0,1],{stroke:'var(--line)','stroke-width':1,'stroke-dasharray':'3 5',opacity:.7});
     seg(gAx,[0,0,1],[0,10,1],{stroke:'var(--line)','stroke-width':1,'stroke-dasharray':'3 5',opacity:.7});
     // purple points at p = 0 go under the surface, green points at p = 1 above it
@@ -210,7 +245,7 @@ function lossPlot(host,label){
 /* ---------- one neuron, then a small network ---------- */
 {
   const W=640,H=470,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'inputs x1, x2, x3 with weights w1, w2, w3 feed a sum plus b, then a sigmoid, giving p; below, a small network with a hidden layer'},$('fig-neuron'));
-  const circ=(L,x,y,r,s,a={})=>{el('circle',{cx:x,cy:y,r,fill:'var(--surface)',stroke:'var(--ink)','stroke-width':1.8,...a},L);txt(L,x,y+6,s,{'text-anchor':'middle','font-size':17,'font-family':MONO,fill:'var(--ink)'});};
+  const circ=(L,x,y,r,s,a={})=>{el('circle',{cx:x,cy:y,r,fill:'var(--surface)',stroke:'var(--ink)','stroke-width':1.8,...a},L);mtxt(L,x,y+6,s,{'text-anchor':'middle','font-size':17,fill:'var(--ink)'});};
   const arrow=(L,x1,y1,x2,y2,a={})=>{const t=Math.atan2(y2-y1,x2-x1),hd=9;
     el('line',{x1,y1,x2:x2-Math.cos(t)*hd*.6,y2:y2-Math.sin(t)*hd*.6,stroke:'var(--muted)','stroke-width':1.8,...a},L);
     el('polygon',{points:[[x2,y2],[x2-hd*Math.cos(t-.4),y2-hd*Math.sin(t-.4)],[x2-hd*Math.cos(t+.4),y2-hd*Math.sin(t+.4)]].map(v=>v.join(',')).join(' '),fill:a.stroke||'var(--muted)'},L);};
@@ -221,16 +256,16 @@ function lossPlot(host,label){
   circ(L0,S[0],S[1],34,'Σ + b');
   arrow(L0,S[0]+34,S[1],SG[0]-30,SG[1]);
   el('rect',{x:SG[0]-30,y:SG[1]-30,width:60,height:60,rx:10,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},L0);
-  txt(L0,SG[0],SG[1]+7,'σ',{'text-anchor':'middle','font-size':24,'font-family':MONO,fill:'var(--model)'});
+  mtxt(L0,SG[0],SG[1]+7,'σ',{'text-anchor':'middle','font-size':24,fill:'var(--model)'});
   arrow(L0,SG[0]+30,SG[1],560,SG[1]);
-  txt(L0,575,SG[1]+6,'p',{'font-size':20,'font-family':MONO,fill:'var(--ink)','font-weight':700});
+  mtxt(L0,575,SG[1]+6,'p',{'font-size':20,fill:'var(--ink)','font-weight':700});
   // a small network: 3 inputs → 4 hidden neurons → 1 output
   const L1=stepG(svg,1),xi=120,xh=320,xo=500,yi=[290,345,400],yh=[270,323,377,430].map(v=>v-15),yo=345;
   for(const a of yi)for(const b of yh)el('line',{x1:xi,y1:a,x2:xh,y2:b,stroke:'var(--line)','stroke-width':1.4},L1);
   for(const b of yh)el('line',{x1:xh,y1:b,x2:xo,y2:yo,stroke:'var(--line)','stroke-width':1.4},L1);
   yi.forEach((y,k)=>circ(L1,xi,y,16,'',{}));yh.forEach(y=>circ(L1,xh,y,16,'',{fill:'var(--model-soft)',stroke:'var(--model)'}));
   circ(L1,xo,yo,16,'',{fill:'var(--model-soft)',stroke:'var(--model)'});
-  txt(L1,xi,yi[2]+38,'inputs',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
-  txt(L1,xh,yh[3]+38,'hidden neurons',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
-  txt(L1,xo,yo+40,'output',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
+  mtxt(L1,xi,yi[2]+38,'inputs',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(L1,xh,yh[3]+38,'hidden neurons',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(L1,xo,yo+40,'output',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
 }

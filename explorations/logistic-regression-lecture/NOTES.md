@@ -75,3 +75,20 @@ networks lecture the following week:
   purple at 0, the p = 0.5 line in teal; the SVM line and its legend entry are hidden in this view.
   Drag turns it (code adapted from the SVM deck's 3D lift slide). The starting view looks roughly
   along the boundary, so the sigmoid profile shows.
+
+## Math typesetting (2026-10-09)
+
+At the user's request, the same fix as in `../neural-nets-lecture/` (see its NOTES.md for the cause:
+the old math font lacked the subscripts and several symbols, so browsers mixed in fallback fonts).
+
+- Formulas are LaTeX in `build/slides.html`, typeset by KaTeX 0.16.28 at build time (`build/tex.js`,
+  copied from the neural nets deck so this folder stays self-contained). KaTeX's fonts are embedded.
+- Figure labels and chart axes use the KaTeX fonts too (`mtxt()` in `build/code.js`). The "5.4 h"
+  threshold label keeps "h" upright, since it is a unit.
+- The 0–1 loss indicator 𝟙[·] is now a bold 1, 𝟏[·]: KaTeX's fonts have no blackboard-bold 1.
+- Phones: the two long loss formulas (hinge and log loss slides) have a second, narrower
+  line-breaking shown only below 620 px, because typeset math cannot reflow.
+- The build files are now the source of the deck. Before this change the build reproduced the
+  published deck byte for byte, so nothing was lost.
+- Checked: Chrome's font report shows only KaTeX fonts in formulas and labels; check_numbers.py
+  passes on fresh deck output; formula wrapping passes at five screen sizes.
