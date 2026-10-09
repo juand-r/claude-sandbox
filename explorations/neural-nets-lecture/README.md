@@ -35,7 +35,8 @@ cheap enough to run in the browser so the start point can be dragged.
   Formulas in `slides_<k>.html` are written in LaTeX, as `\( … \)` (inline) or `\[ … \]` (display).
   `build/tex.js` typesets them with KaTeX (version pinned in `build/package.json`) when the deck is
   assembled, and embeds KaTeX's fonts, so the deck needs no network. Run `npm install` in `build/`
-  once before assembling. So far only class 1 uses this; class 2 still has plain-text formulas.
+  once before assembling. Labels inside the figures use the same fonts: `mtxt()` in `common.js`
+  draws a label such as `x₁`, `wⱼᵢ` or `x_N` with italic variables and real subscripts.
 - `assets/`: the images (Pandemonium drawing, Rosenblatt, Minsky, Papert, the Perceptrons cover).
 - `tests/`: Playwright scripts, run from `tests/` with `NODE_PATH=$(npm root -g) node <script>.js`:
   `steps.js <1|2> [slide-id ...]` (every step of every slide), `interact1.js` and `interact2.js`

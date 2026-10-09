@@ -15,10 +15,10 @@
   <div class="prose">
     <div class="eyebrow">Last time</div>
     <h2>Forward propagation</h2>
-    <span class="eq">h = σ(W₁ x + b₁)<br>z = W₂ h + b₂<br>p = softmax(z)</span>
+    <span class="eq">\[\begin{aligned} h &amp;= \sigma(W_1 x + b_1) \\ z &amp;= W_2 h + b_2 \\ p &amp;= \operatorname{softmax}(z) \end{aligned}\]</span>
     <ul>
-      <li data-step="1">Train by gradient descent:<span class="math dm">θ ← θ − η ∇ℒ(θ)</span></li>
-      <li data-step="2">We need <span class="math">∂ℒ/∂w</span> for every weight <span class="math">w</span>. Where does it come from?</li>
+      <li data-step="1">Train by gradient descent:<span class="math dm">\[\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}(\theta)\]</span></li>
+      <li data-step="2">We need <span class="math">\(\partial\mathcal{L}/\partial w\)</span> for every weight <span class="math">\(w\)</span>. Where does it come from?</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-recap"></div></div>
@@ -35,10 +35,10 @@
     <div class="eyebrow">Backpropagation</div>
     <h2>The chain rule</h2>
     <ul>
-      <li>A weight changes the loss through a chain of functions. Multiply the derivatives along the chain:<span class="math dm">∂ℒ/∂v = ∂ℒ/∂p · ∂p/∂z · ∂z/∂v</span></li>
-      <li data-step="1">One output neuron, label <span class="math">y = 1</span> or <span class="math">0</span>:<span class="math dm">z = v₁h₁ + v₂h₂ + c,  p = σ(z)</span><span class="math dm">ℒ = −y log p − (1 − y) log(1 − p)</span></li>
-      <li data-step="2">The two factors:<span class="math dm">∂ℒ/∂p = −y/p + (1 − y)/(1 − p)</span><span class="math dm">∂p/∂z = σ′(z) = p(1 − p)</span></li>
-      <li data-step="3">Multiply them; it simplifies:<span class="math dm">∂ℒ/∂z = p − y</span></li>
+      <li>A weight changes the loss through a chain of functions. Multiply the derivatives along the chain:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial v} = \frac{\partial \mathcal{L}}{\partial p} \cdot \frac{\partial p}{\partial z} \cdot \frac{\partial z}{\partial v}\]</span></li>
+      <li data-step="1">One output neuron, label <span class="math">\(y = 1\)</span> or <span class="math">\(0\)</span>:<span class="math dm">\[z = v_1 h_1 + v_2 h_2 + c, \quad p = \sigma(z)\]</span><span class="math dm">\[\mathcal{L} = -y \log p - (1 - y) \log(1 - p)\]</span></li>
+      <li data-step="2">The two factors:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial p} = -\frac{y}{p} + \frac{1 - y}{1 - p}\]</span><span class="math dm">\[\frac{\partial p}{\partial z} = \sigma'(z) = p(1 - p)\]</span></li>
+      <li data-step="3">Multiply them; it simplifies:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z} = p - y\]</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-chain"></div></div>
@@ -57,7 +57,7 @@
     <h2>Output-layer weights</h2>
     <ul>
       <li>A small network: two inputs, two hidden units, one output.</li>
-      <li data-step="1">The weight <span class="math">vⱼ</span> reaches the loss through <span class="math">z</span>, and <span class="math">∂z/∂vⱼ = hⱼ</span>:<span class="math dm">∂ℒ/∂vⱼ = (p − y) · hⱼ</span></li>
+      <li data-step="1">The weight <span class="math">\(v_j\)</span> reaches the loss through <span class="math">\(z\)</span>, and <span class="math">\(\partial z/\partial v_j = h_j\)</span>:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial v_j} = (p - y)\, h_j\]</span></li>
       <li data-step="2">The error at the output times the input to the weight.</li>
     </ul>
   </div>
@@ -75,9 +75,9 @@
     <div class="eyebrow">Backpropagation</div>
     <h2>One layer deeper</h2>
     <ul>
-      <li>The weight <span class="math">wⱼᵢ</span> connects input <span class="math">xᵢ</span> to hidden unit <span class="math">hⱼ = σ(aⱼ)</span>, with <span class="math">aⱼ = wⱼ₁x₁ + wⱼ₂x₂ + bⱼ</span>.</li>
-      <li data-step="1">Follow the chain from the loss back to <span class="math">wⱼᵢ</span>:<span class="math dm">∂ℒ/∂wⱼᵢ = (p − y) · vⱼ · hⱼ(1 − hⱼ) · xᵢ</span></li>
-      <li data-step="2">The first factor, <span class="math">p − y</span>, was already computed for the output layer. Reuse it.</li>
+      <li>The weight <span class="math">\(w_{ji}\)</span> connects input <span class="math">\(x_i\)</span> to hidden unit <span class="math">\(h_j = \sigma(a_j)\)</span>, with <span class="math">\(a_j = w_{j1} x_1 + w_{j2} x_2 + b_j\)</span>.</li>
+      <li data-step="1">Follow the chain from the loss back to <span class="math">\(w_{ji}\)</span>:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w_{ji}} = (p - y) \cdot v_j \cdot h_j(1 - h_j) \cdot x_i\]</span></li>
+      <li data-step="2">The first factor, <span class="math">\(p - y\)</span>, was already computed for the output layer. Reuse it.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-deep"></div></div>
@@ -94,10 +94,10 @@
     <div class="eyebrow">Backpropagation</div>
     <h2>Several paths: add them</h2>
     <ul>
-      <li>With two outputs, <span class="math">hⱼ</span> feeds both. A hidden weight reaches the loss along two paths.</li>
-      <li data-step="1">Add the paths:<span class="math dm">∂ℒ/∂wⱼᵢ = Σₖ (pₖ − yₖ) vₖⱼ</span><span class="math dm">         · hⱼ(1 − hⱼ) · xᵢ</span></li>
-      <li data-step="2">In matrix form, with <span class="math">⊙</span> the entrywise product:<span class="math dm">δ₂ = p − y,  δ₁ = (W₂ᵀ δ₂) ⊙ h ⊙ (1 − h)</span></li>
-      <li data-step="3">Then:<span class="math dm">∂ℒ/∂W₂ = δ₂ hᵀ,  ∂ℒ/∂W₁ = δ₁ xᵀ</span>The biases get <span class="math">δ₂</span> and <span class="math">δ₁</span>.</li>
+      <li>With two outputs, <span class="math">\(h_j\)</span> feeds both. A hidden weight reaches the loss along two paths.</li>
+      <li data-step="1">Add the paths:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w_{ji}} = \sum_k (p_k - y_k)\, v_{kj} \cdot h_j(1 - h_j) \cdot x_i\]</span></li>
+      <li data-step="2">In matrix form, with <span class="math">\(\odot\)</span> the entrywise product:<span class="math dm">\[\delta_2 = p - y, \quad \delta_1 = (W_2^\top \delta_2) \odot h \odot (1 - h)\]</span></li>
+      <li data-step="3">Then:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial W_2} = \delta_2 h^\top, \quad \frac{\partial \mathcal{L}}{\partial W_1} = \delta_1 x^\top\]</span>The biases get <span class="math">\(\delta_2\)</span> and <span class="math">\(\delta_1\)</span>.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-paths"></div></div>
@@ -115,11 +115,11 @@
     <div class="eyebrow">Backpropagation</div>
     <h2>The recipe</h2>
     <ol>
-      <li><b>Forward pass</b>: compute and store <span class="math">h</span> and <span class="math">p</span>.</li>
-      <li data-step="1"><b>Error at the output</b>: <span class="math">δ₂ = p − y</span>.</li>
-      <li data-step="2"><b>Backward pass</b>: <span class="math">δ₁ = (W₂ᵀ δ₂) ⊙ h ⊙ (1 − h)</span>.</li>
-      <li data-step="3"><b>Gradients</b>: <span class="math">δ₂ hᵀ</span>, <span class="math">δ₁ xᵀ</span>, and the δs for the biases.</li>
-      <li data-step="4"><b>Update</b> every weight, <span class="math">θ ← θ − η ∇ℒ</span>, using the old weights throughout.</li>
+      <li><b>Forward pass</b>: compute and store <span class="math">\(h\)</span> and <span class="math">\(p\)</span>.</li>
+      <li data-step="1"><b>Error at the output</b>: <span class="math">\(\delta_2 = p - y\)</span>.</li>
+      <li data-step="2"><b>Backward pass</b>: <span class="math">\(\delta_1 = (W_2^\top \delta_2) \odot h \odot (1 - h)\)</span>.</li>
+      <li data-step="3"><b>Gradients</b>: <span class="math">\(\delta_2 h^\top\)</span>, <span class="math">\(\delta_1 x^\top\)</span>, and the <span class="math">\(\delta\)</span>s for the biases.</li>
+      <li data-step="4"><b>Update</b> every weight, <span class="math">\(\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}\)</span>, using the old weights throughout.</li>
     </ol>
   </div>
   <div class="fig"><div id="fig-recipe"></div></div>
@@ -138,9 +138,9 @@
     <div class="eyebrow">Training in practice</div>
     <h2>The learning rate</h2>
     <ul>
-      <li>The update:<span class="math dm">θ ← θ − η ∇ℒ(θ)</span>Too small: slow. Too large: it overshoots. (Last class.)</li>
+      <li>The update:<span class="math dm">\[\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}(\theta)\]</span>Too small: slow. Too large: it overshoots. (Last class.)</li>
       <li data-step="1">Large steps help early; small steps help near the end.</li>
-      <li data-step="2">A <b>learning-rate schedule</b> lowers <span class="math">η</span> as training goes on.</li>
+      <li data-step="2">A <b>learning-rate schedule</b> lowers <span class="math">\(\eta\)</span> as training goes on.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-lr"></div></div>
@@ -158,7 +158,7 @@
     <h2>Momentum</h2>
     <ul>
       <li>A long, narrow valley: plain gradient descent zigzags across it.</li>
-      <li data-step="1">Keep a running sum of past gradients:<span class="math dm">v ← β v + ∇ℒ,  θ ← θ − η v</span></li>
+      <li data-step="1">Keep a running sum of past gradients:<span class="math dm">\[v \leftarrow \beta v + \nabla\mathcal{L}, \quad \theta \leftarrow \theta - \eta\, v\]</span></li>
       <li data-step="2">The zigzags cancel; the steady downhill part adds up.</li>
     </ul>
   </div>
@@ -188,7 +188,7 @@
     <h2>Adam</h2>
     <ul>
       <li>Momentum, plus a separate step size for each parameter.</li>
-      <li data-step="1">Divide each parameter's step by a running average of its squared gradients:<span class="math dm">m ← β₁m + (1 − β₁)∇ℒ</span><span class="math dm">s ← β₂s + (1 − β₂)(∇ℒ)²</span><span class="math dm">θ ← θ − η m / √s</span></li>
+      <li data-step="1">Divide each parameter's step by a running average of its squared gradients:<span class="math dm">\[m \leftarrow \beta_1 m + (1 - \beta_1)\, \nabla\mathcal{L}\]</span><span class="math dm">\[s \leftarrow \beta_2 s + (1 - \beta_2)\, (\nabla\mathcal{L})^2\]</span><span class="math dm">\[\theta \leftarrow \theta - \eta\, \frac{m}{\sqrt{s}}\]</span></li>
       <li data-step="2">The usual default in practice.</li>
     </ul>
   </div>
@@ -318,7 +318,7 @@
       </ul></div>
       <div class="card" data-step="1"><h3 class="k-err">Weaknesses</h3><ul>
         <li>Non-convex training: the answer depends on the start, with no guarantee of the best weights.</li>
-        <li>Many choices to tune: layers, units, η, optimizer, epochs.</li>
+        <li>Many choices to tune: layers, units, <span class="math">\(\eta\)</span>, optimizer, epochs.</li>
         <li>They need a lot of data, overfit small data sets, and are hard to interpret.</li>
       </ul></div>
     </div>
@@ -349,7 +349,7 @@
     <div class="eyebrow">Summary</div>
     <h2 style="margin:.2em 0 .8em">Takeaways</h2>
     <div class="take four">
-      <div class="card"><h3>Backpropagation</h3><p>The chain rule, from the output back. <span class="math">δ₂ = p − y</span>; each weight's gradient is δ at its end times the value at its start.</p></div>
+      <div class="card"><h3>Backpropagation</h3><p>The chain rule, from the output back. <span class="math">\(\delta_2 = p - y\)</span>; each weight's gradient is <span class="math">\(\delta\)</span> at its end times the value at its start.</p></div>
       <div class="card"><h3>Optimizers</h3><p>Learning-rate schedules, momentum, Adam.</p></div>
       <div class="card"><h3>Batches</h3><p>Batch, mini-batch, stochastic. An epoch is one pass through the data.</p></div>
       <div class="card"><h3>Stopping</h3><p>Watch the validation loss; stop early.</p></div>

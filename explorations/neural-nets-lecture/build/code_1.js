@@ -13,12 +13,12 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
   node(L,O[1][0],O[1][1],26,'0',{stroke:'var(--muted)','stroke-dasharray':'4 4'},{fill:'var(--muted)'});
   const g1=stepG(L,1);
   el('rect',{x:360,y:95,width:80,height:140,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},g1);
-  txt(g1,400,172,'softmax',{'text-anchor':'middle','font-size':15,'font-family':MONO,fill:'var(--model)'});
+  mtxt(g1,400,172,'softmax',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
   for(const o of O)arrow(g1,o[0]+26,o[1],358,o[1]);
-  txt(g1,452,O[0][1]+6,'p₁',{'font-size':18,'font-family':MONO,fill:'var(--ink)','font-weight':700});
-  txt(g1,452,O[1][1]+6,'p₂',{'font-size':18,'font-family':MONO,fill:'var(--ink)','font-weight':700});
-  txt(L,O[0][0],O[0][1]-38,'score of class 1',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
-  txt(L,O[1][0],O[1][1]+48,'score of class 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
+  mtxt(g1,452,O[0][1]+6,'p₁',{'font-size':18,fill:'var(--ink)','font-weight':700});
+  mtxt(g1,452,O[1][1]+6,'p₂',{'font-size':18,fill:'var(--ink)','font-weight':700});
+  mtxt(L,O[0][0],O[0][1]-38,'score of class 1',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+  mtxt(L,O[1][0],O[1][1]+48,'score of class 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
 
 /* ---------- C classes: N inputs, C outputs, softmax ---------- */
@@ -26,14 +26,14 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
   const W=520,H=380,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'N inputs fully connected to C output scores, then a softmax'},$('fig-softmax'));
   const L=el('g',{},svg),I=layerPos(4,70,50,330),O=layerPos(3,290,90,290);
   edges(L,I,O,{r:22});
-  ['x₁','x₂','⋮','x_N'].forEach((s,k)=>k===2?txt(L,I[k][0],I[k][1]+8,'⋮',{'text-anchor':'middle','font-size':26,fill:'var(--muted)'}):node(L,I[k][0],I[k][1],22,s==='x_N'?'xN':s));
-  ['z₁','z₂','zC'].forEach((s,k)=>node(L,O[k][0],O[k][1],24,s,{stroke:'var(--model)'},{fill:'var(--model)'}));
+  ['x₁','x₂','⋮','x_N'].forEach((s,k)=>k===2?mtxt(L,I[k][0],I[k][1]+8,'⋮',{'text-anchor':'middle','font-size':26,fill:'var(--muted)'}):node(L,I[k][0],I[k][1],22,s));
+  ['z₁','z₂','z_C'].forEach((s,k)=>node(L,O[k][0],O[k][1],24,s,{stroke:'var(--model)'},{fill:'var(--model)'}));
   const g=stepG(L,1);
   el('rect',{x:350,y:70,width:80,height:240,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},g);
-  txt(g,390,196,'softmax',{'text-anchor':'middle','font-size':15,'font-family':MONO,fill:'var(--model)'});
-  O.forEach((o,k)=>{arrow(g,o[0]+24,o[1],348,o[1]);txt(g,442,o[1]+6,['p₁','p₂','pC'][k],{'font-size':18,'font-family':MONO,fill:'var(--ink)','font-weight':700});});
-  txt(L,70,370,'N features',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
-  txt(L,290,370,'C classes',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
+  mtxt(g,390,196,'softmax',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
+  O.forEach((o,k)=>{arrow(g,o[0]+24,o[1],348,o[1]);mtxt(g,442,o[1]+6,['p₁','p₂','p_C'][k],{'font-size':18,fill:'var(--ink)','font-weight':700});});
+  mtxt(L,70,370,'N features',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+  mtxt(L,290,370,'C classes',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
 
 /* ---------- the loss landscape: a cartoon with two valleys; gradient descent from a draggable start ---------- */
@@ -111,7 +111,7 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
   O.forEach((p,k)=>node(gO,p[0],p[1],22,`z${'₁₂'[k]}`));
   softmaxBox(gO,472,O.map(p=>p[1]));
   const gL=el('g',{class:'fadein'},svg);
-  [['inputs',70],['hidden layer',270],['outputs',450]].forEach(([s,x])=>txt(gL,x,385,s,{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO}));
+  [['inputs',70],['hidden layer',270],['outputs',450]].forEach(([s,x])=>mtxt(gL,x,385,s,{'text-anchor':'middle','font-size':14,fill:'var(--muted)'}));
   hooks['s-hidden']={step(s){
     hid.forEach((h,j)=>{const show=s>=1||j===1,dx=s>=1?0:center[0]-h.p[0],dy=s>=1?0:center[1]-h.p[1];
       for(const g of [h.g,h.gn]){g.style.transform=`translate(${dx}px,${dy}px)`;g.style.opacity=show?1:0;}});
@@ -126,11 +126,11 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
   I.forEach((p,k)=>node(L,p[0],p[1],22,`x${'₁₂'[k]}`));Hn.forEach((p,j)=>node(L,p[0],p[1],24,`h${'₁₂₃'[j]}`));O.forEach((p,k)=>node(L,p[0],p[1],22,`z${'₁₂'[k]}`));softmaxBox(L,472,O.map(p=>p[1]));
   label(L,170,62,'W₁, b₁',{'text-anchor':'middle',fill:'var(--model)'});label(L,360,62,'W₂, b₂',{'text-anchor':'middle',fill:'var(--mean)'});
   const g1=stepG(L,1);
-  txt(g1,70,385,'x: N = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
-  txt(g1,270,385,'h: H = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
-  txt(g1,450,385,'z: C = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
-  txt(g1,170,86,'3 × 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
-  txt(g1,360,86,'2 × 3',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
+  mtxt(g1,70,385,'x: N = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,270,385,'h: H = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,450,385,'z: C = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,170,86,'3 × 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+  mtxt(g1,360,86,'2 × 3',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
 
 /* ---------- XOR by hand ---------- */

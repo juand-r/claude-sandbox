@@ -36,3 +36,4 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 /* KaTeX formulas (typeset at build time) */
 .math .katex,.eq .katex{font-size:1.12em}
 .eq{font-size:1em}
+@media (max-width:620px){.eq .katex{font-size:.9em}.eq{padding:.4em .5em}}

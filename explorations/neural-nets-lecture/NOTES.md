@@ -75,5 +75,10 @@ chose real math typesetting.
 - Class 1 formulas are now LaTeX, typeset by KaTeX 0.16.28 at build time (`build/tex.js`). KaTeX's
   woff2 fonts are embedded (about 0.4 MB of base64), so nothing loads from the network.
 - Checked with Chrome's own font report: every visible math glyph comes from a KaTeX font.
-- Not converted yet: labels inside the SVG figures (x₁, W₁, ∇ℒ, …) still use JetBrains Mono, the
-  speaker notes stay plain text, and class 2 is unchanged.
+- Figure labels (2026-10-09, at the user's request): `mtxt()` in `build/common.js` draws SVG labels in
+  the KaTeX fonts. Single letters are italic variables, words and digits upright, ℒ is the script L,
+  and subscripts (Unicode, or `_N`) are smaller and lowered. The chart axes (ticks and axis names)
+  are redrawn the same way. Chrome's font report shows only KaTeX fonts in formulas and labels.
+- Class 2 converted the same way. On phones the forward-propagation box is set slightly smaller so
+  it does not scroll.
+- Still plain text: the speaker notes (presenter view only) and the numeric read-out tiles.

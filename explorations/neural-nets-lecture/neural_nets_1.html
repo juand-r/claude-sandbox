@@ -356,6 +356,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 /* KaTeX formulas (typeset at build time) */
 .math .katex,.eq .katex{font-size:1.12em}
 .eq{font-size:1em}
+@media (max-width:620px){.eq .katex{font-size:.9em}.eq{padding:.4em .5em}}
 
 </style>
 </head>
@@ -566,7 +567,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
     <div id="fig-xor"></div>
     <div class="tiles three" data-step="1">
       <div class="tile"><div class="lbl">model</div><div class="val k-model">one line</div></div>
-      <div class="tile"><div class="lbl noup">p</div><div class="val k-hi">0.50</div></div>
+      <div class="tile"><div class="lbl noup"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></span></div><div class="val k-hi">0.50</div></div>
       <div class="tile"><div class="lbl">accuracy</div><div class="val k-err">50%</div></div>
     </div>
   </div>
@@ -1319,11 +1320,45 @@ const act=(id,fn)=>{actions[id]=fn;return v=>{fn(v);send({type:'act',id,v});};};
 /* ================= Neural networks lectures: shared helpers ================= */
 const $=id=>document.getElementById(id);
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const MONO='JetBrains Mono,monospace';
 function txt(parent,x,y,s,a={}){const t=el('text',{x,y,...a},parent);t.textContent=s;return t;}
+/* ---------- math labels in SVG, in the KaTeX fonts (embedded by build/tex.js) ---------- */
+// Write labels as plain text: single letters become italic variables, words and digits stay upright,
+// ℒ is the script L, and subscripts are written with Unicode (x₁, wⱼᵢ) or as _N (x_N).
+// Each run of characters gets its own <tspan>; subscripts are smaller and lowered.
+const MATH_SCALE=1.15;   // KaTeX's glyphs are smaller than the mono font's at the same size
+const SUB={'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','ᵢ':'i','ⱼ':'j','ₖ':'k'},SUP={'ᵀ':'T'};
+const isLatin=c=>/[A-Za-z]/.test(c||''),GREEK_IT='αβγδεηθλμπσφω';
+function mathRuns(s){
+  const runs=[],push=(t,fam,it,shift)=>{const r=runs[runs.length-1];
+    if(r&&r.fam===fam&&r.it===it&&r.shift===shift)r.t+=t;else runs.push({t,fam,it,shift});};
+  for(let i=0;i<s.length;i++){let c=s[i],shift=0;
+    if(c==='_'&&i+1<s.length){c=s[++i];shift=1;}
+    else if(SUB[c]){c=SUB[c];shift=1;}
+    else if(SUP[c]){c=SUP[c];shift=-1;}
+    const word=shift===0&&isLatin(c)&&(isLatin(s[i-1])||isLatin(s[i+1]));
+    if(c==='ℒ')push('L','KaTeX_Caligraphic',false,shift);
+    else if(isLatin(c)&&!word)push(c,'KaTeX_Math',true,shift);
+    else if(GREEK_IT.includes(c))push(c,'KaTeX_Math',true,shift);
+    else push(c==='·'?'⋅':c,'KaTeX_Main',false,shift);}
+  return runs;}
+function mtxt(parent,x,y,s,a={}){
+  const fs=(+a['font-size']||16)*MATH_SCALE,t=el('text',{x,y,...a,'font-size':fs.toFixed(1)},parent);
+  let cur=0;   // the current baseline offset in px
+  for(const r of mathRuns(String(s))){const off=r.shift===1?.28*fs:r.shift===-1?-.4*fs:0;
+    const sp=el('tspan',{'font-family':r.fam,'font-style':r.it?'italic':'normal',dy:(off-cur).toFixed(1)},t);
+    if(r.shift)sp.setAttribute('font-size',(.72*fs).toFixed(1));
+    sp.textContent=r.t;cur=off;}
+  t.setAttribute('aria-label',s);return t;}
 const stepG=(parent,k)=>el('g',{'data-step':k},parent);
 const sig=z=>1/(1+Math.exp(-z));
-const label=(L,x,y,s,a={})=>txt(L,x,y,s,{'font-size':16,'font-weight':700,'font-family':MONO,'paint-order':'stroke',stroke:'var(--surface)','stroke-width':5,...a});
+// the engine's chart() draws tick numbers and axis names in its own fonts; redraw them as math labels
+const engineChart=chart;
+chart=function(host,o){const api=engineChart(host,o);
+  for(const t of [...api.svg.querySelectorAll('text')]){const a={};
+    for(const at of t.attributes)if(at.name!=='font-family')a[at.name]=at.value;
+    t.replaceWith(mtxt(t.parentNode,a.x,a.y,t.textContent,a));}
+  return api;};
+const label=(L,x,y,s,a={})=>mtxt(L,x,y,s,{'font-size':16,'font-weight':700,'paint-order':'stroke',stroke:'var(--surface)','stroke-width':5,...a});
 const D=JSON.parse($('nn-data').textContent);   // made by experiments.py
 const fmt=(v,d=2)=>v.toFixed(d).replace('-','−');
 
@@ -1387,7 +1422,7 @@ const xorP=P=>x=>mlpForward(P,[(x[0]-5)/2.5,(x[1]-5)/2.5]).p[0];
 
 /* ---------- network diagrams ---------- */
 function node(L,x,y,r,s,a={},ta={}){el('circle',{cx:x,cy:y,r,fill:'var(--surface)',stroke:'var(--ink)','stroke-width':1.8,...a},L);
-  if(s)txt(L,x,y+6,s,{'text-anchor':'middle','font-size':17,'font-family':MONO,fill:'var(--ink)',...ta});}
+  if(s)mtxt(L,x,y+6,s,{'text-anchor':'middle','font-size':17,fill:'var(--ink)',...ta});}
 function arrow(L,x1,y1,x2,y2,a={}){const t=Math.atan2(y2-y1,x2-x1),hd=9,c=a.stroke||'var(--muted)';
   el('line',{x1,y1,x2:x2-Math.cos(t)*hd*.6,y2:y2-Math.sin(t)*hd*.6,stroke:c,'stroke-width':1.8,...a},L);
   el('polygon',{points:[[x2,y2],[x2-hd*Math.cos(t-.4),y2-hd*Math.sin(t-.4)],[x2-hd*Math.cos(t+.4),y2-hd*Math.sin(t+.4)]].map(v=>v.join(',')).join(' '),fill:c},L);}
@@ -1399,8 +1434,8 @@ function neuronDiagram(host,{W=640,H=260,aria='one neuron'}={}){
     label(L,(x+S[0])/2-4,(y+S[1])/2-8+(k-1)*6,`w${'₁₂₃'[k]}`,{fill:'var(--model)','text-anchor':'middle','font-size':15});});
   node(L,S[0],S[1],34,'Σ + b');arrow(L,S[0]+34,S[1],SG[0]-30,SG[1]);
   el('rect',{x:SG[0]-30,y:SG[1]-30,width:60,height:60,rx:10,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},L);
-  txt(L,SG[0],SG[1]+7,'σ',{'text-anchor':'middle','font-size':24,'font-family':MONO,fill:'var(--model)'});
-  arrow(L,SG[0]+30,SG[1],560,SG[1]);txt(L,575,SG[1]+6,'p',{'font-size':20,'font-family':MONO,fill:'var(--ink)','font-weight':700});
+  mtxt(L,SG[0],SG[1]+7,'σ',{'text-anchor':'middle','font-size':24,fill:'var(--model)'});
+  arrow(L,SG[0]+30,SG[1],560,SG[1]);mtxt(L,575,SG[1]+6,'p',{'font-size':20,fill:'var(--ink)','font-weight':700});
   return svg;}
 // a fully connected layer picture: columns of nodes and all edges between neighbouring columns
 function layerPos(n,x,top,bot){return Array.from({length:n},(_,i)=>[x,n===1?(top+bot)/2:top+i*(bot-top)/(n-1)]);}
@@ -1409,8 +1444,8 @@ function edges(L,A,B,{r=18,stroke='var(--line)',width=1.5}={}){
 // a softmax box to the right of output scores at heights ys, with arrows in and labels p₁, p₂, … out
 function softmaxBox(L,x0,ys,{x=x0+36,w=80,names}={}){const top=Math.min(...ys)-40,bot=Math.max(...ys)+40;
   el('rect',{x,y:top,width:w,height:bot-top,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},L);
-  txt(L,x+w/2,(top+bot)/2+5,'softmax',{'text-anchor':'middle','font-size':14,'font-family':MONO,fill:'var(--model)'});
-  ys.forEach((y,k)=>{arrow(L,x0,y,x-2,y);txt(L,x+w+12,y+6,names?names[k]:`p${'₁₂₃₄₅₆₇₈₉'[k]}`,{'font-size':18,'font-family':MONO,fill:'var(--ink)','font-weight':700});});}
+  mtxt(L,x+w/2,(top+bot)/2+5,'softmax',{'text-anchor':'middle','font-size':14,fill:'var(--model)'});
+  ys.forEach((y,k)=>{arrow(L,x0,y,x-2,y);mtxt(L,x+w+12,y+6,names?names[k]:`p${'₁₂₃₄₅₆₇₈₉'[k]}`,{'font-size':18,fill:'var(--ink)','font-weight':700});});}
 
 /* ================= Class 1 figures ================= */
 
@@ -1427,12 +1462,12 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
   node(L,O[1][0],O[1][1],26,'0',{stroke:'var(--muted)','stroke-dasharray':'4 4'},{fill:'var(--muted)'});
   const g1=stepG(L,1);
   el('rect',{x:360,y:95,width:80,height:140,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},g1);
-  txt(g1,400,172,'softmax',{'text-anchor':'middle','font-size':15,'font-family':MONO,fill:'var(--model)'});
+  mtxt(g1,400,172,'softmax',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
   for(const o of O)arrow(g1,o[0]+26,o[1],358,o[1]);
-  txt(g1,452,O[0][1]+6,'p₁',{'font-size':18,'font-family':MONO,fill:'var(--ink)','font-weight':700});
-  txt(g1,452,O[1][1]+6,'p₂',{'font-size':18,'font-family':MONO,fill:'var(--ink)','font-weight':700});
-  txt(L,O[0][0],O[0][1]-38,'score of class 1',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
-  txt(L,O[1][0],O[1][1]+48,'score of class 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
+  mtxt(g1,452,O[0][1]+6,'p₁',{'font-size':18,fill:'var(--ink)','font-weight':700});
+  mtxt(g1,452,O[1][1]+6,'p₂',{'font-size':18,fill:'var(--ink)','font-weight':700});
+  mtxt(L,O[0][0],O[0][1]-38,'score of class 1',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+  mtxt(L,O[1][0],O[1][1]+48,'score of class 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
 
 /* ---------- C classes: N inputs, C outputs, softmax ---------- */
@@ -1440,14 +1475,14 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
   const W=520,H=380,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'N inputs fully connected to C output scores, then a softmax'},$('fig-softmax'));
   const L=el('g',{},svg),I=layerPos(4,70,50,330),O=layerPos(3,290,90,290);
   edges(L,I,O,{r:22});
-  ['x₁','x₂','⋮','x_N'].forEach((s,k)=>k===2?txt(L,I[k][0],I[k][1]+8,'⋮',{'text-anchor':'middle','font-size':26,fill:'var(--muted)'}):node(L,I[k][0],I[k][1],22,s==='x_N'?'xN':s));
-  ['z₁','z₂','zC'].forEach((s,k)=>node(L,O[k][0],O[k][1],24,s,{stroke:'var(--model)'},{fill:'var(--model)'}));
+  ['x₁','x₂','⋮','x_N'].forEach((s,k)=>k===2?mtxt(L,I[k][0],I[k][1]+8,'⋮',{'text-anchor':'middle','font-size':26,fill:'var(--muted)'}):node(L,I[k][0],I[k][1],22,s));
+  ['z₁','z₂','z_C'].forEach((s,k)=>node(L,O[k][0],O[k][1],24,s,{stroke:'var(--model)'},{fill:'var(--model)'}));
   const g=stepG(L,1);
   el('rect',{x:350,y:70,width:80,height:240,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},g);
-  txt(g,390,196,'softmax',{'text-anchor':'middle','font-size':15,'font-family':MONO,fill:'var(--model)'});
-  O.forEach((o,k)=>{arrow(g,o[0]+24,o[1],348,o[1]);txt(g,442,o[1]+6,['p₁','p₂','pC'][k],{'font-size':18,'font-family':MONO,fill:'var(--ink)','font-weight':700});});
-  txt(L,70,370,'N features',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
-  txt(L,290,370,'C classes',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
+  mtxt(g,390,196,'softmax',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
+  O.forEach((o,k)=>{arrow(g,o[0]+24,o[1],348,o[1]);mtxt(g,442,o[1]+6,['p₁','p₂','p_C'][k],{'font-size':18,fill:'var(--ink)','font-weight':700});});
+  mtxt(L,70,370,'N features',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+  mtxt(L,290,370,'C classes',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
 
 /* ---------- the loss landscape: a cartoon with two valleys; gradient descent from a draggable start ---------- */
@@ -1525,7 +1560,7 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
   O.forEach((p,k)=>node(gO,p[0],p[1],22,`z${'₁₂'[k]}`));
   softmaxBox(gO,472,O.map(p=>p[1]));
   const gL=el('g',{class:'fadein'},svg);
-  [['inputs',70],['hidden layer',270],['outputs',450]].forEach(([s,x])=>txt(gL,x,385,s,{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO}));
+  [['inputs',70],['hidden layer',270],['outputs',450]].forEach(([s,x])=>mtxt(gL,x,385,s,{'text-anchor':'middle','font-size':14,fill:'var(--muted)'}));
   hooks['s-hidden']={step(s){
     hid.forEach((h,j)=>{const show=s>=1||j===1,dx=s>=1?0:center[0]-h.p[0],dy=s>=1?0:center[1]-h.p[1];
       for(const g of [h.g,h.gn]){g.style.transform=`translate(${dx}px,${dy}px)`;g.style.opacity=show?1:0;}});
@@ -1540,11 +1575,11 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
   I.forEach((p,k)=>node(L,p[0],p[1],22,`x${'₁₂'[k]}`));Hn.forEach((p,j)=>node(L,p[0],p[1],24,`h${'₁₂₃'[j]}`));O.forEach((p,k)=>node(L,p[0],p[1],22,`z${'₁₂'[k]}`));softmaxBox(L,472,O.map(p=>p[1]));
   label(L,170,62,'W₁, b₁',{'text-anchor':'middle',fill:'var(--model)'});label(L,360,62,'W₂, b₂',{'text-anchor':'middle',fill:'var(--mean)'});
   const g1=stepG(L,1);
-  txt(g1,70,385,'x: N = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
-  txt(g1,270,385,'h: H = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
-  txt(g1,450,385,'z: C = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)','font-family':MONO});
-  txt(g1,170,86,'3 × 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
-  txt(g1,360,86,'2 × 3',{'text-anchor':'middle','font-size':13,fill:'var(--muted)','font-family':MONO});
+  mtxt(g1,70,385,'x: N = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,270,385,'h: H = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,450,385,'z: C = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,170,86,'3 × 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+  mtxt(g1,360,86,'2 × 3',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
 
 /* ---------- XOR by hand ---------- */
