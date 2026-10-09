@@ -27,6 +27,9 @@ Open `logistic_regression_lecture.html` in a browser. No server or install is ne
   pinned in `build/package.json`) and embeds its fonts, so the deck needs no network. Run
   `npm install` in `build/` once first. Figure labels use the same fonts (`mtxt()` in `code.js`).
 - `requirements.txt`: Python packages (use a virtualenv).
+- `notes/`: student notes that go through the lecture step by step, with the 0–1 loss in detail
+  (`logistic_regression_notes.tex`, compiled to `.pdf` with `latexmk -pdf`). `notes/check_notes.py`
+  computes every number the notes quote.
 - `NOTES.md`: plan, slide outline and decisions.
 - `tests/`: Playwright scripts, run from `tests/` with `NODE_PATH=$(npm root -g) node <script>.js`:
   `shoot.js [light|dark]` (every slide at its last step), `steps.js [slide-id ...]` (every step),

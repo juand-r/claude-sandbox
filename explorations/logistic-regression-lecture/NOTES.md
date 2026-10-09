@@ -92,3 +92,20 @@ the old math font lacked the subscripts and several symbols, so browsers mixed i
   published deck byte for byte, so nothing was lost.
 - Checked: Chrome's font report shows only KaTeX fonts in formulas and labels; check_numbers.py
   passes on fresh deck output; formula wrapping passes at five screen sizes.
+
+## Student notes (2026-10-09)
+
+The user reported that some students, less strong in math, were confused by the logistic regression
+slides, and asked for LaTeX notes that go through the material in detail, spelling out how the two
+threshold conditions become one formula with the indicator function.
+
+- `notes/logistic_regression_notes.tex` (11 pages) follows the slide order: training as model plus
+  loss; the 0–1 loss built in small steps (threshold 0, multiply by the label, a four-case table, the
+  indicator function, a five-point worked example); the hinge and the log loss on the same five
+  points; the sigmoid; σ(y f) as the probability of the true class; the log loss as −log p(true
+  class); the log-odds; predictions and thresholds on the hours-of-study fit; a summary; an appendix of
+  exp/log rules.
+- Every number is computed by `notes/check_notes.py`. The hours-of-study fit comes from
+  `tests/deck_outputs.json` (the deck's own fit, checked against scikit-learn by check_numbers.py).
+- The Ben-David, Eiron and Long (2003) reference details (JCSS 66(3), 496–514) were checked by web search.
+- TeX Live was installed in the session container with apt to compile it.
