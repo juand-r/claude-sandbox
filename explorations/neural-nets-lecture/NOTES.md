@@ -63,3 +63,17 @@ the topics and order (see `PLAN.md`) and decided:
 - Family tree dates: CNN (LeCun et al., 1989), RNN (Elman, 1990), LSTM (Hochreiter & Schmidhuber,
   1997), GRU (Cho et al., 2014), attention (Bahdanau, Cho & Bengio, 2014; its encoder–decoder uses
   GRU-style units, appendix A.1.1), Transformer (Vaswani et al., 2017).
+
+## Math typesetting (2026-10-09)
+
+The user said the formulas did not show up well. The cause, checked: the formulas used JetBrains Mono
+from Google Fonts, whose served subsets lack 12 of the 85 characters the formulas use (the Unicode
+subscripts ₁ ₂ ᵢ ⱼ ₖ ᵀ and ℒ ∂ ∇ ← √ ⊙). The browser drew those from whatever system font it found, so one
+formula mixed several fonts and sizes, and the one-character subscripts are small by design. The user
+chose real math typesetting.
+
+- Class 1 formulas are now LaTeX, typeset by KaTeX 0.16.28 at build time (`build/tex.js`). KaTeX's
+  woff2 fonts are embedded (about 0.4 MB of base64), so nothing loads from the network.
+- Checked with Chrome's own font report: every visible math glyph comes from a KaTeX font.
+- Not converted yet: labels inside the SVG figures (x₁, W₁, ∇ℒ, …) still use JetBrains Mono, the
+  speaker notes stay plain text, and class 2 is unchanged.

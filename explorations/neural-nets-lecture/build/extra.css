@@ -33,3 +33,6 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 @media (max-width:620px){.dtab{font-size:.7rem}.dtab th,.dtab td{padding:.3em .2em}}
 #fig-sgd svg{max-height:56vh;width:auto;max-width:100%;margin:0 auto}
 #fig-chain svg,#fig-recap svg,#fig-out svg,#fig-deep svg,#fig-paths svg,#fig-recipe svg,#fig-lr svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
+/* KaTeX formulas (typeset at build time) */
+.math .katex,.eq .katex{font-size:1.12em}
+.eq{font-size:1em}

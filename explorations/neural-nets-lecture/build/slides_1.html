@@ -28,8 +28,8 @@
     <h2 style="margin:.2em 0 .6em">Logistic regression</h2>
     <div class="recap">
       <div class="take mlbox">
-        <div class="card"><h3>Model</h3><p><span class="math dm">p(y = +1 | x) = σ(w · x + b)</span>One score, squashed into a probability.</p></div>
-        <div class="card" data-step="1"><h3>Loss</h3><p><span class="math dm">ℒ(θ; D) = Σ log(1 + e<sup>−yᵢ f(xᵢ)</sup>)</span>Log loss on the training data D = {(xᵢ, yᵢ)}, with yᵢ = ±1.</p></div>
+        <div class="card"><h3>Model</h3><p><span class="math dm">\[p(y = +1 \mid x) = \sigma(w \cdot x + b)\]</span>One score, squashed into a probability.</p></div>
+        <div class="card" data-step="1"><h3>Loss</h3><p><span class="math dm">\[\mathcal{L}(\theta; D) = \sum_i \log\bigl(1 + e^{-y_i f(x_i)}\bigr)\]</span>Log loss on the training data <span class="math">\(D = \{(x_i, y_i)\}\)</span>, with <span class="math">\(y_i = \pm 1\)</span>.</p></div>
       </div>
       <div class="fig" data-step="2"><div id="fig-recap"></div></div>
     </div>
@@ -47,9 +47,9 @@
     <div class="eyebrow">Two classes, rewritten</div>
     <h2>Labels as one-hot vectors</h2>
     <ul>
-      <li>Write the label as a vector with a 1 for the true class:<span class="math dm">y = (1, 0) or y = (0, 1)</span></li>
-      <li data-step="1">Give the two classes the scores <span class="math">(f, 0)</span>. The <b>softmax</b> turns scores into probabilities:<span class="math dm">p₁ = e<sup>f</sup> / (e<sup>f</sup> + e<sup>0</sup>) = σ(f)</span></li>
-      <li data-step="2">The <b>cross-entropy</b> loss:<span class="math dm">ℒ = −Σₖ yₖ log pₖ = −log p(true class)</span>This is last lecture's log loss.</li>
+      <li>Write the label as a vector with a 1 for the true class:<span class="math dm">\[y = (1, 0) \quad\text{or}\quad y = (0, 1)\]</span></li>
+      <li data-step="1">Give the two classes the scores <span class="math">\((f, 0)\)</span>. The <b>softmax</b> turns scores into probabilities:<span class="math dm">\[p_1 = \frac{e^{f}}{e^{f} + e^{0}} = \sigma(f)\]</span></li>
+      <li data-step="2">The <b>cross-entropy</b> loss:<span class="math dm">\[\mathcal{L} = -\sum_k y_k \log p_k = -\log p(\text{true class})\]</span>This is last lecture's log loss.</li>
       <li data-step="3">So logistic regression is softmax with two classes.</li>
     </ul>
   </div>
@@ -70,10 +70,10 @@
     <div class="eyebrow">More than two classes</div>
     <h2>Softmax and cross-entropy</h2>
     <ul>
-      <li>One score per class:<span class="math dm">zₖ = wₖ · x + bₖ,  k = 1, …, C</span></li>
-      <li data-step="1">Softmax:<span class="math dm">pₖ = e<sup>zₖ</sup> / Σⱼ e<sup>zⱼ</sup></span>Positive, and they sum to 1.</li>
-      <li data-step="2">Cross-entropy:<span class="math dm">ℒ = −Σᵢ log p(true class of i)</span></li>
-      <li data-step="3">Example: <span class="math">z = (2, 1, −1)</span> gives <span class="math">p = (0.71, 0.26, 0.04)</span>. If the true class is 1, the loss is <span class="math">−log 0.71 = 0.35</span>.</li>
+      <li>One score per class:<span class="math dm">\[z_k = w_k \cdot x + b_k, \quad k = 1, \dots, C\]</span></li>
+      <li data-step="1">Softmax:<span class="math dm">\[p_k = \frac{e^{z_k}}{\sum_j e^{z_j}}\]</span>Positive, and they sum to 1.</li>
+      <li data-step="2">Cross-entropy:<span class="math dm">\[\mathcal{L} = -\sum_i \log p(\text{true class of } i)\]</span></li>
+      <li data-step="3">Example: <span class="math">\(z = (2, 1, -1)\)</span> gives <span class="math">\(p = (0.71, 0.26, 0.04)\)</span>. If the true class is 1, the loss is <span class="math">\(-\log 0.71 = 0.35\)</span>.</li>
     </ul>
   </div>
   <div class="fig">
@@ -93,8 +93,8 @@
     <div class="eyebrow">How to train it?</div>
     <h2>The loss landscape</h2>
     <ul>
-      <li>The loss depends on the parameters θ. Picture it as a surface over θ.</li>
-      <li data-step="1">The gradient is the vector of partial derivatives:<span class="math dm">∇ℒ = (∂ℒ/∂θ₁, ∂ℒ/∂θ₂)</span>It points uphill, the steepest way up.</li>
+      <li>The loss depends on the parameters <span class="math">\(\theta\)</span>. Picture it as a surface over <span class="math">\(\theta\)</span>.</li>
+      <li data-step="1">The gradient is the vector of partial derivatives:<span class="math dm">\[\nabla\mathcal{L} = \left(\frac{\partial\mathcal{L}}{\partial\theta_1}, \frac{\partial\mathcal{L}}{\partial\theta_2}\right)\]</span>It points uphill, the steepest way up.</li>
       <li data-step="2">Step the other way, again and again: <b>gradient descent</b>.</li>
       <li data-step="3">A different start can end in a different minimum.</li>
       <li data-step="4">Logistic regression's loss is a single bowl: one minimum. A network's loss is not.</li>
@@ -119,7 +119,7 @@
     <div class="eyebrow">How to train it?</div>
     <h2>Gradient descent</h2>
     <ul>
-      <li>Update all parameters at once:<span class="math dm">θ ← θ − η ∇ℒ(θ)</span><span class="math">η</span> is the <b>learning rate</b>.</li>
+      <li>Update all parameters at once:<span class="math dm">\[\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}(\theta)\]</span><span class="math">\(\eta\)</span> is the <b>learning rate</b>.</li>
       <li data-step="1">Too small: many tiny steps.</li>
       <li data-step="2">About right: a few steps to the minimum.</li>
       <li data-step="3">Too large: it overshoots and the loss goes back up.</li>
@@ -131,12 +131,12 @@
       <div id="fig-gdloss"></div>
     </div>
     <div class="tiles three">
-      <div class="tile"><div class="lbl noup">η</div><div class="val k-hi" id="v-gd-eta"></div></div>
+      <div class="tile"><div class="lbl noup"><span class="math">\(\eta\)</span></div><div class="val k-hi" id="v-gd-eta"></div></div>
       <div class="tile"><div class="lbl">step</div><div class="val" id="v-gd-k"></div></div>
       <div class="tile"><div class="lbl">loss</div><div class="val k-err" id="v-gd-l"></div></div>
     </div>
     <div class="toolbar">
-      <button id="b-gd-small">η = 0.1</button><button id="b-gd-good">η = 1</button><button id="b-gd-large">η = 20</button>
+      <button id="b-gd-small"><span class="math">\(\eta = 0.1\)</span></button><button id="b-gd-good"><span class="math">\(\eta = 1\)</span></button><button id="b-gd-large"><span class="math">\(\eta = 20\)</span></button>
       <button id="b-gd-play" class="primary">▶</button>
     </div>
   </div>
@@ -154,10 +154,10 @@
     <div class="eyebrow">History</div>
     <h2>The perceptron (1958)</h2>
     <ul>
-      <li>Rosenblatt's perceptron uses the same score <span class="math">f(x) = w · x + b</span>.</li>
-      <li data-step="1">A step instead of the sigmoid: predict the sign of <span class="math">f(x)</span>.</li>
-      <li data-step="2">Its learning rule, on a mistake:<span class="math dm">w ← w + η yᵢ xᵢ,  b ← b + η yᵢ</span></li>
-      <li data-step="3">That is gradient descent, one point at a time, on the loss <span class="math">max(0, −y f(x))</span>.</li>
+      <li>Rosenblatt's perceptron uses the same score <span class="math">\(f(x) = w \cdot x + b\)</span>.</li>
+      <li data-step="1">A step instead of the sigmoid: predict the sign of <span class="math">\(f(x)\)</span>.</li>
+      <li data-step="2">Its learning rule, on a mistake:<span class="math dm">\[w \leftarrow w + \eta\, y_i x_i, \quad b \leftarrow b + \eta\, y_i\]</span></li>
+      <li data-step="3">That is gradient descent, one point at a time, on the loss <span class="math">\(\max(0, -y\, f(x))\)</span>.</li>
     </ul>
   </div>
   <figure class="fig photo">
@@ -179,7 +179,7 @@
     <h2>No line separates XOR</h2>
     <ul>
       <li>Green in two opposite corners, purple in the other two.</li>
-      <li data-step="1">The best logistic regression gives up: <span class="math">w = 0</span>, so <span class="math">p = 0.5</span> everywhere.</li>
+      <li data-step="1">The best logistic regression gives up: <span class="math">\(w = 0\)</span>, so <span class="math">\(p = 0.5\)</span> everywhere.</li>
       <li data-step="2">The perceptron and logistic regression draw one line. XOR needs two.</li>
     </ul>
   </div>
@@ -244,11 +244,11 @@
   <div class="prose">
     <div class="eyebrow">What the network computes</div>
     <h2>Forward propagation</h2>
-    <span class="eq">h = σ(W₁ x + b₁)<br>z = W₂ h + b₂<br>p = softmax(z)</span>
+    <span class="eq">\[\begin{aligned} h &amp;= \sigma(W_1 x + b_1) \\ z &amp;= W_2 h + b_2 \\ p &amp;= \operatorname{softmax}(z) \end{aligned}\]</span>
     <ul>
-      <li data-step="1">Shapes: <span class="math">x</span> has N entries, <span class="math">W₁</span> is H × N, <span class="math">W₂</span> is C × H. The parameters are <span class="math">θ = (W₁, b₁, W₂, b₂)</span>.</li>
+      <li data-step="1">Shapes: <span class="math">\(x\)</span> has <span class="math">\(N\)</span> entries, <span class="math">\(W_1\)</span> is <span class="math">\(H \times N\)</span>, <span class="math">\(W_2\)</span> is <span class="math">\(C \times H\)</span>. The parameters are <span class="math">\(\theta = (W_1, b_1, W_2, b_2)\)</span>.</li>
       <li data-step="2">The loss is the same cross-entropy.</li>
-      <li data-step="3">Why the sigmoid? Without it, the layers collapse into one linear layer:<span class="math dm">W₂(W₁x + b₁) + b₂</span><span class="math dm">= (W₂W₁) x + (W₂b₁ + b₂)</span></li>
+      <li data-step="3">Why the sigmoid? Without it, the layers collapse into one linear layer:<span class="math dm">\[W_2(W_1 x + b_1) + b_2\]</span><span class="math dm">\[= (W_2 W_1)\, x + (W_2 b_1 + b_2)\]</span></li>
     </ul>
   </div>
   <div class="fig">
@@ -269,14 +269,14 @@
     <h2>XOR with two hidden units</h2>
     <ul>
       <li>Inputs 0 or 1.</li>
-      <li data-step="1"><span class="math">h₁ = σ(20x₁ + 20x₂ − 10)</span>: about 1 if either input is 1. That is OR.</li>
-      <li data-step="2"><span class="math">h₂ = σ(20x₁ + 20x₂ − 30)</span>: about 1 only if both are. That is AND.</li>
-      <li data-step="3"><span class="math">f = 20h₁ − 20h₂ − 10</span>, <span class="math">p = σ(f)</span>: OR and not AND. That is XOR.</li>
+      <li data-step="1"><span class="math">\(h_1 = \sigma(20x_1 + 20x_2 - 10)\)</span>: about 1 if either input is 1. That is OR.</li>
+      <li data-step="2"><span class="math">\(h_2 = \sigma(20x_1 + 20x_2 - 30)\)</span>: about 1 only if both are. That is AND.</li>
+      <li data-step="3"><span class="math">\(f = 20h_1 - 20h_2 - 10\)</span>, <span class="math">\(p = \sigma(f)\)</span>: OR and not AND. That is XOR.</li>
     </ul>
   </div>
   <div class="fig">
     <table class="dtab hand">
-      <thead><tr><th>x₁</th><th>x₂</th><th data-step="1">h₁ (OR)</th><th data-step="2">h₂ (AND)</th><th data-step="3">f</th><th data-step="3">p</th></tr></thead>
+      <thead><tr><th><span class="math">\(x_1\)</span></th><th><span class="math">\(x_2\)</span></th><th data-step="1"><span class="math">\(h_1\)</span> (OR)</th><th data-step="2"><span class="math">\(h_2\)</span> (AND)</th><th data-step="3"><span class="math">\(f\)</span></th><th data-step="3"><span class="math">\(p\)</span></th></tr></thead>
       <tbody id="t-hand"></tbody>
     </table>
   </div>
@@ -324,9 +324,9 @@
     <h2 style="margin:.2em 0 .8em">Takeaways</h2>
     <div class="take four">
       <div class="card"><h3>Softmax</h3><p>One score per class, softmax for probabilities, cross-entropy as the loss. Two classes: logistic regression.</p></div>
-      <div class="card"><h3>Gradient descent</h3><p><span class="math">θ ← θ − η ∇ℒ</span>. The learning rate sets the step size.</p></div>
+      <div class="card"><h3>Gradient descent</h3><p><span class="math">\(\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}\)</span>. The learning rate sets the step size.</p></div>
       <div class="card"><h3>One line is not enough</h3><p>The perceptron and logistic regression cannot do XOR.</p></div>
-      <div class="card"><h3>Hidden layers</h3><p><span class="math">h = σ(W₁x + b₁)</span>, then softmax. The hidden units learn the features.</p></div>
+      <div class="card"><h3>Hidden layers</h3><p><span class="math">\(h = \sigma(W_1 x + b_1)\)</span>, then softmax. The hidden units learn the features.</p></div>
     </div>
   </div>
   <div class="notes">

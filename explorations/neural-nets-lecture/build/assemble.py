@@ -5,12 +5,17 @@ the precomputed runs in data.json, and the images in ../assets (embedded as base
     python3 build/assemble.py 1 neural_nets_1.html
     python3 build/assemble.py 2 neural_nets_2.html
 
+Formulas written as \( … \) (inline) or \[ … \] (display) are typeset with KaTeX at build time; run
+`npm install` in build/ once first.
+
 It cuts the SVM deck at marker lines, so it reproduces the deck only against the SVM deck as of the
 commit that added this folder.
 """
 import base64
 import re
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 here = Path(__file__).parent   # this build/ folder
@@ -60,9 +65,17 @@ engine = sub(engine, "!e.closest('.tree-svg')", "!e.closest('.tree-svg,.noanim')
 rest = L(find('/* ---------- hover helper cards ---------- */'), find('/* ================= SVM lecture ================= */') - 1)
 fitboot = L(find('/* ---------- fit every slide to the screen'), len(svm))
 slides = re.sub(r'\{\{IMG:([^}]+)\}\}', embed, (here / f'slides_{k}.html').read_text())
+# formulas written as \( … \) or \[ … \] are typeset by KaTeX now (build/tex.js), with its fonts embedded
+katex_css = ''
+if '\\(' in slides or '\\[' in slides:
+    tex = lambda *a: subprocess.run(['node', str(here / 'tex.js'), *a], check=True, capture_output=True, text=True).stdout
+    with tempfile.NamedTemporaryFile('w', suffix='.html', delete=False) as f:
+        f.write(slides)
+    slides, katex_css = tex(f.name), tex('--css')
+    Path(f.name).unlink()
 data = '<script type="application/json" id="nn-data">' + (here / 'data.json').read_text() + '</script>'
 code = (here / 'common.js').read_text() + '\n' + (here / f'code_{k}.js').read_text()
-out = '\n'.join([head, (here / 'extra.css').read_text(), body_open, '', slides, footer, data,
+out = '\n'.join([head, katex_css, (here / 'extra.css').read_text(), body_open, '', slides, footer, data,
                  engine, 'window.__HINTS = {};', '', rest, code, fitboot])
 Path(target).write_text(out)
 print('wrote', target, len(out))

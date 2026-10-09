@@ -32,6 +32,10 @@ cheap enough to run in the browser so the start point can be dragged.
   `slides_<k>.html`, `common.js`, `code_<k>.js`, `extra.css`, `data.json` and the images in `assets/`.
   Unlike the earlier decks, the build files stay the source: edit them and re-run
   `python3 build/assemble.py 1 neural_nets_1.html` (or `2 neural_nets_2.html`).
+  Formulas in `slides_<k>.html` are written in LaTeX, as `\( … \)` (inline) or `\[ … \]` (display).
+  `build/tex.js` typesets them with KaTeX (version pinned in `build/package.json`) when the deck is
+  assembled, and embeds KaTeX's fonts, so the deck needs no network. Run `npm install` in `build/`
+  once before assembling. So far only class 1 uses this; class 2 still has plain-text formulas.
 - `assets/`: the images (Pandemonium drawing, Rosenblatt, Minsky, Papert, the Perceptrons cover).
 - `tests/`: Playwright scripts, run from `tests/` with `NODE_PATH=$(npm root -g) node <script>.js`:
   `steps.js <1|2> [slide-id ...]` (every step of every slide), `interact1.js` and `interact2.js`
