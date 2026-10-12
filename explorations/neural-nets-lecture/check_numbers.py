@@ -296,4 +296,20 @@ close(round(100 * av), 89, 0, "validation accuracy at epoch 443 (%)")
 lv, av = mlp_loss_acc(O["P_end"], Xv, Yv); lt, at = mlp_loss_acc(O["P_end"], Xa[:30], np.eye(2)[ya[:30]])
 close(round(lv, 2), 1.37, 1e-9, "validation loss at the end"); close(round(lt, 2), 0.05, 1e-9, "training loss at the end")
 close(round(100 * at), 93, 0, "training accuracy at the end (%)"); close(round(100 * av), 77, 0, "validation accuracy at the end (%)")
+# ---------------------------------------------------------------- patience (class 2, "When to stop")
+assert "const PATIENCE=400;" in CODE2, "the figure's patience changed: update the notes"
+def patience_stop(P, v=O["val_loss"]):
+    best, be = float("inf"), 0
+    for e, x in enumerate(v, 1):
+        if x < best: best, be = x, e
+        if e - be >= P: return e, be
+    return None, be
+assert patience_stop(400) == (843, 443), patience_stop(400)
+assert patience_stop(300) == (325, 25), patience_stop(300)
+vl = O["val_loss"]
+close(round(vl[24], 2), 0.35, 1e-9, "validation loss dips at epoch 25")
+close(round(vl[442], 2), 0.33, 1e-9, "validation loss at epoch 443")
+assert min(e for e in range(26, len(vl) + 1) if vl[e - 1] < vl[24]) == 327
+print("ok  patience 400: stops at 843 with epoch 443; patience 300: stops at 325 with epoch 25; first beaten at 327")
+close(2 * 2 + 2 + 2 + 1, 9, 0, "weights and biases of the 2-2-1 network")
 print("all checks passed")

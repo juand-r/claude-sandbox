@@ -82,3 +82,29 @@ chose real math typesetting.
 - Class 2 converted the same way. On phones the forward-propagation box is set slightly smaller so
   it does not scroll.
 - Still plain text: the speaker notes (presenter view only) and the numeric read-out tiles.
+
+## Revision 1 (2026-10-12): changes after comparing with the course's earlier slides
+
+- Layer index is a superscript: W⁽¹⁾, b⁽¹⁾, W⁽²⁾, b⁽²⁾, δ⁽¹⁾, δ⁽²⁾ (slides, figures, notes). The label
+  helper `mtxt()` gained superscripts, written `W^(1)`; all five copies of it were updated together.
+- New class 1 slides: "Networks of neurons", "A neuron", "A very simplified neuron", "Deeper networks".
+- Images. `assets/neurons_photo.webp` was extracted from the user's earlier course slides
+  ("11 - NeuralNets - ForwardProp", slide 8); its original source is not known, so it carries no
+  credit line. `assets/neuron_blausen.webp` is "Blausen 0657 MultipolarNeuron" by BruceBlaus,
+  Wikimedia Commons, CC BY 3.0 (licence and author read from the Commons file page). It is the same
+  image as in the user's slides (mean pixel difference 0.3 of 255 after resizing); the Commons
+  original was used because it has a higher resolution. Credit line on the slide.
+- Citations, checked against the publishers' records (Springer, PubMed):
+  W. S. McCulloch and W. Pitts, "A logical calculus of the ideas immanent in nervous activity",
+  Bulletin of Mathematical Biophysics 5 (1943), 115–133, doi:10.1007/BF02478259.
+  F. Rosenblatt, "The perceptron: a probabilistic model for information storage and organization in
+  the brain", Psychological Review 65(6) (1958), 386–408, doi:10.1037/h0042519.
+- Deeper networks uses h⁽ˡ⁾ for layer outputs (see PLAN.md for why not a⁽ˡ⁾).
+- Patience. Computing the stopping epoch showed that the validation loss dips to 0.35 at epoch 25,
+  rises, and only beats that at epoch 327. So a patience of 300 or less stops early (patience 300:
+  epoch 325, keeping the epoch-25 weights), while patience 400 stops at epoch 843 and keeps epoch 443
+  (validation loss 0.33). The slide uses 400 and the notes tell the dip story; check_numbers.py
+  verifies both.
+- New class 2 slides: "The network is one formula", "The training loop".
+- Characteristics gained "irrelevant inputs can be ignored: training can drive their weights to zero"
+  and "training is time-consuming".

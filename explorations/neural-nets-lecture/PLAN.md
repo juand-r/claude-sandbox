@@ -94,3 +94,33 @@ class 1, slide 4; model / loss boxes as in the logistic regression deck: ŷ = f(
     → Transformer (2017); MLP → Transformer (every Transformer layer contains an MLP). Next lecture.
 16. **Takeaways.**
 17. **Thanks.**
+
+## Revision 1 (2026-10-12): after comparing with the course's earlier slides
+
+The user compared our decks with the course's earlier forward-propagation and backpropagation slides
+and asked for these changes (major additions are discussed afterwards):
+
+- [x] Notation: layer index as a superscript, W⁽¹⁾, b⁽¹⁾, W⁽²⁾, b⁽²⁾, δ⁽¹⁾, δ⁽²⁾, in both decks
+      (slides, figures, notes). The hidden-layer sum keeps the name aⱼ.
+- [x] Class 1: three new slides before the perceptron. (1) A photo of real neurons; (2) the
+      labelled neuron diagram (Blausen 0657, BruceBlaus, CC BY 3.0); (3) the neuron beside a
+      simplified perceptron diagram, citing McCulloch & Pitts (1943) and Rosenblatt (1958).
+- [x] Class 1: bias drawn as a node with constant input 1 (the neuron, perceptron and network figures).
+- [x] Class 1: a deeper network with layer-l notation, after the single-hidden-layer forward pass.
+- [x] Class 2: the small network written out as one formula, on a slide.
+- [x] Class 2: a loop diagram, forward propagation → total error → gradients → update → back,
+      after the recipe.
+- [x] Class 2: patience (stop after a set number of epochs without improvement) on "When to stop".
+- [x] Class 2: characteristics gain "training is time-consuming" and "irrelevant inputs can get
+      zero weights".
+
+Done as follows (details in NOTES.md):
+- Class 1 order now: … gradient descent → Networks of neurons (photo) → A neuron (diagram) → A very
+  simplified neuron (diagram beside a perceptron, both citations) → The perceptron (1958) → …
+  → Forward propagation → Deeper networks → XOR by hand → …
+- Deeper networks writes layer outputs as h⁽ˡ⁾, h⁽⁰⁾ = x, not a⁽ˡ⁾, because class 2 uses aⱼ for the
+  sum before the sigmoid.
+- Bias nodes ("1", dashed) are drawn in the class 1 recap neuron, the perceptron, the forward
+  propagation network and the deeper network. The class 2 diagrams are unchanged.
+- Class 2 order now: Recap → The network is one formula → The chain rule → … → The recipe → The
+  training loop → The learning rate → … When to stop gains a patience step (patience 400).

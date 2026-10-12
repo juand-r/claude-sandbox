@@ -16,7 +16,7 @@ function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b]
 {
   const N=netDiagram($('fig-recap'),{names:[['x₁','x₂'],['h₁','h₂','h₃'],['z₁','z₂']],xs:[70,270,450],W:640,H:400,top:70,bot:330,aria:'a network with two inputs, three hidden units and two outputs, followed by a softmax'});
   softmaxBox(N.svg,472,N.pos[2].map(p=>p[1]));
-  label(N.svg,170,62,'W₁, b₁',{'text-anchor':'middle',fill:'var(--model)'});label(N.svg,360,62,'W₂, b₂',{'text-anchor':'middle',fill:'var(--mean)'});
+  label(N.svg,170,62,'W^(1), b^(1)',{'text-anchor':'middle',fill:'var(--model)'});label(N.svg,360,62,'W^(2), b^(2)',{'text-anchor':'middle',fill:'var(--mean)'});
   const g=stepG(N.svg,2);mtxt(g,320,385,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)','font-weight':700});
 }
 
@@ -58,7 +58,7 @@ const SMALL={names:[['x₁','x₂'],['h₁','h₂'],['z']],xs:[80,300,500],W:600
   hiEdge(N,N.gE,0,0,0);hiEdge(N,N.gE,1,0,0);hiEdge(N,N.gE,1,0,1,'var(--err)');
   label(N.svg,190,N.pos[0][0][1]-8,'w₁₁',{fill:'var(--hi)','text-anchor':'middle'});
   const g2=stepG(N.svg,2),f=(x,y,s,c)=>mtxt(g2,x,y,s,{'text-anchor':'middle','font-size':15,fill:c,'font-weight':700});
-  f(500,N.pos[2][0][1]-36,'δ₂ = p − y','var(--err)');f(300,N.pos[1][0][1]-36,'δ₁','var(--err)');
+  f(500,N.pos[2][0][1]-36,'δ^(2) = p − y','var(--err)');f(300,N.pos[1][0][1]-36,'δ^(1)','var(--err)');
   arrow(g2,470,N.pos[2][0][1]-40,340,N.pos[1][0][1]-40,{stroke:'var(--err)'});
 }
 
@@ -67,9 +67,9 @@ const SMALL={names:[['x₁','x₂'],['h₁','h₂'],['z']],xs:[80,300,500],W:600
   const N=netDiagram($('fig-recipe'),{names:[['x₁','x₂'],['h₁','h₂','h₃'],['z₁','z₂']],xs:[80,300,500],W:600,H:420,top:90,bot:330,aria:'forward pass from left to right, backward pass from right to left'});
   arrow(N.svg,60,40,520,40,{stroke:'var(--model)','stroke-width':3});mtxt(N.svg,290,30,'forward: h, p',{'text-anchor':'middle','font-size':15,fill:'var(--model)','font-weight':700});
   const g2=stepG(N.svg,2);arrow(g2,520,400,60,400,{stroke:'var(--err)','stroke-width':3});
-  mtxt(g2,290,390,'backward: δ₂, then δ₁',{'text-anchor':'middle','font-size':15,fill:'var(--err)','font-weight':700});
-  const g1=stepG(N.svg,1);mtxt(g1,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'δ₂',{'font-size':16,fill:'var(--err)','font-weight':700});
-  mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'δ₁',{'font-size':16,fill:'var(--err)','font-weight':700});
+  mtxt(g2,290,390,'backward: δ^(2), then δ^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)','font-weight':700});
+  const g1=stepG(N.svg,1);mtxt(g1,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'δ^(2)',{'font-size':16,fill:'var(--err)','font-weight':700});
+  mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'δ^(1)',{'font-size':16,fill:'var(--err)','font-weight':700});
 }
 
 /* ---------- learning-rate schedules ---------- */
@@ -145,6 +145,7 @@ const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   set(['batch',false]);
 }
 
+const PATIENCE=400;   // epochs without improvement before stopping (checked in check_numbers.py)
 /* ---------- when to stop: training and validation loss; the map at the best epoch and at the end ---------- */
 {
   const O=D.overfit,E=O.epochs,best=O.best_epoch,ymax=Math.ceil(Math.max(...O.val_loss)*4)/4;
@@ -157,6 +158,14 @@ const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   el('line',{x1:api.sx(best),x2:api.sx(best),y1:api.sy(0),y2:api.sy(ymax),stroke:'var(--ink)','stroke-width':1.5,'stroke-dasharray':'5 5'},g3);
   el('circle',{cx:api.sx(best),cy:api.sy(O.val_loss[best-1]),r:7,fill:'var(--err)',stroke:'var(--surface)','stroke-width':2},g3);
   label(g3,api.sx(best)+8,api.sy(ymax)+20,`epoch ${best}`,{fill:'var(--ink)','font-size':15});
+  // patience: stop once the validation loss has not improved for PATIENCE epochs
+  let bestSoFar=Infinity,bestE=0,stopE=E;
+  for(let e=1;e<=E;e++){if(O.val_loss[e-1]<bestSoFar){bestSoFar=O.val_loss[e-1];bestE=e;}if(e-bestE>=PATIENCE){stopE=e;break;}}
+  const g4=stepG(api.layer('extra'),4);
+  el('rect',{x:api.sx(bestE),y:api.sy(ymax),width:api.sx(stopE)-api.sx(bestE),height:api.sy(0)-api.sy(ymax),fill:'var(--hi)',opacity:.12},g4);
+  el('line',{x1:api.sx(stopE),x2:api.sx(stopE),y1:api.sy(0),y2:api.sy(ymax),stroke:'var(--hi)','stroke-width':2,'stroke-dasharray':'6 4'},g4);
+  label(g4,api.sx(stopE)+8,api.sy(ymax*.3),`stop at ${stopE}`,{fill:'var(--hi)','font-size':15});
+  label(g4,api.sx(stopE)+8,api.sy(ymax*.3)+20,`patience ${PATIENCE}`,{fill:'var(--hi)','font-size':13});
   const X=O.train_X,mapi=chart($('fig-stopmap'),{W:440,H:440,ml:58,fs:1.6,xmin:-2,xmax:3,ymin:-1.5,ymax:2,xticks:[-2,0,2],yticks:[-1,0,1,2],
     xfmt:v=>String(v).replace('-','−'),yfmt:v=>String(v).replace('-','−'),xlabel:'x₁',ylabel:'x₂',label:'the network decision map'});
   drawPts(mapi,mapi.layer('pts'),X,O.train_y);
@@ -184,4 +193,21 @@ const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   box(g1,...P.cnn,'CNN','1989');box(g1,...P.rnn,'RNN','1990');box(g1,...P.lstm,'LSTM','1997');box(g1,...P.gru,'GRU','2014');
   box(g2,...P.att,'Attention','2014');box(g2,...P.tr,'Transformer','2017','var(--hi)');
   mtxt(g2,650,150,'every Transformer layer contains an MLP',{'text-anchor':'middle','font-size':14,fill:'var(--model)'});
+}
+
+/* ---------- the training loop: four boxes and an arrow back ---------- */
+{
+  const W=1000,H=290,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'training loop: forward propagation, total error, gradients by backpropagation, update the weights, then back to forward propagation'},$('fig-loop'));
+  const BX=[{t:'Forward propagation',m:'compute h and p',c:'var(--model)'},{t:'Total error',m:'the loss ℒ',c:'var(--err)'},
+            {t:'Gradients',m:'backpropagation',c:'var(--hi)'},{t:'Update',m:'θ ← θ − η∇ℒ',c:'var(--mean)'}];
+  const w=216,h=110,gap=(W-40-4*w)/3,y=40,xs=BX.map((_,k)=>20+k*(w+gap));
+  BX.forEach((b,k)=>{const g=stepG(svg,k),x=xs[k];
+    el('rect',{x,y,width:w,height:h,rx:14,fill:'var(--surface)',stroke:b.c,'stroke-width':2.5},g);
+    txt(g,x+w/2,y+46,b.t,{'text-anchor':'middle','font-size':17,'font-weight':700,fill:b.c});
+    mtxt(g,x+w/2,y+80,b.m,{'text-anchor':'middle','font-size':16,fill:'var(--ink)'});
+    if(k)arrow(g,xs[k-1]+w+4,y+h/2,x-4,y+h/2,{stroke:'var(--ink)','stroke-width':2.5});});
+  const g4=stepG(svg,4),yb=y+h+70;
+  el('path',{d:`M${xs[3]+w/2} ${y+h+4} V${yb} H${xs[0]+w/2} V${y+h+14}`,fill:'none',stroke:'var(--ink)','stroke-width':2.5},g4);
+  arrow(g4,xs[0]+w/2,y+h+30,xs[0]+w/2,y+h+4,{stroke:'var(--ink)','stroke-width':2.5});
+  txt(g4,W/2,yb+30,'repeat with the new weights, until a stopping condition holds',{'text-anchor':'middle','font-size':17,fill:'var(--muted)'});
 }

@@ -1241,7 +1241,8 @@ function txt(parent,x,y,s,a={}){const t=el('text',{x,y,...a},parent);t.textConte
 /* ---------- math labels in SVG, in the KaTeX fonts (embedded by build/tex.js) ---------- */
 // Write labels as plain text: single letters become italic variables, words and digits stay upright,
 // ℒ is the script L (upright:true keeps every letter upright, for units), and subscripts are written with Unicode (x₁, wⱼᵢ) or as _N (x_N).
-// Each run of characters gets its own <tspan>; subscripts are smaller and lowered.
+// Superscripts are written ^(1) or ^T. Each run of characters gets its own <tspan>; sub- and
+// superscripts are smaller and shifted.
 const MATH_SCALE=1.15;   // KaTeX's glyphs are smaller than the mono font's at the same size
 const SUB={'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','ᵢ':'i','ⱼ':'j','ₖ':'k','ₚ':'p'},SUP={'ᵀ':'T'};
 const KATEX_CHAR={'·':'⋅','‖':'∥'};   // the characters KaTeX's fonts have for these
@@ -1249,7 +1250,9 @@ const isLatin=c=>/[A-Za-z]/.test(c||''),GREEK_IT='αβγδεζηθικλμνξπ
 function mathRuns(s,upright=false){
   const runs=[],push=(t,fam,it,shift)=>{const r=runs[runs.length-1];
     if(r&&r.fam===fam&&r.it===it&&r.shift===shift)r.t+=t;else runs.push({t,fam,it,shift});};
-  for(let i=0;i<s.length;i++){let c=s[i],shift=0;
+  let supEnd=-1;   // ^(…) or ^x: a superscript, as in W^(1)
+  for(let i=0;i<s.length;i++){let c=s[i],shift=i<=supEnd?-1:0;
+    if(c==='^'&&i+1<s.length){supEnd=s[i+1]==='('?s.indexOf(')',i+1):i+1;if(supEnd<0)supEnd=s.length-1;continue;}
     if(c==='_'&&i+1<s.length){c=s[++i];shift=1;}
     else if(SUB[c]){c=SUB[c];shift=1;}
     else if(SUP[c]){c=SUP[c];shift=-1;}

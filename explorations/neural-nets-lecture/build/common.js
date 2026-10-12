@@ -5,7 +5,8 @@ function txt(parent,x,y,s,a={}){const t=el('text',{x,y,...a},parent);t.textConte
 /* ---------- math labels in SVG, in the KaTeX fonts (embedded by build/tex.js) ---------- */
 // Write labels as plain text: single letters become italic variables, words and digits stay upright,
 // ℒ is the script L, and subscripts are written with Unicode (x₁, wⱼᵢ) or as _N (x_N).
-// Each run of characters gets its own <tspan>; subscripts are smaller and lowered.
+// Superscripts are written ^(1) or ^T. Each run of characters gets its own <tspan>; sub- and
+// superscripts are smaller and shifted.
 const MATH_SCALE=1.15;   // KaTeX's glyphs are smaller than the mono font's at the same size
 const SUB={'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','ᵢ':'i','ⱼ':'j','ₖ':'k','ₚ':'p'},SUP={'ᵀ':'T'};
 const KATEX_CHAR={'·':'⋅','‖':'∥'};   // the characters KaTeX's fonts have for these
@@ -13,7 +14,9 @@ const isLatin=c=>/[A-Za-z]/.test(c||''),GREEK_IT='αβγδεζηθικλμνξπ
 function mathRuns(s){
   const runs=[],push=(t,fam,it,shift)=>{const r=runs[runs.length-1];
     if(r&&r.fam===fam&&r.it===it&&r.shift===shift)r.t+=t;else runs.push({t,fam,it,shift});};
-  for(let i=0;i<s.length;i++){let c=s[i],shift=0;
+  let supEnd=-1;   // ^(…) or ^x: a superscript, as in W^(1)
+  for(let i=0;i<s.length;i++){let c=s[i],shift=i<=supEnd?-1:0;
+    if(c==='^'&&i+1<s.length){supEnd=s[i+1]==='('?s.indexOf(')',i+1):i+1;if(supEnd<0)supEnd=s.length-1;continue;}
     if(c==='_'&&i+1<s.length){c=s[++i];shift=1;}
     else if(SUB[c]){c=SUB[c];shift=1;}
     else if(SUP[c]){c=SUP[c];shift=-1;}
@@ -109,17 +112,24 @@ function node(L,x,y,r,s,a={},ta={}){el('circle',{cx:x,cy:y,r,fill:'var(--surface
 function arrow(L,x1,y1,x2,y2,a={}){const t=Math.atan2(y2-y1,x2-x1),hd=9,c=a.stroke||'var(--muted)';
   el('line',{x1,y1,x2:x2-Math.cos(t)*hd*.6,y2:y2-Math.sin(t)*hd*.6,stroke:c,'stroke-width':1.8,...a},L);
   el('polygon',{points:[[x2,y2],[x2-hd*Math.cos(t-.4),y2-hd*Math.sin(t-.4)],[x2-hd*Math.cos(t+.4),y2-hd*Math.sin(t+.4)]].map(v=>v.join(',')).join(' '),fill:c},L);}
-// one neuron: inputs → weights → Σ + b → σ → p (as on the last slide of the logistic regression deck)
-function neuronDiagram(host,{W=640,H=260,aria='one neuron'}={}){
+// the bias drawn as a weight from an extra node whose value is always 1
+function biasNode(L,x,y,r=18){el('circle',{cx:x,cy:y,r,fill:'var(--grid)',stroke:'var(--muted)','stroke-width':1.6,'stroke-dasharray':'4 3'},L);
+  mtxt(L,x,y+6,'1',{'text-anchor':'middle','font-size':16,fill:'var(--muted)'});}
+// one neuron: inputs and a bias node → weights → Σ → activation → output
+// act: 'sigma' (logistic regression) or 'step' (the perceptron)
+function neuronDiagram(host,{W=640,H=330,aria='one neuron',act='sigma',out='p'}={}){
   const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':aria},host),L=el('g',{},svg);
-  const ins=[[70,50],[70,130],[70,210]],S=[300,130],SG=[440,130];
-  ins.forEach(([x,y],k)=>{node(L,x,y,24,`x${'₁₂₃'[k]}`);arrow(L,x+24,y,S[0]-34,S[1]+(y-130)*.25);
+  const ins=[[70,50],[70,130],[70,210]],S=[300,150],SG=[440,150],B=[70,290];
+  ins.forEach(([x,y],k)=>{node(L,x,y,24,`x${'₁₂₃'[k]}`);arrow(L,x+24,y,S[0]-34,S[1]+(y-150)*.25);
     label(L,(x+S[0])/2-4,(y+S[1])/2-8+(k-1)*6,`w${'₁₂₃'[k]}`,{fill:'var(--model)','text-anchor':'middle','font-size':15});});
-  node(L,S[0],S[1],34,'Σ + b');arrow(L,S[0]+34,S[1],SG[0]-30,SG[1]);
+  biasNode(L,...B);arrow(L,B[0]+18,B[1],S[0]-30,S[1]+18,{stroke:'var(--muted)'});
+  label(L,(B[0]+S[0])/2,(B[1]+S[1])/2+26,'b',{fill:'var(--model)','text-anchor':'middle','font-size':15});
+  node(L,S[0],S[1],34,'Σ');arrow(L,S[0]+34,S[1],SG[0]-30,SG[1]);
   el('rect',{x:SG[0]-30,y:SG[1]-30,width:60,height:60,rx:10,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},L);
-  mtxt(L,SG[0],SG[1]+7,'σ',{'text-anchor':'middle','font-size':24,fill:'var(--model)'});
-  arrow(L,SG[0]+30,SG[1],560,SG[1]);mtxt(L,575,SG[1]+6,'p',{'font-size':20,fill:'var(--ink)','font-weight':700});
-  return svg;}
+  if(act==='step')el('path',{d:`M${SG[0]-20} ${SG[1]+12}H${SG[0]}V${SG[1]-12}H${SG[0]+20}`,fill:'none',stroke:'var(--model)','stroke-width':2.5},L);
+  else mtxt(L,SG[0],SG[1]+7,'σ',{'text-anchor':'middle','font-size':24,fill:'var(--model)'});
+  arrow(L,SG[0]+30,SG[1],560,SG[1]);mtxt(L,575,SG[1]+6,out,{'font-size':20,fill:'var(--ink)','font-weight':700});
+  return {svg,ins,B,S,SG};}
 // a fully connected layer picture: columns of nodes and all edges between neighbouring columns
 function layerPos(n,x,top,bot){return Array.from({length:n},(_,i)=>[x,n===1?(top+bot)/2:top+i*(bot-top)/(n-1)]);}
 function edges(L,A,B,{r=18,stroke='var(--line)',width=1.5}={}){

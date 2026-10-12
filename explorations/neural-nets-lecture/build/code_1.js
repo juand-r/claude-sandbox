@@ -1,7 +1,15 @@
 /* ================= Class 1 figures ================= */
 
 /* ---------- recap: one neuron ---------- */
-neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a sigmoid, a probability'});
+neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with value 1, weights, a sum, a sigmoid, a probability'});
+
+/* ---------- from neuron to model: the perceptron, with what each part stands for ---------- */
+{
+  const N=neuronDiagram($('fig-model'),{W:640,H:380,act:'step',out:'±1',aria:'a perceptron: inputs, weights, a sum, a step, an output of plus or minus one, each labelled with the part of a neuron it stands for'});
+  const t=(x,y,s)=>mtxt(N.svg,x,y,s,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'});
+  N.svg.setAttribute('viewBox','0 -34 640 414');
+  t(70,4,'dendrites');t(200,4,'connection strengths');t(N.S[0],N.S[1]+62,'cell body');t(N.SG[0],N.SG[1]+62,'fires or not');t(580,N.SG[1]+40,'axon');
+}
 
 /* ---------- two classes with one-hot labels: a 3-input, 2-output picture, the second score fixed at 0 ---------- */
 {
@@ -120,17 +128,35 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs, weights, a sum plus b, a
 
 /* ---------- forward propagation: the network with its matrices ---------- */
 {
-  const W=640,H=400,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'network with input x, hidden layer h computed with W1 and b1, and output p computed with W2, b2 and softmax'},$('fig-fwd'));
-  const L=el('g',{},svg),I=layerPos(2,70,130,270),Hn=layerPos(3,270,70,330),O=layerPos(2,450,140,260);
+  const W=640,H=460,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'network with input x, hidden layer h computed with W1 and b1, output scores z computed with W2 and b2, then a softmax; each bias drawn as a node with value 1'},$('fig-fwd'));
+  const L=el('g',{},svg),I=layerPos(2,70,130,270),Hn=layerPos(3,270,70,330),O=layerPos(2,450,140,260),B0=[70,350],B1=[270,400];
   edges(L,I,Hn,{r:24,stroke:'var(--model)',width:1.4});edges(L,Hn,O,{r:24,stroke:'var(--mean)',width:1.4});
+  edges(L,[B0],Hn,{r:20,stroke:'var(--model)',width:1.1}).forEach(e=>e.setAttribute('stroke-dasharray','4 4'));
+  edges(L,[B1],O,{r:20,stroke:'var(--mean)',width:1.1}).forEach(e=>e.setAttribute('stroke-dasharray','4 4'));
   I.forEach((p,k)=>node(L,p[0],p[1],22,`x${'₁₂'[k]}`));Hn.forEach((p,j)=>node(L,p[0],p[1],24,`h${'₁₂₃'[j]}`));O.forEach((p,k)=>node(L,p[0],p[1],22,`z${'₁₂'[k]}`));softmaxBox(L,472,O.map(p=>p[1]));
-  label(L,170,62,'W₁, b₁',{'text-anchor':'middle',fill:'var(--model)'});label(L,360,62,'W₂, b₂',{'text-anchor':'middle',fill:'var(--mean)'});
+  biasNode(L,...B0);biasNode(L,...B1);
+  label(L,170,62,'W^(1), b^(1)',{'text-anchor':'middle',fill:'var(--model)'});label(L,360,62,'W^(2), b^(2)',{'text-anchor':'middle',fill:'var(--mean)'});
   const g1=stepG(L,1);
-  mtxt(g1,70,385,'x: N = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
-  mtxt(g1,270,385,'h: H = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
-  mtxt(g1,450,385,'z: C = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,70,445,'x: N = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,270,445,'h: H = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,450,445,'z: C = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
   mtxt(g1,170,86,'3 × 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
   mtxt(g1,360,86,'2 × 3',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+}
+
+/* ---------- deeper networks: two hidden layers, layer-l notation ---------- */
+{
+  const W=720,H=470,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'a network with input x, two hidden layers h1 and h2, and an output layer with a softmax; weights W1, W2, W3; each bias drawn as a node with value 1'},$('fig-layers'));
+  const L=el('g',{},svg),X=[60,220,380,530],C=[layerPos(2,X[0],130,270),layerPos(3,X[1],70,330),layerPos(3,X[2],70,330),layerPos(2,X[3],140,260)];
+  const col=['var(--model)','var(--hi)','var(--mean)'],B=[[X[0],350],[X[1],400],[X[2],400]];
+  for(let l=0;l<3;l++){edges(L,C[l],C[l+1],{r:22,stroke:col[l],width:1.3});
+    edges(L,[B[l]],C[l+1],{r:20,stroke:col[l],width:1}).forEach(e=>e.setAttribute('stroke-dasharray','4 4'));
+    label(L,(X[l]+X[l+1])/2,50,`W^(${l+1})`,{'text-anchor':'middle',fill:col[l]});}
+  C[0].forEach((p,k)=>node(L,p[0],p[1],22,`x${'₁₂'[k]}`));
+  for(const l of [1,2])C[l].forEach(p=>node(L,p[0],p[1],22,''));
+  C[3].forEach((p,k)=>node(L,p[0],p[1],22,`z${'₁₂'[k]}`));B.forEach(b=>biasNode(L,...b));
+  const g1=stepG(L,1);softmaxBox(g1,552,C[3].map(p=>p[1]),{w:76});
+  [['h^(0) = x',X[0]],['h^(1)',X[1]],['h^(2)',X[2]],['output',X[3]]].forEach(([s,x])=>mtxt(L,x,455,s,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'}));
 }
 
 /* ---------- XOR by hand ---------- */

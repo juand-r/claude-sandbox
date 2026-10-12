@@ -36,4 +36,12 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 /* KaTeX formulas (typeset at build time) */
 .math .katex,.eq .katex{font-size:1.12em}
 .eq{font-size:1em}
-@media (max-width:620px){.eq .katex{font-size:.9em}.eq{padding:.4em .5em}}
+@media (max-width:620px){.eq .katex{font-size:.8em}.eq{padding:.4em .5em}.math .katex{font-size:.98em}}
+/* neuron to model: photo and diagram side by side; references below */
+.modelduo{align-items:center}
+.modelduo .fig.photo img{max-height:46vh}
+#fig-model svg,#fig-layers svg{max-height:60vh;width:auto;max-width:100%;margin:0 auto}
+.refs{font-size:.72em;color:var(--muted);line-height:1.5;margin:1em 0 0}
+#s-brain .opener img{max-height:66vh}
+.math.dm.big .katex{font-size:1.35em}
+#fig-loop svg{max-height:52vh;width:100%;margin:0 auto}
