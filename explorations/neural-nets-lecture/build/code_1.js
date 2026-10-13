@@ -308,7 +308,7 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=LAND_EL}={}){
   [['*h^(0) = *x',X[0]],['*h^(1)',X[1]],['*h^(2)',X[2]],['output',X[3]]].forEach(([s,x])=>mtxt(L,x,455,s,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'}));
 }
 
-/* ---------- XOR by hand: the 2-2-1 network, its weights shown step by step, and the table ---------- */
+/* ---------- XOR by hand: the 2-2-1 network, its weights shown step by step, and the table (values only at the last step) ---------- */
 {
   const W=620,H=350,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'network with inputs x1 and x2, hidden units h1 (OR) and h2 (AND), and an output f with a sigmoid; input weights 20, hidden biases minus 10 and minus 30, output weights 20 and minus 20, output bias minus 10'},$('fig-handnet'));
   const L=el('g',{},svg),I=[[60,70],[60,230]],Hn=[[260,70],[260,230]],B0=[60,318],B1=[260,318],O=[440,150];
@@ -329,7 +329,7 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=LAND_EL}={}){
   arrow(L,548,150,578,150);mtxt(L,586,156,'p',{'font-size':20,fill:'var(--ink)'});
   const tb=$('t-hand');
   for(const [a,b] of [[0,0],[0,1],[1,0],[1,1]]){const h1=sig(20*a+20*b-10),h2=sig(20*a+20*b-30),f=20*h1-20*h2-10;
-    tb.insertAdjacentHTML('beforeend',`<tr><td>${a}</td><td>${b}</td><td data-step="1">${h1.toFixed(2)}</td><td data-step="2">${h2.toFixed(2)}</td><td data-step="3">${fmt(f,1)}</td><td data-step="3" class="yc">${sig(f).toFixed(2)}</td></tr>`);}
+    tb.insertAdjacentHTML('beforeend',`<tr><td>${a}</td><td>${b}</td><td data-step="4">${h1.toFixed(2)}</td><td data-step="4">${h2.toFixed(2)}</td><td data-step="4">${fmt(f,1)}</td><td data-step="4" class="yc">${sig(f).toFixed(2)}</td></tr>`);}
 }
 
 /* ---------- training on XOR: replay of the precomputed run ---------- */

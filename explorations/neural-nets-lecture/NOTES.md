@@ -173,3 +173,11 @@ x₁, zₖ, pₖ, yᵢ, θ₁; the binary label y = ±1; logistic regression's b
 bolded, as is usual). In figures, `mtxt()` (neural decks' copy only) gained a marker: *x draws x bold.
 Scalar output labels (p, p₁, …) and the weight labels of the one-neuron diagram are no longer bold in
 class 1; `softmaxBox()` has a `weight` option so class 2 keeps its look. Class 2 is not yet converted.
+
+## Later changes to class 1 (2026-10-13)
+
+- 3D loss surface: dragging the background turns it (left and right) and tilts it (up and down);
+  contour lines are drawn on the surface, so the valleys read as valleys. Default view: turn 1.45,
+  tilt 0.6 radians, chosen from a 3 × 3 grid of views.
+- XOR with two hidden units: the column headers, bullets and weights appear step by step, but the
+  table values (h₁, h₂, f, p) appear only at a new last step, so students can fill them in first.

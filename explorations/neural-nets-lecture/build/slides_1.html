@@ -264,7 +264,7 @@
   </div>
 </section>
 
-<section class="slide" id="s-hand" data-steps="3">
+<section class="slide" id="s-hand" data-steps="4">
   <div class="prose">
     <div class="eyebrow">Check it by hand</div>
     <h2>XOR with two hidden units</h2>
@@ -283,10 +283,11 @@
     </table>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>Four possible inputs. We will set the weights by hand, not train them.</p>
+    <p><b class="cue">0</b>Four possible inputs. We will set the weights by hand, not train them. The table stays empty until the last step: the students fill it in, one forward pass per row.</p>
     <p><b class="cue">1</b>σ(−10) ≈ 0.00005 and σ(10) ≈ 0.99995. With both inputs 0 the score is −10; with one or two inputs on it is +10 or +30.</p>
     <p><b class="cue">2</b>Same weights, bias −30: only both inputs together get the score above 0.</p>
     <p><b class="cue">3</b>One output score with a sigmoid is the two-class softmax with scores (f, 0) from earlier. p is the probability of "XOR = 1". Each hidden unit draws one line; the output combines the two lines. In the diagram, each bias is the weight on the input that is always 1. Training finds weights like these on its own.</p>
+    <p><b class="cue">4</b>The answers, once the students have worked out the four rows. Check that p is about 1 exactly when one input is 1.</p>
   </div>
 </section>
 
