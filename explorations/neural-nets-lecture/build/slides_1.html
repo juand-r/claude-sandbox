@@ -149,7 +149,7 @@
   </div>
   <div class="fig"><div id="fig-softmax"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>Three classes, so three output neurons, each with its own weights. Their inputs are the hidden neurons, or the features themselves if there is no hidden layer.</p>
+    <p><b class="cue">0</b>Three classes, so three output neurons, each with its own weights. Each one takes all four hidden neurons as its inputs. (Without a hidden layer, they would take the features directly.)</p>
     <p><b class="cue">1</b>Exponentiate, then divide by the total. The exponential makes every score positive; dividing makes them sum to 1. The largest score gets the largest probability.</p>
     <p><b class="cue">2</b>e² ≈ 7.39, e¹ ≈ 2.72, e⁻¹ ≈ 0.37, sum ≈ 10.48. Divide each by the sum.</p>
     <p><b class="cue">3</b>The prediction is the most probable class. The probabilities themselves are what the loss will use.</p>

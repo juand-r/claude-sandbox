@@ -56,22 +56,22 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with valu
   mtxt(L,O[1][0],O[1][1]+48,'score of class 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
 
-/* ---------- three classes: N inputs, three output scores, softmax; the example values at step 2 ---------- */
+/* ---------- three classes: two inputs, four hidden neurons, three output scores, softmax; the example values at step 2 ---------- */
 {
-  const W=560,H=380,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'N inputs fully connected to three output scores, then a softmax'},$('fig-softmax'));
-  const L=el('g',{},svg),I=layerPos(4,70,50,330),O=layerPos(3,290,90,290);
-  edges(L,I,O,{r:22});
-  ['x₁','x₂','⋮','x_N'].forEach((s,k)=>k===2?mtxt(L,I[k][0],I[k][1]+8,'⋮',{'text-anchor':'middle','font-size':26,fill:'var(--muted)'}):node(L,I[k][0],I[k][1],22,s));
+  const W=620,H=380,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'two inputs, a hidden layer of four neurons, three output scores, then a softmax'},$('fig-softmax'));
+  const L=el('g',{},svg),I=layerPos(2,60,130,250),Hn=layerPos(4,200,50,330),O=layerPos(3,340,90,290);
+  edges(L,I,Hn,{r:22});edges(L,Hn,O,{r:22});
+  I.forEach((p,k)=>node(L,p[0],p[1],22,`x${'₁₂'[k]}`));
+  Hn.forEach((p,j)=>node(L,p[0],p[1],22,`h${'₁₂₃₄'[j]}`));
   ['z₁','z₂','z₃'].forEach((s,k)=>node(L,O[k][0],O[k][1],24,s,{stroke:'var(--model)'},{fill:'var(--model)'}));
   const g=stepG(L,1);
-  el('rect',{x:350,y:70,width:80,height:240,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},g);
-  mtxt(g,390,196,'softmax',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
-  O.forEach((o,k)=>{arrow(g,o[0]+24,o[1],348,o[1]);mtxt(g,442,o[1]+6,['p₁','p₂','p₃'][k],{'font-size':18,fill:'var(--ink)','font-weight':700});});
+  el('rect',{x:400,y:70,width:80,height:240,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},g);
+  mtxt(g,440,196,'softmax',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
+  O.forEach((o,k)=>{arrow(g,o[0]+24,o[1],398,o[1]);mtxt(g,492,o[1]+6,['p₁','p₂','p₃'][k],{'font-size':18,fill:'var(--ink)','font-weight':700});});
   const g2=stepG(L,2),z=[2,1,-1],e=z.map(Math.exp),S=e.reduce((a,b)=>a+b,0);
   O.forEach((o,k)=>{mtxt(g2,o[0],o[1]-32,fmt(z[k],0),{'text-anchor':'middle','font-size':16,fill:'var(--model)','font-weight':700});
-    mtxt(g2,478,o[1]+6,'= '+(e[k]/S).toFixed(2),{'font-size':18,fill:'var(--ink)'});});
-  mtxt(L,70,370,'N features',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
-  mtxt(L,290,370,'C = 3 classes',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+    mtxt(g2,528,o[1]+6,'= '+(e[k]/S).toFixed(2),{'font-size':18,fill:'var(--ink)'});});
+  [['inputs',60],['hidden layer',200],['C = 3 classes',340]].forEach(([s,x])=>mtxt(L,x,370,s,{'text-anchor':'middle','font-size':13,fill:'var(--muted)'}));
 }
 
 /* ---------- cross-entropy: a one-hot label, the softmax probabilities, the loss for each possible true class ---------- */
