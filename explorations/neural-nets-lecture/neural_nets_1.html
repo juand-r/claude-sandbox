@@ -464,21 +464,19 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
   </div>
 </section>
 
-<section class="slide" id="s-logp" data-steps="2">
+<section class="slide" id="s-logp" data-steps="1">
   <div class="prose">
     <div class="eyebrow">Last time</div>
     <h2>Confident and wrong costs a lot</h2>
     <ul>
       <li>The log loss of one point is<span class="math dm"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mo>−</mo><mi>log</mi><mo>⁡</mo><mi>p</mi><mo stretchy="false">(</mo><mtext>true class</mtext><mo stretchy="false">)</mo></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle -\log p(\text{true class})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord text"><span class="mord">true class</span></span><span class="mclose">)</span></span></span></span></span></li>
-      <li data-step="1">At <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mtext>true class</mtext><mo stretchy="false">)</mo><mo>=</mo><mn>0.99</mn></mrow><annotation encoding="application/x-tex">p(\text{true class}) = 0.99</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord text"><span class="mord">true class</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.99</span></span></span></span></span> it is 0.01; at 0.5 it is 0.69; at 0.01 it is 4.61.</li>
-      <li data-step="2">The 0–1 loss (dotted) only asks whether <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mtext>true class</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(\text{true class})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord text"><span class="mord">true class</span></span><span class="mclose">)</span></span></span></span></span> is above 0.5.</li>
+      <li data-step="1">The 0–1 loss (dotted) only asks whether <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mtext>true class</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(\text{true class})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord text"><span class="mord">true class</span></span><span class="mclose">)</span></span></span></span></span> is above 0.5.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-logp"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>Last time we saw that the log loss is −log of the probability the model gives to the class the point really belongs to. In formulas: p(true class) = σ(y f(x)), and −log σ(y f(x)) = log(1 + e^(−y f(x))).</p>
-    <p><b class="cue">1</b>Right and sure: almost free. Unsure: about 0.7. Wrong and sure: expensive, and without limit as p(true class) goes to 0.</p>
-    <p><b class="cue">2</b>With a threshold of 0.5, a point is a mistake exactly when p(true class) &lt; 0.5. The 0–1 loss charges 1 for any mistake, however confident. The log loss charges more for confident mistakes, and a little even for unsure correct answers.</p>
+    <p><b class="cue">0</b>Last time we saw that the log loss is −log of the probability the model gives to the class the point really belongs to. In formulas: p(true class) = σ(y f(x)), and −log σ(y f(x)) = log(1 + e^(−y f(x))). Right and sure: almost free. Unsure: about 0.7. Wrong and sure: expensive, and without limit as p(true class) goes to 0.</p>
+    <p><b class="cue">1</b>With a threshold of 0.5, a point is a mistake exactly when p(true class) &lt; 0.5. The 0–1 loss charges 1 for any mistake, however confident. The log loss charges more for confident mistakes, and a little even for unsure correct answers.</p>
   </div>
 </section>
 
@@ -1612,11 +1610,11 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with valu
     xfmt:v=>String(v),xlabel:'p(true class)',ylabel:'loss',label:'minus log of the probability of the true class, with the 0–1 loss dotted'});
   const pmin=Math.exp(-5);let d='';for(let i=0;i<=300;i++){const p=pmin+(1-pmin)*(i/300)**2;d+=(i?'L':'M')+api.sx(p).toFixed(1)+' '+api.sy(-Math.log(p)).toFixed(1);}
   el('path',{d,fill:'none',stroke:'var(--hi)','stroke-width':3.5},api.layer('fit'));
-  const g1=stepG(api.layer('anno'),1);
+  const g1=api.layer('anno');
   for(const [p,dx,anchor] of [[.99,-12,'end'],[.5,12,'start'],[.01,14,'start']]){const l=-Math.log(p);
     el('circle',{cx:api.sx(p),cy:api.sy(l),r:6,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':2},g1);
     label(g1,api.sx(p)+dx,api.sy(l)-12,l.toFixed(2),{'text-anchor':anchor,fill:'var(--ink)','font-size':15});}
-  el('path',{d:`M${api.sx(0)} ${api.sy(1)}H${api.sx(.5)}V${api.sy(0)}H${api.sx(1)}`,fill:'none',stroke:'var(--err)','stroke-width':3,'stroke-dasharray':'3 6','stroke-linecap':'round'},stepG(api.layer('extra'),2));
+  el('path',{d:`M${api.sx(0)} ${api.sy(1)}H${api.sx(.5)}V${api.sy(0)}H${api.sx(1)}`,fill:'none',stroke:'var(--err)','stroke-width':3,'stroke-dasharray':'3 6','stroke-linecap':'round'},stepG(api.layer('extra'),1));
 }
 
 /* ---------- from neuron to model: the perceptron, with what each part stands for ---------- */

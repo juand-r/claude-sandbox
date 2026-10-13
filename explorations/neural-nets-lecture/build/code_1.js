@@ -23,11 +23,11 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with valu
     xfmt:v=>String(v),xlabel:'p(true class)',ylabel:'loss',label:'minus log of the probability of the true class, with the 0–1 loss dotted'});
   const pmin=Math.exp(-5);let d='';for(let i=0;i<=300;i++){const p=pmin+(1-pmin)*(i/300)**2;d+=(i?'L':'M')+api.sx(p).toFixed(1)+' '+api.sy(-Math.log(p)).toFixed(1);}
   el('path',{d,fill:'none',stroke:'var(--hi)','stroke-width':3.5},api.layer('fit'));
-  const g1=stepG(api.layer('anno'),1);
+  const g1=api.layer('anno');
   for(const [p,dx,anchor] of [[.99,-12,'end'],[.5,12,'start'],[.01,14,'start']]){const l=-Math.log(p);
     el('circle',{cx:api.sx(p),cy:api.sy(l),r:6,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':2},g1);
     label(g1,api.sx(p)+dx,api.sy(l)-12,l.toFixed(2),{'text-anchor':anchor,fill:'var(--ink)','font-size':15});}
-  el('path',{d:`M${api.sx(0)} ${api.sy(1)}H${api.sx(.5)}V${api.sy(0)}H${api.sx(1)}`,fill:'none',stroke:'var(--err)','stroke-width':3,'stroke-dasharray':'3 6','stroke-linecap':'round'},stepG(api.layer('extra'),2));
+  el('path',{d:`M${api.sx(0)} ${api.sy(1)}H${api.sx(.5)}V${api.sy(0)}H${api.sx(1)}`,fill:'none',stroke:'var(--err)','stroke-width':3,'stroke-dasharray':'3 6','stroke-linecap':'round'},stepG(api.layer('extra'),1));
 }
 
 /* ---------- from neuron to model: the perceptron, with what each part stands for ---------- */

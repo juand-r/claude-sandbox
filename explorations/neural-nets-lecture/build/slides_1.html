@@ -70,21 +70,19 @@
   </div>
 </section>
 
-<section class="slide" id="s-logp" data-steps="2">
+<section class="slide" id="s-logp" data-steps="1">
   <div class="prose">
     <div class="eyebrow">Last time</div>
     <h2>Confident and wrong costs a lot</h2>
     <ul>
       <li>The log loss of one point is<span class="math dm">\[-\log p(\text{true class})\]</span></li>
-      <li data-step="1">At <span class="math">\(p(\text{true class}) = 0.99\)</span> it is 0.01; at 0.5 it is 0.69; at 0.01 it is 4.61.</li>
-      <li data-step="2">The 0–1 loss (dotted) only asks whether <span class="math">\(p(\text{true class})\)</span> is above 0.5.</li>
+      <li data-step="1">The 0–1 loss (dotted) only asks whether <span class="math">\(p(\text{true class})\)</span> is above 0.5.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-logp"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>Last time we saw that the log loss is −log of the probability the model gives to the class the point really belongs to. In formulas: p(true class) = σ(y f(x)), and −log σ(y f(x)) = log(1 + e^(−y f(x))).</p>
-    <p><b class="cue">1</b>Right and sure: almost free. Unsure: about 0.7. Wrong and sure: expensive, and without limit as p(true class) goes to 0.</p>
-    <p><b class="cue">2</b>With a threshold of 0.5, a point is a mistake exactly when p(true class) &lt; 0.5. The 0–1 loss charges 1 for any mistake, however confident. The log loss charges more for confident mistakes, and a little even for unsure correct answers.</p>
+    <p><b class="cue">0</b>Last time we saw that the log loss is −log of the probability the model gives to the class the point really belongs to. In formulas: p(true class) = σ(y f(x)), and −log σ(y f(x)) = log(1 + e^(−y f(x))). Right and sure: almost free. Unsure: about 0.7. Wrong and sure: expensive, and without limit as p(true class) goes to 0.</p>
+    <p><b class="cue">1</b>With a threshold of 0.5, a point is a mistake exactly when p(true class) &lt; 0.5. The 0–1 loss charges 1 for any mistake, however confident. The log loss charges more for confident mistakes, and a little even for unsure correct answers.</p>
   </div>
 </section>
 
