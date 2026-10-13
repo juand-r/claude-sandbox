@@ -6,6 +6,8 @@ Topics and points: evaluating classifiers (20), SVMs (20), nonlinear regression 
 
 - `evaluating_classifiers.md`: practice (mine-detection rats) and exam (AI-text detection), with
   solutions.
+- `roc_auc.md`: ROC/AUC parts for both versions (a core of three parts plus optional ones to choose
+  from), with solutions.
 - `check_numbers.py`: recomputes every number in the problems (`python3 check_numbers.py`, standard
   library only; ends with "all checks passed").
 
