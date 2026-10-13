@@ -163,3 +163,13 @@ library or network is needed. The start point can be dragged in either view (in 
 surface point is picked), and dragging the background of the 3D view turns it. The gradient arrow
 lies in the parameter plane on the right; on the left the same direction is drawn along the surface,
 so it visibly goes uphill. The starts A and B, and hence check_numbers.py, are unchanged.
+
+## Bold vectors and matrices, class 1 (2026-10-13)
+
+At the user's request, vectors and matrices are bold in class 1 (the user chose to bold matrices too,
+and to leave class 2 for later). Written \boldsymbol{…} (bold italic, which also works for θ): x, w, h,
+z, p, y (one-hot), b⁽ˡ⁾, θ, W⁽ˡ⁾, and xᵢ for a training example. Scalars stay plain: components such as
+x₁, zₖ, pₖ, yᵢ, θ₁; the binary label y = ±1; logistic regression's bias b; p(true class); ∇ℒ (not
+bolded, as is usual). In figures, `mtxt()` (neural decks' copy only) gained a marker: *x draws x bold.
+Scalar output labels (p, p₁, …) and the weight labels of the one-neuron diagram are no longer bold in
+class 1; `softmaxBox()` has a `weight` option so class 2 keeps its look. Class 2 is not yet converted.

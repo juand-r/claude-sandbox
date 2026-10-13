@@ -50,8 +50,8 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with valu
   el('rect',{x:360,y:95,width:80,height:140,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},g1);
   mtxt(g1,400,172,'softmax',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
   for(const o of O)arrow(g1,o[0]+26,o[1],358,o[1]);
-  mtxt(g1,452,O[0][1]+6,'p₁',{'font-size':18,fill:'var(--ink)','font-weight':700});
-  mtxt(g1,452,O[1][1]+6,'p₂',{'font-size':18,fill:'var(--ink)','font-weight':700});
+  mtxt(g1,452,O[0][1]+6,'p₁',{'font-size':18,fill:'var(--ink)'});
+  mtxt(g1,452,O[1][1]+6,'p₂',{'font-size':18,fill:'var(--ink)'});
   mtxt(L,O[0][0],O[0][1]-38,'score of class 1',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
   mtxt(L,O[1][0],O[1][1]+48,'score of class 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
@@ -67,7 +67,7 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with valu
   const g=stepG(L,1);
   el('rect',{x:400,y:70,width:80,height:240,rx:12,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},g);
   mtxt(g,440,196,'softmax',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
-  O.forEach((o,k)=>{arrow(g,o[0]+24,o[1],398,o[1]);mtxt(g,492,o[1]+6,['p₁','p₂','p₃'][k],{'font-size':18,fill:'var(--ink)','font-weight':700});});
+  O.forEach((o,k)=>{arrow(g,o[0]+24,o[1],398,o[1]);mtxt(g,492,o[1]+6,['p₁','p₂','p₃'][k],{'font-size':18,fill:'var(--ink)'});});
   const g2=stepG(L,2),z=[2,1,-1],e=z.map(Math.exp),S=e.reduce((a,b)=>a+b,0);
   O.forEach((o,k)=>{mtxt(g2,o[0],o[1]-32,fmt(z[k],0),{'text-anchor':'middle','font-size':16,fill:'var(--model)','font-weight':700});
     mtxt(g2,528,o[1]+6,'= '+(e[k]/S).toFixed(2),{'font-size':18,fill:'var(--ink)'});});
@@ -81,10 +81,10 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with valu
   const row=(g,y,s)=>mtxt(g,40,y,s,{'font-size':18,fill:'var(--muted)'});
   el('line',{x1:130,x2:490,y1:y0,y2:y0,stroke:'var(--line)','stroke-width':1.5},L);
   X.forEach((x,k)=>mtxt(L,x,y0+28,`class ${k+1}`,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'}));
-  row(L,290,'y');
+  row(L,290,'*y');
   X.forEach((x,k)=>{el('rect',{x:x-24,y:266,width:48,height:36,rx:6,fill:k?'var(--surface)':'var(--model-soft)',stroke:k?'var(--line)':'var(--model)','stroke-width':1.6},L);
     mtxt(L,x,290,k?'0':'1',{'text-anchor':'middle','font-size':18,fill:k?'var(--muted)':'var(--model)','font-weight':700});});
-  const g2=stepG(L,2);row(g2,y0-60,'p');
+  const g2=stepG(L,2);row(g2,y0-60,'*p');
   X.forEach((x,k)=>{el('rect',{x:x-30,y:y0-hp*p[k],width:60,height:hp*p[k],fill:'var(--hi-soft)',stroke:'var(--hi)','stroke-width':1.6},g2);
     mtxt(g2,x,y0-hp*p[k]-10,p[k].toFixed(2),{'text-anchor':'middle','font-size':16,fill:'var(--ink)','font-weight':700});
     mtxt(g2,x,340,(-Math.log(p[k])).toFixed(2),{'text-anchor':'middle','font-size':17,fill:'var(--err)','font-weight':700});});
@@ -104,8 +104,8 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with valu
   ['x₁','x₂','x_N'].forEach((s,k)=>k===2?(dots(X[0],C[0][2][1]-32),node(L,...C[0][2],22,s)):node(L,...C[0][k],22,s));
   for(const l of [1,2])C[l].forEach(q=>node(L,q[0],q[1],22,''));
   ['z₁','z₂','z_C'].forEach((s,k)=>node(L,...C[3][k],22,s,{stroke:'var(--model)'},{fill:'var(--model)'}));
-  softmaxBox(L,562,C[3].map(q=>q[1]),{w:76,names:['p₁','p₂','p_C']});
-  [['x',X[0]],['h^(1)',X[1]],['h^(L−1)',X[2]],['output',X[3]]].forEach(([s,x])=>mtxt(L,x,312,s,{'text-anchor':'middle','font-size':17,fill:'var(--muted)'}));
+  softmaxBox(L,562,C[3].map(q=>q[1]),{w:76,names:['p₁','p₂','p_C'],weight:400});
+  [['*x',X[0]],['*h^(1)',X[1]],['*h^(L−1)',X[2]],['output',X[3]]].forEach(([s,x])=>mtxt(L,x,312,s,{'text-anchor':'middle','font-size':17,fill:'var(--muted)'}));
 }
 
 /* ---------- activation functions: sigmoid, tanh, ReLU on the same axes ---------- */
@@ -183,7 +183,7 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=.85}={}){
     // the gradient points uphill; drawn with a fixed length so it stays visible on flat ground
     const g=cartoonGrad(start),sc=.9/Math.max(Math.hypot(g[0],g[1]),1e-9),q=[start[0]+g[0]*sc,start[1]+g[1]*sc];
     arrow(G2[1],api.sx(start[0]),api.sy(start[1]),api.sx(q[0]),api.sy(q[1]),{stroke:'var(--ink)','stroke-width':2.5});
-    label(G2[1],api.sx(q[0])-10,api.sy(q[1])+(q[1]<start[1]?22:-10),'∇ℒ',{fill:'var(--ink)','font-size':15,'text-anchor':'end'});
+    label(G2[1],api.sx(q[0])-10,api.sy(q[1])+(q[1]<start[1]?22:-10),'∇ℒ',{fill:'var(--ink)','font-size':15,'text-anchor':'end','font-weight':400});
     // in 3D: the same direction, following the surface up the slope
     const up=Array.from({length:11},(_,k)=>S3.P(S3.at(start[0]+g[0]*sc*1.4*k/10,start[1]+g[1]*sc*1.4*k/10)));
     el('path',{d:up.slice(0,10).map((p,k)=>(k?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(''),fill:'none',stroke:'var(--ink)','stroke-width':2.5},G3[1]);
@@ -256,7 +256,7 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=.85}={}){
   node(gO,450,200,22,'z');arrow(gO,472,200,500,200);
   el('rect',{x:500,y:172,width:56,height:56,rx:10,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},gO);
   mtxt(gO,528,207,'σ',{'text-anchor':'middle','font-size':24,fill:'var(--model)'});
-  arrow(gO,556,200,586,200);mtxt(gO,594,206,'p',{'font-size':20,fill:'var(--ink)','font-weight':700});
+  arrow(gO,556,200,586,200);mtxt(gO,594,206,'p',{'font-size':20,fill:'var(--ink)'});
   const gL=el('g',{class:'fadein'},svg);
   [['inputs',70],['hidden layer',270],['output',450]].forEach(([s,x])=>mtxt(gL,x,385,s,{'text-anchor':'middle','font-size':14,fill:'var(--muted)'}));
   hooks['s-hidden']={step(s){
@@ -272,13 +272,13 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=.85}={}){
   edges(L,I,Hn,{r:24,stroke:'var(--model)',width:1.4});edges(L,Hn,O,{r:24,stroke:'var(--mean)',width:1.4});
   edges(L,[B0],Hn,{r:20,stroke:'var(--model)',width:1.1}).forEach(e=>e.setAttribute('stroke-dasharray','4 4'));
   edges(L,[B1],O,{r:20,stroke:'var(--mean)',width:1.1}).forEach(e=>e.setAttribute('stroke-dasharray','4 4'));
-  I.forEach((p,k)=>node(L,p[0],p[1],22,`x${'₁₂'[k]}`));Hn.forEach((p,j)=>node(L,p[0],p[1],24,`h${'₁₂₃'[j]}`));O.forEach((p,k)=>node(L,p[0],p[1],22,`z${'₁₂₃'[k]}`));softmaxBox(L,472,O.map(p=>p[1]));
+  I.forEach((p,k)=>node(L,p[0],p[1],22,`x${'₁₂'[k]}`));Hn.forEach((p,j)=>node(L,p[0],p[1],24,`h${'₁₂₃'[j]}`));O.forEach((p,k)=>node(L,p[0],p[1],22,`z${'₁₂₃'[k]}`));softmaxBox(L,472,O.map(p=>p[1]),{weight:400});
   biasNode(L,...B0);biasNode(L,...B1);
-  label(L,170,20,'W^(1), b^(1)',{'text-anchor':'middle',fill:'var(--model)'});label(L,360,20,'W^(2), b^(2)',{'text-anchor':'middle',fill:'var(--mean)'});
+  label(L,170,20,'*W^(1), *b^(1)',{'text-anchor':'middle',fill:'var(--model)','font-weight':400});label(L,360,20,'*W^(2), *b^(2)',{'text-anchor':'middle',fill:'var(--mean)','font-weight':400});
   const g1=stepG(L,1);
-  mtxt(g1,70,445,'x: N = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
-  mtxt(g1,270,445,'h: H = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
-  mtxt(g1,450,445,'z: C = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,70,445,'*x: N = 2',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,270,445,'*h: H = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
+  mtxt(g1,450,445,'*z: C = 3',{'text-anchor':'middle','font-size':14,fill:'var(--muted)'});
   mtxt(g1,170,40,'3 × 2',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
   mtxt(g1,360,40,'3 × 3',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
 }
@@ -290,12 +290,12 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=.85}={}){
   const col=['var(--model)','var(--hi)','var(--mean)'],B=[[X[0],350],[X[1],400],[X[2],400]];
   for(let l=0;l<3;l++){edges(L,C[l],C[l+1],{r:22,stroke:col[l],width:1.3});
     edges(L,[B[l]],C[l+1],{r:20,stroke:col[l],width:1}).forEach(e=>e.setAttribute('stroke-dasharray','4 4'));
-    label(L,(X[l]+X[l+1])/2,50,`W^(${l+1})`,{'text-anchor':'middle',fill:col[l]});}
+    label(L,(X[l]+X[l+1])/2,50,`*W^(${l+1})`,{'text-anchor':'middle',fill:col[l],'font-weight':400});}
   C[0].forEach((p,k)=>node(L,p[0],p[1],22,`x${'₁₂'[k]}`));
   for(const l of [1,2])C[l].forEach(p=>node(L,p[0],p[1],22,''));
   C[3].forEach((p,k)=>node(L,p[0],p[1],22,`z${'₁₂₃'[k]}`));B.forEach(b=>biasNode(L,...b));
-  const g1=stepG(L,1);softmaxBox(g1,552,C[3].map(p=>p[1]),{w:76});
-  [['h^(0) = x',X[0]],['h^(1)',X[1]],['h^(2)',X[2]],['output',X[3]]].forEach(([s,x])=>mtxt(L,x,455,s,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'}));
+  const g1=stepG(L,1);softmaxBox(g1,552,C[3].map(p=>p[1]),{w:76,weight:400});
+  [['*h^(0) = *x',X[0]],['*h^(1)',X[1]],['*h^(2)',X[2]],['output',X[3]]].forEach(([s,x])=>mtxt(L,x,455,s,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'}));
 }
 
 /* ---------- XOR by hand: the 2-2-1 network, its weights shown step by step, and the table ---------- */
@@ -316,7 +316,7 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=.85}={}){
   node(L,O[0],O[1],24,'f');arrow(L,464,150,492,150);
   el('rect',{x:492,y:122,width:56,height:56,rx:10,fill:'var(--model-soft)',stroke:'var(--model)','stroke-width':1.8},L);
   mtxt(L,520,157,'σ',{'text-anchor':'middle','font-size':24,fill:'var(--model)'});
-  arrow(L,548,150,578,150);mtxt(L,586,156,'p',{'font-size':20,fill:'var(--ink)','font-weight':700});
+  arrow(L,548,150,578,150);mtxt(L,586,156,'p',{'font-size':20,fill:'var(--ink)'});
   const tb=$('t-hand');
   for(const [a,b] of [[0,0],[0,1],[1,0],[1,1]]){const h1=sig(20*a+20*b-10),h2=sig(20*a+20*b-30),f=20*h1-20*h2-10;
     tb.insertAdjacentHTML('beforeend',`<tr><td>${a}</td><td>${b}</td><td data-step="1">${h1.toFixed(2)}</td><td data-step="2">${h2.toFixed(2)}</td><td data-step="3">${fmt(f,1)}</td><td data-step="3" class="yc">${sig(f).toFixed(2)}</td></tr>`);}

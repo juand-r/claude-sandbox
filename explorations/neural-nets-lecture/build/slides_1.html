@@ -24,18 +24,18 @@
     <div class="eyebrow">Last time</div>
     <h2>Losses for a classifier</h2>
     <ul>
-      <li>A score <span class="math">\(f(x)\)</span> and a label <span class="math">\(y = \pm 1\)</span>. Predict <span class="math">\(+1\)</span> when <span class="math">\(f(x) > 0\)</span>.</li>
-      <li data-step="1">Multiplying by the label turns both correct cases into <span class="math">\(y\, f(x) > 0\)</span>:
+      <li>A score <span class="math">\(f(\boldsymbol{x})\)</span> and a label <span class="math">\(y = \pm 1\)</span>. Predict <span class="math">\(+1\)</span> when <span class="math">\(f(\boldsymbol{x}) > 0\)</span>.</li>
+      <li data-step="1">Multiplying by the label turns both correct cases into <span class="math">\(y\, f(\boldsymbol{x}) > 0\)</span>:
         <table class="dtab cases">
-          <tr><th><span class="math">\(y\)</span></th><th><span class="math">\(f(x)\)</span></th><th><span class="math">\(y\, f(x)\)</span></th><th></th></tr>
+          <tr><th><span class="math">\(y\)</span></th><th><span class="math">\(f(\boldsymbol{x})\)</span></th><th><span class="math">\(y\, f(\boldsymbol{x})\)</span></th><th></th></tr>
           <tr><td><span class="math">\(+1\)</span></td><td><span class="math">\(> 0\)</span></td><td><span class="math">\(> 0\)</span></td><td class="ok">correct</td></tr>
           <tr><td><span class="math">\(+1\)</span></td><td><span class="math">\(< 0\)</span></td><td><span class="math">\(< 0\)</span></td><td class="bad">mistake</td></tr>
           <tr><td><span class="math">\(-1\)</span></td><td><span class="math">\(< 0\)</span></td><td><span class="math">\(> 0\)</span></td><td class="ok">correct</td></tr>
           <tr><td><span class="math">\(-1\)</span></td><td><span class="math">\(> 0\)</span></td><td><span class="math">\(< 0\)</span></td><td class="bad">mistake</td></tr>
         </table></li>
-      <li data-step="2"><b>0–1 loss</b>: <span class="math">\(\mathbf{1}\bigl[y\, f(x) \le 0\bigr]\)</span>, which is 1 for a mistake and 0 otherwise.</li>
-      <li data-step="3"><b>Hinge loss</b> (SVM): <span class="math">\(\max\bigl(0, 1 - y\, f(x)\bigr)\)</span>.</li>
-      <li data-step="4"><b>Log loss</b> (logistic regression): <span class="math">\(\log\bigl(1 + e^{-y f(x)}\bigr)\)</span>.</li>
+      <li data-step="2"><b>0–1 loss</b>: <span class="math">\(\mathbf{1}\bigl[y\, f(\boldsymbol{x}) \le 0\bigr]\)</span>, which is 1 for a mistake and 0 otherwise.</li>
+      <li data-step="3"><b>Hinge loss</b> (SVM): <span class="math">\(\max\bigl(0, 1 - y\, f(\boldsymbol{x})\bigr)\)</span>.</li>
+      <li data-step="4"><b>Log loss</b> (logistic regression): <span class="math">\(\log\bigl(1 + e^{-y f(\boldsymbol{x})}\bigr)\)</span>.</li>
     </ul>
   </div>
   <div class="fig">
@@ -57,8 +57,8 @@
     <h2 style="margin:.2em 0 .6em">Logistic regression</h2>
     <div class="recap">
       <div class="take mlbox">
-        <div class="card"><h3>Model</h3><p><span class="math dm">\[f(x) := w \cdot x + b\]</span><span class="math dm">\[p(y = +1 \mid x) = \sigma\bigl(f(x)\bigr)\]</span>One score, squashed into a probability.</p></div>
-        <div class="card" data-step="1"><h3>Loss</h3><p><span class="math dm">\[\mathcal{L}(\theta; D) = \sum_i \log\bigl(1 + e^{-y_i f(x_i)}\bigr)\]</span>Log loss on the training data <span class="math">\(D = \{(x_i, y_i)\}\)</span>, with <span class="math">\(y_i = \pm 1\)</span>.</p></div>
+        <div class="card"><h3>Model</h3><p><span class="math dm">\[f(\boldsymbol{x}) := \boldsymbol{w} \cdot \boldsymbol{x} + b\]</span><span class="math dm">\[p(y = +1 \mid \boldsymbol{x}) = \sigma\bigl(f(\boldsymbol{x})\bigr)\]</span>One score, squashed into a probability.</p></div>
+        <div class="card" data-step="1"><h3>Loss</h3><p><span class="math dm">\[\mathcal{L}(\boldsymbol{\theta}; D) = \sum_i \log\bigl(1 + e^{-y_i f(\boldsymbol{x}_i)}\bigr)\]</span>Log loss on the training data <span class="math">\(D = \{(\boldsymbol{x}_i, y_i)\}\)</span>, with <span class="math">\(y_i = \pm 1\)</span>.</p></div>
       </div>
       <div class="fig" data-step="2"><div id="fig-recap"></div></div>
     </div>
@@ -143,7 +143,7 @@
     <ul>
       <li>One output score per class: <span class="math">\(z_1, z_2, z_3\)</span> for <span class="math">\(C = 3\)</span> classes.</li>
       <li data-step="1">The <b>softmax</b> turns the scores into probabilities:<span class="math dm">\[p_k = \frac{e^{z_k}}{\sum_j e^{z_j}}\]</span>They are positive and sum to 1.</li>
-      <li data-step="2">Example: <span class="math">\(z = (2, 1, -1)\)</span> gives <span class="math">\(p_1 = 0.71\)</span>, <span class="math">\(p_2 = 0.26\)</span>, <span class="math">\(p_3 = 0.04\)</span>.</li>
+      <li data-step="2">Example: <span class="math">\(\boldsymbol{z} = (2, 1, -1)\)</span> gives <span class="math">\(p_1 = 0.71\)</span>, <span class="math">\(p_2 = 0.26\)</span>, <span class="math">\(p_3 = 0.04\)</span>.</li>
       <li data-step="3">Predict the class with the largest <span class="math">\(p_k\)</span>.</li>
     </ul>
   </div>
@@ -178,10 +178,10 @@
   <div class="prose">
     <div class="eyebrow">What the network computes</div>
     <h2>Forward propagation</h2>
-    <span class="eq">\[\begin{aligned} h &amp;= \sigma(W^{(1)} x + b^{(1)}) \\ z &amp;= W^{(2)} h + b^{(2)} \\ p &amp;= \operatorname{softmax}(z) \end{aligned}\]</span>
+    <span class="eq">\[\begin{aligned} \boldsymbol{h} &amp;= \sigma(\boldsymbol{W}^{(1)} \boldsymbol{x} + \boldsymbol{b}^{(1)}) \\ \boldsymbol{z} &amp;= \boldsymbol{W}^{(2)} \boldsymbol{h} + \boldsymbol{b}^{(2)} \\ \boldsymbol{p} &amp;= \operatorname{softmax}(\boldsymbol{z}) \end{aligned}\]</span>
     <ul>
-      <li data-step="1">Shapes: <span class="math">\(x\)</span> has <span class="math">\(N\)</span> entries, <span class="math">\(W^{(1)}\)</span> is <span class="math">\(H \times N\)</span>, <span class="math">\(W^{(2)}\)</span> is <span class="math">\(C \times H\)</span>. The parameters <span class="math">\(\theta\)</span> are <span class="math">\(W^{(1)}\)</span>, <span class="math">\(b^{(1)}\)</span>, <span class="math">\(W^{(2)}\)</span> and <span class="math">\(b^{(2)}\)</span>. The superscript is the layer.</li>
-      <li data-step="2">Why a nonlinearity? Without one, the layers collapse into one linear layer:<span class="math dm">\[W^{(2)}(W^{(1)} x + b^{(1)}) + b^{(2)}\]</span><span class="math dm">\[= (W^{(2)} W^{(1)})\, x + (W^{(2)} b^{(1)} + b^{(2)})\]</span>Any nonlinear function <span class="math">\(\varphi\)</span> works; the sigmoid is one choice.</li>
+      <li data-step="1">Shapes: <span class="math">\(\boldsymbol{x}\)</span> has <span class="math">\(N\)</span> entries, <span class="math">\(\boldsymbol{W}^{(1)}\)</span> is <span class="math">\(H \times N\)</span>, <span class="math">\(\boldsymbol{W}^{(2)}\)</span> is <span class="math">\(C \times H\)</span>. The parameters <span class="math">\(\boldsymbol{\theta}\)</span> are <span class="math">\(\boldsymbol{W}^{(1)}\)</span>, <span class="math">\(\boldsymbol{b}^{(1)}\)</span>, <span class="math">\(\boldsymbol{W}^{(2)}\)</span> and <span class="math">\(\boldsymbol{b}^{(2)}\)</span>. The superscript is the layer.</li>
+      <li data-step="2">Why a nonlinearity? Without one, the layers collapse into one linear layer:<span class="math dm">\[\boldsymbol{W}^{(2)}(\boldsymbol{W}^{(1)} \boldsymbol{x} + \boldsymbol{b}^{(1)}) + \boldsymbol{b}^{(2)}\]</span><span class="math dm">\[= (\boldsymbol{W}^{(2)} \boldsymbol{W}^{(1)})\, \boldsymbol{x} + (\boldsymbol{W}^{(2)} \boldsymbol{b}^{(1)} + \boldsymbol{b}^{(2)})\]</span><b>Any nonlinear function <span class="math">\(\varphi\)</span> works; the sigmoid is one choice.</b></li>
     </ul>
   </div>
   <div class="fig">
@@ -199,7 +199,7 @@
     <div class="eyebrow">Not only sigmoids</div>
     <h2>Activation functions</h2>
     <ul>
-      <li>The function each hidden neuron applies is its <b>activation function</b> <span class="math">\(\varphi\)</span>:<span class="math dm">\[h = \varphi(W^{(1)} x + b^{(1)})\]</span></li>
+      <li>The function each hidden neuron applies is its <b>activation function</b> <span class="math">\(\varphi\)</span>:<span class="math dm">\[\boldsymbol{h} = \varphi(\boldsymbol{W}^{(1)} \boldsymbol{x} + \boldsymbol{b}^{(1)})\]</span></li>
       <li data-step="1">Sigmoid, <span class="math">\(\sigma(a) = 1 / (1 + e^{-a})\)</span>: between 0 and 1.</li>
       <li data-step="2"><span class="math">\(\tanh(a)\)</span>: between −1 and 1, a rescaled sigmoid.</li>
       <li data-step="3">ReLU, <span class="math">\(\max(0, a)\)</span>: 0 for negative inputs, the input itself for positive ones. Widely used in deep networks.</li>
@@ -223,8 +223,8 @@
     <div class="eyebrow">More layers</div>
     <h2>Deeper networks</h2>
     <ul>
-      <li>Stack hidden layers. Each layer works on the output of the one before:<span class="math dm">\[h^{(l)} = \varphi\bigl(W^{(l)} h^{(l-1)} + b^{(l)}\bigr)\]</span>for <span class="math">\(l = 1, \dots, L - 1\)</span>, starting from <span class="math">\(h^{(0)} = x\)</span>.</li>
-      <li data-step="1">The last layer is the softmax:<span class="math dm">\[p = \operatorname{softmax}\bigl(W^{(L)} h^{(L-1)} + b^{(L)}\bigr)\]</span></li>
+      <li>Stack hidden layers. Each layer works on the output of the one before:<span class="math dm">\[\boldsymbol{h}^{(l)} = \varphi\bigl(\boldsymbol{W}^{(l)} \boldsymbol{h}^{(l-1)} + \boldsymbol{b}^{(l)}\bigr)\]</span>for <span class="math">\(l = 1, \dots, L - 1\)</span>, starting from <span class="math">\(\boldsymbol{h}^{(0)} = \boldsymbol{x}\)</span>.</li>
+      <li data-step="1">The last layer is the softmax:<span class="math dm">\[\boldsymbol{p} = \operatorname{softmax}\bigl(\boldsymbol{W}^{(L)} \boldsymbol{h}^{(L-1)} + \boldsymbol{b}^{(L)}\bigr)\]</span></li>
       <li data-step="2">Many hidden layers: a <b>deep</b> network, hence "deep learning".</li>
     </ul>
   </div>
@@ -312,9 +312,9 @@
     <div class="eyebrow">The loss</div>
     <h2>Cross-entropy</h2>
     <ul>
-      <li>Write the label as a <b>one-hot</b> vector, with a 1 for the true class: <span class="math">\(y = (1, 0, 0)\)</span> for class 1.</li>
+      <li>Write the label as a <b>one-hot</b> vector, with a 1 for the true class: <span class="math">\(\boldsymbol{y} = (1, 0, 0)\)</span> for class 1.</li>
       <li data-step="1">The cross-entropy of one point:<span class="math dm">\[\mathcal{L} = -\sum_k y_k \log p_k = -\log p(\text{true class})\]</span>Add it up over the training data.</li>
-      <li data-step="2">With <span class="math">\(p = (0.71, 0.26, 0.04)\)</span>: if the true class is 1, the loss is 0.35; if it is 3, the loss is 3.35.</li>
+      <li data-step="2">With <span class="math">\(\boldsymbol{p} = (0.71, 0.26, 0.04)\)</span>: if the true class is 1, the loss is 0.35; if it is 3, the loss is 3.35.</li>
       <li data-step="3">With two classes, it is last lecture's log loss.</li>
     </ul>
   </div>
@@ -333,8 +333,8 @@
     <h2 style="margin:.2em 0 .6em">Multilayer perceptrons</h2>
     <div class="recap">
       <div class="take mlbox">
-        <div class="card"><h3>Model</h3><p><span class="math dm">\[h^{(0)} = x, \quad h^{(l)} = \varphi\bigl(W^{(l)} h^{(l-1)} + b^{(l)}\bigr)\]</span><span class="math dm">\[p = \operatorname{softmax}\bigl(W^{(L)} h^{(L-1)} + b^{(L)}\bigr)\]</span><span class="math">\(\varphi\)</span> is the activation function. The parameters <span class="math">\(\theta\)</span> are all the weights and biases.</p></div>
-        <div class="card" data-step="1"><h3>Loss</h3><p><span class="math dm">\[\mathcal{L}(\theta) = -\sum_i \log p(\text{true class of } x_i)\]</span>Cross-entropy, added up over the training data.</p></div>
+        <div class="card"><h3>Model</h3><p><span class="math dm">\[\boldsymbol{h}^{(0)} = \boldsymbol{x}, \quad \boldsymbol{h}^{(l)} = \varphi\bigl(\boldsymbol{W}^{(l)} \boldsymbol{h}^{(l-1)} + \boldsymbol{b}^{(l)}\bigr)\]</span><span class="math dm">\[\boldsymbol{p} = \operatorname{softmax}\bigl(\boldsymbol{W}^{(L)} \boldsymbol{h}^{(L-1)} + \boldsymbol{b}^{(L)}\bigr)\]</span><span class="math">\(\varphi\)</span> is the activation function. The parameters <span class="math">\(\boldsymbol{\theta}\)</span> are all the weights and biases.</p></div>
+        <div class="card" data-step="1"><h3>Loss</h3><p><span class="math dm">\[\mathcal{L}(\boldsymbol{\theta}) = -\sum_i \log p(\text{true class of } \boldsymbol{x}_i)\]</span>Cross-entropy, added up over the training data.</p></div>
       </div>
       <div class="fig" data-step="2"><div id="fig-mlp"></div></div>
     </div>
@@ -351,7 +351,7 @@
     <div class="eyebrow">How to train it?</div>
     <h2>The loss landscape</h2>
     <ul>
-      <li>The loss depends on the parameters <span class="math">\(\theta\)</span>. Picture it as a surface over <span class="math">\(\theta\)</span>.</li>
+      <li>The loss depends on the parameters <span class="math">\(\boldsymbol{\theta}\)</span>. Picture it as a surface over <span class="math">\(\boldsymbol{\theta}\)</span>.</li>
       <li data-step="1">The gradient is the vector of partial derivatives:<span class="math dm">\[\nabla\mathcal{L} = \left(\frac{\partial\mathcal{L}}{\partial\theta_1}, \frac{\partial\mathcal{L}}{\partial\theta_2}\right)\]</span>It points uphill, the steepest way up.</li>
       <li data-step="2">Step the other way, again and again: <b>gradient descent</b>.</li>
       <li data-step="3">A different start can end in a different minimum.</li>
@@ -376,7 +376,7 @@
     <div class="eyebrow">How to train it?</div>
     <h2>Gradient descent</h2>
     <ul>
-      <li>Update all parameters at once:<span class="math dm">\[\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}(\theta)\]</span><span class="math">\(\eta\)</span> is the <b>learning rate</b>.</li>
+      <li>Update all parameters at once:<span class="math dm">\[\boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla\mathcal{L}(\boldsymbol{\theta})\]</span><span class="math">\(\eta\)</span> is the <b>learning rate</b>.</li>
       <li data-step="1">Too small: many tiny steps.</li>
       <li data-step="2">About right: a few steps to the minimum.</li>
       <li data-step="3">Too large: it overshoots and the loss goes back up.</li>
@@ -441,7 +441,7 @@
       <div class="card"><h3>Structure</h3><p>Neurons in layers, each applying an activation function such as the sigmoid or ReLU. Hidden layers learn features, so XOR becomes possible.</p></div>
       <div class="card"><h3>Softmax</h3><p>One score per class, turned into probabilities. With two classes it is the sigmoid.</p></div>
       <div class="card"><h3>Loss</h3><p>Cross-entropy, <span class="math">\(-\log p(\text{true class})\)</span>. Confident and wrong costs a lot.</p></div>
-      <div class="card"><h3>Training</h3><p>Gradient descent, <span class="math">\(\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}\)</span>. The learning rate sets the step size.</p></div>
+      <div class="card"><h3>Training</h3><p>Gradient descent, <span class="math">\(\boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla\mathcal{L}\)</span>. The learning rate sets the step size.</p></div>
     </div>
   </div>
   <div class="notes">
@@ -465,10 +465,10 @@
     <div class="eyebrow">Bonus</div>
     <h2>The perceptron (1958)</h2>
     <ul>
-      <li>Rosenblatt's perceptron uses the same score as logistic regression, <span class="math">\(f(x) = w \cdot x + b\)</span>, but without the sigmoid.</li>
-      <li data-step="1">A step instead of the sigmoid: predict the sign of <span class="math">\(f(x)\)</span>.</li>
-      <li data-step="2">Its learning rule, on a mistake:<span class="math dm">\[w \leftarrow w + \eta\, y_i x_i, \quad b \leftarrow b + \eta\, y_i\]</span></li>
-      <li data-step="3">That is gradient descent, one point at a time, on the loss <span class="math">\(\max(0, -y\, f(x))\)</span>.</li>
+      <li>Rosenblatt's perceptron uses the same score as logistic regression, <span class="math">\(f(\boldsymbol{x}) = \boldsymbol{w} \cdot \boldsymbol{x} + b\)</span>, but without the sigmoid.</li>
+      <li data-step="1">A step instead of the sigmoid: predict the sign of <span class="math">\(f(\boldsymbol{x})\)</span>.</li>
+      <li data-step="2">Its learning rule, on a mistake:<span class="math dm">\[\boldsymbol{w} \leftarrow \boldsymbol{w} + \eta\, y_i \boldsymbol{x}_i, \quad b \leftarrow b + \eta\, y_i\]</span></li>
+      <li data-step="3">That is gradient descent, one point at a time, on the loss <span class="math">\(\max(0, -y\, f(\boldsymbol{x}))\)</span>.</li>
     </ul>
   </div>
   <figure class="fig photo">
