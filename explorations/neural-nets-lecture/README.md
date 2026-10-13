@@ -57,6 +57,10 @@ cd tests && NODE_PATH=$(npm root -g) node pdf.js 1 && cd ..   # screenshots into
 .venv/bin/python make_pdf.py 1                                  # writes neural_nets_1.pdf
 ```
 
+`neural_nets_1_steps.pdf` and `neural_nets_2_steps.pdf` have one page per step instead, so they show
+the order in which things appear (animations and interactive figures are shown as they end up at each
+step). Same commands with `steps` as the last argument: `node pdf.js 1 steps`, `make_pdf.py 1 steps`.
+
 ## Reproducing the numbers
 
 ```
