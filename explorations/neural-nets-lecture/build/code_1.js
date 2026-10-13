@@ -1,18 +1,21 @@
 /* ================= Class 1 figures ================= */
 
-/* ---------- losses for a classifier: 0–1, hinge and log loss against y · f(x) ---------- */
-{
-  const api=chart($('fig-zeroone'),{W:640,H:420,ml:62,fs:1.35,xmin:-3,xmax:3,ymin:0,ymax:4,xticks:[-3,-2,-1,0,1,2,3],yticks:[0,1,2,3,4],
-    xfmt:v=>String(v).replace('-','−'),xlabel:'y · f(x)',ylabel:'loss',label:'the 0–1 loss, the hinge loss and the log loss as functions of y times f(x)'});
+/* ---------- losses of a classifier against the signed score y · f(x); steps says at which step each part appears ---------- */
+function lossPlot(host,label,steps){
+  const api=chart(host,{W:640,H:420,ml:62,fs:1.35,xmin:-3,xmax:3,ymin:0,ymax:4,xticks:[-3,-2,-1,0,1,2,3],yticks:[0,1,2,3,4],
+    xfmt:v=>String(v).replace('-','−'),xlabel:'y · f(x)',ylabel:'loss',label});
   const path=f=>{let d='';for(let i=0;i<=300;i++){const z=-3+6*i/300;d+=(i?'L':'M')+api.sx(z).toFixed(1)+' '+api.sy(f(z)).toFixed(1);}return d;};
-  const F=api.layer('fit'),A=api.layer('anno'),g1=stepG(A,1);
-  el('line',{x1:api.sx(0),x2:api.sx(0),y1:api.sy(0),y2:api.sy(4),stroke:'var(--muted)','stroke-width':1.2,'stroke-dasharray':'4 5'},g1);
-  mtxt(g1,api.sx(-1.5),api.sy(3.6),'mistake',{'text-anchor':'middle','font-size':16,fill:'var(--muted)'});
-  mtxt(g1,api.sx(1.5),api.sy(3.6),'correct',{'text-anchor':'middle','font-size':16,fill:'var(--muted)'});
-  el('path',{d:`M${api.sx(-3)} ${api.sy(1)}H${api.sx(0)}V${api.sy(0)}H${api.sx(3)}`,fill:'none',stroke:'var(--err)','stroke-width':3},stepG(F,2));
-  el('path',{d:path(z=>Math.max(0,1-z)),fill:'none',stroke:'var(--model)','stroke-width':3.5},stepG(F,3));
-  el('path',{d:path(z=>Math.log(1+Math.exp(-z))),fill:'none',stroke:'var(--hi)','stroke-width':3.5},stepG(F,4));
-}
+  const F=api.layer('fit'),A=api.layer('anno'),g=k=>stepG(F,k);
+  if(steps.sides!==undefined){const g1=stepG(A,steps.sides);
+    el('line',{x1:api.sx(0),x2:api.sx(0),y1:api.sy(0),y2:api.sy(4),stroke:'var(--muted)','stroke-width':1.2,'stroke-dasharray':'4 5'},g1);
+    mtxt(g1,api.sx(-1.5),api.sy(3.6),'mistake',{'text-anchor':'middle','font-size':16,fill:'var(--muted)'});
+    mtxt(g1,api.sx(1.5),api.sy(3.6),'correct',{'text-anchor':'middle','font-size':16,fill:'var(--muted)'});}
+  if(steps.zero!==undefined)el('path',{d:`M${api.sx(-3)} ${api.sy(1)}H${api.sx(0)}V${api.sy(0)}H${api.sx(3)}`,fill:'none',stroke:'var(--err)','stroke-width':3},g(steps.zero));
+  if(steps.hinge!==undefined)el('path',{d:path(z=>Math.max(0,1-z)),fill:'none',stroke:'var(--model)','stroke-width':3.5},g(steps.hinge));
+  if(steps.log!==undefined)el('path',{d:path(z=>Math.log(1+Math.exp(-z))),fill:'none',stroke:'var(--hi)','stroke-width':3.5},g(steps.log));
+  if(steps.perc!==undefined)el('path',{d:path(z=>Math.max(0,-z)),fill:'none',stroke:'var(--ink)','stroke-width':3,'stroke-dasharray':'7 5'},g(steps.perc));
+  return api;}
+lossPlot($('fig-zeroone'),'the 0–1 loss, the hinge loss and the log loss as functions of y times f(x)',{sides:1,zero:2,hinge:3,log:4});
 
 /* ---------- recap: one neuron ---------- */
 neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with value 1, weights, a sum, a sigmoid, a probability'});
@@ -344,6 +347,28 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=LAND_EL}={}){
   const g1=stepG(api.layer('extra'),1);
   el('path',{d:path(gap),fill:'none',stroke:'var(--err)','stroke-width':3,'stroke-dasharray':'3 6','stroke-linecap':'round'},g1);
   mtxt(g1,api.sx(-3.1),api.sy(4.6),'max_j z_j − z₁',{'font-size':15,fill:'var(--err)'});
+}
+
+/* ---------- bonus: the four losses compared ---------- */
+lossPlot($('fig-losses'),'the 0–1, hinge, log and perceptron losses as functions of y times f(x)',{sides:0,zero:0,hinge:0,log:0,perc:1});
+
+/* ---------- bonus: softmax with a coefficient beta; beta → ∞ gives the argmax ---------- */
+{
+  const Z=[2,1,-1],BMAX=6,col=['var(--model)','var(--hi)','var(--ink)'];
+  const api=chart($('fig-softarg'),{W:640,H:420,ml:62,fs:1.35,xmin:0,xmax:BMAX,ymin:0,ymax:1,xticks:[0,1,2,3,4,5,6],yticks:[0,.25,.5,.75,1],
+    yfmt:v=>String(v),xlabel:'β',ylabel:'probability',label:'the three softmax probabilities as beta grows from 0 to 6'});
+  const sm=b=>{const e=Z.map(z=>Math.exp(b*z)),S=e.reduce((a,v)=>a+v,0);return e.map(v=>v/S);};
+  const F=api.layer('fit'),A=api.layer('anno');
+  for(let k=0;k<3;k++){let d='';for(let i=0;i<=300;i++){const b=BMAX*i/300;d+=(i?'L':'M')+api.sx(b).toFixed(1)+' '+api.sy(sm(b)[k]).toFixed(1);}
+    el('path',{d,fill:'none',stroke:col[k],'stroke-width':3.5},F);
+    // each curve's name next to it, where the curves are apart
+    const [bl,dy]=[[3.5,26],[2.2,-12],[.6,26]][k];mtxt(A,api.sx(bl),api.sy(sm(bl)[k])+dy,`p${'₁₂₃'[k]}`,{'text-anchor':'middle','font-size':18,fill:col[k]});}
+  const g3=stepG(A,3);
+  el('line',{x1:api.sx(1),x2:api.sx(1),y1:api.sy(0),y2:api.sy(1),stroke:'var(--muted)','stroke-width':1.2,'stroke-dasharray':'4 5'},g3);
+  sm(1).forEach((p,k)=>el('circle',{cx:api.sx(1),cy:api.sy(p),r:6,fill:col[k],stroke:'var(--surface)','stroke-width':2},g3));
+  label(g3,api.sx(1)+10,api.sy(.93),'β = 1: softmax',{fill:'var(--ink)','font-size':15,'font-weight':400});
+  label(g3,api.sx(.12),api.sy(.45),'1/3 each',{fill:'var(--ink)','font-size':15,'font-weight':400});
+  label(g3,api.sx(BMAX)-8,api.sy(.85),'→ argmax: (1, 0, 0)',{fill:'var(--ink)','font-size':15,'text-anchor':'end','font-weight':400});
 }
 
 /* ---------- training on XOR: replay of the precomputed run ---------- */

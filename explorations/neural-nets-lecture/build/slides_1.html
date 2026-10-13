@@ -484,6 +484,50 @@
   </div>
 </section>
 
+<section class="slide" id="s-losses" data-steps="2">
+  <div class="prose">
+    <div class="eyebrow">Bonus</div>
+    <h2>Losses compared</h2>
+    <ul>
+      <li>All four depend only on the signed score <span class="math">\(y\, f(\boldsymbol{x})\)</span>: right of 0 is correct, left of 0 is a mistake.</li>
+      <li data-step="1"><b>Perceptron loss</b>: <span class="math">\(\max\bigl(0, -y\, f(\boldsymbol{x})\bigr)\)</span>. Zero for every correct point, however close to the boundary.</li>
+      <li data-step="2">The hinge loss is the perceptron loss shifted right by 1: a point must be correct by a margin to cost nothing.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-losses"></div>
+    <p class="legend"><span class="k-err">━ 0–1 loss</span><span class="k-model">━ hinge loss</span><span class="k-hi">━ log loss</span><span class="k-ink" data-step="1">┅ perceptron loss</span></p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The plot from the start of the lecture: the 0–1 loss, the SVM's hinge loss and logistic regression's log loss.</p>
+    <p><b class="cue">1</b>The loss behind the perceptron's learning rule: its gradient is −y x on a mistake and 0 otherwise, so a gradient step on one point is the update w ← w + η y x. Like the hinge, it grows linearly on the wrong side. One oddity: w = 0, b = 0 gives loss 0 on every point. The perceptron's rule updates whenever y f(x) ≤ 0, including 0, so it does not stop there.</p>
+    <p><b class="cue">2</b>max(0, 1 − z) is max(0, −z) moved one unit to the right. Points with 0 &lt; y f(x) &lt; 1 are correct but inside the margin; the hinge still charges them, the perceptron does not.</p>
+  </div>
+</section>
+
+<section class="slide" id="s-softarg" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Bonus</div>
+    <h2>Softmax vs argmax</h2>
+    <ul>
+      <li>The <b>argmax</b> puts all the probability on the top score: <span class="math">\((1, 0, 0)\)</span> for <span class="math">\(\boldsymbol{z} = (2, 1, -1)\)</span>. It jumps when two scores swap.</li>
+      <li data-step="1">Dividing by the sum also gives numbers that add to 1, but only for positive scores, and it keeps the ratios: <span class="math">\((3, 2, 1)\)</span> gives <span class="math">\((0.50, 0.33, 0.17)\)</span>. The softmax gives <span class="math">\((0.67, 0.24, 0.09)\)</span>: the exponential stretches the gaps.</li>
+      <li data-step="2">Put a coefficient <span class="math">\(\beta\)</span> in front of the scores:<span class="math dm">\[p_k = \frac{e^{\beta z_k}}{\sum_j e^{\beta z_j}}\]</span></li>
+      <li data-step="3"><span class="math">\(\beta = 0\)</span>: every class equal. <span class="math">\(\beta = 1\)</span>: the softmax. <span class="math">\(\beta \to \infty\)</span>: the argmax.</li>
+    </ul>
+  </div>
+  <div class="fig" data-step="2">
+    <div id="fig-softarg"></div>
+    <p class="fignote">The scores <span class="math">\(\boldsymbol{z} = (2, 1, -1)\)</span> from the softmax slide.</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The argmax, written as probabilities, is the one-hot vector of the top class. It is what we predict, but it is useless for training: a small change in the scores either changes nothing or flips the answer, so there is no gradient to follow.</p>
+    <p><b class="cue">1</b>Dividing by the sum fails for negative scores: (2, 1, −1) gives (1, 0.5, −0.5), which are not probabilities. The softmax makes every score positive first. It also depends only on the differences between scores (adding the same number to every score changes nothing), while dividing by the sum depends on their ratios.</p>
+    <p><b class="cue">2</b>β multiplies every score. A large β stretches the gaps further; a small β shrinks them. 1/β is often called the temperature, a name borrowed from physics.</p>
+    <p><b class="cue">3</b>Why β → ∞ gives the argmax: divide top and bottom by e^(β z_max). Every other term becomes e^(−β (z_max − z_j)), which goes to 0 when z_j &lt; z_max. If two scores tie for the top, they share the probability. Already at β = 5, p₁ = 0.99. At β = 0 every term is e⁰ = 1, so each class gets 1/C.</p>
+  </div>
+</section>
+
 <section class="slide" id="s-cefit" data-steps="3">
   <div class="prose">
     <div class="eyebrow">Bonus</div>

@@ -1,10 +1,11 @@
 # Neural networks: lecture slides for two classes
 
 Two interactive decks for a machine learning class, following the logistic regression deck. Class 1
-(26 slides) starts from last lecture's losses, builds a network out of simplified neurons (hidden
+(28 slides) starts from last lecture's losses, builds a network out of simplified neurons (hidden
 layers, softmax, forward propagation, activation functions, deeper networks), shows why hidden layers are needed (XOR), and
-then turns to training: cross-entropy, the loss landscape and gradient descent. Two bonus slides at the
-end: the perceptron, and why softmax and cross-entropy fit together.
+then turns to training: cross-entropy, the loss landscape and gradient descent. Four bonus slides at the
+end: the perceptron, the losses compared, softmax vs argmax, and why softmax and cross-entropy
+fit together.
 Class 2 (19 slides) is about training: backpropagation, learning rates, momentum and Adam, local
 minima, batch versus mini-batch versus stochastic gradient descent, early stopping, and a family tree
 that leads into a later lecture on architectures. Same template and engine as `../svm-lecture/`.

@@ -185,3 +185,8 @@ class 1; `softmaxBox()` has a `weight` option so class 2 keeps its look. Class 2
   −log p_c = −z_c + log Σⱼ e^{z_j}; log-sum-exp is a smooth maximum (between max z and max z + log C);
   ∂ℒ/∂z_k = p_k − y_k; with scores (f, 0) it is the log loss. The plot shows the loss against z₁ with
   z₂ = 1, z₃ = −1 fixed, and max_j z_j − z₁ dotted. All numbers checked in check_numbers.py.
+- Two more bonus slides, before "Softmax and cross-entropy fit together": "Losses compared" (the plot
+  of slide 3 plus the perceptron loss max(0, −y f(x)); both slides use one `lossPlot()` function) and
+  "Softmax vs argmax" (dividing by the sum vs the softmax for (3, 2, 1); the softmax with a coefficient
+  β, plotted for z = (2, 1, −1): β = 0 gives 1/3 each, β = 1 the softmax, β → ∞ the argmax). Numbers
+  checked in check_numbers.py.

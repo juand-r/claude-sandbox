@@ -142,6 +142,21 @@ for sf in [-2.0, 0.3, 3.0]:
     close(-0 + np.log(np.exp(sf) + 1), np.log1p(np.exp(sf)), 1e-12, f"scores (f, 0), class 2: log(1 + e^f), f={sf}")
 z1 = 2.0; close(round(-z1 + np.log(np.exp(z1) + np.e + np.exp(-1)), 2), 0.35, 1e-9, "plotted point z1 = 2, z2 = 1, z3 = -1")
 
+# ---------------------------------------------------------------- bonus: softmax vs argmax, losses compared
+def softmax_b(zv, beta=1.0):
+    ev = np.exp(beta * np.asarray(zv, float)); return ev / ev.sum()
+for k, v in enumerate([0.50, 0.33, 0.17]):
+    close(round(np.array([3, 2, 1])[k] / 6, 2), v, 1e-9, f"(3,2,1) divided by the sum, entry {k + 1}")
+for k, v in enumerate([0.67, 0.24, 0.09]):
+    close(round(softmax_b([3, 2, 1])[k], 2), v, 1e-9, f"softmax (3,2,1), entry {k + 1}")
+assert list(np.array([2, 1, -1]) / 2) == [1, 0.5, -0.5]; print("ok  (2,1,-1) divided by the sum: (1, 0.5, -0.5)")
+close(np.abs(softmax_b([2, 1, -1], 0) - 1 / 3).max(), 0, 1e-12, "beta = 0: 1/3 each")
+close(round(softmax_b([2, 1, -1], 5)[0], 2), 0.99, 1e-9, "beta = 5: p1")
+close(softmax_b([2, 1, -1], 200)[0], 1.0, 1e-12, "beta = 200: argmax")
+close(np.abs(softmax_b([2, 1, -1], 1) - softmax_b([12, 11, 9], 1)).max(), 0, 1e-12, "softmax ignores a shift of all scores")
+for zq in [-2.0, -0.5, 0.5, 2.0]:
+    close(max(0, 1 - zq), max(0, -(zq - 1)), 0, f"hinge(z) = perceptron loss(z - 1), z={zq}")
+
 # ---------------------------------------------------------------- activation functions slide
 aa = np.linspace(-6, 6, 12001)
 close(np.abs(np.tanh(aa) - (2 * sig(2 * aa) - 1)).max(), 0.0, 1e-12, "tanh(a) = 2 sigma(2a) - 1")
