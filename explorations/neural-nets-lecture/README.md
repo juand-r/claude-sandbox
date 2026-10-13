@@ -1,8 +1,8 @@
 # Neural networks: lecture slides for two classes
 
 Two interactive decks for a machine learning class, following the logistic regression deck. Class 1
-(24 slides) starts from last lecture's losses, builds a network out of simplified neurons (hidden
-layers, softmax, forward propagation, deeper networks), shows why hidden layers are needed (XOR), and
+(25 slides) starts from last lecture's losses, builds a network out of simplified neurons (hidden
+layers, softmax, forward propagation, activation functions, deeper networks), shows why hidden layers are needed (XOR), and
 then turns to training: cross-entropy, the loss landscape and gradient descent. The perceptron is a
 bonus slide at the end.
 Class 2 (19 slides) is about training: backpropagation, learning rates, momentum and Adam, local

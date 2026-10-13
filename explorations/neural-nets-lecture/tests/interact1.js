@@ -35,7 +35,7 @@ const go = async (p, id, steps = 0) => { await p.evaluate(id => document.getElem
   for (const [name, opts] of [['dark', { viewport: { width: 1440, height: 810 }, colorScheme: 'dark' }], ['phone', { viewport: { width: 390, height: 844 } }]]) {
     const c = await b.newContext(opts), q = await c.newPage(); const e2 = []; q.on('pageerror', e => e2.push(e.message));
     await q.goto(URL); await q.waitForTimeout(600);
-    for (const [id, s] of [['s-pand', 0], ['s-recap', 2], ['s-zeroone', 4], ['s-two', 2], ['s-ce', 3], ['s-mlp', 2], ['s-land', 4], ['s-gd', 3], ['s-mp', 1], ['s-fwd', 2], ['s-hand', 3], ['s-train', 0]]) {
+    for (const [id, s] of [['s-pand', 0], ['s-recap', 2], ['s-zeroone', 4], ['s-two', 2], ['s-ce', 3], ['s-mlp', 2], ['s-land', 4], ['s-gd', 3], ['s-mp', 1], ['s-fwd', 2], ['s-act', 4], ['s-hand', 3], ['s-train', 0]]) {
       await go(q, id, s); await q.waitForTimeout(500); await q.screenshot({ path: `screenshots/int1-${name}-${id}.png` }); }
     const over = await q.evaluate(() => [...document.querySelectorAll('.slide')].filter(s => s.scrollWidth > document.documentElement.clientWidth + 1).map(s => s.id));
     console.log(name, 'overflowing slides:', JSON.stringify(over), 'errors', JSON.stringify(e2));

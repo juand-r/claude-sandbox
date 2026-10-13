@@ -133,3 +133,23 @@ order (24 slides) is in `PLAN.md`. What changed besides the order:
 - New numbers checked in `check_numbers.py`: −log 0.99 = 0.01, −log 0.5 = 0.69, −log 0.01 = 4.61;
   log 2 = 0.69; −log σ(y f) = log(1 + e^(−y f)); cross-entropy 0.35, 1.35, 3.35 for true class 1, 2, 3
   (the class 3 value was quoted as 3.3 before); 21 parameters.
+
+## Activation functions (2026-10-13)
+
+Agreed with the user: introduce φ where the forward-propagation slide argues that a nonlinearity is
+needed, since any nonlinear function prevents the collapse into one linear map.
+
+- Forward propagation: the step is now "Why a nonlinearity?" and ends with "Any nonlinear function φ
+  works; the sigmoid is one choice." Its equations keep σ.
+- New slide after it, "Activation functions": sigmoid, tanh and ReLU on the same axes, and the
+  output layer stays softmax (or σ for two classes).
+- From "Deeper networks" on, hidden layers are written with φ (Deeper networks, Multilayer
+  perceptrons, Takeaways). "Combining multiple neurons", the hand-set XOR network and the training
+  run keep σ, because they are sigmoid networks.
+- φ is typeset as \varphi, so that the formulas match the figure labels (Unicode φ in KaTeX_Math
+  is the curly form; KaTeX's \phi is the straight form ϕ).
+- Class 2 backpropagation still derives the sigmoid case. Added: on "One layer deeper" and in the
+  recipe, a line saying h(1 − h) is σ′(a) and becomes φ′(a) for another activation; the notes of
+  "Several paths" say the same, and the notes of "One layer deeper" give the ReLU factor.
+- Checked in check_numbers.py: tanh(a) = 2σ(2a) − 1, the sigmoid's slope is at most 1/4 (at a = 0),
+  tanh's slope at 0 is 1.

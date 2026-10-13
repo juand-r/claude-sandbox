@@ -45,6 +45,8 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 #s-brain .opener img{max-height:66vh}
 .math.dm.big .katex{font-size:1.35em}
 #fig-loop svg{max-height:52vh;width:100%;margin:0 auto}
+.actrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5em}
+.actrow svg{width:100%;height:auto;max-height:44vh}
 /* class 1, revision 2: the cases table, the hand-set XOR network, the general MLP */
 .dtab.cases{font-size:clamp(.85rem,1.3vw,1.15rem);margin:.4em 0 0}
 .dtab.cases th,.dtab.cases td{padding:.2em .7em}

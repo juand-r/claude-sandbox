@@ -108,6 +108,16 @@ neuronDiagram($('fig-recap'),{aria:'one neuron: inputs and a bias node with valu
   [['x',X[0]],['h^(1)',X[1]],['h^(L−1)',X[2]],['output',X[3]]].forEach(([s,x])=>mtxt(L,x,312,s,{'text-anchor':'middle','font-size':17,fill:'var(--muted)'}));
 }
 
+/* ---------- activation functions: sigmoid, tanh, ReLU on the same axes ---------- */
+for(const [id,name,f] of [['sig','sigmoid',sig],['tanh','tanh',Math.tanh],['relu','ReLU',a=>Math.max(0,a)]]){
+  const api=chart($('fig-act-'+id),{W:300,H:300,ml:52,fs:1.6,xmin:-3,xmax:3,ymin:-1.2,ymax:3,xticks:[-3,0,3],yticks:[-1,0,1,2,3],
+    xfmt:v=>String(v).replace('-','−'),yfmt:v=>String(v).replace('-','−'),xlabel:'a',ylabel:'φ(a)',label:'the '+name+' activation function'});
+  el('line',{x1:api.sx(-3),x2:api.sx(3),y1:api.sy(0),y2:api.sy(0),stroke:'var(--muted)','stroke-width':1},api.layer('extra'));
+  let d='';for(let i=0;i<=200;i++){const a=-3+6*i/200;d+=(i?'L':'M')+api.sx(a).toFixed(1)+' '+api.sy(f(a)).toFixed(1);}
+  el('path',{d,fill:'none',stroke:'var(--model)','stroke-width':3.5},api.layer('fit'));
+  mtxt(api.layer('anno'),api.sx(-2.8),api.sy(2.6),name,{'font-size':20,fill:'var(--ink)','font-weight':700});
+}
+
 /* ---------- the loss landscape: a cartoon with two valleys; gradient descent from a draggable start ---------- */
 {
   const api=cartoonPlot($('fig-land')),gA=api.layer('anno'),g1=stepG(gA,1),g2=stepG(gA,2),g3=stepG(gA,3);

@@ -122,6 +122,13 @@ Y01 = (y > 0).astype(float)
 g = np.r_[((0.5 - Y01)[:, None] * U).mean(0), (0.5 - Y01).mean()]
 close(np.abs(g).max(), 0, 1e-12, "XOR: logistic regression gradient at w = 0, b = 0")
 
+# ---------------------------------------------------------------- activation functions slide
+aa = np.linspace(-6, 6, 12001)
+close(np.abs(np.tanh(aa) - (2 * sig(2 * aa) - 1)).max(), 0.0, 1e-12, "tanh(a) = 2 sigma(2a) - 1")
+ds = sig(aa) * (1 - sig(aa))
+close(ds.max(), 0.25, 1e-12, "sigmoid slope at most 1/4"); close(aa[ds.argmax()], 0.0, 1e-9, "  ... reached at a = 0")
+close((np.tanh(1e-6) - np.tanh(-1e-6)) / 2e-6, 1.0, 1e-9, "tanh slope at 0")
+
 # ---------------------------------------------------------------- XOR by hand
 for a, b_, want in [(0, 0, 0), (0, 1, 1), (1, 0, 1), (1, 1, 0)]:
     h1, h2 = sig(20 * a + 20 * b_ - 10), sig(20 * a + 20 * b_ - 30)

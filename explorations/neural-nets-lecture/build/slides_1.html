@@ -181,7 +181,7 @@
     <span class="eq">\[\begin{aligned} h &amp;= \sigma(W^{(1)} x + b^{(1)}) \\ z &amp;= W^{(2)} h + b^{(2)} \\ p &amp;= \operatorname{softmax}(z) \end{aligned}\]</span>
     <ul>
       <li data-step="1">Shapes: <span class="math">\(x\)</span> has <span class="math">\(N\)</span> entries, <span class="math">\(W^{(1)}\)</span> is <span class="math">\(H \times N\)</span>, <span class="math">\(W^{(2)}\)</span> is <span class="math">\(C \times H\)</span>. The parameters <span class="math">\(\theta\)</span> are <span class="math">\(W^{(1)}\)</span>, <span class="math">\(b^{(1)}\)</span>, <span class="math">\(W^{(2)}\)</span> and <span class="math">\(b^{(2)}\)</span>. The superscript is the layer.</li>
-      <li data-step="2">Why the sigmoid? Without it, the layers collapse into one linear layer:<span class="math dm">\[W^{(2)}(W^{(1)} x + b^{(1)}) + b^{(2)}\]</span><span class="math dm">\[= (W^{(2)} W^{(1)})\, x + (W^{(2)} b^{(1)} + b^{(2)})\]</span></li>
+      <li data-step="2">Why a nonlinearity? Without one, the layers collapse into one linear layer:<span class="math dm">\[W^{(2)}(W^{(1)} x + b^{(1)}) + b^{(2)}\]</span><span class="math dm">\[= (W^{(2)} W^{(1)})\, x + (W^{(2)} b^{(1)} + b^{(2)})\]</span>Any nonlinear function <span class="math">\(\varphi\)</span> works; the sigmoid is one choice.</li>
     </ul>
   </div>
   <div class="fig">
@@ -190,7 +190,31 @@
   <div class="notes">
     <p><b class="cue">0</b>Three lines. Multiply by a matrix, add a vector, apply σ to every entry; then the output layer and the softmax. Propagating forward means evaluating these left to right.</p>
     <p><b class="cue">1</b>In the picture: N = 2 inputs, H = 3 hidden units, C = 3 classes, so W⁽¹⁾ is 3 × 2 and W⁽²⁾ is 3 × 3. 21 numbers in total, counting the biases. In the picture each bias is a weight from an extra node whose value is always 1, so a bias is just one more weight.</p>
-        <p><b class="cue">2</b>A product of matrices is a matrix. Without a nonlinearity between them, any number of layers is still one linear model: with two classes, one line.</p>
+        <p><b class="cue">2</b>A product of matrices is a matrix. Without a nonlinearity between them, any number of layers is still one linear model: with two classes, one line. Any nonlinear function prevents the collapse; the next slide shows the common ones.</p>
+  </div>
+</section>
+
+<section class="slide" id="s-act" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">Not only sigmoids</div>
+    <h2>Activation functions</h2>
+    <ul>
+      <li>The function each hidden neuron applies is its <b>activation function</b> <span class="math">\(\varphi\)</span>:<span class="math dm">\[h = \varphi(W^{(1)} x + b^{(1)})\]</span></li>
+      <li data-step="1">Sigmoid, <span class="math">\(\sigma(a) = 1 / (1 + e^{-a})\)</span>: between 0 and 1.</li>
+      <li data-step="2"><span class="math">\(\tanh(a)\)</span>: between −1 and 1, a rescaled sigmoid.</li>
+      <li data-step="3">ReLU, <span class="math">\(\max(0, a)\)</span>: 0 for negative inputs, the input itself for positive ones. Widely used in deep networks.</li>
+      <li data-step="4">The output layer stays the same: the softmax, or <span class="math">\(\sigma\)</span> for two classes.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div class="actrow"><div id="fig-act-sig" data-step="1"></div><div id="fig-act-tanh" data-step="2"></div><div id="fig-act-relu" data-step="3"></div></div>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>φ is the Greek letter phi. Each hidden neuron computes a weighted sum a and then outputs φ(a). Until now φ was the sigmoid, but any nonlinear function stops the layers from collapsing into one.</p>
+    <p><b class="cue">1</b>The one we have used so far. Its slope is σ(a)(1 − σ(a)): at most 1/4, at a = 0, and close to 0 when a is far from 0.</p>
+    <p><b class="cue">2</b>tanh(a) = 2σ(2a) − 1: the sigmoid stretched to the range (−1, 1) and centred at 0. Its slope at 0 is 1.</p>
+    <p><b class="cue">3</b>The rectified linear unit. It is cheap to compute, and its slope is 1 for every positive input, so it does not flatten out for large inputs the way the sigmoid does. It has no derivative at exactly 0. Any value between 0 and 1 can be used there; it rarely matters, because a sum is seldom exactly 0.</p>
+    <p><b class="cue">4</b>The activation function is a choice for the hidden layers. The output layer has a different job, turning scores into probabilities, so it keeps the softmax. The examples in this lecture and the next use sigmoid hidden units.</p>
   </div>
 </section>
 
@@ -199,14 +223,14 @@
     <div class="eyebrow">More layers</div>
     <h2>Deeper networks</h2>
     <ul>
-      <li>Stack hidden layers. Each layer works on the output of the one before:<span class="math dm">\[h^{(l)} = \sigma\bigl(W^{(l)} h^{(l-1)} + b^{(l)}\bigr)\]</span>for <span class="math">\(l = 1, \dots, L - 1\)</span>, starting from <span class="math">\(h^{(0)} = x\)</span>.</li>
+      <li>Stack hidden layers. Each layer works on the output of the one before:<span class="math dm">\[h^{(l)} = \varphi\bigl(W^{(l)} h^{(l-1)} + b^{(l)}\bigr)\]</span>for <span class="math">\(l = 1, \dots, L - 1\)</span>, starting from <span class="math">\(h^{(0)} = x\)</span>.</li>
       <li data-step="1">The last layer is the softmax:<span class="math dm">\[p = \operatorname{softmax}\bigl(W^{(L)} h^{(L-1)} + b^{(L)}\bigr)\]</span></li>
       <li data-step="2">Many hidden layers: a <b>deep</b> network, hence "deep learning".</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-layers"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>The same step as before, repeated. h⁽ˡ⁾ is the output of layer l; the input counts as layer 0. W⁽ˡ⁾ and b⁽ˡ⁾ connect layer l − 1 to layer l. The picture has L = 3: two hidden layers, then the output layer with three classes.</p>
+    <p><b class="cue">0</b>The same step as before, repeated, with an activation function φ such as the sigmoid or ReLU. h⁽ˡ⁾ is the output of layer l; the input counts as layer 0. W⁽ˡ⁾ and b⁽ˡ⁾ connect layer l − 1 to layer l. The picture has L = 3: two hidden layers, then the output layer with three classes.</p>
     <p><b class="cue">1</b>With one hidden layer, L = 2, and these are exactly the equations of the last slide, with h⁽¹⁾ = h.</p>
     <p><b class="cue">2</b>Each layer can build features out of the previous layer's features. How to train all these weights: next class, and the same method works for any number of layers.</p>
   </div>
@@ -309,7 +333,7 @@
     <h2 style="margin:.2em 0 .6em">Multilayer perceptrons</h2>
     <div class="recap">
       <div class="take mlbox">
-        <div class="card"><h3>Model</h3><p><span class="math dm">\[h^{(0)} = x, \quad h^{(l)} = \sigma\bigl(W^{(l)} h^{(l-1)} + b^{(l)}\bigr)\]</span><span class="math dm">\[p = \operatorname{softmax}\bigl(W^{(L)} h^{(L-1)} + b^{(L)}\bigr)\]</span>The parameters <span class="math">\(\theta\)</span> are all the weights and biases.</p></div>
+        <div class="card"><h3>Model</h3><p><span class="math dm">\[h^{(0)} = x, \quad h^{(l)} = \varphi\bigl(W^{(l)} h^{(l-1)} + b^{(l)}\bigr)\]</span><span class="math dm">\[p = \operatorname{softmax}\bigl(W^{(L)} h^{(L-1)} + b^{(L)}\bigr)\]</span><span class="math">\(\varphi\)</span> is the activation function. The parameters <span class="math">\(\theta\)</span> are all the weights and biases.</p></div>
         <div class="card" data-step="1"><h3>Loss</h3><p><span class="math dm">\[\mathcal{L}(\theta) = -\sum_i \log p(\text{true class of } x_i)\]</span>Cross-entropy, added up over the training data.</p></div>
       </div>
       <div class="fig" data-step="2"><div id="fig-mlp"></div></div>
@@ -386,7 +410,7 @@
     <div class="eyebrow">Gradient descent on a network</div>
     <h2>Training learns XOR</h2>
     <ul>
-      <li>Three hidden units, two softmax outputs, random starting weights, gradient descent on the cross-entropy.</li>
+      <li>Three sigmoid hidden units, two softmax outputs, random starting weights, gradient descent on the cross-entropy.</li>
       <li data-step="1">The decision region bends until every point is on the right side.</li>
     </ul>
     <p class="fine" data-step="1">How to compute the gradient for every weight: next class.</p>
@@ -414,7 +438,7 @@
     <div class="eyebrow">Summary</div>
     <h2 style="margin:.2em 0 .8em">Takeaways</h2>
     <div class="take four">
-      <div class="card"><h3>Structure</h3><p>Neurons in layers, each layer feeding the next. Hidden layers learn features, so XOR becomes possible.</p></div>
+      <div class="card"><h3>Structure</h3><p>Neurons in layers, each applying an activation function such as the sigmoid or ReLU. Hidden layers learn features, so XOR becomes possible.</p></div>
       <div class="card"><h3>Softmax</h3><p>One score per class, turned into probabilities. With two classes it is the sigmoid.</p></div>
       <div class="card"><h3>Loss</h3><p>Cross-entropy, <span class="math">\(-\log p(\text{true class})\)</span>. Confident and wrong costs a lot.</p></div>
       <div class="card"><h3>Training</h3><p>Gradient descent, <span class="math">\(\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}\)</span>. The learning rate sets the step size.</p></div>

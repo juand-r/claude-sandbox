@@ -94,14 +94,14 @@
     <h2>One layer deeper</h2>
     <ul>
       <li>The weight <span class="math">\(w_{ji}\)</span> connects input <span class="math">\(x_i\)</span> to hidden unit <span class="math">\(h_j = \sigma(a_j)\)</span>, with <span class="math">\(a_j = w_{j1} x_1 + w_{j2} x_2 + b_j\)</span>.</li>
-      <li data-step="1">Follow the chain from the loss back to <span class="math">\(w_{ji}\)</span>:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w_{ji}} = (p - y) \cdot v_j \cdot h_j(1 - h_j) \cdot x_i\]</span></li>
+      <li data-step="1">Follow the chain from the loss back to <span class="math">\(w_{ji}\)</span>:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w_{ji}} = (p - y) \cdot v_j \cdot h_j(1 - h_j) \cdot x_i\]</span><span class="fine"><span class="math">\(h_j(1 - h_j)\)</span> is the sigmoid's slope <span class="math">\(\sigma'(a_j)\)</span>. With another activation <span class="math">\(\varphi\)</span>, use <span class="math">\(\varphi'(a_j)\)</span>.</span></li>
       <li data-step="2">The first factor, <span class="math">\(p - y\)</span>, was already computed for the output layer. Reuse it.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-deep"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>Now a weight in the first layer. It is two steps away from the output.</p>
-    <p><b class="cue">1</b>Four factors, one per link of the chain: ∂ℒ/∂z = p − y; ∂z/∂hⱼ = vⱼ; ∂hⱼ/∂aⱼ = hⱼ(1 − hⱼ), the sigmoid's derivative; ∂aⱼ/∂wⱼᵢ = xᵢ.</p>
+    <p><b class="cue">1</b>Four factors, one per link of the chain: ∂ℒ/∂z = p − y; ∂z/∂hⱼ = vⱼ; ∂hⱼ/∂aⱼ = hⱼ(1 − hⱼ), the sigmoid's derivative; ∂aⱼ/∂wⱼᵢ = xᵢ. Only the third factor depends on the activation function: for ReLU it would be 1 if aⱼ &gt; 0 and 0 otherwise.</p>
     <p><b class="cue">2</b>Going backwards, each layer's factor builds on the one after it. Computing from the output towards the input never repeats work. This is the idea of backpropagation.</p>
   </div>
 </section>
@@ -122,7 +122,7 @@
   <div class="notes">
     <p><b class="cue">0</b>Softmax with two outputs. vₖⱼ is the weight from hidden unit j to output k. A change in w₁₁ changes h₁, which changes both z₁ and z₂.</p>
     <p><b class="cue">1</b>The multivariable chain rule: when a variable affects the loss through several routes, the effects add.</p>
-    <p><b class="cue">2</b>δ is the error signal at a layer: the derivative of the loss with respect to that layer's sums. δ⁽²⁾ has one entry per output; δ⁽¹⁾ has one per hidden unit. W⁽²⁾ᵀ sends the output errors back along the same edges, weighted by the same weights.</p>
+    <p><b class="cue">2</b>δ is the error signal at a layer: the derivative of the loss with respect to that layer's sums. δ⁽²⁾ has one entry per output; δ⁽¹⁾ has one per hidden unit. W⁽²⁾ᵀ sends the output errors back along the same edges, weighted by the same weights. h ⊙ (1 − h) is the sigmoid's slope at each hidden unit; with another activation φ it becomes φ′(a), with a = W⁽¹⁾x + b⁽¹⁾.</p>
     <p><b class="cue">3</b>Each weight's gradient is the δ at its end times the value at its start. These are for one training point; for the whole training set, add over the points. check_numbers.py compares these formulas with numerical derivatives; they agree to about 10⁻¹⁰.</p>
   </div>
 </section>
@@ -135,7 +135,7 @@
     <ol>
       <li><b>Forward pass</b>: compute and store <span class="math">\(h\)</span> and <span class="math">\(p\)</span>.</li>
       <li data-step="1"><b>Error at the output</b>: <span class="math">\(\delta^{(2)} = p - y\)</span>.</li>
-      <li data-step="2"><b>Backward pass</b>: <span class="math">\(\delta^{(1)} = (W^{(2)\top} \delta^{(2)}) \odot h \odot (1 - h)\)</span>.</li>
+      <li data-step="2"><b>Backward pass</b>: <span class="math">\(\delta^{(1)} = (W^{(2)\top} \delta^{(2)}) \odot h \odot (1 - h)\)</span>.<span class="fine">For sigmoid units. With another activation, replace <span class="math">\(h \odot (1 - h)\)</span> by <span class="math">\(\varphi'(a)\)</span>.</span></li>
       <li data-step="3"><b>Gradients</b>: <span class="math">\(\delta^{(2)} h^\top\)</span>, <span class="math">\(\delta^{(1)} x^\top\)</span>, and the <span class="math">\(\delta\)</span>s for the biases.</li>
       <li data-step="4"><b>Update</b> every weight, <span class="math">\(\theta \leftarrow \theta - \eta\, \nabla\mathcal{L}\)</span>, using the old weights throughout.</li>
     </ol>
@@ -144,7 +144,7 @@
   <div class="notes">
     <p><b class="cue">0</b>Run the network on the training points as usual, but keep the hidden values: the backward pass needs them.</p>
     <p><b class="cue">1</b>Prediction minus label, one entry per class.</p>
-    <p><b class="cue">2</b>Send the error back through W⁽²⁾, then multiply by the sigmoid's derivative at each hidden unit. With more layers, repeat this step once per layer.</p>
+    <p><b class="cue">2</b>Send the error back through W⁽²⁾, then multiply by the activation function's slope at each hidden unit (for the sigmoid, h(1 − h)). With more layers, repeat this step once per layer.</p>
     <p><b class="cue">3</b>Each weight: δ at its end times the value at its start.</p>
     <p><b class="cue">4</b>Compute every gradient first, then update. If you updated W⁽²⁾ before computing δ⁽¹⁾, δ⁽¹⁾ would use the new W⁽²⁾, which is wrong. The backward pass costs about as much as the forward pass, so one gradient costs about two passes through the network, however many weights there are.</p>
   </div>
