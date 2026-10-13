@@ -47,6 +47,16 @@ cheap enough to run in the browser so the start point can be dragged.
   (dragging, replays, presenter view, dark mode, phone width), `mathwrap.js <deck.html>` (formula
   wrapping at five screen sizes).
 
+## PDF versions
+
+`neural_nets_1.pdf` and `neural_nets_2.pdf` have one page per slide, each at its last step (light theme,
+controls hidden). They are images of the slides, so the text cannot be selected. To regenerate:
+
+```
+cd tests && NODE_PATH=$(npm root -g) node pdf.js 1 && cd ..   # screenshots into pdf/slides_1/
+.venv/bin/python make_pdf.py 1                                  # writes neural_nets_1.pdf
+```
+
 ## Reproducing the numbers
 
 ```
