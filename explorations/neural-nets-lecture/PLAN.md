@@ -124,3 +124,29 @@ Done as follows (details in NOTES.md):
   propagation network and the deeper network. The class 2 diagrams are unchanged.
 - Class 2 order now: Recap → The network is one formula → The chain rule → … → The recipe → The
   training loop → The learning rate → … When to stop gains a patience step (patience 400).
+
+## Revision 2 (2026-10-13): new order for class 1
+
+Agreed with the user: structure and the forward pass first, then the loss and optimization.
+
+1. Pandemonium · 2. Title
+3. Losses for a classifier (from the logistic deck): the 0–1 loss broken into cases; plot of 0–1,
+   hinge and log loss against y f(x)
+4. Recap: logistic regression, Model box defines f(x) = w · x + b and p = σ(f(x))
+5. −log p(true class) against p(true class), with the 0–1 loss dotted
+6. A very simplified neuron (Blausen credit moves here) · 7. Networks of neurons
+8. Combining multiple neurons: hidden layer, one sigmoid output, log loss
+9. Softmax: three classes · 10. Two classes: softmax = sigmoid
+11. Forward propagation (3 outputs) · 12. Deeper networks (3 outputs)
+13. Why hidden layers? Logistic regression can't learn XOR (points only)
+14. Perceptrons (1969), new wording · 15. XOR with two hidden units, with the network drawn
+16. How do we choose the weights? (transition) · 17. Cross-entropy
+18. Multilayer perceptrons: Model and Loss boxes, general diagram
+19. The loss landscape · 20. Gradient descent · 21. Training learns XOR
+22. Takeaways · 23. Thank you · 24. Bonus: the perceptron
+Removed: "A neuron". Decisions: keep Gradient descent (class 2 refers to it); eyebrow "Why hidden
+layers?" since XOR needs one hidden layer, not depth; the second softmax slide becomes "Cross-entropy".
+
+Status (2026-10-13): implemented. Built, every step screenshotted, interaction, phone, dark-mode and
+formula-wrapping tests pass, check_numbers.py passes. One deviation: the training slide says two
+softmax outputs (see NOTES.md, Revision 2).

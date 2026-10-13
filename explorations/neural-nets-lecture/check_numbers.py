@@ -25,9 +25,14 @@ p = np.exp(z) / np.exp(z).sum()
 for k, v in enumerate([0.71, 0.26, 0.04]):
     close(round(p[k], 2), v, 1e-9, f"softmax z=(2,1,-1), p{k + 1} (2 d.p.)")
 close(round(-np.log(p[0]), 2), 0.35, 1e-9, "loss if class 1, -log 0.71")
-close(round(-np.log(p[2]), 1), 3.3, 1e-9, "loss if class 3")
+close(round(-np.log(p[1]), 2), 1.35, 1e-9, "loss if class 2 (cross-entropy figure)")
+close(round(-np.log(p[2]), 2), 3.35, 1e-9, "loss if class 3")
 close(round(np.exp(z).sum(), 2), 10.48, 1e-9, "sum of exponentials")
-close(round(-np.log(0.01), 1), 4.6, 1e-9, "-log 0.01")
+for q, v in [(0.99, 0.01), (0.5, 0.69), (0.01, 4.61)]:
+    close(round(-np.log(q), 2), v, 1e-9, f"-log {q} (the -log p(true class) slide)")
+close(round(np.log(2), 2), 0.69, 1e-9, "log loss at y f(x) = 0")
+for yf in [-2.5, -0.3, 0.0, 1.2, 4.0]:
+    close(-np.log(sig(yf)), np.log1p(np.exp(-yf)), 1e-12, f"-log sigma(yf) = log(1 + e^-yf), yf={yf}")
 
 # ---------------------------------------------------------------- one-hot: softmax of (f, 0) is the sigmoid
 for f in [-3.0, -0.4, 0.0, 1.7]:
@@ -125,6 +130,7 @@ for a, b_, want in [(0, 0, 0), (0, 1, 1), (1, 0, 1), (1, 1, 0)]:
 print("ok  XOR by hand: OR, AND, OR-and-not-AND")
 close(round(sig(-10), 5), 0.00005, 1e-12, "sigma(-10)"); close(round(sig(10), 5), 0.99995, 1e-12, "sigma(10)")
 close(2 * 3 + 3 + 3 * 2 + 2, 17, 0, "parameters of a 2-3-2 network")
+close(2 * 3 + 3 + 3 * 3 + 3, 21, 0, "parameters of the 2-3-3 network on the forward-propagation slide")
 
 # ---------------------------------------------------------------- the XOR training run (2-3-2 MLP)
 

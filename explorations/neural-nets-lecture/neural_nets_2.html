@@ -338,7 +338,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 .recap{display:grid;gap:1.2em}
 .recap .fig svg{max-height:34vh;width:auto;max-width:100%;margin:0 auto}
 /* figures that must fit beside the text */
-#fig-onehot svg,#fig-softmax svg,#fig-hidden svg,#fig-fwd svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
+#fig-two svg,#fig-softmax svg,#fig-hidden svg,#fig-fwd svg,#fig-ce svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
 .gdduo svg,.trainduo svg{max-height:56vh;width:auto;max-width:100%;margin:0 auto}
 .grab svg circle[style*="grab"]{touch-action:none}
 #fig-land svg{touch-action:pan-y}
@@ -364,6 +364,14 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 #s-brain .opener img{max-height:66vh}
 .math.dm.big .katex{font-size:1.35em}
 #fig-loop svg{max-height:52vh;width:100%;margin:0 auto}
+/* class 1, revision 2: the cases table, the hand-set XOR network, the general MLP */
+.dtab.cases{font-size:clamp(.85rem,1.3vw,1.15rem);margin:.4em 0 0}
+.dtab.cases th,.dtab.cases td{padding:.2em .7em}
+.dtab td.ok{color:var(--model);font-weight:700}
+.dtab td.bad{color:var(--err);font-weight:700}
+#fig-handnet svg{max-height:40vh;width:auto;max-width:100%;margin:0 auto .6em;display:block}
+.dtab.hand{font-size:clamp(.9rem,1.5vw,1.35rem)}
+@media (max-width:620px){.dtab.hand,.dtab.cases{font-size:.7rem}}
 
 </style>
 </head>

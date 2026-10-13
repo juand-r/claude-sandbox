@@ -108,3 +108,28 @@ chose real math typesetting.
 - New class 2 slides: "The network is one formula", "The training loop".
 - Characteristics gained "irrelevant inputs can be ignored: training can drive their weights to zero"
   and "training is time-consuming".
+
+## Revision 2 (2026-10-13): class 1 reordered
+
+The user asked for structure and the forward pass first, then the loss and optimization. The new
+order (24 slides) is in `PLAN.md`. What changed besides the order:
+
+- New slides: "Losses for a classifier" (the four cases of y and f(x), then the 0–1, hinge and log
+  losses against y f(x)), "Confident and wrong costs a lot" (−log p(true class) against
+  p(true class), with the 0–1 loss dotted), "Softmax with two classes is the sigmoid", "How do we
+  choose the weights?", "Cross-entropy", "Multilayer perceptrons" (Model and Loss boxes and a general
+  diagram).
+- Removed: "A neuron". Its explanation of the parts of a neuron moved to the notes of "A very
+  simplified neuron", and the image credit moved with the image.
+- "Add a hidden layer" is now "Combining multiple neurons", with one sigmoid output and the log loss.
+  Softmax, forward propagation and deeper networks now show three classes (the 2-3-3 network on
+  the forward-propagation slide has 21 weights and biases).
+- The XOR slide shows the data only. The hand-set XOR slide draws the 2-2-1 network with its weights.
+- The perceptron moved to a bonus slide after "Thank you".
+- Training slide. The plan said "one sigmoid output, log loss". The replayed run was trained with two
+  softmax outputs, and gradient descent follows a different path on that parametrization, so the
+  slide says two softmax outputs and cross-entropy. That also keeps class 2 correct, which calls it
+  "the same 2-3-2 network as last class" with 17 weights and biases.
+- New numbers checked in `check_numbers.py`: −log 0.99 = 0.01, −log 0.5 = 0.69, −log 0.01 = 4.61;
+  log 2 = 0.69; −log σ(y f) = log(1 + e^(−y f)); cross-entropy 0.35, 1.35, 3.35 for true class 1, 2, 3
+  (the class 3 value was quoted as 3.3 before); 21 parameters.
