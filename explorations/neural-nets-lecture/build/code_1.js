@@ -332,6 +332,20 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=LAND_EL}={}){
     tb.insertAdjacentHTML('beforeend',`<tr><td>${a}</td><td>${b}</td><td data-step="4">${h1.toFixed(2)}</td><td data-step="4">${h2.toFixed(2)}</td><td data-step="4">${fmt(f,1)}</td><td data-step="4" class="yc">${sig(f).toFixed(2)}</td></tr>`);}
 }
 
+/* ---------- bonus: softmax cross-entropy against the true class's score, other scores fixed ---------- */
+{
+  const Z2=1,Z3=-1,api=chart($('fig-cefit'),{W:640,H:420,ml:62,fs:1.35,xmin:-4,xmax:4,ymin:0,ymax:5,xticks:[-4,-2,0,2,4],yticks:[0,1,2,3,4,5],
+    xfmt:v=>String(v).replace('-','−'),xlabel:'z₁',ylabel:'loss',label:'cross-entropy as the true class score z1 changes, with the other scores fixed'});
+  const loss=z=>-z+Math.log(Math.exp(z)+Math.exp(Z2)+Math.exp(Z3)),gap=z=>Math.max(z,Z2,Z3)-z;
+  const path=f=>{let d='';for(let i=0;i<=300;i++){const z=-4+8*i/300;d+=(i?'L':'M')+api.sx(z).toFixed(1)+' '+api.sy(f(z)).toFixed(1);}return d;};
+  el('path',{d:path(loss),fill:'none',stroke:'var(--hi)','stroke-width':3.5},api.layer('fit'));
+  el('circle',{cx:api.sx(2),cy:api.sy(loss(2)),r:6,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':2},api.layer('anno'));
+  label(api.layer('anno'),api.sx(2),api.sy(loss(2))-14,loss(2).toFixed(2),{'text-anchor':'middle',fill:'var(--ink)','font-size':15});
+  const g1=stepG(api.layer('extra'),1);
+  el('path',{d:path(gap),fill:'none',stroke:'var(--err)','stroke-width':3,'stroke-dasharray':'3 6','stroke-linecap':'round'},g1);
+  mtxt(g1,api.sx(-3.1),api.sy(4.6),'max_j z_j − z₁',{'font-size':15,fill:'var(--err)'});
+}
+
 /* ---------- training on XOR: replay of the precomputed run ---------- */
 {
   const R=D.xor.runs.ok,F=R.frames,X=D.xor.X,y=D.xor.y,api=xorPlot($('fig-train'),'the network decision map during training',{fs:1.6});

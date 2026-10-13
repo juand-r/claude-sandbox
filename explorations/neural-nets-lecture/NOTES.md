@@ -181,3 +181,7 @@ class 1; `softmaxBox()` has a `weight` option so class 2 keeps its look. Class 2
   tilt 0.6 radians, chosen from a 3 × 3 grid of views.
 - XOR with two hidden units: the column headers, bullets and weights appear step by step, but the
   table values (h₁, h₂, f, p) appear only at a new last step, so students can fill them in first.
+- Bonus slide "Softmax and cross-entropy fit together" (after the perceptron, at the user's request):
+  −log p_c = −z_c + log Σⱼ e^{z_j}; log-sum-exp is a smooth maximum (between max z and max z + log C);
+  ∂ℒ/∂z_k = p_k − y_k; with scores (f, 0) it is the log loss. The plot shows the loss against z₁ with
+  z₂ = 1, z₃ = −1 fixed, and max_j z_j − z₁ dotted. All numbers checked in check_numbers.py.

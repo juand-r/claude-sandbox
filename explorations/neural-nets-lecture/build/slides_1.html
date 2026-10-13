@@ -483,3 +483,26 @@
     <p><b class="cue">3</b>The loss is 0 for correct points and −y f(x) for wrong ones: the hinge loss without the margin. Same model family as logistic regression and the SVM; a different loss and a different way to minimize it.</p>
   </div>
 </section>
+
+<section class="slide" id="s-cefit" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Bonus</div>
+    <h2>Softmax and cross-entropy fit together</h2>
+    <ul>
+      <li>For a point of class <span class="math">\(c\)</span>, the log undoes the softmax's exponential:<span class="math dm">\[\mathcal{L} = -\log \frac{e^{z_c}}{\sum_j e^{z_j}}\]</span><span class="math dm">\[= -z_c + \log \sum_j e^{z_j}\]</span></li>
+      <li data-step="1"><span class="math">\(\log \sum_j e^{z_j}\)</span> is a smooth version of <span class="math">\(\max_j z_j\)</span>. So the loss is about how far the true class's score is behind the top score.</li>
+      <li data-step="2">The derivative is prediction minus label:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z_k} = p_k - y_k\]</span></li>
+      <li data-step="3">With two classes and scores <span class="math">\((f, 0)\)</span>, class 1 gives <span class="math">\(\mathcal{L} = \log(1 + e^{-f})\)</span>: the log loss.</li>
+    </ul>
+  </div>
+  <div class="fig">
+    <div id="fig-cefit"></div>
+    <p class="fignote">Class 1 is the true class; the other scores are fixed at <span class="math">\(z_2 = 1\)</span>, <span class="math">\(z_3 = -1\)</span>.</p>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>Write c for the true class. The softmax puts e^(z_c) on top, and the log of an exponential is just the exponent. So the loss is linear in the true class's score, plus one term shared by all classes. The plot shows the loss as the true score z₁ changes: like the log loss, close to a straight line on the left and flat near 0 on the right.</p>
+    <p><b class="cue">1</b>Why a smooth maximum: the sum contains its largest term, so log Σ e^(z_j) ≥ max z_j; and each of the C terms is at most e^(max), so log Σ e^(z_j) ≤ max z_j + log C. The dotted line is max_j z_j − z_c; the loss stays above it and within log 3 ≈ 1.10 of it. With z = (2, 1, −1) and true class 3: the loss is 3.35, and the true score is 3 behind the top one.</p>
+    <p><b class="cue">2</b>Each score's derivative is its probability minus its label. With z = (2, 1, −1) and true class 1, the derivatives are (−0.29, 0.26, 0.04): raise the true score, lower the others in proportion to the probability they took. They always add to 0. Next class this is the error at the output layer, where backpropagation starts.</p>
+    <p><b class="cue">3</b>The same algebra with the scores (f, 0): −f + log(e^f + 1) = log(1 + e^(−f)). For class 2 the loss is log(1 + e^f). That is the log loss with y = ±1, which is why the sigmoid and the log loss fit together in the same way.</p>
+  </div>
+</section>

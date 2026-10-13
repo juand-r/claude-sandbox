@@ -122,6 +122,26 @@ Y01 = (y > 0).astype(float)
 g = np.r_[((0.5 - Y01)[:, None] * U).mean(0), (0.5 - Y01).mean()]
 close(np.abs(g).max(), 0, 1e-12, "XOR: logistic regression gradient at w = 0, b = 0")
 
+# ---------------------------------------------------------------- bonus: softmax and cross-entropy fit together
+zz = np.array([2.0, 1.0, -1.0]); lse = np.log(np.exp(zz).sum()); pp = np.exp(zz) / np.exp(zz).sum()
+for c in range(3):
+    close(-np.log(pp[c]), -zz[c] + lse, 1e-12, f"-log p_c = -z_c + logsumexp, c={c + 1}")
+assert zz.max() <= lse <= zz.max() + np.log(3); print(f"ok  max z <= logsumexp = {lse:.4f} <= max z + log 3")
+close(round(-zz[2] + lse, 2), 3.35, 1e-9, "loss with true class 3"); close(zz.max() - zz[2], 3.0, 0, "true score 3 behind the top")
+close(round(np.log(3), 2), 1.10, 1e-9, "log 3")
+yy = np.array([1.0, 0, 0]); gce = pp - yy
+for k in range(3):
+    ek = np.zeros(3); ek[k] = 1e-6
+    fdk = ((-np.log(np.exp(zz + ek)[0] / np.exp(zz + ek).sum())) - (-np.log(np.exp(zz - ek)[0] / np.exp(zz - ek).sum()))) / 2e-6
+    close(fdk, gce[k], 1e-8, f"dL/dz_{k + 1} = p_k - y_k (finite differences)")
+for k, v in enumerate([-0.29, 0.26, 0.04]):
+    close(round(gce[k], 2), v, 1e-9, f"p - y, entry {k + 1} (2 d.p.)")
+close(gce.sum(), 0.0, 1e-12, "p - y adds to 0")
+for sf in [-2.0, 0.3, 3.0]:
+    close(-sf + np.log(np.exp(sf) + 1), np.log1p(np.exp(-sf)), 1e-12, f"scores (f, 0), class 1: log(1 + e^-f), f={sf}")
+    close(-0 + np.log(np.exp(sf) + 1), np.log1p(np.exp(sf)), 1e-12, f"scores (f, 0), class 2: log(1 + e^f), f={sf}")
+z1 = 2.0; close(round(-z1 + np.log(np.exp(z1) + np.e + np.exp(-1)), 2), 0.35, 1e-9, "plotted point z1 = 2, z2 = 1, z3 = -1")
+
 # ---------------------------------------------------------------- activation functions slide
 aa = np.linspace(-6, 6, 12001)
 close(np.abs(np.tanh(aa) - (2 * sig(2 * aa) - 1)).max(), 0.0, 1e-12, "tanh(a) = 2 sigma(2a) - 1")
