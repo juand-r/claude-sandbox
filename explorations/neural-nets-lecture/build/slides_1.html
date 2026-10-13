@@ -346,7 +346,7 @@
   </div>
 </section>
 
-<section class="slide" id="s-land" data-steps="4">
+<section class="slide wide" id="s-land" data-steps="4">
   <div class="prose">
     <div class="eyebrow">How to train it?</div>
     <h2>The loss landscape</h2>
@@ -359,13 +359,13 @@
     </ul>
   </div>
   <div class="fig grab">
-    <div id="fig-land"></div>
-    <p class="fignote">A made-up loss surface with two parameters.</p>
+    <div class="duo landduo"><div id="fig-land3d"></div><div id="fig-land"></div></div>
+    <p class="fignote">A made-up loss over two parameters. Left: the height is the loss. Right: the same surface seen from above.</p>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>A cartoon: real models have thousands of parameters, but two are enough to draw. Darker means lower loss. Two valleys.</p>
-    <p><b class="cue">1</b>Each partial derivative is the slope in one direction. Together they form an arrow pointing uphill. Its length is how steep it is.</p>
-    <p><b class="cue">2</b>From the amber start, take a small step against the gradient, recompute, repeat. The path follows the slope down into the nearest valley. The start point can be dragged.</p>
+    <p><b class="cue">0</b>A cartoon: real models have thousands of parameters, but two are enough to draw. Left, the surface in 3D: the height is the loss. Right, the same surface seen from above, like a map; darker means lower. Two valleys, one deeper than the other (the stars).</p>
+    <p><b class="cue">1</b>Each partial derivative is the slope in one direction. Together they form an arrow in the parameter plane, on the right, pointing in the direction of steepest ascent. On the left, the same direction followed along the surface: it goes uphill. (Drawn with a fixed length; the true length is how steep the slope is.)</p>
+    <p><b class="cue">2</b>From the amber start, take a small step against the gradient, recompute, repeat. The path follows the slope down into the nearest valley. The start point can be dragged in either view; dragging the background of the 3D view turns it.</p>
     <p><b class="cue">3</b>Start somewhere else and the same procedure ends in the other, shallower valley: a local minimum. Gradient descent only sees the slope where it stands.</p>
     <p><b class="cue">4</b>Logistic regression's loss is convex: any start reaches the same answer. Neural networks lose that guarantee. We come back to this next class.</p>
   </div>

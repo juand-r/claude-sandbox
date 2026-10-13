@@ -118,32 +118,97 @@ for(const [id,name,f] of [['sig','sigmoid',sig],['tanh','tanh',Math.tanh],['relu
   mtxt(api.layer('anno'),api.sx(-2.8),api.sy(2.6),name,{'font-size':20,fill:'var(--ink)','font-weight':700});
 }
 
-/* ---------- the loss landscape: a cartoon with two valleys; gradient descent from a draggable start ---------- */
+/* ---------- the loss landscape: the cartoon in 3D and from above; gradient descent from a draggable start ---------- */
+// the 3D view: an orthographic projection of the surface, drawn back to front (painter's algorithm)
+const LAND_AZ=1.15;   // the starting view of the 3D surface: both valleys and the gradient at A are visible
+function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=.85}={}){
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'the same loss surface drawn in 3D: the height is the loss'},host);
+  svg.classList.add('noanim');
+  const G=[];for(let i=0;i<=n;i++){G.push([]);for(let j=0;j<=n;j++)G[i].push(cartoon([-3+6*i/n,-3+6*j/n]));}
+  const lo=Math.min(...G.flat()),hi=Math.max(...G.flat()),zs=3.2/(hi-lo),L0=[-.5,.4,.77];   // light from the upper left, for shading
+  const gS=el('g',{},svg),gT=el('g',{},svg),gO=el('g',{},svg);
+  const view={az,S:1,cx:0,cy:0};
+  // world (θ₁, θ₂, height) → screen (u, v) and depth (larger is farther from the viewer)
+  const raw=([a,b,z])=>{const c=Math.cos(view.az),s=Math.sin(view.az),x=c*a-s*b,y=s*a+c*b;
+    return [x,-(z*Math.cos(elev)+y*Math.sin(elev)),y*Math.cos(elev)-z*Math.sin(elev)];};
+  const P=p=>{const r=raw(p);return [view.cx+view.S*r[0],view.cy+view.S*r[1],r[2]];};
+  const at=(a,b)=>[a,b,(cartoon([a,b])-lo)*zs];
+  function fit(){const pts=[];for(const a of [-3,3])for(const b of [-3,3])for(const z of [0,(hi-lo)*zs])pts.push(raw([a,b,z]));
+    const us=pts.map(p=>p[0]),vs=pts.map(p=>p[1]),m=24;
+    view.S=Math.min((W-2*m)/(Math.max(...us)-Math.min(...us)),(H-2*m)/(Math.max(...vs)-Math.min(...vs)));
+    view.cx=W/2-view.S*(Math.max(...us)+Math.min(...us))/2;view.cy=H/2-view.S*(Math.max(...vs)+Math.min(...vs))/2;}
+  fit();   // the scale is fixed once, so turning the view does not change the size
+  function draw(){gS.textContent='';gT.textContent='';const Q=[];
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++){const a0=-3+6*i/n,a1=-3+6*(i+1)/n,b0=-3+6*j/n,b1=-3+6*(j+1)/n;
+      const c=[[a0,b0,(G[i][j]-lo)*zs],[a1,b0,(G[i+1][j]-lo)*zs],[a1,b1,(G[i+1][j+1]-lo)*zs],[a0,b1,(G[i][j+1]-lo)*zs]].map(P);
+      const v=(G[i][j]+G[i+1][j]+G[i][j+1]+G[i+1][j+1])/4,h=6/n;
+      // the quad's normal from its slopes, and how much it faces the light
+      const gx=((G[i+1][j]+G[i+1][j+1])-(G[i][j]+G[i][j+1]))/2*zs/h,gy=((G[i][j+1]+G[i+1][j+1])-(G[i][j]+G[i+1][j]))/2*zs/h,nn=Math.hypot(gx,gy,1);
+      const lit=(-gx*L0[0]-gy*L0[1]+L0[2])/nn;
+      Q.push({c,d:c.reduce((s,p)=>s+p[2],0)/4,t:Math.pow((v-lo)/(hi-lo),.5),sh:clamp(1-lit,0,1)});}
+    Q.sort((p,q)=>q.d-p.d);
+    for(const q of Q){const d='M'+q.c.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join('L')+'Z';
+      el('path',{d,fill:'var(--surface)',stroke:'var(--surface)','stroke-width':.6,'stroke-linejoin':'round'},gS);
+      el('path',{d,fill:'var(--model)','fill-opacity':(.1+.55*(1-q.t)).toFixed(3),stroke:'var(--model)','stroke-opacity':.25,'stroke-width':.5},gS);
+      el('path',{d,fill:'#000','fill-opacity':(.4*q.sh).toFixed(3),stroke:'none'},gS);}
+    // axis names at the middle of two near edges
+    const near=(p,q)=>P(p)[2]<P(q)[2]?p:q;
+    const e1=near([0,-3],[0,3]),e2=near([-3,0],[3,0]);
+    for(const [e,s] of [[e1,'θ₁'],[e2,'θ₂']]){const p=P(at(e[0]*1.18,e[1]*1.18));mtxt(gT,p[0],p[1]+22,s,{'text-anchor':'middle','font-size':17,fill:'var(--muted)'});}}
+  draw();
+  // the point of the surface drawn nearest to a screen position (for dragging on the surface)
+  function pick(u,v){let best=null,bd=1e9;
+    for(let i=0;i<=60;i++)for(let j=0;j<=60;j++){const a=-2.9+5.8*i/60,b=-2.9+5.8*j/60,p=P(at(a,b)),d=(p[0]-u)**2+(p[1]-v)**2-1e-3*p[2];if(d<bd){bd=d;best=[a,b];}}
+    return best;}
+  return {svg,gO,P,at,draw,view,pick,W,H};}
+
 {
-  const api=cartoonPlot($('fig-land')),gA=api.layer('anno'),g1=stepG(gA,1),g2=stepG(gA,2),g3=stepG(gA,3);
+  const S3=surface3d($('fig-land3d')),api=cartoonPlot($('fig-land'),{H:420}),gA=api.layer('anno');
   const A=[1.9,-1.7],B=[-2.6,.6];   // these two starts end in different valleys (check_numbers.py)
-  const bottom=p=>cartoonPath(p,{steps:3000}).pop();
-  star(api,api.layer('pts'),bottom(CART.m1));star(api,api.layer('pts'),bottom(CART.m2));
+  const bottom=p=>cartoonPath(p,{steps:3000}).pop(),mins=[bottom(CART.m1),bottom(CART.m2)];
+  mins.forEach(m=>star(api,api.layer('pts'),m));
+  // the overlay groups for each step, one set per view
+  const G2=[0,1,2,3].map(k=>stepG(gA,k)),G3=[0,1,2,3].map(k=>stepG(S3.gO,k));
   const handle=el('circle',{r:9,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':2.5},api.layer('hover'));handle.style.cursor='grab';
+  const handle3=el('circle',{r:9,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':2.5},S3.svg);handle3.style.cursor='grab';
   let start=A.slice();
+  const path3=(L,path,color)=>{const pts=path.map(p=>S3.P(S3.at(p[0],p[1])));
+    el('path',{d:pts.map((p,k)=>(k?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(''),fill:'none',stroke:color,'stroke-width':3,'stroke-linejoin':'round'},L);
+    const e=pts[pts.length-1];el('circle',{cx:e[0],cy:e[1],r:7.5,fill:color,stroke:'var(--surface)','stroke-width':2},L);};
   function draw(){
-    g1.textContent='';g2.textContent='';g3.textContent='';
+    for(const g of [...G2,...G3])g.textContent='';
+    mins.forEach(m=>{const p=S3.P(S3.at(...m));const g=el('g',{},G3[0]);star({sx:()=>p[0],sy:()=>p[1]},g,[0,0]);});
     handle.setAttribute('cx',api.sx(start[0]));handle.setAttribute('cy',api.sy(start[1]));
+    const h3=S3.P(S3.at(...start));handle3.setAttribute('cx',h3[0]);handle3.setAttribute('cy',h3[1]);
     // the gradient points uphill; drawn with a fixed length so it stays visible on flat ground
     const g=cartoonGrad(start),sc=.9/Math.max(Math.hypot(g[0],g[1]),1e-9),q=[start[0]+g[0]*sc,start[1]+g[1]*sc];
-    arrow(g1,api.sx(start[0]),api.sy(start[1]),api.sx(q[0]),api.sy(q[1]),{stroke:'var(--ink)','stroke-width':2.5});
-    label(g1,api.sx(q[0])-10,api.sy(q[1])+(q[1]<start[1]?22:-10),'∇ℒ',{fill:'var(--ink)','font-size':15,'text-anchor':'end'});
-    drawPath(api,g2,cartoonPath(start),{dots:false});
-    el('circle',{cx:api.sx(B[0]),cy:api.sy(B[1]),r:7,fill:'var(--err)',stroke:'var(--surface)','stroke-width':2},g3);
-    drawPath(api,g3,cartoonPath(B),{dots:false,color:'var(--err)'});}
-  const toData=ev=>{const r=api.svg.getBoundingClientRect(),px=(ev.clientX-r.left)/r.width*api.W,py=(ev.clientY-r.top)/r.height*api.H;
+    arrow(G2[1],api.sx(start[0]),api.sy(start[1]),api.sx(q[0]),api.sy(q[1]),{stroke:'var(--ink)','stroke-width':2.5});
+    label(G2[1],api.sx(q[0])-10,api.sy(q[1])+(q[1]<start[1]?22:-10),'∇ℒ',{fill:'var(--ink)','font-size':15,'text-anchor':'end'});
+    // in 3D: the same direction, following the surface up the slope
+    const up=Array.from({length:11},(_,k)=>S3.P(S3.at(start[0]+g[0]*sc*1.4*k/10,start[1]+g[1]*sc*1.4*k/10)));
+    el('path',{d:up.slice(0,10).map((p,k)=>(k?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(''),fill:'none',stroke:'var(--ink)','stroke-width':2.5},G3[1]);
+    arrow(G3[1],up[9][0],up[9][1],up[10][0],up[10][1],{stroke:'var(--ink)','stroke-width':2.5});
+    drawPath(api,G2[2],cartoonPath(start),{dots:false});path3(G3[2],cartoonPath(start),'var(--hi)');
+    el('circle',{cx:api.sx(B[0]),cy:api.sy(B[1]),r:7,fill:'var(--err)',stroke:'var(--surface)','stroke-width':2},G2[3]);
+    drawPath(api,G2[3],cartoonPath(B),{dots:false,color:'var(--err)'});
+    const b3=S3.P(S3.at(...B));el('circle',{cx:b3[0],cy:b3[1],r:7,fill:'var(--err)',stroke:'var(--surface)','stroke-width':2},G3[3]);
+    path3(G3[3],cartoonPath(B),'var(--err)');}
+  const svgXY=(svg,ev,W,H)=>{const r=svg.getBoundingClientRect();return [(ev.clientX-r.left)/r.width*W,(ev.clientY-r.top)/r.height*H];};
+  const toData=ev=>{const [px,py]=svgXY(api.svg,ev,api.W,api.H);
     const x=api.xmin+(px-api.sx(api.xmin))/(api.sx(api.xmax)-api.sx(api.xmin))*(api.xmax-api.xmin),y=api.ymin+(py-api.sy(api.ymin))/(api.sy(api.ymax)-api.sy(api.ymin))*(api.ymax-api.ymin);
     return [clamp(x,-2.9,2.9),clamp(y,-2.9,2.9)];};
   const setStart=act('land',p=>{start=p.slice();draw();});
-  handle.addEventListener('pointerdown',e=>{e.preventDefault();handle.setPointerCapture(e.pointerId);handle.style.cursor='grabbing';});
-  handle.addEventListener('pointermove',e=>{if(handle.hasPointerCapture(e.pointerId))setStart(toData(e));});
-  handle.addEventListener('pointerup',()=>{handle.style.cursor='grab';});
-  hooks['s-land']={step(){},enter(){start=A.slice();draw();}};
+  const turn=act('land3d',az=>{S3.view.az=az;S3.draw();draw();});
+  // dragging: the amber point in either view; the background of the 3D view turns it
+  for(const [h,svg,map] of [[handle,api.svg,toData],[handle3,S3.svg,ev=>S3.pick(...svgXY(S3.svg,ev,S3.W,S3.H))]]){
+    h.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();h.setPointerCapture(e.pointerId);h.style.cursor='grabbing';});
+    h.addEventListener('pointermove',e=>{if(h.hasPointerCapture(e.pointerId))setStart(map(e));});
+    h.addEventListener('pointerup',()=>{h.style.cursor='grab';});}
+  let rot=null;
+  S3.svg.addEventListener('pointerdown',e=>{if(e.target===handle3)return;e.preventDefault();S3.svg.setPointerCapture(e.pointerId);rot={x:e.clientX,az:S3.view.az};});
+  S3.svg.addEventListener('pointermove',e=>{if(rot)turn(rot.az+(e.clientX-rot.x)*.01);});
+  S3.svg.addEventListener('pointerup',()=>{rot=null;});
+  hooks['s-land']={step(){},enter(){start=A.slice();S3.view.az=LAND_AZ;S3.draw();draw();}};
   draw();
 }
 

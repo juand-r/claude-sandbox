@@ -22,7 +22,8 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 #fig-two svg,#fig-softmax svg,#fig-hidden svg,#fig-fwd svg,#fig-ce svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
 .gdduo svg,.trainduo svg{max-height:56vh;width:auto;max-width:100%;margin:0 auto}
 .grab svg circle[style*="grab"]{touch-action:none}
-#fig-land svg{touch-action:pan-y}
+#fig-land svg,#fig-land3d svg{touch-action:pan-y}
+.landduo svg{max-height:58vh;width:auto;max-width:100%;margin:0 auto;display:block}
 /* hidden-layer animation */
 .hcopy,.fadein{transition:transform .7s ease,opacity .6s ease}
 /* the XOR-by-hand table */

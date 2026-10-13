@@ -153,3 +153,13 @@ needed, since any nonlinear function prevents the collapse into one linear map.
   "Several paths" say the same, and the notes of "One layer deeper" give the ReLU factor.
 - Checked in check_numbers.py: tanh(a) = 2σ(2a) − 1, the sigmoid's slope is at most 1/4 (at a = 0),
   tanh's slope at 0 is 1.
+
+## Loss landscape in 3D (2026-10-13)
+
+The user found the flat contour map unclear. The slide now shows the same cartoon surface twice,
+side by side: in 3D (left; height is the loss) and from above (right, as before). The 3D view is drawn
+in the browser as an orthographic projection with back-to-front painting and simple shading, so no
+library or network is needed. The start point can be dragged in either view (in 3D the nearest
+surface point is picked), and dragging the background of the 3D view turns it. The gradient arrow
+lies in the parameter plane on the right; on the left the same direction is drawn along the surface,
+so it visibly goes uphill. The starts A and B, and hence check_numbers.py, are unchanged.
