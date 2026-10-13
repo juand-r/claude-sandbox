@@ -190,3 +190,15 @@ class 1; `softmaxBox()` has a `weight` option so class 2 keeps its look. Class 2
   "Softmax vs argmax" (dividing by the sum vs the softmax for (3, 2, 1); the softmax with a coefficient
   β, plotted for z = (2, 1, −1): β = 0 gives 1/3 each, β = 1 the softmax, β → ∞ the argmax). Numbers
   checked in check_numbers.py.
+
+## Class 2: opener and bold vectors (2026-10-13)
+
+- New first slide: xkcd 1838, "Machine Learning", by Randall Munroe; CC BY-NC 2.5 (xkcd.com/license.html,
+  checked by web search). The image is xkcd's double-resolution file (742 × 877), downloaded from
+  imgs.xkcd.com/comics/machine_learning_2x.png; it matches the copy the user supplied (mean pixel
+  difference 1.7 of 255 after resizing). Credit line on the slide.
+- Bold vectors and matrices, as in class 1: the recap's forward equations, the matrix form of
+  backpropagation (δ⁽ˡ⁾, W⁽ˡ⁾, h, x, p, y), the recipe, θ, and the momentum and Adam vectors v, m, s.
+  The small network's vⱼ, wⱼᵢ, hⱼ, p, y stay plain: they are scalars. Figure labels: δ, h, p, W, b bold
+  (`mtxt()`'s * marker now also takes Greek letters); scalar labels that were bold (p − y, h₁, v₁, w₁₁, the
+  chain-rule factors) are now normal weight, so bold always means a vector or matrix.

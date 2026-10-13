@@ -376,6 +376,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 #fig-handnet svg{max-height:40vh;width:auto;max-width:100%;margin:0 auto .6em;display:block}
 .dtab.hand{font-size:clamp(.9rem,1.5vw,1.35rem)}
 @media (max-width:620px){.dtab.hand,.dtab.cases{font-size:.7rem}}
+@media (max-width:620px){#s-recap .eq .katex{font-size:.72em}}
 
 </style>
 </head>
@@ -1546,7 +1547,7 @@ function txt(parent,x,y,s,a={}){const t=el('text',{x,y,...a},parent);t.textConte
 /* ---------- math labels in SVG, in the KaTeX fonts (embedded by build/tex.js) ---------- */
 // Write labels as plain text: single letters become italic variables, words and digits stay upright,
 // ℒ is the script L, and subscripts are written with Unicode (x₁, wⱼᵢ) or as _N (x_N).
-// Superscripts are written ^(1) or ^T. A * before a letter makes it bold, for vectors and matrices (*x, *W).
+// Superscripts are written ^(1) or ^T. A * before a letter makes it bold, for vectors and matrices (*x, *W, *δ).
 // Each run of characters gets its own <tspan>; sub- and
 // superscripts are smaller and shifted.
 const MATH_SCALE=1.15;   // KaTeX's glyphs are smaller than the mono font's at the same size
@@ -1560,7 +1561,7 @@ function mathRuns(s){
   let supEnd=-1;   // ^(…) or ^x: a superscript, as in W^(1)
   let i;
   for(i=0;i<s.length;i++){let c=s[i],shift=i<=supEnd?-1:0;
-    if(c==='*'&&isLatin(s[i+1])){bold=i+1;continue;}
+    if(c==='*'&&(isLatin(s[i+1])||GREEK_IT.includes(s[i+1]||'#'))){bold=i+1;continue;}
     if(c==='^'&&i+1<s.length){supEnd=s[i+1]==='('?s.indexOf(')',i+1):i+1;if(supEnd<0)supEnd=s.length-1;continue;}
     if(c==='_'&&i+1<s.length){c=s[++i];shift=1;}
     else if(SUB[c]){c=SUB[c];shift=1;}

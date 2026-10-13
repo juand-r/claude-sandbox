@@ -57,3 +57,4 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 #fig-handnet svg{max-height:40vh;width:auto;max-width:100%;margin:0 auto .6em;display:block}
 .dtab.hand{font-size:clamp(.9rem,1.5vw,1.35rem)}
 @media (max-width:620px){.dtab.hand,.dtab.cases{font-size:.7rem}}
+@media (max-width:620px){#s-recap .eq .katex{font-size:.72em}}

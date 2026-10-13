@@ -15,9 +15,9 @@ function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b]
 /* ---------- recap: the 2-3-2 network ---------- */
 {
   const N=netDiagram($('fig-recap'),{names:[['x₁','x₂'],['h₁','h₂','h₃'],['z₁','z₂']],xs:[70,270,450],W:640,H:400,top:70,bot:330,aria:'a network with two inputs, three hidden units and two outputs, followed by a softmax'});
-  softmaxBox(N.svg,472,N.pos[2].map(p=>p[1]));
-  label(N.svg,170,62,'W^(1), b^(1)',{'text-anchor':'middle',fill:'var(--model)'});label(N.svg,360,62,'W^(2), b^(2)',{'text-anchor':'middle',fill:'var(--mean)'});
-  const g=stepG(N.svg,2);mtxt(g,320,385,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)','font-weight':700});
+  softmaxBox(N.svg,472,N.pos[2].map(p=>p[1]),{weight:400});
+  label(N.svg,170,62,'*W^(1), *b^(1)',{'text-anchor':'middle',fill:'var(--model)','font-weight':400});label(N.svg,360,62,'*W^(2), *b^(2)',{'text-anchor':'middle',fill:'var(--mean)','font-weight':400});
+  const g=stepG(N.svg,2);mtxt(g,320,385,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});
 }
 
 /* ---------- the chain rule: v → z → p → ℒ ---------- */
@@ -29,26 +29,26 @@ function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b]
   const mid=k=>(X[k]+X[k+1])/2,t=(g,x,y,s,c,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':15,fill:c,...a});
   ['∂z/∂v','∂p/∂z','∂ℒ/∂p'].forEach((s,k)=>t(svg,mid(k),Y-18,s,'var(--ink)',{'font-size':17}));
   const g1=stepG(svg,1),g2=stepG(svg,2),g3=stepG(svg,3);
-  t(g1,mid(0),Y+40,'h','var(--model)',{'font-weight':700});t(g2,mid(1),Y+40,'p(1 − p)','var(--model)',{'font-weight':700});
-  t(g2,mid(2),Y+40,'−y/p','var(--model)',{'font-weight':700});t(g2,mid(2),Y+62,'+ (1−y)/(1−p)','var(--model)',{'font-weight':700});
+  t(g1,mid(0),Y+40,'h','var(--model)');t(g2,mid(1),Y+40,'p(1 − p)','var(--model)');
+  t(g2,mid(2),Y+40,'−y/p','var(--model)');t(g2,mid(2),Y+62,'+ (1−y)/(1−p)','var(--model)');
   el('path',{d:`M${X[1]} ${Y+86} v14 H${X[3]} v-14`,fill:'none',stroke:'var(--hi)','stroke-width':2.5},g3);
-  t(g3,(X[1]+X[3])/2,Y+134,'∂ℒ/∂z = p − y','var(--hi)',{'font-size':20,'font-weight':700});
+  t(g3,(X[1]+X[3])/2,Y+134,'∂ℒ/∂z = p − y','var(--hi)',{'font-size':20});
 }
 
 /* ---------- output weights and one layer deeper: a 2-2-1 network with one path highlighted ---------- */
 const SMALL={names:[['x₁','x₂'],['h₁','h₂'],['z']],xs:[80,300,500],W:600,H:360,top:60,bot:300};
 {
   const N=netDiagram($('fig-out'),{...SMALL,aria:'the path from the output weight v1 to the loss'}),g=stepG(N.gE,1);
-  hiEdge(N,g,1,0,0);label(N.svg,400,N.pos[1][0][1]+28,'v₁',{fill:'var(--hi)','text-anchor':'middle'});
-  label(N.svg,400,N.pos[1][1][1]-14,'v₂',{fill:'var(--muted)','text-anchor':'middle'});
-  const g2=stepG(N.svg,1);mtxt(g2,500,N.pos[2][0][1]+52,'p − y',{'text-anchor':'middle','font-size':16,fill:'var(--err)','font-weight':700});
-  mtxt(g2,300,N.pos[1][0][1]-36,'h₁',{'text-anchor':'middle','font-size':15,fill:'var(--hi)','font-weight':700});
+  hiEdge(N,g,1,0,0);label(N.svg,400,N.pos[1][0][1]+28,'v₁',{fill:'var(--hi)','text-anchor':'middle','font-weight':400});
+  label(N.svg,400,N.pos[1][1][1]-14,'v₂',{fill:'var(--muted)','text-anchor':'middle','font-weight':400});
+  const g2=stepG(N.svg,1);mtxt(g2,500,N.pos[2][0][1]+52,'p − y',{'text-anchor':'middle','font-size':16,fill:'var(--err)'});
+  mtxt(g2,300,N.pos[1][0][1]-36,'h₁',{'text-anchor':'middle','font-size':15,fill:'var(--hi)'});
 }
 {
   const N=netDiagram($('fig-deep'),{...SMALL,aria:'the path from the hidden weight w11 through h1 to the loss'}),g=stepG(N.gE,1);
   hiEdge(N,g,0,0,0);hiEdge(N,g,1,0,0);
-  label(N.svg,190,N.pos[0][0][1]-8,'w₁₁',{fill:'var(--hi)','text-anchor':'middle'});label(N.svg,400,N.pos[1][0][1]+28,'v₁',{fill:'var(--hi)','text-anchor':'middle'});
-  const g2=stepG(N.svg,1),f=(x,y,s,c='var(--err)')=>mtxt(g2,x,y,s,{'text-anchor':'middle','font-size':15,fill:c,'font-weight':700});
+  label(N.svg,190,N.pos[0][0][1]-8,'w₁₁',{fill:'var(--hi)','text-anchor':'middle','font-weight':400});label(N.svg,400,N.pos[1][0][1]+28,'v₁',{fill:'var(--hi)','text-anchor':'middle','font-weight':400});
+  const g2=stepG(N.svg,1),f=(x,y,s,c='var(--err)')=>mtxt(g2,x,y,s,{'text-anchor':'middle','font-size':15,fill:c});
   f(500,N.pos[2][0][1]+52,'p − y');f(300,N.pos[1][0][1]-36,'h₁(1 − h₁)','var(--model)');f(80,N.pos[0][0][1]-36,'x₁','var(--model)');
 }
 
@@ -56,20 +56,20 @@ const SMALL={names:[['x₁','x₂'],['h₁','h₂'],['z']],xs:[80,300,500],W:600
 {
   const N=netDiagram($('fig-paths'),{names:[['x₁','x₂'],['h₁','h₂'],['z₁','z₂']],xs:[80,300,500],W:600,H:360,top:60,bot:300,aria:'a hidden weight reaches the loss along two paths, through both outputs'});
   hiEdge(N,N.gE,0,0,0);hiEdge(N,N.gE,1,0,0);hiEdge(N,N.gE,1,0,1,'var(--err)');
-  label(N.svg,190,N.pos[0][0][1]-8,'w₁₁',{fill:'var(--hi)','text-anchor':'middle'});
-  const g2=stepG(N.svg,2),f=(x,y,s,c)=>mtxt(g2,x,y,s,{'text-anchor':'middle','font-size':15,fill:c,'font-weight':700});
-  f(500,N.pos[2][0][1]-36,'δ^(2) = p − y','var(--err)');f(300,N.pos[1][0][1]-36,'δ^(1)','var(--err)');
+  label(N.svg,190,N.pos[0][0][1]-8,'w₁₁',{fill:'var(--hi)','text-anchor':'middle','font-weight':400});
+  const g2=stepG(N.svg,2),f=(x,y,s,c)=>mtxt(g2,x,y,s,{'text-anchor':'middle','font-size':15,fill:c});
+  f(528,N.pos[2][0][1]-36,'*δ^(2) = *p − *y','var(--err)');f(300,N.pos[1][0][1]-36,'*δ^(1)','var(--err)');
   arrow(g2,470,N.pos[2][0][1]-40,340,N.pos[1][0][1]-40,{stroke:'var(--err)'});
 }
 
 /* ---------- the recipe: forward, then backward ---------- */
 {
   const N=netDiagram($('fig-recipe'),{names:[['x₁','x₂'],['h₁','h₂','h₃'],['z₁','z₂']],xs:[80,300,500],W:600,H:420,top:90,bot:330,aria:'forward pass from left to right, backward pass from right to left'});
-  arrow(N.svg,60,40,520,40,{stroke:'var(--model)','stroke-width':3});mtxt(N.svg,290,30,'forward: h, p',{'text-anchor':'middle','font-size':15,fill:'var(--model)','font-weight':700});
+  arrow(N.svg,60,40,520,40,{stroke:'var(--model)','stroke-width':3});mtxt(N.svg,290,30,'forward: *h, *p',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
   const g2=stepG(N.svg,2);arrow(g2,520,400,60,400,{stroke:'var(--err)','stroke-width':3});
-  mtxt(g2,290,390,'backward: δ^(2), then δ^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)','font-weight':700});
-  const g1=stepG(N.svg,1);mtxt(g1,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'δ^(2)',{'font-size':16,fill:'var(--err)','font-weight':700});
-  mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'δ^(1)',{'font-size':16,fill:'var(--err)','font-weight':700});
+  mtxt(g2,290,390,'backward: *δ^(2), then *δ^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)'});
+  const g1=stepG(N.svg,1);mtxt(g1,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'*δ^(2)',{'font-size':16,fill:'var(--err)'});
+  mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'*δ^(1)',{'font-size':16,fill:'var(--err)'});
 }
 
 /* ---------- learning-rate schedules ---------- */
