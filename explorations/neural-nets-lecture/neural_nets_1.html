@@ -341,7 +341,8 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 #fig-two svg,#fig-softmax svg,#fig-hidden svg,#fig-fwd svg,#fig-ce svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
 .gdduo svg,.trainduo svg{max-height:56vh;width:auto;max-width:100%;margin:0 auto}
 .grab svg circle[style*="grab"]{touch-action:none}
-#fig-land svg,#fig-land3d svg{touch-action:pan-y}
+#fig-land svg{touch-action:pan-y}
+#fig-land3d svg{touch-action:none}
 .landduo svg{max-height:58vh;width:auto;max-width:100%;margin:0 auto;display:block}
 /* hidden-layer animation */
 .hcopy,.fadein{transition:transform .7s ease,opacity .6s ease}
@@ -762,7 +763,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
   <div class="notes">
     <p><b class="cue">0</b>A cartoon: real models have thousands of parameters, but two are enough to draw. Left, the surface in 3D: the height is the loss. Right, the same surface seen from above, like a map; darker means lower. Two valleys, one deeper than the other (the stars).</p>
     <p><b class="cue">1</b>Each partial derivative is the slope in one direction. Together they form an arrow in the parameter plane, on the right, pointing in the direction of steepest ascent. On the left, the same direction followed along the surface: it goes uphill. (Drawn with a fixed length; the true length is how steep the slope is.)</p>
-    <p><b class="cue">2</b>From the amber start, take a small step against the gradient, recompute, repeat. The path follows the slope down into the nearest valley. The start point can be dragged in either view; dragging the background of the 3D view turns it.</p>
+    <p><b class="cue">2</b>From the amber start, take a small step against the gradient, recompute, repeat. The path follows the slope down into the nearest valley. The start point can be dragged in either view. Dragging the background of the 3D view turns it (left and right) and tilts it (up and down). The lines on the surface are contour lines, the same as in the map on the right.</p>
     <p><b class="cue">3</b>Start somewhere else and the same procedure ends in the other, shallower valley: a local minimum. Gradient descent only sees the slope where it stands.</p>
     <p><b class="cue">4</b>Logistic regression's loss is convex: any start reaches the same answer. Neural networks lose that guarantee. We come back to this next class.</p>
   </div>
@@ -1739,37 +1740,47 @@ for(const [id,name,f] of [['sig','sigmoid',sig],['tanh','tanh',Math.tanh],['relu
 
 /* ---------- the loss landscape: the cartoon in 3D and from above; gradient descent from a draggable start ---------- */
 // the 3D view: an orthographic projection of the surface, drawn back to front (painter's algorithm)
-const LAND_AZ=1.15;   // the starting view of the 3D surface: both valleys and the gradient at A are visible
-function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=.85}={}){
+// the starting view of the 3D surface (turn and tilt, in radians): both valleys and the gradient at A are visible
+const LAND_AZ=1.45,LAND_EL=.6,EL_MIN=.2,EL_MAX=1.2,LAND_LEVELS=[.7,.8,.9,1,1.1,1.2,1.3,1.4,1.5];
+function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=LAND_EL}={}){
   const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'the same loss surface drawn in 3D: the height is the loss'},host);
   svg.classList.add('noanim');
   const G=[];for(let i=0;i<=n;i++){G.push([]);for(let j=0;j<=n;j++)G[i].push(cartoon([-3+6*i/n,-3+6*j/n]));}
   const lo=Math.min(...G.flat()),hi=Math.max(...G.flat()),zs=3.2/(hi-lo),L0=[-.5,.4,.77];   // light from the upper left, for shading
   const gS=el('g',{},svg),gT=el('g',{},svg),gO=el('g',{},svg);
-  const view={az,S:1,cx:0,cy:0};
+  const view={az,el:elev,S:1,cx:0,cy:0};
   // world (θ₁, θ₂, height) → screen (u, v) and depth (larger is farther from the viewer)
   const raw=([a,b,z])=>{const c=Math.cos(view.az),s=Math.sin(view.az),x=c*a-s*b,y=s*a+c*b;
-    return [x,-(z*Math.cos(elev)+y*Math.sin(elev)),y*Math.cos(elev)-z*Math.sin(elev)];};
+    return [x,-(z*Math.cos(view.el)+y*Math.sin(view.el)),y*Math.cos(view.el)-z*Math.sin(view.el)];};
   const P=p=>{const r=raw(p);return [view.cx+view.S*r[0],view.cy+view.S*r[1],r[2]];};
   const at=(a,b)=>[a,b,(cartoon([a,b])-lo)*zs];
-  function fit(){const pts=[];for(const a of [-3,3])for(const b of [-3,3])for(const z of [0,(hi-lo)*zs])pts.push(raw([a,b,z]));
-    const us=pts.map(p=>p[0]),vs=pts.map(p=>p[1]),m=24;
-    view.S=Math.min((W-2*m)/(Math.max(...us)-Math.min(...us)),(H-2*m)/(Math.max(...vs)-Math.min(...vs)));
-    view.cx=W/2-view.S*(Math.max(...us)+Math.min(...us))/2;view.cy=H/2-view.S*(Math.max(...vs)+Math.min(...vs))/2;}
-  fit();   // the scale is fixed once, so turning the view does not change the size
-  function draw(){gS.textContent='';gT.textContent='';const Q=[];
+  // the bounding box of the surface on screen, for the current view
+  const box=()=>{const pts=[];for(const a of [-3,3])for(const b of [-3,3])for(const z of [0,(hi-lo)*zs])pts.push(raw([a,b,z]));
+    const us=pts.map(p=>p[0]),vs=pts.map(p=>p[1]);return [Math.min(...us),Math.max(...us),Math.min(...vs),Math.max(...vs)];};
+  // one scale for every view, so turning and tilting do not change the size; the picture is re-centred each time
+  {const m=10,a0=view.az,e0=view.el;let S=1e9;
+    for(let k=0;k<24;k++)for(const e of [EL_MIN,(EL_MIN+EL_MAX)/2,EL_MAX]){view.az=k*Math.PI/12;view.el=e;const b=box();S=Math.min(S,(W-2*m)/(b[1]-b[0]),(H-2*m)/(b[3]-b[2]));}
+    view.az=a0;view.el=e0;view.S=S;}
+  const centre=()=>{const b=box();view.cx=W/2-view.S*(b[0]+b[1])/2;view.cy=H/2-view.S*(b[2]+b[3])/2;};
+  function draw(){centre();gS.textContent='';gT.textContent='';const Q=[];
     for(let i=0;i<n;i++)for(let j=0;j<n;j++){const a0=-3+6*i/n,a1=-3+6*(i+1)/n,b0=-3+6*j/n,b1=-3+6*(j+1)/n;
       const c=[[a0,b0,(G[i][j]-lo)*zs],[a1,b0,(G[i+1][j]-lo)*zs],[a1,b1,(G[i+1][j+1]-lo)*zs],[a0,b1,(G[i][j+1]-lo)*zs]].map(P);
       const v=(G[i][j]+G[i+1][j]+G[i][j+1]+G[i+1][j+1])/4,h=6/n;
       // the quad's normal from its slopes, and how much it faces the light
       const gx=((G[i+1][j]+G[i+1][j+1])-(G[i][j]+G[i][j+1]))/2*zs/h,gy=((G[i][j+1]+G[i+1][j+1])-(G[i][j]+G[i+1][j]))/2*zs/h,nn=Math.hypot(gx,gy,1);
       const lit=(-gx*L0[0]-gy*L0[1]+L0[2])/nn;
-      Q.push({c,d:c.reduce((s,p)=>s+p[2],0)/4,t:Math.pow((v-lo)/(hi-lo),.5),sh:clamp(1-lit,0,1)});}
+      // contour lines inside this cell (marching squares), drawn with the cell so hills hide them correctly
+      const cv=[G[i][j],G[i+1][j],G[i+1][j+1],G[i][j+1]],cp=[[a0,b0],[a1,b0],[a1,b1],[a0,b1]],segs=[];
+      for(const lev of LAND_LEVELS){const x=[];for(let k=0;k<4;k++){const u=cv[k]-lev,w=cv[(k+1)%4]-lev;
+          if((u<0)!==(w<0)){const t=u/(u-w),A=cp[k],B=cp[(k+1)%4];x.push(P([A[0]+t*(B[0]-A[0]),A[1]+t*(B[1]-A[1]),(lev-lo)*zs]));}}
+        for(let k=0;k+1<x.length;k+=2)segs.push(`M${x[k][0].toFixed(1)} ${x[k][1].toFixed(1)}L${x[k+1][0].toFixed(1)} ${x[k+1][1].toFixed(1)}`);}
+      Q.push({c,segs,d:c.reduce((s,p)=>s+p[2],0)/4,t:Math.pow((v-lo)/(hi-lo),.5),sh:clamp(1-lit,0,1)});}
     Q.sort((p,q)=>q.d-p.d);
     for(const q of Q){const d='M'+q.c.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join('L')+'Z';
       el('path',{d,fill:'var(--surface)',stroke:'var(--surface)','stroke-width':.6,'stroke-linejoin':'round'},gS);
       el('path',{d,fill:'var(--model)','fill-opacity':(.1+.55*(1-q.t)).toFixed(3),stroke:'var(--model)','stroke-opacity':.25,'stroke-width':.5},gS);
-      el('path',{d,fill:'#000','fill-opacity':(.4*q.sh).toFixed(3),stroke:'none'},gS);}
+      el('path',{d,fill:'#000','fill-opacity':(.4*q.sh).toFixed(3),stroke:'none'},gS);
+      if(q.segs.length)el('path',{d:q.segs.join(''),fill:'none',stroke:'var(--model)','stroke-width':1.3,'stroke-opacity':.9},gS);}
     // axis names at the middle of two near edges
     const near=(p,q)=>P(p)[2]<P(q)[2]?p:q;
     const e1=near([0,-3],[0,3]),e2=near([-3,0],[3,0]);
@@ -1817,17 +1828,17 @@ function surface3d(host,{W=460,H=420,n=40,az=LAND_AZ,elev=.85}={}){
     const x=api.xmin+(px-api.sx(api.xmin))/(api.sx(api.xmax)-api.sx(api.xmin))*(api.xmax-api.xmin),y=api.ymin+(py-api.sy(api.ymin))/(api.sy(api.ymax)-api.sy(api.ymin))*(api.ymax-api.ymin);
     return [clamp(x,-2.9,2.9),clamp(y,-2.9,2.9)];};
   const setStart=act('land',p=>{start=p.slice();draw();});
-  const turn=act('land3d',az=>{S3.view.az=az;S3.draw();draw();});
+  const turn=act('land3d',([az,el])=>{S3.view.az=az;S3.view.el=el;S3.draw();draw();});
   // dragging: the amber point in either view; the background of the 3D view turns it
   for(const [h,svg,map] of [[handle,api.svg,toData],[handle3,S3.svg,ev=>S3.pick(...svgXY(S3.svg,ev,S3.W,S3.H))]]){
     h.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();h.setPointerCapture(e.pointerId);h.style.cursor='grabbing';});
     h.addEventListener('pointermove',e=>{if(h.hasPointerCapture(e.pointerId))setStart(map(e));});
     h.addEventListener('pointerup',()=>{h.style.cursor='grab';});}
-  let rot=null;
-  S3.svg.addEventListener('pointerdown',e=>{if(e.target===handle3)return;e.preventDefault();S3.svg.setPointerCapture(e.pointerId);rot={x:e.clientX,az:S3.view.az};});
-  S3.svg.addEventListener('pointermove',e=>{if(rot)turn(rot.az+(e.clientX-rot.x)*.01);});
-  S3.svg.addEventListener('pointerup',()=>{rot=null;});
-  hooks['s-land']={step(){},enter(){start=A.slice();S3.view.az=LAND_AZ;S3.draw();draw();}};
+  let rot=null;S3.svg.style.cursor='grab';
+  S3.svg.addEventListener('pointerdown',e=>{if(e.target===handle3)return;e.preventDefault();S3.svg.setPointerCapture(e.pointerId);S3.svg.style.cursor='grabbing';rot={x:e.clientX,y:e.clientY,az:S3.view.az,el:S3.view.el};});
+  S3.svg.addEventListener('pointermove',e=>{if(rot)turn([rot.az+(e.clientX-rot.x)*.01,clamp(rot.el+(e.clientY-rot.y)*.01,EL_MIN,EL_MAX)]);});
+  S3.svg.addEventListener('pointerup',()=>{rot=null;S3.svg.style.cursor='grab';});
+  hooks['s-land']={step(){},enter(){start=A.slice();S3.view.az=LAND_AZ;S3.view.el=LAND_EL;S3.draw();draw();}};
   draw();
 }
 
