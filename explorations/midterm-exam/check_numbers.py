@@ -77,4 +77,18 @@ check(0.5 ** 2, 0.25, "exam: threshold 0.5 becomes 0.25 after squaring")
 A = [(0, 0), (0, .5), (.2, .7), (.4, .8), (.6, 1), (1, 1)]
 B = [(0, 0), (.1, .3), (.2, .6), (.3, 1), (1, 1)]
 check(area(A), 0.85, "curve A AUC"); check(area(B), 0.84, "curve B AUC")
+# ---------------------------------------------------------------- SVM: a trained soft-margin SVC (practice and exam)
+import math
+for ver, w, b, pts, want in [
+        ("practice", (4, 3), -12, [((3, 1), 1), ((1, 2), -1), ((2.5, 1), 1), ((1, 2.5), -1), ((3, 0.5), -1)],
+         dict(f=[3, -2, 1, -0.5, 1.5], dist=[0.6, 0.4, 0.2, 0.1, 0.3], margin=0.4)),
+        ("exam", (6, 8), -20, [((3, 1), 1), ((1, 1), -1), ((1.5, 1.5), 1), ((1.25, 1.5), -1), ((3, 0.5), -1)],
+         dict(f=[6, -6, 1, -0.5, 2], dist=[0.6, 0.6, 0.1, 0.05, 0.2], margin=0.2))]:
+    nw = math.hypot(*w); check(2 / nw, want["margin"], f"{ver} SVM margin width")
+    fs = [w[0] * x[0] + w[1] * x[1] + b for x, _ in pts]
+    for k, (f, (x, y)) in enumerate(zip(fs, pts)):
+        check(f, want["f"][k], f"{ver} SVM f(point {'ABCDE'[k]})"); check(abs(f) / nw, want["dist"][k], f"  distance")
+    yf = [y * f for f, (_, y) in zip(fs, pts)]
+    assert [k for k, v in enumerate(yf) if v <= 1] == [2, 3, 4]; assert yf[2] == 1 and 0 < yf[3] < 1 and yf[4] < 0
+    print(f"ok  {ver} SVM: support vectors C, D, E; C on the margin, D inside it, E misclassified")
 print("all checks passed")

@@ -13,3 +13,10 @@ The scenarios' numbers are made up. Background facts behind the rat scenario, ch
 APOPO trains African giant pouched rats to smell explosives; its first rats passed the International
 Mine Action Standards tests in 2004. Metal detectors give roughly 100 to 1,000 false alarms per real
 mine, mostly from scrap metal.
+
+## LaTeX exams (`latex/`)
+
+- `practice_midterm.tex`: practice test, questions 1 (TB rats) and 2 (SVMs).
+- `final_midterm.tex`: the exam, questions 1 (AI-text detection) and 2 (SVMs), slightly easier.
+
+Each builds two PDFs, the test and its solutions; the commands are at the top of each file.
