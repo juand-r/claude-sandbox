@@ -255,5 +255,47 @@ foot, so the nearest houses match on area and almost ignore bedrooms. Standardiz
 \end{solution}
 \end{parts}
 
+% ===================================================================== 5
+% Question 4 (neural networks) goes before this one; until it is written, number this question 5.
+\newpage
+\setcounter{question}{4}
+\titledquestion{Ensemble methods (10 points)}
+\begin{parts}
+\part[5] An SVM can only separate two classes. A clinic wants to classify chest X-rays into 4 classes:
+normal, pneumonia, COVID and tuberculosis.
+\begin{subparts}
+\subpart \prompt{With one-vs-rest partitions, how many SVMs do you train, and what labels does each one
+see?}
+\subpart \prompt{How is a new X-ray classified?}
+\subpart \prompt{With one-vs-one partitions, how many SVMs do you train?}
+\end{subparts}
+\answerbox{8}
+\begin{solution}
+(a) 4 SVMs, one per class. Each sees ``this class'' against ``the other three''.
+(b) Each SVM predicts its side, and every class on the predicted side gets one vote; the class with the
+most votes wins. (Also accept: pick the class whose SVM gives the largest $f(\bm{x})$.)
+(c) One SVM for every pair of classes: $4 \cdot 3 / 2 = 6$.
+\end{solution}
+
+\part[3] \prompt{An ensemble of 25 classifiers is built, but each base classifier has error rate 0.6.
+What happens to the error of the majority vote, compared with a single classifier? Why?}
+\answerbox{5}
+\begin{solution}
+The ensemble is worse than a single classifier: with independent errors, the majority vote is wrong
+whenever more than half of the classifiers are wrong, and with error 0.6 that happens most of the time
+(about 0.85). A majority vote only helps when each base classifier is better than random guessing.
+\end{solution}
+
+\newpage
+\part[2] \prompt{Random forests consider only a random subset of the features at each split. Why does
+this help the ensemble?}
+\answerbox{6}
+\begin{solution}
+It makes the trees less alike. Without it, every tree would split on the same strong features and make
+similar mistakes; with random subsets the trees are more diverse, so their errors are less correlated
+and the vote cancels more of them.
+\end{solution}
+\end{parts}
+
 \end{questions}
 \end{document}

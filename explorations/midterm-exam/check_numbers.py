@@ -64,6 +64,19 @@ check(area(roc([x ** 0.5 for x in mine], [x ** 0.5 for x in clean])), 0.80, "pra
 # lowest threshold that still flags every mine is 2.5: then 3 of 5 clean squares (7.4, 4.8, 3.9) are flagged
 check(sum(c >= 2.5 for c in clean) / 5, 0.6, "practice FPR at TPR = 1")
 check(sum(m > 7.4 for m in mine) / 5, 0.4, "practice TPR at FPR = 0")
+# practice (final version): TB rats, pause times on 10 samples (5 TB, 5 not)
+samples, tb = 1000, 100
+tp = 0.8 * tb; fn = tb - tp; fp = 0.1 * (samples - tb); tn = samples - tb - fp
+for v, w, what in [(tp, 80, "TB TP"), (fn, 20, "TB FN"), (fp, 90, "TB FP"), (tn, 810, "TB TN")]:
+    check(v, w, what)
+check(round(tp / (tp + fp), 2), 0.47, "TB precision"); check(tp / tb, 0.80, "TB recall")
+pause = dict(A=2.6, B=0.6, C=4.6, D=2.0, E=1.3, F=3.7, G=4.2, H=1.0, I=3.0, J=2.4)
+has_tb = set("ACEGI")
+pts = roc([pause[k] for k in has_tb], [pause[k] for k in pause if k not in has_tb])
+want = [(0, 0), (0, .2), (0, .4), (.2, .4), (.2, .6), (.2, .8), (.4, .8), (.6, .8), (.6, 1), (.8, 1), (1, 1)]
+assert all(abs(x - a) < 1e-9 and abs(y - b) < 1e-9 for (x, y), (a, b) in zip(pts, want)) and len(pts) == len(want), pts
+print("ok  TB ROC points match the solution")
+check(area(pts), 0.80, "TB AUC")
 # exam: AI-detector scores on 8 essays (4 AI, 4 human)
 ai_s = [0.95, 0.85, 0.60, 0.40]; hu_s = [0.70, 0.50, 0.30, 0.10]
 pts = roc(ai_s, hu_s); print("    exam ROC points:", [(round(x, 2), round(y, 2)) for x, y in pts])
@@ -103,4 +116,17 @@ ys = [1, 3, 2, 7, 9, 8]; left, right = ys[:3], ys[3:]
 ml, mr = sum(left) / 3, sum(right) / 3
 check(ml, 2, "practice tree: left leaf"); check(mr, 8, "practice tree: right leaf")
 check(sum((v - ml) ** 2 for v in left) + sum((v - mr) ** 2 for v in right), 4, "practice tree: SSE")
+# ---------------------------------------------------------------- ensembles
+from math import comb
+def vote_error(n, e):
+    """Error of a majority vote of n independent classifiers, each with error e (n odd)."""
+    return sum(comb(n, k) * e**k * (1 - e)**(n - k) for k in range(n // 2 + 1, n + 1))
+check(round(vote_error(25, 0.35), 2), 0.06, "practice 5.2: vote of 25 at error 0.35")
+check(round(vote_error(25, 0.6), 2), 0.85, "exam 5.2: vote of 25 at error 0.6")
+# practice 5.1(c): every class on the predicted side A gets one vote
+sides = [{"healthy", "rust"}, {"rust", "blight"}, {"rust", "mildew", "mosaic"}]
+votes = {c: sum(c in a for a in sides) for c in ["healthy", "rust", "blight", "mildew", "mosaic"]}
+assert votes == {"healthy": 1, "rust": 3, "blight": 1, "mildew": 1, "mosaic": 1}, votes
+print(f"ok  practice 5.1(c) votes: {votes}")
+check(comb(5, 2), 10, "practice 5.1(b): one-vs-one SVMs"); check(comb(4, 2), 6, "exam 5.1(c): one-vs-one SVMs")
 print("all checks passed")

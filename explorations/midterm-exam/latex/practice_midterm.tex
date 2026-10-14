@@ -383,5 +383,57 @@ the lowest validation loss (epoch 40), and stop once it has not improved for a s
 \end{subparts}
 \end{parts}
 
+% ===================================================================== 5
+\newpage
+\titledquestion{Ensemble methods (10 points)}
+\begin{parts}
+\part[5] An SVM can only separate two classes. A plant-disease app classifies photos of leaves into 5
+classes: healthy, rust, blight, mildew and mosaic.
+\begin{subparts}
+\subpart \prompt{With one-vs-rest partitions, how many SVMs do you train, and what labels does each one
+see?}
+\subpart \prompt{With one-vs-one partitions, how many SVMs do you train?}
+\subpart \prompt{Instead, three SVMs are trained on these partitions. For a new photo, each predicts A or
+B, as shown. Every class on the predicted side gets one vote. Which class does the ensemble predict?}
+\end{subparts}
+\begin{center}
+\begin{tabular}{|l|l|l|c|}
+\hline
+\rowcolor{headgray} SVM & side A & side B & prediction \\ \hline
+1 & healthy, rust & blight, mildew, mosaic & A \\ \hline
+2 & rust, blight & healthy, mildew, mosaic & A \\ \hline
+3 & rust, mildew, mosaic & healthy, blight & A \\ \hline
+\end{tabular}
+\end{center}
+\answerbox{9}
+\begin{solution}
+(a) 5 SVMs, one per class. Each sees ``this class'' against ``the other four''.
+(b) One SVM for every pair of classes: $5 \cdot 4 / 2 = 10$.
+(c) Votes: rust 3 (from all three SVMs), healthy 1, blight 1, mildew 1, mosaic 1. The ensemble
+predicts rust.
+\end{solution}
+
+\newpage
+\part[3] \prompt{An ensemble of 25 classifiers each has error rate 0.35. If their errors were
+independent, a majority vote would have error about 0.06. On test data, the team finds the ensemble's
+error is 0.33. What is the most likely reason?}
+\answerbox{6}
+\begin{solution}
+The base classifiers are not diverse: their errors are strongly correlated (for example, similar
+classifiers trained on the same data), so they make the same mistakes on the same examples. The 0.06
+assumes independent errors; when the classifiers agree on their mistakes, the vote cannot fix them, and
+the ensemble is barely better than one classifier.
+\end{solution}
+
+\part[2] \prompt{Bagging trains every base classifier with the same learning algorithm. Where does the
+diversity between its classifiers come from?}
+\answerbox{5}
+\begin{solution}
+From the training data: each base classifier is trained on a different bootstrap sample (drawn with
+replacement), so each sees a different mix of examples, some repeated and some left out, and learns a
+somewhat different model.
+\end{solution}
+\end{parts}
+
 \end{questions}
 \end{document}
