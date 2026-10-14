@@ -360,4 +360,58 @@ close(round(vl[442], 2), 0.33, 1e-9, "validation loss at epoch 443")
 assert min(e for e in range(26, len(vl) + 1) if vl[e - 1] < vl[24]) == 327
 print("ok  patience 400: stops at 843 with epoch 443; patience 300: stops at 325 with epoch 25; first beaten at 327")
 close(2 * 2 + 2 + 2 + 1, 9, 0, "weights and biases of the 2-2-1 network")
+# ---------------------------------------------------------------- class 2: the worked backpropagation example (2-2-1, sigmoid units)
+# Weights as on the slides; every quoted value is the exact value rounded to 3 decimals, and a student
+# who rounds each intermediate value to 3 decimals gets the same answers.
+EX = dict(x=np.array([2.0, 1.0]), y=1.0, W=np.array([[-0.5, 1.0], [0.5, -1.0]]), b=np.array([1.0, -0.5]),
+          v=np.array([2.0, 0.5]), c=-1.0)
+def ex_loss(th, kind):
+    W_, b_, v_, c_ = th[:4].reshape(2, 2), th[4:6], th[6:8], th[8]
+    pp = sig(v_ @ sig(W_ @ EX["x"] + b_) + c_)
+    return 0.5 * (pp - EX["y"]) ** 2 if kind == "mse" else -np.log(pp)
+th0 = np.r_[EX["W"].ravel(), EX["b"], EX["v"], EX["c"]]
+a = EX["W"] @ EX["x"] + EX["b"]; h = sig(a); z = EX["v"] @ h + EX["c"]; pp = sig(z)
+r3 = lambda t: round(float(t), 3)
+want = {"a1": 1.0, "a2": -0.5, "h1": 0.731, "h2": 0.378, "z": 0.651, "p": 0.657, "L_mse": 0.059, "L_ce": 0.420,
+        "dLdp": -0.343, "dpdz": 0.225, "dz_mse": -0.077, "h1(1-h1)": 0.197, "dLdp_ce": -1.522}
+got = {"a1": a[0], "a2": a[1], "h1": h[0], "h2": h[1], "z": z, "p": pp, "L_mse": 0.5 * (pp - 1) ** 2, "L_ce": -np.log(pp),
+       "dLdp": pp - 1, "dpdz": pp * (1 - pp), "dz_mse": (pp - 1) * pp * (1 - pp), "h1(1-h1)": h[0] * (1 - h[0]), "dLdp_ce": -1 / pp}
+for k in want:
+    close(r3(got[k]), want[k], 1e-12, f"example: {k}")
+# the hand computation, three decimals at each step
+H1, H2 = 0.731, 0.378
+close(r3(2 * H1 + 0.5 * H2 - 1), 0.651, 1e-12, "example by hand: z = 2(0.731) + 0.5(0.378) - 1")
+close(r3(sig(0.651)), 0.657, 1e-12, "example by hand: p = sigma(0.651)")
+close(r3(0.5 * 0.343 ** 2), 0.059, 1e-12, "example by hand: L = (0.343)^2 / 2")
+close(r3(0.657 * 0.343), 0.225, 1e-12, "example by hand: p(1 - p)")
+close(r3(-0.343 * 0.225), -0.077, 1e-12, "example by hand: dL/dz (squared error)")
+close(r3(-0.077 * 0.731), -0.056, 1e-12, "example by hand: dL/dv1 (squared error)")
+close(r3(-0.343 * 0.225 * 0.731), -0.056, 1e-12, "example by hand: dL/dv1, three factors at once")
+close(r3(0.731 * 0.269), 0.197, 1e-12, "example by hand: h1(1 - h1)")
+close(r3(-0.077 * 2 * 0.197 * 2), -0.061, 1e-12, "example by hand: dL/dw11 (squared error)")
+close(r3(-1 / 0.657), -1.522, 1e-12, "example by hand: dL/dp (cross-entropy)")
+close(r3(-np.log(0.657)), 0.420, 1e-12, "example by hand: L (cross-entropy)")
+close(r3(-0.343 * 0.731), -0.251, 1e-12, "example by hand: dL/dv1 (cross-entropy)")
+close(r3(-0.343 * 2 * 0.197 * 2), -0.270, 1e-12, "example by hand: dL/dw11 (cross-entropy)")
+# the same gradients from numerical derivatives of the whole network
+gm, gc = fd(lambda t: ex_loss(t, "mse"), th0), fd(lambda t: ex_loss(t, "ce"), th0)
+close(r3(gm[6]), -0.056, 1e-12, "example: dL/dv1 (squared error), numerically")
+close(r3(gm[0]), -0.061, 1e-12, "example: dL/dw11 (squared error), numerically")
+close(r3(gc[6]), -0.251, 1e-12, "example: dL/dv1 (cross-entropy), numerically")
+close(r3(gc[0]), -0.270, 1e-12, "example: dL/dw11 (cross-entropy), numerically")
+close(r3(fd(lambda e: 0.5 * (sig(e[0]) - 1) ** 2, np.array([z]))[0]), -0.077, 1e-12, "example: dL/dz (squared error), numerically")
+# updates with learning rate 1, as on the slide
+close(r3(2 - (-0.056)), 2.056, 1e-12, "example: new v1 (squared error)")
+close(r3(-0.5 - (-0.061)), -0.439, 1e-12, "example: new w11 (squared error)")
+close(r3(2 - (-0.251)), 2.251, 1e-12, "example: new v1 (cross-entropy)")
+close(r3(-0.5 - (-0.270)), -0.230, 1e-12, "example: new w11 (cross-entropy)")
+close(r3(2 - gm[6]), 2.056, 1e-12, "example: new v1 from the exact gradient")
+close(r3(-0.5 - gm[0]), -0.439, 1e-12, "example: new w11 from the exact gradient")
+# one step on all nine weights lowers the loss (quoted in the notes)
+for kind, g in [("mse", gm), ("ce", gc)]:
+    print(f"    example, {kind}: loss {ex_loss(th0, kind):.4f} -> {ex_loss(th0 - g, kind):.4f} after one step on all nine weights")
+    assert ex_loss(th0 - g, kind) < ex_loss(th0, kind)
+# squared error's extra factor p(1 - p): a confident wrong answer (p = 0.01, y = 1) gets a tiny gradient
+close(r3((0.01 - 1) * 0.01 * 0.99), -0.010, 1e-12, "squared error at p = 0.01, y = 1: dL/dz")
+
 print("all checks passed")

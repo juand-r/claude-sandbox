@@ -34,7 +34,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 .dtab td.yc{color:var(--model);font-weight:700}
 @media (max-width:620px){.dtab{font-size:.7rem}.dtab th,.dtab td{padding:.3em .2em}}
 #fig-sgd svg{max-height:56vh;width:auto;max-width:100%;margin:0 auto}
-#fig-chain svg,#fig-recap svg,#fig-out svg,#fig-deep svg,#fig-paths svg,#fig-recipe svg,#fig-lr svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
+#fig-recap svg,#fig-example svg,#fig-out svg,#fig-deep svg,#fig-update svg,#fig-paths svg,#fig-recipe svg,#fig-lr svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
 /* KaTeX formulas (typeset at build time) */
 .math .katex,.eq .katex{font-size:1.12em}
 .eq{font-size:1em}
@@ -58,3 +58,9 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 .dtab.hand{font-size:clamp(.9rem,1.5vw,1.35rem)}
 @media (max-width:620px){.dtab.hand,.dtab.cases{font-size:.7rem}}
 @media (max-width:620px){#s-recap .eq .katex{font-size:.72em}}
+/* class 2, revision 3: the squared error / cross-entropy comparison */
+.dtab.xent{font-size:clamp(.8rem,1.1vw,1.05rem)}
+.dtab.xent th,.dtab.xent td{padding:.4em .55em}
+.dtab.xent td{text-align:left}
+.dtab.xent th,.dtab.xent td{white-space:nowrap}
+@media (max-width:620px){.dtab.xent{font-size:.62rem}.dtab.xent th,.dtab.xent td{padding:.25em .2em;white-space:normal}}

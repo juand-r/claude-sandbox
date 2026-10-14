@@ -150,3 +150,26 @@ layers?" since XOR needs one hidden layer, not depth; the second softmax slide b
 Status (2026-10-13): implemented. Built, every step screenshotted, interaction, phone, dark-mode and
 formula-wrapping tests pass, check_numbers.py passes. One deviation: the training slide says two
 softmax outputs (see NOTES.md, Revision 2).
+
+## Revision 3 (2026-10-14): class 2 backpropagation as one worked example
+
+Asked by the user, after comparing with last year's backprop slides: the 1-D chain slide was confusing
+because the chain is really part of the larger network. Work through one example on the full network,
+with numbers. Agreed order:
+
+1. xkcd · 2. Title · 3. Recap: shown all at once (no steps)
+4. The network is one formula (kept); its loss is now squared error, ℒ = ½(p − y)², to match the example
+5. **A worked example** (new): the 2-2-1 network with the weights on the connections, one point
+   x = (2, 1), y = 1; forward pass with numbers (h, z, p, ℒ)
+6. **An output weight, v₁**: the path v₁ → z → p → ℒ highlighted on the full network; the chain rule;
+   the three factors with numbers, one per step; ∂ℒ/∂z kept for reuse
+7. **A hidden weight, w₁₁**: the longer path x₁ → h₁ → z → p → ℒ; reuse ∂ℒ/∂z
+8. **Update** (new): η = 1, the two new weights
+9. **Same example, cross-entropy** (new): only ∂ℒ/∂p changes; p(1 − p) cancels and ∂ℒ/∂z = p − y;
+   the gradients compared
+10. Several paths: add them (kept) · 11. The recipe (kept) · then the training loop and the rest
+Removed: the chain rule slide (1-D chain) and the Adam slide.
+
+Numbers (x = (2, 1), y = 1): w₁₁ = −0.5, w₁₂ = 1, b₁ = 1; w₂₁ = 0.5, w₂₂ = −1, b₂ = −0.5; v₁ = 2, v₂ = 0.5,
+c = −1. They were chosen by a search so that a student working with three decimals gets the same
+three-decimal answers as the exact computation at every step; check_numbers.py verifies this.

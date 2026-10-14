@@ -17,39 +17,82 @@ function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b]
   const N=netDiagram($('fig-recap'),{names:[['x₁','x₂'],['h₁','h₂','h₃'],['z₁','z₂']],xs:[70,270,450],W:640,H:400,top:70,bot:330,aria:'a network with two inputs, three hidden units and two outputs, followed by a softmax'});
   softmaxBox(N.svg,472,N.pos[2].map(p=>p[1]),{weight:400});
   label(N.svg,170,62,'*W^(1), *b^(1)',{'text-anchor':'middle',fill:'var(--model)','font-weight':400});label(N.svg,360,62,'*W^(2), *b^(2)',{'text-anchor':'middle',fill:'var(--mean)','font-weight':400});
-  const g=stepG(N.svg,2);mtxt(g,320,385,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});
+  mtxt(N.svg,320,385,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});
 }
 
-/* ---------- the chain rule: v → z → p → ℒ ---------- */
-{
-  const W=640,H=330,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'the chain from the weight v to the score z, the probability p and the loss'},$('fig-chain'));
-  const X=[60,230,400,570],Y=110,names=['v','z','p','ℒ'];
-  X.forEach((x,k)=>node(svg,x,Y,30,names[k],k===3?{stroke:'var(--err)'}:{},k===3?{fill:'var(--err)'}:{}));
-  for(let k=0;k<3;k++)arrow(svg,X[k]+30,Y,X[k+1]-32,Y,{stroke:'var(--ink)'});
-  const mid=k=>(X[k]+X[k+1])/2,t=(g,x,y,s,c,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':15,fill:c,...a});
-  ['∂z/∂v','∂p/∂z','∂ℒ/∂p'].forEach((s,k)=>t(svg,mid(k),Y-18,s,'var(--ink)',{'font-size':17}));
-  const g1=stepG(svg,1),g2=stepG(svg,2),g3=stepG(svg,3);
-  t(g1,mid(0),Y+40,'h','var(--model)');t(g2,mid(1),Y+40,'p(1 − p)','var(--model)');
-  t(g2,mid(2),Y+40,'−y/p','var(--model)');t(g2,mid(2),Y+62,'+ (1−y)/(1−p)','var(--model)');
-  el('path',{d:`M${X[1]} ${Y+86} v14 H${X[3]} v-14`,fill:'none',stroke:'var(--hi)','stroke-width':2.5},g3);
-  t(g3,(X[1]+X[3])/2,Y+134,'∂ℒ/∂z = p − y','var(--hi)',{'font-size':20});
+/* ---------- the worked example: a 2-2-1 network with its weights on the connections ---------- */
+// Same numbers as the slides and check_numbers.py. Values are rounded to 3 decimals, as on the slides.
+const EX={x:[2,1],y:1,W:[[-0.5,1],[0.5,-1]],b:[1,-0.5],v:[2,0.5],c:-1,
+  h:['0.731','0.378'],z:'0.651',p:'0.657',L:'0.059'};
+const EXN={names:[['x₁','x₂'],['h₁','h₂'],['z']],xs:[90,290,480],W:770,H:380,top:60,bot:320};
+const num=v=>String(v).replace('-','−');
+// draw the network; returns positions and helpers. path: null, 'v1' or 'w11' (highlighted from the start)
+function exNet(id,{path=null,aria}){
+  const N=netDiagram($(id),{...EXN,aria});
+  N.svg.setAttribute('fill','var(--ink)');   // default colour for labels, so they follow the theme
+  const P=N.pos,r=N.r,zy=P[2][0][1],px=590,bx=690,bw=58;
+  const at=(l,a,b,t)=>{const A=P[l][a],B=P[l+1][b];return [A[0]+r+(B[0]-r-A[0]-r)*t,A[1]+(B[1]-A[1])*t];};
+  // the output: z → σ → p → loss box
+  const gA=el('g',{},N.svg);
+  arrow(gA,P[2][0][0]+r,zy,px-14,zy,{stroke:'var(--ink)'});mtxt(gA,(P[2][0][0]+r+px-14)/2,zy-10,'σ',{'text-anchor':'middle','font-size':17});
+  mtxt(gA,px,zy+6,'p',{'text-anchor':'middle','font-size':20});
+  arrow(gA,px+14,zy,bx-2,zy,{stroke:'var(--ink)'});
+  el('rect',{x:bx,y:zy-24,width:bw,height:48,rx:8,fill:'var(--surface)',stroke:'var(--err)','stroke-width':2},gA);
+  mtxt(gA,bx+bw/2,zy+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});
+  mtxt(gA,bx+bw/2,zy-36,'y = 1',{'text-anchor':'middle','font-size':17});
+  // highlighted path
+  const gH=el('g',{},N.gE);
+  if(path){hiEdge(N,gH,1,0,0);if(path==='w11')hiEdge(N,gH,0,0,0);
+    for(const [x1,x2] of [[P[2][0][0]+r,px-14],[px+14,bx-2]])el('line',{x1,y1:zy,x2,y2:zy,stroke:'var(--hi)','stroke-width':5,'stroke-linecap':'round'},gH);}
+  // weights on the connections, biases and inputs
+  const W=(l,a,b,t,s,a2={})=>{const [x,y]=at(l,a,b,t),g=el('g',{},N.svg),w=11*s.length+10;
+    el('rect',{x:x-w/2,y:y-13,width:w,height:26,rx:6,fill:'var(--surface)'},g);
+    label(g,x,y+6,s,{'text-anchor':'middle','font-weight':400,'font-size':17,...a2});return g;};
+  const wl={w11:W(0,0,0,.5,num(EX.W[0][0])),w22:W(0,1,1,.5,num(EX.W[1][1])),w21:W(0,0,1,.27,num(EX.W[1][0])),w12:W(0,1,0,.27,num(EX.W[0][1])),
+    v1:W(1,0,0,.45,num(EX.v[0])),v2:W(1,1,0,.45,num(EX.v[1]))};
+  const mut={'text-anchor':'end','font-size':16,fill:'var(--muted)'};
+  mtxt(N.svg,P[1][0][0]-8,P[1][0][1]-32,'b₁ = '+num(EX.b[0]),mut);mtxt(N.svg,P[1][1][0]-8,P[1][1][1]+46,'b₂ = '+num(EX.b[1]),mut);
+  mtxt(N.svg,P[2][0][0],zy+50,'c = '+num(EX.c),{...mut,'text-anchor':'middle'});
+  P[0].forEach((q,i)=>mtxt(N.svg,q[0]-r-10,q[1]+6,String(EX.x[i]),{'text-anchor':'end','font-size':18,fill:'var(--model)'}));
+  // forward values, each in its own group so a slide can reveal them step by step
+  const val=(g,x,y,s,anchor='start')=>mtxt(g,x,y,s,{'text-anchor':anchor,'font-size':17,fill:'var(--model)'});
+  const fwd=k=>{const g=el('g',{},N.svg);
+    if(k===1){val(g,P[1][0][0]+8,P[1][0][1]-32,EX.h[0]);val(g,P[1][1][0]+8,P[1][1][1]+46,EX.h[1]);}
+    if(k===2){val(g,P[2][0][0],zy-36,EX.z,'middle');val(g,px,zy-22,EX.p,'middle');}
+    if(k===3){val(g,bx+bw/2,zy+48,EX.L,'middle');}
+    return g;};
+  return {N,P,zy,px,bx,bw,at,wl,fwd};
 }
-
-/* ---------- output weights and one layer deeper: a 2-2-1 network with one path highlighted ---------- */
-const SMALL={names:[['x₁','x₂'],['h₁','h₂'],['z']],xs:[80,300,500],W:600,H:360,top:60,bot:300};
+// a factor written next to the path, in the highlight colour
+const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fill:'var(--hi)','font-weight':700,...a});
 {
-  const N=netDiagram($('fig-out'),{...SMALL,aria:'the path from the output weight v1 to the loss'}),g=stepG(N.gE,1);
-  hiEdge(N,g,1,0,0);label(N.svg,400,N.pos[1][0][1]+28,'v₁',{fill:'var(--hi)','text-anchor':'middle','font-weight':400});
-  label(N.svg,400,N.pos[1][1][1]-14,'v₂',{fill:'var(--muted)','text-anchor':'middle','font-weight':400});
-  const g2=stepG(N.svg,1);mtxt(g2,500,N.pos[2][0][1]+52,'p − y',{'text-anchor':'middle','font-size':16,fill:'var(--err)'});
-  mtxt(g2,300,N.pos[1][0][1]-36,'h₁',{'text-anchor':'middle','font-size':15,fill:'var(--hi)'});
+  const X=exNet('fig-example',{aria:'a network with inputs 2 and 1, two sigmoid hidden units and one sigmoid output, weights on the connections'});
+  [1,2,3].forEach(k=>X.fwd(k).setAttribute('data-step',k));
 }
 {
-  const N=netDiagram($('fig-deep'),{...SMALL,aria:'the path from the hidden weight w11 through h1 to the loss'}),g=stepG(N.gE,1);
-  hiEdge(N,g,0,0,0);hiEdge(N,g,1,0,0);
-  label(N.svg,190,N.pos[0][0][1]-8,'w₁₁',{fill:'var(--hi)','text-anchor':'middle','font-weight':400});label(N.svg,400,N.pos[1][0][1]+28,'v₁',{fill:'var(--hi)','text-anchor':'middle','font-weight':400});
-  const g2=stepG(N.svg,1),f=(x,y,s,c='var(--err)')=>mtxt(g2,x,y,s,{'text-anchor':'middle','font-size':15,fill:c});
-  f(500,N.pos[2][0][1]+52,'p − y');f(300,N.pos[1][0][1]-36,'h₁(1 − h₁)','var(--model)');f(80,N.pos[0][0][1]-36,'x₁','var(--model)');
+  const X=exNet('fig-out',{path:'v1',aria:'the path from the output weight v1 through z and p to the loss, highlighted'});
+  [1,2,3].forEach(k=>X.fwd(k));
+  fac(stepG(X.N.svg,1),(X.px+14+X.bx)/2,X.zy+32,'−0.343');
+  fac(stepG(X.N.svg,2),(X.P[2][0][0]+24+X.px-14)/2,X.zy+32,'0.225');
+  const [x,y]=X.at(1,0,0,.45);fac(stepG(X.N.svg,3),x-26,y+30,'0.731');
+  fac(stepG(X.N.svg,4),X.P[2][0][0],X.zy-62,'∂ℒ/∂z = −0.077');
+}
+{
+  const X=exNet('fig-deep',{path:'w11',aria:'the path from the hidden weight w11 through h1, z and p to the loss, highlighted'});
+  [1,2,3].forEach(k=>X.fwd(k));
+  fac(stepG(X.N.svg,1),X.P[2][0][0],X.zy-62,'∂ℒ/∂z = −0.077');
+  const g=stepG(X.N.svg,2),[x,y]=X.at(1,0,0,.45);
+  fac(g,x-26,y+30,'×2');fac(g,X.P[1][0][0],X.P[1][0][1]+48,'×0.197');fac(g,X.P[0][0][0],X.P[0][0][1]-34,'×2');
+}
+{
+  const X=exNet('fig-update',{aria:'the network with the new values of v1 and w11'});
+  [1,2,3].forEach(k=>X.fwd(k));
+  // the new weights replace the old labels at step 1
+  const [ax,ay]=X.at(0,0,0,.5),[bx_,by]=X.at(1,0,0,.45),g=el('g',{},X.N.svg);
+  for(const [x,y,t] of [[ax,ay,'−0.439'],[bx_,by,'2.056']]){el('rect',{x:x-34,y:y-13,width:68,height:26,rx:6,fill:'var(--surface)'},g);
+    label(g,x,y+6,t,{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});}
+  hooks['s-update']={step(s){g.style.display=s>=1?'':'none';X.wl.w11.style.display=X.wl.v1.style.display=s>=1?'none':'';}};
+  g.style.display='none';
 }
 
 /* ---------- several paths: a 2-2-2 network ---------- */
@@ -86,7 +129,7 @@ const SCHED={epochs:100,step:30,tdecay:20};   // also in the notes
 }
 
 /* ---------- optimizers on the raw-hours valley: replay with a slider ---------- */
-const OPTC={gd:'var(--hi)',momentum:'var(--err)',adam:'var(--model)'};
+const OPTC={gd:'var(--hi)',momentum:'var(--err)'};
 function optFigure(id,names,tiles){
   const R=D.lr_raw,api=chart($('fig-'+id),{W:440,H:440,ml:70,fs:1.6,xmin:-.6,xmax:1.4,ymin:-6.5,ymax:3,xticks:[-.5,0,.5,1],yticks:[-6,-4,-2,0,2],
     xfmt:v=>String(v).replace('-','−'),yfmt:v=>String(v).replace('-','−'),xlabel:'w',ylabel:'b',label:'loss over w and b with optimizer paths'});
@@ -108,7 +151,6 @@ function optFigure(id,names,tiles){
   set(150);
 }
 optFigure('mom',[['gd',0],['momentum',1]],[['v-mom-k','k'],['v-mom-gd','gd'],['v-mom-m','momentum']]);
-optFigure('adam',[['gd',0],['momentum',0],['adam',1]],[['v-adam-gd','gd'],['v-adam-m','momentum'],['v-adam-a','adam']]);
 
 /* ---------- local minima: restarts and momentum on the cartoon; the stalled XOR run ---------- */
 const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,

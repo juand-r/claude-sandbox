@@ -202,3 +202,32 @@ class 1; `softmaxBox()` has a `weight` option so class 2 keeps its look. Class 2
   The small network's vⱼ, wⱼᵢ, hⱼ, p, y stay plain: they are scalars. Figure labels: δ, h, p, W, b bold
   (`mtxt()`'s * marker now also takes Greek letters); scalar labels that were bold (p − y, h₁, v₁, w₁₁, the
   chain-rule factors) are now normal weight, so bold always means a vector or matrix.
+
+## Revision 3, class 2 backpropagation (2026-10-14)
+
+Plan in PLAN.md, Revision 3. What changed:
+
+- The 1-D chain slide (v → z → p → ℒ) is gone. The user found it confusing because the chain is part
+  of the larger network. Backpropagation is now one worked example on the full 2-2-1 network, with the
+  weights on the connections and the path of each weight highlighted: the forward pass, an output
+  weight (v₁), a hidden weight (w₁₁), the update (η = 1), then the same example with cross-entropy.
+- Squared error first, as the user asked (it matches last year's slides and the practice exam), then
+  cross-entropy. Both use a sigmoid output, so the only factor that changes is ∂ℒ/∂p; with
+  cross-entropy p(1 − p) cancels and ∂ℒ/∂z = p − y. "The network is one formula" now shows the squared
+  error, to match the example.
+- The example's numbers were found by a search (scratch script, not kept): weights in steps of 0.5,
+  x = (2, 1), y = 1, and the condition that a student who rounds every intermediate value to three
+  decimals gets the same three-decimal answers as the exact computation, for both losses and the
+  updates. A first choice (x = (2, 1) with a₁ = −1, a₂ = 1) failed this: multiplying the three-decimal
+  factors gave −0.0267 against an exact −0.0266. check_numbers.py checks every number on the slides,
+  the hand computation, and the gradients against numerical derivatives.
+- The recap slide shows everything at once (no steps), as asked.
+- The Adam slide is removed, as asked; the takeaways card now says "Learning-rate schedules and
+  momentum". The early-stopping run was trained with Adam, and its speaker note says so, with a
+  one-line description, since students do not see notes.
+- "Several paths: add them" now says "(softmax and cross-entropy)", since δ⁽²⁾ = p − y holds for that
+  loss and the slides before it use both losses.
+- The old PDF screenshots of class 2 were moved to `trash/pdf_class2_before_rev3/` (pdf.js does not clear
+  its folder, so stale slides would otherwise end up in the PDF).
+- Tests: steps.js (all steps), interact2.js (dark, phone; the list of slides now includes the new
+  ones instead of the chain slide), mathwrap.js at five sizes: all pass, no JS errors.
