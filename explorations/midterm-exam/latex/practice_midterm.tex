@@ -3,22 +3,7 @@
 % Build the solutions: pdflatex -jobname=practice_midterm_solutions "\def\withsolutions{}\input{practice_midterm}"
 \documentclass[11pt,addpoints]{exam}
 \ifdefined\withsolutions \printanswers \fi
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,bm,booktabs,tikz}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-
-% parts numbered 1.1, 1.2, ...; subparts (a), (b), ...
-\renewcommand{\thepartno}{\thequestion.\arabic{partno}}
-\renewcommand{\partlabel}{\thepartno}
-\renewcommand{\thesubpart}{\alph{subpart}}
-\renewcommand{\subpartlabel}{(\thesubpart)}
-\qformat{\large\bfseries \thequestion.\ \thequestiontitle\hfill}
-\pointname{ points}
-\pointformat{(\thepoints)}
-\bracketedpoints
-\unframedsolutions
-\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\enspace}
+\usepackage{cs363m_exam}
 
 % an empty ROC plot (unit square, ticks every 0.2) for students to draw in
 \newcommand{\rocaxes}{%
@@ -30,11 +15,7 @@
     \draw (0,\t) -- (-0.02,\t) node[left] {\small\t};}}
 
 \begin{document}
-\begin{center}
-  {\Large\bfseries Machine Learning: Practice Midterm}\\[4pt]
-  \ifprintanswers Solutions \else Name: \rule{6cm}{0.4pt} \fi
-\end{center}
-\vspace{1em}
+\ifprintanswers\examtitlepage{Practice exam \textperiodcentered{} solutions}\else\examtitlepage{Practice exam \textperiodcentered{} student copy \textperiodcentered{} not graded}\fi
 
 \begin{questions}
 
@@ -46,27 +27,28 @@ of sputum. Suppose a laboratory test shows that 100 of them come from patients w
 pauses at 80\% of the TB samples and at 10\% of the others. Treat ``has TB'' as the positive class.
 
 \begin{parts}
-\part[4] Write down the confusion matrix.
+\part[4] \prompt{Write down the confusion matrix.}
+\answerbox{8}
 \begin{solution}
 100 TB samples and 900 non-TB samples. $\mathrm{TP} = 0.8 \times 100$, $\mathrm{FP} = 0.1 \times 900$.
 \begin{center}
-\begin{tabular}{lcc}
-\toprule
- & rat pauses & rat moves on \\
-\midrule
-TB    & TP $= 80$ & FN $= 20$ \\
-no TB & FP $= 90$ & TN $= 810$ \\
-\bottomrule
+\begin{tabular}{|l|c|c|}
+\hline
+\rowcolor{headgray} & rat pauses & rat moves on \\ \hline
+TB    & TP $= 80$ & FN $= 20$ \\ \hline
+no TB & FP $= 90$ & TN $= 810$ \\ \hline
 \end{tabular}
 \end{center}
 \end{solution}
 
-\part[2] What are precision and recall for this rat?
+\part[2] \prompt{What are precision and recall for this rat?}
+\answerbox{5}
 \begin{solution}
 Precision $= 80/(80+90) = 80/170 \approx 0.47$. \quad Recall $= 80/100 = 0.80$.
 \end{solution}
 
-\part[2] Do we care more about improving precision or recall for this problem, and why?
+\part[2] \prompt{Do we care more about improving precision or recall for this problem, and why?}
+\answerbox{5}
 \begin{solution}
 Recall. A missed TB patient (false negative) goes untreated and keeps infecting others; a false
 alarm (false positive) only costs one extra laboratory test.
@@ -75,23 +57,23 @@ alarm (false positive) only costs one extra laboratory test.
 \uplevel{The rat handler also records how long the rat pauses at each sample before moving on. Here are 10
 samples, 5 from TB patients and 5 without TB:
 \begin{center}
-\begin{tabular}{lcccccccccc}
-\toprule
-sample          & A & B & C & D & E & F & G & H & I & J \\
-\midrule
-pause (seconds) & 2.6 & 0.6 & 4.6 & 2.0 & 1.3 & 3.7 & 4.2 & 1.0 & 3.0 & 2.4 \\
-TB?             & yes & no & yes & no & yes & no & yes & no & yes & no \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} sample          & A & B & C & D & E & F & G & H & I & J \\ \hline
+pause (seconds) & 2.6 & 0.6 & 4.6 & 2.0 & 1.3 & 3.7 & 4.2 & 1.0 & 3.0 & 2.4 \\ \hline
+TB?             & yes & no & yes & no & yes & no & yes & no & yes & no \\ \hline
 \end{tabular}
 \end{center}
 We say a rat flags a sample as TB if it pauses for over $t$ seconds.}
 
-\part[10] Draw the ROC curve.
+\part[10] \prompt{Draw the ROC curve.}
 \ifprintanswers\else
+\par\vspace{4pt}\noindent{\color{lbl}\textbf{Draw the ROC curve here}}
 \begin{center}
 \begin{tikzpicture}[scale=6]\rocaxes\end{tikzpicture}
 \end{center}
 \fi
+\answerbox{8}
 \begin{solution}
 Sorted by pause, longest first: C (TB), G (TB), F (no), I (TB), A (TB), J (no), D (no), E (TB),
 H (no), B (no). As $t$ passes each sample, a TB sample moves the point up by $1/5 = 0.2$ and a
@@ -109,7 +91,8 @@ non-TB sample moves it right by $0.2$. Starting at $(0,0)$, the points are
 \end{center}
 \end{solution}
 
-\part[2] Compute the AUC.
+\part[2] \prompt{Compute the AUC.}
+\answerbox{5}
 \begin{solution}
 The area under the staircase, in columns of width $0.2$ with heights $0.4, 0.8, 0.8, 1, 1$:
 $\mathrm{AUC} = 0.2 \times (0.4 + 0.8 + 0.8 + 1 + 1) = 0.80$.
@@ -117,39 +100,37 @@ $\mathrm{AUC} = 0.2 \times (0.4 + 0.8 + 0.8 + 1 + 1) = 0.80$.
 \end{parts}
 
 % ===================================================================== 2
+\newpage
 \titledquestion{Support vector machines (20 points)}
 \begin{parts}
 \part[10] A soft-margin SVM returned $\bm{w} = (4, 3)$, $b = -12$.
 \begin{center}
-\begin{tabular}{lccccc}
-\toprule
-point  & A & B & C & D & E \\
-\midrule
-$x_1$  & 3 & 1 & 2.5 & 1 & 3 \\
-$x_2$  & 1 & 2 & 1 & 2.5 & 0.5 \\
-label  & $+$ & $-$ & $+$ & $-$ & $-$ \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} point  & A & B & C & D & E \\ \hline
+$x_1$  & 3 & 1 & 2.5 & 1 & 3 \\ \hline
+$x_2$  & 1 & 2 & 1 & 2.5 & 0.5 \\ \hline
+label  & $+$ & $-$ & $+$ & $-$ & $-$ \\ \hline
 \end{tabular}
 \end{center}
 \begin{subparts}
-\subpart Compute $f(\bm{x})$ and the predicted class of each point.
-\subpart What is the width of the margin?
-\subpart Compute each point's distance to the decision boundary.
-\subpart Which points are support vectors? Which point is on the margin, which is inside it, and
-which is misclassified?
+\subpart \prompt{Compute $f(\bm{x})$ and the predicted class of each point.}
+\subpart \prompt{What is the width of the margin?}
+\subpart \prompt{Compute each point's distance to the decision boundary.}
+\subpart \prompt{Which points are support vectors? Which point is on the margin, which is inside it, and
+which is misclassified?}
 \end{subparts}
+\answerbox{16}
 \begin{solution}
 $f(\bm{x}) = 4x_1 + 3x_2 - 12$ and $\|\bm{w}\| = \sqrt{4^2 + 3^2} = 5$.
 \begin{center}
-\begin{tabular}{lccccc}
-\toprule
-point & A & B & C & D & E \\
-\midrule
-$f(\bm{x})$                     & $3$   & $-2$  & $1$   & $-0.5$ & $1.5$ \\
-predicted class                 & $+$   & $-$   & $+$   & $-$    & $+$ \\
-distance $|f(\bm{x})|/\|\bm{w}\|$ & $0.6$ & $0.4$ & $0.2$ & $0.1$  & $0.3$ \\
-$y\,f(\bm{x})$                  & $3$   & $2$   & $1$   & $0.5$  & $-1.5$ \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} point & A & B & C & D & E \\ \hline
+$f(\bm{x})$                     & $3$   & $-2$  & $1$   & $-0.5$ & $1.5$ \\ \hline
+predicted class                 & $+$   & $-$   & $+$   & $-$    & $+$ \\ \hline
+distance $|f(\bm{x})|/\|\bm{w}\|$ & $0.6$ & $0.4$ & $0.2$ & $0.1$  & $0.3$ \\ \hline
+$y\,f(\bm{x})$                  & $3$   & $2$   & $1$   & $0.5$  & $-1.5$ \\ \hline
 \end{tabular}
 \end{center}
 (b) Margin width $= 2/\|\bm{w}\| = 2/5 = 0.4$.
@@ -159,8 +140,9 @@ $y\,f(\bm{x})$                  & $3$   & $2$   & $1$   & $0.5$  & $-1.5$ \\
 misclassified (label $-$, predicted $+$).
 \end{solution}
 
-\part[6] Write down the objective function for the soft-margin SVM and explain why this is what we
-want to optimize.
+\part[6] \prompt{Write down the objective function for the soft-margin SVM and explain why this is what we
+want to optimize.}
+\answerbox{8}
 \begin{solution}
 \[
 \min_{\bm{w},\, b,\, \bm{\xi}} \ \tfrac12 \|\bm{w}\|^2 + C \sum_i \xi_i
@@ -171,16 +153,18 @@ how far point $i$ falls short of being on the correct side, outside the margin; 
 these violations. $C$ sets the trade-off between a wide margin and few violations.
 \end{solution}
 
-\part[2] Suppose our soft-margin SVM obtains 95\% training accuracy but 60\% validation accuracy.
-What does this suggest about our hyperparameter $C$?
+\part[2] \prompt{Suppose our soft-margin SVM obtains 95\% training accuracy but 60\% validation accuracy.
+What does this suggest about our hyperparameter $C$?}
+\answerbox{4}
 \begin{solution}
 The large gap between training and validation accuracy means the model overfits. $C$ is probably
 too large: violations are so expensive that the margin narrows to fit individual training points.
 Try a smaller $C$ (wider margin, more slack), chosen on validation data.
 \end{solution}
 
-\part[2] What are support vectors? Is every training datapoint that falls inside the margin a
-support vector?
+\part[2] \prompt{What are support vectors? Is every training datapoint that falls inside the margin a
+support vector?}
+\answerbox{4}
 \begin{solution}
 Support vectors are the training points that determine the solution: the points on the margin,
 inside it, or misclassified, that is, those with $y_i f(\bm{x}_i) \le 1$. Moving any other point
@@ -190,34 +174,37 @@ support vector.
 \end{parts}
 
 % ===================================================================== 3
+\newpage
 \titledquestion{Nonlinear regression (20 points)}
 \begin{parts}
 \part[4] A regression tree is trained on six points:
 \begin{center}
-\begin{tabular}{lcccccc}
-\toprule
-$x$ & 1 & 2 & 3 & 4 & 5 & 6 \\
-$y$ & 1 & 3 & 2 & 7 & 9 & 8 \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+$x$ & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+$y$ & 1 & 3 & 2 & 7 & 9 & 8 \\ \hline
 \end{tabular}
 \end{center}
-Consider the split $x < 3.5$. What does each side predict? What is the SSE of this split?
+\prompt{Consider the split $x < 3.5$. What does each side predict? What is the SSE of this split?}
+\answerbox{8}
 \begin{solution}
 Left: the mean of $1, 3, 2$, which is $2$. Right: the mean of $7, 9, 8$, which is $8$.
 $\mathrm{SSE} = (1 + 1 + 0) + (1 + 1 + 0) = 4$.
 \end{solution}
 
-\part[6] What happens to the fit, toward overfitting or toward underfitting, as you increase
+\part[6] \prompt{What happens to the fit, toward overfitting or toward underfitting, as you increase
 (a) the maximum depth of a regression tree, (b) $k$ in kNN regression, (c) $\varepsilon$ in SVR?
-Explain each.
+Explain each.}
+\answerbox{9}
 \begin{solution}
 (a) More, smaller leaves: toward overfitting. (b) Each prediction averages more neighbors, so the
 fit is smoother: toward underfitting (at $k = n$ it predicts the overall mean everywhere).
 (c) A wider tube: more points cost nothing and the fit flattens: toward underfitting.
 \end{solution}
 
-\part[5] In a training set the targets $y$ range from 10 to 50. Can (a) a regression tree,
-(b) kNN regression, (c) SVR predict $y = 60$ for some new input? Explain.
+\part[5] \prompt{In a training set the targets $y$ range from 10 to 50. Can (a) a regression tree,
+(b) kNN regression, (c) SVR predict $y = 60$ for some new input? Explain.}
+\answerbox{7}
 \begin{solution}
 (a) No: every leaf predicts an average of training $y$ values, so its prediction stays between 10
 and 50. (b) No, for the same reason: the prediction is an average of $k$ training $y$ values.
@@ -225,9 +212,10 @@ and 50. (b) No, for the same reason: the prediction is an average of $k$ trainin
 from the data. (A kernel SVR can also go outside the training range; accept either explanation.)
 \end{solution}
 
-\part[5] A model predicts crop yield from rainfall (in mm, 0 to 2,000) and average temperature (in
+\part[5] \prompt{A model predicts crop yield from rainfall (in mm, 0 to 2,000) and average temperature (in
 $^\circ$C, 10 to 35). We change rainfall to meters, so it now ranges from 0 to 2. For each of a
-regression tree, kNN and SVR, do the predictions change? Why or why not?
+regression tree, kNN and SVR, do the predictions change? Why or why not?}
+\answerbox{8}
 \begin{solution}
 Regression tree: no. A split looks at one feature at a time, so ``rainfall $< 800$ mm'' becomes
 ``rainfall $< 0.8$ m'' and every split's SSE is unchanged. kNN: yes. Distances now depend almost only
@@ -238,6 +226,7 @@ for kNN.
 \end{parts}
 
 % ===================================================================== 4
+\newpage
 \titledquestion{Neural networks (30 points)}
 In this question, row $j$ of a weight matrix $\bm{W}^{(l)}$ holds the weights into node $j$ of layer
 $l$: $W^{(l)}_{ji}$ is the weight from node $i$ of the previous layer to node $j$. The bias of node
@@ -270,8 +259,9 @@ if $z < 0$.
 \draw[->] (C1) -- ++(0.5,0) node[right] {out1}; \draw[->] (C2) -- ++(0.5,0) node[right] {out2};
 \end{tikzpicture}
 \end{center}
-Show the forward pass, in matrix form, of the record with Feature1 $= 6$ and Feature2 $= 4$. How would
-this network classify the record (Class A or Class B)?
+\prompt{Show the forward pass, in matrix form, of the record with Feature1 $= 6$ and Feature2 $= 4$. How would
+this network classify the record (Class A or Class B)?}
+\answerbox{16}
 \begin{solution}
 From the diagram:
 \[
@@ -310,18 +300,16 @@ and an actual value $Y = 4$ gets passed in.
 \end{tikzpicture}
 \end{center}
 \begin{center}
-\begin{tabular}{lll}
-\toprule
- & function & derivative \\
-\midrule
-B layer: sigmoid & $f(z) = 1/(1 + e^{-z})$ & $f(z)\,(1 - f(z))$ \\
-C layer: ReLU & $f(z) = 0$ if $z < 0$; $f(z) = z$ if $z \ge 0$ & $0$ if $z < 0$; $1$ if $z \ge 0$ \\
-D layer: linear & $f(z) = z$ & $1$ \\
-loss: squared error & $E = \tfrac12 (Y' - Y)^2$ & $\partial E/\partial Y' = Y' - Y$ \\
-\bottomrule
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{headgray} & function & derivative \\ \hline
+B layer: sigmoid & $f(z) = 1/(1 + e^{-z})$ & $f(z)\,(1 - f(z))$ \\ \hline
+C layer: ReLU & $f(z) = 0$ if $z < 0$; $f(z) = z$ if $z \ge 0$ & $0$ if $z < 0$; $1$ if $z \ge 0$ \\ \hline
+D layer: linear & $f(z) = z$ & $1$ \\ \hline
+loss: squared error & $E = \tfrac12 (\hat{Y} - Y)^2$ & $\partial E/\partial \hat{Y} = \hat{Y} - Y$ \\ \hline
 \end{tabular}
 \end{center}
-Here $Y'$ is the network's output, D1. The weights during the forward propagation are
+Here $\hat{Y}$ is the network's output, D1. The weights during the forward propagation are
 \[
 \bm{W}^{(1)} = \begin{pmatrix} 0.5 & -1.0 \\ 1.0 & 0.5 \\ -0.5 & 1.5 \end{pmatrix},\
 \bm{b}^{(1)} = \begin{pmatrix} 0.5 \\ -1.0 \\ 0 \end{pmatrix},\quad
@@ -333,17 +321,16 @@ Here $Y'$ is the network's output, D1. The weights during the forward propagatio
 \]
 You do not need to forward propagate. The node output values during the forward propagation are
 \begin{center}
-\begin{tabular}{llll}
-\toprule
-A layer & B layer & C layer & D layer \\
-\midrule
-$A_1 = 2$ & $B_1 = 0.62$ & $C_1 = 0$ & $D_1 = 2.32$ \\
-$A_2 = 1$ & $B_2 = 0.82$ & $C_2 = 1.25$ & \\
-          & $B_3 = 0.62$ & $C_3 = 1.16$ & \\
-\bottomrule
+\begin{tabular}{|l|l|l|l|}
+\hline
+\rowcolor{headgray} A layer & B layer & C layer & D layer \\ \hline
+$A_1 = 2$ & $B_1 = 0.62$ & $C_1 = 0$ & $D_1 = 2.32$ \\ \hline
+$A_2 = 1$ & $B_2 = 0.82$ & $C_2 = 1.25$ & \\ \hline
+& $B_3 = 0.62$ & $C_3 = 1.16$ & \\ \hline
 \end{tabular}
 \end{center}
-Adjust $W^{(1)}_{21}$, the weight from A1 to B2, using a learning rate of 1.
+\prompt{Adjust $W^{(1)}_{21}$, the weight from A1 to B2, using a learning rate of 1.}
+\answerbox{24}
 \begin{solution}
 Work backwards from the loss, one layer at a time.
 
@@ -368,23 +355,26 @@ Update: $W^{(1)}_{21} \leftarrow 1.0 - 1 \cdot (-1.289) = 2.29$.
 
 \part Short answers (8 points in all).
 \begin{subparts}
-\subpart[3] Suppose the output D1 used a sigmoid, the label were $Y \in \{0, 1\}$, and the loss were
+\subpart[3] \prompt{Suppose the output D1 used a sigmoid, the label were $Y \in \{0, 1\}$, and the loss were
 cross-entropy (log loss) instead of squared error. Which step of your backpropagation in 4.2 would
-change, and how?
+change, and how?}
+\answerbox[\thepartno(\thesubpart)]{5}
 \begin{solution}
 Only the first step. With a sigmoid output and cross-entropy, the derivative of the loss with respect
 to D1's input sum is $p - Y$, where $p$ is the sigmoid output (the derivative of the loss and the
 sigmoid's slope cancel to this). Everything after that is the same chain rule as before.
 \end{solution}
-\subpart[3] Why do the hidden layers need nonlinear activation functions? What would the network in
-4.2 compute if every activation were linear?
+\subpart[3] \prompt{Why do the hidden layers need nonlinear activation functions? What would the network in
+4.2 compute if every activation were linear?}
+\answerbox[\thepartno(\thesubpart)]{5}
 \begin{solution}
 A composition of linear functions is linear. With linear activations, D1 would be $\bm{w} \cdot
 \bm{A} + b$ for some $\bm{w}$ and $b$: the whole network would be one linear model, no matter how many
 layers it has.
 \end{solution}
-\subpart[2] While training a network, the training loss keeps going down, but the validation loss
-is lowest at epoch 40 and then rises. What is happening, and what would you do?
+\subpart[2] \prompt{While training a network, the training loss keeps going down, but the validation loss
+is lowest at epoch 40 and then rises. What is happening, and what would you do?}
+\answerbox[\thepartno(\thesubpart)]{4}
 \begin{solution}
 The network is overfitting after epoch 40. Use early stopping: keep the weights from the epoch with
 the lowest validation loss (epoch 40), and stop once it has not improved for a set number of epochs

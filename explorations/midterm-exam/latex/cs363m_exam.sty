@@ -1,0 +1,99 @@
+% Layout shared by the practice test and the exam, after the course's practice-exam format:
+% a title page with instructions, each question on its own page, bold part prompts, and a lined
+% "Answer" box after every part. In solutions mode (\printanswers) the solution replaces the box.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cs363m_exam}
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{charter}                 % serif text, close to the course's Georgia
+\RequirePackage[scaled=0.92]{helvet}     % sans-serif headings and tables
+\RequirePackage{amsmath,amssymb,bm,tikz,etoolbox,enumitem}
+\RequirePackage[table]{xcolor}
+\RequirePackage{booktabs}
+
+\definecolor{lbl}{gray}{0.42}           % "Answer 1.1" labels
+\definecolor{boxrule}{gray}{0.55}       % answer-box frame
+\definecolor{lineclr}{gray}{0.82}       % answer-box writing lines
+\definecolor{headgray}{gray}{0.93}      % table header rows
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% ---------------------------------------------------------------- questions and parts
+\renewcommand{\thepartno}{\thequestion.\arabic{partno}}
+\renewcommand{\partlabel}{\textbf{\thepartno}}
+\renewcommand{\thesubpart}{\alph{subpart}}
+\renewcommand{\subpartlabel}{\textbf{(\thesubpart)}}
+\qformat{\parbox[b]{\linewidth}{\sffamily\bfseries\Large \thequestion.\ \thequestiontitle\\[-2pt]
+  \rule{\linewidth}{0.6pt}}}
+\pointname{ points}
+\pointformat{\textbf{(\thepoints)}}
+\unframedsolutions
+\renewcommand{\solutiontitle}{\noindent\textbf{\color{lbl}Solution}\par\nobreak}
+\SolutionEmphasis{\normalfont}
+
+% the question sentence of a part, in bold (math too)
+\newcommand{\prompt}[1]{{\bfseries\boldmath #1}}
+% a note in grey italics, as in the course format
+\newcommand{\examnote}[1]{\par{\itshape\color{lbl} #1}\par}
+
+% a lined answer box of #2 writing lines, labelled "Answer #1" (default: the part number);
+% it may continue onto the next page between lines
+\newcommand{\answerbox}[2][\thepartno]{%
+  \ifprintanswers\else
+  \par\nobreak\vspace{6pt}\nobreak\noindent{\color{lbl}\textbf{Answer #1}}\par\nobreak\vspace{3pt}%
+  \begingroup\offinterlineskip\setlength{\parskip}{0pt}%
+  % colours are set inside each line, so a page break never carries a colour change onto an empty page
+  \noindent\textcolor{boxrule}{\rule{\linewidth}{0.5pt}}\par\nobreak
+  \count255=0
+  \loop
+    \noindent\hbox to\linewidth{\color{boxrule}\vrule width 0.5pt height 0.95cm\hfil\vrule width 0.5pt}\par\nobreak
+    \advance\count255 by 1
+    \ifnum\count255<#2 \noindent\textcolor{lineclr}{\rule{\linewidth}{0.4pt}}\par\penalty0
+    \else \noindent\textcolor{boxrule}{\rule{\linewidth}{0.5pt}}\par \fi
+  \ifnum\count255<#2 \repeat
+  \endgroup\vspace{10pt}\fi}
+
+% tables in the sans-serif face, as in the course format
+\AtBeginEnvironment{tabular}{\sffamily\small}
+
+% ---------------------------------------------------------------- the title page
+% #1: the version line, e.g. "Practice exam · student copy · not graded"
+\newcommand{\examtitlepage}[1]{%
+  \begin{center}
+    {\sffamily\bfseries\LARGE CS 363M --- Principles of Machine Learning\\[4pt] Fall 2026}\\[10pt]
+    {\sffamily\bfseries\large #1}
+  \end{center}
+  \vspace{14pt}
+  Name: \rule{6.2cm}{0.4pt}\hspace{1.5em} EID: \rule{4.8cm}{0.4pt}\par\vspace{14pt}
+  Course modality (circle one):\hspace{1.5em} In-person\hspace{1.5em} Online\par\vspace{14pt}
+  {\sffamily\bfseries\Large Instructions}\par\nobreak\vspace{-4pt}\rule{\linewidth}{0.6pt}\par
+  {\itshape\color{lbl} Read this page before you begin. Do not turn the page until you are told to start.}
+  \begin{itemize}[leftmargin=1.4cm,itemsep=5pt]
+  \item There are \textbf{\numquestions\ questions} worth a total of \textbf{\numpoints\ points}. Point
+    values are shown beside each question and part.
+  \item Budget your time according to the point values. Computational parts generally take longer
+    than conceptual parts.
+  \item \textbf{Each question begins on its own page. Write your answer for each part in the blank
+    space directly below it, and label it} with its part number --- 1.1, 1.2, and so on.
+  \item \textbf{You must submit your cheat sheet with your exam.} Write your name on it and hand it in
+    stapled behind the last page. An exam handed in without its cheat sheet will not be graded until
+    the sheet is produced.
+  \item One double-sided cheat sheet is permitted.
+  \item \textbf{Show your work on every computational part.} An answer with no work receives no credit.
+    Correct work with an arithmetic slip receives most of the credit, so write down the steps even
+    when you are unsure of the final number.
+  \item Round to four decimal places unless a part tells you otherwise. Leaving an answer as an
+    unreduced fraction is fine.
+  \item A basic or scientific calculator is permitted. Phones, laptops, tablets and smart watches must
+    be off and out of sight for the whole period.
+  \item If a part seems ambiguous, write down the assumption you are making and answer under that
+    assumption. A clearly stated assumption will be graded fairly.
+  \item Keep your eyes on your own paper. Suspected academic dishonesty is referred to Student Conduct
+    and Academic Integrity.
+  \item If you finish early you may hand in your exam and leave quietly. In the last ten minutes,
+    please stay seated so you do not disturb the others.
+  \end{itemize}
+  \vfill
+  \rule{\linewidth}{0.4pt}\par
+  \begin{center}{\sffamily\bfseries\large Good luck.}\end{center}
+  \newpage}

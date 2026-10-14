@@ -3,26 +3,10 @@
 % Build the solutions: pdflatex -jobname=final_midterm_solutions "\def\withsolutions{}\input{final_midterm}"
 \documentclass[11pt,addpoints]{exam}
 \ifdefined\withsolutions \printanswers \fi
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,bm,booktabs,tikz}
+\usepackage{cs363m_exam}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{groupplots}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-
-% parts numbered 1.1, 1.2, ...; subparts (a), (b), ...
-\renewcommand{\thepartno}{\thequestion.\arabic{partno}}
-\renewcommand{\partlabel}{\thepartno}
-\renewcommand{\thesubpart}{\alph{subpart}}
-\renewcommand{\subpartlabel}{(\thesubpart)}
-\qformat{\large\bfseries \thequestion.\ \thequestiontitle\hfill}
-\pointname{ points}
-\pointformat{(\thepoints)}
-\bracketedpoints
-\unframedsolutions
-\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\enspace}
-
 % an empty ROC plot (unit square, ticks every 0.25) for students to draw in
 \newcommand{\rocaxes}{%
   \draw[step=0.25,gray!30,very thin] (0,0) grid (1,1);
@@ -33,11 +17,7 @@
     \draw (0,\t) -- (-0.02,\t) node[left] {\small\t};}}
 
 \begin{document}
-\begin{center}
-  {\Large\bfseries Machine Learning: Midterm}\\[4pt]
-  \ifprintanswers Solutions \else Name: \rule{6cm}{0.4pt} \fi
-\end{center}
-\vspace{1em}
+\ifprintanswers\examtitlepage{Midterm exam \textperiodcentered{} solutions}\else\examtitlepage{Midterm exam}\fi
 
 \begin{questions}
 
@@ -49,8 +29,9 @@ run on 400 essays whose authorship is known: 60 were written with AI and 340 by 
 written with AI. Treat ``written with AI'' as the positive class.
 
 \begin{parts}
-\part[4] Write down the confusion matrix.
+\part[4] \prompt{Write down the confusion matrix.}
 \ifprintanswers\else
+\par\vspace{6pt}\noindent{\color{lbl}\textbf{Answer \thepartno}}
 \begin{center}
 \begin{tabular}{l|p{3cm}|p{3cm}|}
 \multicolumn{1}{l}{} & \multicolumn{1}{c}{flagged} & \multicolumn{1}{c}{not flagged} \\
@@ -65,23 +46,23 @@ written by students & \rule[-0.45cm]{0pt}{1.2cm} & \\
 \begin{solution}
 60 AI-written essays and 340 human-written essays.
 \begin{center}
-\begin{tabular}{lcc}
-\toprule
- & flagged & not flagged \\
-\midrule
-written with AI & TP $= 45$ & FN $= 15$ \\
-written by students & FP $= 5$  & TN $= 335$ \\
-\bottomrule
+\begin{tabular}{|l|c|c|}
+\hline
+\rowcolor{headgray} & flagged & not flagged \\ \hline
+written with AI & TP $= 45$ & FN $= 15$ \\ \hline
+written by students & FP $= 5$  & TN $= 335$ \\ \hline
 \end{tabular}
 \end{center}
 \end{solution}
 
-\part[2] What are precision and recall for this detector?
+\part[2] \prompt{What are precision and recall for this detector?}
+\answerbox{5}
 \begin{solution}
 Precision $= 45/50 = 0.90$. \quad Recall $= 45/60 = 0.75$.
 \end{solution}
 
-\part[2] Do we care more about improving precision or recall for this problem, and why?
+\part[2] \prompt{Do we care more about improving precision or recall for this problem, and why?}
+\answerbox{5}
 \begin{solution}
 Precision. A false positive accuses an innocent student of cheating; a missed AI essay (false
 negative) is a smaller harm. A flag should almost always be right before anyone acts on it.
@@ -90,23 +71,23 @@ negative) is a smaller harm. A flag should almost always be right before anyone 
 \uplevel{The detector also gives each essay a score between 0 and 1; a higher score means ``more
 likely written with AI''. Here are 8 essays, 4 written with AI and 4 by students:
 \begin{center}
-\begin{tabular}{lcccccccc}
-\toprule
-essay            & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-\midrule
-score            & 0.95 & 0.85 & 0.70 & 0.60 & 0.50 & 0.40 & 0.30 & 0.10 \\
-written with AI? & yes & yes & no & yes & no & yes & no & no \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} essay            & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+score            & 0.95 & 0.85 & 0.70 & 0.60 & 0.50 & 0.40 & 0.30 & 0.10 \\ \hline
+written with AI? & yes & yes & no & yes & no & yes & no & no \\ \hline
 \end{tabular}
 \end{center}
 We say the detector flags an essay as AI-written if its score is over $t$.}
 
-\part[10] Draw the ROC curve.
+\part[10] \prompt{Draw the ROC curve.}
 \ifprintanswers\else
+\par\vspace{4pt}\noindent{\color{lbl}\textbf{Draw the ROC curve here}}
 \begin{center}
 \begin{tikzpicture}[scale=6]\rocaxes\end{tikzpicture}
 \end{center}
 \fi
+\answerbox{8}
 \begin{solution}
 As $t$ passes each essay, from the highest score down, an AI essay moves the point up by
 $1/4 = 0.25$ and a human essay moves it right by $0.25$. Starting at $(0,0)$, the points are
@@ -123,7 +104,8 @@ $1/4 = 0.25$ and a human essay moves it right by $0.25$. Starting at $(0,0)$, th
 \end{center}
 \end{solution}
 
-\part[2] Compute the AUC.
+\part[2] \prompt{Compute the AUC.}
+\answerbox{5}
 \begin{solution}
 The area under the staircase, in columns of width $0.25$ with heights $0.5, 0.75, 1, 1$:
 $\mathrm{AUC} = 0.25 \times (0.5 + 0.75 + 1 + 1) = 0.8125 \approx 0.81$.
@@ -131,39 +113,37 @@ $\mathrm{AUC} = 0.25 \times (0.5 + 0.75 + 1 + 1) = 0.8125 \approx 0.81$.
 \end{parts}
 
 % ===================================================================== 2
+\newpage
 \titledquestion{Support vector machines (20 points)}
 \begin{parts}
 \part[10] A soft-margin SVM returned $\bm{w} = (6, 8)$, $b = -20$.
 \begin{center}
-\begin{tabular}{lccccc}
-\toprule
-point  & A & B & C & D & E \\
-\midrule
-$x_1$  & 3 & 1 & 1.5 & 1.25 & 3 \\
-$x_2$  & 1 & 1 & 1.5 & 1.5 & 0.5 \\
-label  & $+$ & $-$ & $+$ & $-$ & $-$ \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} point  & A & B & C & D & E \\ \hline
+$x_1$  & 3 & 1 & 1.5 & 1.25 & 3 \\ \hline
+$x_2$  & 1 & 1 & 1.5 & 1.5 & 0.5 \\ \hline
+label  & $+$ & $-$ & $+$ & $-$ & $-$ \\ \hline
 \end{tabular}
 \end{center}
 \begin{subparts}
-\subpart Compute $f(\bm{x})$ and the predicted class of each point.
-\subpart What is the width of the margin?
-\subpart Compute each point's distance to the decision boundary.
-\subpart Which points are support vectors? Which point is on the margin, which is inside it, and
-which is misclassified?
+\subpart \prompt{Compute $f(\bm{x})$ and the predicted class of each point.}
+\subpart \prompt{What is the width of the margin?}
+\subpart \prompt{Compute each point's distance to the decision boundary.}
+\subpart \prompt{Which points are support vectors? Which point is on the margin, which is inside it, and
+which is misclassified?}
 \end{subparts}
+\answerbox{16}
 \begin{solution}
 $f(\bm{x}) = 6x_1 + 8x_2 - 20$ and $\|\bm{w}\| = \sqrt{6^2 + 8^2} = 10$.
 \begin{center}
-\begin{tabular}{lccccc}
-\toprule
-point & A & B & C & D & E \\
-\midrule
-$f(\bm{x})$                       & $6$   & $-6$  & $1$   & $-0.5$ & $2$ \\
-predicted class                   & $+$   & $-$   & $+$   & $-$    & $+$ \\
-distance $|f(\bm{x})|/\|\bm{w}\|$ & $0.6$ & $0.6$ & $0.1$ & $0.05$ & $0.2$ \\
-$y\,f(\bm{x})$                    & $6$   & $6$   & $1$   & $0.5$  & $-2$ \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} point & A & B & C & D & E \\ \hline
+$f(\bm{x})$                       & $6$   & $-6$  & $1$   & $-0.5$ & $2$ \\ \hline
+predicted class                   & $+$   & $-$   & $+$   & $-$    & $+$ \\ \hline
+distance $|f(\bm{x})|/\|\bm{w}\|$ & $0.6$ & $0.6$ & $0.1$ & $0.05$ & $0.2$ \\ \hline
+$y\,f(\bm{x})$                    & $6$   & $6$   & $1$   & $0.5$  & $-2$ \\ \hline
 \end{tabular}
 \end{center}
 (b) Margin width $= 2/\|\bm{w}\| = 2/10 = 0.2$.
@@ -179,10 +159,11 @@ misclassified (label $-$, predicted $+$).
 \quad \text{subject to} \quad y_i(\bm{w} \cdot \bm{x}_i + b) \ge 1 - \xi_i,\ \ \xi_i \ge 0 .
 \]
 \begin{subparts}
-\subpart What does the slack $\xi_i$ measure, and why do we need it?
-\subpart Where does a training point lie, relative to the margin and the decision boundary, if
-$\xi_i = 0$? If $0 < \xi_i < 1$? If $\xi_i > 1$?
+\subpart \prompt{What does the slack $\xi_i$ measure, and why do we need it?}
+\subpart \prompt{Where does a training point lie, relative to the margin and the decision boundary, if
+$\xi_i = 0$? If $0 < \xi_i < 1$? If $\xi_i > 1$?}
 \end{subparts}
+\answerbox{8}
 \begin{solution}
 (a) $\xi_i$ measures how far point $i$ falls short of being on its correct side, outside the margin.
 Without slack, the constraints $y_i(\bm{w} \cdot \bm{x}_i + b) \ge 1$ have no solution when the
@@ -197,11 +178,12 @@ $y_i f \ge 1$, $0 < y_i f < 1$ and $y_i f < 0$.)
 \part[4] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with
 $C = 100$.
 \begin{subparts}
-\subpart Which has the wider margin, and why?
-\subpart Which has more support vectors, and why?
-\subpart Which is more likely to overfit, and why?
-\subpart How would you choose $C$ in practice, and why?
+\subpart \prompt{Which has the wider margin, and why?}
+\subpart \prompt{Which has more support vectors, and why?}
+\subpart \prompt{Which is more likely to overfit, and why?}
+\subpart \prompt{How would you choose $C$ in practice, and why?}
 \end{subparts}
+\answerbox{7}
 \begin{solution}
 (a) $C = 0.01$: slack is cheap, so the SVM accepts many points inside the margin in exchange for a
 wider one.
@@ -213,8 +195,9 @@ validation data (or by cross-validation). Training accuracy cannot choose it, be
 always fits the training data at least as well; only held-out data shows which $C$ generalizes.
 \end{solution}
 
-\part[2] You remove a training point that is not a support vector and retrain the SVM. What
-changes? Why?
+\part[2] \prompt{You remove a training point that is not a support vector and retrain the SVM. What
+changes? Why?}
+\answerbox{5}
 \begin{solution}
 Nothing. The solution depends only on the support vectors; a point outside the margin does not
 affect $\bm{w}$ or $b$.
@@ -222,44 +205,49 @@ affect $\bm{w}$ or $b$.
 \end{parts}
 
 % ===================================================================== 3
+\newpage
 \titledquestion{Nonlinear regression (20 points)}
 \begin{parts}
 \part[4] kNN regression is trained on six points:
 \begin{center}
-\begin{tabular}{lcccccc}
-\toprule
-$x$ & 1 & 2 & 4 & 5 & 7 & 8 \\
-$y$ & 3 & 6 & 4 & 8 & 10 & 12 \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+$x$ & 1 & 2 & 4 & 5 & 7 & 8 \\ \hline
+$y$ & 3 & 6 & 4 & 8 & 10 & 12 \\ \hline
 \end{tabular}
 \end{center}
-Predict $y$ at $x = 4.4$ using (a) $k = 1$ and (b) $k = 3$.
+\prompt{Predict $y$ at $x = 4.4$ using (a) $k = 1$ and (b) $k = 3$.}
+\answerbox{7}
 \begin{solution}
 (a) The nearest point is $x = 4$, so the prediction is $4$.
 (b) The three nearest points are $x = 4, 5, 2$ (distances $0.4, 0.6, 2.4$), so the prediction is
 $(4 + 8 + 6)/3 = 6$.
 \end{solution}
 
-\part[6] For each of a regression tree, kNN regression and SVR, name a hyperparameter that controls
-how closely the model follows the training data. Which setting of it makes overfitting more likely?
+\part[6] \prompt{For each of a regression tree, kNN regression and SVR, name a hyperparameter that controls
+how closely the model follows the training data. Which setting of it makes overfitting more likely?}
+\answerbox{8}
 \begin{solution}
 Regression tree: a larger maximum depth, or a smaller minimum number of points needed to split.
 kNN: a smaller $k$. SVR: a larger $C$, or a smaller $\varepsilon$.
 \end{solution}
 
-\part[5] The figure shows three models fitted to the same data. Which panel shows a regression
-tree, which shows kNN with $k = 1$, and which shows SVR with a kernel? Explain each.
+\newpage
+\part[5] \prompt{The figure shows three models fitted to the same data. Which panel shows a regression
+tree, which shows kNN with $k = 1$, and which shows SVR with a kernel? Explain each.}
 \begin{center}
 \input{fig_q33}
 \end{center}
+\answerbox{6}
 \begin{solution}
 A is SVR with a kernel: a smooth curve. B is the regression tree: a few wide flat steps, one for
 each leaf, which predicts the average $y$ of its points. C is kNN with $k = 1$: a narrow step for
 every training point, passing through every point.
 \end{solution}
 
-\part[5] We use kNN to predict house prices from floor area (500 to 5,000 square feet) and number
-of bedrooms (1 to 6). Why might kNN do badly on these raw features? What would you do?
+\part[5] \prompt{We use kNN to predict house prices from floor area (500 to 5,000 square feet) and number
+of bedrooms (1 to 6). Why might kNN do badly on these raw features? What would you do?}
+\answerbox{6}
 \begin{solution}
 Distances are dominated by floor area: a difference of one bedroom counts as much as one square
 foot, so the nearest houses match on area and almost ignore bedrooms. Standardize each feature

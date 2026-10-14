@@ -27,3 +27,7 @@ mine, mostly from scrap metal.
   `make_figure.py` (`.venv/bin/python make_figure.py`; packages in `requirements.txt`).
 
 Each builds two PDFs, the test and its solutions; the commands are at the top of each file.
+Both use `cs363m_exam.sty`, the layout of the course's practice exam: a title page with the
+instructions (question count and point total filled in automatically), each question on its own page,
+bold part prompts, and a lined "Answer" box after every part (`\answerbox{lines}`). In the solutions
+PDFs the solution takes the box's place.
