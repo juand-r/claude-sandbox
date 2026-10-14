@@ -172,11 +172,21 @@ both sides.
 \end{solution}
 
 \part[2] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with
-$C = 100$. Which one has the wider margin, and which one is more likely to overfit?
+$C = 100$.
+\begin{subparts}
+\subpart Which has the wider margin?
+\subpart Which has more support vectors?
+\subpart Which is more likely to overfit?
+\subpart How would you choose $C$ in practice?
+\end{subparts}
 \begin{solution}
-$C = 0.01$ has the wider margin: slack is cheap, so the SVM allows many points inside the margin.
-$C = 100$ is more likely to overfit: violations are expensive, so the margin narrows to fit
-individual training points.
+(a) $C = 0.01$: slack is cheap, so the SVM accepts many points inside the margin in exchange for a
+wider one.
+(b) $C = 0.01$: with a wider margin, more points fall on or inside it, and all of them are support
+vectors.
+(c) $C = 100$: violations are expensive, so the margin narrows to fit individual training points.
+(d) $C$ is a hyperparameter: try several values and pick the one with the best accuracy on
+validation data (or by cross-validation).
 \end{solution}
 
 \part[2] You remove a training point that is not a support vector and retrain the SVM. What
