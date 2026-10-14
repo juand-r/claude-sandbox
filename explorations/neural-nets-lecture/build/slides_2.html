@@ -33,21 +33,23 @@
 </section>
 
 <!-- ONE FUNCTION -->
-<section class="slide" id="s-formula" data-steps="2">
+<section class="slide" id="s-formula" data-steps="3">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
     <h2>The network is one function</h2>
     <ul>
-      <li>A small network for regression: two inputs, two sigmoid hidden units, one linear output. Written out in full:<span class="math dm">\[\begin{aligned} \hat{y} = {} &amp; v_1\,\sigma(w_{11}x_1 + w_{12}x_2 + b_1) \\ {} + {} &amp; v_2\,\sigma(w_{21}x_1 + w_{22}x_2 + b_2) + c \end{aligned}\]</span><span class="fine">The two <span class="math">\(\sigma(\cdot)\)</span> terms are the hidden values <span class="math">\(h_1\)</span> and <span class="math">\(h_2\)</span>; <span class="math">\(v_1\)</span> and <span class="math">\(v_2\)</span> are the output weights, <span class="math">\(c\)</span> the output bias.</span></li>
-      <li data-step="1">The loss of one training point, squared error:<span class="math dm">\[\mathcal{L} = \tfrac12 (\hat{y} - y)^2\]</span></li>
-      <li data-step="2">Nine weights, all inside one nested function. We need <span class="math">\(\partial\mathcal{L}/\partial w\)</span> for each one.</li>
+      <li>Notation, for layer <span class="math">\(l\)</span>: each unit computes a weighted sum <span class="math">\(z^{(l)}\)</span>, the <b>pre-activation</b>, then its <b>activation</b> <span class="math">\(a^{(l)} = \varphi(z^{(l)})\)</span>. The inputs are <span class="math">\(a^{(0)} = \boldsymbol{x}\)</span>.<span class="fine"><span class="math">\(w^{(l)}_{ji}\)</span> is the weight from unit <span class="math">\(i\)</span> of layer <span class="math">\(l - 1\)</span> to unit <span class="math">\(j\)</span> of layer <span class="math">\(l\)</span>; <span class="math">\(b^{(l)}_j\)</span> is unit <span class="math">\(j\)</span>'s bias.</span></li>
+      <li data-step="1">A small network for regression: two sigmoid hidden units, one linear output. Written out in full:<span class="math dm">\[\begin{aligned} \hat{y} = {} &amp; w^{(2)}_{11}\,\sigma(w^{(1)}_{11}x_1 + w^{(1)}_{12}x_2 + b^{(1)}_1) \\ {} + {} &amp; w^{(2)}_{12}\,\sigma(w^{(1)}_{21}x_1 + w^{(1)}_{22}x_2 + b^{(1)}_2) + b^{(2)} \end{aligned}\]</span><span class="fine">The two <span class="math">\(\sigma(\cdot)\)</span> terms are the hidden activations <span class="math">\(a^{(1)}_1\)</span> and <span class="math">\(a^{(1)}_2\)</span>.</span></li>
+      <li data-step="2">The loss of one training point, squared error:<span class="math dm">\[\mathcal{L} = \tfrac12 (\hat{y} - y)^2\]</span></li>
+      <li data-step="3">Nine weights, all inside one nested function. We need <span class="math">\(\partial\mathcal{L}/\partial w\)</span> for each one.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-formula"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>The network we will use on the next slides; the picture shows where each symbol lives. wⱼᵢ is the weight from input i to hidden unit j, as in class 1. Inside: each hidden unit is a sigmoid of a weighted sum of the inputs, with its own bias b₁ or b₂. Outside: the prediction ŷ is a weighted sum of the hidden units, with weights v₁, v₂ and bias c. No activation at the output, because ŷ can be any number.</p>
-    <p><b class="cue">1</b>Squared error, as in last year's slides and the practice exam. Put the first formula in for ŷ and the loss is one long expression in the nine weights.</p>
-    <p><b class="cue">2</b>Differentiating this directly, weight by weight, is possible but messy, and it gets worse with every layer. The chain rule takes it apart one piece at a time, and the pieces can be reused.</p>
+    <p><b class="cue">0</b>From now on, two names per unit: z for its weighted sum (before the activation) and a for its output (after it). Last time the hidden outputs were called h; a is the same thing. The superscript is the layer. The picture shows where each symbol lives.</p>
+    <p><b class="cue">1</b>The network we will use on the next slides. Inside: each hidden unit is a sigmoid of a weighted sum of the inputs, with its own bias. Outside: the prediction ŷ is a weighted sum of the hidden activations, with weights w₁₁⁽²⁾, w₁₂⁽²⁾ and bias b⁽²⁾. No activation at the output, because ŷ can be any number.</p>
+    <p><b class="cue">2</b>Squared error, as in last year's slides and the practice exam. Put the first formula in for ŷ and the loss is one long expression in the nine weights.</p>
+    <p><b class="cue">3</b>Differentiating this directly, weight by weight, is possible but messy, and it gets worse with every layer. The chain rule takes it apart one piece at a time, and the pieces can be reused.</p>
   </div>
 </section>
 
@@ -97,19 +99,19 @@
 <section class="slide" id="s-example" data-steps="3">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
-    <h2>A worked example</h2>
+    <h2>Regression example</h2>
     <ul>
-      <li>One training point: <span class="math">\(\boldsymbol{x} = (2, 1)\)</span>, target <span class="math">\(y = 2\)</span>. The weights are on the connections. The output is linear: <span class="math">\(\hat{y} = z\)</span>.</li>
-      <li data-step="1">Hidden layer:<span class="math dm">\[\begin{aligned} a_1 &amp;= -0.5 \cdot 2 + 1 \cdot 1 + 1 = 1 \\ h_1 &amp;= \sigma(1) = 0.731 \\ a_2 &amp;= 0.5 \cdot 2 - 1 \cdot 1 - 0.5 = -0.5 \\ h_2 &amp;= \sigma(-0.5) = 0.378 \end{aligned}\]</span></li>
-      <li data-step="2">Output:<span class="math dm">\[\hat{y} = z = 2 \cdot 0.731 + 0.5 \cdot 0.378 - 1 = 0.651\]</span></li>
+      <li>One training point: <span class="math">\(\boldsymbol{x} = (2, 1)\)</span>, target <span class="math">\(y = 2\)</span>. The weights are on the connections. The output is linear: <span class="math">\(\hat{y} = z^{(2)}\)</span>.</li>
+      <li data-step="1">Hidden layer:<span class="math dm">\[\begin{aligned} z^{(1)}_1 &amp;= -0.5 \cdot 2 + 1 \cdot 1 + 1 = 1 \\ a^{(1)}_1 &amp;= \sigma(1) = 0.731 \\ z^{(1)}_2 &amp;= 0.5 \cdot 2 - 1 \cdot 1 - 0.5 = -0.5 \\ a^{(1)}_2 &amp;= \sigma(-0.5) = 0.378 \end{aligned}\]</span></li>
+      <li data-step="2">Output:<span class="math dm">\[\hat{y} = z^{(2)} = 2 \cdot 0.731 + 0.5 \cdot 0.378 - 1 = 0.651\]</span></li>
       <li data-step="3">Loss:<span class="math dm">\[\mathcal{L} = \tfrac12 (0.651 - 2)^2 = 0.910\]</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-example"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>The network from the last slide, with numbers. wⱼᵢ is the weight from input i to hidden unit j, as in class 1; b₁, b₂ and c are the biases. A regression problem: the target is a number, here 2. z is the output unit's weighted sum; with a linear output, the prediction ŷ is z itself.</p>
-    <p><b class="cue">1</b>Each hidden unit: weighted sum of the inputs plus its bias, then the sigmoid. Three decimals is enough: these numbers were chosen so that rounding at every step gives the same answers as the exact computation.</p>
-    <p><b class="cue">2</b>The output: the same weighted sum, with the hidden values as inputs, and no activation.</p>
+    <p><b class="cue">0</b>The network from the last slide, with numbers. A regression problem: the target is a number, here 2. z⁽²⁾ is the output unit's weighted sum; with a linear output, the prediction ŷ is z⁽²⁾ itself.</p>
+    <p><b class="cue">1</b>Each hidden unit: weighted sum of the inputs plus its bias (the pre-activation z), then the sigmoid (the activation a). Three decimals is enough: these numbers were chosen so that rounding at every step gives the same answers as the exact computation.</p>
+    <p><b class="cue">2</b>The output: the same weighted sum, with the hidden activations as inputs, and no activation.</p>
     <p><b class="cue">3</b>The network says 0.651; the target is 2. To lower the loss, ŷ should go up. Which way should each weight move, and by how much? That is what the gradient tells us.</p>
   </div>
 </section>
@@ -118,22 +120,22 @@
 <section class="slide" id="s-out" data-steps="4">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
-    <h2>An output weight: <span class="math">\(v_1\)</span></h2>
+    <h2>An output weight: <span class="math">\(w^{(2)}_{11}\)</span></h2>
     <ul>
-      <li><span class="math">\(v_1\)</span> changes the loss along the highlighted path, <span class="math">\(v_1 \to z \to \hat{y} \to \mathcal{L}\)</span>. The chain rule multiplies the derivatives along it:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial v_1} = \frac{\partial \mathcal{L}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial v_1}\]</span></li>
+      <li><span class="math">\(w^{(2)}_{11}\)</span> changes the loss along the highlighted path, <span class="math">\(w^{(2)}_{11} \to z^{(2)} \to \hat{y} \to \mathcal{L}\)</span>. The chain rule multiplies the derivatives along it:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w^{(2)}_{11}} = \frac{\partial \mathcal{L}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z^{(2)}} \cdot \frac{\partial z^{(2)}}{\partial w^{(2)}_{11}}\]</span></li>
       <li data-step="1"><span class="math">\(\partial\mathcal{L}/\partial \hat{y} = \hat{y} - y = 0.651 - 2 = -1.349\)</span></li>
-      <li data-step="2"><span class="math">\(\partial \hat{y}/\partial z = 1\)</span><span class="fine">The output is linear, <span class="math">\(\hat{y} = z\)</span>.</span></li>
-      <li data-step="3"><span class="math">\(\partial z/\partial v_1 = h_1 = 0.731\)</span><span class="fine">Because <span class="math">\(z = v_1 h_1 + v_2 h_2 + c\)</span>.</span></li>
-      <li data-step="4">Multiply. Keep the first two factors for later:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial z} &amp;= -1.349 \times 1 = -1.349 \\ \frac{\partial \mathcal{L}}{\partial v_1} &amp;= -1.349 \times 0.731 = -0.986 \end{aligned}\]</span></li>
+      <li data-step="2"><span class="math">\(\partial \hat{y}/\partial z^{(2)} = 1\)</span><span class="fine">The output is linear, <span class="math">\(\hat{y} = z^{(2)}\)</span>.</span></li>
+      <li data-step="3"><span class="math">\(\partial z^{(2)}/\partial w^{(2)}_{11} = a^{(1)}_1 = 0.731\)</span><span class="fine">Because <span class="math">\(z^{(2)} = w^{(2)}_{11} a^{(1)}_1 + w^{(2)}_{12} a^{(1)}_2 + b^{(2)}\)</span>.</span></li>
+      <li data-step="4">Multiply. Keep the first two factors for later:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial z^{(2)}} &amp;= -1.349 \times 1 = -1.349 \\ \frac{\partial \mathcal{L}}{\partial w^{(2)}_{11}} &amp;= -1.349 \times 0.731 = -0.986 \end{aligned}\]</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-out"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>The same network. Only one path leads from v₁ to the loss. Each link of the path contributes one factor.</p>
+    <p><b class="cue">0</b>The same network. w₁₁⁽²⁾ is the weight from hidden unit 1 to the output. Only one path leads from it to the loss. Each link of the path contributes one factor.</p>
     <p><b class="cue">1</b>The derivative of ½(ŷ − y)² with respect to ŷ. The ½ is there so that this comes out without a 2.</p>
     <p><b class="cue">2</b>Trivial here, but keep it in mind: when the output has an activation, this factor is its slope.</p>
-    <p><b class="cue">3</b>z is linear in v₁, and v₁ multiplies h₁. If h₁ were near 0, v₁ would barely matter for this point.</p>
-    <p><b class="cue">4</b>Negative: increasing v₁ lowers the loss. ∂ℒ/∂z is the error at the output. Every weight further back goes through z, so this number is reused. The bias c has ∂z/∂c = 1, so ∂ℒ/∂c = −1.349.</p>
+    <p><b class="cue">3</b>z⁽²⁾ is linear in w₁₁⁽²⁾, and w₁₁⁽²⁾ multiplies a₁⁽¹⁾. If a₁⁽¹⁾ were near 0, this weight would barely matter for this point.</p>
+    <p><b class="cue">4</b>Negative: increasing w₁₁⁽²⁾ lowers the loss. ∂ℒ/∂z⁽²⁾ is the error at the output's pre-activation. Every weight further back goes through z⁽²⁾, so this number is reused. The bias b⁽²⁾ has ∂z⁽²⁾/∂b⁽²⁾ = 1, so ∂ℒ/∂b⁽²⁾ = −1.349.</p>
   </div>
 </section>
 
@@ -141,20 +143,20 @@
 <section class="slide" id="s-deep" data-steps="3">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
-    <h2>A hidden weight: <span class="math">\(w_{11}\)</span></h2>
+    <h2>A hidden weight: <span class="math">\(w^{(1)}_{11}\)</span></h2>
     <ul>
-      <li>The path is longer: <span class="math">\(w_{11} \to a_1 \to h_1 \to z \to \hat{y} \to \mathcal{L}\)</span>.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w_{11}} = \frac{\partial \mathcal{L}}{\partial z} \cdot \frac{\partial z}{\partial h_1} \cdot \frac{\partial h_1}{\partial a_1} \cdot \frac{\partial a_1}{\partial w_{11}}\]</span></li>
-      <li data-step="1"><span class="math">\(\partial\mathcal{L}/\partial z = -1.349\)</span>, already computed for <span class="math">\(v_1\)</span>. Reuse it.</li>
-      <li data-step="2">The new factors:<span class="math dm">\[\begin{aligned} \partial z/\partial h_1 &amp;= v_1 = 2 \\ \partial h_1/\partial a_1 &amp;= h_1(1 - h_1) = 0.731 \times 0.269 = 0.1966 \\ \partial a_1/\partial w_{11} &amp;= x_1 = 2 \end{aligned}\]</span></li>
-      <li data-step="3">Multiply:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w_{11}} = -1.349 \times 2 \times 0.1966 \times 2 = -1.061\]</span><span class="fine">With another activation <span class="math">\(\varphi\)</span>, use <span class="math">\(\varphi'(a_1)\)</span> in place of <span class="math">\(h_1(1 - h_1)\)</span>.</span></li>
+      <li>The path is longer: <span class="math">\(w^{(1)}_{11} \to z^{(1)}_1 \to a^{(1)}_1 \to z^{(2)} \to \hat{y} \to \mathcal{L}\)</span>.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w^{(1)}_{11}} = \frac{\partial \mathcal{L}}{\partial z^{(2)}} \cdot \frac{\partial z^{(2)}}{\partial a^{(1)}_1} \cdot \frac{\partial a^{(1)}_1}{\partial z^{(1)}_1} \cdot \frac{\partial z^{(1)}_1}{\partial w^{(1)}_{11}}\]</span></li>
+      <li data-step="1"><span class="math">\(\partial\mathcal{L}/\partial z^{(2)} = -1.349\)</span>, already computed for <span class="math">\(w^{(2)}_{11}\)</span>. Reuse it.</li>
+      <li data-step="2">The new factors:<span class="math dm">\[\begin{aligned} \partial z^{(2)}/\partial a^{(1)}_1 &amp;= w^{(2)}_{11} = 2 \\ \partial a^{(1)}_1/\partial z^{(1)}_1 &amp;= a^{(1)}_1(1 - a^{(1)}_1) = 0.731 \times 0.269 = 0.1966 \\ \partial z^{(1)}_1/\partial w^{(1)}_{11} &amp;= x_1 = 2 \end{aligned}\]</span></li>
+      <li data-step="3">Multiply:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w^{(1)}_{11}} = -1.349 \times 2 \times 0.1966 \times 2 = -1.061\]</span><span class="fine">With another activation <span class="math">\(\varphi\)</span>, use <span class="math">\(\varphi'(z^{(1)}_1)\)</span> in place of <span class="math">\(a^{(1)}_1(1 - a^{(1)}_1)\)</span>.</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-deep"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>A weight in the first layer. a₁ is hidden unit 1's weighted sum before the sigmoid, so h₁ = σ(a₁). The path goes through the output, so its first factors are the ones we just computed.</p>
+    <p><b class="cue">0</b>A weight in the first layer, from input 1 to hidden unit 1. The path goes through the output, so its first factors are the ones we just computed.</p>
     <p><b class="cue">1</b>This is why it is called backpropagation: we start at the output and work backwards, and each step reuses the one after it. Nothing is computed twice.</p>
-    <p><b class="cue">2</b>One factor per link: v₁ because z = v₁h₁ + …; the sigmoid's slope at hidden unit 1; and x₁ because a₁ = w₁₁x₁ + w₁₂x₂ + b₁. The slope is written with four decimals: with three (0.197) the product would come out −1.063 instead of −1.061. Only the middle factor depends on the activation function; for ReLU it would be 1, since a₁ &gt; 0.</p>
-    <p><b class="cue">3</b>Also negative: increasing w₁₁ raises h₁, which raises z and ŷ, which lowers the loss. The other weights work the same way; for w₁₂ the last factor is x₂ = 1 instead of x₁ = 2.</p>
+    <p><b class="cue">2</b>One factor per link: w₁₁⁽²⁾ because z⁽²⁾ = w₁₁⁽²⁾a₁⁽¹⁾ + …; the sigmoid's slope at hidden unit 1; and x₁ because z₁⁽¹⁾ = w₁₁⁽¹⁾x₁ + w₁₂⁽¹⁾x₂ + b₁⁽¹⁾. The slope is written with four decimals: with three (0.197) the product would come out −1.063 instead of −1.061. Only the middle factor depends on the activation function; for ReLU it would be 1, since z₁⁽¹⁾ &gt; 0.</p>
+    <p><b class="cue">3</b>Also negative: increasing w₁₁⁽¹⁾ raises a₁⁽¹⁾, which raises z⁽²⁾ and ŷ, which lowers the loss. The other weights work the same way; for w₁₂⁽¹⁾ the last factor is x₂ = 1 instead of x₁ = 2.</p>
   </div>
 </section>
 
@@ -165,7 +167,7 @@
     <h2>Update the weights</h2>
     <ul>
       <li>Gradient descent, with learning rate <span class="math">\(\eta = 0.1\)</span>:<span class="math dm">\[w \leftarrow w - \eta\, \frac{\partial \mathcal{L}}{\partial w}\]</span></li>
-      <li data-step="1"><span class="math">\(v_1 \leftarrow 2 - 0.1 \times (-0.986) = 2.099\)</span><br><span class="math">\(w_{11} \leftarrow -0.5 - 0.1 \times (-1.061) = -0.394\)</span></li>
+      <li data-step="1"><span class="math">\(w^{(2)}_{11} \leftarrow 2 - 0.1 \times (-0.986) = 2.099\)</span><br><span class="math">\(w^{(1)}_{11} \leftarrow -0.5 - 0.1 \times (-1.061) = -0.394\)</span></li>
       <li data-step="2">Do the same for all nine weights, with every gradient computed from the old weights. Then the next training point.</li>
     </ul>
   </div>
@@ -181,11 +183,11 @@
 <section class="slide" id="s-class" data-steps="3">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
-    <h2>Now predict a class</h2>
+    <h2>Classification example</h2>
     <ul>
-      <li>Same network and point, but the target is now a class label, <span class="math">\(y = 1\)</span>. Put a sigmoid on the output, so it is a probability: <span class="math">\(p = \sigma(z) = \sigma(0.651) = 0.657\)</span>.</li>
+      <li>Same network and point, but the target is now a class label, <span class="math">\(y = 1\)</span>. Put a sigmoid on the output, so it is a probability: <span class="math">\(p = \sigma(z^{(2)}) = \sigma(0.651) = 0.657\)</span>.</li>
       <li data-step="1">Keep squared error:<span class="math dm">\[\mathcal{L} = \tfrac12 (p - y)^2 = \tfrac12 (0.657 - 1)^2 = 0.059\]</span></li>
-      <li data-step="2">One new factor, the sigmoid's slope, in place of <span class="math">\(\partial\hat{y}/\partial z = 1\)</span>:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial z} &amp;= \frac{\partial \mathcal{L}}{\partial p} \cdot \frac{\partial p}{\partial z} = (p - y) \cdot p(1 - p) \\ &amp;= -0.343 \times 0.225 = -0.077 \end{aligned}\]</span></li>
+      <li data-step="2">One new factor, the sigmoid's slope, in place of <span class="math">\(\partial\hat{y}/\partial z^{(2)} = 1\)</span>:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial z^{(2)}} &amp;= \frac{\partial \mathcal{L}}{\partial p} \cdot \frac{\partial p}{\partial z^{(2)}} = (p - y) \cdot p(1 - p) \\ &amp;= -0.343 \times 0.225 = -0.077 \end{aligned}\]</span></li>
       <li data-step="3">The rest of the chain is the same as for regression.</li>
     </ul>
   </div>
@@ -193,16 +195,16 @@
     <div id="fig-class"></div>
     <table class="dtab xent" data-step="3">
       <tr><th></th><th>chain</th><th>regression</th><th>class, squared error</th></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial z\)</td><td></td><td>\(-1.349\)</td><td>\(-0.077\)</td></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial v_1\)</td><td>\(\partial\mathcal{L}/\partial z \times 0.731\)</td><td>\(-0.986\)</td><td>\(-0.056\)</td></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial w_{11}\)</td><td>\(\partial\mathcal{L}/\partial z \times 2 \times 0.1966 \times 2\)</td><td>\(-1.061\)</td><td>\(-0.061\)</td></tr>
+      <tr><td>\(\partial\mathcal{L}/\partial z^{(2)}\)</td><td></td><td>\(-1.349\)</td><td>\(-0.077\)</td></tr>
+      <tr><td>\(\partial\mathcal{L}/\partial w^{(2)}_{11}\)</td><td>\(\partial\mathcal{L}/\partial z^{(2)} \times 0.731\)</td><td>\(-0.986\)</td><td>\(-0.056\)</td></tr>
+      <tr><td>\(\partial\mathcal{L}/\partial w^{(1)}_{11}\)</td><td>\(\partial\mathcal{L}/\partial z^{(2)} \times 2 \times 0.1966 \times 2\)</td><td>\(-1.061\)</td><td>\(-0.061\)</td></tr>
     </table>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>A two-class problem, label 1 or 0. The network is the same up to z; the sigmoid turns z into a probability, as in logistic regression. Nothing else in the forward pass changes.</p>
+    <p><b class="cue">0</b>A two-class problem, label 1 or 0. The network is the same up to z⁽²⁾; the sigmoid turns z⁽²⁾ into a probability, as in logistic regression. Nothing else in the forward pass changes.</p>
     <p><b class="cue">1</b>Squared error on a probability: a legitimate loss for a classifier, and the one last year's slides used. It is not the usual choice today; the next slide shows why.</p>
     <p><b class="cue">2</b>∂ℒ/∂p = p − y, as for regression. The new factor is the sigmoid's derivative, σ(z)(1 − σ(z)) = p(1 − p), at most 0.25.</p>
-    <p><b class="cue">3</b>Everything before z is unchanged, so each gradient is ∂ℒ/∂z times the same factors as before. The class version's gradients are much smaller here, partly because its error is smaller (0.343 against 1.349) and partly because of the factor 0.225.</p>
+    <p><b class="cue">3</b>Everything before z⁽²⁾ is unchanged, so each gradient is ∂ℒ/∂z⁽²⁾ times the same factors as before. The class version's gradients are much smaller here, partly because its error is smaller (0.343 against 1.349) and partly because of the factor 0.225.</p>
   </div>
 </section>
 
@@ -214,23 +216,23 @@
     <ul>
       <li>Same classifier, same point, same forward pass: <span class="math">\(p = 0.657\)</span>. Only the loss changes:<span class="math dm">\[\begin{aligned} \mathcal{L} &amp;= -y \log p - (1 - y) \log(1 - p) \\ &amp;= -\log 0.657 = 0.420 \end{aligned}\]</span></li>
       <li data-step="1">So only the first factor changes:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial p} = -\frac{y}{p} + \frac{1 - y}{1 - p} = -\frac{1}{0.657} = -1.522\]</span></li>
-      <li data-step="2">Times <span class="math">\(\partial p/\partial z = p(1 - p)\)</span>, it simplifies:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z} = -y(1 - p) + (1 - y)p = p - y = -0.343\]</span></li>
+      <li data-step="2">Times <span class="math">\(\partial p/\partial z^{(2)} = p(1 - p)\)</span>, it simplifies:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z^{(2)}} = -y(1 - p) + (1 - y)p = p - y = -0.343\]</span></li>
       <li data-step="3">The rest of the chain is the same as before.</li>
     </ul>
   </div>
   <div class="fig">
     <table class="dtab xent">
       <tr><th></th><th>chain</th><th>squared error</th><th data-step="3">cross-entropy</th></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial z\)</td><td></td><td>\(-0.077\)</td><td data-step="3">\(-0.343\)</td></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial v_1\)</td><td>\(\partial\mathcal{L}/\partial z \times 0.731\)</td><td>\(-0.056\)</td><td data-step="3">\(-0.251\)</td></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial w_{11}\)</td><td>\(\partial\mathcal{L}/\partial z \times 2 \times 0.1966 \times 2\)</td><td>\(-0.061\)</td><td data-step="3">\(-0.270\)</td></tr>
+      <tr><td>\(\partial\mathcal{L}/\partial z^{(2)}\)</td><td></td><td>\(-0.077\)</td><td data-step="3">\(-0.343\)</td></tr>
+      <tr><td>\(\partial\mathcal{L}/\partial w^{(2)}_{11}\)</td><td>\(\partial\mathcal{L}/\partial z^{(2)} \times 0.731\)</td><td>\(-0.056\)</td><td data-step="3">\(-0.251\)</td></tr>
+      <tr><td>\(\partial\mathcal{L}/\partial w^{(1)}_{11}\)</td><td>\(\partial\mathcal{L}/\partial z^{(2)} \times 2 \times 0.1966 \times 2\)</td><td>\(-0.061\)</td><td data-step="3">\(-0.270\)</td></tr>
     </table>
   </div>
   <div class="notes">
     <p><b class="cue">0</b>The classifier from the last slide. Cross-entropy from class 1, for two classes with one sigmoid output. With y = 1 only the first term is left. Nothing in the forward pass changes.</p>
     <p><b class="cue">1</b>The derivative of the log terms. With y = 1 it is −1/p.</p>
-    <p><b class="cue">2</b>Multiply out: −y(1 − p) + (1 − y)p; the y·p terms cancel and leave p − y, the prediction minus the label. The sigmoid's slope p(1 − p) cancels. The same is true for softmax with C classes: ∂ℒ/∂zₖ = pₖ − yₖ.</p>
-    <p><b class="cue">3</b>Every gradient is about 4.4 times larger here (1/0.225), because squared error keeps the factor p(1 − p) = 0.225. That factor is small whenever p is near 0 or 1, even when the network is confidently wrong: at p = 0.01 with y = 1, squared error gives ∂ℒ/∂z = −0.010, while cross-entropy gives −0.99. This is one reason classifiers are trained with cross-entropy.</p>
+    <p><b class="cue">2</b>Multiply out: −y(1 − p) + (1 − y)p; the y·p terms cancel and leave p − y, the prediction minus the label. The sigmoid's slope p(1 − p) cancels. The same is true for softmax with C classes: ∂ℒ/∂zₖ⁽²⁾ = pₖ − yₖ.</p>
+    <p><b class="cue">3</b>Every gradient is about 4.4 times larger here (1/0.225), because squared error keeps the factor p(1 − p) = 0.225. That factor is small whenever p is near 0 or 1, even when the network is confidently wrong: at p = 0.01 with y = 1, squared error gives ∂ℒ/∂z⁽²⁾ = −0.010, while cross-entropy gives −0.99. This is one reason classifiers are trained with cross-entropy.</p>
   </div>
 </section>
 
@@ -240,16 +242,16 @@
     <div class="eyebrow">Backpropagation</div>
     <h2>Two outputs</h2>
     <ul>
-      <li>Same input and first layer, so <span class="math">\(h_1 = 0.731\)</span>, <span class="math">\(h_2 = 0.378\)</span>. Now two outputs, a softmax and cross-entropy. The label is class 1: <span class="math">\(\boldsymbol{y} = (1, 0)\)</span>.<span class="fine"><span class="math">\(v_{kj}\)</span> is the weight from <span class="math">\(h_j\)</span> to <span class="math">\(z_k\)</span>.</span></li>
-      <li data-step="1">The scores:<span class="math dm">\[\begin{aligned} z_1 &amp;= 2 \cdot 0.731 + 0.5 \cdot 0.378 - 1 = 0.651 \\ z_2 &amp;= 1 \cdot 0.731 + 0.5 \cdot 0.378 - 1 = -0.080 \end{aligned}\]</span></li>
+      <li>Same input and first layer, so <span class="math">\(a^{(1)}_1 = 0.731\)</span>, <span class="math">\(a^{(1)}_2 = 0.378\)</span>. Now two outputs, a softmax and cross-entropy. The label is class 1: <span class="math">\(\boldsymbol{y} = (1, 0)\)</span>.<span class="fine"><span class="math">\(w^{(2)}_{kj}\)</span> is the weight from hidden unit <span class="math">\(j\)</span> to output <span class="math">\(k\)</span>.</span></li>
+      <li data-step="1">The output pre-activations:<span class="math dm">\[\begin{aligned} z^{(2)}_1 &amp;= 2 \cdot 0.731 + 0.5 \cdot 0.378 - 1 = 0.651 \\ z^{(2)}_2 &amp;= 1 \cdot 0.731 + 0.5 \cdot 0.378 - 1 = -0.080 \end{aligned}\]</span></li>
       <li data-step="2">The softmax and the loss:<span class="math dm">\[\begin{aligned} p_1 &amp;= \frac{e^{0.651}}{e^{0.651} + e^{-0.080}} = \frac{1.917}{1.917 + 0.923} = 0.675 \\ p_2 &amp;= 0.325, \qquad \mathcal{L} = -\log 0.675 = 0.393 \end{aligned}\]</span></li>
-      <li data-step="3">At each output, as before, <span class="math">\(\partial\mathcal{L}/\partial z_k = p_k - y_k\)</span>:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z_1} = 0.675 - 1 = -0.325, \quad \frac{\partial \mathcal{L}}{\partial z_2} = 0.325 - 0 = 0.325\]</span></li>
+      <li data-step="3">At each output, as before, <span class="math">\(\partial\mathcal{L}/\partial z^{(2)}_k = p_k - y_k\)</span>:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z^{(2)}_1} = 0.675 - 1 = -0.325, \quad \frac{\partial \mathcal{L}}{\partial z^{(2)}_2} = 0.325 - 0 = 0.325\]</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-two"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>The network from class 1's softmax slides, at its smallest: two classes, one score each. Output 1 keeps the weights of the one-output example (2, 0.5 and bias −1), so z₁ is the same as z before.</p>
-    <p><b class="cue">1</b>Each score is a weighted sum of the hidden values plus a bias.</p>
+    <p><b class="cue">0</b>The network from class 1's softmax slides, at its smallest: two classes, one score each. Output 1 keeps the weights of the one-output example (2, 0.5 and bias −1), so z₁⁽²⁾ is the same as z⁽²⁾ before.</p>
+    <p><b class="cue">1</b>Each output's pre-activation (its score) is a weighted sum of the hidden activations plus a bias.</p>
     <p><b class="cue">2</b>The softmax turns the scores into probabilities; they add up to 1. The loss is −log of the probability of the true class, class 1.</p>
     <p><b class="cue">3</b>The softmax version of p − y, from the last slide and from class 1's bonus slide. One number per output: the network gives class 1 too little probability (negative) and class 2 too much (positive). With two classes the two always add up to 0.</p>
   </div>
@@ -261,18 +263,18 @@
     <div class="eyebrow">Backpropagation</div>
     <h2>Add the paths</h2>
     <ul>
-      <li><span class="math">\(w_{11}\)</span> changes <span class="math">\(h_1\)</span>, and <span class="math">\(h_1\)</span> feeds both outputs. So <span class="math">\(w_{11}\)</span> reaches the loss along two paths.</li>
-      <li data-step="1">Through <span class="math">\(z_1\)</span>:<span class="math dm">\[\begin{aligned} &amp;(p_1 - y_1) \cdot v_{11} \cdot h_1(1 - h_1) \cdot x_1 \\ &amp;= -0.325 \times 2 \times 0.1966 \times 2 = -0.256 \end{aligned}\]</span></li>
-      <li data-step="2">Through <span class="math">\(z_2\)</span>:<span class="math dm">\[\begin{aligned} &amp;(p_2 - y_2) \cdot v_{21} \cdot h_1(1 - h_1) \cdot x_1 \\ &amp;= 0.325 \times 1 \times 0.1966 \times 2 = 0.128 \end{aligned}\]</span></li>
-      <li data-step="3">Add them:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial w_{11}} &amp;= \sum_k (p_k - y_k)\, v_{k1} \cdot h_1(1 - h_1) \cdot x_1 \\ &amp;= -0.256 + 0.128 = -0.128 \end{aligned}\]</span></li>
+      <li><span class="math">\(w^{(1)}_{11}\)</span> changes <span class="math">\(a^{(1)}_1\)</span>, and <span class="math">\(a^{(1)}_1\)</span> feeds both outputs. So <span class="math">\(w^{(1)}_{11}\)</span> reaches the loss along two paths.</li>
+      <li data-step="1">Through <span class="math">\(z^{(2)}_1\)</span>:<span class="math dm">\[\begin{aligned} &amp;(p_1 - y_1) \cdot w^{(2)}_{11} \cdot a^{(1)}_1(1 - a^{(1)}_1) \cdot x_1 \\ &amp;= -0.325 \times 2 \times 0.1966 \times 2 = -0.256 \end{aligned}\]</span></li>
+      <li data-step="2">Through <span class="math">\(z^{(2)}_2\)</span>:<span class="math dm">\[\begin{aligned} &amp;(p_2 - y_2) \cdot w^{(2)}_{21} \cdot a^{(1)}_1(1 - a^{(1)}_1) \cdot x_1 \\ &amp;= 0.325 \times 1 \times 0.1966 \times 2 = 0.128 \end{aligned}\]</span></li>
+      <li data-step="3">Add them:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial w^{(1)}_{11}} &amp;= \sum_k (p_k - y_k)\, w^{(2)}_{k1} \cdot a^{(1)}_1(1 - a^{(1)}_1) \cdot x_1 \\ &amp;= -0.256 + 0.128 = -0.128 \end{aligned}\]</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-paths"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>Last year's slides showed the same picture: one hidden weight, two highlighted paths.</p>
-    <p><b class="cue">1</b>The same four factors as the one-output example: the error at the output, the weight from h₁ to that output, the sigmoid's slope at h₁, and x₁.</p>
-    <p><b class="cue">2</b>The other path. Only the first two factors change. It is positive: raising h₁ also raises z₂, the score of the wrong class.</p>
-    <p><b class="cue">3</b>When a variable affects the loss along several paths, the effects add (the chain rule with several variables). Here the two paths pull in opposite directions, and the gradient is half of what the first path alone would say. In general, a hidden unit adds up the errors of all the outputs it feeds, each weighted by its connection. check_numbers.py checks this against numerical derivatives.</p>
+    <p><b class="cue">1</b>The same four factors as the one-output example: the error at the output, the weight from hidden unit 1 to that output, the sigmoid's slope at hidden unit 1, and x₁.</p>
+    <p><b class="cue">2</b>The other path. Only the first two factors change. It is positive: raising a₁⁽¹⁾ also raises z₂⁽²⁾, the score of the wrong class.</p>
+    <p><b class="cue">3</b>When a variable affects the loss along several paths, the effects add (the chain rule with branches). Here the two paths pull in opposite directions, and the gradient is half of what the first path alone would say. In general, a hidden unit adds up the errors of all the units it feeds, each weighted by its connection. check_numbers.py checks this against numerical derivatives.</p>
   </div>
 </section>
 
@@ -282,20 +284,20 @@
     <div class="eyebrow">Backpropagation</div>
     <h2>The general rule</h2>
     <ul>
-      <li>Every unit <span class="math">\(j\)</span> works the same way: a weighted sum <span class="math">\(a_j = \sum_i w_{ji}\, o_i + b_j\)</span>, then an activation, <span class="math">\(o_j = \varphi(a_j)\)</span>.<span class="fine"><span class="math">\(o_i\)</span> is whatever feeds the unit: an input <span class="math">\(x_i\)</span> or a hidden value <span class="math">\(h_i\)</span>. At the output, <span class="math">\(a\)</span> is <span class="math">\(z\)</span>.</span></li>
-      <li data-step="1"><b>Any weight</b>: the error at its end times the value at its start.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w_{ji}} = \frac{\partial \mathcal{L}}{\partial a_j} \cdot o_i\]</span></li>
-      <li data-step="2"><b>A hidden unit</b>: its slope times the errors of the units it feeds, each times its weight.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial a_j} = \varphi'(a_j) \sum_k w_{kj}\, \frac{\partial \mathcal{L}}{\partial a_k}\]</span></li>
+      <li>Every unit <span class="math">\(j\)</span> of layer <span class="math">\(l\)</span> works the same way:<span class="math dm">\[z^{(l)}_j = \sum_i w^{(l)}_{ji}\, a^{(l-1)}_i + b^{(l)}_j, \qquad a^{(l)}_j = \varphi(z^{(l)}_j)\]</span><span class="fine">"Error" means <span class="math">\(\partial\mathcal{L}/\partial z\)</span>: how the loss changes with a unit's pre-activation.</span></li>
+      <li data-step="1"><b>Any weight</b>: the error at its end times the activation at its start.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w^{(l)}_{ji}} = \frac{\partial \mathcal{L}}{\partial z^{(l)}_j} \cdot a^{(l-1)}_i\]</span></li>
+      <li data-step="2"><b>A hidden unit</b>: its slope times the errors of the units it feeds, each times its weight.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z^{(l)}_j} = \varphi'(z^{(l)}_j) \sum_k w^{(l+1)}_{kj}\, \frac{\partial \mathcal{L}}{\partial z^{(l+1)}_k}\]</span></li>
       <li data-step="3"><b>An output unit</b>: from the loss. <span class="math">\(\hat{y} - y\)</span> for regression with squared error; <span class="math">\(p - y\)</span> for sigmoid or softmax with cross-entropy.</li>
-      <li data-step="4">Check with the example, hidden unit 1:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial a_1} &amp;= 0.1966 \times (2 \times (-0.325) + 1 \times 0.325) = -0.064 \\ \frac{\partial \mathcal{L}}{\partial w_{11}} &amp;= -0.064 \times 2 = -0.128 \end{aligned}\]</span></li>
+      <li data-step="4">Check with the example, hidden unit 1:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial z^{(1)}_1} &amp;= 0.1966 \times (2 \times (-0.325) + 1 \times 0.325) = -0.064 \\ \frac{\partial \mathcal{L}}{\partial w^{(1)}_{11}} &amp;= -0.064 \times 2 = -0.128 \end{aligned}\]</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-general"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>One notation for every layer. "Error" here means ∂ℒ/∂a: how the loss changes with the unit's weighted sum.</p>
-    <p><b class="cue">1</b>Because aⱼ is linear in wⱼᵢ, with coefficient oᵢ. The biases are the case oᵢ = 1. This is what we did for v₁ (error at z times h₁) and for w₁₁ (error at a₁ times x₁).</p>
-    <p><b class="cue">2</b>The chain rule with branches: aⱼ changes oⱼ, which feeds every unit k of the next layer through wₖⱼ, and the paths add. φ′(aⱼ) is the slope of the activation: h(1 − h) for the sigmoid, 1 or 0 for ReLU.</p>
-    <p><b class="cue">3</b>The loss decides only where the backward pass starts. Squared error on a sigmoid output gives (p − y)p(1 − p), as on the "predict a class" slide.</p>
-    <p><b class="cue">4</b>The same numbers as "Add the paths": 2 and 1 are v₁₁ and v₂₁, −0.325 and 0.325 are the output errors, 0.1966 is the sigmoid's slope at h₁, and x₁ = 2. With more layers, apply the hidden-unit rule once per layer, from the output back.</p>
+    <p><b class="cue">0</b>One notation for every layer, the one from "The network is one function". a⁽⁰⁾ is the input x.</p>
+    <p><b class="cue">1</b>Because zⱼ⁽ˡ⁾ is linear in wⱼᵢ⁽ˡ⁾, with coefficient aᵢ⁽ˡ⁻¹⁾. The biases are the case where that activation is 1. This is what we did for w₁₁⁽²⁾ (error at z⁽²⁾ times a₁⁽¹⁾) and for w₁₁⁽¹⁾ (error at z₁⁽¹⁾ times x₁).</p>
+    <p><b class="cue">2</b>The chain rule with branches: zⱼ⁽ˡ⁾ changes aⱼ⁽ˡ⁾, which feeds every unit k of the next layer through wₖⱼ⁽ˡ⁺¹⁾, and the paths add. φ′ is the slope of the activation: a(1 − a) for the sigmoid, 1 or 0 for ReLU.</p>
+    <p><b class="cue">3</b>The loss decides only where the backward pass starts. Squared error on a sigmoid output gives (p − y)p(1 − p), as on the "Classification example" slide.</p>
+    <p><b class="cue">4</b>The same numbers as "Add the paths": 2 and 1 are w₁₁⁽²⁾ and w₂₁⁽²⁾, −0.325 and 0.325 are the output errors, 0.1966 is the sigmoid's slope at hidden unit 1, and x₁ = 2. With more layers, apply the hidden-unit rule once per layer, from the output back.</p>
   </div>
 </section>
 
@@ -305,19 +307,19 @@
     <div class="eyebrow">Backpropagation</div>
     <h2>The recipe</h2>
     <ol>
-      <li><b>Forward pass</b>: compute and store <span class="math">\(\boldsymbol{h}\)</span> and <span class="math">\(\boldsymbol{p}\)</span>.</li>
+      <li><b>Forward pass</b>: compute and store every <span class="math">\(z\)</span> and <span class="math">\(a\)</span>, layer by layer.</li>
       <li data-step="1"><b>Error at each output</b>, from the loss (for example <span class="math">\(p_k - y_k\)</span>).</li>
       <li data-step="2"><b>Backward pass</b>: the errors of the hidden units, layer by layer from the output back, with the hidden-unit rule.</li>
-      <li data-step="3"><b>Gradients</b>: each weight gets the error at its end times the value at its start.</li>
+      <li data-step="3"><b>Gradients</b>: each weight gets the error at its end times the activation at its start.</li>
       <li data-step="4"><b>Update</b> every weight, <span class="math">\(w \leftarrow w - \eta\, \partial\mathcal{L}/\partial w\)</span>, using the old weights throughout.</li>
     </ol>
   </div>
   <div class="fig"><div id="fig-recipe"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>Run the network on the training point as usual, but keep the hidden values: the backward pass needs them.</p>
+    <p><b class="cue">0</b>Run the network on the training point as usual, but keep the values: the backward pass needs the activations (for the gradients) and the pre-activations (for the slopes).</p>
     <p><b class="cue">1</b>Prediction minus label, one number per output (softmax and cross-entropy).</p>
-    <p><b class="cue">2</b>This is the "add the paths" step, done once per hidden unit instead of once per weight. aⱼ is hidden unit j's weighted sum before the activation. In the example: (−0.325 × 2 + 0.325 × 1) × 0.1966 = −0.064 for hidden unit 1. In matrix form (not on the slides) this step is (W⁽²⁾ᵀ(p − y)) ⊙ h ⊙ (1 − h).</p>
-    <p><b class="cue">3</b>For w₁₁ in the example: −0.064 × 2 = −0.128, as on the last slide.</p>
+    <p><b class="cue">2</b>This is the "add the paths" step, done once per hidden unit instead of once per weight. In the example: (−0.325 × 2 + 0.325 × 1) × 0.1966 = −0.064 for hidden unit 1. In matrix form (not on the slides) this step is (W⁽²⁾ᵀ(p − y)) ⊙ a⁽¹⁾ ⊙ (1 − a⁽¹⁾).</p>
+    <p><b class="cue">3</b>For w₁₁⁽¹⁾ in the example: −0.064 × 2 = −0.128, as on the last slide.</p>
     <p><b class="cue">4</b>Compute every gradient first, then update. If you updated the output weights before the backward pass, it would use the new weights, which is wrong. The backward pass costs about as much as the forward pass, so one gradient costs about two passes through the network, however many weights there are.</p>
   </div>
 </section>

@@ -199,3 +199,11 @@ Follow-up 3 (2026-10-14), asked by the user ("we are only showing examples of th
 - "The general rule", after "Add the paths": aⱼ = Σᵢ wⱼᵢoᵢ + bⱼ, oⱼ = φ(aⱼ); ∂ℒ/∂wⱼᵢ = (∂ℒ/∂aⱼ)oᵢ;
   ∂ℒ/∂aⱼ = φ′(aⱼ) Σₖ wₖⱼ ∂ℒ/∂aₖ; the output's error from the loss; checked on the example (−0.128).
 - The recipe now refers to these rules instead of repeating the formulas.
+
+Follow-up 4 (2026-10-14), asked by the user: notation. For layer l, z⁽ˡ⁾ is the pre-activation (weighted
+sum) and a⁽ˡ⁾ = φ(z⁽ˡ⁾) the activation; a⁽⁰⁾ = x; layer superscripts everywhere. Hidden h → a⁽¹⁾, hidden
+pre-activation a → z⁽¹⁾, output z → z⁽²⁾, output weights v → w⁽²⁾, biases b → b⁽¹⁾, c → b⁽²⁾. Stated on
+"The network is one function" (now with a diagram naming every symbol). Slides renamed: "Regression
+example", "Classification example". The recap slide and class 1 keep h (the user's choice). "When the
+chain branches" keeps dy/dx (y depends only on x there). Figure labels now stack a superscript over a
+subscript (w₁₁⁽¹⁾), as KaTeX does (mtxt in common.js).

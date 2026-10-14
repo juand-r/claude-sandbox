@@ -31,12 +31,24 @@ function mathRuns(s){
     else if(c==='-'&&/[\d.]/.test(s[i+1]||''))push('−','KaTeX_Main',false,shift);   // a minus sign, not a hyphen
     else push(KATEX_CHAR[c]||c,'KaTeX_Main',false,shift);}
   return runs;}
+// rough advance widths (in em) of the KaTeX glyphs that appear in sub- and superscripts, used to stack a
+// superscript over a subscript (w₁₁^(1)) the way KaTeX does in the slide text
+const GLYPH_EM={'(':.389,')':.389,'−':.778,'+':.778,'=':.778,',':.278,'.':.278,i:.345,j:.412,k:.521,l:.298,m:.878,n:.6};
+const runEm=r=>[...r.t].reduce((w,c)=>w+(GLYPH_EM[c]??(/[0-9]/.test(c)?.5:.55)),0);
 function mtxt(parent,x,y,s,a={}){
   const fs=(+a['font-size']||16)*MATH_SCALE,t=el('text',{x,y,...a,'font-size':fs.toFixed(1)},parent);
+  const runs=mathRuns(String(s)),small=.72*fs;
   let cur=0;   // the current baseline offset in px
-  for(const r of mathRuns(String(s))){const off=r.shift===1?.28*fs:r.shift===-1?-.4*fs:0;
+  let prevShift=0,groupW=0,firstW=0,stacking=false,pendingDx=0;   // for a sub-/superscript pair
+  for(const r of runs){const off=r.shift===1?.28*fs:r.shift===-1?-.4*fs:0;
     const sp=el('tspan',{'font-family':r.fam,'font-style':r.it?'italic':'normal',dy:(off-cur).toFixed(1)},t);
-    if(r.shift)sp.setAttribute('font-size',(.72*fs).toFixed(1));
+    if(r.shift!==prevShift){   // a new group of runs at one height
+      if(stacking){if(groupW<firstW)pendingDx+=firstW-groupW;stacking=false;}
+      else if(r.shift&&prevShift===-r.shift){stacking=true;firstW=groupW;pendingDx-=groupW;}
+      groupW=0;prevShift=r.shift;}
+    if(pendingDx){sp.setAttribute('dx',pendingDx.toFixed(1));pendingDx=0;}
+    groupW+=runEm(r)*(r.shift?small:fs);
+    if(r.shift)sp.setAttribute('font-size',small.toFixed(1));
     if(r.b)sp.setAttribute('font-weight','700');
     sp.textContent=r.t;cur=off;}
   t.setAttribute('aria-label',s);return t;}
