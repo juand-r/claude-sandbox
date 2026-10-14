@@ -248,25 +248,38 @@ $j$ is $b^{(l)}_j$, the weight on the input that is always 1.
 the sign function as their activation function: $\operatorname{sign}(z) = +1$ if $z > 0$ and $-1$
 if $z < 0$.
 \begin{center}
-\begin{tikzpicture}[x=2.6cm,y=1.25cm,n/.style={circle,draw,minimum size=8mm,fill=blue!6},
-  bn/.style={circle,draw,dashed,minimum size=8mm,fill=gray!10}]
+\begin{tikzpicture}[x=3.8cm,y=2.3cm,n/.style={circle,draw,minimum size=8mm,fill=blue!6},
+  bn/.style={circle,draw,dashed,minimum size=8mm,fill=gray!10},
+  w/.style={font=\small,fill=white,inner sep=1pt,sloped,above=1pt}]
 \node[n] (A1) at (0,2) {A1}; \node[n] (A2) at (0,1) {A2}; \node[bn] (A0) at (0,0) {1};
 \node[n] (B1) at (1,2) {B1}; \node[n] (B2) at (1,1) {B2}; \node[bn] (B0) at (1,0) {1};
 \node[n] (C1) at (2,2) {C1}; \node[n] (C2) at (2,1) {C2};
-\foreach \a in {A1,A2,A0} \foreach \b in {B1,B2} \draw[->] (\a) -- (\b);
-\foreach \a in {B1,B2,B0} \foreach \b in {C1,C2} \draw[->] (\a) -- (\b);
-\draw[->] (C1) -- ++(0.55,0) node[right] {out1}; \draw[->] (C2) -- ++(0.55,0) node[right] {out2};
+% each weight is written near the start of its connection
+\draw[->] (A1) -- node[w,pos=0.5] {0.5} (B1);
+\draw[->] (A1) -- node[w,pos=0.22] {$-0.4$} (B2);
+\draw[->] (A2) -- node[w,pos=0.22] {$-0.3$} (B1);
+\draw[->] (A2) -- node[w,pos=0.78] {0.6} (B2);
+\draw[->] (A0) -- node[w,pos=0.2] {0.2} (B1);
+\draw[->] (A0) -- node[w,pos=0.5] {$-0.5$} (B2);
+\draw[->] (B1) -- node[w,pos=0.5] {0.7} (C1);
+\draw[->] (B1) -- node[w,pos=0.22] {$-0.6$} (C2);
+\draw[->] (B2) -- node[w,pos=0.22] {0.4} (C1);
+\draw[->] (B2) -- node[w,pos=0.78] {0.3} (C2);
+\draw[->] (B0) -- node[w,pos=0.2] {0.2} (C1);
+\draw[->] (B0) -- node[w,pos=0.5] {0.1} (C2);
+\draw[->] (C1) -- ++(0.5,0) node[right] {out1}; \draw[->] (C2) -- ++(0.5,0) node[right] {out2};
 \end{tikzpicture}
 \end{center}
+Show the forward pass, in matrix form, of the record with Feature1 $= 6$ and Feature2 $= 4$. How would
+this network classify the record (Class A or Class B)?
+\begin{solution}
+From the diagram:
 \[
 \bm{W}^{(1)} = \begin{pmatrix} 0.5 & -0.3 \\ -0.4 & 0.6 \end{pmatrix}, \quad
 \bm{b}^{(1)} = \begin{pmatrix} 0.2 \\ -0.5 \end{pmatrix}, \qquad
 \bm{W}^{(2)} = \begin{pmatrix} 0.7 & 0.4 \\ -0.6 & 0.3 \end{pmatrix}, \quad
-\bm{b}^{(2)} = \begin{pmatrix} 0.2 \\ 0.1 \end{pmatrix}
+\bm{b}^{(2)} = \begin{pmatrix} 0.2 \\ 0.1 \end{pmatrix}.
 \]
-Show the forward pass, in matrix form, of the record with Feature1 $= 6$ and Feature2 $= 4$. How would
-this network classify the record (Class A or Class B)?
-\begin{solution}
 \[
 \bm{z}_B = \bm{W}^{(1)} \bm{x} + \bm{b}^{(1)}
 = \begin{pmatrix} 0.5 \cdot 6 - 0.3 \cdot 4 + 0.2 \\ -0.4 \cdot 6 + 0.6 \cdot 4 - 0.5 \end{pmatrix}
