@@ -189,5 +189,53 @@ support vector.
 \end{solution}
 \end{parts}
 
+% ===================================================================== 3
+\titledquestion{Nonlinear regression (20 points)}
+\begin{parts}
+\part[4] A regression tree is trained on six points:
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+$x$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+$y$ & 1 & 3 & 2 & 7 & 9 & 8 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Consider the split $x < 3.5$. What does each side predict? What is the SSE of this split?
+\begin{solution}
+Left: the mean of $1, 3, 2$, which is $2$. Right: the mean of $7, 9, 8$, which is $8$.
+$\mathrm{SSE} = (1 + 1 + 0) + (1 + 1 + 0) = 4$.
+\end{solution}
+
+\part[6] What happens to the fit, toward overfitting or toward underfitting, as you increase
+(a) the maximum depth of a regression tree, (b) $k$ in kNN regression, (c) $\varepsilon$ in SVR?
+Explain each.
+\begin{solution}
+(a) More, smaller leaves: toward overfitting. (b) Each prediction averages more neighbors, so the
+fit is smoother: toward underfitting (at $k = n$ it predicts the overall mean everywhere).
+(c) A wider tube: more points cost nothing and the fit flattens: toward underfitting.
+\end{solution}
+
+\part[5] In a training set the targets $y$ range from 10 to 50. Can (a) a regression tree,
+(b) kNN regression, (c) SVR predict $y = 60$ for some new input? Explain.
+\begin{solution}
+(a) No: every leaf predicts an average of training $y$ values, so its prediction stays between 10
+and 50. (b) No, for the same reason: the prediction is an average of $k$ training $y$ values.
+(c) Yes: the prediction is $\bm{w} \cdot \bm{x} + b$, which keeps growing as $\bm{x}$ moves away
+from the data. (A kernel SVR can also go outside the training range; accept either explanation.)
+\end{solution}
+
+\part[5] A model predicts crop yield from rainfall (in mm, 0 to 2,000) and average temperature (in
+$^\circ$C, 10 to 35). We change rainfall to meters, so it now ranges from 0 to 2. For each of a
+regression tree, kNN and SVR, do the predictions change? Why or why not?
+\begin{solution}
+Regression tree: no. A split looks at one feature at a time, so ``rainfall $< 800$ mm'' becomes
+``rainfall $< 0.8$ m'' and every split's SSE is unchanged. kNN: yes. Distances now depend almost only
+on temperature, so different points become the nearest neighbors. SVR: yes. The penalty
+$\tfrac12\|\bm{w}\|^2$ depends on the units of each feature, and with a kernel, distances change as
+for kNN.
+\end{solution}
+\end{parts}
+
 \end{questions}
 \end{document}

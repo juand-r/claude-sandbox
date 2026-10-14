@@ -1,0 +1,16 @@
+% Question 3.3 of the exam: three fits of the same data (data from ../make_figure.py)
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=3 by 1, horizontal sep=1.1cm},
+    width=5.6cm, height=4.6cm, xmin=0, xmax=10, ymin=2.5, ymax=7, xtick={0,5,10}, ytick={3,5,7},
+    xlabel={$x$}, ylabel={$y$}, ylabel style={yshift=-4pt}, title style={font=\bfseries}]
+\nextgroupplot[title=A]
+  \addplot[thick, blue!70!black] table {fig_data/svr.dat};
+  \addplot[only marks, mark=*, mark size=1.6pt] table {fig_data/points.dat};
+\nextgroupplot[title=B]
+  \addplot[thick, blue!70!black] table {fig_data/tree.dat};
+  \addplot[only marks, mark=*, mark size=1.6pt] table {fig_data/points.dat};
+\nextgroupplot[title=C]
+  \addplot[thick, blue!70!black] table {fig_data/knn.dat};
+  \addplot[only marks, mark=*, mark size=1.6pt] table {fig_data/points.dat};
+\end{groupplot}
+\end{tikzpicture}

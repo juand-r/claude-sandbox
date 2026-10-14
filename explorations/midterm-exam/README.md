@@ -16,7 +16,9 @@ mine, mostly from scrap metal.
 
 ## LaTeX exams (`latex/`)
 
-- `practice_midterm.tex`: practice test, questions 1 (TB rats) and 2 (SVMs).
-- `final_midterm.tex`: the exam, questions 1 (AI-text detection) and 2 (SVMs), slightly easier.
+- `practice_midterm.tex`: practice test, questions 1 (TB rats), 2 (SVMs) and 3 (nonlinear regression).
+- `final_midterm.tex`: the exam, questions 1 (AI-text detection), 2 (SVMs) and 3 (nonlinear
+  regression), slightly easier. The figure for 3.3 is `fig_q33.tex`, drawn from data written by
+  `make_figure.py` (`.venv/bin/python make_figure.py`; packages in `requirements.txt`).
 
 Each builds two PDFs, the test and its solutions; the commands are at the top of each file.

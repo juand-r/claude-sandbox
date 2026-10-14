@@ -5,6 +5,9 @@
 \ifdefined\withsolutions \printanswers \fi
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,bm,booktabs,tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 
@@ -215,6 +218,52 @@ changes? Why?
 \begin{solution}
 Nothing. The solution depends only on the support vectors; a point outside the margin does not
 affect $\bm{w}$ or $b$.
+\end{solution}
+\end{parts}
+
+% ===================================================================== 3
+\titledquestion{Nonlinear regression (20 points)}
+\begin{parts}
+\part[4] kNN regression is trained on six points:
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+$x$ & 1 & 2 & 4 & 5 & 7 & 8 \\
+$y$ & 3 & 6 & 4 & 8 & 10 & 12 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Predict $y$ at $x = 4.4$ using (a) $k = 1$ and (b) $k = 3$.
+\begin{solution}
+(a) The nearest point is $x = 4$, so the prediction is $4$.
+(b) The three nearest points are $x = 4, 5, 2$ (distances $0.4, 0.6, 2.4$), so the prediction is
+$(4 + 8 + 6)/3 = 6$.
+\end{solution}
+
+\part[6] For each of a regression tree, kNN regression and SVR, name a hyperparameter that controls
+how closely the model follows the training data. Which setting of it makes overfitting more likely?
+\begin{solution}
+Regression tree: a larger maximum depth, or a smaller minimum number of points needed to split.
+kNN: a smaller $k$. SVR: a larger $C$, or a smaller $\varepsilon$.
+\end{solution}
+
+\part[5] The figure shows three models fitted to the same data. Which panel shows a regression
+tree, which shows kNN with $k = 1$, and which shows SVR with a kernel? Explain each.
+\begin{center}
+\input{fig_q33}
+\end{center}
+\begin{solution}
+A is SVR with a kernel: a smooth curve. B is the regression tree: a few wide flat steps, one for
+each leaf, which predicts the average $y$ of its points. C is kNN with $k = 1$: a narrow step for
+every training point, passing through every point.
+\end{solution}
+
+\part[5] We use kNN to predict house prices from floor area (500 to 5,000 square feet) and number
+of bedrooms (1 to 6). Why might kNN do badly on these raw features? What would you do?
+\begin{solution}
+Distances are dominated by floor area: a difference of one bedroom counts as much as one square
+foot, so the nearest houses match on area and almost ignore bedrooms. Standardize each feature
+(subtract its mean, divide by its standard deviation) before computing distances.
 \end{solution}
 \end{parts}
 

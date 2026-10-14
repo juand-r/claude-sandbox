@@ -91,4 +91,16 @@ for ver, w, b, pts, want in [
     yf = [y * f for f, (_, y) in zip(fs, pts)]
     assert [k for k, v in enumerate(yf) if v <= 1] == [2, 3, 4]; assert yf[2] == 1 and 0 < yf[3] < 1 and yf[4] < 0
     print(f"ok  {ver} SVM: support vectors C, D, E; C on the margin, D inside it, E misclassified")
+# ---------------------------------------------------------------- nonlinear regression
+# exam 3.1: kNN regression at x = 4.4
+xs, ys, x0 = [1, 2, 4, 5, 7, 8], [3, 6, 4, 8, 10, 12], 4.4
+order = sorted(range(len(xs)), key=lambda i: abs(xs[i] - x0))
+assert len({abs(xs[i] - x0) for i in order[:4]}) == 4, "no ties among the nearest points"
+check(ys[order[0]], 4, "exam kNN k = 1 prediction")
+check(sum(ys[i] for i in order[:3]) / 3, 6, "exam kNN k = 3 prediction (x = 4, 5, 2)")
+# practice 3.1: the regression-tree split x < 3.5
+ys = [1, 3, 2, 7, 9, 8]; left, right = ys[:3], ys[3:]
+ml, mr = sum(left) / 3, sum(right) / 3
+check(ml, 2, "practice tree: left leaf"); check(mr, 8, "practice tree: right leaf")
+check(sum((v - ml) ** 2 for v in left) + sum((v - mr) ** 2 for v in right), 4, "practice tree: SSE")
 print("all checks passed")
