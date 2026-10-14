@@ -158,20 +158,28 @@ $y\,f(\bm{x})$                    & $6$   & $6$   & $1$   & $0.5$  & $-2$ \\
 misclassified (label $-$, predicted $+$).
 \end{solution}
 
-\part[6] Write down the optimization problem for the hard-margin SVM and explain why this is what
-we want to optimize.
-\begin{solution}
+\part[4] The soft-margin SVM solves
 \[
-\min_{\bm{w},\, b} \ \tfrac12 \|\bm{w}\|^2
-\quad \text{subject to} \quad y_i(\bm{w} \cdot \bm{x}_i + b) \ge 1 \ \text{ for every } i .
+\min_{\bm{w},\, b,\, \bm{\xi}} \ \tfrac12 \|\bm{w}\|^2 + C \sum_i \xi_i
+\quad \text{subject to} \quad y_i(\bm{w} \cdot \bm{x}_i + b) \ge 1 - \xi_i,\ \ \xi_i \ge 0 .
 \]
-The margin is $2/\|\bm{w}\|$, so minimizing $\tfrac12\|\bm{w}\|^2$ maximizes the margin. The
-constraints require every training point to be on its correct side of the boundary and outside the
-margin. Among all lines that separate the data, this picks the one that leaves the most room on
-both sides.
+\begin{subparts}
+\subpart What does the slack $\xi_i$ measure, and why do we need it?
+\subpart Where does a training point lie, relative to the margin and the decision boundary, if
+$\xi_i = 0$? If $0 < \xi_i < 1$? If $\xi_i > 1$?
+\end{subparts}
+\begin{solution}
+(a) $\xi_i$ measures how far point $i$ falls short of being on its correct side, outside the margin.
+Without slack, the constraints $y_i(\bm{w} \cdot \bm{x}_i + b) \ge 1$ have no solution when the
+classes overlap; slack lets some points violate the margin, at a cost $C\xi_i$ each.
+
+(b) $\xi_i = 0$: on its correct side, on or outside the margin. $0 < \xi_i < 1$: inside the margin,
+but still correctly classified. $\xi_i > 1$: on the wrong side of the decision boundary
+(misclassified). (At the solution $\xi_i = \max(0,\, 1 - y_i f(\bm{x}_i))$, so these are the cases
+$y_i f \ge 1$, $0 < y_i f < 1$ and $y_i f < 0$.)
 \end{solution}
 
-\part[2] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with
+\part[4] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with
 $C = 100$.
 \begin{subparts}
 \subpart Which has the wider margin?
