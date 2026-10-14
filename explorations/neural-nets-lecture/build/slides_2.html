@@ -50,6 +50,48 @@
   </div>
 </section>
 
+<!-- THE CHAIN RULE -->
+<section class="slide" id="s-chain" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>The chain rule</h2>
+    <ul>
+      <li>If <span class="math">\(y\)</span> depends on <span class="math">\(u\)</span>, and <span class="math">\(u\)</span> depends on <span class="math">\(x\)</span>, the derivatives multiply:<span class="math dm">\[\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}\]</span></li>
+      <li data-step="1">Example: <span class="math">\(y = (3x + 1)^2\)</span>. Write <span class="math">\(u = 3x + 1\)</span> and <span class="math">\(y = u^2\)</span>:<span class="math dm">\[\frac{du}{dx} = 3, \qquad \frac{dy}{du} = 2u\]</span></li>
+      <li data-step="2">At <span class="math">\(x = 1\)</span>, <span class="math">\(u = 4\)</span>:<span class="math dm">\[\frac{dy}{dx} = 2 \cdot 4 \cdot 3 = 24\]</span><span class="fine">Check: <span class="math">\(y = 9x^2 + 6x + 1\)</span>, so <span class="math">\(dy/dx = 18x + 6 = 24\)</span>.</span></li>
+      <li data-step="3">A network is a long chain: a weight changes a sum, the sum changes a unit, … , the output changes the loss. Multiply along the chain.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-chain"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>The rule from calculus. Each link of the chain contributes one factor.</p>
+    <p><b class="cue">1</b>Break the formula into two simple pieces, and differentiate each piece on its own.</p>
+    <p><b class="cue">2</b>Put in the value of u, then multiply. Expanding the square gives the same answer, but for a network there is nothing to expand: the chain rule is the only practical way.</p>
+    <p><b class="cue">3</b>The nested formula on the last slide is exactly such a chain, with one link per layer.</p>
+  </div>
+</section>
+
+<!-- WHEN THE CHAIN BRANCHES -->
+<section class="slide" id="s-branch" data-steps="3">
+  <div class="prose">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>When the chain branches</h2>
+    <ul>
+      <li>If <span class="math">\(x\)</span> affects <span class="math">\(y\)</span> along two paths, through <span class="math">\(u_1\)</span> and through <span class="math">\(u_2\)</span>, add the paths:<span class="math dm">\[\frac{dy}{dx} = \frac{\partial y}{\partial u_1} \cdot \frac{du_1}{dx} + \frac{\partial y}{\partial u_2} \cdot \frac{du_2}{dx}\]</span></li>
+      <li data-step="1">Example: <span class="math">\(u_1 = x^2\)</span>, <span class="math">\(u_2 = 3x\)</span>, <span class="math">\(y = u_1 u_2\)</span>:<span class="math dm">\[\frac{du_1}{dx} = 2x, \quad \frac{\partial y}{\partial u_1} = u_2, \quad \frac{du_2}{dx} = 3, \quad \frac{\partial y}{\partial u_2} = u_1\]</span></li>
+      <li data-step="2">At <span class="math">\(x = 2\)</span>, <span class="math">\(u_1 = 4\)</span> and <span class="math">\(u_2 = 6\)</span>:<span class="math dm">\[\frac{dy}{dx} = 6 \cdot 4 + 4 \cdot 3 = 24 + 12 = 36\]</span><span class="fine">Check: <span class="math">\(y = 3x^3\)</span>, so <span class="math">\(dy/dx = 9x^2 = 36\)</span>.</span></li>
+      <li data-step="3">In a network, a hidden unit feeds several units in the next layer. Its weights reach the loss along several paths, and we add them.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-branch"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>The chain rule with several variables. Each path is a chain, so it is a product; the paths add. The partial derivative ∂y/∂u₁ means: change u₁ and hold u₂ fixed.</p>
+    <p><b class="cue">1</b>y is a product of two things that both depend on x.</p>
+    <p><b class="cue">2</b>This is the product rule from calculus, derived from the chain rule.</p>
+    <p><b class="cue">3</b>We will see this in the worked example once the network has two outputs.</p>
+  </div>
+</section>
+
 <!-- WORKED EXAMPLE: FORWARD PASS -->
 <section class="slide" id="s-example" data-steps="3">
   <div class="prose">
@@ -233,6 +275,29 @@
   </div>
 </section>
 
+<!-- THE GENERAL RULE -->
+<section class="slide" id="s-general" data-steps="4">
+  <div class="prose">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>The general rule</h2>
+    <ul>
+      <li>Every unit <span class="math">\(j\)</span> works the same way: a weighted sum <span class="math">\(a_j = \sum_i w_{ji}\, o_i + b_j\)</span>, then an activation, <span class="math">\(o_j = \varphi(a_j)\)</span>.<span class="fine"><span class="math">\(o_i\)</span> is whatever feeds the unit: an input <span class="math">\(x_i\)</span> or a hidden value <span class="math">\(h_i\)</span>. At the output, <span class="math">\(a\)</span> is <span class="math">\(z\)</span>.</span></li>
+      <li data-step="1"><b>Any weight</b>: the error at its end times the value at its start.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w_{ji}} = \frac{\partial \mathcal{L}}{\partial a_j} \cdot o_i\]</span></li>
+      <li data-step="2"><b>A hidden unit</b>: its slope times the errors of the units it feeds, each times its weight.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial a_j} = \varphi'(a_j) \sum_k w_{kj}\, \frac{\partial \mathcal{L}}{\partial a_k}\]</span></li>
+      <li data-step="3"><b>An output unit</b>: from the loss. <span class="math">\(\hat{y} - y\)</span> for regression with squared error; <span class="math">\(p - y\)</span> for sigmoid or softmax with cross-entropy.</li>
+      <li data-step="4">Check with the example, hidden unit 1:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial a_1} &amp;= 0.1966 \times (2 \times (-0.325) + 1 \times 0.325) = -0.064 \\ \frac{\partial \mathcal{L}}{\partial w_{11}} &amp;= -0.064 \times 2 = -0.128 \end{aligned}\]</span></li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-general"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>One notation for every layer. "Error" here means ∂ℒ/∂a: how the loss changes with the unit's weighted sum.</p>
+    <p><b class="cue">1</b>Because aⱼ is linear in wⱼᵢ, with coefficient oᵢ. The biases are the case oᵢ = 1. This is what we did for v₁ (error at z times h₁) and for w₁₁ (error at a₁ times x₁).</p>
+    <p><b class="cue">2</b>The chain rule with branches: aⱼ changes oⱼ, which feeds every unit k of the next layer through wₖⱼ, and the paths add. φ′(aⱼ) is the slope of the activation: h(1 − h) for the sigmoid, 1 or 0 for ReLU.</p>
+    <p><b class="cue">3</b>The loss decides only where the backward pass starts. Squared error on a sigmoid output gives (p − y)p(1 − p), as on the "predict a class" slide.</p>
+    <p><b class="cue">4</b>The same numbers as "Add the paths": 2 and 1 are v₁₁ and v₂₁, −0.325 and 0.325 are the output errors, 0.1966 is the sigmoid's slope at h₁, and x₁ = 2. With more layers, apply the hidden-unit rule once per layer, from the output back.</p>
+  </div>
+</section>
+
 <!-- RECIPE -->
 <section class="slide" id="s-recipe" data-steps="4">
   <div class="prose">
@@ -240,9 +305,9 @@
     <h2>The recipe</h2>
     <ol>
       <li><b>Forward pass</b>: compute and store <span class="math">\(\boldsymbol{h}\)</span> and <span class="math">\(\boldsymbol{p}\)</span>.</li>
-      <li data-step="1"><b>Error at each output</b>: <span class="math">\(\partial\mathcal{L}/\partial z_k = p_k - y_k\)</span>.</li>
-      <li data-step="2"><b>Backward pass</b>: each hidden unit adds up the errors of the outputs it feeds, then multiplies by its slope:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial a_j} = \Bigl(\sum_k (p_k - y_k)\, v_{kj}\Bigr) \cdot h_j(1 - h_j)\]</span><span class="fine">With another activation, use <span class="math">\(\varphi'(a_j)\)</span>. With more layers, repeat, layer by layer.</span></li>
-      <li data-step="3"><b>Gradients</b>: each weight gets the error at its end times the value at its start: <span class="math">\((p_k - y_k)\, h_j\)</span> for <span class="math">\(v_{kj}\)</span>, <span class="math">\((\partial\mathcal{L}/\partial a_j)\, x_i\)</span> for <span class="math">\(w_{ji}\)</span>. A bias's start value is 1.</li>
+      <li data-step="1"><b>Error at each output</b>, from the loss (for example <span class="math">\(p_k - y_k\)</span>).</li>
+      <li data-step="2"><b>Backward pass</b>: the errors of the hidden units, layer by layer from the output back, with the hidden-unit rule.</li>
+      <li data-step="3"><b>Gradients</b>: each weight gets the error at its end times the value at its start.</li>
       <li data-step="4"><b>Update</b> every weight, <span class="math">\(w \leftarrow w - \eta\, \partial\mathcal{L}/\partial w\)</span>, using the old weights throughout.</li>
     </ol>
   </div>

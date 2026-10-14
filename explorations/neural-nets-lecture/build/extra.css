@@ -68,3 +68,4 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 /* class 2: title and opening comic on one slide */
 .titlememe img{max-height:68vh}
 .titlememe figcaption{font-size:.7em}
+#fig-chain svg,#fig-branch svg,#fig-general svg{max-height:60vh;width:auto;max-width:100%;margin:0 auto}

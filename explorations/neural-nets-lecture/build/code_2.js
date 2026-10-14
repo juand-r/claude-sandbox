@@ -20,6 +20,56 @@ function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b]
   mtxt(N.svg,320,385,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});
 }
 
+/* ---------- the chain rule: one path, then a branching one ---------- */
+// an arrow between two node centres (radius r), with a derivative written above it and its value below
+function link(L,A,B,r,top,bot,step){const t=Math.atan2(B[1]-A[1],B[0]-A[0]),c=Math.cos(t),s=Math.sin(t);
+  arrow(L,A[0]+r*c,A[1]+r*s,B[0]-(r+2)*c,B[1]-(r+2)*s,{stroke:'var(--ink)'});
+  // labels sit on either side of the arrow, along its normal (−sin, cos), so they never cross it
+  const mx=(A[0]+B[0])/2,my=(A[1]+B[1])/2,nx=-s,ny=c,d=Math.abs(s)<.2?18:30;
+  mtxt(L,mx-nx*d,my-ny*d+6,top,{'text-anchor':'middle','font-size':17});
+  if(bot)mtxt(stepG(L,step),mx+nx*d,my+ny*d+6,bot,{'text-anchor':'middle','font-size':16,fill:'var(--model)'});}
+{
+  const svg=el('svg',{viewBox:'0 0 640 300',role:'img','aria-label':'the chain from x to u to y, with the derivative on each link'},$('fig-chain'));
+  svg.setAttribute('fill','var(--ink)');
+  const P=[[70,130],[320,130],[570,130]],r=30;
+  P.forEach((q,k)=>node(svg,q[0],q[1],r,['x','u','y'][k]));
+  link(svg,P[0],P[1],r,'d u/d x','3',1);link(svg,P[1],P[2],r,'d y/d u','2u',1);
+  const g=stepG(svg,2);mtxt(g,P[0][0],P[0][1]+56,'x = 1',{'text-anchor':'middle','font-size':16,fill:'var(--model)'});
+  mtxt(g,P[1][0],P[1][1]+56,'u = 4',{'text-anchor':'middle','font-size':16,fill:'var(--model)'});
+  el('path',{d:'M70 230 v14 H570 v-14',fill:'none',stroke:'var(--hi)','stroke-width':2.5},g);
+  mtxt(g,320,280,'d y/d x = 2u · 3 = 24',{'text-anchor':'middle','font-size':19,fill:'var(--hi)','font-weight':700});
+}
+{
+  const svg=el('svg',{viewBox:'0 0 640 340',role:'img','aria-label':'x reaches y along two paths, through u1 and through u2'},$('fig-branch'));
+  svg.setAttribute('fill','var(--ink)');
+  const X=[80,170],U1=[320,70],U2=[320,270],Y=[560,170],r=30;
+  [[X,'x'],[U1,'u₁'],[U2,'u₂'],[Y,'y']].forEach(([q,n])=>node(svg,q[0],q[1],r,n));
+  link(svg,X,U1,r,'d u₁/d x','2x',1);link(svg,U1,Y,r,'∂y/∂u₁','u₂',1);
+  link(svg,X,U2,r,'d u₂/d x','3',1);link(svg,U2,Y,r,'∂y/∂u₂','u₁',1);
+  const g=stepG(svg,2);
+  mtxt(g,U1[0],U1[1]-44,'path 1: u₂ · 2x = 24',{'text-anchor':'middle','font-size':16,fill:'var(--hi)','font-weight':700});
+  mtxt(g,U2[0],U2[1]+56,'path 2: u₁ · 3 = 12',{'text-anchor':'middle','font-size':16,fill:'var(--hi)','font-weight':700});
+}
+
+/* ---------- the general rule: one unit j, what feeds it, and the units it feeds ---------- */
+{
+  const svg=el('svg',{viewBox:'0 0 640 380',role:'img','aria-label':'unit j receives the value o_i through w_ji and feeds several units k; their errors come back along the same connections'},$('fig-general'));
+  svg.setAttribute('fill','var(--ink)');
+  const I=[80,190],J=[300,190],K=[[530,80],[530,190],[530,300]],r=30;
+  node(svg,I[0],I[1],r,'oᵢ');node(svg,J[0],J[1],r,'aⱼ');K.forEach(q=>node(svg,q[0],q[1],r,''));
+  mtxt(svg,K[0][0],K[0][1]-46,'units k that j feeds',{'text-anchor':'middle','font-size':15,fill:'var(--muted)'});
+  K.forEach(q=>mtxt(svg,q[0],q[1]+6,'aₖ',{'text-anchor':'middle','font-size':16}));
+  arrow(svg,I[0]+r,I[1],J[0]-r-2,J[1],{stroke:'var(--ink)'});weightLabel(svg,(I[0]+J[0])/2,I[1]-18,'wⱼᵢ');
+  mtxt(svg,J[0],J[1]+56,'oⱼ = φ(aⱼ)',{'text-anchor':'middle','font-size':16,fill:'var(--model)'});
+  K.forEach(q=>{const t=Math.atan2(q[1]-J[1],q[0]-J[0]);arrow(svg,J[0]+r*Math.cos(t),J[1]+r*Math.sin(t),q[0]-(r+2)*Math.cos(t),q[1]-(r+2)*Math.sin(t),{stroke:'var(--ink)'});});
+  weightLabel(svg,415,120,'wₖⱼ');
+  const g=stepG(svg,2);
+  K.forEach(q=>mtxt(g,q[0]+42,q[1]+6,'∂ℒ/∂aₖ',{'font-size':15,fill:'var(--err)'}));
+  arrow(g,470,350,330,350,{stroke:'var(--err)','stroke-width':2.5});
+  mtxt(g,400,338,'errors come back',{'text-anchor':'middle','font-size':14,fill:'var(--err)'});
+  const g1=stepG(svg,1);mtxt(g1,(I[0]+J[0])/2,I[1]+40,'∂ℒ/∂aⱼ · oᵢ',{'text-anchor':'middle','font-size':16,fill:'var(--hi)','font-weight':700});
+}
+
 /* ---------- the worked example: a 2-2-1 network with its weights on the connections ---------- */
 // Same numbers as the slides and check_numbers.py. Values are rounded to 3 decimals, as on the slides.
 const EX={x:[2,1],W:[[-0.5,1],[0.5,-1]],b:[1,-0.5],v:[2,0.5],c:-1,h:['0.731','0.378'],z:'0.651'};

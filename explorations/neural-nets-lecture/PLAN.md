@@ -192,3 +192,10 @@ a class, then cross-entropy:
 The sigmoid's slope h₁(1 − h₁) is shown with four decimals, 0.1966: with 0.197 the regression gradient
 for w₁₁ comes out −1.063 by hand against −1.061 exactly. All later slides give the same numbers with
 0.1966.
+
+Follow-up 3 (2026-10-14), asked by the user ("we are only showing examples of the chain rule"):
+- "The chain rule" (one path, x → u → y; y = (3x + 1)² at x = 1 gives 24) and "When the chain branches"
+  (u₁ = x², u₂ = 3x, y = u₁u₂ at x = 2 gives 24 + 12 = 36), right after "The network is one formula".
+- "The general rule", after "Add the paths": aⱼ = Σᵢ wⱼᵢoᵢ + bⱼ, oⱼ = φ(aⱼ); ∂ℒ/∂wⱼᵢ = (∂ℒ/∂aⱼ)oᵢ;
+  ∂ℒ/∂aⱼ = φ′(aⱼ) Σₖ wₖⱼ ∂ℒ/∂aₖ; the output's error from the loss; checked on the example (−0.128).
+- The recipe now refers to these rules instead of repeating the formulas.
