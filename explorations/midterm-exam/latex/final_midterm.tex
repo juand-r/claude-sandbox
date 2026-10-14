@@ -47,6 +47,18 @@ written with AI. Treat ``written with AI'' as the positive class.
 
 \begin{parts}
 \part[4] Write down the confusion matrix.
+\ifprintanswers\else
+\begin{center}
+\begin{tabular}{l|p{3cm}|p{3cm}|}
+\multicolumn{1}{l}{} & \multicolumn{1}{c}{flagged} & \multicolumn{1}{c}{not flagged} \\
+\cline{2-3}
+written with AI & \rule[-0.45cm]{0pt}{1.2cm} & \\
+\cline{2-3}
+written by students & \rule[-0.45cm]{0pt}{1.2cm} & \\
+\cline{2-3}
+\end{tabular}
+\end{center}
+\fi
 \begin{solution}
 60 AI-written essays and 340 human-written essays.
 \begin{center}
@@ -55,7 +67,7 @@ written with AI. Treat ``written with AI'' as the positive class.
  & flagged & not flagged \\
 \midrule
 written with AI & TP $= 45$ & FN $= 15$ \\
-human-written   & FP $= 5$  & TN $= 335$ \\
+written by students & FP $= 5$  & TN $= 335$ \\
 \bottomrule
 \end{tabular}
 \end{center}
