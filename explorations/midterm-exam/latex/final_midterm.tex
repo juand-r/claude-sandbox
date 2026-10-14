@@ -182,10 +182,10 @@ $y_i f \ge 1$, $0 < y_i f < 1$ and $y_i f < 0$.)
 \part[4] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with
 $C = 100$.
 \begin{subparts}
-\subpart Which has the wider margin?
-\subpart Which has more support vectors?
-\subpart Which is more likely to overfit?
-\subpart How would you choose $C$ in practice?
+\subpart Which has the wider margin, and why?
+\subpart Which has more support vectors, and why?
+\subpart Which is more likely to overfit, and why?
+\subpart How would you choose $C$ in practice, and why?
 \end{subparts}
 \begin{solution}
 (a) $C = 0.01$: slack is cheap, so the SVM accepts many points inside the margin in exchange for a
@@ -194,7 +194,8 @@ wider one.
 vectors.
 (c) $C = 100$: violations are expensive, so the margin narrows to fit individual training points.
 (d) $C$ is a hyperparameter: try several values and pick the one with the best accuracy on
-validation data (or by cross-validation).
+validation data (or by cross-validation). Training accuracy cannot choose it, because a larger $C$
+always fits the training data at least as well; only held-out data shows which $C$ generalizes.
 \end{solution}
 
 \part[2] You remove a training point that is not a support vector and retrain the SVM. What
