@@ -337,18 +337,19 @@ Work backwards from the loss, one layer at a time.
 Output: $\partial E/\partial D_1 = D_1 - Y = 2.32 - 4 = -1.68$. D is linear, so this is also the
 derivative with respect to D1's input sum.
 
-C layer: $\partial E/\partial z_{C_k} = -1.68 \cdot W^{(3)}_{1k} \cdot \mathrm{ReLU}'(z_{C_k})$.
-C1 outputs 0, so its input sum is negative and its slope is 0: C1 passes nothing back.
+C layer: $\partial E/\partial z_{C_k} = -1.68 \cdot W^{(3)}_{1k} \cdot \mathrm{ReLU}'(z_{C_k})$, where $z_{C_k}$ is
+C$k$'s input sum. C1 outputs 0, so its input sum is negative and its slope is 0: C1 passes nothing back.
 \[
-\bm{\delta}_C = (\,-1.68 \cdot 1.5 \cdot 0,\ \ -1.68 \cdot (-0.4) \cdot 1,\ \ -1.68 \cdot 2.0 \cdot 1\,)
-= (\,0,\ 0.672,\ -3.36\,).
+\frac{\partial E}{\partial z_{C_1}} = -1.68 \cdot 1.5 \cdot 0 = 0, \quad
+\frac{\partial E}{\partial z_{C_2}} = -1.68 \cdot (-0.4) \cdot 1 = 0.672, \quad
+\frac{\partial E}{\partial z_{C_3}} = -1.68 \cdot 2.0 \cdot 1 = -3.36 .
 \]
 B2 feeds all three C nodes, so add the three paths:
-$\partial E/\partial B_2 = \sum_k \delta_{C_k} W^{(2)}_{k2} = 0 \cdot 0.5 + 0.672 \cdot 1.0 + (-3.36) \cdot 1.5 = -4.368$.
+$\partial E/\partial B_2 = \sum_k (\partial E/\partial z_{C_k})\, W^{(2)}_{k2} = 0 \cdot 0.5 + 0.672 \cdot 1.0 + (-3.36) \cdot 1.5 = -4.368$.
 
-Through the sigmoid: $\delta_{B_2} = -4.368 \cdot B_2 (1 - B_2) = -4.368 \cdot 0.82 \cdot 0.18 = -0.6447$.
+Through the sigmoid, to B2's input sum: $\partial E/\partial z_{B_2} = -4.368 \cdot B_2 (1 - B_2) = -4.368 \cdot 0.82 \cdot 0.18 = -0.6447$.
 
-The weight: $\partial E/\partial W^{(1)}_{21} = \delta_{B_2} \cdot A_1 = -0.6447 \cdot 2 = -1.289$.
+The weight: $\partial E/\partial W^{(1)}_{21} = (\partial E/\partial z_{B_2}) \cdot A_1 = -0.6447 \cdot 2 = -1.289$.
 
 Update: $W^{(1)}_{21} \leftarrow 1.0 - 1 \cdot (-1.289) = 2.29$.
 \end{solution}
