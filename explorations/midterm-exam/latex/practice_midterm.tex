@@ -387,8 +387,8 @@ the lowest validation loss (epoch 40), and stop once it has not improved for a s
 \newpage
 \titledquestion{Ensemble methods (10 points)}
 \begin{parts}
-\part[5] An SVM can only separate two classes. A plant-disease app classifies photos of leaves into 5
-classes: healthy, rust, blight, mildew and mosaic.
+\part[5] An SVM can only separate two classes. A tree-identification app classifies photos of trees into 5
+classes: oak, maple, pine, birch and willow.
 \begin{subparts}
 \subpart \prompt{With one-vs-rest partitions, how many SVMs do you train, and what labels does each one
 see?}
@@ -400,17 +400,17 @@ B, as shown. Every class on the predicted side gets one vote. Which class does t
 \begin{tabular}{|l|l|l|c|}
 \hline
 \rowcolor{headgray} SVM & side A & side B & prediction \\ \hline
-1 & healthy, rust & blight, mildew, mosaic & A \\ \hline
-2 & rust, blight & healthy, mildew, mosaic & A \\ \hline
-3 & rust, mildew, mosaic & healthy, blight & A \\ \hline
+1 & oak, maple & pine, birch, willow & A \\ \hline
+2 & maple, pine & oak, birch, willow & A \\ \hline
+3 & maple, birch, willow & oak, pine & A \\ \hline
 \end{tabular}
 \end{center}
 \answerbox{9}
 \begin{solution}
 (a) 5 SVMs, one per class. Each sees ``this class'' against ``the other four''.
 (b) One SVM for every pair of classes: $5 \cdot 4 / 2 = 10$.
-(c) Votes: rust 3 (from all three SVMs), healthy 1, blight 1, mildew 1, mosaic 1. The ensemble
-predicts rust.
+(c) Votes: maple 3 (from all three SVMs), oak 1, pine 1, birch 1, willow 1. The ensemble
+predicts maple.
 \end{solution}
 
 \newpage

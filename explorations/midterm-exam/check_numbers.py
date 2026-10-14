@@ -124,9 +124,9 @@ def vote_error(n, e):
 check(round(vote_error(25, 0.35), 2), 0.06, "practice 5.2: vote of 25 at error 0.35")
 check(round(vote_error(25, 0.6), 2), 0.85, "exam 5.2: vote of 25 at error 0.6")
 # practice 5.1(c): every class on the predicted side A gets one vote
-sides = [{"healthy", "rust"}, {"rust", "blight"}, {"rust", "mildew", "mosaic"}]
-votes = {c: sum(c in a for a in sides) for c in ["healthy", "rust", "blight", "mildew", "mosaic"]}
-assert votes == {"healthy": 1, "rust": 3, "blight": 1, "mildew": 1, "mosaic": 1}, votes
+sides = [{"oak", "maple"}, {"maple", "pine"}, {"maple", "birch", "willow"}]
+votes = {c: sum(c in a for a in sides) for c in ["oak", "maple", "pine", "birch", "willow"]}
+assert votes == {"oak": 1, "maple": 3, "pine": 1, "birch": 1, "willow": 1}, votes
 print(f"ok  practice 5.1(c) votes: {votes}")
 check(comb(5, 2), 10, "practice 5.1(b): one-vs-one SVMs"); check(comb(4, 2), 6, "exam 5.1(c): one-vs-one SVMs")
 print("all checks passed")
