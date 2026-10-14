@@ -132,6 +132,21 @@ function exNet(id,{path=null,kind='reg',aria}){
 }
 // a factor written next to the path, in the highlight colour
 const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fill:'var(--hi)','font-weight':700,...a});
+/* ---------- the network as one function: the symbols on the 2-2-1 network ---------- */
+{
+  const N=netDiagram($('fig-formula'),{...EXN,aria:'the 2-2-1 network with each weight, bias and value named'});
+  N.svg.setAttribute('fill','var(--ink)');
+  const P=N.pos,r=N.r,zy=P[2][0][1],px=590,bx=690,bw=58;
+  const W=(l,a,b,t,s)=>{const [x,y]=edgeAt(N,l,a,b,t);weightLabel(N.svg,x,y,s);};
+  W(0,0,0,.5,'w₁₁');W(0,1,1,.5,'w₂₂');W(0,0,1,.27,'w₂₁');W(0,1,0,.27,'w₁₂');W(1,0,0,.45,'v₁');W(1,1,0,.45,'v₂');
+  mtxt(N.svg,P[1][0][0],P[1][0][1]-32,'b₁',{...MUTED,'text-anchor':'middle'});mtxt(N.svg,P[1][1][0],P[1][1][1]+46,'b₂',{...MUTED,'text-anchor':'middle'});
+  mtxt(N.svg,P[2][0][0],zy+50,'c',{...MUTED,'text-anchor':'middle'});
+  arrow(N.svg,P[2][0][0]+r,zy,px-14,zy,{stroke:'var(--ink)'});hatY(N.svg,px,zy+6,20);
+  const g=stepG(N.svg,1);arrow(g,px+14,zy,bx-2,zy,{stroke:'var(--ink)'});
+  el('rect',{x:bx,y:zy-24,width:bw,height:48,rx:8,fill:'var(--surface)',stroke:'var(--err)','stroke-width':2},g);
+  mtxt(g,bx+bw/2,zy+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});mtxt(g,bx+bw/2,zy-36,'y',{'text-anchor':'middle','font-size':17});
+}
+
 {
   const X=exNet('fig-example',{aria:'a network with inputs 2 and 1, two sigmoid hidden units and a linear output, weights on the connections'});
   [1,2,3].forEach(k=>X.fwd(k).setAttribute('data-step',k));

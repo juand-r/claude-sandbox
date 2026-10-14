@@ -32,19 +32,20 @@
   </div>
 </section>
 
-<!-- ONE FORMULA -->
-<section class="slide one" id="s-formula" data-steps="2">
-  <div style="width:100%;max-width:74rem;margin:0 auto">
+<!-- ONE FUNCTION -->
+<section class="slide" id="s-formula" data-steps="2">
+  <div class="prose">
     <div class="eyebrow">Backpropagation</div>
-    <h2 style="margin:.2em 0 .6em">The network is one formula</h2>
-    <p>A small network for regression: two inputs, two sigmoid hidden units, one linear output. Written out in full:</p>
-    <span class="math dm big">\[\hat{y} = v_1\,\sigma(w_{11}x_1 + w_{12}x_2 + b_1) + v_2\,\sigma(w_{21}x_1 + w_{22}x_2 + b_2) + c\]</span>
-    <div data-step="1"><p>The loss of one training point, squared error:</p>
-    <span class="math dm big">\[\mathcal{L} = \tfrac12 (\hat{y} - y)^2\]</span></div>
-    <p class="takeline" data-step="2">Nine weights, all inside one nested formula. We need <span class="math">\(\partial\mathcal{L}/\partial w\)</span> for each one.</p>
+    <h2>The network is one function</h2>
+    <ul>
+      <li>A small network for regression: two inputs, two sigmoid hidden units, one linear output. Written out in full:<span class="math dm">\[\begin{aligned} \hat{y} = {} &amp; v_1\,\sigma(w_{11}x_1 + w_{12}x_2 + b_1) \\ {} + {} &amp; v_2\,\sigma(w_{21}x_1 + w_{22}x_2 + b_2) + c \end{aligned}\]</span><span class="fine">The two <span class="math">\(\sigma(\cdot)\)</span> terms are the hidden values <span class="math">\(h_1\)</span> and <span class="math">\(h_2\)</span>; <span class="math">\(v_1\)</span> and <span class="math">\(v_2\)</span> are the output weights, <span class="math">\(c\)</span> the output bias.</span></li>
+      <li data-step="1">The loss of one training point, squared error:<span class="math dm">\[\mathcal{L} = \tfrac12 (\hat{y} - y)^2\]</span></li>
+      <li data-step="2">Nine weights, all inside one nested function. We need <span class="math">\(\partial\mathcal{L}/\partial w\)</span> for each one.</li>
+    </ul>
   </div>
+  <div class="fig"><div id="fig-formula"></div></div>
   <div class="notes">
-    <p><b class="cue">0</b>The network we will use on the next slides. Inside: each hidden unit is a sigmoid of a weighted sum of the inputs, with its own bias b₁ or b₂. Outside: the prediction ŷ is a weighted sum of the hidden units, with bias c. No activation at the output, because ŷ can be any number.</p>
+    <p><b class="cue">0</b>The network we will use on the next slides; the picture shows where each symbol lives. wⱼᵢ is the weight from input i to hidden unit j, as in class 1. Inside: each hidden unit is a sigmoid of a weighted sum of the inputs, with its own bias b₁ or b₂. Outside: the prediction ŷ is a weighted sum of the hidden units, with weights v₁, v₂ and bias c. No activation at the output, because ŷ can be any number.</p>
     <p><b class="cue">1</b>Squared error, as in last year's slides and the practice exam. Put the first formula in for ŷ and the loss is one long expression in the nine weights.</p>
     <p><b class="cue">2</b>Differentiating this directly, weight by weight, is possible but messy, and it gets worse with every layer. The chain rule takes it apart one piece at a time, and the pieces can be reused.</p>
   </div>
@@ -67,7 +68,7 @@
     <p><b class="cue">0</b>The rule from calculus. Each link of the chain contributes one factor.</p>
     <p><b class="cue">1</b>Break the formula into two simple pieces, and differentiate each piece on its own.</p>
     <p><b class="cue">2</b>Put in the value of u, then multiply. Expanding the square gives the same answer, but for a network there is nothing to expand: the chain rule is the only practical way.</p>
-    <p><b class="cue">3</b>The nested formula on the last slide is exactly such a chain, with one link per layer.</p>
+    <p><b class="cue">3</b>The nested function on the last slide is exactly such a chain, with one link per layer.</p>
   </div>
 </section>
 
