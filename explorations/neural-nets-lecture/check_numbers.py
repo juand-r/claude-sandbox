@@ -411,6 +411,27 @@ close(r3(-0.5 - gm[0]), -0.439, 1e-12, "example: new w11 from the exact gradient
 for kind, g in [("mse", gm), ("ce", gc)]:
     print(f"    example, {kind}: loss {ex_loss(th0, kind):.4f} -> {ex_loss(th0 - g, kind):.4f} after one step on all nine weights")
     assert ex_loss(th0 - g, kind) < ex_loss(th0, kind)
+# the same example with two outputs (softmax, cross-entropy); output 1 keeps v11 = 2, v12 = 0.5, c1 = -1
+V2, c2v, y2 = np.array([[2.0, 0.5], [1.0, 0.5]]), np.array([-1.0, -1.0]), np.array([1.0, 0.0])
+def ex2_loss(th):
+    W_, b_, V_, c_ = th[:4].reshape(2, 2), th[4:6], th[6:10].reshape(2, 2), th[10:12]
+    zz = V_ @ sig(W_ @ EX["x"] + b_) + c_; pr = np.exp(zz - zz.max()); pr /= pr.sum()
+    return -np.log(pr @ y2)
+zz = V2 @ h + c2v; pr = np.exp(zz) / np.exp(zz).sum()
+for k, w in [("z1", (zz[0], 0.651)), ("z2", (zz[1], -0.080)), ("e^z1", (np.exp(zz[0]), 1.917)), ("e^z2", (np.exp(zz[1]), 0.923)),
+             ("p1", (pr[0], 0.675)), ("p2", (pr[1], 0.325)), ("L", (-np.log(pr[0]), 0.393))]:
+    close(r3(w[0]), w[1], 1e-12, f"two outputs: {k}")
+close(r3(1 * 0.731 + 0.5 * 0.378 - 1), -0.080, 1e-12, "two outputs by hand: z2")
+close(r3(1.917 / (1.917 + 0.923)), 0.675, 1e-12, "two outputs by hand: p1 from the rounded exponentials")
+close(r3(-np.log(0.675)), 0.393, 1e-12, "two outputs by hand: L")
+close(r3(-0.325 * 2 * 0.197 * 2), -0.256, 1e-12, "two outputs by hand: path through z1")
+close(r3(0.325 * 1 * 0.197 * 2), 0.128, 1e-12, "two outputs by hand: path through z2")
+close(r3((-0.325 * 2 + 0.325 * 1) * 0.197), -0.064, 1e-12, "two outputs by hand: dL/da1 (recipe notes)")
+close(r3((pr[0] - 1) * 2 * h[0] * (1 - h[0]) * 2), -0.256, 1e-12, "two outputs: path through z1, exact")
+close(r3(pr[1] * 1 * h[0] * (1 - h[0]) * 2), 0.128, 1e-12, "two outputs: path through z2, exact")
+g2 = fd(ex2_loss, np.r_[EX["W"].ravel(), EX["b"], V2.ravel(), c2v])
+close(r3(g2[0]), -0.128, 1e-12, "two outputs: dL/dw11, numerically")
+close(r3(-0.256 + 0.128), -0.128, 1e-12, "two outputs: sum of the two rounded paths")
 # squared error's extra factor p(1 - p): a confident wrong answer (p = 0.01, y = 1) gets a tiny gradient
 close(r3((0.01 - 1) * 0.01 * 0.99), -0.010, 1e-12, "squared error at p = 0.01, y = 1: dL/dz")
 

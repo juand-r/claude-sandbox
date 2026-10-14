@@ -26,12 +26,28 @@ const EX={x:[2,1],y:1,W:[[-0.5,1],[0.5,-1]],b:[1,-0.5],v:[2,0.5],c:-1,
   h:['0.731','0.378'],z:'0.651',p:'0.657',L:'0.059'};
 const EXN={names:[['x₁','x₂'],['h₁','h₂'],['z']],xs:[90,290,480],W:770,H:380,top:60,bot:320};
 const num=v=>String(v).replace('-','−');
+// a point a fraction t along the edge from node a in layer l to node b in layer l + 1
+const edgeAt=(N,l,a,b,t)=>{const A=N.pos[l][a],B=N.pos[l+1][b],r=N.r;return [A[0]+r+(B[0]-r-A[0]-r)*t,A[1]+(B[1]-A[1])*t];};
+// a weight written on its connection, on a solid background so a highlighted edge does not strike through it
+function weightLabel(L,x,y,s,a2={}){const g=el('g',{},L),w=11*s.length+10;
+  el('rect',{x:x-w/2,y:y-13,width:w,height:26,rx:6,fill:'var(--surface)'},g);
+  label(g,x,y+6,s,{'text-anchor':'middle','font-weight':400,'font-size':17,...a2});return g;}
+const MUTED={'text-anchor':'end','font-size':16,fill:'var(--muted)'};
+const VAL=(g,x,y,s,anchor='start')=>mtxt(g,x,y,s,{'text-anchor':anchor,'font-size':17,fill:'var(--model)'});
+// the inputs, the first layer's weights and biases (the same in every version of the example);
+// hvals(g) writes the hidden values into g
+function firstLayer(N){const P=N.pos,r=N.r,W=(a,b,t,v)=>{const [x,y]=edgeAt(N,0,a,b,t);return weightLabel(N.svg,x,y,num(v));};
+  const wl={w11:W(0,0,.5,EX.W[0][0]),w22:W(1,1,.5,EX.W[1][1]),w21:W(0,1,.27,EX.W[1][0]),w12:W(1,0,.27,EX.W[0][1])};
+  mtxt(N.svg,P[1][0][0]-8,P[1][0][1]-32,'b₁ = '+num(EX.b[0]),MUTED);mtxt(N.svg,P[1][1][0]-8,P[1][1][1]+46,'b₂ = '+num(EX.b[1]),MUTED);
+  P[0].forEach((q,i)=>mtxt(N.svg,q[0]-r-10,q[1]+6,String(EX.x[i]),{'text-anchor':'end','font-size':18,fill:'var(--model)'}));
+  const hvals=g=>{VAL(g,P[1][0][0]+8,P[1][0][1]-32,EX.h[0]);VAL(g,P[1][1][0]+8,P[1][1][1]+46,EX.h[1]);};
+  return {wl,hvals};}
 // draw the network; returns positions and helpers. path: null, 'v1' or 'w11' (highlighted from the start)
 function exNet(id,{path=null,aria}){
   const N=netDiagram($(id),{...EXN,aria});
   N.svg.setAttribute('fill','var(--ink)');   // default colour for labels, so they follow the theme
   const P=N.pos,r=N.r,zy=P[2][0][1],px=590,bx=690,bw=58;
-  const at=(l,a,b,t)=>{const A=P[l][a],B=P[l+1][b];return [A[0]+r+(B[0]-r-A[0]-r)*t,A[1]+(B[1]-A[1])*t];};
+  const at=(l,a,b,t)=>edgeAt(N,l,a,b,t);
   // the output: z → σ → p → loss box
   const gA=el('g',{},N.svg);
   arrow(gA,P[2][0][0]+r,zy,px-14,zy,{stroke:'var(--ink)'});mtxt(gA,(P[2][0][0]+r+px-14)/2,zy-10,'σ',{'text-anchor':'middle','font-size':17});
@@ -45,19 +61,13 @@ function exNet(id,{path=null,aria}){
   if(path){hiEdge(N,gH,1,0,0);if(path==='w11')hiEdge(N,gH,0,0,0);
     for(const [x1,x2] of [[P[2][0][0]+r,px-14],[px+14,bx-2]])el('line',{x1,y1:zy,x2,y2:zy,stroke:'var(--hi)','stroke-width':5,'stroke-linecap':'round'},gH);}
   // weights on the connections, biases and inputs
-  const W=(l,a,b,t,s,a2={})=>{const [x,y]=at(l,a,b,t),g=el('g',{},N.svg),w=11*s.length+10;
-    el('rect',{x:x-w/2,y:y-13,width:w,height:26,rx:6,fill:'var(--surface)'},g);
-    label(g,x,y+6,s,{'text-anchor':'middle','font-weight':400,'font-size':17,...a2});return g;};
-  const wl={w11:W(0,0,0,.5,num(EX.W[0][0])),w22:W(0,1,1,.5,num(EX.W[1][1])),w21:W(0,0,1,.27,num(EX.W[1][0])),w12:W(0,1,0,.27,num(EX.W[0][1])),
-    v1:W(1,0,0,.45,num(EX.v[0])),v2:W(1,1,0,.45,num(EX.v[1]))};
-  const mut={'text-anchor':'end','font-size':16,fill:'var(--muted)'};
-  mtxt(N.svg,P[1][0][0]-8,P[1][0][1]-32,'b₁ = '+num(EX.b[0]),mut);mtxt(N.svg,P[1][1][0]-8,P[1][1][1]+46,'b₂ = '+num(EX.b[1]),mut);
-  mtxt(N.svg,P[2][0][0],zy+50,'c = '+num(EX.c),{...mut,'text-anchor':'middle'});
-  P[0].forEach((q,i)=>mtxt(N.svg,q[0]-r-10,q[1]+6,String(EX.x[i]),{'text-anchor':'end','font-size':18,fill:'var(--model)'}));
+  const F=firstLayer(N),V=(b,t,v)=>{const [x,y]=at(1,b,0,t);return weightLabel(N.svg,x,y,num(v));};
+  const wl={...F.wl,v1:V(0,.45,EX.v[0]),v2:V(1,.45,EX.v[1])};
+  mtxt(N.svg,P[2][0][0],zy+50,'c = '+num(EX.c),{...MUTED,'text-anchor':'middle'});
   // forward values, each in its own group so a slide can reveal them step by step
-  const val=(g,x,y,s,anchor='start')=>mtxt(g,x,y,s,{'text-anchor':anchor,'font-size':17,fill:'var(--model)'});
+  const val=VAL;
   const fwd=k=>{const g=el('g',{},N.svg);
-    if(k===1){val(g,P[1][0][0]+8,P[1][0][1]-32,EX.h[0]);val(g,P[1][1][0]+8,P[1][1][1]+46,EX.h[1]);}
+    if(k===1)F.hvals(g);
     if(k===2){val(g,P[2][0][0],zy-36,EX.z,'middle');val(g,px,zy-22,EX.p,'middle');}
     if(k===3){val(g,bx+bw/2,zy+48,EX.L,'middle');}
     return g;};
@@ -95,14 +105,40 @@ const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fi
   g.style.display='none';
 }
 
-/* ---------- several paths: a 2-2-2 network ---------- */
+/* ---------- the worked example with two outputs: softmax and cross-entropy ---------- */
+// Same input and first layer; output 1 keeps v₁₁ = 2, v₁₂ = 0.5, c₁ = −1. Label: class 1, y = (1, 0).
+const EX2={V:[[2,0.5],[1,0.5]],c:[-1,-1],z:['0.651','−0.080'],p:['0.675','0.325'],err:['−0.325','0.325']};
+function exNet2(id,{aria}){
+  const N=netDiagram($(id),{names:[['x₁','x₂'],['h₁','h₂'],['z₁','z₂']],xs:[80,265,440],W:770,H:390,top:60,bot:330,aria});
+  N.svg.setAttribute('fill','var(--ink)');
+  const P=N.pos,r=N.r,F=firstLayer(N),bx=692,bw=58,ly=(P[2][0][1]+P[2][1][1])/2;
+  softmaxBox(N.svg,P[2][0][0]+r,P[2].map(q=>q[1]),{x:516,w:76,weight:400});
+  for(const q of P[2])el('line',{x1:642,y1:q[1],x2:bx-2,y2:ly,stroke:'var(--ink)','stroke-width':1.6},N.svg);
+  el('rect',{x:bx,y:ly-24,width:bw,height:48,rx:8,fill:'var(--surface)',stroke:'var(--err)','stroke-width':2},N.svg);
+  mtxt(N.svg,bx+bw/2,ly+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});
+  mtxt(N.svg,bx+bw/2,ly-36,'y = (1, 0)',{'text-anchor':'middle','font-size':16});
+  const V=(j,k,t)=>{const [x,y]=edgeAt(N,1,j,k,t);return weightLabel(N.svg,x,y,num(EX2.V[k][j]));};
+  V(0,0,.5);V(1,1,.5);V(0,1,.27);V(1,0,.27);
+  mtxt(N.svg,P[2][0][0]-8,P[2][0][1]-32,'c₁ = −1',MUTED);mtxt(N.svg,P[2][1][0]-8,P[2][1][1]+46,'c₂ = −1',MUTED);
+  return {N,P,F,ly,bx,bw};}
+const z2vals=(X,g)=>{VAL(g,X.P[2][0][0]+8,X.P[2][0][1]-32,EX2.z[0]);VAL(g,X.P[2][1][0]+8,X.P[2][1][1]+46,EX2.z[1]);};
+const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'));};
 {
-  const N=netDiagram($('fig-paths'),{names:[['x₁','x₂'],['h₁','h₂'],['z₁','z₂']],xs:[80,300,500],W:600,H:360,top:60,bot:300,aria:'a hidden weight reaches the loss along two paths, through both outputs'});
-  hiEdge(N,N.gE,0,0,0);hiEdge(N,N.gE,1,0,0);hiEdge(N,N.gE,1,0,1,'var(--err)');
-  label(N.svg,190,N.pos[0][0][1]-8,'w₁₁',{fill:'var(--hi)','text-anchor':'middle','font-weight':400});
-  const g2=stepG(N.svg,2),f=(x,y,s,c)=>mtxt(g2,x,y,s,{'text-anchor':'middle','font-size':15,fill:c});
-  f(528,N.pos[2][0][1]-36,'*δ^(2) = *p − *y','var(--err)');f(300,N.pos[1][0][1]-36,'*δ^(1)','var(--err)');
-  arrow(g2,470,N.pos[2][0][1]-40,340,N.pos[1][0][1]-40,{stroke:'var(--err)'});
+  const X=exNet2('fig-two',{aria:'the network with two outputs and a softmax'});
+  X.F.hvals(X.N.svg);
+  z2vals(X,stepG(X.N.svg,1));p2vals(X,stepG(X.N.svg,2));mtxt(stepG(X.N.svg,2),X.bx+X.bw/2,X.ly+48,'0.393',{'text-anchor':'middle','font-size':17,fill:'var(--model)'});
+  const g=stepG(X.N.svg,3);fac(g,X.P[2][0][0],X.P[2][0][1]-60,'∂ℒ/∂z₁ = −0.325');fac(g,X.P[2][1][0],X.P[2][1][1]+74,'∂ℒ/∂z₂ = 0.325',{fill:'var(--err)'});
+}
+{
+  const X=exNet2('fig-paths',{aria:'the hidden weight w11 reaches the loss along two paths, through both outputs'});
+  X.F.hvals(X.N.svg);z2vals(X,X.N.svg);
+  const gH=el('g',{},X.N.gE);hiEdge(X.N,gH,0,0,0);hiEdge(X.N,gH,1,0,0);hiEdge(X.N,gH,1,0,1,'var(--err)');
+  const g1=stepG(X.N.svg,1),g2=stepG(X.N.svg,2);
+  fac(g1,X.P[2][0][0],X.P[2][0][1]-60,'−0.325');
+  const [ax,ay]=edgeAt(X.N,1,0,0,.5);fac(g1,ax,ay-18,'×2');
+  fac(g1,X.P[1][0][0],X.P[1][0][1]+48,'×0.197');fac(g1,X.P[0][0][0],X.P[0][0][1]-34,'×2');
+  fac(g2,X.P[2][1][0],X.P[2][1][1]+74,'0.325',{fill:'var(--err)'});
+  const [bx_,by]=edgeAt(X.N,1,0,1,.27);fac(g2,bx_+30,by+12,'×1',{fill:'var(--err)'});
 }
 
 /* ---------- the recipe: forward, then backward ---------- */
@@ -110,9 +146,9 @@ const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fi
   const N=netDiagram($('fig-recipe'),{names:[['x₁','x₂'],['h₁','h₂','h₃'],['z₁','z₂']],xs:[80,300,500],W:600,H:420,top:90,bot:330,aria:'forward pass from left to right, backward pass from right to left'});
   arrow(N.svg,60,40,520,40,{stroke:'var(--model)','stroke-width':3});mtxt(N.svg,290,30,'forward: *h, *p',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
   const g2=stepG(N.svg,2);arrow(g2,520,400,60,400,{stroke:'var(--err)','stroke-width':3});
-  mtxt(g2,290,390,'backward: *δ^(2), then *δ^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)'});
-  const g1=stepG(N.svg,1);mtxt(g1,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'*δ^(2)',{'font-size':16,fill:'var(--err)'});
-  mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'*δ^(1)',{'font-size':16,fill:'var(--err)'});
+  mtxt(g2,290,390,'backward: ∂ℒ/∂z, then ∂ℒ/∂a',{'text-anchor':'middle','font-size':15,fill:'var(--err)'});
+  const g1=stepG(N.svg,1);mtxt(g1,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'∂ℒ/∂z',{'font-size':16,fill:'var(--err)'});
+  mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'∂ℒ/∂a',{'font-size':16,fill:'var(--err)'});
 }
 
 /* ---------- learning-rate schedules ---------- */

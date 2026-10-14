@@ -173,3 +173,9 @@ Removed: the chain rule slide (1-D chain) and the Adam slide.
 Numbers (x = (2, 1), y = 1): w₁₁ = −0.5, w₁₂ = 1, b₁ = 1; w₂₁ = 0.5, w₂₂ = −1, b₂ = −0.5; v₁ = 2, v₂ = 0.5,
 c = −1. They were chosen by a search so that a student working with three decimals gets the same
 three-decimal answers as the exact computation at every step; check_numbers.py verifies this.
+
+Follow-up (2026-10-14), asked by the user: "Several paths" used δ and the matrix form, which last year's
+slides do not (they show the highlighted paths only). Now two slides with numbers: "Two outputs" (same
+first layer; v₂₁ = 1, v₂₂ = 0.5, c₂ = −1; softmax, cross-entropy, y = (1, 0); p = (0.675, 0.325)) and
+"Add the paths" (−0.256 through z₁, +0.128 through z₂, sum −0.128). The recipe and the takeaways are in
+words and partial derivatives; no δ, no matrix form on the slides (the recipe's notes keep one line).

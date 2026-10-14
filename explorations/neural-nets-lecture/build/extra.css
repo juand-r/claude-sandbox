@@ -64,3 +64,4 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 .dtab.xent td{text-align:left}
 .dtab.xent th,.dtab.xent td{white-space:nowrap}
 @media (max-width:620px){.dtab.xent{font-size:.62rem}.dtab.xent th,.dtab.xent td{padding:.25em .2em;white-space:normal}}
+#fig-two svg,#fig-paths svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
