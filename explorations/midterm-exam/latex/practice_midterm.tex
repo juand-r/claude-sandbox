@@ -237,5 +237,148 @@ for kNN.
 \end{solution}
 \end{parts}
 
+% ===================================================================== 4
+\titledquestion{Neural networks (30 points)}
+In this question, row $j$ of a weight matrix $\bm{W}^{(l)}$ holds the weights into node $j$ of layer
+$l$: $W^{(l)}_{ji}$ is the weight from node $i$ of the previous layer to node $j$. The bias of node
+$j$ is $b^{(l)}_j$, the weight on the input that is always 1.
+
+\begin{parts}
+\part[8] In the network below, out1 represents Class A and out2 represents Class B. All nodes use
+the sign function as their activation function: $\operatorname{sign}(z) = +1$ if $z > 0$ and $-1$
+if $z < 0$.
+\begin{center}
+\begin{tikzpicture}[x=2.6cm,y=1.25cm,n/.style={circle,draw,minimum size=8mm,fill=blue!6},
+  bn/.style={circle,draw,dashed,minimum size=8mm,fill=gray!10}]
+\node[n] (A1) at (0,2) {A1}; \node[n] (A2) at (0,1) {A2}; \node[bn] (A0) at (0,0) {1};
+\node[n] (B1) at (1,2) {B1}; \node[n] (B2) at (1,1) {B2}; \node[bn] (B0) at (1,0) {1};
+\node[n] (C1) at (2,2) {C1}; \node[n] (C2) at (2,1) {C2};
+\foreach \a in {A1,A2,A0} \foreach \b in {B1,B2} \draw[->] (\a) -- (\b);
+\foreach \a in {B1,B2,B0} \foreach \b in {C1,C2} \draw[->] (\a) -- (\b);
+\draw[->] (C1) -- ++(0.55,0) node[right] {out1}; \draw[->] (C2) -- ++(0.55,0) node[right] {out2};
+\end{tikzpicture}
+\end{center}
+\[
+\bm{W}^{(1)} = \begin{pmatrix} 0.5 & -0.3 \\ -0.4 & 0.6 \end{pmatrix}, \quad
+\bm{b}^{(1)} = \begin{pmatrix} 0.2 \\ -0.5 \end{pmatrix}, \qquad
+\bm{W}^{(2)} = \begin{pmatrix} 0.7 & 0.4 \\ -0.6 & 0.3 \end{pmatrix}, \quad
+\bm{b}^{(2)} = \begin{pmatrix} 0.2 \\ 0.1 \end{pmatrix}
+\]
+Show the forward pass, in matrix form, of the record with Feature1 $= 6$ and Feature2 $= 4$. How would
+this network classify the record (Class A or Class B)?
+\begin{solution}
+\[
+\bm{z}_B = \bm{W}^{(1)} \bm{x} + \bm{b}^{(1)}
+= \begin{pmatrix} 0.5 \cdot 6 - 0.3 \cdot 4 + 0.2 \\ -0.4 \cdot 6 + 0.6 \cdot 4 - 0.5 \end{pmatrix}
+= \begin{pmatrix} 2.0 \\ -0.5 \end{pmatrix}, \quad
+\bm{B} = \operatorname{sign}(\bm{z}_B) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+\]
+\[
+\bm{z}_C = \bm{W}^{(2)} \bm{B} + \bm{b}^{(2)}
+= \begin{pmatrix} 0.7 - 0.4 + 0.2 \\ -0.6 - 0.3 + 0.1 \end{pmatrix}
+= \begin{pmatrix} 0.5 \\ -0.8 \end{pmatrix}, \quad
+\bm{C} = \operatorname{sign}(\bm{z}_C) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+\]
+out1 $= +1$ and out2 $= -1$: the network predicts Class A.
+\end{solution}
+
+\part[14] The network below has three layers of weights. A record with input $A_1 = 2$, $A_2 = 1$
+and an actual value $Y = 4$ gets passed in.
+\begin{center}
+\begin{tikzpicture}[x=2.4cm,y=1.15cm,n/.style={circle,draw,minimum size=8mm,fill=blue!6},
+  bn/.style={circle,draw,dashed,minimum size=8mm,fill=gray!10}]
+\node[n] (A1) at (0,2.5) {A1}; \node[n] (A2) at (0,1.5) {A2}; \node[bn] (A0) at (0,0.5) {1};
+\node[n] (B1) at (1,3) {B1}; \node[n] (B2) at (1,2) {B2}; \node[n] (B3) at (1,1) {B3}; \node[bn] (B0) at (1,0) {1};
+\node[n] (C1) at (2,3) {C1}; \node[n] (C2) at (2,2) {C2}; \node[n] (C3) at (2,1) {C3}; \node[bn] (C0) at (2,0) {1};
+\node[n] (D1) at (3,1.5) {D1};
+\foreach \a in {A1,A2,A0} \foreach \b in {B1,B2,B3} \draw[->] (\a) -- (\b);
+\foreach \a in {B1,B2,B3,B0} \foreach \b in {C1,C2,C3} \draw[->] (\a) -- (\b);
+\foreach \a in {C1,C2,C3,C0} \draw[->] (\a) -- (D1);
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+ & function & derivative \\
+\midrule
+B layer: sigmoid & $f(z) = 1/(1 + e^{-z})$ & $f(z)\,(1 - f(z))$ \\
+C layer: ReLU & $f(z) = 0$ if $z < 0$; $f(z) = z$ if $z \ge 0$ & $0$ if $z < 0$; $1$ if $z \ge 0$ \\
+D layer: linear & $f(z) = z$ & $1$ \\
+loss: squared error & $E = \tfrac12 (Y' - Y)^2$ & $\partial E/\partial Y' = Y' - Y$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $Y'$ is the network's output, D1. The weights during the forward propagation are
+\[
+\bm{W}^{(1)} = \begin{pmatrix} 0.5 & -1.0 \\ 1.0 & 0.5 \\ -0.5 & 1.5 \end{pmatrix},\
+\bm{b}^{(1)} = \begin{pmatrix} 0.5 \\ -1.0 \\ 0 \end{pmatrix},\quad
+\bm{W}^{(2)} = \begin{pmatrix} -1.0 & 0.5 & -1.0 \\ 2.0 & 1.0 & -0.5 \\ 0.5 & 1.5 & 1.0 \end{pmatrix},\
+\bm{b}^{(2)} = \begin{pmatrix} 0.5 \\ -0.5 \\ -1.0 \end{pmatrix},
+\]
+\[
+\bm{W}^{(3)} = \begin{pmatrix} 1.5 & -0.4 & 2.0 \end{pmatrix},\quad b^{(3)} = 0.5 .
+\]
+You do not need to forward propagate. The node output values during the forward propagation are
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+A layer & B layer & C layer & D layer \\
+\midrule
+$A_1 = 2$ & $B_1 = 0.62$ & $C_1 = 0$ & $D_1 = 2.32$ \\
+$A_2 = 1$ & $B_2 = 0.82$ & $C_2 = 1.25$ & \\
+          & $B_3 = 0.62$ & $C_3 = 1.16$ & \\
+\bottomrule
+\end{tabular}
+\end{center}
+Adjust $W^{(1)}_{21}$, the weight from A1 to B2, using a learning rate of 1.
+\begin{solution}
+Work backwards from the loss, one layer at a time.
+
+Output: $\partial E/\partial D_1 = D_1 - Y = 2.32 - 4 = -1.68$. D is linear, so this is also the
+derivative with respect to D1's input sum.
+
+C layer: $\partial E/\partial z_{C_k} = -1.68 \cdot W^{(3)}_{1k} \cdot \mathrm{ReLU}'(z_{C_k})$.
+C1 outputs 0, so its input sum is negative and its slope is 0: C1 passes nothing back.
+\[
+\bm{\delta}_C = (\,-1.68 \cdot 1.5 \cdot 0,\ \ -1.68 \cdot (-0.4) \cdot 1,\ \ -1.68 \cdot 2.0 \cdot 1\,)
+= (\,0,\ 0.672,\ -3.36\,).
+\]
+B2 feeds all three C nodes, so add the three paths:
+$\partial E/\partial B_2 = \sum_k \delta_{C_k} W^{(2)}_{k2} = 0 \cdot 0.5 + 0.672 \cdot 1.0 + (-3.36) \cdot 1.5 = -4.368$.
+
+Through the sigmoid: $\delta_{B_2} = -4.368 \cdot B_2 (1 - B_2) = -4.368 \cdot 0.82 \cdot 0.18 = -0.6447$.
+
+The weight: $\partial E/\partial W^{(1)}_{21} = \delta_{B_2} \cdot A_1 = -0.6447 \cdot 2 = -1.289$.
+
+Update: $W^{(1)}_{21} \leftarrow 1.0 - 1 \cdot (-1.289) = 2.29$.
+\end{solution}
+
+\part Short answers (8 points in all).
+\begin{subparts}
+\subpart[3] Suppose the output D1 used a sigmoid, the label were $Y \in \{0, 1\}$, and the loss were
+cross-entropy (log loss) instead of squared error. Which step of your backpropagation in 4.2 would
+change, and how?
+\begin{solution}
+Only the first step. With a sigmoid output and cross-entropy, the derivative of the loss with respect
+to D1's input sum is $p - Y$, where $p$ is the sigmoid output (the derivative of the loss and the
+sigmoid's slope cancel to this). Everything after that is the same chain rule as before.
+\end{solution}
+\subpart[3] Why do the hidden layers need nonlinear activation functions? What would the network in
+4.2 compute if every activation were linear?
+\begin{solution}
+A composition of linear functions is linear. With linear activations, D1 would be $\bm{w} \cdot
+\bm{A} + b$ for some $\bm{w}$ and $b$: the whole network would be one linear model, no matter how many
+layers it has.
+\end{solution}
+\subpart[2] While training a network, the training loss keeps going down, but the validation loss
+is lowest at epoch 40 and then rises. What is happening, and what would you do?
+\begin{solution}
+The network is overfitting after epoch 40. Use early stopping: keep the weights from the epoch with
+the lowest validation loss (epoch 40), and stop once it has not improved for a set number of epochs
+(the patience).
+\end{solution}
+\end{subparts}
+\end{parts}
+
 \end{questions}
 \end{document}

@@ -16,7 +16,12 @@ mine, mostly from scrap metal.
 
 ## LaTeX exams (`latex/`)
 
-- `practice_midterm.tex`: practice test, questions 1 (TB rats), 2 (SVMs) and 3 (nonlinear regression).
+- `practice_midterm.tex`: practice test, questions 1 (TB rats), 2 (SVMs), 3 (nonlinear regression) and
+  4 (neural networks: forward pass with sign units, backpropagation through sigmoid, ReLU and linear
+  layers, short answers). The numbers for question 4 come from `nn_practice.py`. It is based on last
+  year's practice problems, with new numbers; three inconsistencies in last year's backprop problem
+  were fixed (sigmoid outputs outside (0, 1), a bias input of 5 instead of 1, and E = (Y' - Y)^2 with
+  derivative Y' - Y; now E = 1/2 (Y' - Y)^2).
 - `final_midterm.tex`: the exam, questions 1 (AI-text detection), 2 (SVMs) and 3 (nonlinear
   regression), slightly easier. The figure for 3.3 is `fig_q33.tex`, drawn from data written by
   `make_figure.py` (`.venv/bin/python make_figure.py`; packages in `requirements.txt`).
