@@ -231,3 +231,9 @@ Plan in PLAN.md, Revision 3. What changed:
   its folder, so stale slides would otherwise end up in the PDF).
 - Tests: steps.js (all steps), interact2.js (dark, phone; the list of slides now includes the new
   ones instead of the chain slide), mathwrap.js at five sizes: all pass, no JS errors.
+
+Later the same day (asked by the user): the example is now regression first (linear output, target 2),
+then the same network predicting a class (sigmoid, label 1, squared error kept), then cross-entropy; then
+two outputs with the paths added, and the recipe in words (no δ, no matrix form). The sigmoid's slope is
+written 0.1966 (four decimals) because 0.197 shifts the regression gradient for w₁₁ in the third decimal.
+check_numbers.py covers every number, by hand and against numerical derivatives.

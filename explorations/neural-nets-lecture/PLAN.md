@@ -179,3 +179,16 @@ slides do not (they show the highlighted paths only). Now two slides with number
 first layer; v₂₁ = 1, v₂₂ = 0.5, c₂ = −1; softmax, cross-entropy, y = (1, 0); p = (0.675, 0.325)) and
 "Add the paths" (−0.256 through z₁, +0.128 through z₂, sum −0.128). The recipe and the takeaways are in
 words and partial derivatives; no δ, no matrix form on the slides (the recipe's notes keep one line).
+
+Follow-up 2 (2026-10-14), asked by the user: the squared-error example looked like regression (squared
+error) but had a sigmoid output p and a label y = 1. Now it is regression first, then the same problem as
+a class, then cross-entropy:
+- Regression (slides "The network is one formula" to "Update the weights"): linear output ŷ = z, target
+  y = 2, ℒ = ½(ŷ − y)²; ŷ = 0.651, ℒ = 0.910; ∂ℒ/∂v₁ = −0.986, ∂ℒ/∂w₁₁ = −1.061; η = 0.1 gives
+  v₁ = 2.099, w₁₁ = −0.394.
+- "Now predict a class" (new): sigmoid output p = 0.657, label y = 1, squared error kept; the one new
+  factor is p(1 − p) = 0.225 in place of ∂ŷ/∂z = 1; table regression vs class.
+- "Now with cross-entropy": as before (class, squared error vs class, cross-entropy).
+The sigmoid's slope h₁(1 − h₁) is shown with four decimals, 0.1966: with 0.197 the regression gradient
+for w₁₁ comes out −1.063 by hand against −1.061 exactly. All later slides give the same numbers with
+0.1966.

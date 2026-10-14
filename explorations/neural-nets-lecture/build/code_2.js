@@ -22,8 +22,12 @@ function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b]
 
 /* ---------- the worked example: a 2-2-1 network with its weights on the connections ---------- */
 // Same numbers as the slides and check_numbers.py. Values are rounded to 3 decimals, as on the slides.
-const EX={x:[2,1],y:1,W:[[-0.5,1],[0.5,-1]],b:[1,-0.5],v:[2,0.5],c:-1,
-  h:['0.731','0.378'],z:'0.651',p:'0.657',L:'0.059'};
+const EX={x:[2,1],W:[[-0.5,1],[0.5,-1]],b:[1,-0.5],v:[2,0.5],c:-1,h:['0.731','0.378'],z:'0.651'};
+// the two versions of the output: regression (linear output ŷ = z, target 2) and a class (sigmoid output p, label 1)
+const OUT={reg:{act:'',name:'ŷ',y:'y = 2',out:'0.651',L:'0.910'},cls:{act:'σ',name:'p',y:'y = 1',out:'0.657',L:'0.059'}};
+// ŷ: an italic y with a hat (the KaTeX fonts have no precomposed ŷ)
+function hatY(L,x,y,size){const t=mtxt(L,x,y,'y',{'text-anchor':'middle','font-size':size});
+  txt(L,x+2,y-size*0.36,'^',{'text-anchor':'middle','font-size':(size*1.2).toFixed(1),'font-family':'KaTeX_Main'});return t;}
 const EXN={names:[['x₁','x₂'],['h₁','h₂'],['z']],xs:[90,290,480],W:770,H:380,top:60,bot:320};
 const num=v=>String(v).replace('-','−');
 // a point a fraction t along the edge from node a in layer l to node b in layer l + 1
@@ -42,20 +46,23 @@ function firstLayer(N){const P=N.pos,r=N.r,W=(a,b,t,v)=>{const [x,y]=edgeAt(N,0,
   P[0].forEach((q,i)=>mtxt(N.svg,q[0]-r-10,q[1]+6,String(EX.x[i]),{'text-anchor':'end','font-size':18,fill:'var(--model)'}));
   const hvals=g=>{VAL(g,P[1][0][0]+8,P[1][0][1]-32,EX.h[0]);VAL(g,P[1][1][0]+8,P[1][1][1]+46,EX.h[1]);};
   return {wl,hvals};}
-// draw the network; returns positions and helpers. path: null, 'v1' or 'w11' (highlighted from the start)
-function exNet(id,{path=null,aria}){
+// draw the network; returns positions and helpers. path: null, 'v1' or 'w11' (highlighted from the start);
+// kind: 'reg' or 'cls' (see OUT)
+function exNet(id,{path=null,kind='reg',aria}){
+  const O=OUT[kind];
   const N=netDiagram($(id),{...EXN,aria});
   N.svg.setAttribute('fill','var(--ink)');   // default colour for labels, so they follow the theme
   const P=N.pos,r=N.r,zy=P[2][0][1],px=590,bx=690,bw=58;
   const at=(l,a,b,t)=>edgeAt(N,l,a,b,t);
-  // the output: z → σ → p → loss box
+  // the output: z → (σ) → ŷ or p → loss box
   const gA=el('g',{},N.svg);
-  arrow(gA,P[2][0][0]+r,zy,px-14,zy,{stroke:'var(--ink)'});mtxt(gA,(P[2][0][0]+r+px-14)/2,zy-10,'σ',{'text-anchor':'middle','font-size':17});
-  mtxt(gA,px,zy+6,'p',{'text-anchor':'middle','font-size':20});
+  arrow(gA,P[2][0][0]+r,zy,px-14,zy,{stroke:'var(--ink)'});
+  if(O.act)mtxt(gA,(P[2][0][0]+r+px-14)/2,zy-10,O.act,{'text-anchor':'middle','font-size':17});
+  if(O.name==='ŷ')hatY(gA,px,zy+6,20);else mtxt(gA,px,zy+6,O.name,{'text-anchor':'middle','font-size':20});
   arrow(gA,px+14,zy,bx-2,zy,{stroke:'var(--ink)'});
   el('rect',{x:bx,y:zy-24,width:bw,height:48,rx:8,fill:'var(--surface)',stroke:'var(--err)','stroke-width':2},gA);
   mtxt(gA,bx+bw/2,zy+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});
-  mtxt(gA,bx+bw/2,zy-36,'y = 1',{'text-anchor':'middle','font-size':17});
+  mtxt(gA,bx+bw/2,zy-36,O.y,{'text-anchor':'middle','font-size':17});
   // highlighted path
   const gH=el('g',{},N.gE);
   if(path){hiEdge(N,gH,1,0,0);if(path==='w11')hiEdge(N,gH,0,0,0);
@@ -68,41 +75,48 @@ function exNet(id,{path=null,aria}){
   const val=VAL;
   const fwd=k=>{const g=el('g',{},N.svg);
     if(k===1)F.hvals(g);
-    if(k===2){val(g,P[2][0][0],zy-36,EX.z,'middle');val(g,px,zy-22,EX.p,'middle');}
-    if(k===3){val(g,bx+bw/2,zy+48,EX.L,'middle');}
+    if(k===2){val(g,P[2][0][0],zy-36,EX.z,'middle');val(g,px,zy-34,O.out,'middle');}
+    if(k===3){val(g,bx+bw/2,zy+48,O.L,'middle');}
     return g;};
   return {N,P,zy,px,bx,bw,at,wl,fwd};
 }
 // a factor written next to the path, in the highlight colour
 const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fill:'var(--hi)','font-weight':700,...a});
 {
-  const X=exNet('fig-example',{aria:'a network with inputs 2 and 1, two sigmoid hidden units and one sigmoid output, weights on the connections'});
+  const X=exNet('fig-example',{aria:'a network with inputs 2 and 1, two sigmoid hidden units and a linear output, weights on the connections'});
   [1,2,3].forEach(k=>X.fwd(k).setAttribute('data-step',k));
 }
 {
-  const X=exNet('fig-out',{path:'v1',aria:'the path from the output weight v1 through z and p to the loss, highlighted'});
+  const X=exNet('fig-out',{path:'v1',aria:'the path from the output weight v1 through z and the prediction to the loss, highlighted'});
   [1,2,3].forEach(k=>X.fwd(k));
-  fac(stepG(X.N.svg,1),(X.px+14+X.bx)/2,X.zy+32,'−0.343');
-  fac(stepG(X.N.svg,2),(X.P[2][0][0]+24+X.px-14)/2,X.zy+32,'0.225');
+  fac(stepG(X.N.svg,1),(X.px+14+X.bx)/2,X.zy+32,'−1.349');
+  fac(stepG(X.N.svg,2),(X.P[2][0][0]+24+X.px-14)/2,X.zy+32,'1');
   const [x,y]=X.at(1,0,0,.45);fac(stepG(X.N.svg,3),x-26,y+30,'0.731');
-  fac(stepG(X.N.svg,4),X.P[2][0][0],X.zy-62,'∂ℒ/∂z = −0.077');
+  fac(stepG(X.N.svg,4),X.P[2][0][0],X.zy-62,'∂ℒ/∂z = −1.349');
 }
 {
-  const X=exNet('fig-deep',{path:'w11',aria:'the path from the hidden weight w11 through h1, z and p to the loss, highlighted'});
+  const X=exNet('fig-deep',{path:'w11',aria:'the path from the hidden weight w11 through h1, z and the prediction to the loss, highlighted'});
   [1,2,3].forEach(k=>X.fwd(k));
-  fac(stepG(X.N.svg,1),X.P[2][0][0],X.zy-62,'∂ℒ/∂z = −0.077');
+  fac(stepG(X.N.svg,1),X.P[2][0][0],X.zy-62,'∂ℒ/∂z = −1.349');
   const g=stepG(X.N.svg,2),[x,y]=X.at(1,0,0,.45);
-  fac(g,x-26,y+30,'×2');fac(g,X.P[1][0][0],X.P[1][0][1]+48,'×0.197');fac(g,X.P[0][0][0],X.P[0][0][1]-34,'×2');
+  fac(g,x-26,y+30,'×2');fac(g,X.P[1][0][0],X.P[1][0][1]+48,'×0.1966');fac(g,X.P[0][0][0],X.P[0][0][1]-34,'×2');
 }
 {
   const X=exNet('fig-update',{aria:'the network with the new values of v1 and w11'});
   [1,2,3].forEach(k=>X.fwd(k));
   // the new weights replace the old labels at step 1
   const [ax,ay]=X.at(0,0,0,.5),[bx_,by]=X.at(1,0,0,.45),g=el('g',{},X.N.svg);
-  for(const [x,y,t] of [[ax,ay,'−0.439'],[bx_,by,'2.056']]){el('rect',{x:x-34,y:y-13,width:68,height:26,rx:6,fill:'var(--surface)'},g);
+  for(const [x,y,t] of [[ax,ay,'−0.394'],[bx_,by,'2.099']]){el('rect',{x:x-34,y:y-13,width:68,height:26,rx:6,fill:'var(--surface)'},g);
     label(g,x,y+6,t,{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});}
   hooks['s-update']={step(s){g.style.display=s>=1?'':'none';X.wl.w11.style.display=X.wl.v1.style.display=s>=1?'none':'';}};
   g.style.display='none';
+}
+{
+  const X=exNet('fig-class',{path:'v1',kind:'cls',aria:'the same network with a sigmoid output p and label 1'});
+  [1,2].forEach(k=>X.fwd(k));X.fwd(3).setAttribute('data-step',1);
+  fac(stepG(X.N.svg,2),(X.px+14+X.bx)/2,X.zy+32,'−0.343');
+  fac(stepG(X.N.svg,2),(X.P[2][0][0]+24+X.px-14)/2,X.zy+32,'0.225');
+  fac(stepG(X.N.svg,3),X.P[2][0][0],X.zy-62,'∂ℒ/∂z = −0.077');
 }
 
 /* ---------- the worked example with two outputs: softmax and cross-entropy ---------- */
@@ -136,7 +150,7 @@ const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'))
   const g1=stepG(X.N.svg,1),g2=stepG(X.N.svg,2);
   fac(g1,X.P[2][0][0],X.P[2][0][1]-60,'−0.325');
   const [ax,ay]=edgeAt(X.N,1,0,0,.5);fac(g1,ax,ay-18,'×2');
-  fac(g1,X.P[1][0][0],X.P[1][0][1]+48,'×0.197');fac(g1,X.P[0][0][0],X.P[0][0][1]-34,'×2');
+  fac(g1,X.P[1][0][0],X.P[1][0][1]+48,'×0.1966');fac(g1,X.P[0][0][0],X.P[0][0][1]-34,'×2');
   fac(g2,X.P[2][1][0],X.P[2][1][1]+74,'0.325',{fill:'var(--err)'});
   const [bx_,by]=edgeAt(X.N,1,0,1,.27);fac(g2,bx_+30,by+12,'×1',{fill:'var(--err)'});
 }
