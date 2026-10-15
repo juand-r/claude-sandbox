@@ -65,6 +65,7 @@ engine = sub(engine, "!e.closest('.tree-svg')", "!e.closest('.tree-svg,.noanim')
 if k == '2':   # class 2: the next slide appears at once, without the smooth scroll (asked by the user)
     engine = sub(engine, "slides[i].scrollIntoView({behavior:'smooth',block:'start'})", "slides[i].scrollIntoView({behavior:'instant',block:'start'})")
     head += '\nhtml,#deck{scroll-behavior:auto!important}'
+    head += '\n@media (max-width:620px){#s-recap .eq .katex{font-size:.64em!important}}'   # a⁽¹⁾ is wider than h
 rest = L(find('/* ---------- hover helper cards ---------- */'), find('/* ================= SVM lecture ================= */') - 1)
 fitboot = L(find('/* ---------- fit every slide to the screen'), len(svm))
 slides = re.sub(r'\{\{IMG:([^}]+)\}\}', embed, (here / f'slides_{k}.html').read_text())
