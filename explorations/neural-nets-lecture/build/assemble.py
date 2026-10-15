@@ -22,7 +22,7 @@ here = Path(__file__).parent   # this build/ folder
 k, target = sys.argv[1], sys.argv[2]
 DECKS = {
     '1': ('Neural Networks, Part 1', 'Lecture slides: softmax and cross-entropy, gradient descent, the perceptron and XOR, hidden layers and forward propagation.'),
-    '2': ('Neural Networks, Part 2', 'Lecture slides: backpropagation, learning rates, momentum and Adam, stochastic and mini-batch gradient descent, early stopping.'),
+    '2': ('Neural Networks, Part 2', 'Lecture slides: backpropagation, learning rates, momentum, stochastic and mini-batch gradient descent, early stopping.'),
 }
 title, desc = DECKS[k]
 svm = (here / '../../svm-lecture/svm_lecture.html').read_text().split('\n')
@@ -62,6 +62,9 @@ engine = sub(engine, "new BroadcastChannel('deck-svm')", f"new BroadcastChannel(
 engine = sub(engine, "const W=o.W||640,H=o.H||420,m={l:o.ml||58,r:18,t:16,b:46};", "const W=o.W||640,H=o.H||420,m={l:o.ml||58,r:o.mr||18,t:16,b:46};")
 engine = sub(engine, "const api={svg,sx,sy,layer,clear,W,H,", "const api={svg,sx,sy,layer,clear,W,H,xmin,xmax,ymin,ymax,")
 engine = sub(engine, "!e.closest('.tree-svg')", "!e.closest('.tree-svg,.noanim')")
+if k == '2':   # class 2: the next slide appears at once, without the smooth scroll (asked by the user)
+    engine = sub(engine, "slides[i].scrollIntoView({behavior:'smooth',block:'start'})", "slides[i].scrollIntoView({behavior:'instant',block:'start'})")
+    head += '\nhtml,#deck{scroll-behavior:auto!important}'
 rest = L(find('/* ---------- hover helper cards ---------- */'), find('/* ================= SVM lecture ================= */') - 1)
 fitboot = L(find('/* ---------- fit every slide to the screen'), len(svm))
 slides = re.sub(r'\{\{IMG:([^}]+)\}\}', embed, (here / f'slides_{k}.html').read_text())
