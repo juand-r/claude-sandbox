@@ -239,13 +239,16 @@ const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'))
 
 /* ---------- the recipe: forward, then backward ---------- */
 {
-  const N=netDiagram($('fig-recipe'),{names:[['x₁','x₂'],['a₁^(1)','a₂^(1)','a₃^(1)'],['z₁^(2)','z₂^(2)']],xs:[80,300,500],W:600,H:420,top:90,bot:330,aria:'forward pass from left to right, backward pass from right to left'});
+  const N=netDiagram($('fig-recipe'),{names:[['x₁','x₂'],['a₁^(1)','a₂^(1)','a₃^(1)'],['z₁^(2)','z₂^(2)']],xs:[80,300,500],W:670,H:420,top:90,bot:330,aria:'forward pass from left to right, backward pass from right to left'});
   arrow(N.svg,60,40,520,40,{stroke:'var(--model)','stroke-width':3});mtxt(N.svg,290,30,'forward: every z and a',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
-  mtxt(stepG(N.svg,1),N.pos[2][0][0]+34,N.pos[2][0][1]+6,'→ ℒ',{'font-size':18,fill:'var(--err)'});   // step 1: the loss
+  // step 1: both outputs feed the loss, drawn once, between them
+  const Lx=580,Ly=(N.pos[2][0][1]+N.pos[2][1][1])/2,gL=stepG(N.svg,1);
+  N.pos[2].forEach(q=>arrow(gL,q[0]+N.r,q[1],Lx-14,Ly+(q[1]-Ly)*.15,{stroke:'var(--err)'}));
+  mtxt(gL,Lx,Ly+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});
   const g2=stepG(N.svg,2);arrow(g2,520,400,60,400,{stroke:'var(--err)','stroke-width':3});
-  mtxt(g2,290,390,'backward: ∂ℒ/∂z^(2), then ∂ℒ/∂z^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)'});
-  mtxt(g2,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'∂ℒ/∂z^(2)',{'font-size':16,fill:'var(--err)'});
-  mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'∂ℒ/∂z^(1)',{'font-size':16,fill:'var(--err)'});
+  mtxt(g2,290,390,'backward: ∂ℒ/∂*z^(2), then ∂ℒ/∂*z^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)'});
+  mtxt(g2,Lx+32,Ly+44,'∂ℒ/∂*z^(2)',{'text-anchor':'middle','font-size':16,fill:'var(--err)'});   // the vector of output errors
+  mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'∂ℒ/∂*z^(1)',{'font-size':16,fill:'var(--err)'});
 }
 
 /* ---------- learning-rate schedules ---------- */
