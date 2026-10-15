@@ -349,7 +349,7 @@ function optFigure(id,names,tiles){
 }
 optFigure('mom',[['gd',0],['momentum',1]],[['v-mom-k','k'],['v-mom-gd','gd'],['v-mom-m','momentum']]);
 
-/* ---------- local minima: restarts and momentum on the cartoon; the stalled XOR run ---------- */
+/* ---------- local minima: restarts and momentum on the cartoon ---------- */
 const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   restarts:[[-2.8,-2.8],[2.5,2.5],[-2.5,2.0],[2.2,-2.5],[0,-2.6],[-2.6,-.5],[.5,2.6],[2.7,.2]]};   // checked in check_numbers.py
 {
@@ -360,9 +360,6 @@ const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   ends.push(cartoonPath(LOCAL.start,{eta:LOCAL.eta}).pop());
   const best=ends.reduce((a,b)=>cartoon(b)<cartoon(a)?b:a);star(api,g1,best,{color:'var(--hi)'});
   drawPath(api,g2,cartoonPath(LOCAL.start,{eta:LOCAL.eta,beta:LOCAL.beta,steps:400}),{dots:false,color:'var(--err)'});
-  const S=D.xor.runs.stuck,F=S.frames[S.frames.length-1],sapi=xorPlot($('fig-stuck'),'the XOR network that stalled: its decision map after 4,000 steps',{H:440,fs:1.6});
-  drawMap(sapi,sapi.layer('heat'),xorP(F.P));drawPts(sapi,sapi.layer('pts'),D.xor.X,D.xor.y);
-  $('v-st-l').textContent=F.loss.toFixed(3);$('v-st-a').textContent=Math.round(F.acc*100)+'%';
 }
 
 /* ---------- batch, stochastic, mini-batch ---------- */
@@ -380,8 +377,8 @@ const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   const set=act('sgd',([r,go])=>{stop();run=r;k=S.runs[r].path.length-1;draw();if(go)play();});
   for(const n of ['batch','sgd','mini'])$('b-sgd-'+n).onclick=()=>set([n,true]);
   $('b-sgd-play').onclick=()=>set([run,true]);
-  hooks['s-sgd']={step(s){set([{0:'batch',1:'sgd',2:'mini',3:'mini'}[s],s<3]);},enter(){stop();}};
-  set(['batch',false]);
+  hooks['s-sgd']={step(s){set([{0:'sgd',1:'batch',2:'mini',3:'mini'}[s],s<3]);},enter(){stop();}};
+  set(['sgd',false]);
 }
 
 const PATIENCE=400;   // epochs without improvement before stopping (checked in check_numbers.py)

@@ -395,6 +395,12 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 /* "Derivatives we will use": a sparse list, spaced out */
 #s-derivs li{margin-bottom:1.3em}
 
+/* local minima: the loss landscape alone */
+#fig-local svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
+/* "How much data per step?" (continued): room to write between and below the bullets */
+#s-sgd2 li{margin-bottom:2.6em}
+#s-sgd2 .upd{margin-top:.5em}
+
 </style>
 </head>
 <body>
@@ -788,15 +794,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
     </ul>
   </div>
   <div class="fig">
-    <div class="duo trainduo">
-      <div id="fig-local"></div>
-      <div id="fig-stuck" data-step="3"></div>
-    </div>
-    <div class="tiles three" data-step="3">
-      <div class="tile"><div class="lbl">steps</div><div class="val">4000</div></div>
-      <div class="tile"><div class="lbl">loss</div><div class="val k-err" id="v-st-l"></div></div>
-      <div class="tile"><div class="lbl">accuracy</div><div class="val k-model" id="v-st-a"></div></div>
-    </div>
+    <div id="fig-local"></div>
   </div>
   <div class="notes">
     <p><b class="cue">0</b>The cartoon surface from last class. From the bottom-left corner, plain gradient descent goes into the shallow valley and stays there.</p>
@@ -812,8 +810,8 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
     <div class="eyebrow">Training in practice</div>
     <h2>How much data per step?</h2>
     <ul>
-      <li><b>Batch</b>: the gradient from all the training points. One step per pass.</li>
-      <li data-step="1"><b>Stochastic</b>: from one point at a time. Many cheap, noisy steps.</li>
+      <li><b>Stochastic</b>: the gradient from one point at a time. Many cheap, noisy steps.</li>
+      <li data-step="1"><b>Batch</b>: from all the training points. One step per pass.</li>
       <li data-step="2"><b>Mini-batch</b>: from a few points, here 5. In between.</li>
       <li data-step="3">An <b>epoch</b> is one pass through the training data.</li>
     </ul>
@@ -826,15 +824,32 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
       <div class="tile"><div class="lbl">loss after 6 epochs</div><div class="val k-err" id="v-sgd-l"></div></div>
     </div>
     <div class="toolbar">
-      <button id="b-sgd-batch">batch</button><button id="b-sgd-sgd">stochastic</button><button id="b-sgd-mini">mini-batch</button>
+      <button id="b-sgd-sgd">stochastic</button><button id="b-sgd-batch">batch</button><button id="b-sgd-mini">mini-batch</button>
       <button id="b-sgd-play" class="primary">▶</button>
     </div>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>Back to the standardized hours data, 20 students, same start as last class. Six epochs of batch gradient descent with η = 1: six steps. Loss 0.59; the minimum is 0.495.</p>
-    <p><b class="cue">1</b>One student per step, η = 0.5, in a shuffled order each epoch: 120 steps in six epochs. Each step follows one student, so the path wanders. Loss 0.50.</p>
+    <p><b class="cue">0</b>Back to the standardized hours data, 20 students, same start as last class. One student per step, η = 0.5, in a shuffled order each epoch: 120 steps in six epochs. Each step follows one student, so the path wanders. Loss 0.50; the minimum is 0.495.</p>
+    <p><b class="cue">1</b>Six epochs of batch gradient descent with η = 1: six steps. Loss 0.59.</p>
     <p><b class="cue">2</b>Five students per step, η = 1: 24 steps. Smoother than stochastic, more steps than batch. Loss 0.50. With large data sets, a full-batch gradient is too expensive to compute at every step; mini-batches of tens to hundreds of points are the norm. The name "stochastic gradient descent" is often used for the mini-batch version too.</p>
-    <p><b class="cue">3</b>Per epoch: 1 step for batch, 4 for mini-batches of 5, 20 for stochastic. Training time is usually counted in epochs.</p>
+    <p><b class="cue">3</b>Per epoch: 20 steps for stochastic, 1 for batch, 4 for mini-batches of 5. Training time is usually counted in epochs.</p>
+  </div>
+</section>
+
+<!-- DATA PER STEP, CONTINUED: the three update rules -->
+<section class="slide one" id="s-sgd2" data-steps="1">
+  <div class="prose" style="width:100%;max-width:64rem;margin:0 auto">
+    <div class="eyebrow">Training in practice</div>
+    <h2>How much data per step?</h2>
+    <ul>
+      <li><b>Stochastic gradient descent (SGD)</b>: the gradient from one point at a time. Many cheap, noisy steps.<div class="upd" data-step="1"><span class="math dm"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mtext>pick one point </mtext><mi>i</mi><mtext>:</mtext><mspace width="2em"/><mi mathvariant="bold-italic">θ</mi><mo>←</mo><mi mathvariant="bold-italic">θ</mi><mo>−</mo><mi>η</mi><mtext> </mtext><mi mathvariant="normal">∇</mi><msub><mi mathvariant="script">L</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi mathvariant="bold-italic">θ</mi><mo stretchy="false">)</mo></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \text{pick one point } i\text{:} \qquad \boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla \mathcal{L}_i(\boldsymbol{\theta})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">pick one point </span></span><span class="mord mathnormal">i</span><span class="mord text"><span class="mord">:</span></span><span class="mspace" style="margin-right:2em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∇</span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mclose">)</span></span></span></span></span></div></li>
+      <li><b>Batch</b>: the gradient from all the training points. One step per pass.<div class="upd" data-step="1"><span class="math dm"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mi mathvariant="bold-italic">θ</mi><mo>←</mo><mi mathvariant="bold-italic">θ</mi><mo>−</mo><mi>η</mi><mtext> </mtext><mi mathvariant="normal">∇</mi><mo fence="true" stretchy="true" minsize="1.8em" maxsize="1.8em">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><msub><mi mathvariant="script">L</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi mathvariant="bold-italic">θ</mi><mo stretchy="false">)</mo><mo fence="true" stretchy="true" minsize="1.8em" maxsize="1.8em">)</mo></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla \Bigl(\frac{1}{N} \sum_{i=1}^{N} \mathcal{L}_i(\boldsymbol{\theta})\Bigr)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3.106em;vertical-align:-1.2777em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∇</span><span class="mopen"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mclose">)</span><span class="mclose"><span class="delimsizing size2">)</span></span></span></span></span></span></div></li>
+      <li><b>Mini-batch</b>: the gradient from a few points. In between.<div class="upd" data-step="1"><span class="math dm"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mtext>pick a set </mtext><mi>B</mi><mtext> of </mtext><mi>b</mi><mtext> points:</mtext><mspace width="2em"/><mi mathvariant="bold-italic">θ</mi><mo>←</mo><mi mathvariant="bold-italic">θ</mi><mo>−</mo><mi>η</mi><mtext> </mtext><mi mathvariant="normal">∇</mi><mo fence="true" stretchy="true" minsize="1.8em" maxsize="1.8em">(</mo><mfrac><mn>1</mn><mi>b</mi></mfrac><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mi>B</mi></mrow></munder><msub><mi mathvariant="script">L</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi mathvariant="bold-italic">θ</mi><mo stretchy="false">)</mo><mo fence="true" stretchy="true" minsize="1.8em" maxsize="1.8em">)</mo></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \text{pick a set } B \text{ of } b \text{ points:} \qquad \boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla \Bigl(\frac{1}{b} \sum_{i \in B} \mathcal{L}_i(\boldsymbol{\theta})\Bigr)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">pick a set </span></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord text"><span class="mord"> of </span></span><span class="mord mathnormal">b</span><span class="mord text"><span class="mord"> points:</span></span><span class="mspace" style="margin-right:2em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.6431em;vertical-align:-1.3217em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∇</span><span class="mopen"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">b</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8557em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3217em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03194em;">θ</span></span></span><span class="mclose">)</span><span class="mclose"><span class="delimsizing size2">)</span></span></span></span></span></span></div></li>
+    </ul>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The three ways again, side by side. ℒᵢ is the loss on training point i; N is the number of training points.</p>
+    <p><b class="cue">1</b>The update is the same in all three; only the loss whose gradient we take changes: one point, all N points, or a mini-batch of b points. Here the loss is averaged rather than added up (last class added it up). The average only rescales the gradient, and it keeps η comparable across batch sizes. In practice the points are shuffled once per epoch and taken in order, rather than drawn at random each step.</p>
   </div>
 </section>
 
@@ -2066,7 +2081,7 @@ function optFigure(id,names,tiles){
 }
 optFigure('mom',[['gd',0],['momentum',1]],[['v-mom-k','k'],['v-mom-gd','gd'],['v-mom-m','momentum']]);
 
-/* ---------- local minima: restarts and momentum on the cartoon; the stalled XOR run ---------- */
+/* ---------- local minima: restarts and momentum on the cartoon ---------- */
 const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   restarts:[[-2.8,-2.8],[2.5,2.5],[-2.5,2.0],[2.2,-2.5],[0,-2.6],[-2.6,-.5],[.5,2.6],[2.7,.2]]};   // checked in check_numbers.py
 {
@@ -2077,9 +2092,6 @@ const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   ends.push(cartoonPath(LOCAL.start,{eta:LOCAL.eta}).pop());
   const best=ends.reduce((a,b)=>cartoon(b)<cartoon(a)?b:a);star(api,g1,best,{color:'var(--hi)'});
   drawPath(api,g2,cartoonPath(LOCAL.start,{eta:LOCAL.eta,beta:LOCAL.beta,steps:400}),{dots:false,color:'var(--err)'});
-  const S=D.xor.runs.stuck,F=S.frames[S.frames.length-1],sapi=xorPlot($('fig-stuck'),'the XOR network that stalled: its decision map after 4,000 steps',{H:440,fs:1.6});
-  drawMap(sapi,sapi.layer('heat'),xorP(F.P));drawPts(sapi,sapi.layer('pts'),D.xor.X,D.xor.y);
-  $('v-st-l').textContent=F.loss.toFixed(3);$('v-st-a').textContent=Math.round(F.acc*100)+'%';
 }
 
 /* ---------- batch, stochastic, mini-batch ---------- */
@@ -2097,8 +2109,8 @@ const LOCAL={start:[-2.8,-2.8],eta:.25,beta:.9,
   const set=act('sgd',([r,go])=>{stop();run=r;k=S.runs[r].path.length-1;draw();if(go)play();});
   for(const n of ['batch','sgd','mini'])$('b-sgd-'+n).onclick=()=>set([n,true]);
   $('b-sgd-play').onclick=()=>set([run,true]);
-  hooks['s-sgd']={step(s){set([{0:'batch',1:'sgd',2:'mini',3:'mini'}[s],s<3]);},enter(){stop();}};
-  set(['batch',false]);
+  hooks['s-sgd']={step(s){set([{0:'sgd',1:'batch',2:'mini',3:'mini'}[s],s<3]);},enter(){stop();}};
+  set(['sgd',false]);
 }
 
 const PATIENCE=400;   // epochs without improvement before stopping (checked in check_numbers.py)

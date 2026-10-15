@@ -372,15 +372,7 @@
     </ul>
   </div>
   <div class="fig">
-    <div class="duo trainduo">
-      <div id="fig-local"></div>
-      <div id="fig-stuck" data-step="3"></div>
-    </div>
-    <div class="tiles three" data-step="3">
-      <div class="tile"><div class="lbl">steps</div><div class="val">4000</div></div>
-      <div class="tile"><div class="lbl">loss</div><div class="val k-err" id="v-st-l"></div></div>
-      <div class="tile"><div class="lbl">accuracy</div><div class="val k-model" id="v-st-a"></div></div>
-    </div>
+    <div id="fig-local"></div>
   </div>
   <div class="notes">
     <p><b class="cue">0</b>The cartoon surface from last class. From the bottom-left corner, plain gradient descent goes into the shallow valley and stays there.</p>
@@ -396,8 +388,8 @@
     <div class="eyebrow">Training in practice</div>
     <h2>How much data per step?</h2>
     <ul>
-      <li><b>Batch</b>: the gradient from all the training points. One step per pass.</li>
-      <li data-step="1"><b>Stochastic</b>: from one point at a time. Many cheap, noisy steps.</li>
+      <li><b>Stochastic</b>: the gradient from one point at a time. Many cheap, noisy steps.</li>
+      <li data-step="1"><b>Batch</b>: from all the training points. One step per pass.</li>
       <li data-step="2"><b>Mini-batch</b>: from a few points, here 5. In between.</li>
       <li data-step="3">An <b>epoch</b> is one pass through the training data.</li>
     </ul>
@@ -410,15 +402,32 @@
       <div class="tile"><div class="lbl">loss after 6 epochs</div><div class="val k-err" id="v-sgd-l"></div></div>
     </div>
     <div class="toolbar">
-      <button id="b-sgd-batch">batch</button><button id="b-sgd-sgd">stochastic</button><button id="b-sgd-mini">mini-batch</button>
+      <button id="b-sgd-sgd">stochastic</button><button id="b-sgd-batch">batch</button><button id="b-sgd-mini">mini-batch</button>
       <button id="b-sgd-play" class="primary">▶</button>
     </div>
   </div>
   <div class="notes">
-    <p><b class="cue">0</b>Back to the standardized hours data, 20 students, same start as last class. Six epochs of batch gradient descent with η = 1: six steps. Loss 0.59; the minimum is 0.495.</p>
-    <p><b class="cue">1</b>One student per step, η = 0.5, in a shuffled order each epoch: 120 steps in six epochs. Each step follows one student, so the path wanders. Loss 0.50.</p>
+    <p><b class="cue">0</b>Back to the standardized hours data, 20 students, same start as last class. One student per step, η = 0.5, in a shuffled order each epoch: 120 steps in six epochs. Each step follows one student, so the path wanders. Loss 0.50; the minimum is 0.495.</p>
+    <p><b class="cue">1</b>Six epochs of batch gradient descent with η = 1: six steps. Loss 0.59.</p>
     <p><b class="cue">2</b>Five students per step, η = 1: 24 steps. Smoother than stochastic, more steps than batch. Loss 0.50. With large data sets, a full-batch gradient is too expensive to compute at every step; mini-batches of tens to hundreds of points are the norm. The name "stochastic gradient descent" is often used for the mini-batch version too.</p>
-    <p><b class="cue">3</b>Per epoch: 1 step for batch, 4 for mini-batches of 5, 20 for stochastic. Training time is usually counted in epochs.</p>
+    <p><b class="cue">3</b>Per epoch: 20 steps for stochastic, 1 for batch, 4 for mini-batches of 5. Training time is usually counted in epochs.</p>
+  </div>
+</section>
+
+<!-- DATA PER STEP, CONTINUED: the three update rules -->
+<section class="slide one" id="s-sgd2" data-steps="1">
+  <div class="prose" style="width:100%;max-width:64rem;margin:0 auto">
+    <div class="eyebrow">Training in practice</div>
+    <h2>How much data per step?</h2>
+    <ul>
+      <li><b>Stochastic gradient descent (SGD)</b>: the gradient from one point at a time. Many cheap, noisy steps.<div class="upd" data-step="1"><span class="math dm">\[\text{pick one point } i\text{:} \qquad \boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla \mathcal{L}_i(\boldsymbol{\theta})\]</span></div></li>
+      <li><b>Batch</b>: the gradient from all the training points. One step per pass.<div class="upd" data-step="1"><span class="math dm">\[\boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla \Bigl(\frac{1}{N} \sum_{i=1}^{N} \mathcal{L}_i(\boldsymbol{\theta})\Bigr)\]</span></div></li>
+      <li><b>Mini-batch</b>: the gradient from a few points. In between.<div class="upd" data-step="1"><span class="math dm">\[\text{pick a set } B \text{ of } b \text{ points:} \qquad \boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla \Bigl(\frac{1}{b} \sum_{i \in B} \mathcal{L}_i(\boldsymbol{\theta})\Bigr)\]</span></div></li>
+    </ul>
+  </div>
+  <div class="notes">
+    <p><b class="cue">0</b>The three ways again, side by side. ℒᵢ is the loss on training point i; N is the number of training points.</p>
+    <p><b class="cue">1</b>The update is the same in all three; only the loss whose gradient we take changes: one point, all N points, or a mini-batch of b points. Here the loss is averaged rather than added up (last class added it up). The average only rescales the gradient, and it keeps η comparable across batch sizes. In practice the points are shuffled once per epoch and taken in order, rather than drawn at random each step.</p>
   </div>
 </section>
 

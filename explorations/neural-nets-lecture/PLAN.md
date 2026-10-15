@@ -232,3 +232,10 @@ class 2). The momentum slide claimed plain gradient descent zigzags, but in its 
 only in its first few steps (across-valley step 0.125, then shrinking by about 0.6 per step) and it is
 momentum that wobbles. The user chose to keep only the bullet "Keep a running sum of past gradients" with
 the two update equations on separate lines; they will say the rest. The notes now describe the figure.
+
+Follow-up 9 (2026-10-15), asked by the user: "Local minima" shows only the made-up loss surface (the
+stalled XOR decision map and its tiles are gone; students could read the two panels as one network).
+"How much data per step?" lists stochastic first, then batch, then mini-batch (the figure and buttons
+follow). A new slide with the same title lists the three again, full width, with room to write; one press
+adds the update rule for each (the average loss over one point, all N, or a mini-batch B of b points).
+The annotation copy leaves those equations out.

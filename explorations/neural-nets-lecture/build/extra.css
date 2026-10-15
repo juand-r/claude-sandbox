@@ -73,3 +73,9 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 
 /* "Derivatives we will use": a sparse list, spaced out */
 #s-derivs li{margin-bottom:1.3em}
+
+/* local minima: the loss landscape alone */
+#fig-local svg{max-height:64vh;width:auto;max-width:100%;margin:0 auto}
+/* "How much data per step?" (continued): room to write between and below the bullets */
+#s-sgd2 li{margin-bottom:2.6em}
+#s-sgd2 .upd{margin-top:.5em}
