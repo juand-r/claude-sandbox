@@ -7,7 +7,7 @@ function netDiagram(host,{names,xs,W=560,H=380,top=60,bot=320,r=24,aria='a neura
   const pos=names.map((n,l)=>layerPos(n.length,xs[l],n.length===1?(top+bot)/2:top+(bot-top)*(n.length===2?.22:0),n.length===1?(top+bot)/2:bot-(bot-top)*(n.length===2?.22:0)));
   const E=[];for(let l=0;l+1<pos.length;l++){E.push(pos[l].map(a=>pos[l+1].map(b=>el('line',{x1:a[0]+r,y1:a[1],x2:b[0]-r,y2:b[1],stroke:'var(--line)','stroke-width':1.6},gE))));}
   pos.forEach((P,l)=>P.forEach((p,k)=>node(gN,p[0],p[1],r,names[l][k])));
-  return {svg,pos,E,gE,gN,r};}
+  return {svg,pos,E,gE,gN,r,H};}
 // draw a thick coloured copy of edge (layer l, from node a to node b) into group g
 function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b];
   el('line',{x1:A[0]+N.r,y1:A[1],x2:B[0]-N.r,y2:B[1],stroke:color,'stroke-width':5,'stroke-linecap':'round'},g);}
@@ -78,7 +78,7 @@ const OUT={reg:{act:'',name:'ŷ',y:'y = 2',out:'0.651',L:'0.910'},cls:{act:'σ',
 // ŷ: an italic y with a hat (the KaTeX fonts have no precomposed ŷ)
 function hatY(L,x,y,size){const t=mtxt(L,x,y,'y',{'text-anchor':'middle','font-size':size});
   txt(L,x+2,y-size*0.36,'^',{'text-anchor':'middle','font-size':(size*1.2).toFixed(1),'font-family':'KaTeX_Main'});return t;}
-const EXN={names:[['x₁','x₂'],['a₁^(1)','a₂^(1)'],['z^(2)']],xs:[90,290,480],W:770,H:380,top:60,bot:320};
+const EXN={names:[['x₁','x₂'],['a₁^(1)','a₂^(1)'],['z^(2)']],xs:[90,290,480],W:770,H:420,top:60,bot:320};
 const num=v=>String(v).replace('-','−');
 // a point a fraction t along the edge from node a in layer l to node b in layer l + 1
 const edgeAt=(N,l,a,b,t)=>{const A=N.pos[l][a],B=N.pos[l+1][b],r=N.r;return [A[0]+r+(B[0]-r-A[0]-r)*t,A[1]+(B[1]-A[1])*t];};
@@ -88,11 +88,18 @@ function weightLabel(L,x,y,s,a2={}){const g=el('g',{},L),w=11*s.length+10;
   label(g,x,y+6,s,{'text-anchor':'middle','font-weight':400,'font-size':17,...a2});return g;}
 const MUTED={'text-anchor':'end','font-size':16,fill:'var(--muted)'};
 const VAL=(g,x,y,s,anchor='start')=>mtxt(g,x,y,s,{'text-anchor':anchor,'font-size':17,fill:'var(--model)'});
+// a bias drawn as a weight from a node whose value is always 1 (as in class 1): the node sits below
+// layer l, with a dashed connection to each node of layer l + 1, labelled at fraction t along it
+function biasLinks(N,l,labels,ts){const B=[N.pos[l][0][0],N.H-34],rb=18;
+  N.pos[l+1].forEach((q,k)=>{const ang=Math.atan2(q[1]-B[1],q[0]-B[0]),x1=B[0]+rb*Math.cos(ang),y1=B[1]+rb*Math.sin(ang),x2=q[0]-N.r*Math.cos(ang),y2=q[1]-N.r*Math.sin(ang);
+    el('line',{x1,y1,x2,y2,stroke:'var(--line)','stroke-width':1.6,'stroke-dasharray':'5 4'},N.gE);
+    weightLabel(N.svg,x1+(x2-x1)*ts[k],y1+(y2-y1)*ts[k],labels[k]);});
+  biasNode(N.svg,...B,rb);return B;}
 // the inputs, the first layer's weights and biases (the same in every version of the example);
 // hvals(g) writes the hidden values into g
 function firstLayer(N){const P=N.pos,r=N.r,W=(a,b,t,v)=>{const [x,y]=edgeAt(N,0,a,b,t);return weightLabel(N.svg,x,y,num(v));};
   const wl={w11:W(0,0,.5,EX.W[0][0]),w22:W(1,1,.5,EX.W[1][1]),w21:W(0,1,.27,EX.W[1][0]),w12:W(1,0,.27,EX.W[0][1])};
-  mtxt(N.svg,P[1][0][0]-8,P[1][0][1]-32,'b₁^(1) = '+num(EX.b[0]),MUTED);mtxt(N.svg,P[1][1][0]-8,P[1][1][1]+46,'b₂^(1) = '+num(EX.b[1]),MUTED);
+  biasLinks(N,0,EX.b.map(num),[.82,.62]);
   P[0].forEach((q,i)=>mtxt(N.svg,q[0]-r-10,q[1]+6,String(EX.x[i]),{'text-anchor':'end','font-size':18,fill:'var(--model)'}));
   const hvals=g=>{VAL(g,P[1][0][0]+8,P[1][0][1]-32,EX.h[0]);VAL(g,P[1][1][0]+8,P[1][1][1]+46,EX.h[1]);};
   return {wl,hvals};}
@@ -120,7 +127,7 @@ function exNet(id,{path=null,kind='reg',aria}){
   // weights on the connections, biases and inputs
   const F=firstLayer(N),V=(b,t,v)=>{const [x,y]=at(1,b,0,t);return weightLabel(N.svg,x,y,num(v));};
   const wl={...F.wl,v1:V(0,.45,EX.v[0]),v2:V(1,.45,EX.v[1])};
-  mtxt(N.svg,P[2][0][0],zy+50,'b^(2) = '+num(EX.c),{...MUTED,'text-anchor':'middle'});
+  biasLinks(N,1,[num(EX.c)],[.45]);
   // forward values, each in its own group so a slide can reveal them step by step
   const val=VAL;
   const fwd=k=>{const g=el('g',{},N.svg);
@@ -139,9 +146,9 @@ const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fi
   const P=N.pos,r=N.r,zy=P[2][0][1],px=590,bx=690,bw=58;
   const W=(l,a,b,t,s)=>{const [x,y]=edgeAt(N,l,a,b,t);weightLabel(N.svg,x,y,s);};
   W(0,0,0,.5,'w₁₁^(1)');W(0,1,1,.5,'w₂₂^(1)');W(0,0,1,.27,'w₂₁^(1)');W(0,1,0,.27,'w₁₂^(1)');W(1,0,0,.45,'w₁₁^(2)');W(1,1,0,.45,'w₁₂^(2)');
-  mtxt(N.svg,P[1][0][0]-8,P[1][0][1]-32,'b₁^(1)',MUTED);mtxt(N.svg,P[1][1][0],P[1][1][1]+46,'b₂^(1)',{...MUTED,'text-anchor':'middle'});
+  biasLinks(N,0,['b₁^(1)','b₂^(1)'],[.82,.62]);
   mtxt(N.svg,P[1][0][0]+8,P[1][0][1]-32,'a₁^(1) = σ(z₁^(1))',{'font-size':15,fill:'var(--model)'});
-  mtxt(N.svg,P[2][0][0],zy+50,'b^(2)',{...MUTED,'text-anchor':'middle'});
+  biasLinks(N,1,['b^(2)'],[.45]);
   arrow(N.svg,P[2][0][0]+r,zy,px-14,zy,{stroke:'var(--ink)'});hatY(N.svg,px,zy+6,20);
   const g=stepG(N.svg,1);arrow(g,px+14,zy,bx-2,zy,{stroke:'var(--ink)'});
   el('rect',{x:bx,y:zy-24,width:bw,height:48,rx:8,fill:'var(--surface)',stroke:'var(--err)','stroke-width':2},g);
@@ -189,7 +196,7 @@ const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fi
 // Same input and first layer; output 1 keeps v₁₁ = 2, v₁₂ = 0.5, c₁ = −1. Label: class 1, y = (1, 0).
 const EX2={V:[[2,0.5],[1,0.5]],c:[-1,-1],z:['0.651','−0.080'],p:['0.675','0.325'],err:['−0.325','0.325']};
 function exNet2(id,{aria}){
-  const N=netDiagram($(id),{names:[['x₁','x₂'],['a₁^(1)','a₂^(1)'],['z₁^(2)','z₂^(2)']],xs:[80,265,440],W:770,H:390,top:60,bot:330,aria});
+  const N=netDiagram($(id),{names:[['x₁','x₂'],['a₁^(1)','a₂^(1)'],['z₁^(2)','z₂^(2)']],xs:[80,265,440],W:770,H:430,top:60,bot:330,aria});
   N.svg.setAttribute('fill','var(--ink)');
   const P=N.pos,r=N.r,F=firstLayer(N),bx=692,bw=58,ly=(P[2][0][1]+P[2][1][1])/2;
   softmaxBox(N.svg,P[2][0][0]+r,P[2].map(q=>q[1]),{x:516,w:76,weight:400});
@@ -199,7 +206,7 @@ function exNet2(id,{aria}){
   mtxt(N.svg,bx+bw/2,ly-36,'y = (1, 0)',{'text-anchor':'middle','font-size':16});
   const V=(j,k,t)=>{const [x,y]=edgeAt(N,1,j,k,t);return weightLabel(N.svg,x,y,num(EX2.V[k][j]));};
   V(0,0,.5);V(1,1,.5);V(0,1,.27);V(1,0,.27);
-  mtxt(N.svg,P[2][0][0]-8,P[2][0][1]-32,'b₁^(2) = −1',MUTED);mtxt(N.svg,P[2][1][0]-8,P[2][1][1]+46,'b₂^(2) = −1',MUTED);
+  biasLinks(N,1,['−1','−1'],[.78,.4]);
   return {N,P,F,ly,bx,bw};}
 const z2vals=(X,g)=>{VAL(g,X.P[2][0][0]+8,X.P[2][0][1]-32,EX2.z[0]);VAL(g,X.P[2][1][0]+8,X.P[2][1][1]+46,EX2.z[1]);};
 const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'));};
