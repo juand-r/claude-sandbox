@@ -226,3 +226,9 @@ cross-entropy (from class 1's bonus). (b) An annotation copy of class 2 (HTML an
 within a slide; the user writes the rest by stylus. The user's list, by the slide numbers before (a):
 slides 4, 5, 6, 7, 9, 12 up to the first bullet, 8 up to the second, 11 up to the third; all others
 fully built. As slide ids: build/annotate_2.json.
+
+Follow-up 8 (2026-10-15), from the user: the training-loop box says "compute a and p" (h is not used in
+class 2). The momentum slide claimed plain gradient descent zigzags, but in its figure plain GD zigzags
+only in its first few steps (across-valley step 0.125, then shrinking by about 0.6 per step) and it is
+momentum that wobbles. The user chose to keep only the bullet "Keep a running sum of past gradients" with
+the two update equations on separate lines; they will say the rest. The notes now describe the figure.

@@ -10,7 +10,7 @@ const go = async (p, id, steps = 0) => { await p.evaluate(id => document.getElem
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(URL); await p.waitForTimeout(600);
   const txt = id => p.$eval('#' + id, e => e.textContent);
-  await go(p, 's-mom', 2); await p.click('#b-mom-play'); await p.waitForTimeout(4500);
+  await go(p, 's-mom', 1); await p.click('#b-mom-play'); await p.waitForTimeout(4500);
   console.log('momentum replay end: step', await txt('v-mom-k'), 'plain', await txt('v-mom-gd'), 'momentum', await txt('v-mom-m'));
   await p.$eval('#r-mom', e => { e.value = '30'; e.dispatchEvent(new Event('input')); });
   console.log('momentum step 30: plain', await txt('v-mom-gd'), 'momentum', await txt('v-mom-m'));
@@ -25,7 +25,7 @@ const go = async (p, id, steps = 0) => { await p.evaluate(id => document.getElem
   for (const [name, opts] of [['dark', { viewport: { width: 1440, height: 810 }, colorScheme: 'dark' }], ['phone', { viewport: { width: 390, height: 844 } }]]) {
     const c = await b.newContext(opts), q = await c.newPage(); const e2 = []; q.on('pageerror', e => e2.push(e.message));
     await q.goto(URL); await q.waitForTimeout(600);
-    for (const [id, s] of [['s-recap', 1], ['s-chain', 2], ['s-branch', 2], ['s-general', 3], ['s-example', 3], ['s-out', 4], ['s-update', 3], ['s-class', 3], ['s-two', 3], ['s-paths', 3], ['s-recipe', 4], ['s-mom', 2], ['s-local', 3], ['s-sgd', 0], ['s-stop', 4], ['s-char', 1], ['s-tree', 3]]) {
+    for (const [id, s] of [['s-recap', 1], ['s-chain', 2], ['s-branch', 2], ['s-general', 3], ['s-example', 3], ['s-out', 4], ['s-update', 3], ['s-class', 3], ['s-two', 3], ['s-paths', 3], ['s-recipe', 4], ['s-mom', 1], ['s-local', 3], ['s-sgd', 0], ['s-stop', 4], ['s-char', 1], ['s-tree', 3]]) {
       await go(q, id, s); await q.waitForTimeout(500); await q.screenshot({ path: `screenshots/int2-${name}-${id}.png` }); }
     const over = await q.evaluate(() => [...document.querySelectorAll('.slide')].filter(s => s.scrollWidth > document.documentElement.clientWidth + 1).map(s => s.id));
     console.log(name, 'overflowing slides:', JSON.stringify(over), 'errors', JSON.stringify(e2));

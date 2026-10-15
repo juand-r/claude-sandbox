@@ -437,7 +437,7 @@ const PATIENCE=400;   // epochs without improvement before stopping (checked in 
 /* ---------- the training loop: four boxes and an arrow back ---------- */
 {
   const W=1000,H=290,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'training loop: forward propagation, total error, gradients by backpropagation, update the weights, then back to forward propagation'},$('fig-loop'));
-  const BX=[{t:'Forward propagation',m:'compute h and p',c:'var(--model)'},{t:'Total error',m:'the loss ℒ',c:'var(--err)'},
+  const BX=[{t:'Forward propagation',m:'compute a and p',c:'var(--model)'},{t:'Total error',m:'the loss ℒ',c:'var(--err)'},
             {t:'Gradients',m:'backpropagation',c:'var(--hi)'},{t:'Update',m:'θ ← θ − η∇ℒ',c:'var(--mean)'}];
   const w=216,h=110,gap=(W-40-4*w)/3,y=40,xs=BX.map((_,k)=>20+k*(w+gap));
   BX.forEach((b,k)=>{const g=stepG(svg,k),x=xs[k];

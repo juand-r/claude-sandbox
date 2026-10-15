@@ -333,14 +333,12 @@
 </section>
 
 <!-- MOMENTUM -->
-<section class="slide wide" id="s-mom" data-steps="2">
+<section class="slide wide" id="s-mom" data-steps="1">
   <div class="prose">
     <div class="eyebrow">Training in practice</div>
     <h2>Momentum</h2>
     <ul>
-      <li>A long, narrow valley: plain gradient descent zigzags across it.</li>
-      <li data-step="1">Keep a running sum of past gradients:<span class="math dm">\[\boldsymbol{v} \leftarrow \beta \boldsymbol{v} + \nabla\mathcal{L}, \quad \boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \boldsymbol{v}\]</span></li>
-      <li data-step="2">The zigzags cancel; the steady downhill part adds up.</li>
+      <li data-step="1">Keep a running sum of past gradients:<span class="math dm">\[\begin{aligned} \boldsymbol{v} &amp;\leftarrow \beta \boldsymbol{v} + \nabla\mathcal{L} \\ \boldsymbol{\theta} &amp;\leftarrow \boldsymbol{\theta} - \eta\, \boldsymbol{v} \end{aligned}\]</span></li>
     </ul>
   </div>
   <div class="fig">
@@ -357,8 +355,7 @@
   </div>
   <div class="notes">
     <p><b class="cue">0</b>Logistic regression on the hours data again, but with the hours left in hours (not standardized). The loss surface is a long, thin valley: its curvature is about 350 times larger across the valley than along it. Near the minimum, plain gradient descent is stable only for η below about 0.36, and at that size its steps along the valley are tiny. Here η = 0.2: after 150 steps the loss is 0.555; the minimum is 0.495.</p>
-    <p><b class="cue">1</b>v is a velocity. β = 0.9 means each past gradient keeps 90% of its weight from one step to the next. Here η = 0.05.</p>
-    <p><b class="cue">2</b>Across the valley the gradient flips sign every step, so those parts cancel in v. Along the valley it keeps the same sign, so v grows in that direction. After 150 steps: 0.500. The idea goes back to Polyak's "heavy ball" method (1964).</p>
+    <p><b class="cue">1</b>v is a velocity. β = 0.9 means each past gradient keeps 90% of its weight from one step to the next. Here η = 0.05. Along the valley the gradient keeps the same sign, so v grows in that direction and the steps get longer. Across the valley the gradient changes sign, so those parts partly cancel; momentum still overshoots and swings back and forth across the valley for a while, which is the wobble in its path. Plain gradient descent zigzags only in its first few steps, too little to see at this scale. After 150 steps momentum is at 0.500, plain gradient descent at 0.555. The idea goes back to Polyak's "heavy ball" method (1964).</p>
   </div>
 </section>
 
