@@ -73,7 +73,7 @@
 </section>
 
 <!-- WHEN THE CHAIN BRANCHES -->
-<section class="slide" id="s-branch" data-steps="3">
+<section class="slide" id="s-branch" data-steps="2">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
     <h2>When the chain branches</h2>
@@ -81,15 +81,13 @@
       <li>If <span class="math">\(x\)</span> affects <span class="math">\(y\)</span> along two paths, through <span class="math">\(u_1\)</span> and through <span class="math">\(u_2\)</span>, add the paths:<span class="math dm">\[\frac{dy}{dx} = \frac{\partial y}{\partial u_1} \cdot \frac{du_1}{dx} + \frac{\partial y}{\partial u_2} \cdot \frac{du_2}{dx}\]</span></li>
       <li data-step="1">Example: <span class="math">\(u_1 = x^2\)</span>, <span class="math">\(u_2 = 3x\)</span>, <span class="math">\(y = u_1 u_2\)</span>:<span class="math dm">\[\frac{du_1}{dx} = 2x, \quad \frac{\partial y}{\partial u_1} = u_2, \quad \frac{du_2}{dx} = 3, \quad \frac{\partial y}{\partial u_2} = u_1\]</span></li>
       <li data-step="2">At <span class="math">\(x = 2\)</span>, <span class="math">\(u_1 = 4\)</span> and <span class="math">\(u_2 = 6\)</span>:<span class="math dm">\[\frac{dy}{dx} = 6 \cdot 4 + 4 \cdot 3 = 24 + 12 = 36\]</span><span class="fine">Check: <span class="math">\(y = 3x^3\)</span>, so <span class="math">\(dy/dx = 9x^2 = 36\)</span>.</span></li>
-      <li data-step="3">In a network, a hidden unit feeds several units in the next layer. Its weights reach the loss along several paths, and we add them.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-branch"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>The chain rule with several variables. Each path is a chain, so it is a product; the paths add. The partial derivative ∂y/∂u₁ means: change u₁ and hold u₂ fixed.</p>
     <p><b class="cue">1</b>y is a product of two things that both depend on x.</p>
-    <p><b class="cue">2</b>This is the product rule from calculus, derived from the chain rule.</p>
-    <p><b class="cue">3</b>We will see this in the worked example once the network has two outputs.</p>
+    <p><b class="cue">2</b>This is the product rule from calculus, derived from the chain rule. In a network, a hidden unit feeds several units in the next layer, so its weights reach the loss along several paths; we will see this once the example has two outputs.</p>
   </div>
 </section>
 
