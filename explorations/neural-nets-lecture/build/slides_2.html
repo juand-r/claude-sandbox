@@ -33,23 +33,21 @@
 </section>
 
 <!-- ONE FUNCTION -->
-<section class="slide" id="s-formula" data-steps="3">
+<section class="slide" id="s-formula" data-steps="1">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
     <h2>The network is one function</h2>
     <ul>
       <li>Notation, for layer <span class="math">\(l\)</span>: each unit computes a weighted sum <span class="math">\(z^{(l)}\)</span>, the <b>pre-activation</b>, then its <b>activation</b> <span class="math">\(a^{(l)} = \varphi(z^{(l)})\)</span>. The inputs are <span class="math">\(a^{(0)} = \boldsymbol{x}\)</span>.<span class="fine"><span class="math">\(w^{(l)}_{ji}\)</span> is the weight from unit <span class="math">\(i\)</span> of layer <span class="math">\(l - 1\)</span> to unit <span class="math">\(j\)</span> of layer <span class="math">\(l\)</span>; <span class="math">\(b^{(l)}_j\)</span> is unit <span class="math">\(j\)</span>'s bias.</span></li>
       <li data-step="1">A small network for regression: two sigmoid hidden units, one linear output. Written out in full:<span class="math dm">\[\begin{aligned} \hat{y} = {} &amp; w^{(2)}_{11}\,\sigma(w^{(1)}_{11}x_1 + w^{(1)}_{12}x_2 + b^{(1)}_1) \\ {} + {} &amp; w^{(2)}_{12}\,\sigma(w^{(1)}_{21}x_1 + w^{(1)}_{22}x_2 + b^{(1)}_2) + b^{(2)} \end{aligned}\]</span><span class="fine">The two <span class="math">\(\sigma(\cdot)\)</span> terms are the hidden activations <span class="math">\(a^{(1)}_1\)</span> and <span class="math">\(a^{(1)}_2\)</span>.</span></li>
-      <li data-step="2">The loss of one training point, squared error:<span class="math dm">\[\mathcal{L} = \tfrac12 (\hat{y} - y)^2\]</span></li>
-      <li data-step="3">Nine weights, all inside one nested function. We need <span class="math">\(\partial\mathcal{L}/\partial w\)</span> for each one.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-formula"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>From now on, two names per unit: z for its weighted sum (before the activation) and a for its output (after it). Last time the hidden outputs were called h; a is the same thing. The superscript is the layer. The picture shows where each symbol lives.</p>
-    <p><b class="cue">1</b>The network we will use on the next slides. Inside: each hidden unit is a sigmoid of a weighted sum of the inputs, with its own bias. Outside: the prediction ŷ is a weighted sum of the hidden activations, with weights w₁₁⁽²⁾, w₁₂⁽²⁾ and bias b⁽²⁾. No activation at the output, because ŷ can be any number.</p>
-    <p><b class="cue">2</b>Squared error, as in last year's slides and the practice exam. Put the first formula in for ŷ and the loss is one long expression in the nine weights.</p>
-    <p><b class="cue">3</b>Differentiating this directly, weight by weight, is possible but messy, and it gets worse with every layer. The chain rule takes it apart one piece at a time, and the pieces can be reused.</p>
+    <p><b class="cue">1</b>The network we will use on the next slides. Inside: each hidden unit is a sigmoid of a weighted sum of the inputs, with its own bias. Outside: the prediction ŷ is a weighted sum of the hidden activations, with weights w₁₁⁽²⁾, w₁₂⁽²⁾ and bias b⁽²⁾. No activation at the output, because ŷ can be any number. The loss of one training point is squared error, ℒ = ½(ŷ − y)², as in last year's slides and the practice exam. Put the first formula in for ŷ and the loss is one long expression in the nine weights. Nine weights, all inside one nested function, and we need ∂ℒ/∂w for each one. Differentiating this directly, weight by weight, is possible but messy, and it gets worse with every layer. The chain rule takes it apart one piece at a time, and the pieces can be reused.</p>
+    
+    
   </div>
 </section>
 
