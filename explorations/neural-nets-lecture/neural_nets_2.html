@@ -429,7 +429,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 </section>
 
 <!-- RECAP -->
-<section class="slide" id="s-recap" data-steps="0">
+<section class="slide" id="s-recap" data-steps="1">
   <div class="prose">
     <div class="eyebrow">Last time</div>
     <h2>Forward propagation</h2>
@@ -441,7 +441,8 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
   </div>
   <div class="fig"><div id="fig-recap"></div></div>
   <div class="notes">
-    <p>The network from last time: a hidden layer of sigmoids, then a softmax. The loss is the cross-entropy, −log of the probability of the true class, summed over the training data. θ is all the weights and biases together. The XOR network had 17 of them; real networks have millions. One partial derivative per weight. Writing out the loss as one formula and differentiating it by hand does not scale. Backpropagation is a way to get all of them at once, for about the cost of one more pass through the network.</p>
+    <p><b class="cue">0</b>The network from last time: a hidden layer of sigmoids, then a softmax. The loss is the cross-entropy, −log of the probability of the true class, summed over the training data. θ is all the weights and biases together. The XOR network had 17 of them; real networks have millions. One partial derivative per weight. Writing out the loss as one formula and differentiating it by hand does not scale. Backpropagation is a way to get all of them at once, for about the cost of one more pass through the network.</p>
+    <p><b class="cue">1</b>Now the network is live. The bar on each edge is that weight, from −3 at the bottom to +3 at the top; drag it up or down. Teal edges are positive weights, orange ones negative, and a thicker edge is a larger weight. The arrows above and below x₁ and x₂ change that input by 0.5, between −2 and 2. The biases are fixed at 0 and not drawn. The bars on the right are p₁ and p₂, which always add up to 1. Try: make the top bar into a₁ large and watch p₁. The question for today: when we want p for the true class to go up, which way should each of these twelve bars move, and by how much? Leaving the slide puts every value back.</p>
   </div>
 </section>
 
@@ -1712,12 +1713,69 @@ function netDiagram(host,{names,xs,W=560,H=380,top=60,bot=320,r=24,aria='a neura
 function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b];
   el('line',{x1:A[0]+N.r,y1:A[1],x2:B[0]-N.r,y2:B[1],stroke:color,'stroke-width':5,'stroke-linecap':'round'},g);}
 
-/* ---------- recap: the 2-3-2 network ---------- */
+/* ---------- recap: the 2-3-2 network; at step 1 every weight and input can be changed by hand ---------- */
 {
-  const N=netDiagram($('fig-recap'),{names:[['x₁','x₂'],['a₁','a₂','a₃'],['z₁','z₂']],xs:[70,270,450],W:640,H:400,top:70,bot:330,aria:'a network with two inputs, three hidden units and two outputs, followed by a softmax'});
-  softmaxBox(N.svg,472,N.pos[2].map(p=>p[1]),{weight:400});
-  label(N.svg,170,62,'*W^(1), *b^(1)',{'text-anchor':'middle',fill:'var(--model)','font-weight':400});label(N.svg,360,62,'*W^(2), *b^(2)',{'text-anchor':'middle',fill:'var(--mean)','font-weight':400});
-  mtxt(N.svg,320,385,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});
+  const N=netDiagram($('fig-recap'),{names:[['x₁','x₂'],['a₁','a₂','a₃'],['z₁','z₂']],xs:[90,290,460],W:770,H:432,top:60,bot:380,aria:'a network with two inputs, three hidden units and two outputs, followed by a softmax'});
+  const SX=482,PX=632,PW=90;   // softmax arrows start at SX; the p bars start at PX and are PW long
+  softmaxBox(N.svg,SX,N.pos[2].map(p=>p[1]),{weight:400,w:72});
+  label(N.svg,190,40,'*W^(1), *b^(1)',{'text-anchor':'middle',fill:'var(--model)','font-weight':400});label(N.svg,375,40,'*W^(2), *b^(2)',{'text-anchor':'middle',fill:'var(--mean)','font-weight':400});
+  mtxt(N.svg,385,424,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});
+  // the interactive part. Biases stay at 0 and are not drawn. Each weight is a vertical bar on its edge, dragged between −WMAX and WMAX
+  const WMAX=3,TH=24,XMIN=-2,XMAX=2,XSTEP=.5;   // TH: half the height of a weight bar
+  const START={W1:[[1.2,-.8],[-.6,1.5],[.9,.4]],W2:[[1.6,-1.1,.7],[-.9,1.3,-.5]],x:[1,.5]};   // W1[j][i]: input i to hidden j; W2[k][j]: hidden j to output k
+  const copy=v=>JSON.parse(JSON.stringify(v));
+  let S=copy(START),live=false;
+  const G=stepG(N.svg,1);G.setAttribute('class','noanim');
+  const toSvgY=e=>{const r=N.svg.getBoundingClientRect();return (e.clientY-r.top)/r.height*N.H;};
+  const apply=act('recap-net',v=>{S=copy(v);draw();});
+  // a drag follows the pointer anywhere over the figure until the button is released.
+  // No pointer capture: the presenter window replays drags as synthetic events, which cannot be captured
+  let dragging=null;
+  N.svg.addEventListener('pointermove',e=>{if(dragging)dragging(toSvgY(e));});
+  window.addEventListener('pointerup',()=>{dragging=null;});
+  const drag=(hit,onY)=>{hit.style.cursor='ns-resize';
+    hit.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();dragging=onY;onY(toSvgY(e));});};
+  // where a weight's bar sits along its edge: the two columns of bars in each layer are kept apart
+  const BAR_T=[[.62,.38],[.38,.62]];   // layer 1: by input i; layer 2: by output k
+  const bars=[];   // {l,a,b,fill,knob}
+  for(let l=0;l<2;l++)N.pos[l].forEach((A,a)=>N.pos[l+1].forEach((B,b)=>{
+    const t=BAR_T[l][l?b:a],x=A[0]+N.r+t*(B[0]-A[0]-2*N.r),y=A[1]+t*(B[1]-A[1]);
+    el('rect',{x:x-5,y:y-TH,width:10,height:2*TH,rx:3,fill:'var(--surface)',stroke:'var(--muted)','stroke-width':1},G);
+    el('line',{x1:x-5,x2:x+5,y1:y,y2:y,stroke:'var(--muted)','stroke-width':1},G);
+    const fill=el('rect',{x:x-4,width:8},G),knob=el('rect',{x:x-9,width:18,height:5,rx:2,fill:'var(--ink)'},G);
+    const hit=el('rect',{x:x-11,y:y-TH-5,width:22,height:2*TH+10,fill:'transparent'},G);
+    drag(hit,py=>{const v=copy(S),w=Math.round(clamp((y-py)/TH*WMAX,-WMAX,WMAX)*10)/10;
+      if(l)v.W2[b][a]=w;else v.W1[b][a]=w;apply(v);});
+    bars.push({l,a,b,x,y,fill,knob});}));
+  // the inputs: a value with step buttons above and below it, left of each input node
+  const inVals=N.pos[0].map((P,i)=>{const x=P[0]-54,y=P[1];
+    const t=mtxt(G,x,y+6,'',{'text-anchor':'middle','font-size':17,fill:'var(--ink)'});
+    for(const [d,dy] of [[1,-1],[-1,1]]){const yc=y+dy*24;
+      el('path',{d:`M${x-7} ${yc+dy*-4}L${x+7} ${yc+dy*-4}L${x} ${yc+dy*5}Z`,fill:'var(--muted)'},G);
+      const hit=el('rect',{x:x-14,y:yc-10,width:28,height:20,fill:'transparent'},G);hit.style.cursor='pointer';
+      hit.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();});
+      hit.addEventListener('click',e=>{e.stopPropagation();const v=copy(S);v.x[i]=clamp(v.x[i]+d*XSTEP,XMIN,XMAX);apply(v);});}
+    return {t,x,y};});
+  // the outputs: p₁ and p₂ as bars from 0 to 1
+  const pBars=N.pos[2].map(P=>{const y=P[1];
+    el('rect',{x:PX,y:y-8,width:PW,height:16,rx:3,fill:'none',stroke:'var(--muted)','stroke-width':1},G);
+    return {fill:el('rect',{x:PX,y:y-8,height:16,rx:3,fill:'var(--model)'},G),t:mtxt(G,PX+PW+8,y+6,'',{'font-size':16,fill:'var(--ink)'})};});
+  const yb=N.pos[2][1][1]+26;
+  mtxt(G,PX,yb,'0',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});mtxt(G,PX+PW,yb,'1',{'text-anchor':'middle','font-size':13,fill:'var(--muted)'});
+  function draw(){
+    const w=(l,a,b)=>l?S.W2[b][a]:S.W1[b][a];
+    for(const B of bars){const v=w(B.l,B.a,B.b),h=Math.abs(v)/WMAX*TH,ky=B.y-v/WMAX*TH;
+      B.fill.setAttribute('y',v>=0?B.y-h:B.y);B.fill.setAttribute('height',h);B.fill.setAttribute('fill',v>=0?'var(--model)':'var(--err)');
+      B.knob.setAttribute('y',ky-2.5);
+      // the edge itself: colour by sign, thickness by size; back to plain at step 0
+      const E=N.E[B.l][B.a][B.b];
+      E.setAttribute('stroke',live?(v>=0?'var(--model)':'var(--err)'):'var(--line)');E.setAttribute('stroke-width',live?(.6+1.4*Math.abs(v)).toFixed(2):1.6);
+      E.setAttribute('stroke-opacity',live?.55:1);}
+    inVals.forEach((I,i)=>{I.t.replaceWith(I.t=mtxt(G,I.x,I.y+6,fmt(S.x[i],1),{'text-anchor':'middle','font-size':17,fill:'var(--ink)'}));});
+    const {p}=mlpForward([S.W1,[0,0,0],S.W2,[0,0]],S.x);
+    pBars.forEach((B,k)=>{B.fill.setAttribute('width',(p[k]*PW).toFixed(1));B.t.replaceWith(B.t=mtxt(G,PX+PW+8,N.pos[2][k][1]+6,fmt(p[k],2),{'font-size':16,fill:'var(--ink)'}));});}
+  hooks['s-recap']={step(s){live=s>=1;draw();},enter(){S=copy(START);}};
+  draw();
 }
 
 /* ---------- the chain rule: one path, then a branching one ---------- */

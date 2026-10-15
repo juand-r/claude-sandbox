@@ -16,7 +16,7 @@
 </section>
 
 <!-- RECAP -->
-<section class="slide" id="s-recap" data-steps="0">
+<section class="slide" id="s-recap" data-steps="1">
   <div class="prose">
     <div class="eyebrow">Last time</div>
     <h2>Forward propagation</h2>
@@ -28,7 +28,8 @@
   </div>
   <div class="fig"><div id="fig-recap"></div></div>
   <div class="notes">
-    <p>The network from last time: a hidden layer of sigmoids, then a softmax. The loss is the cross-entropy, −log of the probability of the true class, summed over the training data. θ is all the weights and biases together. The XOR network had 17 of them; real networks have millions. One partial derivative per weight. Writing out the loss as one formula and differentiating it by hand does not scale. Backpropagation is a way to get all of them at once, for about the cost of one more pass through the network.</p>
+    <p><b class="cue">0</b>The network from last time: a hidden layer of sigmoids, then a softmax. The loss is the cross-entropy, −log of the probability of the true class, summed over the training data. θ is all the weights and biases together. The XOR network had 17 of them; real networks have millions. One partial derivative per weight. Writing out the loss as one formula and differentiating it by hand does not scale. Backpropagation is a way to get all of them at once, for about the cost of one more pass through the network.</p>
+    <p><b class="cue">1</b>Now the network is live. The bar on each edge is that weight, from −3 at the bottom to +3 at the top; drag it up or down. Teal edges are positive weights, orange ones negative, and a thicker edge is a larger weight. The arrows above and below x₁ and x₂ change that input by 0.5, between −2 and 2. The biases are fixed at 0 and not drawn. The bars on the right are p₁ and p₂, which always add up to 1. Try: make the top bar into a₁ large and watch p₁. The question for today: when we want p for the true class to go up, which way should each of these twelve bars move, and by how much? Leaving the slide puts every value back.</p>
   </div>
 </section>
 

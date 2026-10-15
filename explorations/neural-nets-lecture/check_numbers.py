@@ -451,4 +451,19 @@ close(r3(-0.256 + 0.128), -0.128, 1e-12, "two outputs: sum of the two rounded pa
 # squared error's extra factor p(1 - p): a confident wrong answer (p = 0.01, y = 1) gets a tiny gradient
 close(r3((0.01 - 1) * 0.01 * 0.99), -0.010, 1e-12, "squared error at p = 0.01, y = 1: dL/dz")
 
+# ---------------------------------------------------------------- class 2: the live network on the recap slide (biases 0)
+assert "const START={W1:[[1.2,-.8],[-.6,1.5],[.9,.4]],W2:[[1.6,-1.1,.7],[-.9,1.3,-.5]],x:[1,.5]};" in CODE2, \
+    "recap widget start values changed: update these checks and tests/recap2.js"
+def recap_p(W1, W2, x):
+    a = 1 / (1 + np.exp(-np.array(W1) @ np.array(x)))
+    z = np.array(W2) @ a
+    e = np.exp(z - z.max())
+    return e / e.sum()
+RW1, RW2 = [[1.2, -.8], [-.6, 1.5], [.9, .4]], [[1.6, -1.1, .7], [-.9, 1.3, -.5]]
+close(round(recap_p(RW1, RW2, [1, .5])[0], 2), 0.79, 1e-12, "recap widget: p1 at the start")
+RW1[0][0] = 3
+close(round(recap_p(RW1, RW2, [1, .5])[0], 2), 0.87, 1e-12, "recap widget: p1 with w(x1->a1) = 3")
+close(round(recap_p(RW1, RW2, [1, -.5])[0], 2), 0.94, 1e-12, "recap widget: p1 with w(x1->a1) = 3, x2 = -0.5")
+close(round(recap_p(RW1, RW2, [1, 1])[0], 2), 0.82, 1e-12, "recap widget: p1 with w(x1->a1) = 3, x2 = 1")
+
 print("all checks passed")

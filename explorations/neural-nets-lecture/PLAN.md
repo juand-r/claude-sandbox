@@ -212,3 +212,10 @@ Follow-up 5 (2026-10-15), asked by the user: "Classification example" and "Now w
 slide. The classifier uses log loss from the start (as for logistic regression): p = 0.657, ℒ = 0.420,
 ∂ℒ/∂z⁽²⁾ = p − y = −0.343, gradients −0.251 and −0.270. Squared error on p is only in the speaker notes.
 The table is gone, so the network sits exactly where it does on slide 9 (and appears at once).
+
+Follow-up 6 (2026-10-15), asked by the user: the recap slide (slide 2) gets a last step where the network
+is live. Each of the 12 weights is a vertical bar on its edge, dragged between −3 and 3; edges turn teal
+(positive) or orange (negative) and thicken with the weight. The inputs change by ▲/▼ buttons (step 0.5,
+−2 to 2), on the user's request that they not look like the weight sliders. Biases are 0 and not drawn.
+p₁ and p₂ are bars from 0 to 1. Start values are fixed (W1, W2, x in code_2.js); leaving the slide resets
+them. Checked in check_numbers.py and tests/recap2.js (also driven from the presenter window).

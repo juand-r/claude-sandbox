@@ -243,3 +243,4 @@ check_numbers.py covers every number, by hand and against numerical derivatives.
   KaTeX glyph widths (GLYPH_EM); class 1 has no such labels, so it is unchanged.
 - Class 2 (2026-10-15): the worked-example figures draw each bias as a weight from a dashed node with value 1 (biasLinks in code_2.js), as class 1 does; the bias labels next to the units are gone.
 - Class 2 (2026-10-15): bonus slide 'Every path from one weight' (s-manypaths): three hidden layers of 3 units, two outputs; the 1, 3, 9, 18 paths from w₁₁⁽¹⁾ to ℒ highlighted in red, step by step.
+- Class 2 (2026-10-15): the live recap network drags its weight bars without pointer capture. The presenter window replays a drag as synthetic pointer events, and setPointerCapture throws on those, so a captured drag only worked in the deck window. The drag now follows pointermove on the whole figure until any pointerup.

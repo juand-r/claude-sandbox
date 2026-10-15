@@ -46,7 +46,8 @@ cheap enough to run in the browser so the start point can be dragged.
   (CC BY 3.0), Rosenblatt, Minsky, Papert, the Perceptrons cover).
 - `tests/`: Playwright scripts, run from `tests/` with `NODE_PATH=$(npm root -g) node <script>.js`:
   `steps.js <1|2> [slide-id ...]` (every step of every slide), `interact1.js` and `interact2.js`
-  (dragging, replays, presenter view, dark mode, phone width), `mathwrap.js <deck.html>` (formula
+  (dragging, replays, presenter view, dark mode, phone width), `recap2.js` (the live network on
+  class 2's recap slide, in the deck and from the presenter window), `mathwrap.js <deck.html>` (formula
   wrapping at five screen sizes).
 
 ## PDF versions
