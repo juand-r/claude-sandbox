@@ -54,7 +54,7 @@
 </section>
 
 <!-- THE CHAIN RULE -->
-<section class="slide" id="s-chain" data-steps="3">
+<section class="slide" id="s-chain" data-steps="2">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
     <h2>The chain rule</h2>
@@ -62,15 +62,13 @@
       <li>If <span class="math">\(y\)</span> depends on <span class="math">\(u\)</span>, and <span class="math">\(u\)</span> depends on <span class="math">\(x\)</span>, the derivatives multiply:<span class="math dm">\[\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}\]</span></li>
       <li data-step="1">Example: <span class="math">\(y = (3x + 1)^2\)</span>. Write <span class="math">\(u = 3x + 1\)</span> and <span class="math">\(y = u^2\)</span>:<span class="math dm">\[\frac{du}{dx} = 3, \qquad \frac{dy}{du} = 2u\]</span></li>
       <li data-step="2">At <span class="math">\(x = 1\)</span>, <span class="math">\(u = 4\)</span>:<span class="math dm">\[\frac{dy}{dx} = 2 \cdot 4 \cdot 3 = 24\]</span><span class="fine">Check: <span class="math">\(y = 9x^2 + 6x + 1\)</span>, so <span class="math">\(dy/dx = 18x + 6 = 24\)</span>.</span></li>
-      <li data-step="3">A network is a long chain: a weight changes a sum, the sum changes a unit, … , the output changes the loss. Multiply along the chain.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-chain"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>The rule from calculus. Each link of the chain contributes one factor.</p>
     <p><b class="cue">1</b>Break the formula into two simple pieces, and differentiate each piece on its own.</p>
-    <p><b class="cue">2</b>Put in the value of u, then multiply. Expanding the square gives the same answer, but for a network there is nothing to expand: the chain rule is the only practical way.</p>
-    <p><b class="cue">3</b>The nested function on the last slide is exactly such a chain, with one link per layer.</p>
+    <p><b class="cue">2</b>Put in the value of u, then multiply. Expanding the square gives the same answer, but for a network there is nothing to expand: the chain rule is the only practical way. The nested function on the last slide is exactly such a chain, with one link per layer.</p>
   </div>
 </section>
 
