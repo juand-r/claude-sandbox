@@ -509,3 +509,29 @@
     <p>Questions now, in office hours, or on the forum.</p>
   </div>
 </section>
+
+<!-- BONUS: ALL THE PATHS IN A DEEPER NETWORK -->
+<section class="slide" id="s-manypaths" data-steps="5">
+  <div class="prose">
+    <div class="eyebrow">Bonus</div>
+    <h2>Every path from one weight</h2>
+    <ul>
+      <li>Three hidden layers of 3 units, two outputs. Which paths lead from <span class="math">\(w^{(1)}_{11}\)</span> to the loss?</li>
+      <li data-step="1"><span class="math">\(w^{(1)}_{11}\)</span> changes only <span class="math">\(a^{(1)}_1\)</span>.</li>
+      <li data-step="2"><span class="math">\(a^{(1)}_1\)</span> feeds all 3 units of layer 2: 3 paths.</li>
+      <li data-step="3">Each of those feeds all 3 units of layer 3: <span class="math">\(3 \times 3 = 9\)</span> paths.</li>
+      <li data-step="4">Each of those feeds both outputs: <span class="math">\(9 \times 2 = 18\)</span> paths to <span class="math">\(\mathcal{L}\)</span>. The chain rule adds 18 products.</li>
+      <li data-step="5">Backpropagation never lists the paths. The hidden-unit rule adds them up one layer at a time, so the work grows with the number of weights, not the number of paths.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-manypaths"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>The same question as "Add the paths", one layer deeper on each side.</p>
+    <p><b class="cue">1</b>The first link of every path.</p>
+    <p><b class="cue">2</b>Each path through a different unit of layer 2 contributes its own product.</p>
+    <p><b class="cue">3</b>The number of paths multiplies by the width of each layer.</p>
+    <p><b class="cue">4</b>With L layers of width n, a weight in the first layer has about n^(L−1) paths to the loss: exponential in depth. Written out path by path, the derivative would be hopeless for a real network.</p>
+    <p><b class="cue">5</b>The errors ∂ℒ/∂z of layer 3 already contain all the paths from layer 3 on; layer 2 reuses them, and layer 1 reuses layer 2's. Each weight is touched once in the backward pass, which is why it costs about as much as the forward pass.</p>
+  </div>
+</section>
+

@@ -390,6 +390,7 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 .titlememe img{max-height:68vh}
 .titlememe figcaption{font-size:.7em}
 #fig-formula svg,#fig-chain svg,#fig-branch svg,#fig-general svg{max-height:60vh;width:auto;max-width:100%;margin:0 auto}
+#fig-manypaths svg{max-height:62vh;width:100%;margin:0 auto}
 
 </style>
 </head>
@@ -921,6 +922,32 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
     <p>Questions now, in office hours, or on the forum.</p>
   </div>
 </section>
+
+<!-- BONUS: ALL THE PATHS IN A DEEPER NETWORK -->
+<section class="slide" id="s-manypaths" data-steps="5">
+  <div class="prose">
+    <div class="eyebrow">Bonus</div>
+    <h2>Every path from one weight</h2>
+    <ul>
+      <li>Three hidden layers of 3 units, two outputs. Which paths lead from <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>w</mi><mn>11</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">w^{(1)}_{11}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3111em;vertical-align:-0.2663em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4337em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2663em;"><span></span></span></span></span></span></span></span></span></span></span> to the loss?</li>
+      <li data-step="1"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>w</mi><mn>11</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">w^{(1)}_{11}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3111em;vertical-align:-0.2663em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4337em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2663em;"><span></span></span></span></span></span></span></span></span></span></span> changes only <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>a</mi><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">a^{(1)}_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3111em;vertical-align:-0.2663em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4337em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2663em;"><span></span></span></span></span></span></span></span></span></span></span>.</li>
+      <li data-step="2"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>a</mi><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">a^{(1)}_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3111em;vertical-align:-0.2663em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4337em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2663em;"><span></span></span></span></span></span></span></span></span></span></span> feeds all 3 units of layer 2: 3 paths.</li>
+      <li data-step="3">Each of those feeds all 3 units of layer 3: <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><mn>3</mn><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">3 \times 3 = 9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">9</span></span></span></span></span> paths.</li>
+      <li data-step="4">Each of those feeds both outputs: <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>×</mo><mn>2</mn><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">9 \times 2 = 18</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18</span></span></span></span></span> paths to <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">L</mi></mrow><annotation encoding="application/x-tex">\mathcal{L}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">L</span></span></span></span></span>. The chain rule adds 18 products.</li>
+      <li data-step="5">Backpropagation never lists the paths. The hidden-unit rule adds them up one layer at a time, so the work grows with the number of weights, not the number of paths.</li>
+    </ul>
+  </div>
+  <div class="fig"><div id="fig-manypaths"></div></div>
+  <div class="notes">
+    <p><b class="cue">0</b>The same question as "Add the paths", one layer deeper on each side.</p>
+    <p><b class="cue">1</b>The first link of every path.</p>
+    <p><b class="cue">2</b>Each path through a different unit of layer 2 contributes its own product.</p>
+    <p><b class="cue">3</b>The number of paths multiplies by the width of each layer.</p>
+    <p><b class="cue">4</b>With L layers of width n, a weight in the first layer has about n^(L−1) paths to the loss: exponential in depth. Written out path by path, the derivative would be hopeless for a real network.</p>
+    <p><b class="cue">5</b>The errors ∂ℒ/∂z of layer 3 already contain all the paths from layer 3 on; layer 2 reuses them, and layer 1 reuses layer 2's. Each weight is touched once in the backward pass, which is why it costs about as much as the forward pass.</p>
+  </div>
+</section>
+
 
 </main>
 
@@ -1920,7 +1947,7 @@ const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'))
   mtxt(gL,Lx,Ly+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});
   const g2=stepG(N.svg,2);arrow(g2,520,400,60,400,{stroke:'var(--err)','stroke-width':3});
   mtxt(g2,290,390,'backward: ∂ℒ/∂*z^(2), then ∂ℒ/∂*z^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)'});
-  mtxt(g2,Lx+32,Ly+44,'∂ℒ/∂*z^(2)',{'text-anchor':'middle','font-size':16,fill:'var(--err)'});   // the vector of output errors
+  mtxt(g2,N.pos[2][1][0]+22,N.pos[2][1][1]+48,'∂ℒ/∂*z^(2)',{'font-size':16,fill:'var(--err)'});   // the vector of output errors, under the lower output
   mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'∂ℒ/∂*z^(1)',{'font-size':16,fill:'var(--err)'});
 }
 
@@ -2061,6 +2088,25 @@ const PATIENCE=400;   // epochs without improvement before stopping (checked in 
   el('path',{d:`M${xs[3]+w/2} ${y+h+4} V${yb} H${xs[0]+w/2} V${y+h+14}`,fill:'none',stroke:'var(--ink)','stroke-width':2.5},g4);
   arrow(g4,xs[0]+w/2,y+h+30,xs[0]+w/2,y+h+4,{stroke:'var(--ink)','stroke-width':2.5});
   txt(g4,W/2,yb+30,'repeat with the new weights, until a stopping condition holds',{'text-anchor':'middle','font-size':17,fill:'var(--muted)'});
+}
+
+/* ---------- bonus: every path from one first-layer weight in a deeper network ---------- */
+{
+  const names=[['x₁','x₂'],['a₁^(1)','a₂^(1)','a₃^(1)'],['a₁^(2)','a₂^(2)','a₃^(2)'],['a₁^(3)','a₂^(3)','a₃^(3)'],['a₁^(4)','a₂^(4)']];
+  const N=netDiagram($('fig-manypaths'),{names,xs:[60,220,380,540,700],W:830,H:390,top:60,bot:330,aria:'a network with three hidden layers; the paths from the first-layer weight w11 to the loss are highlighted layer by layer'});
+  N.svg.setAttribute('fill','var(--ink)');N.svg.classList.add('noanim');
+  const P=N.pos,r=N.r,Ly=(P[4][0][1]+P[4][1][1])/2,Lx=790;
+  P[4].forEach(q=>arrow(N.svg,q[0]+r,q[1],Lx-14,Ly+(q[1]-Ly)*.15,{stroke:'var(--ink)'}));
+  mtxt(N.svg,Lx,Ly+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});
+  // red copies of the edges on the paths, one layer per step
+  const red=(g,l,a,b)=>{const A=P[l][a],B=P[l+1][b];el('line',{x1:A[0]+r,y1:A[1],x2:B[0]-r,y2:B[1],stroke:'var(--err)','stroke-width':3,'stroke-linecap':'round'},g);};
+  const g1=stepG(N.gE,1),g2=stepG(N.gE,2),g3=stepG(N.gE,3),g4=stepG(N.gE,4);
+  red(g1,0,0,0);
+  [0,1,2].forEach(b=>red(g2,1,0,b));
+  [0,1,2].forEach(a=>[0,1,2].forEach(b=>red(g3,2,a,b)));
+  [0,1,2].forEach(a=>[0,1].forEach(b=>red(g4,3,a,b)));
+  mtxt(stepG(N.svg,1),(P[0][0][0]+P[1][0][0])/2-14,(P[0][0][1]+P[1][0][1])/2-14,'w₁₁^(1)',{'text-anchor':'middle','font-size':16,fill:'var(--err)','font-weight':700});
+  [[2,'3 paths'],[3,'9 paths'],[4,'18 paths']].forEach(([k,s])=>mtxt(stepG(N.svg,k),[0,0,300,460,620][k],372,s,{'text-anchor':'middle','font-size':15,fill:'var(--err)','font-weight':700}));
 }
 
 /* ---------- fit every slide to the screen: no slide ever needs scrolling ---------- */

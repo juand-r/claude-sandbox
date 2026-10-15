@@ -247,7 +247,7 @@ const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'))
   mtxt(gL,Lx,Ly+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});
   const g2=stepG(N.svg,2);arrow(g2,520,400,60,400,{stroke:'var(--err)','stroke-width':3});
   mtxt(g2,290,390,'backward: ∂ℒ/∂*z^(2), then ∂ℒ/∂*z^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)'});
-  mtxt(g2,Lx+32,Ly+44,'∂ℒ/∂*z^(2)',{'text-anchor':'middle','font-size':16,fill:'var(--err)'});   // the vector of output errors
+  mtxt(g2,N.pos[2][1][0]+22,N.pos[2][1][1]+48,'∂ℒ/∂*z^(2)',{'font-size':16,fill:'var(--err)'});   // the vector of output errors, under the lower output
   mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'∂ℒ/∂*z^(1)',{'font-size':16,fill:'var(--err)'});
 }
 
@@ -388,4 +388,23 @@ const PATIENCE=400;   // epochs without improvement before stopping (checked in 
   el('path',{d:`M${xs[3]+w/2} ${y+h+4} V${yb} H${xs[0]+w/2} V${y+h+14}`,fill:'none',stroke:'var(--ink)','stroke-width':2.5},g4);
   arrow(g4,xs[0]+w/2,y+h+30,xs[0]+w/2,y+h+4,{stroke:'var(--ink)','stroke-width':2.5});
   txt(g4,W/2,yb+30,'repeat with the new weights, until a stopping condition holds',{'text-anchor':'middle','font-size':17,fill:'var(--muted)'});
+}
+
+/* ---------- bonus: every path from one first-layer weight in a deeper network ---------- */
+{
+  const names=[['x₁','x₂'],['a₁^(1)','a₂^(1)','a₃^(1)'],['a₁^(2)','a₂^(2)','a₃^(2)'],['a₁^(3)','a₂^(3)','a₃^(3)'],['a₁^(4)','a₂^(4)']];
+  const N=netDiagram($('fig-manypaths'),{names,xs:[60,220,380,540,700],W:830,H:390,top:60,bot:330,aria:'a network with three hidden layers; the paths from the first-layer weight w11 to the loss are highlighted layer by layer'});
+  N.svg.setAttribute('fill','var(--ink)');N.svg.classList.add('noanim');
+  const P=N.pos,r=N.r,Ly=(P[4][0][1]+P[4][1][1])/2,Lx=790;
+  P[4].forEach(q=>arrow(N.svg,q[0]+r,q[1],Lx-14,Ly+(q[1]-Ly)*.15,{stroke:'var(--ink)'}));
+  mtxt(N.svg,Lx,Ly+7,'ℒ',{'text-anchor':'middle','font-size':20,fill:'var(--err)'});
+  // red copies of the edges on the paths, one layer per step
+  const red=(g,l,a,b)=>{const A=P[l][a],B=P[l+1][b];el('line',{x1:A[0]+r,y1:A[1],x2:B[0]-r,y2:B[1],stroke:'var(--err)','stroke-width':3,'stroke-linecap':'round'},g);};
+  const g1=stepG(N.gE,1),g2=stepG(N.gE,2),g3=stepG(N.gE,3),g4=stepG(N.gE,4);
+  red(g1,0,0,0);
+  [0,1,2].forEach(b=>red(g2,1,0,b));
+  [0,1,2].forEach(a=>[0,1,2].forEach(b=>red(g3,2,a,b)));
+  [0,1,2].forEach(a=>[0,1].forEach(b=>red(g4,3,a,b)));
+  mtxt(stepG(N.svg,1),(P[0][0][0]+P[1][0][0])/2-14,(P[0][0][1]+P[1][0][1])/2-14,'w₁₁^(1)',{'text-anchor':'middle','font-size':16,fill:'var(--err)','font-weight':700});
+  [[2,'3 paths'],[3,'9 paths'],[4,'18 paths']].forEach(([k,s])=>mtxt(stepG(N.svg,k),[0,0,300,460,620][k],372,s,{'text-anchor':'middle','font-size':15,fill:'var(--err)','font-weight':700}));
 }
