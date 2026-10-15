@@ -155,21 +155,22 @@
 </section>
 
 <!-- UPDATE -->
-<section class="slide" id="s-update" data-steps="2">
+<section class="slide" id="s-update" data-steps="3">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
     <h2>Update the weights</h2>
     <ul>
       <li>Gradient descent, with learning rate <span class="math">\(\eta = 0.1\)</span>:<span class="math dm">\[w \leftarrow w - \eta\, \frac{\partial \mathcal{L}}{\partial w}\]</span></li>
       <li data-step="1"><span class="math">\(w^{(2)}_{11} \leftarrow 2 - 0.1 \times (-0.986) = 2.099\)</span><br><span class="math">\(w^{(1)}_{11} \leftarrow -0.5 - 0.1 \times (-1.061) = -0.394\)</span></li>
-      <li data-step="2">Do the same for all nine weights, with every gradient computed from the old weights. Then the next training point.</li>
+      <li data-step="3">Do the same for all nine weights, with every gradient computed from the old weights. Then the next training point.</li>
     </ul>
   </div>
   <div class="fig"><div id="fig-update"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>The update from class 1: step against the gradient.</p>
     <p><b class="cue">1</b>Both gradients were negative, so both weights go up.</p>
-    <p><b class="cue">2</b>Compute all the gradients first, then update; otherwise later gradients would use some new weights. After one step on all nine weights, the loss on this point goes from 0.910 to 0.489 (check_numbers.py).</p>
+    <p><b class="cue">2</b>The new values on the network.</p>
+    <p><b class="cue">3</b>Compute all the gradients first, then update; otherwise later gradients would use some new weights. After one step on all nine weights, the loss on this point goes from 0.910 to 0.489 (check_numbers.py).</p>
   </div>
 </section>
 

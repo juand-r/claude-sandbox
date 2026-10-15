@@ -179,11 +179,11 @@ const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fi
 {
   const X=exNet('fig-update',{still:true,aria:'the network with the new values of v1 and w11'});
   [1,2,3].forEach(k=>X.fwd(k));
-  // the new weights replace the old labels at step 1
   const [ax,ay]=X.at(0,0,0,.5),[bx_,by]=X.at(1,0,0,.45),g=el('g',{},X.N.svg);
   for(const [x,y,t] of [[ax,ay,'−0.394'],[bx_,by,'2.099']]){el('rect',{x:x-34,y:y-13,width:68,height:26,rx:6,fill:'var(--surface)'},g);
     label(g,x,y+6,t,{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});}
-  hooks['s-update']={step(s){g.style.display=s>=1?'':'none';X.wl.w11.style.display=X.wl.v1.style.display=s>=1?'none':'';}};
+  // the bullets with the arithmetic come first (step 1); the new values replace the old labels at step 2
+  hooks['s-update']={step(s){g.style.display=s>=2?'':'none';X.wl.w11.style.display=X.wl.v1.style.display=s>=2?'none':'';}};
   g.style.display='none';
 }
 {
