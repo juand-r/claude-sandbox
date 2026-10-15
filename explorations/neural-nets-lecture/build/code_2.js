@@ -14,7 +14,7 @@ function hiEdge(N,g,l,a,b,color='var(--hi)'){const A=N.pos[l][a],B=N.pos[l+1][b]
 
 /* ---------- recap: the 2-3-2 network ---------- */
 {
-  const N=netDiagram($('fig-recap'),{names:[['x₁','x₂'],['h₁','h₂','h₃'],['z₁','z₂']],xs:[70,270,450],W:640,H:400,top:70,bot:330,aria:'a network with two inputs, three hidden units and two outputs, followed by a softmax'});
+  const N=netDiagram($('fig-recap'),{names:[['x₁','x₂'],['a₁','a₂','a₃'],['z₁','z₂']],xs:[70,270,450],W:640,H:400,top:70,bot:330,aria:'a network with two inputs, three hidden units and two outputs, followed by a softmax'});
   softmaxBox(N.svg,472,N.pos[2].map(p=>p[1]),{weight:400});
   label(N.svg,170,62,'*W^(1), *b^(1)',{'text-anchor':'middle',fill:'var(--model)','font-weight':400});label(N.svg,360,62,'*W^(2), *b^(2)',{'text-anchor':'middle',fill:'var(--mean)','font-weight':400});
   mtxt(N.svg,320,385,'∂ℒ/∂w for every weight w ?',{'text-anchor':'middle','font-size':17,fill:'var(--hi)'});
@@ -56,7 +56,7 @@ function link(L,A,B,r,top,bot,step){const t=Math.atan2(B[1]-A[1],B[0]-A[0]),c=Ma
   const svg=el('svg',{viewBox:'0 0 640 400',role:'img','aria-label':'unit j of layer l receives the activation of unit i through w_ji and feeds the units k of layer l+1; their errors come back along the same connections'},$('fig-general'));
   svg.setAttribute('fill','var(--ink)');
   const I=[80,200],J=[290,200],K=[[480,90],[480,200],[480,310]],r=28;
-  node(svg,I[0],I[1],r,'i');node(svg,J[0],J[1],r,'j');K.forEach(q=>node(svg,q[0],q[1],r,'k'));
+  node(svg,I[0],I[1],r,'i');node(svg,J[0],J[1],r,'j');K.forEach((q,n)=>node(svg,q[0],q[1],r,'k'+'₁₂₃'[n]));
   [[I[0],'layer l − 1'],[J[0],'layer l'],[K[0][0],'layer l + 1']].forEach(([x,s])=>mtxt(svg,x,30,s,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'}));
   mtxt(svg,I[0],I[1]-42,'aᵢ^(l−1)',{'text-anchor':'middle','font-size':16,fill:'var(--model)'});
   mtxt(svg,J[0],J[1]+74,'zⱼ^(l) → aⱼ^(l)',{'text-anchor':'middle','font-size':16,fill:'var(--model)'});
@@ -233,9 +233,10 @@ const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'))
 {
   const N=netDiagram($('fig-recipe'),{names:[['x₁','x₂'],['a₁^(1)','a₂^(1)','a₃^(1)'],['z₁^(2)','z₂^(2)']],xs:[80,300,500],W:600,H:420,top:90,bot:330,aria:'forward pass from left to right, backward pass from right to left'});
   arrow(N.svg,60,40,520,40,{stroke:'var(--model)','stroke-width':3});mtxt(N.svg,290,30,'forward: every z and a',{'text-anchor':'middle','font-size':15,fill:'var(--model)'});
+  mtxt(stepG(N.svg,1),N.pos[2][0][0]+34,N.pos[2][0][1]+6,'→ ℒ',{'font-size':18,fill:'var(--err)'});   // step 1: the loss
   const g2=stepG(N.svg,2);arrow(g2,520,400,60,400,{stroke:'var(--err)','stroke-width':3});
   mtxt(g2,290,390,'backward: ∂ℒ/∂z^(2), then ∂ℒ/∂z^(1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)'});
-  const g1=stepG(N.svg,1);mtxt(g1,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'∂ℒ/∂z^(2)',{'font-size':16,fill:'var(--err)'});
+  mtxt(g2,N.pos[2][1][0]+34,N.pos[2][1][1]+6,'∂ℒ/∂z^(2)',{'font-size':16,fill:'var(--err)'});
   mtxt(g2,N.pos[1][2][0]+34,N.pos[1][2][1]+6,'∂ℒ/∂z^(1)',{'font-size':16,fill:'var(--err)'});
 }
 

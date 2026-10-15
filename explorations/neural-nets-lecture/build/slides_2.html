@@ -20,7 +20,7 @@
   <div class="prose">
     <div class="eyebrow">Last time</div>
     <h2>Forward propagation</h2>
-    <span class="eq">\[\begin{aligned} \boldsymbol{h} &amp;= \sigma(\boldsymbol{W}^{(1)} \boldsymbol{x} + \boldsymbol{b}^{(1)}) \\ \boldsymbol{z} &amp;= \boldsymbol{W}^{(2)} \boldsymbol{h} + \boldsymbol{b}^{(2)} \\ \boldsymbol{p} &amp;= \operatorname{softmax}(\boldsymbol{z}) \end{aligned}\]</span>
+    <span class="eq">\[\begin{aligned} \boldsymbol{a}^{(1)} &amp;= \sigma(\boldsymbol{W}^{(1)} \boldsymbol{x} + \boldsymbol{b}^{(1)}) \\ \boldsymbol{z} &amp;= \boldsymbol{W}^{(2)} \boldsymbol{a}^{(1)} + \boldsymbol{b}^{(2)} \\ \boldsymbol{p} &amp;= \operatorname{softmax}(\boldsymbol{z}) \end{aligned}\]</span>
     <ul>
       <li>Train by gradient descent:<span class="math dm">\[\boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \eta\, \nabla\mathcal{L}(\boldsymbol{\theta})\]</span></li>
       <li>We need <span class="math">\(\partial\mathcal{L}/\partial w\)</span> for every weight <span class="math">\(w\)</span>. Where does it come from?</li>
@@ -262,11 +262,11 @@
 <section class="slide" id="s-recipe" data-steps="4">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
-    <h2>The recipe</h2>
+    <h2>The algorithm</h2>
     <ol>
       <li><b>Forward pass</b>: compute and store every <span class="math">\(z\)</span> and <span class="math">\(a\)</span>, layer by layer.</li>
-      <li data-step="1"><b>Error at each output</b>, from the loss (for example <span class="math">\(p_k - y_k\)</span>).</li>
-      <li data-step="2"><b>Backward pass</b>: the errors of the hidden units, layer by layer from the output back, with the hidden-unit rule.</li>
+      <li data-step="1"><b>Loss</b>: compute <span class="math">\(\mathcal{L}\)</span> from the output and the label.</li>
+      <li data-step="2"><b>Backward pass</b>: start at the output with <span class="math">\(\partial\mathcal{L}/\partial z^{(2)}_k\)</span> (for softmax and cross-entropy, <span class="math">\(p_k - y_k\)</span>). Then go back layer by layer with the hidden-unit rule.</li>
       <li data-step="3"><b>Gradients</b>: each weight gets the error at its end times the activation at its start.</li>
       <li data-step="4"><b>Update</b> every weight, <span class="math">\(w \leftarrow w - \eta\, \partial\mathcal{L}/\partial w\)</span>, using the old weights throughout.</li>
     </ol>
@@ -274,12 +274,11 @@
   <div class="fig"><div id="fig-recipe"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>Run the network on the training point as usual, but keep the values: the backward pass needs the activations (for the gradients) and the pre-activations (for the slopes).</p>
-    <p><b class="cue">1</b>Prediction minus label, one number per output (softmax and cross-entropy).</p>
-    <p><b class="cue">2</b>This is the "add the paths" step, done once per hidden unit instead of once per weight. In the example: (−0.325 × 2 + 0.325 × 1) × 0.1966 = −0.064 for hidden unit 1. In matrix form (not on the slides) this step is (W⁽²⁾ᵀ(p − y)) ⊙ a⁽¹⁾ ⊙ (1 − a⁽¹⁾).</p>
+    <p><b class="cue">1</b>The loss of this training point: −log pₖ for the true class with softmax and cross-entropy, ½(ŷ − y)² for regression.</p>
+    <p><b class="cue">2</b>The backward pass starts with the derivative of the loss with respect to each output unit's pre-activation, the error at the output: pₖ − yₖ for softmax with cross-entropy, ŷ − y for a linear output with squared error. This is the "Add the paths" step, done once per hidden unit instead of once per weight. In the example: (−0.325 × 2 + 0.325 × 1) × 0.1966 = −0.064 for hidden unit 1. In matrix form (not on the slides) this step is (W⁽²⁾ᵀ(p − y)) ⊙ a⁽¹⁾ ⊙ (1 − a⁽¹⁾).</p>
     <p><b class="cue">3</b>For w₁₁⁽¹⁾ in the example: −0.064 × 2 = −0.128, as on the last slide.</p>
     <p><b class="cue">4</b>Compute every gradient first, then update. If you updated the output weights before the backward pass, it would use the new weights, which is wrong. The backward pass costs about as much as the forward pass, so one gradient costs about two passes through the network, however many weights there are.</p>
-  </div>
-</section>
+  </section>
 
 <!-- THE TRAINING LOOP -->
 <section class="slide one" id="s-loop" data-steps="4">
