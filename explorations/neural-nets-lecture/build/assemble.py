@@ -4,6 +4,10 @@ the precomputed runs in data.json, and the images in ../assets (embedded as base
 
     python3 build/assemble.py 1 neural_nets_1.html
     python3 build/assemble.py 2 neural_nets_2.html
+    python3 build/assemble.py 2 neural_nets_2_annotate.html build/annotate_2.json
+
+With a third argument (a JSON file of slide id -> step), it builds an annotation copy: every slide shows
+one fixed step and has no presses; slides not in the file show their last step.
 
 Formulas written as \( … \) (inline) or \[ … \] (display) are typeset with KaTeX at build time; run
 `npm install` in build/ once first.
@@ -12,6 +16,7 @@ It cuts the SVM deck at marker lines, so it reproduces the deck only against the
 commit that added this folder.
 """
 import base64
+import json
 import re
 import subprocess
 import sys
@@ -20,6 +25,7 @@ from pathlib import Path
 
 here = Path(__file__).parent   # this build/ folder
 k, target = sys.argv[1], sys.argv[2]
+fixed = json.loads(Path(sys.argv[3]).read_text()) if len(sys.argv) > 3 else None   # annotation copy
 DECKS = {
     '1': ('Neural Networks, Part 1', 'Lecture slides: softmax and cross-entropy, gradient descent, the perceptron and XOR, hidden layers and forward propagation.'),
     '2': ('Neural Networks, Part 2', 'Lecture slides: backpropagation, learning rates, momentum, stochastic and mini-batch gradient descent, early stopping.'),
@@ -66,9 +72,24 @@ if k == '2':   # class 2: the next slide appears at once, without the smooth scr
     engine = sub(engine, "slides[i].scrollIntoView({behavior:'smooth',block:'start'})", "slides[i].scrollIntoView({behavior:'instant',block:'start'})")
     head += '\nhtml,#deck{scroll-behavior:auto!important}'
     head += '\n@media (max-width:620px){#s-recap .eq .katex{font-size:.64em!important}}'   # a⁽¹⁾ is wider than h
+if fixed is not None:   # annotation copy: each slide is drawn at its data-fixed step, and no press moves within a slide
+    engine = sub(engine, "slides.forEach((sl,i)=>applySteps(i,i===cur?step:(i<cur?maxStep(i):0)));", "slides.forEach((sl,i)=>applySteps(i,+sl.dataset.fixed));")
+    engine = sub(engine, "const h=hooks[slides[cur].id];if(h&&h.step)h.step(step);", "const h=hooks[slides[cur].id];if(h&&h.step)h.step(+slides[cur].dataset.fixed);")
+    engine = sub(engine, f"new BroadcastChannel('deck-nn{k}')", f"new BroadcastChannel('deck-nn{k}-annotate')")
+    head = sub(head, f'<title>{title}</title>', f'<title>{title} (annotation copy)</title>')
 rest = L(find('/* ---------- hover helper cards ---------- */'), find('/* ================= SVM lecture ================= */') - 1)
 fitboot = L(find('/* ---------- fit every slide to the screen'), len(svm))
 slides = re.sub(r'\{\{IMG:([^}]+)\}\}', embed, (here / f'slides_{k}.html').read_text())
+if fixed is not None:
+    ids = set(re.findall(r'<section class="slide[^"]*" id="([^"]+)"', slides))
+    unknown = [i for i in fixed if not i.startswith('_') and i not in ids]
+    assert not unknown, f'annotation file names slides that do not exist: {unknown}'
+    def fix(m):
+        sid, n = m.group(2), int(m.group(3))
+        f = fixed.get(sid, n)
+        assert 0 <= f <= n, f'{sid}: step {f} is not between 0 and {n}'
+        return f'{m.group(1)}data-steps="0" data-fixed="{f}">'
+    slides = re.sub(r'(<section class="slide[^"]*" id="([^"]+)" )data-steps="(\d+)">', fix, slides)
 # formulas written as \( … \) or \[ … \] are typeset by KaTeX now (build/tex.js), with its fonts embedded
 katex_css = ''
 if '\\(' in slides or '\\[' in slides:

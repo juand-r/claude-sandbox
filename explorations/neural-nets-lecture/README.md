@@ -6,7 +6,7 @@ layers, softmax, forward propagation, activation functions, deeper networks), sh
 then turns to training: cross-entropy, the loss landscape and gradient descent. Four bonus slides at the
 end: the perceptron, the losses compared, softmax vs argmax, and why softmax and cross-entropy
 fit together.
-Class 2 (25 slides, one of them a bonus) is about training: backpropagation, worked through one example with numbers on a
+Class 2 (26 slides, one of them a bonus) is about training: backpropagation, worked through one example with numbers on a
 2-2-1 network (regression with squared error, then the same network predicting a class with log
 loss, then two outputs), learning rates,
 momentum, local minima, batch versus mini-batch versus stochastic gradient descent, early stopping, and a family tree
@@ -63,6 +63,16 @@ cd tests && NODE_PATH=$(npm root -g) node pdf.js 1 && cd ..   # screenshots into
 `neural_nets_1_steps.pdf` and `neural_nets_2_steps.pdf` have one page per step instead, so they show
 the order in which things appear (animations and interactive figures are shown as they end up at each
 step). Same commands with `steps` as the last argument: `node pdf.js 1 steps`, `make_pdf.py 1 steps`.
+
+`neural_nets_2_annotate.html` and `neural_nets_2_annotate.pdf` are an annotation copy of class 2: every
+slide shows one fixed step and nothing appears on a press. Which step each slide shows is in
+`build/annotate_2.json` (slides not listed show their full build). To rebuild:
+
+```
+python3 build/assemble.py 2 neural_nets_2_annotate.html build/annotate_2.json
+cd tests && NODE_PATH=$(npm root -g) node pdf.js 2_annotate && cd ..   # screenshots into pdf/slides_2_annotate/
+.venv/bin/python make_pdf.py 2_annotate                                 # writes neural_nets_2_annotate.pdf
+```
 
 ## Reproducing the numbers
 

@@ -219,3 +219,10 @@ is live. Each of the 12 weights is a vertical bar on its edge, dragged between �
 −2 to 2), on the user's request that they not look like the weight sliders. Biases are 0 and not drawn.
 p₁ and p₂ are bars from 0 to 1. Start values are fixed (W1, W2, x in code_2.js); leaving the slide resets
 them. Checked in check_numbers.py and tests/recap2.js (also driven from the presenter window).
+
+Follow-up 7 (2026-10-15), asked by the user: (a) a sparse slide "Derivatives we will use" right after the
+two chain-rule slides: σ′ = σ(1 − σ), d log p/dp = 1/p, and ∂ℒ/∂z_k = p_k − y_k for softmax with
+cross-entropy (from class 1's bonus). (b) An annotation copy of class 2 (HTML and PDF) with no steps
+within a slide; the user writes the rest by stylus. The user's list, by the slide numbers before (a):
+slides 4, 5, 6, 7, 9, 12 up to the first bullet, 8 up to the second, 11 up to the third; all others
+fully built. As slide ids: build/annotate_2.json.

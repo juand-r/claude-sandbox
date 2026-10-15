@@ -90,6 +90,22 @@
   </div>
 </section>
 
+<!-- DERIVATIVES WE WILL USE -->
+<section class="slide one" id="s-derivs" data-steps="0">
+  <div class="prose" style="width:100%;max-width:56rem;margin:0 auto">
+    <div class="eyebrow">Backpropagation</div>
+    <h2>Derivatives we will use</h2>
+    <ul>
+      <li>Sigmoid:<span class="math dm">\[\sigma(z) = \frac{1}{1 + e^{-z}}, \qquad \sigma'(z) = \sigma(z)\,\bigl(1 - \sigma(z)\bigr)\]</span></li>
+      <li>Logarithm:<span class="math dm">\[\frac{d}{dp} \log p = \frac{1}{p}\]</span></li>
+      <li>Softmax followed by cross-entropy (last class):<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z_k} = p_k - y_k\]</span></li>
+    </ul>
+  </div>
+  <div class="notes">
+    <p>Three facts we will use on the next slides. The sigmoid's derivative: σ′(z) = e^{−z}/(1 + e^{−z})², and 1 − σ(z) = e^{−z}/(1 + e^{−z}), so σ′ = σ(1 − σ). It is largest, 1/4, at z = 0. log is the natural logarithm. The last one was derived in the bonus slides of last class: the softmax and the cross-entropy fit together, and the error at output k is prediction minus label.</p>
+  </div>
+</section>
+
 <!-- WORKED EXAMPLE: FORWARD PASS -->
 <section class="slide" id="s-example" data-steps="3">
   <div class="prose">

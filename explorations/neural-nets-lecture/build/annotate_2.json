@@ -1,0 +1,11 @@
+{
+  "_comment": "Annotation copy of class 2 (asked by the user, 2026-10-15): each slide shows one fixed step, no presses. Slides not listed show their full build. Step k shows bullets 1 .. k+1 (s-update: its 2nd bullet is step 1, its 3rd step 3).",
+  "s-chain": 0,
+  "s-branch": 0,
+  "s-example": 0,
+  "s-out": 0,
+  "s-deep": 1,
+  "s-update": 0,
+  "s-two": 2,
+  "s-paths": 0
+}

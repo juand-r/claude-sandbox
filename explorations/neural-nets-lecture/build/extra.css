@@ -70,3 +70,6 @@ figcaption{font-size:.8em;color:var(--muted);margin-top:.5em;line-height:1.4}
 .titlememe figcaption{font-size:.7em}
 #fig-formula svg,#fig-chain svg,#fig-branch svg,#fig-general svg{max-height:60vh;width:auto;max-width:100%;margin:0 auto}
 #fig-manypaths svg{max-height:62vh;width:100%;margin:0 auto}
+
+/* "Derivatives we will use": a sparse list, spaced out */
+#s-derivs li{margin-bottom:1.3em}

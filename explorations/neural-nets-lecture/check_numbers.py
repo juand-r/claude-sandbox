@@ -365,6 +365,14 @@ close(2 * 2 + 2 + 2 + 1, 9, 0, "weights and biases of the 2-2-1 network")
 close(fd(lambda t: (3 * t[0] + 1) ** 2, np.array([1.0]))[0], 2 * 4 * 3, 1e-6, "chain rule: d/dx (3x + 1)^2 at x = 1 is 24")
 close(fd(lambda t: (t[0] ** 2) * (3 * t[0]), np.array([2.0]))[0], 6 * 4 + 4 * 3, 1e-6, "branching chain rule: d/dx x^2 * 3x at x = 2 is 36")
 close(9 * 2 ** 2, 36, 0, "check on the slide: 9x^2 at x = 2")
+# ---------------------------------------------------------------- class 2: "Derivatives we will use"
+zg = np.linspace(-5, 5, 41)
+sg = 1 / (1 + np.exp(-zg))
+dsg = (1 / (1 + np.exp(-(zg + 1e-6))) - 1 / (1 + np.exp(-(zg - 1e-6)))) / 2e-6
+close(np.abs(dsg - sg * (1 - sg)).max(), 0, 1e-8, "sigmoid derivative is sigma(1 - sigma)")
+close(sg[20] * (1 - sg[20]), 0.25, 1e-12, "sigmoid derivative at z = 0 is 1/4 (notes)")
+close((np.log(2 + 1e-6) - np.log(2 - 1e-6)) / 2e-6, 0.5, 1e-8, "d/dp log p = 1/p at p = 2")
+
 # ---------------------------------------------------------------- class 2: the worked backpropagation example (2-2-1, sigmoid units)
 # Weights as on the slides; every quoted value is the exact value rounded to 3 decimals, and a student
 # who rounds each intermediate value to 3 decimals gets the same answers.
