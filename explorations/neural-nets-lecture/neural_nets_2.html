@@ -1726,19 +1726,21 @@ function link(L,A,B,r,top,bot,step){const t=Math.atan2(B[1]-A[1],B[0]-A[0]),c=Ma
 
 /* ---------- the general rule: one unit j, what feeds it, and the units it feeds ---------- */
 {
-  const svg=el('svg',{viewBox:'0 0 640 400',role:'img','aria-label':'unit j of layer l receives the activation of unit i through w_ji and feeds the units k of layer l+1; their errors come back along the same connections'},$('fig-general'));
+  const svg=el('svg',{viewBox:'0 0 640 400',role:'img','aria-label':'unit j of layer l receives the activation of unit i through w_ji and feeds the units k = 1, 2, 3 of layer l+1; their errors come back along the same connections'},$('fig-general'));
   svg.setAttribute('fill','var(--ink)');
   const I=[80,200],J=[290,200],K=[[480,90],[480,200],[480,310]],r=28;
-  node(svg,I[0],I[1],r,'i');node(svg,J[0],J[1],r,'j');K.forEach((q,n)=>node(svg,q[0],q[1],r,'k'+'₁₂₃'[n]));
-  [[I[0],'layer l − 1'],[J[0],'layer l'],[K[0][0],'layer l + 1']].forEach(([x,s])=>mtxt(svg,x,30,s,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'}));
+  node(svg,I[0],I[1],r,'i');node(svg,J[0],J[1],r,'j');K.forEach((q,n)=>node(svg,q[0],q[1],r,String(n+1)));   // the units k = 1, 2, 3
+  [[I[0],'layer l − 1'],[J[0],'layer l'],[K[0][0],'layer l + 1, k = 1, 2, 3']].forEach(([x,s])=>mtxt(svg,x,30,s,{'text-anchor':'middle','font-size':15,fill:'var(--muted)'}));
   mtxt(svg,I[0],I[1]-42,'aᵢ^(l−1)',{'text-anchor':'middle','font-size':16,fill:'var(--model)'});
   mtxt(svg,J[0],J[1]+74,'zⱼ^(l) → aⱼ^(l)',{'text-anchor':'middle','font-size':16,fill:'var(--model)'});
   arrow(svg,I[0]+r,I[1],J[0]-r-2,J[1],{stroke:'var(--ink)'});weightLabel(svg,(I[0]+J[0])/2,I[1]-20,'wⱼᵢ^(l)');
   K.forEach(q=>{const t=Math.atan2(q[1]-J[1],q[0]-J[0]);arrow(svg,J[0]+r*Math.cos(t),J[1]+r*Math.sin(t),q[0]-(r+2)*Math.cos(t),q[1]-(r+2)*Math.sin(t),{stroke:'var(--ink)'});});
-  weightLabel(svg,(J[0]+K[0][0])/2,(J[1]+K[0][1])/2,'wₖⱼ^(l+1)');
+  // one weight per connection, written beside it (above the upper two, below the lowest)
+  K.forEach((q,n)=>{const mx=(J[0]+q[0])/2,my=(J[1]+q[1])/2;
+    mtxt(svg,mx-6,my+[-18,-12,30][n],'w'+'₁₂₃'[n]+'ⱼ^(l+1)',{'text-anchor':'middle','font-size':16});});
   const g1=stepG(svg,1);mtxt(g1,(I[0]+J[0])/2,I[1]+40,'∂ℒ/∂zⱼ^(l) · aᵢ^(l−1)',{'text-anchor':'middle','font-size':16,fill:'var(--hi)','font-weight':700});
   const g=stepG(svg,2);
-  K.forEach(q=>mtxt(g,q[0]+38,q[1]+6,'∂ℒ/∂zₖ^(l+1)',{'font-size':15,fill:'var(--err)'}));
+  K.forEach((q,n)=>mtxt(g,q[0]+38,q[1]+6,'∂ℒ/∂z'+'₁₂₃'[n]+'^(l+1)',{'font-size':15,fill:'var(--err)'}));
   arrow(g,450,370,330,370,{stroke:'var(--err)','stroke-width':2.5});
   mtxt(g,390,358,'errors come back',{'text-anchor':'middle','font-size':14,fill:'var(--err)'});
 }
