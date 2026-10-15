@@ -174,60 +174,24 @@
   </div>
 </section>
 
-<!-- PREDICT A CLASS -->
+<!-- CLASSIFICATION EXAMPLE (log loss) -->
 <section class="slide" id="s-class" data-steps="3">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
     <h2>Classification example</h2>
     <ul>
       <li>Same network and point, but the target is now a class label, <span class="math">\(y = 1\)</span>. Put a sigmoid on the output, so it is a probability: <span class="math">\(p = \sigma(z^{(2)}) = \sigma(0.651) = 0.657\)</span>.</li>
-      <li data-step="1">Keep squared error:<span class="math dm">\[\mathcal{L} = \tfrac12 (p - y)^2 = \tfrac12 (0.657 - 1)^2 = 0.059\]</span></li>
-      <li data-step="2">One new factor, the sigmoid's slope, in place of <span class="math">\(\partial\hat{y}/\partial z^{(2)} = 1\)</span>:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial z^{(2)}} &amp;= \frac{\partial \mathcal{L}}{\partial p} \cdot \frac{\partial p}{\partial z^{(2)}} = (p - y) \cdot p(1 - p) \\ &amp;= -0.343 \times 0.225 = -0.077 \end{aligned}\]</span></li>
-      <li data-step="3">The rest of the chain is the same as for regression.</li>
+      <li data-step="1">The log loss, as for logistic regression:<span class="math dm">\[\begin{aligned} \mathcal{L} &amp;= -y \log p - (1 - y) \log(1 - p) \\ &amp;= -\log 0.657 = 0.420 \end{aligned}\]</span></li>
+      <li data-step="2">Only the start of the chain changes. The sigmoid's slope cancels:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial z^{(2)}} &amp;= \frac{\partial \mathcal{L}}{\partial p} \cdot \frac{\partial p}{\partial z^{(2)}} = \Bigl(-\frac{y}{p} + \frac{1 - y}{1 - p}\Bigr)\, p(1 - p) \\ &amp;= p - y = 0.657 - 1 = -0.343 \end{aligned}\]</span></li>
+      <li data-step="3">The rest of the chain is the same as for regression:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial w^{(2)}_{11}} &amp;= -0.343 \times 0.731 = -0.251 \\ \frac{\partial \mathcal{L}}{\partial w^{(1)}_{11}} &amp;= -0.343 \times 2 \times 0.1966 \times 2 = -0.270 \end{aligned}\]</span></li>
     </ul>
   </div>
-  <div class="fig">
-    <div id="fig-class"></div>
-    <table class="dtab xent" data-step="3">
-      <tr><th></th><th>chain</th><th>regression</th><th>class, squared error</th></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial z^{(2)}\)</td><td></td><td>\(-1.349\)</td><td>\(-0.077\)</td></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial w^{(2)}_{11}\)</td><td>\(\partial\mathcal{L}/\partial z^{(2)} \times 0.731\)</td><td>\(-0.986\)</td><td>\(-0.056\)</td></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial w^{(1)}_{11}\)</td><td>\(\partial\mathcal{L}/\partial z^{(2)} \times 2 \times 0.1966 \times 2\)</td><td>\(-1.061\)</td><td>\(-0.061\)</td></tr>
-    </table>
-  </div>
+  <div class="fig"><div id="fig-class"></div></div>
   <div class="notes">
     <p><b class="cue">0</b>A two-class problem, label 1 or 0. The network is the same up to z⁽²⁾; the sigmoid turns z⁽²⁾ into a probability, as in logistic regression. Nothing else in the forward pass changes.</p>
-    <p><b class="cue">1</b>Squared error on a probability: a legitimate loss for a classifier, and the one last year's slides used. It is not the usual choice today; the next slide shows why.</p>
-    <p><b class="cue">2</b>∂ℒ/∂p = p − y, as for regression. The new factor is the sigmoid's derivative, σ(z)(1 − σ(z)) = p(1 − p), at most 0.25.</p>
-    <p><b class="cue">3</b>Everything before z⁽²⁾ is unchanged, so each gradient is ∂ℒ/∂z⁽²⁾ times the same factors as before. The class version's gradients are much smaller here, partly because its error is smaller (0.343 against 1.349) and partly because of the factor 0.225.</p>
-  </div>
-</section>
-
-<!-- SAME EXAMPLE WITH CROSS-ENTROPY -->
-<section class="slide" id="s-xent" data-steps="3">
-  <div class="prose">
-    <div class="eyebrow">Backpropagation</div>
-    <h2>Now with cross-entropy</h2>
-    <ul>
-      <li>Same classifier, same point, same forward pass: <span class="math">\(p = 0.657\)</span>. Only the loss changes:<span class="math dm">\[\begin{aligned} \mathcal{L} &amp;= -y \log p - (1 - y) \log(1 - p) \\ &amp;= -\log 0.657 = 0.420 \end{aligned}\]</span></li>
-      <li data-step="1">So only the first factor changes:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial p} = -\frac{y}{p} + \frac{1 - y}{1 - p} = -\frac{1}{0.657} = -1.522\]</span></li>
-      <li data-step="2">Times <span class="math">\(\partial p/\partial z^{(2)} = p(1 - p)\)</span>, it simplifies:<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z^{(2)}} = -y(1 - p) + (1 - y)p = p - y = -0.343\]</span></li>
-      <li data-step="3">The rest of the chain is the same as before.</li>
-    </ul>
-  </div>
-  <div class="fig">
-    <table class="dtab xent">
-      <tr><th></th><th>chain</th><th>squared error</th><th data-step="3">cross-entropy</th></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial z^{(2)}\)</td><td></td><td>\(-0.077\)</td><td data-step="3">\(-0.343\)</td></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial w^{(2)}_{11}\)</td><td>\(\partial\mathcal{L}/\partial z^{(2)} \times 0.731\)</td><td>\(-0.056\)</td><td data-step="3">\(-0.251\)</td></tr>
-      <tr><td>\(\partial\mathcal{L}/\partial w^{(1)}_{11}\)</td><td>\(\partial\mathcal{L}/\partial z^{(2)} \times 2 \times 0.1966 \times 2\)</td><td>\(-0.061\)</td><td data-step="3">\(-0.270\)</td></tr>
-    </table>
-  </div>
-  <div class="notes">
-    <p><b class="cue">0</b>The classifier from the last slide. Cross-entropy from class 1, for two classes with one sigmoid output. With y = 1 only the first term is left. Nothing in the forward pass changes.</p>
-    <p><b class="cue">1</b>The derivative of the log terms. With y = 1 it is −1/p.</p>
-    <p><b class="cue">2</b>Multiply out: −y(1 − p) + (1 − y)p; the y·p terms cancel and leave p − y, the prediction minus the label. The sigmoid's slope p(1 − p) cancels. The same is true for softmax with C classes: ∂ℒ/∂zₖ⁽²⁾ = pₖ − yₖ.</p>
-    <p><b class="cue">3</b>Every gradient is about 4.4 times larger here (1/0.225), because squared error keeps the factor p(1 − p) = 0.225. That factor is small whenever p is near 0 or 1, even when the network is confidently wrong: at p = 0.01 with y = 1, squared error gives ∂ℒ/∂z⁽²⁾ = −0.010, while cross-entropy gives −0.99. This is one reason classifiers are trained with cross-entropy.</p>
+    <p><b class="cue">1</b>The loss from logistic regression and class 1 (cross-entropy for two classes). With y = 1 only the first term is left.</p>
+    <p><b class="cue">2</b>∂ℒ/∂p = −y/p + (1 − y)/(1 − p), here −1/0.657 = −1.522; ∂p/∂z⁽²⁾ = p(1 − p) = 0.225. Multiplied out: −y(1 − p) + (1 − y)p; the y·p terms cancel and leave p − y, the prediction minus the label. The same is true for softmax with C classes: ∂ℒ/∂zₖ⁽²⁾ = pₖ − yₖ.</p>
+    <p><b class="cue">3</b>Everything before z⁽²⁾ is unchanged, so each gradient is ∂ℒ/∂z⁽²⁾ times the same factors as before. If asked: one could use squared error on p instead. Then the factor p(1 − p) = 0.225 would not cancel: ∂ℒ/∂z⁽²⁾ = (p − y)p(1 − p) = −0.077, and the gradients would be −0.056 and −0.061, about 4.4 times smaller. That factor is small whenever p is near 0 or 1, even when the network is confidently wrong (at p = 0.01 with y = 1, −0.010 against −0.99), which is one reason classifiers are trained with log loss.</p>
   </div>
 </section>
 
@@ -274,7 +238,7 @@
 </section>
 
 <!-- THE GENERAL RULE -->
-<section class="slide" id="s-general" data-steps="4">
+<section class="slide" id="s-general" data-steps="3">
   <div class="prose">
     <div class="eyebrow">Backpropagation</div>
     <h2>The general rule</h2>
@@ -283,7 +247,6 @@
       <li data-step="1"><b>Any weight</b>: the error at its end times the activation at its start.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial w^{(l)}_{ji}} = \frac{\partial \mathcal{L}}{\partial z^{(l)}_j} \cdot a^{(l-1)}_i\]</span></li>
       <li data-step="2"><b>A hidden unit</b>: its slope times the errors of the units it feeds, each times its weight.<span class="math dm">\[\frac{\partial \mathcal{L}}{\partial z^{(l)}_j} = \varphi'(z^{(l)}_j) \sum_k w^{(l+1)}_{kj}\, \frac{\partial \mathcal{L}}{\partial z^{(l+1)}_k}\]</span></li>
       <li data-step="3"><b>An output unit</b>: from the loss. <span class="math">\(\hat{y} - y\)</span> for regression with squared error; <span class="math">\(p - y\)</span> for sigmoid or softmax with cross-entropy.</li>
-      <li data-step="4">Check with the example, hidden unit 1:<span class="math dm">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial z^{(1)}_1} &amp;= 0.1966 \times (2 \times (-0.325) + 1 \times 0.325) = -0.064 \\ \frac{\partial \mathcal{L}}{\partial w^{(1)}_{11}} &amp;= -0.064 \times 2 = -0.128 \end{aligned}\]</span></li>
     </ul>
   </div>
   <div class="fig"><div id="fig-general"></div></div>
@@ -291,8 +254,7 @@
     <p><b class="cue">0</b>One notation for every layer, the one from "The network is one function". a⁽⁰⁾ is the input x.</p>
     <p><b class="cue">1</b>Because zⱼ⁽ˡ⁾ is linear in wⱼᵢ⁽ˡ⁾, with coefficient aᵢ⁽ˡ⁻¹⁾. The biases are the case where that activation is 1. This is what we did for w₁₁⁽²⁾ (error at z⁽²⁾ times a₁⁽¹⁾) and for w₁₁⁽¹⁾ (error at z₁⁽¹⁾ times x₁).</p>
     <p><b class="cue">2</b>The chain rule with branches: zⱼ⁽ˡ⁾ changes aⱼ⁽ˡ⁾, which feeds every unit k of the next layer through wₖⱼ⁽ˡ⁺¹⁾, and the paths add. φ′ is the slope of the activation: a(1 − a) for the sigmoid, 1 or 0 for ReLU.</p>
-    <p><b class="cue">3</b>The loss decides only where the backward pass starts. Squared error on a sigmoid output gives (p − y)p(1 − p), as on the "Classification example" slide.</p>
-    <p><b class="cue">4</b>The same numbers as "Add the paths": 2 and 1 are w₁₁⁽²⁾ and w₂₁⁽²⁾, −0.325 and 0.325 are the output errors, 0.1966 is the sigmoid's slope at hidden unit 1, and x₁ = 2. With more layers, apply the hidden-unit rule once per layer, from the output back.</p>
+    <p><b class="cue">3</b>The loss decides only where the backward pass starts. Squared error on a sigmoid output would give (p − y)p(1 − p). With more layers, apply the hidden-unit rule once per layer, from the output back. For the example's hidden unit 1: 0.1966 × (2 × (−0.325) + 1 × 0.325) = −0.064, and −0.064 × 2 = −0.128, as on "Add the paths".</p>
   </div>
 </section>
 

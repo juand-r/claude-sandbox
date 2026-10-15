@@ -74,7 +74,7 @@ function link(L,A,B,r,top,bot,step){const t=Math.atan2(B[1]-A[1],B[0]-A[0]),c=Ma
 // Same numbers as the slides and check_numbers.py. Values are rounded to 3 decimals, as on the slides.
 const EX={x:[2,1],W:[[-0.5,1],[0.5,-1]],b:[1,-0.5],v:[2,0.5],c:-1,h:['0.731','0.378'],z:'0.651'};
 // the two versions of the output: regression (linear output ŷ = z, target 2) and a class (sigmoid output p, label 1)
-const OUT={reg:{act:'',name:'ŷ',y:'y = 2',out:'0.651',L:'0.910'},cls:{act:'σ',name:'p',y:'y = 1',out:'0.657',L:'0.059'}};
+const OUT={reg:{act:'',name:'ŷ',y:'y = 2',out:'0.651',L:'0.910'},cls:{act:'σ',name:'p',y:'y = 1',out:'0.657',L:'0.420'}};
 // ŷ: an italic y with a hat (the KaTeX fonts have no precomposed ŷ)
 function hatY(L,x,y,size){const t=mtxt(L,x,y,'y',{'text-anchor':'middle','font-size':size});
   txt(L,x+2,y-size*0.36,'^',{'text-anchor':'middle','font-size':(size*1.2).toFixed(1),'font-family':'KaTeX_Main'});return t;}
@@ -187,11 +187,9 @@ const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fi
   g.style.display='none';
 }
 {
-  const X=exNet('fig-class',{path:'v1',kind:'cls',aria:'the same network with a sigmoid output p and label 1'});
+  const X=exNet('fig-class',{still:true,kind:'cls',aria:'the same network with a sigmoid output p, label 1 and the log loss'});
   [1,2].forEach(k=>X.fwd(k));X.fwd(3).setAttribute('data-step',1);
-  fac(stepG(X.N.svg,2),(X.px+14+X.bx)/2,X.zy+32,'−0.343');
-  fac(stepG(X.N.svg,2),(X.P[2][0][0]+24+X.px-14)/2,X.zy+32,'0.225');
-  fac(stepG(X.N.svg,3),X.P[2][0][0],X.zy-62,'∂ℒ/∂z^(2) = −0.077');
+  fac(stepG(X.N.svg,2),X.P[2][0][0],X.zy-62,'∂ℒ/∂z^(2) = −0.343');
 }
 
 /* ---------- the worked example with two outputs: softmax and cross-entropy ---------- */

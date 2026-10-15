@@ -207,3 +207,8 @@ pre-activation a → z⁽¹⁾, output z → z⁽²⁾, output weights v → w�
 example", "Classification example". The recap slide and class 1 keep h (the user's choice). "When the
 chain branches" keeps dy/dx (y depends only on x there). Figure labels now stack a superscript over a
 subscript (w₁₁⁽¹⁾), as KaTeX does (mtxt in common.js).
+
+Follow-up 5 (2026-10-15), asked by the user: "Classification example" and "Now with cross-entropy" are one
+slide. The classifier uses log loss from the start (as for logistic regression): p = 0.657, ℒ = 0.420,
+∂ℒ/∂z⁽²⁾ = p − y = −0.343, gradients −0.251 and −0.270. Squared error on p is only in the speaker notes.
+The table is gone, so the network sits exactly where it does on slide 9 (and appears at once).

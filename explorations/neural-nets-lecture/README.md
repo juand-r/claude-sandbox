@@ -6,9 +6,9 @@ layers, softmax, forward propagation, activation functions, deeper networks), sh
 then turns to training: cross-entropy, the loss landscape and gradient descent. Four bonus slides at the
 end: the perceptron, the losses compared, softmax vs argmax, and why softmax and cross-entropy
 fit together.
-Class 2 (25 slides) is about training: backpropagation, worked through one example with numbers on a
-2-2-1 network (regression with squared error, then the same network predicting a class, then with
-cross-entropy, then two outputs), learning rates,
+Class 2 (24 slides) is about training: backpropagation, worked through one example with numbers on a
+2-2-1 network (regression with squared error, then the same network predicting a class with log
+loss, then two outputs), learning rates,
 momentum, local minima, batch versus mini-batch versus stochastic gradient descent, early stopping, and a family tree
 that leads into a later lecture on architectures. Same template and engine as `../svm-lecture/`.
 
