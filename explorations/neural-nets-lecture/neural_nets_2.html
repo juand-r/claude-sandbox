@@ -1738,9 +1738,14 @@ function link(L,A,B,r,top,bot,step){const t=Math.atan2(B[1]-A[1],B[0]-A[0]),c=Ma
   // one weight per connection, written beside it (above the upper two, below the lowest)
   K.forEach((q,n)=>{const mx=(J[0]+q[0])/2,my=(J[1]+q[1])/2;
     mtxt(svg,mx-6,my+[-18,-12,30][n],'w'+'₁₂₃'[n]+'ⱼ^(l+1)',{'text-anchor':'middle','font-size':16});});
+  // the units k feed further layers: short, light stubs toward layer l + 2
+  const stubs=el('g',{opacity:.5},svg);
+  K.forEach(q=>[-28,0,28].forEach(dy=>{const t=Math.atan2(dy,70);
+    el('line',{x1:q[0]+r*Math.cos(t),y1:q[1]+r*Math.sin(t),x2:q[0]+r+62,y2:q[1]+dy*1.15,stroke:'var(--muted)','stroke-width':1.6,'stroke-dasharray':'3 4'},stubs);}));
+  mtxt(stubs,K[1][0]+r+92,K[1][1]+6,'⋯',{'text-anchor':'middle','font-size':22,fill:'var(--muted)'});
   const g1=stepG(svg,1);mtxt(g1,(I[0]+J[0])/2,I[1]+40,'∂ℒ/∂zⱼ^(l) · aᵢ^(l−1)',{'text-anchor':'middle','font-size':16,fill:'var(--hi)','font-weight':700});
   const g=stepG(svg,2);
-  K.forEach((q,n)=>mtxt(g,q[0]+38,q[1]+6,'∂ℒ/∂z'+'₁₂₃'[n]+'^(l+1)',{'font-size':15,fill:'var(--err)'}));
+  K.forEach((q,n)=>mtxt(g,q[0]+8,q[1]-36,'∂ℒ/∂z'+'₁₂₃'[n]+'^(l+1)',{'text-anchor':'middle','font-size':15,fill:'var(--err)'}));
   arrow(g,450,370,330,370,{stroke:'var(--err)','stroke-width':2.5});
   mtxt(g,390,358,'errors come back',{'text-anchor':'middle','font-size':14,fill:'var(--err)'});
 }
