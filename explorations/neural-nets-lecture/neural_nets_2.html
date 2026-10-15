@@ -1934,6 +1934,7 @@ const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'))
   mtxt(X.N.svg,X.bx+X.bw/2,X.ly+48,'0.393',{'text-anchor':'middle','font-size':17,fill:'var(--model)'});
   fac(X.N.svg,X.P[2][0][0],X.P[2][0][1]-60,'∂ℒ/∂z₁^(2) = −0.325');fac(X.N.svg,X.P[2][1][0],X.P[2][1][1]+74,'∂ℒ/∂z₂^(2) = 0.325',{fill:'var(--err)'});
   const gH=el('g',{},X.N.gE);hiEdge(X.N,gH,0,0,0);hiEdge(X.N,gH,1,0,0);hiEdge(X.N,gH,1,0,1,'var(--err)');
+  {const [x,y]=edgeAt(X.N,0,0,0,.5);fac(X.N.svg,x,y-20,'w₁₁^(1)',{'font-size':16});}   // name the weight, as on slide 8
   const g1=stepG(X.N.svg,1),g2=stepG(X.N.svg,2);
   const [ax,ay]=edgeAt(X.N,1,0,0,.5);fac(g1,ax,ay-18,'×2');
   fac(g1,X.P[1][0][0],X.P[1][0][1]+48,'×0.1966');fac(g1,X.P[0][0][0],X.P[0][0][1]-34,'×2');
