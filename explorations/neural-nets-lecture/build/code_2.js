@@ -93,7 +93,7 @@ const VAL=(g,x,y,s,anchor='start')=>mtxt(g,x,y,s,{'text-anchor':anchor,'font-siz
 function biasLinks(N,l,labels,ts){const B=[N.pos[l][0][0],N.H-34],rb=18;
   N.pos[l+1].forEach((q,k)=>{const ang=Math.atan2(q[1]-B[1],q[0]-B[0]),x1=B[0]+rb*Math.cos(ang),y1=B[1]+rb*Math.sin(ang),x2=q[0]-N.r*Math.cos(ang),y2=q[1]-N.r*Math.sin(ang);
     el('line',{x1,y1,x2,y2,stroke:'var(--line)','stroke-width':1.6,'stroke-dasharray':'5 4'},N.gE);
-    weightLabel(N.svg,x1+(x2-x1)*ts[k],y1+(y2-y1)*ts[k],labels[k]);});
+    weightLabel(N.svg,x1+(x2-x1)*ts[k],y1+(y2-y1)*ts[k],labels[k],{fill:'var(--muted)'});});   // grey, like the bias node
   biasNode(N.svg,...B,rb);return B;}
 // the inputs, the first layer's weights and biases (the same in every version of the example);
 // hvals(g) writes the hidden values into g
