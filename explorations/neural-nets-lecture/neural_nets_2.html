@@ -1870,7 +1870,7 @@ const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fi
 }
 
 {
-  const X=exNet('fig-example',{aria:'a network with inputs 2 and 1, two sigmoid hidden units and a linear output, weights on the connections'});
+  const X=exNet('fig-example',{still:true,aria:'a network with inputs 2 and 1, two sigmoid hidden units and a linear output, weights on the connections'});
   [1,2,3].forEach(k=>X.fwd(k).setAttribute('data-step',k));
 }
 {
@@ -1909,9 +1909,10 @@ const fac=(g,x,y,s,a={})=>mtxt(g,x,y,s,{'text-anchor':'middle','font-size':17,fi
 /* ---------- the worked example with two outputs: softmax and cross-entropy ---------- */
 // Same input and first layer; output 1 keeps v₁₁ = 2, v₁₂ = 0.5, c₁ = −1. Label: class 1, y = (1, 0).
 const EX2={V:[[2,0.5],[1,0.5]],c:[-1,-1],z:['0.651','−0.080'],p:['0.675','0.325'],err:['−0.325','0.325']};
-function exNet2(id,{aria}){
+function exNet2(id,{aria,still=false}){
   const N=netDiagram($(id),{names:[['x₁','x₂'],['a₁^(1)','a₂^(1)'],['z₁^(2)','z₂^(2)']],xs:[80,265,440],W:770,H:430,top:60,bot:330,aria});
   N.svg.setAttribute('fill','var(--ink)');
+  if(still)N.svg.classList.add('noanim');   // shown at once; step reveals still fade in
   const P=N.pos,r=N.r,F=firstLayer(N),bx=692,bw=58,ly=(P[2][0][1]+P[2][1][1])/2;
   softmaxBox(N.svg,P[2][0][0]+r,P[2].map(q=>q[1]),{x:516,w:76,weight:400});
   for(const q of P[2])el('line',{x1:642,y1:q[1],x2:bx-2,y2:ly,stroke:'var(--ink)','stroke-width':1.6},N.svg);
@@ -1925,13 +1926,13 @@ function exNet2(id,{aria}){
 const z2vals=(X,g)=>{VAL(g,X.P[2][0][0]+8,X.P[2][0][1]-32,EX2.z[0]);VAL(g,X.P[2][1][0]+8,X.P[2][1][1]+46,EX2.z[1]);};
 const p2vals=(X,g)=>{X.P[2].forEach((q,k)=>VAL(g,630,q[1]-24,EX2.p[k],'middle'));};
 {
-  const X=exNet2('fig-two',{aria:'the network with two outputs and a softmax'});
+  const X=exNet2('fig-two',{still:true,aria:'the network with two outputs and a softmax'});
   X.F.hvals(X.N.svg);
   z2vals(X,stepG(X.N.svg,1));p2vals(X,stepG(X.N.svg,2));mtxt(stepG(X.N.svg,2),X.bx+X.bw/2,X.ly+48,'0.393',{'text-anchor':'middle','font-size':17,fill:'var(--model)'});
   const g=stepG(X.N.svg,3);fac(g,X.P[2][0][0],X.P[2][0][1]-60,'∂ℒ/∂z₁^(2) = −0.325');fac(g,X.P[2][1][0],X.P[2][1][1]+74,'∂ℒ/∂z₂^(2) = 0.325',{fill:'var(--err)'});
 }
 {
-  const X=exNet2('fig-paths',{aria:'the hidden weight w11 reaches the loss along two paths, through both outputs'});
+  const X=exNet2('fig-paths',{still:true,aria:'the hidden weight w11 reaches the loss along two paths, through both outputs'});
   X.F.hvals(X.N.svg);z2vals(X,X.N.svg);
   const gH=el('g',{},X.N.gE);hiEdge(X.N,gH,0,0,0);hiEdge(X.N,gH,1,0,0);hiEdge(X.N,gH,1,0,1,'var(--err)');
   const g1=stepG(X.N.svg,1),g2=stepG(X.N.svg,2);
