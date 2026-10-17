@@ -1,0 +1,379 @@
+<title>Rule 110 Lisp Console</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a console. Expression bar on top, a dark space-time "scope" with live
+   instruments beside it, the read log under it, the decoded answer last. */
+:root {
+  --bg: #e9ecf2;            /* cool paper, biased to the scope's blue */
+  --panel: #f7f8fb;
+  --ink: #161b26;
+  --muted: #5b6477;
+  --line: #cfd5e1;
+  --accent: #c7780f;        /* ossifier amber */
+  --accent-ink: #ffffff;
+  --good: #2f7d4f;
+  --scope: #0e111a;         /* scope screens stay dark in both themes */
+  --scope-ink: #c9d3e6;
+  --scope-muted: #7a869e;
+  --table: #3a4256;
+  --debris: #5c9ae6;
+  --oss: #ffb240;
+  --hit: #ff5c8c;
+  --font-display: "Martian Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0e15; --panel: #121722; --ink: #e3e8f2; --muted: #93a0b8; --line: #252d3d;
+    --accent: #ffb240; --accent-ink: #1a1203; --good: #6fd39a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b0e15; --panel: #121722; --ink: #e3e8f2; --muted: #93a0b8; --line: #252d3d;
+  --accent: #ffb240; --accent-ink: #1a1203; --good: #6fd39a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 18px; }
+header { display: grid; gap: 6px; }
+h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(22px, 3.2vw, 32px); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); max-width: 70ch; margin: 0; }
+.steps { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 4px 0 0; padding: 0; list-style: none; font-size: 13px; color: var(--muted); }
+.steps li { display: flex; gap: 6px; align-items: baseline; }
+.steps b { font-family: var(--font-data); font-weight: 500; color: var(--accent); }
+.steps li[data-on="1"] { color: var(--ink); }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.repl { flex: 1 1 420px; min-width: 0; display: flex; align-items: center; gap: 10px; font-family: var(--font-data); font-size: 15px; background: var(--scope); color: var(--scope-ink); border-radius: 7px; padding: 10px 12px; }
+.repl .prompt { color: var(--oss); }
+.repl select { flex: 1; min-width: 0; background: transparent; color: var(--scope-ink); border: 0; font: inherit; padding: 0; cursor: pointer; text-overflow: ellipsis; }
+.repl select:focus-visible { outline: 2px solid var(--oss); outline-offset: 4px; border-radius: 3px; }
+.repl select option { background: var(--scope); color: var(--scope-ink); }
+.ctl { display: flex; gap: 8px; flex-wrap: wrap; }
+button { font-family: var(--font-body); font-weight: 600; font-size: 14px; border-radius: 7px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 9px 14px; cursor: pointer; }
+button:hover { border-color: var(--muted); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); padding-inline: 20px; font-family: var(--font-display); letter-spacing: 0.04em; }
+button[disabled] { opacity: 0.45; cursor: default; }
+.speed { display: inline-flex; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.speed button { border: 0; border-radius: 0; padding-inline: 11px; font-family: var(--font-data); font-weight: 500; }
+.speed button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 18px; align-items: start; }
+@media (max-width: 900px) { .main { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 10px; min-width: 0; }
+.card h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.cap { margin: 0; font-size: 13px; color: var(--muted); }
+.scope { background: var(--scope); border-radius: 7px; position: relative; overflow: hidden; }
+.scope canvas { display: block; width: 100%; }
+.axis { display: flex; justify-content: space-between; font-family: var(--font-data); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+.overlay { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--scope-ink); font-family: var(--font-data); font-size: 13px; padding: 16px; background: linear-gradient(180deg, rgba(14,17,26,0) 30%, rgba(14,17,26,0.85)); pointer-events: none; }
+.overlay[hidden] { display: none !important; }
+
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.stat { border: 1px solid var(--line); border-radius: 7px; padding: 8px 10px; display: grid; gap: 2px; }
+.stat .k { font-size: 12px; color: var(--muted); }
+.stat .v { font-family: var(--font-data); font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stat .v small { font-size: 12px; color: var(--muted); }
+.prog { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.prog i { display: block; height: 100%; width: 0; background: var(--accent); }
+
+.reads { display: grid; gap: 8px; }
+.readscroll { overflow-x: auto; background: var(--scope); border-radius: 7px; }
+#readsCanvas { display: block; }
+
+.answer { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; }
+@media (max-width: 700px) { .answer { grid-template-columns: minmax(0, 1fr); } }
+.regs { display: grid; gap: 6px; }
+.reg { display: grid; grid-template-columns: 54px minmax(0, 1fr) 44px 48px; gap: 10px; align-items: center; font-family: var(--font-data); font-size: 13px; }
+.reg .word { display: flex; gap: 1px; min-width: 0; overflow: hidden; }
+.reg .word i { flex: 1 1 0; min-width: 2px; height: 14px; background: var(--line); border-radius: 1px; }
+.reg .word i.y { background: var(--accent); }
+.reg .tok { font-size: 15px; font-weight: 500; text-align: center; border: 1px solid var(--line); border-radius: 5px; padding: 1px 0; }
+.reg.res .tok { border-color: var(--accent); }
+.verdict { text-align: center; display: grid; gap: 4px; padding: 6px 18px; }
+.verdict .val { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 6vw, 56px); line-height: 1.05; color: var(--accent); }
+.verdict .ref { font-size: 13px; color: var(--muted); }
+.verdict .ref b { color: var(--good); font-weight: 600; }
+.note { font-size: 13px; color: var(--muted); max-width: 90ch; margin: 0; }
+code { font-family: var(--font-data); font-size: 0.92em; }
+@media (prefers-reduced-motion: reduce) { .prog i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Rule 110 Lisp Console</h1>
+    <p class="lede">A Lisp expression, compiled into the starting row of the Rule 110 cellular automaton. The automaton runs for billions of generations and the value is read off its gliders at the end.</p>
+    <ol class="steps" id="steps">
+      <li data-step="0"><b>1</b>Compile to a cyclic tag system</li>
+      <li data-step="1"><b>2</b>Lay it out as Rule 110 gliders</li>
+      <li data-step="2"><b>3</b>Evolve, checking every read</li>
+      <li data-step="3"><b>4</b>Decode the last pass</li>
+    </ol>
+  </header>
+
+  <div class="bar">
+    <label class="repl" for="expr"><span class="prompt">λ&gt;</span>
+      <select id="expr" aria-label="Expression"></select>
+    </label>
+    <div class="ctl">
+      <button class="go" id="go" type="button">Compute</button>
+      <button id="pause" type="button" disabled>Pause</button>
+      <button id="skip" type="button" disabled>Skip to answer</button>
+      <span class="speed" role="group" aria-label="Playback speed">
+        <button type="button" data-speed="1" aria-pressed="true">1×</button>
+        <button type="button" data-speed="3" aria-pressed="false">3×</button>
+        <button type="button" data-speed="10" aria-pressed="false">10×</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="main">
+    <section class="card" aria-labelledby="h-st">
+      <h2 id="h-st">Space-time</h2>
+      <div class="scope">
+        <canvas id="ov" width="720" height="360" aria-label="Space-time image of the glider computation"></canvas>
+        <div class="overlay" id="ovHint">Press Compute to replay the recorded run.</div>
+      </div>
+      <div class="axis"><span id="axL"></span><span>position in the table's frame (cells) →</span><span id="axR"></span></div>
+      <div class="legend">
+        <span><i style="background:var(--table)"></i>program table, not yet read</span>
+        <span><i style="background:var(--debris)"></i>read table, tape data and debris</span>
+        <span><i style="background:var(--oss)"></i>ossifier gliders</span>
+        <span><i style="background:var(--hit)"></i>collisions</span>
+      </div>
+      <p class="cap">Time runs down, from generation 0 to the end of the run. The pink edge is the read head: each read is a collision there that keeps (Y) or deletes (N) the next copy of the table.</p>
+    </section>
+
+    <aside class="card" aria-labelledby="h-in">
+      <h2 id="h-in">Instruments</h2>
+      <div class="stats">
+        <div class="stat"><span class="k">Generation</span><span class="v" id="sGen">0</span></div>
+        <div class="stat"><span class="k">Reads checked</span><span class="v" id="sReads">0</span></div>
+        <div class="stat"><span class="k">Y reads</span><span class="v" id="sY">0</span></div>
+        <div class="stat"><span class="k">Collisions simulated</span><span class="v" id="sEv">0</span></div>
+      </div>
+      <div class="prog" aria-hidden="true"><i id="progBar"></i></div>
+      <h2>Rule 110 up close</h2>
+      <div class="scope"><canvas id="micro" width="320" height="200" aria-label="Exact Rule 110 cells near a collision"></canvas></div>
+      <p class="cap" id="microCap">Exact cells, one row per generation. Gliders bright, background ether dim.</p>
+      <h2>Tag-system queue</h2>
+      <div class="scope"><canvas id="queue" width="320" height="70" aria-label="Queue length over the reads"></canvas></div>
+      <p class="cap" id="queueCap">Symbols waiting in the cyclic tag system's queue.</p>
+    </aside>
+  </div>
+
+  <section class="card reads" aria-labelledby="h-rd">
+    <h2 id="h-rd">Read log</h2>
+    <div class="readscroll"><canvas id="readsCanvas" aria-label="Every read, one column per symbol"></canvas></div>
+    <p class="cap" id="readsCap"></p>
+  </section>
+
+  <section class="card" aria-labelledby="h-ans">
+    <h2 id="h-ans">Answer</h2>
+    <div class="answer">
+      <div class="regs" id="regs"><p class="cap">The answer appears when the run reaches its last pass.</p></div>
+      <div class="verdict" id="verdict" hidden>
+        <span class="cap">value read off the gliders</span>
+        <span class="val" id="val"></span>
+        <span class="ref" id="ref"></span>
+      </div>
+    </div>
+  </section>
+
+  <p class="note" id="about"></p>
+</div>
+
+<script>
+const RUNS = /*__RUNS__*/[];
+const $ = (id) => document.getElementById(id);
+const fmtInt = (x) => Math.round(x).toLocaleString("en-US");
+function fmtSci(x) {
+  if (x < 1e5) return fmtInt(x);
+  const e = Math.floor(Math.log10(x)), m = x / 10 ** e;
+  const sup = String(e).split("").map((d) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[d]).join("");
+  return `${m.toFixed(2)} × 10${sup}`;
+}
+function loadImg(src) { return new Promise((ok) => { const i = new Image(); i.onload = () => ok(i); i.src = src; }); }
+function sizeCanvas(c, cssW, cssH) {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  c.width = Math.round(cssW * dpr); c.height = Math.round(cssH * dpr);
+  c.style.height = cssH + "px";
+  const g = c.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.imageSmoothingEnabled = false;
+  return g;
+}
+
+let run = null, imgs = {}, state = "idle", pos = 0, speed = 1, last = 0, raf = 0;
+const sel = $("expr");
+RUNS.forEach((r, i) => { const o = document.createElement("option"); o.value = i; o.textContent = r.src; sel.appendChild(o); });
+const startIdx = Math.max(0, RUNS.findIndex((r) => r.name === "car"));
+sel.value = startIdx;
+
+function duration(r) { return Math.min(30, Math.max(10, 6 + 6 * Math.log10(r.meta.reads))) * 1000; }
+function readsAt(p) {                       // reads settled at fractional row p
+  const rr = run.rows.reads, i = Math.min(rr.length - 1, Math.floor(p)), f = p - i;
+  return i + 1 < rr.length ? rr[i] + (rr[i + 1] - rr[i]) * f : rr[i];
+}
+function lerpRow(arr, p) { const i = Math.min(arr.length - 1, Math.floor(p)), f = p - i; return i + 1 < arr.length ? arr[i] + (arr[i + 1] - arr[i]) * f : arr[i]; }
+
+async function select(i) {
+  cancelAnimationFrame(raf);
+  run = RUNS[i];
+  imgs = { ov: await loadImg(run.overview), micro: await loadImg(run.micro.png) };
+  run.yPrefix = new Int32Array(run.outcome.length + 1);
+  for (let k = 0; k < run.outcome.length; k++) run.yPrefix[k + 1] = run.yPrefix[k] + (run.outcome[k] === "Y");
+  state = "idle"; pos = 0;
+  $("ovHint").hidden = false;
+  $("ovHint").textContent = `Compiled: ${run.meta.registers} registers, ${run.meta.passes} passes, ${fmtInt(run.meta.reads)} reads. Press Compute to replay the run.`;
+  $("axL").textContent = fmtInt(run.meta.x_lo);
+  $("axR").textContent = fmtInt(run.meta.x_hi);
+  const m = run.meta;
+  $("about").innerHTML = `This page replays a recording. The run of <code>${run.src}</code> was computed by the project's event engine, which simulates Rule 110 exactly (checked cell for cell against HashLife), with the same settings as <code>python lisp110.py --gliders</code>: ${fmtInt(m.tape_bits)} tape bits, ${fmtInt(m.appendants)} appendants, ossifier spacing ${fmtInt(m.v)} cells, ${fmtSci(m.t_end)} generations over about ${fmtSci(m.x_hi - m.x_lo)} cells, ${fmtSci(m.events)} collisions, ${m.wall_s} s on one core. A browser cannot run that many cell updates, so the images and numbers here are the recorded ones; the answer is decoded from the recorded reads exactly as the engine's decoder does it.`;
+  setButtons();
+  draw();
+}
+
+function setButtons() {
+  $("go").textContent = state === "idle" ? "Compute" : state === "done" ? "Run again" : "Restart";
+  $("pause").disabled = !(state === "running" || state === "paused");
+  $("pause").textContent = state === "paused" ? "Resume" : "Pause";
+  $("skip").disabled = !(state === "running" || state === "paused");
+  const step = state === "idle" ? 0 : state === "done" ? 3 : 2;
+  document.querySelectorAll("#steps li").forEach((li) => li.dataset.on = +li.dataset.step <= step ? "1" : "0");
+}
+
+function frame(ts) {
+  if (state !== "running") return;
+  const dt = last ? ts - last : 0; last = ts;
+  pos += (dt * speed / duration(run)) * (run.rows.t.length - 1);
+  if (pos >= run.rows.t.length - 1) { pos = run.rows.t.length - 1; state = "done"; setButtons(); }
+  draw();
+  if (state === "running") raf = requestAnimationFrame(frame);
+}
+
+function draw() {
+  const N = run.rows.t.length, p = pos, done = state === "done";
+  // space-time
+  const ov = $("ov"), wCss = ov.clientWidth || 720, hCss = Math.round(wCss / 2);
+  const g = sizeCanvas(ov, wCss, hCss);
+  g.fillStyle = "#0e111a"; g.fillRect(0, 0, wCss, hCss);
+  const rowsShown = state === "idle" ? 1 : Math.floor(p) + 1;
+  const sh = rowsShown * hCss / N;
+  g.drawImage(imgs.ov, 0, 0, 720, rowsShown, 0, 0, wCss, sh);
+  if (!done && state !== "idle") {
+    g.fillStyle = "rgba(255,178,64,0.9)"; g.fillRect(0, sh - 1, wCss, 2);
+  }
+  // instruments
+  const t = lerpRow(run.rows.t, p), nr = Math.min(run.meta.reads, Math.round(readsAt(p)));
+  $("sGen").textContent = state === "idle" ? "0" : fmtSci(t);
+  $("sReads").innerHTML = `${fmtInt(nr)} <small>/ ${fmtInt(run.meta.reads)}</small>`;
+  $("sY").textContent = fmtInt(run.yPrefix[nr]);
+  $("sEv").textContent = state === "idle" ? "0" : fmtSci(lerpRow(run.rows.events, p));
+  $("progBar").style.width = `${(100 * p / (N - 1)).toFixed(1)}%`;
+  // micro: the latest window at or before the reads done
+  const mc = $("micro"), mw = mc.clientWidth || 320, mh = Math.round(mw * run.micro.h / run.micro.w);
+  const gm = sizeCanvas(mc, mw, mh);
+  gm.fillStyle = "#0e111a"; gm.fillRect(0, 0, mw, mh);
+  let k = -1;
+  run.micro.reads.forEach((j, i) => { if (j <= nr) k = i; });
+  if (state !== "idle" && k >= 0) {
+    gm.drawImage(imgs.micro, 0, k * run.micro.h, run.micro.w, run.micro.h, 0, 0, mw, mh);
+    $("microCap").textContent = `Exact cells at generation ${fmtSci(run.micro.t[k])}, near read ${fmtInt(run.micro.reads[k])}: ${run.micro.w} cells × ${run.micro.h} generations. Gliders bright, background ether dim.`;
+  } else {
+    $("microCap").textContent = "Exact cells, one row per generation. Gliders bright, background ether dim.";
+  }
+  // queue sparkline
+  const qc = $("queue"), qw = qc.clientWidth || 320, qh = 70;
+  const gq = sizeCanvas(qc, qw, qh);
+  gq.fillStyle = "#0e111a"; gq.fillRect(0, 0, qw, qh);
+  const L = run.queue.len, qmax = Math.max(...L), upto = Math.floor(nr / run.queue.step);
+  gq.strokeStyle = "rgba(122,134,158,0.35)"; gq.lineWidth = 1;
+  gq.beginPath(); gq.moveTo(0, qh - 6.5); gq.lineTo(qw, qh - 6.5); gq.stroke();
+  if (state !== "idle" && upto > 0) {
+    gq.beginPath();
+    for (let i = 0; i <= Math.min(upto, L.length - 1); i++) {
+      const x = i / (L.length - 1) * qw, y = qh - 6 - (L[i] / qmax) * (qh - 14);
+      i ? gq.lineTo(x, y) : gq.moveTo(x, y);
+    }
+    gq.strokeStyle = "#5c9ae6"; gq.lineWidth = 1.5; gq.stroke();
+    const i = Math.min(upto, L.length - 1), x = i / (L.length - 1) * qw, y = qh - 6 - (L[i] / qmax) * (qh - 14);
+    gq.fillStyle = "#ffb240"; gq.beginPath(); gq.arc(x, y, 3, 0, 7); gq.fill();
+    $("queueCap").textContent = `Symbols waiting in the cyclic tag system's queue: ${fmtInt(L[i])} bits now, at most ${fmtInt(qmax)}.`;
+  }
+  drawReads(nr, done);
+  drawAnswer(done);
+}
+
+function drawReads(nr, done) {
+  const B = run.meta.B, n = run.meta.reads, cols = Math.ceil(n / B);
+  const c = $("readsCanvas"), avail = c.parentElement.clientWidth;
+  const cw = Math.max(3, Math.floor(avail / cols)), chh = Math.max(3, Math.min(6, Math.floor(160 / B)));
+  const W = Math.max(avail, cols * cw), H = B * chh + 18;
+  const g = sizeCanvas(c, W, H); c.style.width = W + "px";
+  g.fillStyle = "#0e111a"; g.fillRect(0, 0, W, H);
+  const lastStarts = new Set(run.decode.regs.map((r) => r.start / B));
+  for (let s = 0; s < cols; s++) {
+    for (let b = 0; b < B; b++) {
+      const k = s * B + b; if (k >= n) break;
+      const read = k < nr, y = run.outcome[k] === "Y";
+      g.fillStyle = !read ? "#1a1f2c" : y ? "#ffb240" : "#2c3446";
+      g.fillRect(s * cw, b * chh, cw - (cw > 3 ? 1 : 0), chh - 1);
+    }
+    if (done && lastStarts.has(s)) {
+      g.fillStyle = "#ff5c8c"; g.fillRect(s * cw, B * chh + 4, cw - 1, 4);
+    }
+  }
+  $("readsCap").textContent = `Each column is one symbol of the tag system: ${B} reads, top to bottom, with exactly one Y whose height is the symbol's letter (an all-N column is a blank). ${fmtInt(nr)} of ${fmtInt(n)} reads checked.` +
+    (done ? " The columns marked in pink are the last pass: one per register, and they hold the answer." : "");
+}
+
+function drawAnswer(done) {
+  const box = $("regs");
+  if (!done) {
+    if (!box.dataset.empty) { box.innerHTML = '<p class="cap">The answer appears when the run reaches its last pass.</p>'; box.dataset.empty = "1"; }
+    $("verdict").hidden = true; return;
+  }
+  if (box.dataset.empty !== "0") {
+    box.dataset.empty = "0";
+    const res = run.decode.regs.filter((r) => r.result);
+    box.innerHTML = `<p class="cap">The last pass reads every register once. Each ${run.meta.B}-read word has one Y; its position is the register's letter, which names a token.</p>` +
+      res.map((r) => `<div class="reg res"><span>reg ${r.reg}</span><span class="word">${r.word.split("").map((ch) => `<i class="${ch === "Y" ? "y" : ""}"></i>`).join("")}</span><span>#${r.letter}</span><span class="tok">${r.token}</span></div>`).join("") +
+      `<p class="cap">Tokens in order: <code>${run.decode.tokens.join(" ")}</code> (· is padding).</p>`;
+  }
+  $("verdict").hidden = false;
+  $("val").textContent = run.value;
+  $("ref").innerHTML = run.value === run.lisp ? `lisp.py says <b>${run.lisp}</b>: match` : `lisp.py says ${run.lisp}`;
+}
+
+$("go").addEventListener("click", () => {
+  cancelAnimationFrame(raf);
+  pos = 0; state = "running"; last = 0; $("ovHint").hidden = true; setButtons();
+  raf = requestAnimationFrame(frame);
+});
+$("pause").addEventListener("click", () => {
+  if (state === "running") { state = "paused"; cancelAnimationFrame(raf); }
+  else if (state === "paused") { state = "running"; last = 0; raf = requestAnimationFrame(frame); }
+  setButtons();
+});
+$("skip").addEventListener("click", () => { cancelAnimationFrame(raf); pos = run.rows.t.length - 1; state = "done"; setButtons(); draw(); });
+document.querySelectorAll(".speed button").forEach((b) => b.addEventListener("click", () => {
+  speed = +b.dataset.speed;
+  document.querySelectorAll(".speed button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+}));
+sel.addEventListener("change", () => select(+sel.value));
+window.addEventListener("resize", () => run && draw());
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) speed = 3;
+if (RUNS.length) select(startIdx);
+</script>
