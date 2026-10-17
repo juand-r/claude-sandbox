@@ -88,3 +88,30 @@ def test_lambda_scope_and_last_use(src):
     lb = LispBus(src, 3)
     assert lb.run_reference() == run(src)
     assert lb.decode(lb.compile_bus().run(lb.values)) == run(src)
+
+
+def _cts_reads(comp, values):
+    """The bit-level CTS's reads (Y/N per read) over one table period, as
+    the glider run observes them."""
+    from collections import deque
+    apps = comp.pm.appendants()
+    q = deque(comp.pm.encode(comp.initial_tape(values)))
+    out = []
+    for r in range(comp.p * comp.pm.B):
+        ch = q.popleft()
+        out.append(ch)
+        if ch == "Y":
+            q.extend(apps[r % len(apps)])
+    return "".join(out)
+
+
+@pytest.mark.parametrize("src", EXPRS)
+def test_value_from_reads(src):
+    """The decoder used on gliders (the last pass's reads, nothing else)
+    gives the right value: every result register is read in that pass,
+    after its last change. (It once missed cons's fresh register, which
+    was born after the last pass.)"""
+    from experiments import decode_reads
+    lb = LispBus(src)
+    comp = lb.compile_bus()
+    assert decode_reads(lb, comp, _cts_reads(comp, lb.values)) == run(src)

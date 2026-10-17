@@ -1158,3 +1158,35 @@ Profile of cond with the light check: table materialization (ensure ->
 split) ~40%, engine ~23%, spot checks ~6%, light check ~4%, setup ~7%.
 So the read check's 82% earlier included ~24 s of table cutting that
 the run needs anyway; the speed-up is ~3x, not ~5x.
+
+## Timing simple expressions end to end (2026-10-17)
+
+`time python lisp110.py --gliders EXPR` (compile, layout, glider run with
+the light check, decode), 4-core container, one run at a time:
+
+| expression | CTS reads | generations | wall |
+|---|---|---|---|
+| `(quote a)` | 48 | 6.2e7 | 2.7 s |
+| `(atom? (quote (a)))` | 936 | 4.1e9 | 5.8 s |
+| `(cons (quote a) (quote (b)))` | 1,920 | 4.3e9 | 10.7 s |
+| `(cdr (quote (a b)))` | 2,448 | 6.5e9 | 13.2 s |
+| `(eq? (quote a) (quote b))` | 5,208 | 3.2e10 | 26.0 s |
+| `(cond ((eq? (quote a) (quote b)) (quote x)) (t (quote y)))` | 10,836 | 5.8e10 | 53.6 s |
+| `(cons (car (quote (a b))) (cdr (quote (c d))))` | 11,688 | 3.1e10 | 63.9 s |
+| `(cdr (car (cdr (quote (a (b c) d)))))` | 34,344 | 1.7e11 | 195.8 s |
+| `last` of (a b c), depth 3 (REPORT 7.8) | 157,824 | 5.1e11 | ~13 min |
+
+All values equal lisp.py. The first run after a container restart also
+compiles gasc.so (car took 24 s, cdr with the same table 13 s).
+
+Two bugs found while timing:
+- cons on gliders crashed in decoding: cons's fresh OPEN register has no
+  actions, so the lifetime rule bore it at pass P (after the last read);
+  the glider decoder reads the last pass. Fixed in busm: a kept constant
+  is born by pass P-1, and a kept register changed at pass s keeps the
+  program running to s+2. Only cons programs change (one symbol, B more
+  reads); car, cond, last etc. have the same tables. New test
+  test_value_from_reads decodes every test expression from the CTS's
+  reads exactly as on gliders (3 cons cases fail without the fix).
+- (quote a) never reads a queued copy, so the gap rule had no gap: now
+  Cook's spacing (encoder default) is used and said so.

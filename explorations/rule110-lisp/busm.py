@@ -149,8 +149,13 @@ class Compiled:
             ready[j] = max(ready[j], s + 1)
             last_s = s
         self.unknown = unknown
+        # a kept register changed at pass s must still be read at pass s+1:
+        # the glider decoder reads the values of the last pass
+        kept = set(range(n)) if self.keep is None else set(self.keep)
+        changed = [s + 2 for (s, k), acts in self.actions.items()
+                   if k in kept and any(a[0] in ("local", "recv") for a in acts)]
         end = max([s + 3 for s, _, _ in self.bcasts] + [s + 1 for s, _ in
-                  self.actions] + [1])
+                  self.actions] + changed + [1])
         self.passes = end
 
     # ---- lifetimes ----------------------------------------------------------
@@ -170,7 +175,9 @@ class Compiled:
                     continue
                 if a is None and k not in self.start and k not in self.keep:
                     continue                      # never needed
-                self.first[k] = 0 if k in self.start else min(a or [P])
+                # a kept constant (no actions) is born by the last pass, so
+                # that pass reads it (the glider decoder reads the last pass)
+                self.first[k] = 0 if k in self.start else min(a or [P - 1])
                 self.last[k] = P if k in self.keep else max(a or [0])
                 if self.first[k] > 0 and len(self.init_domains[k]) != 1:
                     raise ValueError(f"register {k} is born at pass "

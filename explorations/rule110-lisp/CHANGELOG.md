@@ -39,6 +39,10 @@ Lisp on Rule 110 without the tower (REPORT 7; INTERPRETER.md; phase 10)
   every 64th read must agree. Equal to the full check on De Mol, car,
   cond and last (outcomes and Ebar counts). last: 13 min (was 43).
   Default in lisp110.py; --full-check for the census on every read.
+- Fixed: cons on gliders failed to decode (a constant result register
+  was born after the last pass the decoder reads; busm now bears kept
+  constants by the last pass). Fixed: programs that never read a queued
+  copy, e.g. (quote a), had no spacing from the gap rule (now Cook's).
 
 An event engine (REPORT 5; PLAN.md phase 9, item 1)
 - gas.py (reference, Python), gasc.c/gasc.py (C event loop),

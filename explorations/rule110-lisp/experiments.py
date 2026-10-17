@@ -486,6 +486,27 @@ def tm_gliders(name, v_factor=1, sample_bits=17, epoch=8, engine="hash"):
         os.remove(ckpt)
 
 
+def decode_reads(lb, comp, reads):
+    """The Lisp value from a run's reads (a Y/N string, one per CTS read):
+    the program's last pass reads every live register once, and each
+    register's B reads hold one Y whose offset is its letter. The compiler
+    (busm) keeps every result register live and unchanged in that pass;
+    this checks it rather than trusting it."""
+    B, last = comp.pm.B, comp.passes - 1
+    final = comp.live[comp.passes]
+    absent = [k for k in final if k not in comp.live[last]]
+    if absent:
+        raise ValueError(f"registers {absent} are not read in the last pass")
+    vals = [None] * lb.n
+    for k in comp.live[last]:
+        i = comp.nominal[(last, k)] * B
+        word = reads[i:i + B]
+        if word.count("Y") != 1:
+            raise ValueError(f"register {k}: word {word} is not one letter")
+        vals[k] = {i: x for x, i in comp.enc[(last, k)].items()}[word.index("Y") // 2]
+    return lb.decode(vals)
+
+
 def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True, check="light"):
     """Evaluate a variable-free Lisp expression on Rule 110 gliders.
 
@@ -520,13 +541,16 @@ def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True, check="light"):
         if ch == "Y":
             q.extend(apps[r % len(apps)])
     ref = "".join(ref)
-    gap = max(g for *_, g in block_gaps(tape, apps, n_reads))
+    gaps = [g for *_, g in block_gaps(tape, apps, n_reads)]
     if v is None:
-        v = int(gap / margin) + 1
+        # no queued copy is ever read (the value is in the tape): the gap
+        # rule sets no spacing, so use Cook's (encoder default)
+        v = int(max(gaps) / margin) + 1 if gaps else _left_v(apps)
+    gap_note = (f"widest gap {max(gaps)} = {max(gaps) / v:.1f} v" if gaps
+                else "no queued copy is read: Cook's spacing")
     print(f"{src}: {lb.n} registers, B = {pm.B}, {comp.passes} passes, "
           f"{len(apps)} appendants ({sum(map(len, apps))} symbols), "
-          f"{n_reads} reads; widest gap {gap} = {gap / v:.1f} v at v = {v}",
-          flush=True)
+          f"{n_reads} reads; {gap_note} at v = {v}", flush=True)
     t0 = time.time()
     ckpt = None if rope else "lisp_gliders.ckpt"
     census = {"light": "light", "full": "particles"}[check]
@@ -540,18 +564,7 @@ def lisp_gliders(src, v=None, margin=7.5, depth=4, rope=True, check="light"):
           f"t = {er.run.t}, {time.time() - t0:.0f}s", flush=True)
     if check == "light":
         print(f"spot checks (full census = light check): {er.spot_stats}", flush=True)
-    last = comp.passes - 1
-    letters = []
-    for k in comp.live[last]:
-        i = comp.nominal[(last, k)] * pm.B
-        word = got[i:i + pm.B]
-        if word.count("Y") != 1:
-            raise ValueError(f"register {k}: word {word} is not one letter")
-        letters.append(word.index("Y"))
-    vals = [None] * lb.n
-    for k, c in zip(comp.live[last], letters):
-        vals[k] = {i: x for x, i in comp.enc[(last, k)].items()}[c // 2]
-    value = lb.decode(vals)
+    value = decode_reads(lb, comp, got)
     print(f"value decoded from the glider reads: {value}\n"
           f"lisp.py:                            {lisp_run(src)}\n"
           f"{'MATCH' if value == lisp_run(src) else 'DIFFER'}", flush=True)
