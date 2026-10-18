@@ -166,23 +166,26 @@ $\xi_i = \max(0,\, 1 - y_i f(\bm{x}_i))$, so $\xi_i > 1$ means $y_i f(\bm{x}_i) 
 
 \part[4] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with
 $C = 100$.
-For each question, circle one answer.
+For (a)--(c), circle one answer.
 \begin{subparts}
 \subpart \prompt{Which has the wider margin?} \pick{$C = 0.01$}{$C = 100$}{1}
 \subpart \prompt{Which has more support vectors?} \pick{$C = 0.01$}{$C = 100$}{1}
 \subpart \prompt{Which is more likely to overfit?} \pick{$C = 0.01$}{$C = 100$}{2}
-\subpart \prompt{In practice, choose $C$ by its} \pick{training accuracy}{validation accuracy}{2}
+\subpart \prompt{How would you choose $C$ in practice, and why?}
 \end{subparts}
+\answerbox[2.3(d)]{4}
 \begin{solution}
 (a) $C = 0.01$: slack is cheap, so the SVM accepts many points inside the margin in exchange for a
 wider one.
 (b) $C = 0.01$: with a wider margin, more points fall on or inside it, and all of them are support
 vectors.
 (c) $C = 100$: violations are expensive, so the margin narrows to fit individual training points.
-(d) Validation accuracy (or cross-validation). $C$ is a hyperparameter; a larger $C$ always fits the
-training data at least as well, so training accuracy cannot choose it.
+(d) $C$ is a hyperparameter: try several values and pick the one with the best accuracy on
+validation data (or by cross-validation). Training accuracy cannot choose it, because a larger $C$
+always fits the training data at least as well; only held-out data shows which $C$ generalizes.
 \end{solution}
 
+\ifprintanswers\else\newpage\fi   % keep 2.4 together on the test
 \part[2] \prompt{You remove a training point that is not a support vector and retrain the SVM. What
 changes? Why?}
 \answerbox{5}
