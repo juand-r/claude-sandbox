@@ -384,6 +384,37 @@ W^{(1)}_{11} \leftarrow 0.5 - 1 \cdot (-0.316) = 0.816 .
 \]
 (With unrounded node values the updates are 1.419 and 0.817; accept either.)
 \end{solution}
+
+\ifprintanswers\else\newpage\fi   % the short answers on one page of the test
+\part Short answers (8 points in all).
+\begin{subparts}
+\subpart[3] \prompt{You train the same network twice with different learning rates and plot the training
+loss after each epoch. In run 1 the loss jumps up and down and ends higher than it started. In run 2
+it goes down steadily, but very slowly. For each run, is the learning rate too large or too small?
+Why?}
+\answerbox[\thepartno(\thesubpart)]{5}
+\begin{solution}
+Run 1: too large. Each step overshoots the minimum, so the loss bounces around and can grow.
+Run 2: too small. Each step moves the weights only a little, so the loss falls slowly.
+\end{solution}
+\subpart[2] \prompt{A network classifies images into 3 classes. Why put a softmax on the three outputs
+instead of a separate sigmoid on each?}
+\answerbox[\thepartno(\thesubpart)]{4}
+\begin{solution}
+The softmax outputs are positive and add up to 1, so they are one probability distribution over the
+3 classes. Separate sigmoids each give a number between 0 and 1, but they need not add up to 1 (all
+three could be 0.9).
+\end{solution}
+\subpart[3] \prompt{A training set has 1,000 records. In one gradient-descent step, every weight in the
+network is updated once. How many steps does training take in 5 epochs (number of passes through the
+data) with (i) batch gradient descent, (ii) stochastic gradient descent (one record per step), and
+(iii) mini-batches of 50 records?}
+\answerbox[\thepartno(\thesubpart)]{4}
+\begin{solution}
+(i) One step per epoch: $5$. \quad (ii) $1{,}000$ steps per epoch: $5{,}000$. \quad
+(iii) $1{,}000 / 50 = 20$ steps per epoch: $100$.
+\end{solution}
+\end{subparts}
 \end{parts}
 
 % ===================================================================== 5

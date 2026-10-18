@@ -162,4 +162,7 @@ nW1 = (E42(0.5 + h, 1.0) - E42(0.5 - h, 1.0)) / (2 * h); nW2 = (E42(0.5, 1.0 + h
 check(nW1, (p42 - 1) * 1.0 * B42[0] * (1 - B42[0]) * 2, "exam v2 4.2: chain rule = numerical derivative (W1_11)", 1e-8)
 check(nW2, (p42 - 1) * B42[0], "  (W2_11)", 1e-8)
 check(round(1.0 - nW2, 3), 1.419, "  unrounded updated W2_11"); check(round(0.5 - nW1, 3), 0.817, "  unrounded updated W1_11")
+# exam v2 4.3(c): gradient steps in 5 epochs over 1,000 records
+for size, want, what in [(1000, 5, "batch"), (1, 5000, "stochastic"), (50, 100, "mini-batches of 50")]:
+    check(5 * (1000 // size), want, f"exam v2 4.3(c): steps with {what}")
 print("all checks passed")
