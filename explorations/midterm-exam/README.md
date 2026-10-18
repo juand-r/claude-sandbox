@@ -31,7 +31,7 @@ mine, mostly from scrap metal.
 - `final_midterm2.tex`: a shorter, easier version of the exam (asked by the user, 2026-10-18), being
   edited question by question. So far: 1.4 asks for the three ROC points after (0, 0) instead of the
   whole curve; 1.5 asks what an AUC of 0.3 means and how to fix it (flip the scores: 0.7) instead of
-  computing the AUC; 2.1 uses only points C, D, E; 2.2(b) asks only about xi > 1; 2.3 is
+  computing the AUC; 2.1 uses only points C, D, E and no longer asks for distances to the boundary; 2.2(b) asks only about xi > 1; 2.3 is
   (a)-(c) circle one of two (`\pick` in the file; the solutions circle the answer); (d) stays
   open ended, with its own answer box; 3.2 has one subpart and answer box per model (3.1's box went from
   7 lines to 3 so question 3 still fits on two pages).

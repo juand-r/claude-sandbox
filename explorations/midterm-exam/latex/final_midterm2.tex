@@ -121,7 +121,6 @@ label  & $+$ & $-$ & $-$ \\ \hline
 \begin{subparts}
 \subpart \prompt{Compute $f(\bm{x})$ and the predicted class of each point.}
 \subpart \prompt{What is the width of the margin?}
-\subpart \prompt{Compute each point's distance to the decision boundary.}
 \subpart \prompt{Which points are on the margin? Which points are inside the margin? Which points are
 misclassified?}
 \end{subparts}
@@ -134,13 +133,12 @@ $f(\bm{x}) = 6x_1 + 8x_2 - 20$ and $\|\bm{w}\| = \sqrt{6^2 + 8^2} = 10$.
 \rowcolor{headgray} point & C & D & E \\ \hline
 $f(\bm{x})$                       & $1$   & $-0.5$ & $2$ \\ \hline
 predicted class                   & $+$   & $-$    & $+$ \\ \hline
-distance $|f(\bm{x})|/\|\bm{w}\|$ & $0.1$ & $0.05$ & $0.2$ \\ \hline
 $y\,f(\bm{x})$                    & $1$   & $0.5$  & $-2$ \\ \hline
 \end{tabular}
 \end{center}
 (b) Margin width $= 2/\|\bm{w}\| = 2/10 = 0.2$.
 
-(d) On the margin: C ($y\,f = 1$). Inside the margin: D ($0 < y\,f = 0.5 < 1$), still correctly
+(c) On the margin: C ($y\,f = 1$). Inside the margin: D ($0 < y\,f = 0.5 < 1$), still correctly
 classified. Misclassified: E (label $-$, predicted $+$; $y\,f = -2$).
 \end{solution}
 
