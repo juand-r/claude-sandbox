@@ -133,4 +133,13 @@ votes = {c: sum(c in a for a in sides) for c in ["oak", "maple", "pine", "birch"
 assert votes == {"oak": 1, "maple": 3, "pine": 1, "birch": 1, "willow": 1}, votes
 print(f"ok  practice 5.1(c) votes: {votes}")
 check(comb(5, 2), 10, "practice 5.1(b): one-vs-one SVMs"); check(comb(4, 2), 6, "exam 5.1(c): one-vs-one SVMs")
+# ---------------------------------------------------------------- exam v2 4.1: forward pass, ReLU hidden layer, linear outputs
+x41, W1e, b1e, W2e, b2e = [4, 2], [[0.5, -0.5], [-0.3, 0.4]], [0.5, -0.2], [[0.6, 0.8], [-0.2, -0.9]], [-0.4, 0.6]
+lin = lambda W, b, v: [sum(w * u for w, u in zip(r, v)) + c for r, c in zip(W, b)]
+zB = lin(W1e, b1e, x41); Bv = [max(0.0, z) for z in zB]; Cv = lin(W2e, b2e, Bv)
+for got, want, what in [(zB[0], 1.5, "zB1"), (zB[1], -0.6, "zB2"), (Bv[1], 0.0, "B2 = ReLU(-0.6)"), (Cv[0], 0.5, "out1"), (Cv[1], 0.3, "out2")]:
+    check(got, want, f"exam v2 4.1: {what}")
+assert Cv[0] > Cv[1], "exam v2 4.1: Class A"
+Cn = lin(W2e, b2e, zB)   # a student who forgets the ReLU
+check(Cn[0], 0.02, "exam v2 4.1 without the ReLU: out1"); check(Cn[1], 0.84, "  out2 (so Class B, the wrong answer)")
 print("all checks passed")
