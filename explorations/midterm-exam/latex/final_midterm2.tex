@@ -7,6 +7,16 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{groupplots}
+% two options to circle: \pick{first}{second}{1 or 2}. The solutions circle the right one; the test
+% draws the same frames invisibly, so the layout does not move.
+\newcommand{\opt}[2]{% #2 is 1 for the right answer
+  \def\optcolor{none}%
+  \ifprintanswers\ifnum#2=1 \def\optcolor{red!70!black}\fi\fi
+  \tikz[baseline=(o.base)]\node[inner sep=4pt,rounded corners=7pt,draw=\optcolor,very thick](o){#1};}
+\newlength{\optw}\setlength{\optw}{3.6cm}   % each option sits in a column this wide
+\newcommand{\pick}[3]{\hfill
+  \makebox[\optw]{\ifnum#3=1 \opt{#1}{1}\else\opt{#1}{0}\fi}%
+  \makebox[\optw]{\ifnum#3=2 \opt{#2}{1}\else\opt{#2}{0}\fi}}
 
 \begin{document}
 \ifprintanswers\examtitlepage{Midterm exam \textperiodcentered{} solutions}\else\examtitlepage{Midterm exam}\fi
@@ -156,22 +166,21 @@ $\xi_i = \max(0,\, 1 - y_i f(\bm{x}_i))$, so $\xi_i > 1$ means $y_i f(\bm{x}_i) 
 
 \part[4] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with
 $C = 100$.
+For each question, circle one answer.
 \begin{subparts}
-\subpart \prompt{Which has the wider margin, and why?}
-\subpart \prompt{Which has more support vectors, and why?}
-\subpart \prompt{Which is more likely to overfit, and why?}
-\subpart \prompt{How would you choose $C$ in practice, and why?}
+\subpart \prompt{Which has the wider margin?} \pick{$C = 0.01$}{$C = 100$}{1}
+\subpart \prompt{Which has more support vectors?} \pick{$C = 0.01$}{$C = 100$}{1}
+\subpart \prompt{Which is more likely to overfit?} \pick{$C = 0.01$}{$C = 100$}{2}
+\subpart \prompt{In practice, choose $C$ by its} \pick{training accuracy}{validation accuracy}{2}
 \end{subparts}
-\answerbox{7}
 \begin{solution}
 (a) $C = 0.01$: slack is cheap, so the SVM accepts many points inside the margin in exchange for a
 wider one.
 (b) $C = 0.01$: with a wider margin, more points fall on or inside it, and all of them are support
 vectors.
 (c) $C = 100$: violations are expensive, so the margin narrows to fit individual training points.
-(d) $C$ is a hyperparameter: try several values and pick the one with the best accuracy on
-validation data (or by cross-validation). Training accuracy cannot choose it, because a larger $C$
-always fits the training data at least as well; only held-out data shows which $C$ generalizes.
+(d) Validation accuracy (or cross-validation). $C$ is a hyperparameter; a larger $C$ always fits the
+training data at least as well, so training accuracy cannot choose it.
 \end{solution}
 
 \part[2] \prompt{You remove a training point that is not a support vector and retrain the SVM. What
