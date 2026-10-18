@@ -208,20 +208,32 @@ $y$ & 3 & 6 & 4 & 8 & 10 & 12 \\ \hline
 \end{tabular}
 \end{center}
 \prompt{Predict $y$ at $x = 4.4$ using (a) $k = 1$ and (b) $k = 3$.}
-\answerbox{7}
+\answerbox{3}
 \begin{solution}
 (a) The nearest point is $x = 4$, so the prediction is $4$.
 (b) The three nearest points are $x = 4, 5, 2$ (distances $0.4, 0.6, 2.4$), so the prediction is
 $(4 + 8 + 6)/3 = 6$.
 \end{solution}
 
-\part[6] \prompt{For each of a regression tree, kNN regression and SVR, name a hyperparameter that controls
-how closely the model fits the training data. Which setting of it makes overfitting more likely?}
-\answerbox{8}
+\part[6] \prompt{For each of the following, name a hyperparameter that controls how closely the model fits
+the training data. Which setting of it makes overfitting more likely?}
+\begin{subparts}
+\subpart \prompt{Regression tree}
+\answerbox[3.2(a)]{3}
 \begin{solution}
-Regression tree: a larger maximum depth, or a smaller minimum number of points needed to split.
-kNN: a smaller $k$. SVR: a larger $C$, or a smaller $\varepsilon$.
+The maximum depth: a larger depth (or a smaller minimum number of points needed to split).
 \end{solution}
+\subpart \prompt{kNN regression}
+\answerbox[3.2(b)]{3}
+\begin{solution}
+The number of neighbours $k$: a smaller $k$.
+\end{solution}
+\subpart \prompt{SVR}
+\answerbox[3.2(c)]{3}
+\begin{solution}
+$C$: a larger $C$ (or a smaller $\varepsilon$).
+\end{solution}
+\end{subparts}
 
 \newpage
 \part[5] \prompt{The figure shows three models fitted to the same data. Which panel shows a regression

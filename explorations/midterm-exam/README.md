@@ -33,7 +33,8 @@ mine, mostly from scrap metal.
   whole curve; 1.5 asks what an AUC of 0.3 means and how to fix it (flip the scores: 0.7) instead of
   computing the AUC; 2.1 uses only points C, D, E; 2.2(b) asks only about xi > 1; 2.3 is
   (a)-(c) circle one of two (`\pick` in the file; the solutions circle the answer); (d) stays
-  open ended, with its own answer box.
+  open ended, with its own answer box; 3.2 has one subpart and answer box per model (3.1's box went from
+  7 lines to 3 so question 3 still fits on two pages).
 
 Each builds two PDFs, the test and its solutions; the commands are at the top of each file.
 Both use `cs363m_exam.sty`, the layout of the course's practice exam: a title page with the
