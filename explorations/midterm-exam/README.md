@@ -37,7 +37,9 @@ mine, mostly from scrap metal.
   7 lines to 3 so question 3 still fits on two pages).
   Question 4 (neural networks) is being written: 4.1 is the practice's forward pass with a ReLU
   hidden layer and linear outputs (class = larger output), new numbers; forgetting the ReLU flips the
-  answer. Question 5 is now numbered automatically.
+  answer. 4.2 (14 points) is backprop on a 2-2-1 network (sigmoid hidden and output, cross-entropy,
+  Y = 1): (a) update an output weight, (b) a first-layer weight, from given node values. Question 5 is
+  now numbered automatically.
 
 Each builds two PDFs, the test and its solutions; the commands are at the top of each file.
 Both use `cs363m_exam.sty`, the layout of the course's practice exam: a title page with the

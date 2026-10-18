@@ -300,7 +300,7 @@ this network classify the record (Class A or Class B)?}
 From the diagram:
 \[
 \bm{W}^{(1)} = \begin{pmatrix} 0.5 & -0.5 \\ -0.3 & 0.4 \end{pmatrix}, \quad
-\bm{b}^{(1)} = \begin{pmatrix} 0.5 \\ -0.2 \end{pmatrix}, \qquad
+\bm{b}^{(1)} = \begin{pmatrix} 0.5 \\ -0.2 \end{pmatrix}, \quad
 \bm{W}^{(2)} = \begin{pmatrix} 0.6 & 0.8 \\ -0.2 & -0.9 \end{pmatrix}, \quad
 \bm{b}^{(2)} = \begin{pmatrix} -0.4 \\ 0.6 \end{pmatrix}.
 \]
@@ -317,6 +317,72 @@ From the diagram:
 \]
 out1 $= 0.5 >$ out2 $= 0.3$: the network predicts Class A. (Forgetting the ReLU, and using
 $B_2 = -0.6$, gives out1 $= 0.02$ and out2 $= 0.84$, the wrong class.)
+\end{solution}
+
+\part[14] The network below has one hidden layer and one output. A record with inputs $A_1 = 2$,
+$A_2 = 1$ and label $Y = 1$ is passed in.
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=1.3cm,n/.style={circle,draw,minimum size=8mm,fill=blue!6},
+  bn/.style={circle,draw,dashed,minimum size=8mm,fill=gray!10}]
+\node[n] (A1) at (0,2) {A1}; \node[n] (A2) at (0,1) {A2}; \node[bn] (A0) at (0,0) {1};
+\node[n] (B1) at (1,2) {B1}; \node[n] (B2) at (1,1) {B2}; \node[bn] (B0) at (1,0) {1};
+\node[n] (C1) at (2,1.5) {C1};
+\foreach \a in {A1,A2,A0} \foreach \b in {B1,B2} \draw[->] (\a) -- (\b);
+\foreach \a in {B1,B2,B0} \draw[->] (\a) -- (C1);
+\draw[->] (C1) -- ++(0.45,0) node[right] {$p$};
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{headgray} & function & derivative \\ \hline
+B layer: sigmoid & $f(z) = 1/(1 + e^{-z})$ & $f(z)\,(1 - f(z))$ \\ \hline
+C layer: sigmoid & $p = C_1 = 1/(1 + e^{-z_C})$ & (see the loss) \\ \hline
+loss: cross-entropy & $E = -Y \log p - (1 - Y) \log(1 - p)$ & $\partial E/\partial z_C = p - Y$ \\ \hline
+\end{tabular}
+\end{center}
+Here $z_C$ is C1's input sum, and $p$ is the predicted probability that $Y = 1$. The weights during the forward propagation are
+\[
+\bm{W}^{(1)} = \begin{pmatrix} 0.5 & -1.0 \\ 1.5 & 0.5 \end{pmatrix},\quad
+\bm{b}^{(1)} = \begin{pmatrix} 0.5 \\ -1.0 \end{pmatrix},\qquad
+\bm{W}^{(2)} = \begin{pmatrix} 1.0 & -2.0 \end{pmatrix},\quad b^{(2)} = 0.5 .
+\]
+You do not need to forward propagate. The node output values during the forward propagation are
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{headgray} A layer & B layer & C layer \\ \hline
+$A_1 = 2$ & $B_1 = 0.62$ & $C_1 = p = 0.33$ \\ \hline
+$A_2 = 1$ & $B_2 = 0.92$ & \\ \hline
+\end{tabular}
+\end{center}
+Use a learning rate of 1. Compute every derivative with the weights above, the ones used in the
+forward propagation.
+\begin{subparts}
+\subpart \prompt{Adjust $W^{(2)}_{11}$, the weight from B1 to C1.}
+\answerbox[\thepartno(\thesubpart)]{5}
+\ifprintanswers\else\newpage\fi   % keep (b) and its answer box together on the test
+\subpart \prompt{Adjust $W^{(1)}_{11}$, the weight from A1 to B1.}
+\answerbox[\thepartno(\thesubpart)]{10}
+\end{subparts}
+\begin{solution}
+(a) The error at the output is $\partial E/\partial z_C = p - Y = 0.33 - 1 = -0.67$. Since
+$z_C = W^{(2)}_{11} B_1 + W^{(2)}_{12} B_2 + b^{(2)}$, $\partial z_C/\partial W^{(2)}_{11} = B_1 = 0.62$, so
+\[
+\frac{\partial E}{\partial W^{(2)}_{11}} = -0.67 \cdot 0.62 = -0.415, \qquad
+W^{(2)}_{11} \leftarrow 1.0 - 1 \cdot (-0.415) = 1.415 .
+\]
+(b) The path is $W^{(1)}_{11} \to z_{B_1} \to B_1 \to z_C \to E$, where $z_{B_1}$ is B1's input sum.
+Reuse $-0.67$ from (a), with the old weight $W^{(2)}_{11} = 1.0$:
+\[
+\frac{\partial E}{\partial B_1} = -0.67 \cdot 1.0 = -0.67, \qquad
+\frac{\partial E}{\partial z_{B_1}} = -0.67 \cdot B_1 (1 - B_1) = -0.67 \cdot 0.62 \cdot 0.38 = -0.158,
+\]
+\[
+\frac{\partial E}{\partial W^{(1)}_{11}} = -0.158 \cdot A_1 = -0.158 \cdot 2 = -0.316, \qquad
+W^{(1)}_{11} \leftarrow 0.5 - 1 \cdot (-0.316) = 0.816 .
+\]
+(With unrounded node values the updates are 1.419 and 0.817; accept either.)
 \end{solution}
 \end{parts}
 

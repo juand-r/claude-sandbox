@@ -142,4 +142,24 @@ for got, want, what in [(zB[0], 1.5, "zB1"), (zB[1], -0.6, "zB2"), (Bv[1], 0.0, 
 assert Cv[0] > Cv[1], "exam v2 4.1: Class A"
 Cn = lin(W2e, b2e, zB)   # a student who forgets the ReLU
 check(Cn[0], 0.02, "exam v2 4.1 without the ReLU: out1"); check(Cn[1], 0.84, "  out2 (so Class B, the wrong answer)")
+# ---------------------------------------------------------------- exam v2 4.2: backprop, sigmoid hidden and output, cross-entropy
+sg = lambda z: 1 / (1 + math.exp(-z))
+A42, W1b, b1b, W2b, b2b, Y42 = [2, 1], [[0.5, -1.0], [1.5, 0.5]], [0.5, -1.0], [1.0, -2.0], 0.5, 1
+zB42 = lin(W1b, b1b, A42); B42 = [sg(z) for z in zB42]; p42 = sg(lin([W2b], [b2b], B42)[0])
+check(round(B42[0], 2), 0.62, "exam v2 4.2: given B1"); check(round(B42[1], 2), 0.92, "  given B2"); check(round(p42, 2), 0.33, "  given p")
+# the solution works from the given (rounded) node values
+Br, pr = 0.62, 0.33
+gW2 = (pr - Y42) * Br; gW1 = (pr - Y42) * W2b[0] * Br * (1 - Br) * A42[0]
+check(round(gW2, 3), -0.415, "exam v2 4.2(a): dE/dW2_11 from the given values"); check(round(1.0 - gW2, 3), 1.415, "  updated W2_11")
+check(round((pr - Y42) * W2b[0] * Br * (1 - Br), 3), -0.158, "exam v2 4.2(b): dE/dz_B1"); check(round(gW1, 3), -0.316, "  dE/dW1_11")
+check(round(0.5 - gW1, 3), 0.816, "  updated W1_11")
+# unrounded, and against a numerical derivative of the loss
+def E42(w1, w2):
+    B = [sg(z) for z in lin([[w1, W1b[0][1]], W1b[1]], b1b, A42)]
+    return -math.log(sg(lin([[w2, W2b[1]]], [b2b], B)[0]))
+h = 1e-6
+nW1 = (E42(0.5 + h, 1.0) - E42(0.5 - h, 1.0)) / (2 * h); nW2 = (E42(0.5, 1.0 + h) - E42(0.5, 1.0 - h)) / (2 * h)
+check(nW1, (p42 - 1) * 1.0 * B42[0] * (1 - B42[0]) * 2, "exam v2 4.2: chain rule = numerical derivative (W1_11)", 1e-8)
+check(nW2, (p42 - 1) * B42[0], "  (W2_11)", 1e-8)
+check(round(1.0 - nW2, 3), 1.419, "  unrounded updated W2_11"); check(round(0.5 - nW1, 3), 0.817, "  unrounded updated W1_11")
 print("all checks passed")
