@@ -333,10 +333,10 @@ $A_2 = 1$ and label $Y = 1$ is passed in.
 \begin{center}
 \begin{tabular}{|l|l|l|}
 \hline
-\rowcolor{headgray} & function & derivative \\ \hline
+\rowcolor{headgray} activation function & function & derivative \\ \hline
 B layer: sigmoid & $f(z) = 1/(1 + e^{-z})$ & $f(z)\,(1 - f(z))$ \\ \hline
 C layer: sigmoid & $p = C_1 = 1/(1 + e^{-z_C})$ & (see the loss) \\ \hline
-loss: cross-entropy & $E = -Y \log p - (1 - Y) \log(1 - p)$ & $\partial E/\partial z_C = p - Y$ \\ \hline
+loss: cross-entropy & $\mathcal{L} = -Y \log p - (1 - Y) \log(1 - p)$ & $\partial \mathcal{L}/\partial z_C = p - Y$ \\ \hline
 \end{tabular}
 \end{center}
 Here $z_C$ is C1's input sum, and $p$ is the predicted probability that $Y = 1$. The weights during the forward propagation are
@@ -364,20 +364,20 @@ forward propagation.
 \answerbox[\thepartno(\thesubpart)]{10}
 \end{subparts}
 \begin{solution}
-(a) The error at the output is $\partial E/\partial z_C = p - Y = 0.33 - 1 = -0.67$. Since
+(a) The error at the output is $\partial \mathcal{L}/\partial z_C = p - Y = 0.33 - 1 = -0.67$. Since
 $z_C = W^{(2)}_{11} B_1 + W^{(2)}_{12} B_2 + b^{(2)}$, $\partial z_C/\partial W^{(2)}_{11} = B_1 = 0.62$, so
 \[
-\frac{\partial E}{\partial W^{(2)}_{11}} = -0.67 \cdot 0.62 = -0.415, \qquad
+\frac{\partial \mathcal{L}}{\partial W^{(2)}_{11}} = -0.67 \cdot 0.62 = -0.415, \qquad
 W^{(2)}_{11} \leftarrow 1.0 - 1 \cdot (-0.415) = 1.415 .
 \]
-(b) The path is $W^{(1)}_{11} \to z_{B_1} \to B_1 \to z_C \to E$, where $z_{B_1}$ is B1's input sum.
+(b) The path is $W^{(1)}_{11} \to z_{B_1} \to B_1 \to z_C \to \mathcal{L}$, where $z_{B_1}$ is B1's input sum.
 Reuse $-0.67$ from (a), with the old weight $W^{(2)}_{11} = 1.0$:
 \[
-\frac{\partial E}{\partial B_1} = -0.67 \cdot 1.0 = -0.67, \qquad
-\frac{\partial E}{\partial z_{B_1}} = -0.67 \cdot B_1 (1 - B_1) = -0.67 \cdot 0.62 \cdot 0.38 = -0.158,
+\frac{\partial \mathcal{L}}{\partial B_1} = -0.67 \cdot 1.0 = -0.67, \qquad
+\frac{\partial \mathcal{L}}{\partial z_{B_1}} = -0.67 \cdot B_1 (1 - B_1) = -0.67 \cdot 0.62 \cdot 0.38 = -0.158,
 \]
 \[
-\frac{\partial E}{\partial W^{(1)}_{11}} = -0.158 \cdot A_1 = -0.158 \cdot 2 = -0.316, \qquad
+\frac{\partial \mathcal{L}}{\partial W^{(1)}_{11}} = -0.158 \cdot A_1 = -0.158 \cdot 2 = -0.316, \qquad
 W^{(1)}_{11} \leftarrow 0.5 - 1 \cdot (-0.316) = 0.816 .
 \]
 (With unrounded node values the updates are 1.419 and 0.817; accept either.)
