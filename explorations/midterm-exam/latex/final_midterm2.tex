@@ -7,14 +7,6 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{groupplots}
-% an empty ROC plot (unit square, ticks every 0.25) for students to draw in
-\newcommand{\rocaxes}{%
-  \draw[step=0.25,gray!30,very thin] (0,0) grid (1,1);
-  \draw[->] (0,0) -- (1.08,0) node[right] {FPR};
-  \draw[->] (0,0) -- (0,1.08) node[above] {TPR};
-  \foreach \t in {0,0.25,0.5,0.75,1} {
-    \draw (\t,0) -- (\t,-0.02) node[below] {\small\t};
-    \draw (0,\t) -- (-0.02,\t) node[left] {\small\t};}}
 
 \begin{document}
 \ifprintanswers\examtitlepage{Midterm exam \textperiodcentered{} solutions}\else\examtitlepage{Midterm exam}\fi
@@ -80,35 +72,25 @@ written with AI? & yes & yes & no & yes & no & yes & no & no \\ \hline
 \end{center}
 We say the detector flags an essay as AI-written if its score is over $t$.}
 
-\part[10] \prompt{Draw the ROC curve.}
-\ifprintanswers\else
-\par\vspace{4pt}\noindent{\color{lbl}\textbf{Draw the ROC curve here}}
-\begin{center}
-\begin{tikzpicture}[scale=6]\rocaxes\end{tikzpicture}
-\end{center}
-\fi
+\part[10] \prompt{The ROC curve starts at $(\mathrm{FPR}, \mathrm{TPR}) = (0, 0)$, when $t$ is above every
+score. Lower $t$ past one essay at a time. What are the next three points on the curve?}
 \answerbox{8}
 \begin{solution}
 As $t$ passes each essay, from the highest score down, an AI essay moves the point up by
-$1/4 = 0.25$ and a human essay moves it right by $0.25$. Starting at $(0,0)$, the points are
+$1/4 = 0.25$ and a human essay moves it right by $0.25$. Essays 1 and 2 are AI-written and essay 3
+is not, so the next three points are
 \[
-(0,0.25),\ (0,0.5),\ (0.25,0.5),\ (0.25,0.75),\ (0.5,0.75),\ (0.5,1),\ (0.75,1),\ (1,1).
+(0,\ 0.25), \quad (0,\ 0.5), \quad (0.25,\ 0.5).
 \]
-\begin{center}
-\begin{tikzpicture}[scale=5]
-\rocaxes
-\fill[blue!8] (0,0) -- (0,0.5) -- (0.25,0.5) -- (0.25,0.75) -- (0.5,0.75) -- (0.5,1) -- (1,1) -- (1,0) -- cycle;
-\draw[very thick,blue!70!black] (0,0) -- (0,0.5) -- (0.25,0.5) -- (0.25,0.75) -- (0.5,0.75) -- (0.5,1) -- (1,1);
-\draw[dashed,gray] (0,0) -- (1,1);
-\end{tikzpicture}
-\end{center}
 \end{solution}
 
-\part[2] \prompt{Compute the AUC.}
+\part[2] \prompt{Another detector has an AUC of 0.3 on the test essays. What does that tell you, and
+what simple change would improve it?}
 \answerbox{5}
 \begin{solution}
-The area under the staircase, in columns of width $0.25$ with heights $0.5, 0.75, 1, 1$:
-$\mathrm{AUC} = 0.25 \times (0.5 + 0.75 + 1 + 1) = 0.8125 \approx 0.81$.
+It is worse than random guessing (AUC 0.5): it tends to give human-written essays higher scores than
+AI-written ones. Flip it: use $1 - \text{score}$ (equivalently, flag the essays with low scores).
+That reverses the order of the essays, so the AUC becomes $1 - 0.3 = 0.7$.
 \end{solution}
 \end{parts}
 
@@ -118,39 +100,38 @@ $\mathrm{AUC} = 0.25 \times (0.5 + 0.75 + 1 + 1) = 0.8125 \approx 0.81$.
 \begin{parts}
 \part[10] A soft-margin SVM returned $\bm{w} = (6, 8)$, $b = -20$.
 \begin{center}
-\begin{tabular}{|l|c|c|c|c|c|}
+\begin{tabular}{|l|c|c|c|}
 \hline
-\rowcolor{headgray} point  & A & B & C & D & E \\ \hline
-$x_1$  & 3 & 1 & 1.5 & 1.25 & 3 \\ \hline
-$x_2$  & 1 & 1 & 1.5 & 1.5 & 0.5 \\ \hline
-label  & $+$ & $-$ & $+$ & $-$ & $-$ \\ \hline
+\rowcolor{headgray} point  & C & D & E \\ \hline
+$x_1$  & 1.5 & 1.25 & 3 \\ \hline
+$x_2$  & 1.5 & 1.5 & 0.5 \\ \hline
+label  & $+$ & $-$ & $-$ \\ \hline
 \end{tabular}
 \end{center}
 \begin{subparts}
 \subpart \prompt{Compute $f(\bm{x})$ and the predicted class of each point.}
 \subpart \prompt{What is the width of the margin?}
 \subpart \prompt{Compute each point's distance to the decision boundary.}
-\subpart \prompt{Which points are support vectors? Which point is on the margin, which is inside it, and
-which is misclassified?}
+\subpart \prompt{Which points are on the margin? Which points are inside the margin? Which points are
+misclassified?}
 \end{subparts}
 \answerbox{16}
 \begin{solution}
 $f(\bm{x}) = 6x_1 + 8x_2 - 20$ and $\|\bm{w}\| = \sqrt{6^2 + 8^2} = 10$.
 \begin{center}
-\begin{tabular}{|l|c|c|c|c|c|}
+\begin{tabular}{|l|c|c|c|}
 \hline
-\rowcolor{headgray} point & A & B & C & D & E \\ \hline
-$f(\bm{x})$                       & $6$   & $-6$  & $1$   & $-0.5$ & $2$ \\ \hline
-predicted class                   & $+$   & $-$   & $+$   & $-$    & $+$ \\ \hline
-distance $|f(\bm{x})|/\|\bm{w}\|$ & $0.6$ & $0.6$ & $0.1$ & $0.05$ & $0.2$ \\ \hline
-$y\,f(\bm{x})$                    & $6$   & $6$   & $1$   & $0.5$  & $-2$ \\ \hline
+\rowcolor{headgray} point & C & D & E \\ \hline
+$f(\bm{x})$                       & $1$   & $-0.5$ & $2$ \\ \hline
+predicted class                   & $+$   & $-$    & $+$ \\ \hline
+distance $|f(\bm{x})|/\|\bm{w}\|$ & $0.1$ & $0.05$ & $0.2$ \\ \hline
+$y\,f(\bm{x})$                    & $1$   & $0.5$  & $-2$ \\ \hline
 \end{tabular}
 \end{center}
 (b) Margin width $= 2/\|\bm{w}\| = 2/10 = 0.2$.
 
-(d) The support vectors are the points with $y\,f(\bm{x}) \le 1$: C, D and E. C is on the margin
-($y\,f = 1$), D is inside the margin but correctly classified ($y\,f = 0.5$), and E is
-misclassified (label $-$, predicted $+$).
+(d) On the margin: C ($y\,f = 1$). Inside the margin: D ($0 < y\,f = 0.5 < 1$), still correctly
+classified. Misclassified: E (label $-$, predicted $+$; $y\,f = -2$).
 \end{solution}
 
 \part[4] The soft-margin SVM solves
@@ -161,7 +142,7 @@ misclassified (label $-$, predicted $+$).
 \begin{subparts}
 \subpart \prompt{What does the slack $\xi_i$ measure, and why do we need it?}
 \subpart \prompt{Where does a training point lie, relative to the margin and the decision boundary, if
-$\xi_i = 0$? If $0 < \xi_i < 1$? If $\xi_i > 1$?}
+$\xi_i > 1$?}
 \end{subparts}
 \answerbox{8}
 \begin{solution}
@@ -169,10 +150,8 @@ $\xi_i = 0$? If $0 < \xi_i < 1$? If $\xi_i > 1$?}
 Without slack, the constraints $y_i(\bm{w} \cdot \bm{x}_i + b) \ge 1$ have no solution when the
 classes overlap; slack lets some points violate the margin, at a cost $C\xi_i$ each.
 
-(b) $\xi_i = 0$: on its correct side, on or outside the margin. $0 < \xi_i < 1$: inside the margin,
-but still correctly classified. $\xi_i > 1$: on the wrong side of the decision boundary
-(misclassified). (At the solution $\xi_i = \max(0,\, 1 - y_i f(\bm{x}_i))$, so these are the cases
-$y_i f \ge 1$, $0 < y_i f < 1$ and $y_i f < 0$.)
+(b) On the wrong side of the decision boundary: misclassified. (At the solution
+$\xi_i = \max(0,\, 1 - y_i f(\bm{x}_i))$, so $\xi_i > 1$ means $y_i f(\bm{x}_i) < 0$.)
 \end{solution}
 
 \part[4] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with

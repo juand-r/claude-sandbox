@@ -84,6 +84,10 @@ check(area(pts), 13 / 16, "exam AUC"); check(round(area(pts), 2), 0.81, "exam AU
 check(area(roc([100 * x for x in ai_s], [100 * x for x in hu_s])), 13 / 16, "exam AUC after s -> 100 s")
 check(area(roc([x ** 2 for x in ai_s], [x ** 2 for x in hu_s])), 13 / 16, "exam AUC after s -> s^2")
 check(area(roc([1 - x for x in ai_s], [1 - x for x in hu_s])), 3 / 16, "exam AUC after s -> 1 - s")
+# exam version 2 (final_midterm2.tex): 1.4 asks for the three points after (0, 0); 1.5 flips an AUC of 0.3
+for k, (x, y) in enumerate([(0.0, 0.25), (0.0, 0.5), (0.25, 0.5)], 1):
+    check(pts[k][0], x, f"exam v2 1.4: ROC point {k} after (0, 0), FPR"); check(pts[k][1], y, "  TPR")
+check(area(roc([1 - x for x in ai_s], [1 - x for x in hu_s])), 1 - area(pts), "flipping the scores turns AUC a into 1 - a (so 0.3 -> 0.7)")
 check(sum(a > 0.70 for a in ai_s) / 4, 0.5, "exam TPR at FPR = 0 (threshold above 0.70)")
 check(0.5 ** 2, 0.25, "exam: threshold 0.5 becomes 0.25 after squaring")
 # two crossing ROC curves, straight lines between the given points

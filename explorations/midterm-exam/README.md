@@ -28,6 +28,10 @@ mine, mostly from scrap metal.
   slightly easier. Question 4 (neural networks) is not written yet; question 5 is numbered by hand
   until it is. The figure for 3.3 is `fig_q33.tex`, drawn from data written by
   `make_figure.py` (`.venv/bin/python make_figure.py`; packages in `requirements.txt`).
+- `final_midterm2.tex`: a shorter, easier version of the exam (asked by the user, 2026-10-18), being
+  edited question by question. So far: 1.4 asks for the three ROC points after (0, 0) instead of the
+  whole curve; 1.5 asks what an AUC of 0.3 means and how to fix it (flip the scores: 0.7) instead of
+  computing the AUC; 2.1 uses only points C, D, E; 2.2(b) asks only about xi > 1.
 
 Each builds two PDFs, the test and its solutions; the commands are at the top of each file.
 Both use `cs363m_exam.sty`, the layout of the course's practice exam: a title page with the
