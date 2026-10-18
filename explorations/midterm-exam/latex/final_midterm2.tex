@@ -1,0 +1,301 @@
+% Final midterm: evaluating classifiers and SVMs (the exam, version 2, shortened; the original is final_midterm.tex; the practice test is practice_midterm.tex).
+% Build the exam:      pdflatex final_midterm2.tex
+% Build the solutions: pdflatex -jobname=final_midterm2_solutions "\def\withsolutions{}\input{final_midterm2}"
+\documentclass[11pt,addpoints]{exam}
+\ifdefined\withsolutions \printanswers \fi
+\usepackage{cs363m_exam}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
+% an empty ROC plot (unit square, ticks every 0.25) for students to draw in
+\newcommand{\rocaxes}{%
+  \draw[step=0.25,gray!30,very thin] (0,0) grid (1,1);
+  \draw[->] (0,0) -- (1.08,0) node[right] {FPR};
+  \draw[->] (0,0) -- (0,1.08) node[above] {TPR};
+  \foreach \t in {0,0.25,0.5,0.75,1} {
+    \draw (\t,0) -- (\t,-0.02) node[below] {\small\t};
+    \draw (0,\t) -- (-0.02,\t) node[left] {\small\t};}}
+
+\begin{document}
+\ifprintanswers\examtitlepage{Midterm exam \textperiodcentered{} solutions}\else\examtitlepage{Midterm exam}\fi
+
+\begin{questions}
+
+% ===================================================================== 1
+\titledquestion{Evaluating classifiers (20 points)}
+A university wants to use an AI-text detector to check student essays. To test it, the detector is
+run on 400 essays whose authorship is known: 60 were written with AI and 340 by students. Of the
+400 essays, the detector flags 50 as written with AI. Of these 50 flagged essays, 45 really were
+written with AI. Treat ``written with AI'' as the positive class.
+
+\begin{parts}
+\part[4] \prompt{Write down the confusion matrix.}
+\ifprintanswers\else
+\par\vspace{6pt}\noindent{\color{lbl}\textbf{Answer \thepartno}}
+\begin{center}
+\begin{tabular}{l|p{3cm}|p{3cm}|}
+\multicolumn{1}{l}{} & \multicolumn{1}{c}{flagged} & \multicolumn{1}{c}{not flagged} \\
+\cline{2-3}
+written with AI & \rule[-0.45cm]{0pt}{1.2cm} & \\
+\cline{2-3}
+written by students & \rule[-0.45cm]{0pt}{1.2cm} & \\
+\cline{2-3}
+\end{tabular}
+\end{center}
+\fi
+\begin{solution}
+60 AI-written essays and 340 human-written essays.
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\rowcolor{headgray} & flagged & not flagged \\ \hline
+written with AI & TP $= 45$ & FN $= 15$ \\ \hline
+written by students & FP $= 5$  & TN $= 335$ \\ \hline
+\end{tabular}
+\end{center}
+\end{solution}
+
+\part[2] \prompt{What are precision and recall for this detector?}
+\answerbox{5}
+\begin{solution}
+Precision $= 45/50 = 0.90$. \quad Recall $= 45/60 = 0.75$.
+\end{solution}
+
+\part[2] \prompt{Do we care more about improving precision or recall for this problem, and why?}
+\answerbox{5}
+\begin{solution}
+Precision. A false positive accuses an innocent student of cheating; a missed AI essay (false
+negative) is a smaller harm. A flag should almost always be right before anyone acts on it.
+\end{solution}
+
+\uplevel{The detector also gives each essay a score between 0 and 1; a higher score means ``more
+likely written with AI''. Here are 8 essays, 4 written with AI and 4 by students:
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} essay            & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+score            & 0.95 & 0.85 & 0.70 & 0.60 & 0.50 & 0.40 & 0.30 & 0.10 \\ \hline
+written with AI? & yes & yes & no & yes & no & yes & no & no \\ \hline
+\end{tabular}
+\end{center}
+We say the detector flags an essay as AI-written if its score is over $t$.}
+
+\part[10] \prompt{Draw the ROC curve.}
+\ifprintanswers\else
+\par\vspace{4pt}\noindent{\color{lbl}\textbf{Draw the ROC curve here}}
+\begin{center}
+\begin{tikzpicture}[scale=6]\rocaxes\end{tikzpicture}
+\end{center}
+\fi
+\answerbox{8}
+\begin{solution}
+As $t$ passes each essay, from the highest score down, an AI essay moves the point up by
+$1/4 = 0.25$ and a human essay moves it right by $0.25$. Starting at $(0,0)$, the points are
+\[
+(0,0.25),\ (0,0.5),\ (0.25,0.5),\ (0.25,0.75),\ (0.5,0.75),\ (0.5,1),\ (0.75,1),\ (1,1).
+\]
+\begin{center}
+\begin{tikzpicture}[scale=5]
+\rocaxes
+\fill[blue!8] (0,0) -- (0,0.5) -- (0.25,0.5) -- (0.25,0.75) -- (0.5,0.75) -- (0.5,1) -- (1,1) -- (1,0) -- cycle;
+\draw[very thick,blue!70!black] (0,0) -- (0,0.5) -- (0.25,0.5) -- (0.25,0.75) -- (0.5,0.75) -- (0.5,1) -- (1,1);
+\draw[dashed,gray] (0,0) -- (1,1);
+\end{tikzpicture}
+\end{center}
+\end{solution}
+
+\part[2] \prompt{Compute the AUC.}
+\answerbox{5}
+\begin{solution}
+The area under the staircase, in columns of width $0.25$ with heights $0.5, 0.75, 1, 1$:
+$\mathrm{AUC} = 0.25 \times (0.5 + 0.75 + 1 + 1) = 0.8125 \approx 0.81$.
+\end{solution}
+\end{parts}
+
+% ===================================================================== 2
+\newpage
+\titledquestion{Support vector machines (20 points)}
+\begin{parts}
+\part[10] A soft-margin SVM returned $\bm{w} = (6, 8)$, $b = -20$.
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} point  & A & B & C & D & E \\ \hline
+$x_1$  & 3 & 1 & 1.5 & 1.25 & 3 \\ \hline
+$x_2$  & 1 & 1 & 1.5 & 1.5 & 0.5 \\ \hline
+label  & $+$ & $-$ & $+$ & $-$ & $-$ \\ \hline
+\end{tabular}
+\end{center}
+\begin{subparts}
+\subpart \prompt{Compute $f(\bm{x})$ and the predicted class of each point.}
+\subpart \prompt{What is the width of the margin?}
+\subpart \prompt{Compute each point's distance to the decision boundary.}
+\subpart \prompt{Which points are support vectors? Which point is on the margin, which is inside it, and
+which is misclassified?}
+\end{subparts}
+\answerbox{16}
+\begin{solution}
+$f(\bm{x}) = 6x_1 + 8x_2 - 20$ and $\|\bm{w}\| = \sqrt{6^2 + 8^2} = 10$.
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\rowcolor{headgray} point & A & B & C & D & E \\ \hline
+$f(\bm{x})$                       & $6$   & $-6$  & $1$   & $-0.5$ & $2$ \\ \hline
+predicted class                   & $+$   & $-$   & $+$   & $-$    & $+$ \\ \hline
+distance $|f(\bm{x})|/\|\bm{w}\|$ & $0.6$ & $0.6$ & $0.1$ & $0.05$ & $0.2$ \\ \hline
+$y\,f(\bm{x})$                    & $6$   & $6$   & $1$   & $0.5$  & $-2$ \\ \hline
+\end{tabular}
+\end{center}
+(b) Margin width $= 2/\|\bm{w}\| = 2/10 = 0.2$.
+
+(d) The support vectors are the points with $y\,f(\bm{x}) \le 1$: C, D and E. C is on the margin
+($y\,f = 1$), D is inside the margin but correctly classified ($y\,f = 0.5$), and E is
+misclassified (label $-$, predicted $+$).
+\end{solution}
+
+\part[4] The soft-margin SVM solves
+\[
+\min_{\bm{w},\, b,\, \bm{\xi}} \ \tfrac12 \|\bm{w}\|^2 + C \sum_i \xi_i
+\quad \text{subject to} \quad y_i(\bm{w} \cdot \bm{x}_i + b) \ge 1 - \xi_i,\ \ \xi_i \ge 0 .
+\]
+\begin{subparts}
+\subpart \prompt{What does the slack $\xi_i$ measure, and why do we need it?}
+\subpart \prompt{Where does a training point lie, relative to the margin and the decision boundary, if
+$\xi_i = 0$? If $0 < \xi_i < 1$? If $\xi_i > 1$?}
+\end{subparts}
+\answerbox{8}
+\begin{solution}
+(a) $\xi_i$ measures how far point $i$ falls short of being on its correct side, outside the margin.
+Without slack, the constraints $y_i(\bm{w} \cdot \bm{x}_i + b) \ge 1$ have no solution when the
+classes overlap; slack lets some points violate the margin, at a cost $C\xi_i$ each.
+
+(b) $\xi_i = 0$: on its correct side, on or outside the margin. $0 < \xi_i < 1$: inside the margin,
+but still correctly classified. $\xi_i > 1$: on the wrong side of the decision boundary
+(misclassified). (At the solution $\xi_i = \max(0,\, 1 - y_i f(\bm{x}_i))$, so these are the cases
+$y_i f \ge 1$, $0 < y_i f < 1$ and $y_i f < 0$.)
+\end{solution}
+
+\part[4] Two soft-margin SVMs are trained on the same data, one with $C = 0.01$ and one with
+$C = 100$.
+\begin{subparts}
+\subpart \prompt{Which has the wider margin, and why?}
+\subpart \prompt{Which has more support vectors, and why?}
+\subpart \prompt{Which is more likely to overfit, and why?}
+\subpart \prompt{How would you choose $C$ in practice, and why?}
+\end{subparts}
+\answerbox{7}
+\begin{solution}
+(a) $C = 0.01$: slack is cheap, so the SVM accepts many points inside the margin in exchange for a
+wider one.
+(b) $C = 0.01$: with a wider margin, more points fall on or inside it, and all of them are support
+vectors.
+(c) $C = 100$: violations are expensive, so the margin narrows to fit individual training points.
+(d) $C$ is a hyperparameter: try several values and pick the one with the best accuracy on
+validation data (or by cross-validation). Training accuracy cannot choose it, because a larger $C$
+always fits the training data at least as well; only held-out data shows which $C$ generalizes.
+\end{solution}
+
+\part[2] \prompt{You remove a training point that is not a support vector and retrain the SVM. What
+changes? Why?}
+\answerbox{5}
+\begin{solution}
+Nothing. The solution depends only on the support vectors; a point outside the margin does not
+affect $\bm{w}$ or $b$.
+\end{solution}
+\end{parts}
+
+% ===================================================================== 3
+\newpage
+\titledquestion{Nonlinear regression (20 points)}
+\begin{parts}
+\part[4] kNN regression is trained on six points:
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+$x$ & 1 & 2 & 4 & 5 & 7 & 8 \\ \hline
+$y$ & 3 & 6 & 4 & 8 & 10 & 12 \\ \hline
+\end{tabular}
+\end{center}
+\prompt{Predict $y$ at $x = 4.4$ using (a) $k = 1$ and (b) $k = 3$.}
+\answerbox{7}
+\begin{solution}
+(a) The nearest point is $x = 4$, so the prediction is $4$.
+(b) The three nearest points are $x = 4, 5, 2$ (distances $0.4, 0.6, 2.4$), so the prediction is
+$(4 + 8 + 6)/3 = 6$.
+\end{solution}
+
+\part[6] \prompt{For each of a regression tree, kNN regression and SVR, name a hyperparameter that controls
+how closely the model follows the training data. Which setting of it makes overfitting more likely?}
+\answerbox{8}
+\begin{solution}
+Regression tree: a larger maximum depth, or a smaller minimum number of points needed to split.
+kNN: a smaller $k$. SVR: a larger $C$, or a smaller $\varepsilon$.
+\end{solution}
+
+\newpage
+\part[5] \prompt{The figure shows three models fitted to the same data. Which panel shows a regression
+tree, which shows kNN with $k = 1$, and which shows SVR with a kernel? Explain each.}
+\begin{center}
+\input{fig_q33}
+\end{center}
+\answerbox{6}
+\begin{solution}
+A is SVR with a kernel: a smooth curve. B is the regression tree: a few wide flat steps, one for
+each leaf, which predicts the average $y$ of its points. C is kNN with $k = 1$: a narrow step for
+every training point, passing through every point.
+\end{solution}
+
+\part[5] \prompt{We use kNN to predict house prices from floor area (500 to 5,000 square feet) and number
+of bedrooms (1 to 6). Why might kNN do badly on these raw features? What would you do?}
+\answerbox{6}
+\begin{solution}
+Distances are dominated by floor area: a difference of one bedroom counts as much as one square
+foot, so the nearest houses match on area and almost ignore bedrooms. Standardize each feature
+(subtract its mean, divide by its standard deviation) before computing distances.
+\end{solution}
+\end{parts}
+
+% ===================================================================== 5
+% Question 4 (neural networks) goes before this one; until it is written, number this question 5.
+\newpage
+\setcounter{question}{4}
+\titledquestion{Ensemble methods (10 points)}
+\begin{parts}
+\part[5] An SVM can only separate two classes. A clinic wants to classify chest X-rays into 4 classes:
+normal, pneumonia, COVID and tuberculosis.
+\begin{subparts}
+\subpart \prompt{With one-vs-rest partitions, how many SVMs do you train, and what labels does each one
+see?}
+\subpart \prompt{How is a new X-ray classified?}
+\subpart \prompt{With one-vs-one partitions, how many SVMs do you train?}
+\end{subparts}
+\answerbox{8}
+\begin{solution}
+(a) 4 SVMs, one per class. Each sees ``this class'' against ``the other three''.
+(b) Each SVM predicts its side, and every class on the predicted side gets one vote; the class with the
+most votes wins. (Also accept: pick the class whose SVM gives the largest $f(\bm{x})$.)
+(c) One SVM for every pair of classes: $4 \cdot 3 / 2 = 6$.
+\end{solution}
+
+\part[3] \prompt{An ensemble of 25 classifiers is built, but each base classifier has error rate 0.6.
+What happens to the error of the majority vote, compared with a single classifier? Why?}
+\answerbox{5}
+\begin{solution}
+The ensemble is worse than a single classifier: with independent errors, the majority vote is wrong
+whenever more than half of the classifiers are wrong, and with error 0.6 that happens most of the time
+(about 0.85). A majority vote only helps when each base classifier is better than random guessing.
+\end{solution}
+
+\newpage
+\part[2] \prompt{Random forests consider only a random subset of the features at each split. Why does
+this help the ensemble?}
+\answerbox{6}
+\begin{solution}
+It makes the trees less alike. Without it, every tree would split on the same strong features and make
+similar mistakes; with random subsets the trees are more diverse, so their errors are less correlated
+and the vote cancels more of them.
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}
