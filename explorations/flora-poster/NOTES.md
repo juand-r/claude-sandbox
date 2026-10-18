@@ -34,3 +34,21 @@ These affect what the poster can safely claim. Worth fixing in the paper.
 ## Not verified
 
 - The QR code target https://github.com/juand-r/flora is copied from the paper's footnote; I did not check that the repository is public.
+
+## Check against the final version of the paper (18-page PDF, received 2026-10-18)
+
+Every number on the poster was checked against the final PDF.
+
+- Tables 1, 2, 3 and 5 are identical to arXiv v1. `make_charts.py`'s `TABLE2` and `ACC_V` match the final PDF value for value (checked by script). The Figure 4 labels also match.
+- All derived claims (+0.27 ρ, +7.3 AUROC, 5 of 6, 3 of 6, within 1.4, 0.4 validator AUROC drop) rest only on Tables 2 and 5, so they are unchanged.
+- Figure 5 shows the same data and the same panel titles. Only the prompt header is restyled (italic quote instead of a boxed sentence). The final PDF embeds it at the same resolution (2027 px wide), so it has no sharper copy.
+- Title, authors and affiliations are unchanged.
+
+What the final version changes that matters for the poster:
+
+- Appendix D (new, Table 7) evaluates open-ended generation, both sampled and greedy. FLORA leaves it roughly unchanged: HumanEval greedy 97.6 → 95.1, IFEval sampling 72.0 → 69.0 (p = 0.42), others equal or within 1 point. The poster's "Limits" box says "we do not test greedy outputs", which is now wrong. The final Limitations section says instead that FLORA does not demonstrate an improvement on greedy 1-best answers.
+- Also new: Table 8 (MMLU 72.3 → 72.1, GSM8K 82.6 → 82.0, TruthfulQA 60.2 → 64.0), Table 9 (NLL-term ablation), a stability remark (RankAlign generator ROC std 6.0 vs ±1.4 for FLORA-PMI on IFEval/Qwen), and a selection rule for PMI vs Neg in Limitations.
+
+New inconsistency in the final version: Table 9's "FLORA (full)" row for IFEval/Gemma-2-9b-it (ROC_G 85.1, ρ 61.7, ROC_V 79.6, Acc_V 66.2) differs from Table 2 (ρ 62.8) and Table 5 (ROC_V 79.4, Acc_V 63.6) for what appears to be the same model.
+
+Of the v1 issues listed above, all of 1 to 7 are still present in the final version (checked: Sec. 6.1 "on all tasks", Table 1 vs Table 2 IFEval Base, Table 3 caption, "largest drops on HumanEval", Figure 4 "five settings", "five out of six", typos NegTC, "w/o typ. corr.", v_a, §3.1).
