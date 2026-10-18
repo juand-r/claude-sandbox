@@ -317,8 +317,8 @@ out1 $= 0.5 >$ out2 $= 0.3$: the network predicts Class A. (Forgetting the ReLU,
 $B_2 = -0.6$, gives out1 $= 0.02$ and out2 $= 0.84$, the wrong class.)
 \end{solution}
 
-\part[14] The network below has one hidden layer and one output. A record with inputs $A_1 = 2$,
-$A_2 = 1$ and label $Y = 1$ is passed in.
+\part[14] The network below has one hidden layer and one output, and will be trained for classification with log loss (cross-entropy loss). A record with inputs $A_1 = 2$,
+$A_2 = 1$ and label $y = 1$ is passed in.
 \begin{center}
 \begin{tikzpicture}[x=3.2cm,y=1.3cm,n/.style={circle,draw,minimum size=8mm,fill=blue!6},
   bn/.style={circle,draw,dashed,minimum size=8mm,fill=gray!10}]
@@ -336,10 +336,10 @@ $A_2 = 1$ and label $Y = 1$ is passed in.
 \rowcolor{headgray} activation function & function & derivative \\ \hline
 B layer: sigmoid & $f(z) = 1/(1 + e^{-z})$ & $f(z)\,(1 - f(z))$ \\ \hline
 C layer: sigmoid & $p = C_1 = 1/(1 + e^{-z_C})$ & (see the loss) \\ \hline
-loss: cross-entropy & $\mathcal{L} = -Y \log p - (1 - Y) \log(1 - p)$ & $\partial \mathcal{L}/\partial z_C = p - Y$ \\ \hline
+loss: cross-entropy & $\mathcal{L} = -y \log p - (1 - y) \log(1 - p)$ & $\partial \mathcal{L}/\partial z_C = p - y$ \\ \hline
 \end{tabular}
 \end{center}
-Here $z_C$ is C1's input sum, and $p$ is the predicted probability that $Y = 1$. The weights during the forward propagation are
+Here $z_C$ is C1's input sum, and $p$ is the predicted probability that $y = 1$. The weights during the forward propagation are
 \[
 \bm{W}^{(1)} = \begin{pmatrix} 0.5 & -1.0 \\ 1.5 & 0.5 \end{pmatrix},\quad
 \bm{b}^{(1)} = \begin{pmatrix} 0.5 \\ -1.0 \end{pmatrix},\qquad
@@ -364,7 +364,7 @@ forward propagation.
 \answerbox[\thepartno(\thesubpart)]{10}
 \end{subparts}
 \begin{solution}
-(a) The error at the output is $\partial \mathcal{L}/\partial z_C = p - Y = 0.33 - 1 = -0.67$. Since
+(a) The error at the output is $\partial \mathcal{L}/\partial z_C = p - y = 0.33 - 1 = -0.67$. Since
 $z_C = W^{(2)}_{11} B_1 + W^{(2)}_{12} B_2 + b^{(2)}$, $\partial z_C/\partial W^{(2)}_{11} = B_1 = 0.62$, so
 \[
 \frac{\partial \mathcal{L}}{\partial W^{(2)}_{11}} = -0.67 \cdot 0.62 = -0.415, \qquad
