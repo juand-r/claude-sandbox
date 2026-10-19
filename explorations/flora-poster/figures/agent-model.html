@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Agent model of generation</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=STIX+Two+Text:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<style>
+@page { size: 953px 420px; margin: 0 }
+html, body { margin: 0; background: transparent }
+sub { vertical-align: -0.3em; line-height: 0 }
+</style>
+</head>
+<body>
+<div id="figure" style="position: relative; width: 953px; height: 420px; overflow: hidden; color: #14161A; font-family: Archivo, 'Helvetica Neue', sans-serif">
+<div style="position: absolute; left: 0; top: 0px; width: 236px; height: 34px; display: flex; align-items: center; justify-content: flex-end; text-align: right; font-size: 25px; line-height: 1.15; color: #4A4F57; font-weight: 400"><span>1 = believed correct</span></div>
+<div style="position: absolute; left: 252px; top: 0px; width: 128px; height: 34px; text-align: center; font-size: 25px; line-height: 34px">Helium</div>
+<div style="position: absolute; left: 380px; top: 0px; width: 128px; height: 34px; text-align: center; font-size: 25px; line-height: 34px">Neon</div>
+<div style="position: absolute; left: 508px; top: 0px; width: 128px; height: 34px; text-align: center; font-size: 25px; line-height: 34px">Radon</div>
+<div style="position: absolute; left: 636px; top: 0px; width: 128px; height: 34px; text-align: center; font-size: 25px; line-height: 34px">Hydrogen</div>
+<div style="position: absolute; left: 764px; top: 0px; width: 128px; height: 34px; text-align: center; font-size: 25px; line-height: 34px">Rn</div>
+<div style="position: absolute; left: 0; top: 44px; width: 236px; height: 42px; display: flex; align-items: center; justify-content: flex-end; text-align: right; font-size: 25px; line-height: 1.15; color: #14161A; font-weight: 700"><span>Belief <b style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-style: italic">v</b><sub style="font-size: .65em">1</sub></span></div>
+<div style="position: absolute; left: 270px; top: 44px; width: 92px; height: 42px; border-radius: 8px; background: #2E7D4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">1</div>
+<div style="position: absolute; left: 398px; top: 44px; width: 92px; height: 42px; border-radius: 8px; background: #2E7D4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">1</div>
+<div style="position: absolute; left: 526px; top: 44px; width: 92px; height: 42px; border-radius: 8px; background: #2E7D4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">1</div>
+<div style="position: absolute; left: 654px; top: 44px; width: 92px; height: 42px; border-radius: 8px; background: #E3E6EA; color: #5F6670; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">0</div>
+<div style="position: absolute; left: 782px; top: 44px; width: 92px; height: 42px; border-radius: 8px; background: #E3E6EA; color: #5F6670; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">0</div>
+<div style="position: absolute; left: 0; top: 94px; width: 236px; height: 50px; display: flex; align-items: center; justify-content: flex-end; text-align: right; font-size: 25px; line-height: 1.15; color: #14161A; font-weight: 400"><span><span style="font-family: 'STIX Two Text', 'Times New Roman', serif"><i>π</i>(<i>y</i> | <b style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-style: italic">v</b><sub style="font-size: .65em">1</sub>, <i>x</i>)</span></span></div>
+<div style="position: absolute; left: 260px; top: 144px; width: 624px; height: 3px; background: #14161A"></div>
+<div style="position: absolute; left: 284px; top: 94px; width: 64px; height: 50px; background: #2F5D9B; border-radius: 6px 6px 0 0"></div>
+<div style="position: absolute; left: 412px; top: 131px; width: 64px; height: 13px; background: #2F5D9B; border-radius: 6px 6px 0 0"></div>
+<div style="position: absolute; left: 540px; top: 123px; width: 64px; height: 21px; background: #2F5D9B; border-radius: 6px 6px 0 0"></div>
+<div style="position: absolute; left: 0; top: 164px; width: 236px; height: 42px; display: flex; align-items: center; justify-content: flex-end; text-align: right; font-size: 25px; line-height: 1.15; color: #14161A; font-weight: 700"><span>Belief <b style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-style: italic">v</b><sub style="font-size: .65em">2</sub></span></div>
+<div style="position: absolute; left: 270px; top: 164px; width: 92px; height: 42px; border-radius: 8px; background: #2E7D4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">1</div>
+<div style="position: absolute; left: 398px; top: 164px; width: 92px; height: 42px; border-radius: 8px; background: #2E7D4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">1</div>
+<div style="position: absolute; left: 526px; top: 164px; width: 92px; height: 42px; border-radius: 8px; background: #E3E6EA; color: #5F6670; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">0</div>
+<div style="position: absolute; left: 654px; top: 164px; width: 92px; height: 42px; border-radius: 8px; background: #E3E6EA; color: #5F6670; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">0</div>
+<div style="position: absolute; left: 782px; top: 164px; width: 92px; height: 42px; border-radius: 8px; background: #E3E6EA; color: #5F6670; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700">0</div>
+<div style="position: absolute; left: 0; top: 214px; width: 236px; height: 50px; display: flex; align-items: center; justify-content: flex-end; text-align: right; font-size: 25px; line-height: 1.15; color: #14161A; font-weight: 400"><span><span style="font-family: 'STIX Two Text', 'Times New Roman', serif"><i>π</i>(<i>y</i> | <b style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-style: italic">v</b><sub style="font-size: .65em">2</sub>, <i>x</i>)</span></span></div>
+<div style="position: absolute; left: 260px; top: 264px; width: 624px; height: 3px; background: #14161A"></div>
+<div style="position: absolute; left: 284px; top: 222px; width: 64px; height: 42px; background: #2F5D9B; border-radius: 6px 6px 0 0"></div>
+<div style="position: absolute; left: 412px; top: 222px; width: 64px; height: 42px; background: #2F5D9B; border-radius: 6px 6px 0 0"></div>
+<div style="position: absolute; left: 260px; top: 312px; width: 624px; height: 0; border-top: 3px dashed #C9CDD3"></div>
+<div style="position: absolute; left: 260px; top: 274px; font-size: 24px; line-height: 30px; color: #4A4F57">mix the beliefs, weighted by <span style="font-family: 'STIX Two Text', 'Times New Roman', serif"><i>p</i>(<b style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-style: italic">v</b> | <i>x</i>)</span></div>
+<div style="position: absolute; left: 0; top: 320px; width: 236px; height: 54px; display: flex; align-items: center; justify-content: flex-end; text-align: right; font-size: 25px; line-height: 1.15; color: #2F5D9B; font-weight: 700"><span><span>Generator<br><span style="font-family: 'STIX Two Text', 'Times New Roman', serif"><i>p</i><sub style="font-size: .65em">G</sub>(<i>y</i> | <i>x</i>)</span></span></span></div>
+<div style="position: absolute; left: 260px; top: 370px; width: 624px; height: 3px; background: #14161A"></div>
+<div style="position: absolute; left: 284px; top: 324px; width: 64px; height: 46px; background: #2F5D9B; border-radius: 6px 6px 0 0"></div>
+<div style="position: absolute; left: 412px; top: 343px; width: 64px; height: 27px; background: #2F5D9B; border-radius: 6px 6px 0 0"></div>
+<div style="position: absolute; left: 540px; top: 360px; width: 64px; height: 10px; background: #2F5D9B; border-radius: 6px 6px 0 0"></div>
+<div style="position: absolute; left: 260px; top: 382px; font-size: 25px; font-family: 'STIX Two Text', 'Times New Roman', serif"><i>p</i><sub style="font-size: .65em">G</sub>(<i>y</i> | <i>x</i>) = Σ<sub style="font-size: .65em"><b style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-style: italic">v</b></sub> <i>p</i>(<b style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-style: italic">v</b> | <i>x</i>) <i>π</i>(<i>y</i> | <b style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-style: italic">v</b>, <i>x</i>)</div>
+</div>
+</body>
+</html>
