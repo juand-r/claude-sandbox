@@ -33,7 +33,7 @@ mine, mostly from scrap metal.
   whole curve; 1.5 asks what an AUC of 0.3 means and how to fix it (flip the scores: 0.7) instead of
   computing the AUC; 2.1 uses only points C, D, E and no longer asks for distances to the boundary; 2.2(b) asks only about xi > 1; 2.3 is
   (a)-(c) circle one of two (`\pick` in the file; the solutions circle the answer); (d) stays
-  open ended, with its own answer box; 3.2 has one subpart and answer box per model (3.1's box went from
+  open ended, with its own answer box; 3.2 is a fill-in table (model, hyperparameter, increasing it gives MORE or LESS overfitting) (3.1's box went from
   7 lines to 3 so question 3 still fits on two pages).
   Question 4 (neural networks) is being written: 4.1 is the practice's forward pass with a ReLU
   hidden layer and linear outputs (class = larger output), new numbers; forgetting the ReLU flips the

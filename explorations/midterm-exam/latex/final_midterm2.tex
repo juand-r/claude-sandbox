@@ -213,25 +213,32 @@ $y$ & 3 & 6 & 4 & 8 & 10 & 12 \\ \hline
 $(4 + 8 + 6)/3 = 6$.
 \end{solution}
 
-\part[6] \prompt{For each of the following, name a hyperparameter that controls how closely the model fits
-the training data. Which setting of it makes overfitting more likely?}
-\begin{subparts}
-\subpart \prompt{Regression tree}
-\answerbox[3.2(a)]{3}
+\part[6] \prompt{For each model, name a hyperparameter that controls how closely the model fits the
+training data. Does increasing it make overfitting more likely or less likely? Fill in the table.}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\ifprintanswers
+\begin{tabular}{|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}p{5.2cm}|>{\raggedright\arraybackslash}p{4.2cm}|}
+\hline
+\rowcolor{headgray} \textbf{Model} & \textbf{Hyperparameter} & \textbf{Increasing it $\to$}\newline \textbf{MORE / LESS overfitting} \\ \hline
+Regression tree & maximum depth & MORE \\ \hline
+kNN regression & number of neighbours $k$ & LESS \\ \hline
+SVR & $C$ & MORE \\ \hline
+\end{tabular}
+\else
+\begin{tabular}{|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}p{5.2cm}|>{\raggedright\arraybackslash}p{4.2cm}|}
+\hline
+\rowcolor{headgray} \textbf{Model} & \textbf{Hyperparameter} & \textbf{Increasing it $\to$}\newline \textbf{MORE / LESS overfitting} \\ \hline
+Regression tree \rule[-0.5cm]{0pt}{1.3cm} & & \\ \hline
+kNN regression \rule[-0.5cm]{0pt}{1.3cm} & & \\ \hline
+SVR \rule[-0.5cm]{0pt}{1.3cm} & & \\ \hline
+\end{tabular}
+\fi
+\end{center}
 \begin{solution}
-The maximum depth: a larger depth (or a smaller minimum number of points needed to split).
+Other correct answers: for the tree, the minimum number of points needed to split (increasing it:
+LESS); for SVR, $\varepsilon$ (increasing it: LESS). The direction must match the hyperparameter named.
 \end{solution}
-\subpart \prompt{kNN regression}
-\answerbox[3.2(b)]{3}
-\begin{solution}
-The number of neighbours $k$: a smaller $k$.
-\end{solution}
-\subpart \prompt{SVR}
-\answerbox[3.2(c)]{3}
-\begin{solution}
-$C$: a larger $C$ (or a smaller $\varepsilon$).
-\end{solution}
-\end{subparts}
 
 \newpage
 \part[5] \prompt{The figure shows three models fitted to the same data. Which panel shows a regression
