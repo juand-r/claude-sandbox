@@ -59,3 +59,11 @@ Of the v1 issues listed above, all of 1 to 7 are still present in the final vers
 - Artboard 3179 × 4494 px (A0 at 96 px/in). Layout: header (title, authors, QR codes) → full-width band (main idea at 172 px, Figure 5 at 1780 px wide, subtext and figure notes beside it) → three 955 px columns (1 gap and 2 theory | 3 FLORA, ablation, validator | 4 results, limits).
 - Content is the same as the landscape version except the Limits text, which follows the final paper (Table 7 tests sampled and greedy outputs): "Gains are in ranking fixed candidate sets; sampled and greedy outputs stay roughly unchanged."
 - Checked by rendering: no overflow (root scroll height = 4494), column bottoms at 3902 / 4185 / 3988 px against a 4398 px limit. The Keynote kit reassembles into the poster at the listed positions.
+
+## Editable A0 .pptx (2026-10-19)
+
+- `build_pptx.js` renders `poster-a0.html` in Chromium with Keynote-safe type (font-stretch 100%; weights collapsed to 400 or 700, because Keynote reliably offers Archivo Regular and Bold), reads each element's box, paragraphs and runs (size, weight, italic, colour, sub/superscript, letter spacing), and writes them with pptxgenjs 3.12.0.
+- With those fonts the layout still fits (the title wraps to two lines; everything below shifts down about 65 px; lowest column ends at 4251 px of 4494).
+- Text boxes: 27; table: 1 (ablation); images: 9 (noble-gas diagram, equation, FLORA diagram, Figure 5 card, legend, two charts, two QR codes), captured at 2× from the same render.
+- Checks: skill validator passes; LibreOffice render (with Archivo and STIX Two Text installed locally) shows no overflow and matches the poster. Superscripts were first shrunk twice (poster size × PowerPoint superscript); fixed by giving those runs the surrounding text size.
+- The arrow "→" and Greek "ρ" are not in Archivo; LibreOffice and Keynote fall back to a system font for those glyphs, as the browser does.

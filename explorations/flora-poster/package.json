@@ -1,0 +1,15 @@
+{
+  "name": "flora-poster",
+  "version": "1.0.0",
+  "description": "Two versions of a conference poster for \"Improving LLMs via Validator-to-Generator Alignment\" (arXiv 2607.02668). Both follow the \"main idea in big type\" layout: one plain-English finding in large type, with the problem, theory, method and results around it.",
+  "main": "export_kit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}

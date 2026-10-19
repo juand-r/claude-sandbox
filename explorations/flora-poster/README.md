@@ -8,6 +8,7 @@ Two versions of a conference poster for "Improving LLMs via Validator-to-Generat
 ## Files
 
 - `poster-a0.pdf`, `poster-a0.html`, `poster-a0-preview.png`: A0 portrait version (print file, standalone HTML, half-scale screenshot).
+- `poster-a0.pptx`: editable A0 version for Keynote or PowerPoint. Every text block is a real text box (Archivo Regular/Bold, STIX Two Text for math), the ablation table is a native table, and charts, diagrams, Figure 5 and QR codes are images. Built by `build_pptx.js` (`npm install` first, for pptxgenjs).
 - `keynote-kit-a0/`: Keynote kit for the A0 version (same contents as `keynote-kit/`).
 - `poster.pdf`: print file, one page, 48 × 36 in.
 - `poster.html`: standalone HTML version (open in a browser; uses Google Fonts Archivo and STIX Two Text).
@@ -26,6 +27,7 @@ python3 make_charts.py                                                  # chart 
 python3 build_standalone.py canvas/A0-portrait.dc.html poster-a0.html 841mm 1189mm
 python3 build_standalone.py canvas/Main.dc.html poster.html 48in 36in
 node export_kit.js a0                                                   # or: landscape
+npm install && node build_pptx.js                                       # editable poster-a0.pptx
 ```
 
 PDFs are printed from the standalone HTML with Playwright's Chromium (`page.pdf` with `preferCSSPageSize: true`). See NOTES.md.
