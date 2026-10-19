@@ -1,16 +1,16 @@
 # Keynote kit
 
-Every poster element as its own file, plus where it goes. See `layout-map.png` for the numbered map.
+Every element of the 48 × 36 in poster as its own file, plus where it goes. See `layout-map.png` for the numbered map.
 
 ## Setting up the slide
 
 1. In Keynote, open the Document inspector and choose Slide Size > Custom: 3456 × 2592 pt (48 × 36 in at 72 pt per inch).
-2. Draw the two background rectangles (S1, S2) from the table and send them to the back.
+2. Draw the background rectangles (S1, S2) from the table and send them to the back.
 3. Drag in each file from `pdf/` and type its x, y, width and height into the Arrange inspector. Positions are the top-left corner.
 
 Use the PDFs: they are vector, so text and charts stay sharp at any size, and the fonts are embedded. The `png/` folder has the same elements as transparent PNGs (192 px per printed inch) in case you prefer images. Text inside these files is not editable; `copy.md` has all the text if you want to retype a block as a Keynote text box (fonts: Archivo and STIX Two Text, both free on Google Fonts).
 
-## Positions (points, slide 3456 × 2592)
+## Positions (points, slide 3456 × 2592 pt)
 
 | id | element | x | y | w | h | fill |
 |---|---|--:|--:|--:|--:|---|
@@ -53,4 +53,4 @@ Use the PDFs: they are vector, so text and charts stay sharp at any size, and th
 | 35 | limits-title | 2580 | 2238 | 804 | 35 |  |
 | 36 | limits-text | 2580 | 2283 | 804 | 61 |  |
 
-The same table is in `elements.csv`. Regenerate everything with `node export_kit.js` from the folder above.
+The same table is in `elements.csv`. Regenerate everything with `node export_kit.js landscape` from the folder above.

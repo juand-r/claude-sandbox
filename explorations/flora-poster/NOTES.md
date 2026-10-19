@@ -52,3 +52,10 @@ What the final version changes that matters for the poster:
 New inconsistency in the final version: Table 9's "FLORA (full)" row for IFEval/Gemma-2-9b-it (ROC_G 85.1, ρ 61.7, ROC_V 79.6, Acc_V 66.2) differs from Table 2 (ρ 62.8) and Table 5 (ROC_V 79.4, Acc_V 63.6) for what appears to be the same model.
 
 Of the v1 issues listed above, all of 1 to 7 are still present in the final version (checked: Sec. 6.1 "on all tasks", Table 1 vs Table 2 IFEval Base, Table 3 caption, "largest drops on HumanEval", Figure 4 "five settings", "five out of six", typos NegTC, "w/o typ. corr.", v_a, §3.1).
+
+## A0 portrait version (2026-10-19)
+
+- EMNLP 2026's poster printing page (https://2026.emnlp.org/poster-printing/) requires PDF, portrait, A0 (841 × 1189 mm). Board dimensions are not published there; no separate presenter page was found.
+- Artboard 3179 × 4494 px (A0 at 96 px/in). Layout: header (title, authors, QR codes) → full-width band (main idea at 172 px, Figure 5 at 1780 px wide, subtext and figure notes beside it) → three 955 px columns (1 gap and 2 theory | 3 FLORA, ablation, validator | 4 results, limits).
+- Content is the same as the landscape version except the Limits text, which follows the final paper (Table 7 tests sampled and greedy outputs): "Gains are in ranking fixed candidate sets; sampled and greedy outputs stay roughly unchanged."
+- Checked by rendering: no overflow (root scroll height = 4494), column bottoms at 3902 / 4185 / 3988 px against a 4398 px limit. The Keynote kit reassembles into the poster at the listed positions.

@@ -1,0 +1,32 @@
+<svg width="955" height="426" viewBox="0 0 955 426" role="img" aria-label="Change in validator accuracy after FLORA training, six settings" style="display: block; font-family: Archivo, 'Helvetica Neue', sans-serif">
+<line x1="370.0" y1="10" x2="370.0" y2="370" stroke="#D3D7DC" stroke-width="2"/>
+<text x="370.0" y="410.0" font-size="26" fill="#4A4F57" text-anchor="middle" font-weight="400">−5</text>
+<line x1="448.0" y1="10" x2="448.0" y2="370" stroke="#4A4F57" stroke-width="3"/>
+<text x="448.0" y="410.0" font-size="26" fill="#4A4F57" text-anchor="middle" font-weight="400">0</text>
+<line x1="526.0" y1="10" x2="526.0" y2="370" stroke="#D3D7DC" stroke-width="2"/>
+<text x="526.0" y="410.0" font-size="26" fill="#4A4F57" text-anchor="middle" font-weight="400">+5</text>
+<line x1="604.0" y1="10" x2="604.0" y2="370" stroke="#D3D7DC" stroke-width="2"/>
+<text x="604.0" y="410.0" font-size="26" fill="#4A4F57" text-anchor="middle" font-weight="400">+10</text>
+<line x1="682.0" y1="10" x2="682.0" y2="370" stroke="#D3D7DC" stroke-width="2"/>
+<text x="682.0" y="410.0" font-size="26" fill="#4A4F57" text-anchor="middle" font-weight="400">+15</text>
+<line x1="760.0" y1="10" x2="760.0" y2="370" stroke="#D3D7DC" stroke-width="2"/>
+<text x="760.0" y="410.0" font-size="26" fill="#4A4F57" text-anchor="middle" font-weight="400">+20</text>
+<rect x="499.8" y="31.0" width="78.8" height="18" rx="9" fill="#D2601A"/>
+<text x="591.7" y="49.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400">+3.9 to +7.8</text>
+<text x="0.0" y="49.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400"><tspan font-weight="700">IFEval</tspan> Gemma-2-9b-it</text>
+<rect x="454.6" y="91.0" width="46.1" height="18" rx="9" fill="#D2601A"/>
+<text x="513.7" y="109.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400">+1.0 to +2.8</text>
+<text x="0.0" y="109.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400"><tspan font-weight="700">IFEval</tspan> Qwen-3.5-9B</text>
+<rect x="663.6" y="151.0" width="57.0" height="18" rx="9" fill="#D2601A"/>
+<text x="733.6" y="169.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400">+14.4 to +16.9</text>
+<text x="0.0" y="169.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400"><tspan font-weight="700">HumanEval</tspan> Gemma-4-31b-it</text>
+<rect x="612.2" y="211.0" width="47.6" height="18" rx="9" fill="#D2601A"/>
+<text x="672.8" y="229.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400">+11.1 to +13.0</text>
+<text x="0.0" y="229.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400"><tspan font-weight="700">HumanEval</tspan> Qwen-3.5-9B</text>
+<rect x="400.0" y="271.0" width="22.7" height="18" rx="9" fill="#D2601A"/>
+<text x="470.0" y="289.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400">−2.5 to −2.2</text>
+<text x="0.0" y="289.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400"><tspan font-weight="700">Hyponymy</tspan> Gemma-2-9b-it</text>
+<rect x="421.8" y="331.0" width="25.8" height="18" rx="9" fill="#D2601A"/>
+<text x="470.0" y="349.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400">−1.1 to −0.6</text>
+<text x="0.0" y="349.0" font-size="26" fill="#14161A" text-anchor="start" font-weight="400"><tspan font-weight="700">Hyponymy</tspan> Qwen-3.5-9B</text>
+</svg>

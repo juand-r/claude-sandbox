@@ -1,8 +1,8 @@
 """Generate the poster's two SVG charts from numbers copied out of the paper.
 
 Source: arXiv 2607.02668v1, Table 2 (main results) and Table 5 (validator).
-Run:  python make_charts.py  -> writes chart_results.svg and chart_validator.svg
-The SVG markup is pasted into the poster artboard (Main.dc.html).
+Run:  python make_charts.py  -> writes chart_results[_a0].svg and chart_validator[_a0].svg
+The SVG markup is pasted into the poster artboards (Main.dc.html, A0-portrait.dc.html).
 """
 from pathlib import Path
 
@@ -54,11 +54,20 @@ def text(x, y, s, size=26, fill=INK, anchor="start", weight=400):
             f'text-anchor="{anchor}" font-weight="{weight}">{s}</text>')
 
 
-def results_chart():
-    W, LABEL_W, ROW_H, TOP = 1072, 280, 116, 70
+# Chart geometry per poster layout (px). Panel spans are (x0, x1) of each plot.
+LAYOUTS = {
+    "landscape": dict(W=1072, ROW_H=116, roc_span=(310, 646), rho_span=(736, 1048),
+                      val_row_h=66, val_span=(380, 900)),
+    "a0":        dict(W=955, ROW_H=140, roc_span=(290, 590), rho_span=(668, 935),
+                      val_row_h=60, val_span=(370, 760)),
+}
+
+
+def results_chart(W, ROW_H, roc_span, rho_span, **_):
+    TOP = 70
     panels = [  # (title, metric index, domain, ticks, x0, x1)
-        ("Generator AUROC", 0, (60, 100), [60, 70, 80, 90, 100], 310, 646),
-        ("G–V correlation ρ ×100", 1, (20, 80), [20, 40, 60, 80], 736, 1048),
+        ("Generator AUROC", 0, (60, 100), [60, 70, 80, 90, 100], *roc_span),
+        ("G–V correlation ρ ×100", 1, (20, 80), [20, 40, 60, 80], *rho_span),
     ]
     n = len(SETTINGS)
     bottom = TOP + n * ROW_H
@@ -94,9 +103,9 @@ def results_chart():
     return "\n".join(out)
 
 
-def validator_chart():
-    W, ROW_H, TOP = 1072, 66, 10
-    lo, hi, x0, x1 = -5, 20, 380, 900
+def validator_chart(W, val_row_h, val_span, **_):
+    ROW_H, TOP = val_row_h, 10
+    (x0, x1), lo, hi = val_span, -5, 20
     sx = lambda v: x0 + (v - lo) / (hi - lo) * (x1 - x0)
     n = len(SETTINGS)
     bottom = TOP + n * ROW_H
@@ -123,8 +132,10 @@ def validator_chart():
 
 
 if __name__ == "__main__":
-    (OUT / "chart_results.svg").write_text(results_chart())
-    (OUT / "chart_validator.svg").write_text(validator_chart())
+    for name, geom in LAYOUTS.items():
+        suffix = "" if name == "landscape" else f"_{name}"
+        (OUT / f"chart_results{suffix}.svg").write_text(results_chart(**geom))
+        (OUT / f"chart_validator{suffix}.svg").write_text(validator_chart(**geom))
     for i, s in enumerate(SETTINGS):
         print(s, "ROC prior/FLORA", best(PRIOR, i, 0), best(FLORA, i, 0),
               "| rho prior/FLORA", best(PRIOR, i, 1), best(FLORA, i, 1),
