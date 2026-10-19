@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Headline numbers</title>
+<!-- Banner callouts for the A0 poster: 1125 x 480 px = 844 x 360 pt.
+     Fills the band right of Figure 5, below the summary sentence (x = 1467, y = 1097 pt).
+     Numbers from Table 2 (max gain over the strongest alternative, untrained model included)
+     and Table 5 (largest validator AUROC drop: 94.9 -> 94.5). -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: transparent }
+#figure { position: relative; width: 1125px; height: 480px; overflow: hidden; color: #14161A; font-family: Archivo, 'Helvetica Neue', sans-serif }
+#figure div { position: absolute; box-sizing: border-box }
+.upto { font-size: 30px; color: #4A4F57; height: 36px }
+.big { font-size: 156px; line-height: 160px; font-weight: 700; letter-spacing: -0.02em; color: #C2541A }
+.label { font-size: 31px; line-height: 1.25 }
+</style>
+</head>
+<body>
+<div id="figure">
+<div class="upto" style="left: 0; top: 0">up to</div>
+<div class="big" style="left: 0; top: 38px">+0.27</div>
+<div class="label" style="left: 0; top: 214px; width: 520px">generator–validator correlation (Pearson ρ)</div>
+
+<div style="left: 556px; top: 10px; width: 2px; height: 300px; background: #C9CDD3"></div>
+
+<div class="upto" style="left: 596px; top: 0">up to</div>
+<div class="big" style="left: 596px; top: 38px">+7.3</div>
+<div class="label" style="left: 596px; top: 214px; width: 529px">generator AUROC points</div>
+
+<div class="label" style="left: 0; top: 372px; width: 1125px; font-size: 28px; color: #4A4F57">over the strongest alternative, while validator AUROC drops by at most 0.4 points</div>
+</div>
+</body>
+</html>

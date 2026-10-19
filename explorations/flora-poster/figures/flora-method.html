@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FLORA method</title>
+<!-- Section 3 figure for the A0 poster: 955 x 984 px = 716 x 738 pt.
+     Fills the column from the top of the old FLORA diagram (y = 1727 pt), leaving room below
+     for the editable FLORA-Neg / FLORA-PMI note. Bar heights are illustrative. -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=STIX+Two+Text:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: transparent }
+#figure { position: relative; width: 955px; height: 984px; overflow: hidden; color: #14161A; font-family: Archivo, 'Helvetica Neue', sans-serif }
+#figure div { position: absolute; box-sizing: border-box }
+.m { font-family: 'STIX Two Text', 'Times New Roman', serif }
+.m i { font-style: italic }
+sub, sup { font-size: .65em; line-height: 0 }
+sub { vertical-align: -0.3em }
+sup { vertical-align: 0.55em }
+.step { left: 0; height: 44px; display: flex; align-items: center; gap: 16px; font-size: 31px; font-weight: 700 }
+.num { position: static !important; width: 44px; height: 44px; border-radius: 22px; background: #D2601A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 26px }
+.card { background: #FFFFFF; border-radius: 16px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 28px; line-height: 1.35; padding: 14px 18px }
+.panel-title { width: 295px; text-align: center; font-size: 26px; font-weight: 700; line-height: 1.2 }
+.panel-sub { width: 295px; text-align: center; font-size: 24px; color: #4A4F57 }
+.bar { width: 86px; border-radius: 6px 6px 0 0 }
+.base { height: 3px; background: #14161A }
+.barlabel { width: 140px; text-align: center; font-size: 24px }
+.verdict { width: 295px; text-align: center; font-size: 25px; font-weight: 700 }
+.note { font-size: 24px; color: #4A4F57 }
+</style>
+</head>
+<body>
+<div id="figure">
+
+<!-- Step 1: two scores per answer -->
+<div class="step" style="top: 0"><span class="num">1</span><span>Score each answer two ways</span></div>
+<div class="card" style="left: 0; top: 60px; width: 560px; height: 142px; border: 4px solid #2F5D9B"><span><b>Corrected generator score</b><br><span class="m"><i>s</i>(<i>y</i>) = log <i>p</i><sub>G</sub>(<i>y</i> | <i>x</i>) − log <i>p</i><sub>G′</sub>(<i>y</i> | <i>x</i>)</span></span></div>
+<div class="card" style="left: 596px; top: 60px; width: 359px; height: 142px; border: 4px solid #14161A"><span><b>Validator log-odds</b><br>from “Is <span class="m"><i>y</i></span> correct?”</span></div>
+
+<!-- Step 2: a pair, worked example -->
+<div class="step" style="top: 246px"><span class="num">2</span><span>Pair answers; the validator picks the winner</span></div>
+<div class="note" style="left: 60px; top: 298px; width: 895px">“Example of a noble gas?”  <b style="color: #14161A">Krypton</b> (correct, rare) vs <b style="color: #14161A">Nitrogen</b> (wrong)</div>
+
+<!-- panel A: validator -->
+<div class="panel-title" style="left: 0; top: 350px">Validator</div>
+<div class="panel-sub" style="left: 0; top: 382px">log-odds</div>
+<div class="bar" style="left: 47px; top: 446px; height: 150px; background: #14161A"></div>
+<div class="bar" style="left: 162px; top: 566px; height: 30px; background: #14161A"></div>
+<div class="base" style="left: 20px; top: 596px; width: 255px"></div>
+<div class="barlabel" style="left: 20px; top: 606px">Krypton</div>
+<div class="barlabel" style="left: 135px; top: 606px">Nitrogen</div>
+<div class="verdict" style="left: 0; top: 646px">prefers Krypton</div>
+
+<!-- panel B: generator before training -->
+<div class="panel-title" style="left: 330px; top: 350px; color: #2F5D9B">Generator <span class="m" style="font-weight: 400"><i>s</i>(<i>y</i>)</span></div>
+<div class="panel-sub" style="left: 330px; top: 382px">before training</div>
+<div class="bar" style="left: 377px; top: 534px; height: 62px; background: #2F5D9B"></div>
+<div class="bar" style="left: 492px; top: 490px; height: 106px; background: #2F5D9B"></div>
+<div class="base" style="left: 350px; top: 596px; width: 255px"></div>
+<div class="barlabel" style="left: 350px; top: 606px">Krypton</div>
+<div class="barlabel" style="left: 465px; top: 606px">Nitrogen</div>
+<div class="verdict" style="left: 330px; top: 646px; color: #B3412E">wrong order</div>
+
+<!-- arrow between B and C -->
+<div style="left: 627px; top: 500px; width: 30px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 34px; color: #4A4F57">→</div>
+
+<!-- panel C: generator after training -->
+<div class="panel-title" style="left: 660px; top: 350px; color: #2F5D9B">Generator <span class="m" style="font-weight: 400"><i>s</i>(<i>y</i>)</span></div>
+<div class="panel-sub" style="left: 660px; top: 382px">after FLORA</div>
+<div class="bar" style="left: 707px; top: 456px; height: 140px; background: #2F5D9B"></div>
+<div class="bar" style="left: 822px; top: 546px; height: 50px; background: #2F5D9B"></div>
+<div class="base" style="left: 680px; top: 596px; width: 255px"></div>
+<div class="barlabel" style="left: 680px; top: 606px">Krypton</div>
+<div class="barlabel" style="left: 795px; top: 606px">Nitrogen</div>
+<div class="verdict" style="left: 660px; top: 646px; color: #2E7D4F">right order</div>
+
+<!-- Step 3: the loss -->
+<div class="step" style="top: 714px"><span class="num">3</span><span>Train with a ranking loss</span></div>
+<div class="card" style="left: 0; top: 774px; width: 955px; height: 130px; border: 4px solid #D2601A; background: #FBEDE3; flex-direction: column; gap: 6px">
+<span class="m" style="font-size: 40px">ℒ = −log <i>σ</i>( <i>s</i>(<i>y</i><sup>+</sup>) − <i>s</i>(<i>y</i><sup>−</sup>) )</span>
+<span style="font-size: 24px; color: #4A4F57">+ likelihood terms on labelled answers</span>
+</div>
+<div class="note" style="left: 0; top: 918px; width: 955px; line-height: 1.35"><span class="m"><i>y</i><sup>+</sup></span>: the answer the validator prefers; training raises its score above <span class="m"><i>y</i><sup>−</sup></span>’s. Bars are illustrative.</div>
+
+</div>
+</body>
+</html>
