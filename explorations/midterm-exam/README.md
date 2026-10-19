@@ -28,6 +28,9 @@ mine, mostly from scrap metal.
   slightly easier. Question 4 (neural networks) is not written yet; question 5 is numbered by hand
   until it is. The figure for 3.3 is `fig_q33.tex`, drawn from data written by
   `make_figure.py` (`.venv/bin/python make_figure.py`; packages in `requirements.txt`).
+- `check_versions.py`: recomputes every answer in the four shuffled versions (A-D) a colleague made
+  from `final_midterm2` (values transcribed from their PDFs, 2026-10-19). All four were consistent; the
+  only problem found was the hand-typed answer label "2.3(d)", now `\thepartno(d)` in the source.
 - `final_midterm2.tex`: a shorter, easier version of the exam (asked by the user, 2026-10-18), being
   edited question by question. So far: 1.4 asks for the three ROC points after (0, 0) instead of the
   whole curve; 1.5 asks what an AUC of 0.3 means and how to fix it (flip the scores: 0.7) instead of
