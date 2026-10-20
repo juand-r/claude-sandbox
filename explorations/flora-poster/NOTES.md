@@ -67,3 +67,14 @@ Of the v1 issues listed above, all of 1 to 7 are still present in the final vers
 - Text boxes: 27; table: 1 (ablation); images: 9 (noble-gas diagram, equation, FLORA diagram, Figure 5 card, legend, two charts, two QR codes), captured at 2× from the same render.
 - Checks: skill validator passes; LibreOffice render (with Archivo and STIX Two Text installed locally) shows no overflow and matches the poster. Superscripts were first shrunk twice (poster size × PowerPoint superscript); fixed by giving those runs the surrounding text size.
 - The arrow "→" and Greek "ρ" are not in Archivo; LibreOffice and Keynote fall back to a system font for those glyphs, as the browser does.
+
+## Replacing the boots-email example in the cartoon (2026-10-20)
+
+The advisor finds the email example too artificial. Source checked: github.com/juand-r/rankalign, branch `longform` (commit a1916377).
+
+- Data: `data/fixed-prompts-ifeval/gpt_ifeval_results_prompt_N.jsonl`, 99 prompts, 80 responses each (GPT-4o mini). Per `src/tasks/ifeval_per_prompt.py`, prompts 1 to 21 are test-only (no prompt_14 file, so 20 test prompts); 22 and up are training prompts.
+- Negatives come from deliberately violated prompt variants (paper Sec. 5 and App. C.1), so some negatives answer a different request ("Paris is the best place..." for the Algiers prompt).
+- The boots email is prompt 8. It is the Figure 5 prompt: the untrained Gemma-2-9b-it scores reproduce raw AUROC 43.1, PMI AUROC 85.3, ρ −0.24 → 0.64 exactly.
+- `ifeval_candidates.py` prints per-prompt AUROC and ρ for the untrained model (raw vs PMI-corrected) and the answers that best show the effect.
+- Strongest natural alternatives: prompt 7 (nucleus, exactly 9 short bullets, under 100 words; raw AUROC 39.4 → PMI 90.3, ρ +0.32 → +0.77; the high-scoring wrong answers are plain paragraphs that ignore the bullet format) and prompt 4 (Zoe and bubbles joke with at least 3 placeholders; 34.5 → 89.9, ρ −0.09 → +0.69; wrong answers are short jokes with no placeholders).
+- If the example changes, the cartoon's note "ρ values from Fig. 5" no longer applies; values would come from these score files instead.
