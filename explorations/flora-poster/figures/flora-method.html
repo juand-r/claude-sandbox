@@ -32,12 +32,12 @@ sup { vertical-align: 0.55em }
 <div id="figure">
 
 <!-- Step 1: two scores per answer -->
-<div class="step" style="top: 0"><span class="num">1</span><span>Score each answer two ways</span></div>
+<div class="step" style="top: 0"><span class="num">1</span><span>Score each answer both ways</span></div>
 <div class="card" style="left: 0; top: 60px; width: 560px; height: 142px; border: 4px solid #2F5D9B"><span><b>Corrected generator score</b><br><span class="m"><i>s</i>(<i>y</i>) = log <i>p</i><sub>G</sub>(<i>y</i> | <i>x</i>) − log <i>p</i><sub>G′</sub>(<i>y</i> | <i>x</i>)</span></span></div>
 <div class="card" style="left: 596px; top: 60px; width: 359px; height: 142px; border: 4px solid #14161A"><span><b>Validator log-odds</b><br>from “Is <span class="m"><i>y</i></span> correct?”</span></div>
 
 <!-- Step 2: a pair, worked example -->
-<div class="step" style="top: 246px"><span class="num">2</span><span>Pair answers; the validator picks the winner</span></div>
+<div class="step" style="top: 246px"><span class="num">2</span><span>Sample pairs, and use the validator order as ground truth</span></div>
 <div class="note" style="left: 60px; top: 298px; width: 895px">“Example of a noble gas?”  <b style="color: #14161A">Krypton</b> (correct, rare) vs <b style="color: #14161A">Nitrogen</b> (wrong)</div>
 
 <!-- panel A: validator -->
@@ -79,7 +79,6 @@ sup { vertical-align: 0.55em }
 <span class="m" style="font-size: 40px">ℒ = −log <i>σ</i>( <i>s</i>(<i>y</i><sup>+</sup>) − <i>s</i>(<i>y</i><sup>−</sup>) )</span>
 <span style="font-size: 24px; color: #4A4F57">+ likelihood terms on labelled answers</span>
 </div>
-<div class="note" style="left: 0; top: 918px; width: 955px; line-height: 1.35"><span class="m"><i>y</i><sup>+</sup></span>: the answer the validator prefers; training raises its score above <span class="m"><i>y</i><sup>−</sup></span>’s. Bars are illustrative.</div>
 
 </div>
 </body>
