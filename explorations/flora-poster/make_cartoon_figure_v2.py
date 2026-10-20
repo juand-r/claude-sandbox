@@ -39,7 +39,7 @@ PANELS = [
          wrong=[(0.04, 0.20), (0.04, 0.02)], hl_w=(0.94, 0.10),
          note=["The correct email is unlikely", "under the generator"]),
     dict(title="Frequency-corrected", rho="0.64",
-         correct=[(0.50, 0.62), (0.90, 0.60), (0.64, 0.60)], hl_c=(0.72, 0.74),
+         correct=[(0.46, 0.66), (0.90, 0.60), (0.58, 0.58)], hl_c=(0.72, 0.66),
          wrong=[(0.06, 0.34), (0.12, 0.04)], hl_w=(0.24, 0.12),
          ghost_c=(0.06, 0.92), ghost_w=(0.94, 0.10), trend=True,
          note=["Frequency correction pushes it up"]),
@@ -166,7 +166,8 @@ for k, (P, (x0, w), C) in enumerate(zip(PANELS, PANELS_X, CARDS)):
     svg.append(leader(hw, C["w"]))
     svg.append(check_badge(*hc, 17))
     svg.append(cross_badge(*hw, 17))
-    # Cards (HTML, drawn over the SVG), each with its badge at the top-right corner.
+    # Cards (HTML, drawn over the SVG). No corner badges: they read as extra data dots;
+    # the connected dot already shows whether the email is correct.
     for key, good in (("c", True), ("w", False)):
         l, tp, cw, ch = C[key]
         if C["full"]:
@@ -177,9 +178,6 @@ for k, (P, (x0, w), C) in enumerate(zip(PANELS, PANELS_X, CARDS)):
             inner = thumb_html(THUMB_CORRECT if good else THUMB_WRONG)
         cls = "card full" if C["full"] else "card thumb"
         html.append(f'<div class="{cls}" style="left: {l}px; top: {tp}px; width: {cw}px; height: {ch}px">{inner}</div>')
-        badge = check_badge(l + cw - 2, tp + 2, 13) if good else cross_badge(l + cw - 2, tp + 2, 13)
-        html.append(f'<svg class="badge" style="left: {l + cw - 18}px; top: {tp - 14}px" width="32" height="32" '
-                    f'viewBox="{l + cw - 18} {tp - 14} 32 32">{badge}</svg>')
     for i, line in enumerate(P["note"]):
         svg.append(t(x0 + w / 2, PLOT_Y + PLOT_H + 44 + i * 32, line, 25, INK, "middle", 700))
 
@@ -218,7 +216,6 @@ html, body {{ margin: 0; background: transparent }}
 .trow {{ display: flex; gap: 5px; height: 8px }}
 .tline {{ display: block; height: 8px; border-radius: 4px; background: {LINE_GREY} }}
 .tchip {{ display: block; height: 8px; border-radius: 4px; background: {ORANGE} }}
-.badge {{ position: absolute; overflow: visible }}
 </style>
 </head>
 <body>
