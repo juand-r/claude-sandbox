@@ -35,11 +35,11 @@ WRONG_EMAIL = ["Hi [Recipient’s Name],",
 # Schematic points, (x = generator score, y = validator), 0..1 within each plot.
 PANELS = [
     dict(title="Raw generator score", rho="−0.24",
-         correct=[(0.10, 0.55), (0.30, 0.50), (0.97, 0.60)], hl_c=(0.06, 0.92),
+         correct=[(0.10, 0.55), (0.02, 0.70), (0.97, 0.50)], hl_c=(0.06, 0.92),
          wrong=[(0.04, 0.20), (0.04, 0.02)], hl_w=(0.94, 0.10),
          note=["The correct email is unlikely", "under the generator"]),
     dict(title="Frequency-corrected", rho="0.64",
-         correct=[(0.50, 0.62), (0.90, 0.60), (0.60, 0.50)], hl_c=(0.72, 0.74),
+         correct=[(0.50, 0.62), (0.90, 0.60), (0.64, 0.60)], hl_c=(0.72, 0.74),
          wrong=[(0.06, 0.34), (0.12, 0.04)], hl_w=(0.24, 0.12),
          ghost_c=(0.06, 0.92), ghost_w=(0.94, 0.10), trend=True,
          note=["Frequency correction pushes it up"]),
@@ -233,7 +233,24 @@ html, body {{ margin: 0; background: transparent }}
 </html>
 """
 
+MIN_GAP = 18   # px a dot must keep from any card it is not connected to, so each card's owner is clear
+
+
+def check_clearance():
+    def gap(pt, r, box):
+        (x, y), (l, tp, w, h) = pt, box
+        dx, dy = max(l - x, 0, x - (l + w)), max(tp - y, 0, y - (tp + h))
+        return (dx * dx + dy * dy) ** 0.5 - r
+    for k, (P, (x0, w), C) in enumerate(zip(PANELS, PANELS_X, CARDS)):
+        dots = [(p, 12, None) for p in P["correct"] + P["wrong"]] + [(P["hl_c"], 17, "c"), (P["hl_w"], 17, "w")]
+        for p, r, own in dots:
+            for key in ("c", "w"):
+                if key != own and gap(pos(p, x0, w), r, C[key]) < MIN_GAP:
+                    raise ValueError(f"panel {k+1}: dot {p} is within {MIN_GAP}px of card {key}")
+
+
 if __name__ == "__main__":
+    check_clearance()
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(page)
     print("wrote", OUT)
