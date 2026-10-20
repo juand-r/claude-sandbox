@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The idea, as a cartoon (nucleus prompt)</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: transparent }
+#figure { position: relative; width: 1780px; height: 725px; font-family: Archivo, 'Helvetica Neue', sans-serif; color: #14161A }
+#figure > svg.main { position: absolute; left: 0; top: 0 }
+.card { position: absolute; box-sizing: border-box; background: #FFFFFF; border: 3px solid #14161A; border-radius: 14px }
+.card.full { padding: 10px 14px; font-size: 17px; line-height: 23px; white-space: nowrap; overflow: hidden; display: flex; gap: 10px; align-items: flex-start }
+.doc { flex: none; margin-top: 0 }
+.dot { color: #D2601A; font-weight: 700; margin-right: 6px }
+.more { color: #4A4F57; padding-left: 14px }
+.count { font-size: 14px; line-height: 18px; color: #4A4F57; margin-top: 3px }
+.card.thumb { padding: 10px 14px; display: flex; flex-direction: column; gap: 6px }
+.trow { display: flex; gap: 5px; height: 8px }
+.tline { display: block; height: 8px; border-radius: 4px; background: #C9CDD3 }
+.tdot { display: block; width: 8px; height: 8px; border-radius: 4px; background: #D2601A }
+</style>
+</head>
+<body>
+<div id="figure">
+<svg class="main" width="1780" height="725" viewBox="0 0 1780 725" role="img" aria-label="Three-panel cartoon: the raw generator prefers a plain paragraph over the requested 9-bullet list; frequency correction reorders them; after FLORA training the generator agrees with the validator" style="overflow: visible">
+<defs>
+<marker id="head" orient="auto" markerWidth="6" markerHeight="6" refX="3" refY="3"><path d="M0 0 L6 3 L0 6 Z" fill="#14161A"/></marker>
+<marker id="headg" orient="auto" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5"><path d="M0 0 L5 2.5 L0 5 Z" fill="#9AA1AA"/></marker>
+<marker id="heado" orient="auto" markerWidth="4" markerHeight="4" refX="1.5" refY="2"><path d="M0 0 L4 2 L0 4 Z" fill="#D2601A"/></marker>
+</defs>
+<rect x="2" y="2" width="1776" height="74" rx="37" fill="#FFFFFF" stroke="#14161A" stroke-width="3"/>
+<text x="40.0" y="49.0" font-size="27" fill="#14161A" text-anchor="start" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">Prompt: “A nucleus is a cluster of protons and neutrons. Elaborate on this. Write <tspan font-weight="700">exactly 9 very short bullet points</tspan>. …”</text>
+<text x="320.0" y="150.0" font-size="31" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">1  Raw generator score</text>
+<rect x="0" y="182" width="640" height="410" rx="26" fill="#FFFFFF" stroke="#14161A" stroke-width="4"/>
+<path d="M 46.0 546.0 L 616.0 546.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M 46.0 546.0 L 46.0 208.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<text x="610.0" y="578.0" font-size="22" fill="#4A4F57" text-anchor="end" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">generator likes it</text>
+<text transform="translate(30,212) rotate(-90)" font-size="22" fill="#4A4F57" text-anchor="end" font-family="Archivo, 'Helvetica Neue', sans-serif">validator says correct</text>
+<circle cx="88.8" cy="466.4" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 84.0 461.6 L 93.6 471.2 M 93.6 461.6 L 84.0 471.2" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="88.8" cy="518.2" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 84.0 513.4 L 93.6 523.0 M 93.6 513.4 L 84.0 523.0" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="120.0" cy="365.6" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 114.6 365.6 L 118.8 370.2 L 126.0 360.8" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="78.4" cy="322.4" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 73.0 322.4 L 77.2 327.0 L 84.4 317.6" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="582.8" cy="391.5" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 577.4 391.5 L 581.6 396.1 L 588.8 386.7" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 99.2 259.0 L 180.0 259.0" stroke="#14161A" stroke-width="3"/>
+<path d="M 577.6 495.2 L 546.0 495.2" stroke="#14161A" stroke-width="3"/>
+<circle cx="99.2" cy="259.0" r="17" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 91.5 259.0 L 97.5 265.5 L 107.7 252.2" fill="none" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="577.6" cy="495.2" r="17" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 570.8 488.4 L 584.4 502.0 M 584.4 488.4 L 570.8 502.0" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round"/>
+<text x="320.0" y="636.0" font-size="25" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">The correct list is unlikely</text>
+<text x="320.0" y="668.0" font-size="25" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">under the generator</text>
+<text x="985.0" y="150.0" font-size="31" fill="#2F5D9B" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">2  Frequency-corrected</text>
+<rect x="760" y="182" width="450" height="410" rx="26" fill="#FFFFFF" stroke="#14161A" stroke-width="4"/>
+<path d="M 806.0 546.0 L 1186.0 546.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M 806.0 546.0 L 806.0 208.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<text x="1180.0" y="578.0" font-size="22" fill="#4A4F57" text-anchor="end" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">generator likes it</text>
+<text transform="translate(790,212) rotate(-90)" font-size="22" fill="#4A4F57" text-anchor="end" font-family="Archivo, 'Helvetica Neue', sans-serif">validator says correct</text>
+<path d="M 844.5 509.6 L 1148.1 244.6" stroke="#D2601A" stroke-width="5" stroke-dasharray="12 10" opacity="0.55" stroke-linecap="round"/>
+<circle cx="847.8" cy="259.0" r="15" fill="none" stroke="#9AA1AA" stroke-width="3" stroke-dasharray="5 5"/>
+<path d="M 866.7 265.5 L 1044.8 326.8" stroke="#9AA1AA" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#headg)"/>
+<circle cx="1151.4" cy="495.2" r="15" fill="none" stroke="#9AA1AA" stroke-width="3" stroke-dasharray="5 5"/>
+<path d="M 1131.4 494.7 L 929.2 490.0" stroke="#9AA1AA" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#headg)"/>
+<circle cx="847.8" cy="426.1" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 843.0 421.3 L 852.6 430.9 M 852.6 421.3 L 843.0 430.9" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="867.6" cy="512.5" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 862.8 507.7 L 872.4 517.3 M 872.4 507.7 L 862.8 517.3" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="979.8" cy="333.9" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 974.4 333.9 L 978.6 338.5 L 985.8 329.1" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1125.0" cy="351.2" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1119.6 351.2 L 1123.8 355.8 L 1131.0 346.4" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1019.4" cy="357.0" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1014.0 357.0 L 1018.2 361.5 L 1025.4 352.2" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1065.6 333.9 L 1065.6 294.0" stroke="#14161A" stroke-width="3"/>
+<path d="M 907.2 489.4 L 950.0 470.0" stroke="#14161A" stroke-width="3"/>
+<circle cx="1065.6" cy="333.9" r="17" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1057.9 333.9 L 1063.9 340.4 L 1074.1 327.1" fill="none" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="907.2" cy="489.4" r="17" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 900.4 482.6 L 914.0 496.2 M 914.0 482.6 L 900.4 496.2" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round"/>
+<text x="985.0" y="636.0" font-size="25" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">Frequency correction pushes it up</text>
+<text x="1555.0" y="150.0" font-size="31" fill="#2F5D9B" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">3  After FLORA training</text>
+<rect x="1330" y="182" width="450" height="410" rx="26" fill="#FFFFFF" stroke="#14161A" stroke-width="4"/>
+<path d="M 1376.0 546.0 L 1756.0 546.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M 1376.0 546.0 L 1376.0 208.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<text x="1750.0" y="578.0" font-size="22" fill="#4A4F57" text-anchor="end" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">generator likes it</text>
+<text transform="translate(1360,212) rotate(-90)" font-size="22" fill="#4A4F57" text-anchor="end" font-family="Archivo, 'Helvetica Neue', sans-serif">validator says correct</text>
+<path d="M 1414.5 509.6 L 1718.1 244.6" stroke="#D2601A" stroke-width="5" stroke-dasharray="12 10" opacity="0.55" stroke-linecap="round"/>
+<circle cx="1497.0" cy="449.1" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1492.2 444.3 L 1501.8 453.9 M 1501.8 444.3 L 1492.2 453.9" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="1417.8" cy="454.9" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1413.0 450.1 L 1422.6 459.7 M 1422.6 450.1 L 1413.0 459.7" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="1615.8" cy="328.2" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1610.4 328.2 L 1614.6 332.7 L 1621.8 323.4" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1701.6" cy="259.0" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1696.2 259.0 L 1700.4 263.6 L 1707.6 254.2" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1655.4" cy="351.2" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1650.0 351.2 L 1654.2 355.8 L 1661.4 346.4" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1662.0 282.1 L 1570.0 282.1" stroke="#14161A" stroke-width="3"/>
+<path d="M 1450.8 495.2 L 1560.0 490.0" stroke="#14161A" stroke-width="3"/>
+<circle cx="1662.0" cy="282.1" r="17" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1654.3 282.1 L 1660.3 288.5 L 1670.5 275.3" fill="none" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1450.8" cy="495.2" r="17" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1444.0 488.4 L 1457.6 502.0 M 1457.6 488.4 L 1444.0 502.0" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round"/>
+<text x="1555.0" y="636.0" font-size="25" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">Generator agrees with validator</text>
+<path d="M 654.0 387.0 L 746.0 387.0" stroke="#D2601A" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#heado)"/>
+<text x="700.0" y="335.0" font-size="22" fill="#D2601A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">correct for</text>
+<text x="700.0" y="361.0" font-size="22" fill="#D2601A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">frequency</text>
+<path d="M 1224.0 387.0 L 1316.0 387.0" stroke="#D2601A" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#heado)"/>
+<text x="1270.0" y="335.0" font-size="22" fill="#D2601A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">train with</text>
+<text x="1270.0" y="361.0" font-size="22" fill="#D2601A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">FLORA</text>
+<text x="1776.0" y="719.0" font-size="20" fill="#4A4F57" text-anchor="end" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">Answers from our IFEval data, shortened; dot positions schematic.</text>
+</svg>
+<div class="card full" style="left: 180px; top: 212px; width: 434px; height: 142px"><svg class="doc" width="22" height="28" viewBox="0 0 22 28" aria-hidden="true"><path d="M 1.5 1.5 H 14 L 20.5 8 V 26.5 H 1.5 Z" fill="#FFFFFF" stroke="#14161A" stroke-width="3" stroke-linejoin="round"/><path d="M 6 13 H 16 M 6 18 H 16 M 6 23 H 12" stroke="#14161A" stroke-width="2.5" stroke-linecap="round"/></svg><div class="body"><div class="ln"><span class="dot">•</span>A nucleus is a cluster of protons and neutrons.</div><div class="ln"><span class="dot">•</span>A proton is positively charged.</div><div class="ln"><span class="dot">•</span>A neutron has no charge.</div><div class="ln more">… 6 more</div><div class="count">9 bullets</div></div></div>
+<div class="card full" style="left: 132px; top: 394px; width: 414px; height: 140px"><svg class="doc" width="22" height="28" viewBox="0 0 22 28" aria-hidden="true"><path d="M 1.5 1.5 H 14 L 20.5 8 V 26.5 H 1.5 Z" fill="#FFFFFF" stroke="#14161A" stroke-width="3" stroke-linejoin="round"/><path d="M 6 13 H 16 M 6 18 H 16 M 6 23 H 12" stroke="#14161A" stroke-width="2.5" stroke-linecap="round"/></svg><div class="body"><div class="ln">A nucleus is the core of an atom. It contains</div><div class="ln">protons and neutrons. Protons have a positive</div><div class="ln">charge. Neutrons are electrically neutral. …</div><div class="count">no bullets</div></div></div>
+<div class="card thumb" style="left: 1030px; top: 222px; width: 150px; height: 72px"><div class="trow"><span class="tdot"></span><span class="tline" style="width: 70px"></span></div><div class="trow"><span class="tdot"></span><span class="tline" style="width: 52px"></span></div><div class="trow"><span class="tdot"></span><span class="tline" style="width: 62px"></span></div><div class="trow"><span class="tdot"></span><span class="tline" style="width: 46px"></span></div></div>
+<div class="card thumb" style="left: 950px; top: 398px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 118px"></span></div><div class="trow"><span class="tline" style="width: 112px"></span></div><div class="trow"><span class="tline" style="width: 120px"></span></div><div class="trow"><span class="tline" style="width: 64px"></span></div></div>
+<div class="card thumb" style="left: 1420px; top: 222px; width: 150px; height: 72px"><div class="trow"><span class="tdot"></span><span class="tline" style="width: 70px"></span></div><div class="trow"><span class="tdot"></span><span class="tline" style="width: 52px"></span></div><div class="trow"><span class="tdot"></span><span class="tline" style="width: 62px"></span></div><div class="trow"><span class="tdot"></span><span class="tline" style="width: 46px"></span></div></div>
+<div class="card thumb" style="left: 1560px; top: 418px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 118px"></span></div><div class="trow"><span class="tline" style="width: 112px"></span></div><div class="trow"><span class="tline" style="width: 120px"></span></div><div class="trow"><span class="tline" style="width: 64px"></span></div></div>
+</div>
+</body>
+</html>
