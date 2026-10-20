@@ -14,7 +14,8 @@ Then: node render_figure.js figures/cartoon-idea-v4.html  -> .pdf (vector) and .
 from pathlib import Path
 
 OUT = Path(__file__).parent / "figures" / "cartoon-idea-v4.html"
-W, H = 1780, 725                         # px; same size as version 1
+W, H = 1780, 725                         # px; drawing area, same as version 1
+MARGIN = 6                               # px around the drawing so the outer box strokes are not clipped
 
 INK, MUTED, GREEN, RED, BLUE, ORANGE = "#14161A", "#4A4F57", "#2E8B57", "#C8483A", "#2F5D9B", "#D2601A"
 LINE_GREY, GHOST = "#C9CDD3", "#9AA1AA"
@@ -198,8 +199,9 @@ page = f"""<!doctype html>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
 html, body {{ margin: 0; background: transparent }}
-#figure {{ position: relative; width: {W}px; height: {H}px; font-family: {FONT}; color: {INK} }}
-#figure > svg.main {{ position: absolute; left: 0; top: 0 }}
+#figure {{ position: relative; width: {W + 2 * MARGIN}px; height: {H + 2 * MARGIN}px; font-family: {FONT}; color: {INK} }}
+.canvas {{ position: absolute; left: {MARGIN}px; top: {MARGIN}px; width: {W}px; height: {H}px }}
+.canvas > svg.main {{ position: absolute; left: 0; top: 0 }}
 .card {{ position: absolute; box-sizing: border-box; background: #FFFFFF; border: 3px solid {INK}; border-radius: 14px }}
 .card.full {{ padding: 10px 14px; font-size: 17px; line-height: 23px; white-space: nowrap; overflow: hidden; display: flex; gap: 10px; align-items: flex-start }}
 .doc {{ flex: none; margin-top: 0 }}
@@ -213,13 +215,13 @@ html, body {{ margin: 0; background: transparent }}
 </style>
 </head>
 <body>
-<div id="figure">
+<div id="figure"><div class="canvas">
 <svg class="main" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Three-panel cartoon: the raw generator prefers a one-paragraph answer over the requested two paragraphs split by ***; frequency correction reorders them; after FLORA training the generator agrees with the validator" style="overflow: visible">
 {defs}
 {chr(10).join(svg)}
 </svg>
 {chr(10).join(html)}
-</div>
+</div></div>
 </body>
 </html>
 """

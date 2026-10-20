@@ -6,8 +6,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
 html, body { margin: 0; background: transparent }
-#figure { position: relative; width: 1780px; height: 725px; font-family: Archivo, 'Helvetica Neue', sans-serif; color: #14161A }
-#figure > svg.main { position: absolute; left: 0; top: 0 }
+#figure { position: relative; width: 1792px; height: 737px; font-family: Archivo, 'Helvetica Neue', sans-serif; color: #14161A }
+.canvas { position: absolute; left: 6px; top: 6px; width: 1780px; height: 725px }
+.canvas > svg.main { position: absolute; left: 0; top: 0 }
 .card { position: absolute; box-sizing: border-box; background: #FFFFFF; border: 3px solid #14161A; border-radius: 14px }
 .card.full { padding: 10px 14px; font-size: 17px; line-height: 23px; white-space: nowrap; overflow: hidden; display: flex; gap: 10px; align-items: flex-start }
 .doc { flex: none; margin-top: 0 }
@@ -21,7 +22,7 @@ html, body { margin: 0; background: transparent }
 </style>
 </head>
 <body>
-<div id="figure">
+<div id="figure"><div class="canvas">
 <svg class="main" width="1780" height="725" viewBox="0 0 1780 725" role="img" aria-label="Three-panel cartoon: the raw generator prefers a one-paragraph answer over the requested two paragraphs split by ***; frequency correction reorders them; after FLORA training the generator agrees with the validator" style="overflow: visible">
 <defs>
 <marker id="head" orient="auto" markerWidth="6" markerHeight="6" refX="3" refY="3"><path d="M0 0 L6 3 L0 6 Z" fill="#14161A"/></marker>
@@ -99,6 +100,6 @@ html, body { margin: 0; background: transparent }
 <div class="card thumb" style="left: 950px; top: 398px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 118px"></span></div><div class="trow"><span class="tline" style="width: 112px"></span></div><div class="trow"><span class="tline" style="width: 120px"></span></div><div class="trow"><span class="tline" style="width: 64px"></span></div></div>
 <div class="card thumb" style="left: 1420px; top: 222px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 118px"></span></div><div class="trow"><span class="tline" style="width: 80px"></span></div><div class="trow tdiv"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span></div><div class="trow"><span class="tline" style="width: 96px"></span></div></div>
 <div class="card thumb" style="left: 1560px; top: 418px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 118px"></span></div><div class="trow"><span class="tline" style="width: 112px"></span></div><div class="trow"><span class="tline" style="width: 120px"></span></div><div class="trow"><span class="tline" style="width: 64px"></span></div></div>
-</div>
+</div></div>
 </body>
 </html>
