@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The idea, as a cartoon (with emails)</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=STIX+Two+Text:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: transparent }
+#figure { position: relative; width: 1780px; height: 725px; font-family: Archivo, 'Helvetica Neue', sans-serif; color: #14161A }
+#figure > svg.main { position: absolute; left: 0; top: 0 }
+.card { position: absolute; box-sizing: border-box; background: #FFFFFF; border: 3px solid #14161A; border-radius: 14px }
+.card.full { padding: 9px 14px; font-size: 17px; line-height: 23px; white-space: nowrap; overflow: hidden }
+.chip { background: #FBE3D2; color: #A8440F; font-weight: 700; border-radius: 4px; padding: 0 1px }
+.card.thumb { padding: 10px 14px; display: flex; flex-direction: column; gap: 6px }
+.trow { display: flex; gap: 5px; height: 8px }
+.tline { display: block; height: 8px; border-radius: 4px; background: #C9CDD3 }
+.tchip { display: block; height: 8px; border-radius: 4px; background: #D2601A }
+.badge { position: absolute; overflow: visible }
+</style>
+</head>
+<body>
+<div id="figure">
+<svg class="main" width="1780" height="725" viewBox="0 0 1780 725" role="img" aria-label="Three-panel cartoon: the raw generator prefers a short email with two placeholders over a correct email with many; frequency correction reorders them; after FLORA training the generator agrees with the validator" style="overflow: visible">
+<defs>
+<marker id="head" orient="auto" markerWidth="6" markerHeight="6" refX="3" refY="3"><path d="M0 0 L6 3 L0 6 Z" fill="#14161A"/></marker>
+<marker id="headg" orient="auto" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5"><path d="M0 0 L5 2.5 L0 5 Z" fill="#9AA1AA"/></marker>
+<marker id="heado" orient="auto" markerWidth="4" markerHeight="4" refX="1.5" refY="2"><path d="M0 0 L4 2 L0 4 Z" fill="#D2601A"/></marker>
+</defs>
+<rect x="2" y="2" width="1776" height="74" rx="37" fill="#FFFFFF" stroke="#14161A" stroke-width="3"/>
+<text x="40.0" y="49.0" font-size="27" fill="#14161A" text-anchor="start" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">Prompt: “Rewrite this as an <tspan font-weight="700">email</tspan> with <tspan font-weight="700">at least 10 [placeholders]</tspan>: The boots are warm but a little uncomfortable.”</text>
+<text x="320.0" y="128.0" font-size="31" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">1  Raw generator score</text>
+<text x="320.0" y="164.0" font-size="27" fill="#4A4F57" text-anchor="middle" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif"><tspan font-family="'STIX Two Text', 'Times New Roman', serif" font-style="italic">ρ</tspan> = −0.24</text>
+<rect x="0" y="182" width="640" height="410" rx="26" fill="#FFFFFF" stroke="#14161A" stroke-width="4"/>
+<path d="M 46.0 546.0 L 616.0 546.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M 46.0 546.0 L 46.0 208.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<text x="610.0" y="578.0" font-size="22" fill="#4A4F57" text-anchor="end" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">generator likes it</text>
+<text transform="translate(30,212) rotate(-90)" font-size="22" fill="#4A4F57" text-anchor="end" font-family="Archivo, 'Helvetica Neue', sans-serif">validator says correct</text>
+<circle cx="88.8" cy="466.4" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 84.0 461.6 L 93.6 471.2 M 93.6 461.6 L 84.0 471.2" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="130.4" cy="506.7" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 125.6 501.9 L 135.2 511.5 M 135.2 501.9 L 125.6 511.5" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="120.0" cy="365.6" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 114.6 365.6 L 118.8 370.2 L 126.0 360.8" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="224.0" cy="380.0" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 218.6 380.0 L 222.8 384.6 L 230.0 375.2" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="546.4" cy="345.4" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 541.0 345.4 L 545.2 350.0 L 552.4 340.6" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 99.2 259.0 L 193.0 259.0" stroke="#14161A" stroke-width="3"/>
+<path d="M 556.8 495.2 L 514.0 495.2" stroke="#14161A" stroke-width="3"/>
+<circle cx="99.2" cy="259.0" r="17" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 91.5 259.0 L 97.5 265.5 L 107.7 252.2" fill="none" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="556.8" cy="495.2" r="17" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 550.0 488.4 L 563.6 502.0 M 563.6 488.4 L 550.0 502.0" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round"/>
+<text x="320.0" y="636.0" font-size="25" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">The correct email is unlikely</text>
+<text x="320.0" y="668.0" font-size="25" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">under the generator</text>
+<text x="985.0" y="128.0" font-size="31" fill="#2F5D9B" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">2  Frequency-corrected</text>
+<text x="985.0" y="164.0" font-size="27" fill="#4A4F57" text-anchor="middle" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif"><tspan font-family="'STIX Two Text', 'Times New Roman', serif" font-style="italic">ρ</tspan> = 0.64</text>
+<rect x="760" y="182" width="450" height="410" rx="26" fill="#FFFFFF" stroke="#14161A" stroke-width="4"/>
+<path d="M 806.0 546.0 L 1186.0 546.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M 806.0 546.0 L 806.0 208.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<text x="1180.0" y="578.0" font-size="22" fill="#4A4F57" text-anchor="end" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">generator likes it</text>
+<text transform="translate(790,212) rotate(-90)" font-size="22" fill="#4A4F57" text-anchor="end" font-family="Archivo, 'Helvetica Neue', sans-serif">validator says correct</text>
+<path d="M 844.5 509.6 L 1148.1 244.6" stroke="#D2601A" stroke-width="5" stroke-dasharray="12 10" opacity="0.55" stroke-linecap="round"/>
+<circle cx="847.8" cy="259.0" r="15" fill="none" stroke="#9AA1AA" stroke-width="3" stroke-dasharray="5 5"/>
+<path d="M 867.3 263.7 L 1044.2 305.8" stroke="#9AA1AA" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#headg)"/>
+<circle cx="1138.2" cy="495.2" r="15" fill="none" stroke="#9AA1AA" stroke-width="3" stroke-dasharray="5 5"/>
+<path d="M 1118.2 494.7 L 929.2 490.0" stroke="#9AA1AA" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#headg)"/>
+<circle cx="847.8" cy="426.1" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 843.0 421.3 L 852.6 430.9 M 852.6 421.3 L 843.0 430.9" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="867.6" cy="512.5" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 862.8 507.7 L 872.4 517.3 M 872.4 507.7 L 862.8 517.3" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="993.0" cy="345.4" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 987.6 345.4 L 991.8 350.0 L 999.0 340.6" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1125.0" cy="351.2" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1119.6 351.2 L 1123.8 355.8 L 1131.0 346.4" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1026.0" cy="380.0" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1020.6 380.0 L 1024.8 384.6 L 1032.0 375.2" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1065.6 310.9 L 1065.6 294.0" stroke="#14161A" stroke-width="3"/>
+<path d="M 907.2 489.4 L 950.0 470.0" stroke="#14161A" stroke-width="3"/>
+<circle cx="1065.6" cy="310.9" r="17" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1057.9 310.9 L 1063.9 317.3 L 1074.1 304.1" fill="none" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="907.2" cy="489.4" r="17" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 900.4 482.6 L 914.0 496.2 M 914.0 482.6 L 900.4 496.2" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round"/>
+<text x="985.0" y="636.0" font-size="25" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">Frequency correction pushes it up</text>
+<text x="1555.0" y="128.0" font-size="31" fill="#2F5D9B" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">3  After FLORA training</text>
+<text x="1555.0" y="164.0" font-size="27" fill="#4A4F57" text-anchor="middle" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif"><tspan font-family="'STIX Two Text', 'Times New Roman', serif" font-style="italic">ρ</tspan> = 0.75</text>
+<rect x="1330" y="182" width="450" height="410" rx="26" fill="#FFFFFF" stroke="#14161A" stroke-width="4"/>
+<path d="M 1376.0 546.0 L 1756.0 546.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M 1376.0 546.0 L 1376.0 208.0" stroke="#14161A" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#head)"/>
+<text x="1750.0" y="578.0" font-size="22" fill="#4A4F57" text-anchor="end" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">generator likes it</text>
+<text transform="translate(1360,212) rotate(-90)" font-size="22" fill="#4A4F57" text-anchor="end" font-family="Archivo, 'Helvetica Neue', sans-serif">validator says correct</text>
+<path d="M 1414.5 509.6 L 1718.1 244.6" stroke="#D2601A" stroke-width="5" stroke-dasharray="12 10" opacity="0.55" stroke-linecap="round"/>
+<circle cx="1497.0" cy="449.1" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1492.2 444.3 L 1501.8 453.9 M 1501.8 444.3 L 1492.2 453.9" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="1417.8" cy="454.9" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1413.0 450.1 L 1422.6 459.7 M 1422.6 450.1 L 1413.0 459.7" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="1530.0" cy="506.7" r="12" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1525.2 501.9 L 1534.8 511.5 M 1534.8 501.9 L 1525.2 511.5" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="1615.8" cy="328.2" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1610.4 328.2 L 1614.6 332.7 L 1621.8 323.4" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1701.6" cy="259.0" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1696.2 259.0 L 1700.4 263.6 L 1707.6 254.2" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1655.4" cy="351.2" r="12" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1650.0 351.2 L 1654.2 355.8 L 1661.4 346.4" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1662.0 282.1 L 1570.0 282.1" stroke="#14161A" stroke-width="3"/>
+<path d="M 1450.8 495.2 L 1560.0 490.0" stroke="#14161A" stroke-width="3"/>
+<circle cx="1662.0" cy="282.1" r="17" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1654.3 282.1 L 1660.3 288.5 L 1670.5 275.3" fill="none" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1450.8" cy="495.2" r="17" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1444.0 488.4 L 1457.6 502.0 M 1457.6 488.4 L 1444.0 502.0" stroke="#FFFFFF" stroke-width="4.8" stroke-linecap="round"/>
+<text x="1555.0" y="636.0" font-size="25" fill="#14161A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">Generator agrees with validator</text>
+<path d="M 654.0 387.0 L 746.0 387.0" stroke="#D2601A" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#heado)"/>
+<text x="700.0" y="335.0" font-size="22" fill="#D2601A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">correct for</text>
+<text x="700.0" y="361.0" font-size="22" fill="#D2601A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">frequency</text>
+<path d="M 1224.0 387.0 L 1316.0 387.0" stroke="#D2601A" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#heado)"/>
+<text x="1270.0" y="335.0" font-size="22" fill="#D2601A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">train with</text>
+<text x="1270.0" y="361.0" font-size="22" fill="#D2601A" text-anchor="middle" font-weight="700" font-family="Archivo, 'Helvetica Neue', sans-serif">FLORA</text>
+<text x="1776.0" y="719.0" font-size="20" fill="#4A4F57" text-anchor="end" font-weight="400" font-family="Archivo, 'Helvetica Neue', sans-serif">Emails from paper Fig. 2; dot positions schematic; ρ values from Fig. 5 (Gemma-2-9b-it).</text>
+</svg>
+<div class="card full" style="left: 193px; top: 222px; width: 344px; height: 96px"><div class="ln">Dear <span class="chip">[Customer Service Team/Name]</span>,</div><div class="ln">I recently purchased <span class="chip">[product name]</span>, …</div><div class="ln">… While the <span class="chip">[specific item]</span> are …</div></div>
+<svg class="badge" style="left: 519px; top: 208px" width="32" height="32" viewBox="519 208 32 32"><circle cx="535.0" cy="224.0" r="13" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 529.1 224.0 L 533.7 228.9 L 541.5 218.8" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div class="card full" style="left: 162px; top: 404px; width: 352px; height: 118px"><div class="ln">Hi <span class="chip">[Recipient’s Name]</span>,</div><div class="ln">I wanted to share my thoughts on the</div><div class="ln">boots. They are warm, but I find them …</div><div class="ln">Best regards, <span class="chip">[Your Name]</span></div></div>
+<svg class="badge" style="left: 496px; top: 390px" width="32" height="32" viewBox="496 390 32 32"><circle cx="512.0" cy="406.0" r="13" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 506.8 400.8 L 517.2 411.2 M 517.2 400.8 L 506.8 411.2" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round"/></svg>
+<div class="card thumb" style="left: 1030px; top: 222px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 30px"></span><span class="tchip" style="width: 26px"></span><span class="tline" style="width: 34px"></span></div><div class="trow"><span class="tchip" style="width: 22px"></span><span class="tline" style="width: 20px"></span><span class="tchip" style="width: 28px"></span><span class="tline" style="width: 18px"></span></div><div class="trow"><span class="tline" style="width: 24px"></span><span class="tchip" style="width: 30px"></span><span class="tchip" style="width: 20px"></span></div><div class="trow"><span class="tline" style="width: 40px"></span><span class="tchip" style="width: 24px"></span></div></div>
+<svg class="badge" style="left: 1162px; top: 208px" width="32" height="32" viewBox="1162 208 32 32"><circle cx="1178.0" cy="224.0" r="13" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1172.2 224.0 L 1176.7 228.9 L 1184.5 218.8" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div class="card thumb" style="left: 950px; top: 398px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 30px"></span><span class="tchip" style="width: 34px"></span><span class="tline" style="width: 24px"></span></div><div class="trow"><span class="tline" style="width: 92px"></span></div><div class="trow"><span class="tline" style="width: 86px"></span></div><div class="trow"><span class="tline" style="width: 40px"></span><span class="tchip" style="width: 30px"></span></div></div>
+<svg class="badge" style="left: 1082px; top: 384px" width="32" height="32" viewBox="1082 384 32 32"><circle cx="1098.0" cy="400.0" r="13" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1092.8 394.8 L 1103.2 405.2 M 1103.2 394.8 L 1092.8 405.2" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round"/></svg>
+<div class="card thumb" style="left: 1420px; top: 222px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 30px"></span><span class="tchip" style="width: 26px"></span><span class="tline" style="width: 34px"></span></div><div class="trow"><span class="tchip" style="width: 22px"></span><span class="tline" style="width: 20px"></span><span class="tchip" style="width: 28px"></span><span class="tline" style="width: 18px"></span></div><div class="trow"><span class="tline" style="width: 24px"></span><span class="tchip" style="width: 30px"></span><span class="tchip" style="width: 20px"></span></div><div class="trow"><span class="tline" style="width: 40px"></span><span class="tchip" style="width: 24px"></span></div></div>
+<svg class="badge" style="left: 1552px; top: 208px" width="32" height="32" viewBox="1552 208 32 32"><circle cx="1568.0" cy="224.0" r="13" fill="#2E8B57" stroke="#14161A" stroke-width="3"/><path d="M 1562.2 224.0 L 1566.7 228.9 L 1574.5 218.8" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div class="card thumb" style="left: 1560px; top: 418px; width: 150px; height: 72px"><div class="trow"><span class="tline" style="width: 30px"></span><span class="tchip" style="width: 34px"></span><span class="tline" style="width: 24px"></span></div><div class="trow"><span class="tline" style="width: 92px"></span></div><div class="trow"><span class="tline" style="width: 86px"></span></div><div class="trow"><span class="tline" style="width: 40px"></span><span class="tchip" style="width: 30px"></span></div></div>
+<svg class="badge" style="left: 1692px; top: 404px" width="32" height="32" viewBox="1692 404 32 32"><circle cx="1708.0" cy="420.0" r="13" fill="#C8483A" stroke="#14161A" stroke-width="3"/><path d="M 1702.8 414.8 L 1713.2 425.2 M 1713.2 414.8 L 1702.8 425.2" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round"/></svg>
+</div>
+</body>
+</html>
