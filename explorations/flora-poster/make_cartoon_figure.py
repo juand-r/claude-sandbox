@@ -30,17 +30,17 @@ PANELS = [   # card_c / card_w: top-left corner of each email card, in the same 
     dict(title="Raw generator score", rho="−0.24",
          correct=[(0.06, 0.58), (0.30, 0.66), (0.42, 0.56)], hl_c=(0.16, 0.80), card_c=(0.30, 1.00),
          wrong=[(0.24, 0.26), (0.44, 0.12), (0.08, 0.16)], hl_w=(0.90, 0.12), card_w=(0.52, 0.44),
-         note="Generator prefers the failing email"),
+         note=["The correct email is unlikely", "under the generator"]),
     dict(title="Frequency-corrected", rho="0.64",
          correct=[(0.50, 0.62), (0.92, 0.62), (0.62, 0.52)], hl_c=(0.74, 0.70), card_c=(0.42, 1.00),
          wrong=[(0.36, 0.32), (0.44, 0.14), (0.10, 0.30)], hl_w=(0.24, 0.12), card_w=(0.52, 0.46),
          ghost_c=(0.16, 0.80), ghost_w=(0.90, 0.12), trend=True,
-         note="Common text loses its head start"),
+         note=["Frequency correction pushes it up"]),
     dict(title="After FLORA training", rho="0.75",
          correct=[(0.66, 0.68), (0.90, 0.90), (0.78, 0.62)], hl_c=(0.82, 0.82), card_c=(0.06, 1.00),
          wrong=[(0.30, 0.26), (0.06, 0.24), (0.34, 0.08)], hl_w=(0.16, 0.10), card_w=(0.40, 0.46),
          trend=True,
-         note="Generator agrees with validator"),
+         note=["Generator agrees with validator"]),
 ]
 
 
@@ -146,7 +146,8 @@ for k, P in enumerate(PANELS):
     parts.append(card_at(P["card_c"], (cx, cy), '17 placeholders', True))
     parts.append(card_at(P["card_w"], (wx, wy), '2 placeholders', False))
     # Panel takeaway.
-    parts.append(t(x0 + PANEL_W / 2, PLOT_Y + PLOT_H + 44, P["note"], 25, INK, "middle", 700))
+    for i, line in enumerate(P["note"]):        # one or two lines
+        parts.append(t(x0 + PANEL_W / 2, PLOT_Y + PLOT_H + 44 + i * 32, line, 25, INK, "middle", 700))
 
 # Arrows between panels with labels.
 for k, label in enumerate(["correct for", "train with"]):
