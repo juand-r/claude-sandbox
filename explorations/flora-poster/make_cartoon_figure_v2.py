@@ -35,8 +35,8 @@ WRONG_EMAIL = ["Hi [Recipient’s Name],",
 # Schematic points, (x = generator score, y = validator), 0..1 within each plot.
 PANELS = [
     dict(title="Raw generator score", rho="−0.24",
-         correct=[(0.10, 0.55), (0.30, 0.50), (0.92, 0.62)], hl_c=(0.06, 0.92),
-         wrong=[(0.04, 0.20), (0.12, 0.06)], hl_w=(0.94, 0.10),
+         correct=[(0.10, 0.55), (0.30, 0.50), (0.97, 0.60)], hl_c=(0.06, 0.92),
+         wrong=[(0.04, 0.20), (0.04, 0.02)], hl_w=(0.94, 0.10),
          note=["The correct email is unlikely", "under the generator"]),
     dict(title="Frequency-corrected", rho="0.64",
          correct=[(0.50, 0.62), (0.90, 0.60), (0.60, 0.50)], hl_c=(0.72, 0.74),
@@ -51,7 +51,7 @@ PANELS = [
 ]
 # Card boxes in figure px: (left, top, width, height). Panel 1: full text; panels 2-3: thumbnails.
 CARDS = [
-    dict(c=(193, 222, 344, 96), w=(162, 404, 352, 118), full=True),
+    dict(c=(193, 220, 386, 118), w=(140, 392, 394, 140), full=True),
     dict(c=(1030, 222, 150, 72), w=(950, 398, 150, 72), full=False),
     dict(c=(1420, 222, 150, 72), w=(1560, 418, 150, 72), full=False),
 ]
@@ -124,6 +124,9 @@ def thumb_html(chip_rows):
     return "".join(rows)
 
 
+MAIL_ICON = ('<svg class="mail" width="30" height="22" viewBox="0 0 30 22" aria-hidden="true">'
+             '<rect x="1.5" y="1.5" width="27" height="19" rx="3" fill="#FFFFFF" stroke="' + INK + '" stroke-width="3"/>'
+             '<path d="M 2 3 L 15 13 L 28 3" fill="none" stroke="' + INK + '" stroke-width="3" stroke-linejoin="round"/></svg>')
 THUMB_CORRECT = [[30, -26, 34], [-22, 20, -28, 18], [24, -30, -20], [40, -24]]   # many chips
 THUMB_WRONG = [[30, -34, 24], [92], [86], [40, -30]]                               # two chips
 
@@ -166,8 +169,12 @@ for k, (P, (x0, w), C) in enumerate(zip(PANELS, PANELS_X, CARDS)):
     # Cards (HTML, drawn over the SVG), each with its badge at the top-right corner.
     for key, good in (("c", True), ("w", False)):
         l, tp, cw, ch = C[key]
-        inner = (email_html(CORRECT_EMAIL if good else WRONG_EMAIL) if C["full"]
-                 else thumb_html(THUMB_CORRECT if good else THUMB_WRONG))
+        if C["full"]:
+            count = "17 placeholders" if good else "2 placeholders"   # paper Figure 2
+            inner = (MAIL_ICON + '<div class="body">' + email_html(CORRECT_EMAIL if good else WRONG_EMAIL)
+                     + f'<div class="count">{count}</div></div>')
+        else:
+            inner = thumb_html(THUMB_CORRECT if good else THUMB_WRONG)
         cls = "card full" if C["full"] else "card thumb"
         html.append(f'<div class="{cls}" style="left: {l}px; top: {tp}px; width: {cw}px; height: {ch}px">{inner}</div>')
         badge = check_badge(l + cw - 2, tp + 2, 13) if good else cross_badge(l + cw - 2, tp + 2, 13)
@@ -203,7 +210,9 @@ html, body {{ margin: 0; background: transparent }}
 #figure {{ position: relative; width: {W}px; height: {H}px; font-family: {FONT}; color: {INK} }}
 #figure > svg.main {{ position: absolute; left: 0; top: 0 }}
 .card {{ position: absolute; box-sizing: border-box; background: #FFFFFF; border: 3px solid {INK}; border-radius: 14px }}
-.card.full {{ padding: 9px 14px; font-size: 17px; line-height: 23px; white-space: nowrap; overflow: hidden }}
+.card.full {{ padding: 10px 14px; font-size: 17px; line-height: 23px; white-space: nowrap; overflow: hidden; display: flex; gap: 10px; align-items: flex-start }}
+.mail {{ flex: none; margin-top: 2px }}
+.count {{ font-size: 14px; line-height: 18px; color: {MUTED}; margin-top: 3px }}
 .chip {{ background: {CHIP_BG}; color: {CHIP_INK}; font-weight: 700; border-radius: 4px; padding: 0 1px }}
 .card.thumb {{ padding: 10px 14px; display: flex; flex-direction: column; gap: 6px }}
 .trow {{ display: flex; gap: 5px; height: 8px }}
