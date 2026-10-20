@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tokens of Meaning poster, A0 portrait</title>
+<!-- A0 portrait at 96 px/in: 3179 x 4494 px. Layout follows the user's final FLORA poster (v7):
+     header band, big tagline, cartoon band, Overview box (left), Method and Results boxes (right).
+     Elements with data-kit become separate objects in the .pptx (see build_pptx.js);
+     elements with data-kit-shape become filled shapes. Weights are 400/700 only (Keynote-safe). -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<style>
+@page { size: 841mm 1189mm; margin: 0 }
+html, body { margin: 0; background: #F6F7F5 }
+h1, h2, h3, p { margin: 0; font-weight: inherit }
+p, .h, .sub { text-wrap: pretty }
+#poster { position: relative; width: 3179px; height: 4494px; overflow: hidden; background: #F6F7F5; color: #14161A;
+          font-family: Archivo, 'Helvetica Neue', sans-serif; font-size: 33px; line-height: 1.42 }
+.abs { position: absolute; box-sizing: border-box }
+.shape { position: absolute; box-sizing: border-box }
+.box { border-radius: 36px; border: 3px solid }
+.col { position: absolute; display: flex; flex-direction: column; box-sizing: border-box }
+.h { font-size: 59px; line-height: 1.12; font-weight: 400 }
+.sub { font-size: 44px; line-height: 1.15; font-weight: 700; display: flex; gap: 18px; align-items: center }
+.num { flex: none; width: 56px; height: 56px; border-radius: 28px; background: #D2601A; color: #FFFFFF; font-size: 32px;
+       display: inline-flex; align-items: center; justify-content: center }
+.note { font-size: 27px; line-height: 1.35; color: #4A4F57 }
+.red { color: #BD0700 }
+.big { font-size: 176px; line-height: 1; font-weight: 700; color: #D2601A; letter-spacing: -0.01em }
+.biglabel { font-size: 38px; line-height: 1.25 }
+img { display: block }
+</style>
+</head>
+<body>
+<div id="poster">
+
+<!-- ======================= HEADER ======================= -->
+<div class="shape" data-kit-shape="header-band" style="left: 0; top: 0; width: 3179px; height: 363px; background: #ECFAE2"></div>
+<div class="abs" data-kit="title-block" style="left: 107px; top: 44px; width: 2600px">
+<h1 style="font-size: 84px; line-height: 1.06; font-weight: 400">Tokens of Meaning: Semantically-Informed Morphological Tokenization in Low-Resource Language Modeling</h1>
+<p style="font-size: 44px; line-height: 1.3; margin-top: 18px">Juan Diego Rodriguez</p>
+<p style="font-size: 30px; line-height: 1.3; color: #4A4F57">The University of Texas at Austin</p>
+</div>
+<div class="abs" data-kit="qr-code" style="left: 2838px; top: 52px; width: 250px; display: flex; flex-direction: column; align-items: center; gap: 10px">
+<img src="assets/qr-code.png" alt="QR code linking to the code repository on GitHub" style="width: 222px; height: 222px; background: #FFFFFF; padding: 14px">
+<div style="font-size: 26px; line-height: 1.1; font-weight: 700">Code</div>
+</div>
+
+<!-- ======================= TAGLINE ======================= -->
+<div class="abs" data-kit="main-idea" style="left: 160px; top: 398px; width: 2900px">
+<p style="font-size: 206px; line-height: 1.05; letter-spacing: -0.01em">Split words into <span class="red">morphemes</span></p>
+<p style="font-size: 150px; line-height: 1.12; font-style: italic">only when the pieces keep the <span class="red">meaning</span></p>
+</div>
+
+<!-- ======================= CARTOON BAND ======================= -->
+<div class="shape" data-kit-shape="cartoon-band" style="left: 0; top: 820px; width: 3179px; height: 980px; background: #D2E2C8"></div>
+<img class="abs" data-kit="cartoon" src="figures/cartoon.png" alt="Five words under three tokenizers: BPE, uncurated morphology, and ours" style="left: 90px; top: 872px; width: 2999px; height: 872px">
+
+<!-- ======================= OVERVIEW (left box) ======================= -->
+<div class="shape box" data-kit-shape="overview-box" style="left: 24px; top: 1840px; width: 1021px; height: 2560px; background: #DBF2F9; border-color: #A9D6E6"></div>
+<div class="col" style="left: 60px; top: 1880px; width: 949px; gap: 26px">
+<h2 class="h" data-kit="o1-heading">Every token counts at 10M words</h2>
+<p data-kit="o1-text">The BabyLM challenge trains language models on a child-sized budget of 10M words, so each word form is rare. Children readily extend morphological patterns (one wug, two wugs). A tokenizer can do the same: if related forms share a stem token, every form trains it.</p>
+<img data-kit="pooling" src="figures/pooling.png" alt="helped, helping and helps share the token help, so all three train one embedding" style="width: 949px; height: 300px; margin: 6px 0">
+<p class="note" data-kit="o1-note">A typical shared stem appears in about 3 word forms. That gives it about 36% more training signal than its most frequent form alone.</p>
+
+<h2 class="h" data-kit="o2-heading" style="margin-top: 80px">Statistical tokenizers ignore meaning</h2>
+<p data-kit="o2-text">BPE, WordPiece and Unigram split text to compress it. Their pieces often mean nothing (adder → ad der), and related words can end up with no token in common (unhappiness, happiness).</p>
+
+<h2 class="h" data-kit="o3-heading" style="margin-top: 80px">Morpheme boundaries are not enough</h2>
+<p data-kit="o3-text">Splitting adder, a snake, into add er teaches the model that an adder is someone who adds, and it pollutes both pieces. A split helps only if:</p>
+<div data-kit="o3-list" style="display: flex; flex-direction: column; gap: 14px; padding-left: 8px">
+<p><b>Productive:</b> each piece is reused across the vocabulary.</p>
+<p><b>Semantic:</b> the pieces are related to the word’s meaning.</p>
+</div>
+
+<div class="shape box" data-kit-shape="what-box" style="position: relative; margin-top: 70px; border-radius: 20px; border: 3px solid #A9D6E6; background: #FFFFFF; padding: 30px 32px">
+<p data-kit="what-text"><b>What we did.</b> We hand-curated an English morphological tokenizer that splits a word only when both conditions hold. We then trained child-scale language models with it, changing nothing but the tokenizer.</p>
+</div>
+
+<h2 class="h" data-kit="o4-heading" style="margin-top: 80px">Beyond English</h2>
+<p data-kit="o4-text">English morphology is sparse, so the sharing we can recover is modest. MorphyNet, our lexical backbone, covers 15 languages, and morphologically rich languages are where morphology-aware tokenizers have helped most.</p>
+</div>
+
+<!-- ======================= METHOD (top right box) ======================= -->
+<div class="shape box" data-kit-shape="method-box" style="left: 1066px; top: 1840px; width: 2089px; height: 1500px; background: #E8EDF8; border-color: #BCC8E6"></div>
+<h2 class="abs h" data-kit="method-heading" style="left: 1106px; top: 1880px; width: 2009px">Method: a meaning-aware morphological tokenizer</h2>
+
+<div class="col" style="left: 1106px; top: 1990px; width: 949px; gap: 24px">
+<h3 class="sub" data-kit="m1-heading"><span class="num">1</span><span>When to split a word</span></h3>
+<p data-kit="m1-text">A candidate split is accepted only if it passes every check. Failing any one keeps the word whole.</p>
+<img data-kit="decision" src="figures/decision.png" alt="Decision procedure: checks P and S1 to S4; failing any keeps the word whole" style="width: 949px; height: 1000px">
+<p class="note" data-kit="m1-note">Two more cases stay whole: genuinely ambiguous forms (leaves: leaf + s or leave + s) and proper names with no common-noun use.</p>
+</div>
+
+<div class="col" style="left: 2166px; top: 1990px; width: 949px; gap: 24px">
+<h3 class="sub" data-kit="m2-heading"><span class="num">2</span><span>How to split it</span></h3>
+<p data-kit="m2-text">Emit lemma-level morphemes, so spelling variants share one token:</p>
+<img data-kit="normalize" src="figures/normalize.png" alt="Plural -s, -es, -ies map to one -s; negative prefixes in-, im-, il-, ir- map to one in-" style="width: 949px; height: 170px">
+<p data-kit="m2-text-2">Prefer a free word or a recurring root to an invented stem: legitimate stays whole rather than minting the stem legitim.</p>
+
+<h3 class="sub" data-kit="m3-heading" style="margin-top: 26px"><span class="num">3</span><span>How we built it</span></h3>
+<p data-kit="m3-text">MorphyNet supplies candidate splits. Its inflection table is clean enough to use almost as is. Its derivation table records history, not modern structure (king → kin ing), so it only proposes candidates.</p>
+<p data-kit="m3-text-2">We hand-segmented 22,137 frequent words, rejecting about 53% of the MorphyNet derivational splits they overlapped. LLM agents (Claude Code) reviewed candidates adversarially; the author made every final decision.</p>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 28px; margin-top: 18px">
+<div data-kit="stat-morphemes"><div style="font-size: 76px; line-height: 1.05; font-weight: 700; color: #2F5D9B">36,638</div><div class="note">morphemes in the vocabulary</div></div>
+<div data-kit="stat-oov"><div style="font-size: 76px; line-height: 1.05; font-weight: 700; color: #2F5D9B">1.0%</div><div class="note">out-of-vocabulary tokens, with no subword fallback</div></div>
+<div data-kit="stat-shared"><div style="font-size: 76px; line-height: 1.05; font-weight: 700; color: #2F5D9B">41.9%</div><div class="note">of morphemes shared by two or more word forms</div></div>
+</div>
+</div>
+
+<!-- ======================= RESULTS (bottom right box) ======================= -->
+<div class="shape box" data-kit-shape="results-box" style="left: 1066px; top: 3370px; width: 2089px; height: 1030px; background: #F2EAF6; border-color: #D9C6E4"></div>
+<h2 class="abs h" data-kit="results-heading" style="left: 1106px; top: 3410px; width: 2009px">Results</h2>
+
+<div class="col" style="left: 1106px; top: 3520px; width: 949px; gap: 20px">
+<div style="display: flex; gap: 60px; align-items: flex-end">
+<div data-kit="rank-comps"><div class="big">2nd</div><div class="biglabel">on COMPS</div></div>
+<div data-kit="rank-ewok"><div class="big">3rd</div><div class="biglabel">on EWoK</div></div>
+</div>
+<p class="note" data-kit="leaderboard-note">BabyLM 2026 strict-small leaderboard (BLiMP 72.53).</p>
+<div style="display: flex; gap: 32px; align-items: center; margin-top: 60px">
+<div class="big" data-kit="curation-number" style="font-size: 140px">+1.4</div>
+<p class="biglabel" data-kit="curation-text">BLiMP from curation alone: same MorphyNet source, same model, data and seed (66.35 vs 64.96).</p>
+</div>
+<p class="note" data-kit="comps-note" style="margin-top: 14px">On COMPS, the three morphology-based tokenizers take the top three places in the controlled comparison.</p>
+</div>
+
+<div class="col" style="left: 2146px; top: 3520px; width: 969px; gap: 14px">
+<p data-kit="chart-title" style="font-weight: 700">Same training recipe, only the tokenizer changes</p>
+<img data-kit="results-chart" src="figures/results.png" alt="BLiMP by tokenizer: Ours submitted 72.53, Unigram 67.97, Ours un-pruned 67.71, BPE 67.11, Morfessor 66.63, MorphPiece 65.89" style="width: 969px; height: 581px">
+<p class="note" data-kit="chart-note">The submitted tokenizer also drops morphemes seen fewer than three times and spells out unknown pieces as characters.</p>
+</div>
+
+</div>
+</body>
+</html>

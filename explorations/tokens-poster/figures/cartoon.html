@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tokenizer cartoon</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: transparent }
+#figure { position: relative; width: 2999px; height: 872px; font-family: Archivo, 'Helvetica Neue', sans-serif; color: #14161A }
+.canvas { position: absolute; left: 6px; top: 6px; width: 2987px; height: 860px }
+.panel { position: absolute; top: 0; width: 935px }
+.ptitle { font-size: 44px; font-weight: 700; line-height: 1.1; display: flex; gap: 18px; align-items: center; justify-content: center }
+.num { width: 52px; height: 52px; border-radius: 26px; background: #D2601A; color: #FFFFFF; font-size: 32px;
+        display: inline-flex; align-items: center; justify-content: center; flex: none }
+.psub { font-size: 30px; color: #4A4F57; text-align: center; margin-top: 8px; height: 40px }
+.card { position: relative; margin-top: 22px; background: #FFFFFF; border: 4px solid #14161A; border-radius: 26px;
+         padding: 26px 30px; display: flex; flex-direction: column; gap: 18px; height: 524px; box-sizing: border-box }
+.row { display: flex; align-items: center; gap: 26px; height: 78px }
+.word { width: 250px; flex: none; text-align: right; font-size: 32px; color: #4A4F57; line-height: 1.1 }
+.wnote { display: block; font-size: 23px; color: #4A4F57 }
+.chips { display: flex; gap: 10px }
+.chip { display: inline-block; font-size: 36px; line-height: 1; padding: 14px 16px; border-radius: 12px; border: 3px solid; white-space: nowrap }
+.chip.good { background: #E3F2E8; border-color: #2E8B57; color: #14161A }
+.chip.shared { background: #E3F2E8; border: 5px solid #2F5D9B; padding: 12px 14px; color: #14161A; font-weight: 700 }
+.chip.bad { background: #FBE4E1; border-color: #C8483A; color: #14161A }
+.chip.whole { background: #FFFFFF; border-color: #9AA1AA; color: #14161A }
+.shared-note { position: absolute; right: 30px; top: 66px; font-size: 26px; color: #2F5D9B; text-align: right; line-height: 1.2 }
+.caption { margin-top: 24px; font-size: 34px; font-weight: 700; text-align: center; line-height: 1.25 }
+.legend { position: absolute; left: 0; bottom: 0; width: 2987px; display: flex; gap: 22px; align-items: center; justify-content: center }
+.legend .chip { font-size: 26px; padding: 8px 12px; border-width: 3px }
+.legend .src { font-size: 24px; color: #4A4F57; margin-left: 24px }
+</style>
+</head>
+<body>
+<div id="figure"><div class="canvas">
+
+<div class="panel" style="left: 0px">
+  <div class="ptitle" style="color: #14161A"><span class="num">1</span>Statistical (BPE)</div>
+  <div class="psub">splits to compress text</div>
+  <div class="card"><div class="row"><div class="word">unhappiness</div><div class="chips"><span class="chip whole">unhappiness</span></div></div><div class="row"><div class="word">happiness</div><div class="chips"><span class="chip whole">happiness</span></div></div><div class="row"><div class="word">business</div><div class="chips"><span class="chip whole">business</span></div></div><div class="row"><div class="word">adder<span class="wnote">a snake</span></div><div class="chips"><span class="chip bad">ad</span><span class="chip bad">der</span></div></div><div class="row"><div class="word">singleton</div><div class="chips"><span class="chip bad">sing</span><span class="chip bad">leton</span></div></div></div>
+  <div class="caption">Pieces ignore meaning, and<br>related words share nothing</div>
+</div>
+<div class="panel" style="left: 1026px">
+  <div class="ptitle" style="color: #14161A"><span class="num">2</span>Morphology, uncurated</div>
+  <div class="psub">MorphPiece on raw MorphyNet</div>
+  <div class="card"><div class="row"><div class="word">unhappiness</div><div class="chips"><span class="chip good">un</span><span class="chip bad">hap</span><span class="chip bad">y</span><span class="chip good">ness</span></div></div><div class="row"><div class="word">happiness</div><div class="chips"><span class="chip bad">hap</span><span class="chip bad">y</span><span class="chip good">ness</span></div></div><div class="row"><div class="word">business</div><div class="chips"><span class="chip bad">busy</span><span class="chip bad">ness</span></div></div><div class="row"><div class="word">adder<span class="wnote">a snake</span></div><div class="chips"><span class="chip bad">add</span><span class="chip bad">er</span></div></div><div class="row"><div class="word">singleton</div><div class="chips"><span class="chip bad">single</span><span class="chip bad">ton</span></div></div></div>
+  <div class="caption">Real morphemes, wrong splits:<br>business is not busy + ness</div>
+</div>
+<div class="panel" style="left: 2052px">
+  <div class="ptitle" style="color: #2F5D9B"><span class="num">3</span>Ours: morphology + meaning</div>
+  <div class="psub">hand-curated over MorphyNet</div>
+  <div class="card"><div class="row"><div class="word">unhappiness</div><div class="chips"><span class="chip good">un</span><span class="chip shared">happy</span><span class="chip good">ness</span></div></div><div class="row"><div class="word">happiness</div><div class="chips"><span class="chip shared">happy</span><span class="chip good">ness</span></div></div><div class="row"><div class="word">business</div><div class="chips"><span class="chip whole">business</span></div></div><div class="row"><div class="word">adder<span class="wnote">a snake</span></div><div class="chips"><span class="chip whole">adder</span></div></div><div class="row"><div class="word">singleton</div><div class="chips"><span class="chip whole">singleton</span></div></div><div class="shared-note">same token: <b>happy</b></div></div>
+  <div class="caption">Split only when the pieces<br>keep the word’s meaning</div>
+</div>
+<div class="legend"><span class="chip good">meaningful morpheme</span><span class="chip bad">misleading piece</span><span class="chip whole">kept whole</span><span class="src">Segmentations from Table 2 of the paper.</span></div>
+</div></div>
+</body>
+</html>

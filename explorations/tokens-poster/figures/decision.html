@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Decision procedure</title>
+<!-- Method figure: the paper's Figure 1 drawn vertically, with the keep-whole examples of Table 1.
+     949 x 1000 px on the A0 artboard. -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: transparent }
+#figure { position: relative; width: 949px; height: 1000px; font-family: Archivo, 'Helvetica Neue', sans-serif; color: #14161A }
+#figure div { position: absolute; box-sizing: border-box }
+.box { border-radius: 16px; display: flex; align-items: center }
+.start { left: 0; top: 0; width: 600px; height: 96px; background: #FFFFFF; border: 4px solid #14161A; flex-direction: column; justify-content: center; font-size: 28px; line-height: 1.3 }
+.q { left: 0; width: 600px; height: 112px; background: #FFFFFF; border: 4px solid #2F5D9B; gap: 18px; padding: 0 22px; font-size: 28px; line-height: 1.25 }
+.tag { position: static !important; flex: none; width: 66px; height: 54px; border-radius: 27px; background: #2F5D9B; color: #FFFFFF; font-size: 26px; font-weight: 700; display: flex; align-items: center; justify-content: center }
+.ex { left: 680px; width: 269px; height: 112px; background: #FBE4E1; border: 3px solid #C8483A; flex-direction: column; justify-content: center; text-align: center; font-size: 22px; line-height: 1.25; color: #4A4F57; padding: 0 10px; text-wrap: balance }
+.ex b { font-size: 30px; color: #14161A; margin-bottom: 4px }
+.split { left: 0; top: 884px; width: 600px; height: 112px; background: #E3F2E8; border: 4px solid #2E8B57; justify-content: center; gap: 18px; font-size: 32px }
+.head { left: 680px; top: 26px; width: 269px; text-align: center; font-size: 26px; font-weight: 700; color: #C8483A; line-height: 1.2 }
+.lab { font-size: 22px; font-weight: 700; color: #4A4F57 }
+.chip { display: inline-block; font-size: 28px; line-height: 1; padding: 8px 10px; border-radius: 10px; border: 3px solid #2E8B57; background: #E3F2E8; margin: 0 2px }
+</style>
+</head>
+<body>
+<div id="figure">
+<div class="box start"><div style="position: static">word + candidate split</div><div style="position: static; font-weight: 700">unhappiness → un · happy · ness</div></div>
+<div class="head">fails: keep the<br>word whole</div>
+
+<svg width="949" height="1000" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<defs>
+<marker id="d" orient="auto" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5"><path d="M0 0 L5 2.5 L0 5 Z" fill="#14161A"/></marker>
+<marker id="r" orient="auto" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5"><path d="M0 0 L5 2.5 L0 5 Z" fill="#C8483A"/></marker>
+</defs>
+<g stroke="#14161A" stroke-width="4" fill="none" marker-end="url(#d)">
+<path d="M 300 98 L 300 120"/><path d="M 300 246 L 300 274"/><path d="M 300 398 L 300 426"/>
+<path d="M 300 550 L 300 578"/><path d="M 300 702 L 300 730"/><path d="M 300 854 L 300 876"/>
+</g>
+<g stroke="#C8483A" stroke-width="4" fill="none" marker-end="url(#r)">
+<path d="M 602 186 L 668 186"/><path d="M 602 338 L 668 338"/><path d="M 602 490 L 668 490"/>
+<path d="M 602 642 L 668 642"/><path d="M 602 794 L 668 794"/>
+</g>
+<g font-family="Archivo, sans-serif" font-size="22" font-weight="700" fill="#C8483A" text-anchor="middle">
+<text x="635" y="176">no</text><text x="635" y="328">no</text><text x="635" y="480">no</text><text x="635" y="632">no</text><text x="635" y="784">no</text>
+</g>
+<g font-family="Archivo, sans-serif" font-size="22" font-weight="700" fill="#4A4F57">
+<text x="314" y="268">yes</text><text x="314" y="420">yes</text><text x="314" y="572">yes</text><text x="314" y="724">yes</text><text x="314" y="872">yes</text>
+</g>
+</svg>
+
+<div class="box q" style="top: 130px"><span class="tag">P</span><span>Are the pieces productive,<br>reused across many words?</span></div>
+<div class="box ex" style="top: 130px"><b>cranberry</b>cran recurs in no other word</div>
+
+<div class="box q" style="top: 282px"><span class="tag">S1</span><span>Is the word’s meaning<br>related to its pieces?</span></div>
+<div class="box ex" style="top: 282px"><b>business</b>is not “being busy”</div>
+
+<div class="box q" style="top: 434px"><span class="tag">S2</span><span>Is the link real today,<br>not a false etymology?</span></div>
+<div class="box ex" style="top: 434px"><b>adder</b>a snake, not add + er</div>
+
+<div class="box q" style="top: 586px"><span class="tag">S3</span><span>Does a homonym piece have<br>its usual sense?</span></div>
+<div class="box ex" style="top: 586px"><b>limestone</b>lime the mineral, not the fruit</div>
+
+<div class="box q" style="top: 738px"><span class="tag">S4</span><span>No clash with a frequent,<br>unrelated token?</span></div>
+<div class="box ex" style="top: 738px"><b>werewolf</b>were- clashes with the verb were</div>
+
+<div class="box split"><b>SPLIT</b><span><span class="chip">un</span><span class="chip">happy</span><span class="chip">ness</span></span></div>
+</div>
+</body>
+</html>

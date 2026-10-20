@@ -1,0 +1,9 @@
+{
+  "name": "tokens-poster",
+  "version": "1.0.0",
+  "description": "A0 poster for \"Tokens of Meaning: Semantically-Informed Morphological Tokenization in Low-Resource Language Modeling\".",
+  "private": true,
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}
