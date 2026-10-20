@@ -60,24 +60,34 @@ LAYOUTS = {
                       val_row_h=66, val_span=(380, 900)),
     "a0":        dict(W=955, ROW_H=140, roc_span=(290, 590), rho_span=(668, 935),
                       val_row_h=60, val_span=(370, 760)),
+    # User's v7 poster: short, wide results chart (860 x 440 pt) with legend and footnote inside,
+    # and a 572 x 400 pt validator chart, side by side in the results box.
+    "v7":        dict(W=1147, ROW_H=66, roc_span=(300, 700), rho_span=(790, 1122),
+                      legend=True, prior_labels=False, label_sizes=(26, 22),
+                      footnote="Each dot: best variant per setting and metric (FLORA-PMI or FLORA-Neg; "
+                               "best of SFT, Consistency FT, RankAlign).",
+                      separators=False, label_halo="#F2EAF6",   # results box: #C85DFF at 8% over the page
+                      val_W=763, val_row_h=78, val_span=(345, 600), val_label_size=24,
+                      val_tick_labels=(0, 10, 20)),
 }
 
 
-def results_chart(W, ROW_H, roc_span, rho_span, **_):
-    TOP = 70
+def results_chart(W, ROW_H, roc_span, rho_span, legend=False, prior_labels=True,
+                  label_sizes=(30, 26), footnote=None, separators=True, label_halo=None, **_):
+    title_y, TOP = (64, 100) if legend else (34, 70)
     panels = [  # (title, metric index, domain, ticks, x0, x1)
         ("Generator AUROC", 0, (60, 100), [60, 70, 80, 90, 100], *roc_span),
         ("G–V correlation ρ ×100", 1, (20, 80), [20, 40, 60, 80], *rho_span),
     ]
     n = len(SETTINGS)
     bottom = TOP + n * ROW_H
-    H = bottom + 56
+    H = bottom + 56 + (34 if footnote else 0)
     out = [f'<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" '
            f'aria-label="Dot plot of generator AUROC and generator-validator correlation for six settings" '
            f'style="display: block; font-family: {FONT}">']
     for title, metric, (lo, hi), ticks, x0, x1 in panels:
         sx = lambda v: x0 + (v - lo) / (hi - lo) * (x1 - x0)
-        out.append(text((x0 + x1) / 2, 34, title, 28, INK, "middle", 700))
+        out.append(text((x0 + x1) / 2, title_y, title, 28, INK, "middle", 700))
         for t in ticks:
             out.append(f'<line x1="{sx(t):.1f}" y1="{TOP}" x2="{sx(t):.1f}" y2="{bottom}" stroke="{GRID}" stroke-width="2"/>')
             out.append(text(sx(t), bottom + 40, t, 26, MUTED, "middle"))
@@ -90,20 +100,37 @@ def results_chart(W, ROW_H, roc_span, rho_span, **_):
             out.append(f'<circle cx="{sx(base):.1f}" cy="{cy}" r="10" fill="{SURFACE}" stroke="{GREY}" stroke-width="4"/>')
             out.append(f'<circle cx="{sx(prior):.1f}" cy="{cy}" r="12" fill="{GREY}" stroke="{SURFACE}" stroke-width="3"/>')
             out.append(f'<circle cx="{sx(flora):.1f}" cy="{cy}" r="14" fill="{ORANGE}" stroke="{SURFACE}" stroke-width="3"/>')
-            out.append(text(sx(flora), cy - 24, f"{flora:.1f}", 26, INK, "middle", 700))
-            out.append(text(sx(prior), cy + 42, f"{prior:.1f}", 24, MUTED, "middle"))
+            label = text(sx(flora), cy - 24, f"{flora:.1f}", 26, INK, "middle", 700)
+            if label_halo:   # keeps gridlines from cutting through the number
+                label = label.replace("<text ", f'<text stroke="{label_halo}" stroke-width="7" '
+                                      f'stroke-linejoin="round" paint-order="stroke" ', 1)
+            out.append(label)
+            if prior_labels:
+                out.append(text(sx(prior), cy + 42, f"{prior:.1f}", 24, MUTED, "middle"))
     for i, (task, model) in enumerate(SETTINGS):
         cy = TOP + (i + 0.5) * ROW_H
-        out.append(text(0, cy - 4, task, 30, INK, weight=700))
-        out.append(text(0, cy + 30, model, 26, MUTED))
-        if i in (2, 4):  # separate the three tasks
+        big, small = label_sizes
+        out.append(text(0, cy - 4, task, big, INK, weight=700))
+        out.append(text(0, cy + (30 if big >= 30 else 22), model, small, MUTED))
+        if separators and i in (2, 4):  # separate the three tasks
             y = TOP + i * ROW_H
             out.append(f'<line x1="0" y1="{y}" x2="{W}" y2="{y}" stroke="{GRID}" stroke-width="2" stroke-dasharray="6 8"/>')
+    if legend:   # hollow = untrained, grey = best prior method, orange = FLORA
+        lx = 0
+        for kind, label in (("base", "Untrained"), ("prior", "Best prior method"), ("flora", "FLORA")):
+            if kind == "base":
+                out.append(f'<circle cx="{lx + 12}" cy="18" r="10" fill="{SURFACE}" stroke="{GREY}" stroke-width="4"/>')
+            else:
+                out.append(f'<circle cx="{lx + 12}" cy="18" r="{12 if kind == "prior" else 14}" fill="{GREY if kind == "prior" else ORANGE}"/>')
+            out.append(text(lx + 34, 27, label, 25, INK))
+            lx += 34 + round(len(label) * 13) + 40
+    if footnote:
+        out.append(text(0, H - 8, footnote, 21, MUTED))
     out.append("</svg>")
     return "\n".join(out)
 
 
-def validator_chart(W, val_row_h, val_span, **_):
+def validator_chart(W, val_row_h, val_span, val_label_size=26, val_tick_labels=None, **_):
     ROW_H, TOP = val_row_h, 10
     (x0, x1), lo, hi = val_span, -5, 20
     sx = lambda v: x0 + (v - lo) / (hi - lo) * (x1 - x0)
@@ -117,7 +144,8 @@ def validator_chart(W, val_row_h, val_span, **_):
         w = 3 if t == 0 else 2
         c = MUTED if t == 0 else GRID
         out.append(f'<line x1="{sx(t):.1f}" y1="{TOP}" x2="{sx(t):.1f}" y2="{bottom}" stroke="{c}" stroke-width="{w}"/>')
-        out.append(text(sx(t), bottom + 40, num(t, "+d") if t else "0", 26, MUTED, "middle"))
+        if val_tick_labels is None or t in val_tick_labels:
+            out.append(text(sx(t), bottom + 40, num(t, "+d") if t else "0", 26, MUTED, "middle"))
     for i, (task, model) in enumerate(SETTINGS):
         cy = TOP + (i + 0.5) * ROW_H
         deltas = [ACC_V[m][i] - ACC_V["Base"][i] for m in FLORA]
@@ -126,7 +154,7 @@ def validator_chart(W, val_row_h, val_span, **_):
         out.append(f'<rect x="{xa - 9:.1f}" y="{cy - 9}" width="{xb - xa + 18:.1f}" height="18" rx="9" fill="{ORANGE}"/>')
         label = f"{num(a)} to {num(b)}"
         out.append(text(max(xb, sx(0)) + 22, cy + 9, label, 26, INK))
-        out.append(text(0, cy + 9, f"<tspan font-weight=\"700\">{task}</tspan> {model}", 26, INK))
+        out.append(text(0, cy + 9, f"<tspan font-weight=\"700\">{task}</tspan> {model}", val_label_size, INK))
     out.append("</svg>")
     return "\n".join(out)
 
@@ -135,7 +163,7 @@ if __name__ == "__main__":
     for name, geom in LAYOUTS.items():
         suffix = "" if name == "landscape" else f"_{name}"
         (OUT / f"chart_results{suffix}.svg").write_text(results_chart(**geom))
-        (OUT / f"chart_validator{suffix}.svg").write_text(validator_chart(**geom))
+        (OUT / f"chart_validator{suffix}.svg").write_text(validator_chart(**{**geom, "W": geom.get("val_W", geom["W"])}))
     for i, s in enumerate(SETTINGS):
         print(s, "ROC prior/FLORA", best(PRIOR, i, 0), best(FLORA, i, 0),
               "| rho prior/FLORA", best(PRIOR, i, 1), best(FLORA, i, 1),
