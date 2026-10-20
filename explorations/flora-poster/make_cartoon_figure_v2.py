@@ -45,7 +45,7 @@ PANELS = [
          note=["Frequency correction pushes it up"]),
     dict(title="After FLORA training", rho="0.75",
          correct=[(0.66, 0.68), (0.92, 0.92), (0.78, 0.60)], hl_c=(0.80, 0.84),
-         wrong=[(0.30, 0.26), (0.06, 0.24), (0.40, 0.06)], hl_w=(0.16, 0.10),
+         wrong=[(0.30, 0.26), (0.06, 0.24)], hl_w=(0.16, 0.10),
          trend=True,
          note=["Generator agrees with validator"]),
 ]
