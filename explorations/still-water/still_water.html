@@ -1,0 +1,546 @@
+<title>Still Water</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A calm browser game that teaches backpropagation through a water garden.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* A still garden: the pond fills the stage; a quiet stone column at its side holds the words and the controls. */
+:root{
+  --bg:#E8ECE6;        /* pale sage stone */
+  --surface:#F4F6F2;   /* raked sand */
+  --ink:#22302B;       /* wet slate */
+  --muted:#66736C;     /* lichen grey */
+  --line:#C9D1C9;      /* dry stone edge */
+  --water:#3F7F8E;     /* still water */
+  --water-soft:rgba(63,127,142,.22);
+  --drain:#8A6C86;     /* a channel that draws water away (negative weight) */
+  --rise:#5E8A4E;      /* moss: open the gate */
+  --fall:#B4743A;      /* clay: close the gate */
+  --sand:#D9CDB4;      /* a dry pool bed */
+  --glow:rgba(94,138,78,.18);
+  --f-display:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111918;--surface:#18221F;--ink:#DCE5E0;--muted:#8E9C95;--line:#2B3A35;
+  --water:#6FB2C1;--water-soft:rgba(111,178,193,.22);--drain:#B996B2;--rise:#8DB678;--fall:#D69A5E;
+  --sand:#4A4436;--glow:rgba(141,182,120,.16);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111918;--surface:#18221F;--ink:#DCE5E0;--muted:#8E9C95;--line:#2B3A35;
+  --water:#6FB2C1;--water-soft:rgba(111,178,193,.22);--drain:#B996B2;--rise:#8DB678;--fall:#D69A5E;
+  --sand:#4A4436;--glow:rgba(141,182,120,.16);color-scheme:dark}
+
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.app{max-width:1280px;margin:0 auto;padding-block:20px 28px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:grid;gap:16px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px}
+h1{font-family:var(--f-display);font-weight:700;font-size:2rem;letter-spacing:.04em;margin:0}
+.tag{color:var(--muted);margin:0;flex:1 1 320px;min-width:0}
+.gardens{display:flex;gap:6px;flex-wrap:wrap}
+.gardens button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);
+  color:var(--muted);font:500 .85rem var(--f-mono);cursor:pointer;display:grid;place-items:center;padding:0}
+.gardens button.done{border-color:var(--rise);color:var(--rise)}
+.gardens button.cur{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}
+@media (max-width:900px){.stage{grid-template-columns:minmax(0,1fr)}}
+.pond{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:10px;min-width:0}
+#garden{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+.meter{display:flex;align-items:center;gap:14px;padding:6px 10px 4px;flex-wrap:wrap}
+.meter .lbl{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.meter .val{font:500 1rem var(--f-mono);font-variant-numeric:tabular-nums;min-width:6.5em}
+#spark{flex:1 1 200px;min-width:0;height:40px}
+.panel{display:grid;gap:14px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:grid;gap:10px;min-width:0}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+h2{font-family:var(--f-display);font-weight:700;font-size:1.55rem;margin:0;text-wrap:balance}
+.hint{margin:0}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{font:500 1rem var(--f-body);padding:9px 18px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--bg)}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.quiet{border-color:var(--line);color:var(--muted);font-size:.9rem;padding:7px 14px}
+.depth{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center}
+.depth label{font-size:.9rem;color:var(--muted)}
+.depth output{font:500 .95rem var(--f-mono);font-variant-numeric:tabular-nums;min-width:3.2em;text-align:right}
+input[type=range]{width:100%;accent-color:var(--water)}
+.stats{display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+.stats b{font:500 1rem var(--f-mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.stones{display:inline-flex;gap:4px;vertical-align:middle}
+.stones i{width:12px;height:9px;border-radius:50%;background:var(--line);display:inline-block}
+.stones i.on{background:var(--rise)}
+.toggle{display:flex;align-items:center;gap:8px;font-size:.95rem;cursor:pointer}
+.lesson{border-color:var(--rise);background:linear-gradient(var(--glow),var(--glow)),var(--surface)}
+.lesson p{margin:0}
+.math{font:400 .92rem var(--f-mono);color:var(--muted);margin:0}
+details{font-size:.95rem}
+summary{cursor:pointer;color:var(--muted)}
+.gloss{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:10px 0 0}
+.gloss dt{color:var(--muted)} .gloss dd{margin:0}
+.note{font-size:.85rem;color:var(--muted);margin:0}
+.legend{padding:0 10px 4px}
+:focus-visible{outline:2.5px solid var(--water);outline-offset:2px}
+/* svg */
+.stream{fill:none;stroke-linecap:round}
+.gate{cursor:ns-resize}
+.gate.locked{cursor:not-allowed}
+.gate .stone{stroke:var(--ink);stroke-width:1.4}
+.gate:focus{outline:none}
+.gate:focus-visible .stone{stroke:var(--water);stroke-width:3}
+.t-label{font:500 13px var(--f-mono);fill:var(--muted)}
+.t-node{font:500 15px var(--f-body);fill:var(--ink)}
+.t-num{font:500 12px var(--f-mono);fill:var(--ink)}
+.t-small{font:400 12px var(--f-body);fill:var(--muted)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+
+<div class="app">
+  <header>
+    <h1>Still Water</h1>
+    <p class="tag">Bring each garden to rest. Along the way you will train a neural network by backpropagation.</p>
+    <nav class="gardens" id="gardens" aria-label="Gardens"></nav>
+  </header>
+  <main class="stage">
+    <section class="pond" aria-label="The garden">
+      <svg id="garden" viewBox="0 0 900 540" role="img" aria-label="A water garden: springs, channels with gate stones, pools and a basin"></svg>
+      <div class="meter">
+        <span class="lbl">Ripple height</span>
+        <span class="val" id="lossVal">0.000</span>
+        <svg id="spark" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"></svg>
+      </div>
+      <p class="note legend" id="legend" hidden>Above each gate: its weight w. Below it, while listening: ∂L/∂w (moss: raise the gate, clay: lower it). In each pool: its activation.</p>
+    </section>
+    <aside class="panel">
+      <div class="card">
+        <p class="eyebrow" id="gNum">Garden 1 of 9</p>
+        <h2 id="gName">The first stream</h2>
+        <p class="hint" id="gHint"></p>
+        <div class="controls">
+          <button class="btn" id="listen" aria-pressed="false">Listen</button>
+          <button class="btn primary" id="breathe">Breathe</button>
+          <button class="btn quiet" id="reset">Reset garden</button>
+        </div>
+        <div class="depth" id="depthRow">
+          <label for="depth">Breath depth</label>
+          <input type="range" id="depth" min="0.02" max="0.5" step="0.01" value="0.1">
+          <output id="depthOut" for="depth">0.10</output>
+        </div>
+        <div class="stats">
+          <span>Breaths <b id="breaths">0</b></span>
+          <span>Calm within <b id="par">3</b></span>
+          <span class="stones" id="stones" aria-label="stones earned"><i></i><i></i><i></i></span>
+        </div>
+        <label class="toggle"><input type="checkbox" id="numbers"> Show the numbers</label>
+      </div>
+      <div class="card lesson" id="lesson" hidden>
+        <p class="eyebrow">The garden is still</p>
+        <p id="lessonText"></p>
+        <p class="math" id="lessonMath"></p>
+        <div class="controls"><button class="btn primary" id="next">Next garden</button></div>
+      </div>
+      <div class="card">
+        <details id="glossary">
+          <summary>Garden words and network words</summary>
+          <dl class="gloss">
+            <dt>Spring</dt><dd>an input, x</dd>
+            <dt>Gate stone</dt><dd>a weight, w. Teal channels add water downstream; plum channels draw it away (negative weights).</dd>
+            <dt>Middle pool</dt><dd>a hidden unit; its water level is the unit's activation</dd>
+            <dt>Basin</dt><dd>the output, the prediction ŷ</dd>
+            <dt>Natural level</dt><dd>the target, y</dd>
+            <dt>Ripple height</dt><dd>the loss, L = ½ Σ (ŷ − y)²</dd>
+            <dt>Listen</dt><dd>the backward pass: ripples travel upstream</dd>
+            <dt>A gate's ripple</dt><dd>∂L/∂w: the arrow shows which way the gate should move, its size how strongly</dd>
+            <dt>A breath</dt><dd>one step of gradient descent, w ← w − η ∂L/∂w, for every gate at once</dd>
+            <dt>Breath depth</dt><dd>the learning rate, η</dd>
+          </dl>
+        </details>
+        <p class="note">Drag a gate stone up or down, or focus it and use the arrow keys.</p>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script>
+'use strict';
+/* ================================================================ the networks
+   Each garden is a small network. Layer l (1-based) uses W[l-1] (row j = weights into node j), b[l-1] and
+   acts[l-1]. Loss L = 1/2 * sum_k (yhat_k - y_k)^2. Parameters are named W{l}_{j}_{i} and b{l}_{j} (l 0-based). */
+const TOL = 5e-4;   // "still": the loss is below this
+const LEVELS = [
+ {name:'The first stream', x:[1], acts:['lin'], W:[[[0.2]]], b:[[0]], t:[0.8], range:[[0,1.2]],
+  allow:{drag:true, listen:false, breathe:false}, par:0,
+  hint:'Water from the spring runs through one gate into the basin. Drag the gate stone up to let more water through, or down to let less through, until the water rests at its natural level.',
+  lesson:'That is all training is: adjust the gates until the output matches the target. The gate is a weight, the basin\'s level is the prediction, and the natural level is the label. From now on the garden will tell you which way to turn each gate.',
+  math:'ŷ = w·x. With x = 1, the water rests when w = 0.8.'},
+ {name:'Listening', x:[2,0.5], acts:['lin'], W:[[[0.1,0.6]]], b:[[0]], t:[1.6], range:[[0,2.4]],
+  allow:{drag:true, listen:true, breathe:false}, par:0, gRef:2.2,
+  hint:'Press Listen. Ripples travel back up each channel, and the arrow at each gate shows which way it should move. One channel ripples much harder than the other. Then calm the basin by hand.',
+  lesson:'A channel\'s ripple is the basin\'s error times the water flowing into that channel. The spring that sends more water has more say, so its gate matters more.',
+  math:'∂L/∂wᵢ = (ŷ − y)·xᵢ'},
+ {name:'One breath', x:[1,0.5,1.5], acts:['lin'], W:[[[0.2,0.4,0.2]]], b:[[0]], t:[1.8], range:[[0,2.4]],
+  allow:{drag:false, listen:true, breathe:true}, eta:0.2, depth:false, par:3, gRef:1.65,
+  hint:'You can no longer move the gates by hand. Breathe instead: on each breath every gate moves a little along its own ripple, all at once. Calm the basin in three breaths.',
+  lesson:'A breath is one step of gradient descent, taken by every weight at the same time. One Listen tells you how to move all the gates together, so there is no need to test them one at a time.',
+  math:'w ← w − η·∂L/∂w   (here η = 0.2)'},
+ {name:'Breath depth', x:[2,1], acts:['lin'], W:[[[0.3,0.2]]], b:[[0]], t:[2.0], range:[[0,3]],
+  allow:{drag:false, listen:true, breathe:true}, eta:0.05, depth:[0.02,0.5,0.01], par:3, gRef:2.4,
+  hint:'Now choose how deeply to breathe. A shallow breath barely moves the water; a deep one makes it slosh past its natural level. Find a depth that calms the basin within three breaths. Reset the garden to try again.',
+  lesson:'Breath depth is the learning rate. Too small, and training crawls. Too large, and each step overshoots, so the error grows instead of shrinking. Here one breath at depth 0.2 is enough.',
+  math:'error after a breath = error·(1 − η·(x₁² + x₂²)) = error·(1 − 5η): best at η = 0.2'},
+ {name:'A pool between', x:[1], acts:['sig','lin'], W:[[[0.5]],[[0.5]]], b:[[0],[0]], t:[0.9], range:[null,[0,1.2]],
+  allow:{drag:true, listen:true, breathe:true}, eta:1, depth:[0.2,4,0.1], par:5, gRef:0.4,
+  hint:'A pool now sits between the spring and the basin. Listen, and follow the ripple upstream: it crosses the second channel, then passes through the middle pool before it reaches the first gate. Which gate ripples less?',
+  lesson:'A ripple is multiplied by everything it passes: by the channel it crosses (that channel\'s weight) and by how freely the middle pool responds (the sigmoid\'s slope). Multiplying along the path is the chain rule.',
+  math:'∂L/∂w₁ = (ŷ − y) · w₂ · h(1 − h) · x'},
+ {name:'Where streams part', x:[1], acts:['sig','lin'], W:[[[0.4055]],[[1],[1]]], b:[[0],[0,0]], t:[0.9,0.3], range:[null,[0,1.2]],
+  allow:{drag:true, listen:true, breathe:true}, eta:1, depth:[0.2,3,0.1], par:6, gRef:0.4,
+  hint:'One middle pool feeds two basins. The upper basin wants more water, the lower one less. Listen: the two ripples meet at the middle pool. What happens to the first gate?',
+  lesson:'Ripples that meet add up. At the start they were equal and opposite, so they cancelled and the first gate stayed still while the outer gates did the work. When a unit feeds several others, its ripple is the sum over all its paths.',
+  math:'∂L/∂h = (ŷ₁ − y₁)·v₁ + (ŷ₂ − y₂)·v₂ = (0.6 − 0.9)·1 + (0.6 − 0.3)·1 ≈ 0 at the start'},
+ {name:'The dry pool', x:[1,1], acts:['relu','lin'], W:[[[0.6,0.4],[-0.5,-0.3]],[[0.5,0.8]]], b:[[0,0],[0]], t:[1.5], range:[[0,2],[0,2.2]],
+  allow:{drag:true, listen:true, breathe:true}, eta:0.3, depth:[0.05,0.8,0.05], par:3, gRef:1,
+  hint:'These middle pools are ReLU pools: when the water flowing in adds up to less than nothing, the pool runs dry and lets nothing out. The lower pool is dry. Listen, breathe, and watch the gates around it.',
+  lesson:'A dry pool sends no ripple upstream, so its gates never move: ReLU\'s slope is 0 when its input is negative. This is a dead unit. You can bring it back by hand, by dragging its gates until it fills, and then it learns like the others.',
+  math:'ReLU′(z) = 0 for z < 0, so every ripple through the dry pool is multiplied by 0'},
+ {name:'The brimming pool', x:[1], acts:['sig','lin'], W:[[[6]],[[2]]], b:[[0],[0]], t:[1.0], range:[null,[0,2.2]],
+  allow:{drag:true, listen:true, breathe:true}, eta:2, depth:[0.5,5,0.1], par:8, gRef:0.4, lock:['W1_0_0'], wMax:8,
+  hint:'The middle pool is full to the brim, and its outflow gate is fixed. Breathe a few times and watch how little changes. Then drag the first gate down until the pool is about half full, and breathe again. A few stuck breaths are part of this garden, so it allows eight.',
+  lesson:'A sigmoid pool that is nearly full (or nearly empty) is saturated: it barely responds, so ripples die out as they pass through it and learning stalls. Half full, it responds most freely.',
+  math:'slope h(1 − h): 0.0025 at h = 0.9975, but 0.25 at h = 0.5'},
+ {name:'The whole garden', x:[2,1], acts:['sig','lin'], W:[[[-0.5,1],[0.5,-1]],[[2,0.5]]], b:[[1,-0.5],[-1]], t:[2], range:[null,[0,2.6]],
+  showBias:[true,true], allow:{drag:true, listen:true, breathe:true}, eta:0.1, depth:[0.05,1,0.05], par:6, gRef:1.2,
+  hint:'This is the regression example from class: two springs, two middle pools, one basin, and the bias springs marked 1. Turn on Show the numbers, Listen, and compare with the slides. Then calm it. A slightly deeper breath helps.',
+  lesson:'You have just done backpropagation on the class example. At the start the error at the basin was ŷ − y = −1.349; the ripple at the output gate w₁₁⁽²⁾ was −0.986, and at the first-layer gate w₁₁⁽¹⁾ it was −1.061. One breath at depth 0.1 lowers the ripple height from 0.910 to 0.489.',
+  math:'Every gate, every breath: w ← w − η·∂L/∂w. The garden is a neural network, and calming it is training.'},
+];
+
+const ACT = {
+  lin:  {f:z=>z, d:()=>1},
+  sig:  {f:z=>1/(1+Math.exp(-z)), d:z=>{const s=1/(1+Math.exp(-z)); return s*(1-s);}},
+  relu: {f:z=>Math.max(0,z), d:z=>z>0?1:0},
+};
+function forward(lv,P){
+  const a=[lv.x.slice()], z=[null];
+  for(let l=0;l<P.W.length;l++){
+    const zl=P.W[l].map((row,j)=>row.reduce((s,w,i)=>s+w*a[l][i],P.b[l][j]));
+    z.push(zl); a.push(zl.map(v=>ACT[lv.acts[l]].f(v)));
+  }
+  const out=a[a.length-1];
+  return {a,z,L:0.5*out.reduce((s,v,k)=>s+(v-lv.t[k])**2,0)};
+}
+// dW[l][j][i] = dL/dW, db[l][j] = dL/db, dz[l] = dL/dz of layer l (1-based), da[l] = dL/da
+function backward(lv,P,F){
+  const n=P.W.length, dW=[], db=[], dz=[], da=[];
+  da[n]=F.a[n].map((v,k)=>v-lv.t[k]);
+  for(let l=n;l>=1;l--){
+    dz[l]=da[l].map((g,j)=>g*ACT[lv.acts[l-1]].d(F.z[l][j]));
+    dW[l-1]=dz[l].map(g=>F.a[l-1].map(av=>g*av));
+    db[l-1]=dz[l].slice();
+    da[l-1]=F.a[l-1].map((_,i)=>dz[l].reduce((s,g,j)=>s+g*P.W[l-1][j][i],0));
+  }
+  return {dW,db,dz,da};
+}
+const copyP=P=>({W:P.W.map(m=>m.map(r=>r.slice())), b:P.b.map(r=>r.slice())});
+const biasShown=(lv,l)=>!!(lv.showBias&&lv.showBias[l]);
+const editable=(lv,key)=>!(lv.lock||[]).includes(key) && (key[0]==='W' || biasShown(lv,+key.split('_')[0].slice(1)));
+
+/* ================================================================ state */
+const S = {li:0, P:null, breaths:0, hist:[], listening:false, numbers:false, eta:0.1, done:false, anim:null, rippleT0:-1e9};
+let G = null;   // geometry and svg elements of the current garden
+const $ = id=>document.getElementById(id);
+const svg = $('garden'), NS='http://www.w3.org/2000/svg';
+const el=(tag,attrs,parent)=>{const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); (parent||svg).appendChild(e); return e;};
+const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmt=(v,d=2)=>(Math.abs(v)<0.5*10**-d?0:v).toFixed(d).replace('-','−');
+
+let progress={};
+try{ progress=JSON.parse(localStorage.getItem('stillwater.progress')||'{}')||{}; }catch(e){ progress={}; }
+function saveProgress(){ try{ localStorage.setItem('stillwater.progress',JSON.stringify(progress)); }catch(e){} }
+
+/* ================================================================ layout */
+const VW=900, VH=540;
+function layout(lv){
+  const nl=lv.W.length, sizes=[lv.x.length, ...lv.W.map(m=>m.length)];
+  const xs = nl===1 ? [170,700] : [110,450,770];
+  const rowY=(n,k)=> n===1 ? 230 : (n===2 ? [150,320][k] : [110,230,350][k]);
+  const nodes=sizes.map((n,l)=>Array.from({length:n},(_,k)=>({l,k,x:xs[l],y:rowY(n,k)})));
+  const biasNodes=[]; for(let l=0;l<nl;l++) if(biasShown(lv,l)) biasNodes[l]={l,x:xs[l],y:470,bias:true};
+  // radii / shapes: springs r=22, pools r=34, basins 70 wide
+  const out=nodes[nl];
+  out.forEach(o=>{o.basin=true; o.h= out.length===1?230:150; o.w=70;});
+  const port=(node,side)=>{ // where a stream leaves (side=+1) or enters (side=-1) a node
+    if(node.basin) return [node.x - node.w/2, node.y];
+    const r = node.l===0||node.bias ? 22 : 34;
+    return [node.x + side*r, node.y];
+  };
+  const edges=[];
+  for(let l=0;l<nl;l++){
+    const src=[...nodes[l], ...(biasNodes[l]?[biasNodes[l]]:[])];
+    nodes[l+1].forEach((d,j)=>src.forEach((s,i)=>{
+      const isB=!!s.bias, key=isB?`b${l}_${j}`:`W${l}_${j}_${i}`;
+      const [x0,y0]=port(s,1), [x1,y1]=port(d,-1);
+      edges.push({l,j,i,isB,key,x0,y0,x1,y1,src:s});
+    }));
+  }
+  // gate stones sit where streams are clear of each other: mid-stream on a level stream, near the source on a
+  // slanted one; when one source has two slanted streams, the second gate sits further along
+  const seen=new Map();
+  edges.forEach(e=>{
+    if(Math.abs(e.y1-e.y0)<1){ e.t=0.5; return; }
+    const r=seen.get(e.src)||0; seen.set(e.src,r+1); e.t = r%2 ? 0.6 : 0.24;
+  });
+  return {nodes,biasNodes,edges,nl};
+}
+function bez(e,t){
+  const dx=(e.x1-e.x0)*0.45, u=1-t;
+  const p1x=e.x0+dx, p2x=e.x1-dx;
+  return [u*u*u*e.x0+3*u*u*t*p1x+3*u*t*t*p2x+t*t*t*e.x1, u*u*u*e.y0+3*u*u*t*e.y0+3*u*t*t*e.y1+t*t*t*e.y1];
+}
+const edgePath=e=>{const dx=(e.x1-e.x0)*0.45; return `M${e.x0} ${e.y0} C${e.x0+dx} ${e.y0} ${e.x1-dx} ${e.y1} ${e.x1} ${e.y1}`;};
+const pget=(P,key)=>{const p=key.slice(1).split('_').map(Number); return key[0]==='W'?P.W[p[0]][p[1]][p[2]]:P.b[p[0]][p[1]];};
+const pset=(P,key,v)=>{const p=key.slice(1).split('_').map(Number); if(key[0]==='W') P.W[p[0]][p[1]][p[2]]=v; else P.b[p[0]][p[1]]=v;};
+const gget=(B,key)=>{const p=key.slice(1).split('_').map(Number); return key[0]==='W'?B.dW[p[0]][p[1]][p[2]]:B.db[p[0]][p[1]];};
+
+/* ================================================================ build the svg for a garden */
+function build(){
+  const lv=LEVELS[S.li];
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  G=layout(lv);
+  const defs=el('defs',{});
+  G.gStreams=el('g',{}); G.gDrops=el('g',{}); G.gRipples=el('g',{}); G.gNodes=el('g',{}); G.gGates=el('g',{}); G.gText=el('g',{});
+  // streams
+  G.edges.forEach(e=>{ e.path=el('path',{d:edgePath(e),class:'stream'},G.gStreams);
+    e.drops=[0,1,2].map(()=>el('circle',{r:3},G.gDrops)); });
+  // springs
+  G.nodes[0].forEach((n,i)=>{
+    el('circle',{cx:n.x,cy:n.y,r:22,fill:'var(--water-soft)',stroke:'var(--water)','stroke-width':1.6},G.gNodes);
+    const tx=el('text',{x:n.x,y:n.y+5,'text-anchor':'middle',class:'t-num'},G.gNodes); tx.textContent=fmt(lv.x[i],1).replace('.0','');
+    const lb=el('text',{x:n.x,y:n.y-32,'text-anchor':'middle',class:'t-small'},G.gNodes); lb.textContent=lv.x.length>1?`spring ${i+1}`:'spring';
+  });
+  G.biasNodes.forEach(n=>{ if(!n) return;
+    el('circle',{cx:n.x,cy:n.y,r:22,fill:'var(--surface)',stroke:'var(--muted)','stroke-width':1.4,'stroke-dasharray':'4 4'},G.gNodes);
+    const tx=el('text',{x:n.x,y:n.y+5,'text-anchor':'middle',class:'t-num'},G.gNodes); tx.textContent='1';
+    const lb=el('text',{x:n.x,y:n.y+40,'text-anchor':'middle',class:'t-small'},G.gNodes); lb.textContent='bias spring';
+  });
+  // middle pools
+  for(let l=1;l<G.nl;l++) G.nodes[l].forEach((n,k)=>{
+    const cid=`clip${l}${k}`; const cp=el('clipPath',{id:cid},defs); el('circle',{cx:n.x,cy:n.y,r:33},cp);
+    n.bed=el('circle',{cx:n.x,cy:n.y,r:34,fill:'var(--surface)',stroke:'var(--ink)','stroke-width':1.6},G.gNodes);
+    n.fill=el('rect',{x:n.x-34,width:68,y:n.y+34,height:0,fill:'var(--water)','fill-opacity':.55,'clip-path':`url(#${cid})`},G.gNodes);
+    n.ring=el('circle',{cx:n.x,cy:n.y,r:34,fill:'none',stroke:'var(--ink)','stroke-width':1.6},G.gNodes);
+    n.label=el('text',{x:n.x,y:n.y-44,'text-anchor':'middle',class:'t-small'},G.gText);
+    n.num=el('text',{x:n.x,y:n.y+5,'text-anchor':'middle',class:'t-num'},G.gText);
+  });
+  // basins
+  G.nodes[G.nl].forEach((n,k)=>{
+    const x0=n.x-n.w/2, y0=n.y-n.h/2, cid=`clipb${k}`;
+    const cp=el('clipPath',{id:cid},defs); el('rect',{x:x0+1.5,y:y0,width:n.w-3,height:n.h-1.5,rx:10},cp);
+    el('rect',{x:x0,y:y0,width:n.w,height:n.h,rx:12,fill:'var(--surface)',stroke:'var(--ink)','stroke-width':1.6},G.gNodes);
+    n.water=el('path',{fill:'var(--water)','fill-opacity':.55,'clip-path':`url(#${cid})`},G.gNodes);
+    n.target=el('line',{x1:x0-10,x2:x0+n.w+10,stroke:'var(--rise)','stroke-width':2.5,'stroke-dasharray':'2 5','stroke-linecap':'round'},G.gNodes);
+    n.tlabel=el('text',{x:x0+n.w+14,'text-anchor':'start',class:'t-small'},G.gText); n.tlabel.textContent='natural level';
+    n.num=el('text',{x:n.x,y:y0+n.h+20,'text-anchor':'middle',class:'t-num'},G.gText);
+    n.glow=el('rect',{x:x0-6,y:y0-6,width:n.w+12,height:n.h+12,rx:16,fill:'none',stroke:'var(--rise)','stroke-width':3,opacity:0},G.gNodes);
+  });
+  // gates
+  G.edges.forEach(e=>{
+    const [gx,gy]=bez(e,e.t); e.gx=gx; e.gy=gy;
+    const lock=!lv.allow.drag || !editable(lv,e.key);
+    e.g=el('g',{class:'gate'+(lock?' locked':''),tabindex:lock?-1:0,role:'slider','aria-label':`gate ${e.key}`},G.gGates);
+    e.halo=el('circle',{cx:gx,cy:gy,r:0,fill:'none','stroke-width':2,opacity:.0},e.g);
+    e.arrow=el('path',{fill:'none','stroke-width':2.6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0},e.g);
+    e.stone=el('ellipse',{cx:gx,cy:gy,rx:11,ry:7.5,class:'stone',fill:lock&&lv.allow.drag&&!editable(lv,e.key)?'var(--line)':'var(--surface)'},e.g);
+    e.wlab=el('text',{x:gx,y:gy-13,'text-anchor':'middle',class:'t-num'},G.gText);
+    e.glab=el('text',{x:gx,y:gy+22,'text-anchor':'middle',class:'t-label'},G.gText);
+    if(!lock) attachDrag(e);
+  });
+  // ripple pool
+  G.ripples=[]; for(let k=0;k<G.edges.length*2;k++) G.ripples.push(el('circle',{r:0,fill:'none','stroke-width':1.8,opacity:0},G.gRipples));
+}
+
+/* ================================================================ dragging a gate */
+function svgDY(ev){ const r=svg.getBoundingClientRect(); return ev.clientY*VH/r.height; }
+function attachDrag(e){
+  const lv=LEVELS[S.li], wMax=lv.wMax||4;
+  let startY=0, startW=0, active=false;
+  e.g.addEventListener('pointerdown',ev=>{ ev.preventDefault(); e.g.setPointerCapture(ev.pointerId); active=true; startY=svgDY(ev); startW=pget(S.P,e.key); e.g.focus({preventScroll:true}); });
+  e.g.addEventListener('pointermove',ev=>{ if(!active) return; const w=Math.max(-wMax,Math.min(wMax,startW+(startY-svgDY(ev))*0.01)); pset(S.P,e.key,Math.round(w*100)/100); changed(false); });
+  const end=()=>{ if(active){active=false; record();} };
+  e.g.addEventListener('pointerup',end); e.g.addEventListener('pointercancel',end);
+  e.g.addEventListener('keydown',ev=>{
+    if(ev.key!=='ArrowUp'&&ev.key!=='ArrowDown') return; ev.preventDefault();
+    const step=(ev.shiftKey?0.1:0.02)*(ev.key==='ArrowUp'?1:-1);
+    pset(S.P,e.key,Math.max(-wMax,Math.min(wMax,Math.round((pget(S.P,e.key)+step)*100)/100))); changed(false); record();
+  });
+}
+
+/* ================================================================ drawing each frame */
+let F=null, B=null;
+function compute(){ const lv=LEVELS[S.li]; F=forward(lv,S.P); B=backward(lv,S.P,F); }
+function draw(now){
+  const lv=LEVELS[S.li]; if(!G) return;
+  const tt=now/1000;
+  // streams and droplets
+  G.edges.forEach(e=>{
+    const w=pget(S.P,e.key), src=e.isB?1:F.a[e.l][e.i], flow=Math.abs(w*src);
+    e.path.setAttribute('stroke', w>=0?'var(--water)':'var(--drain)');
+    e.path.setAttribute('stroke-width', (1.2+3.2*Math.min(1,Math.abs(w)/2)).toFixed(2));
+    e.path.setAttribute('stroke-opacity', (0.35+0.5*Math.min(1,Math.abs(w)/1.5)).toFixed(2));
+    const op=Math.min(0.9, flow*0.6);
+    e.drops.forEach((d,k)=>{
+      if(reduceMotion||op<0.02){ d.setAttribute('opacity',0); return; }
+      const ph=((tt*0.28 + k/3 + e.i*0.17)%1+1)%1, [px,py]=bez(e,ph);
+      d.setAttribute('cx',px.toFixed(1)); d.setAttribute('cy',py.toFixed(1));
+      d.setAttribute('fill', w>=0?'var(--water)':'var(--drain)'); d.setAttribute('opacity',(op*Math.sin(Math.PI*ph)).toFixed(2));
+    });
+  });
+  // middle pools
+  for(let l=1;l<G.nl;l++) G.nodes[l].forEach((n,k)=>{
+    const a=F.a[l][k], act=lv.acts[l-1], frac= act==='sig'?a : Math.min(1,a/2);
+    const dry = act==='relu' && a<=0;
+    n.fill.setAttribute('y',(n.y+34-68*frac).toFixed(1)); n.fill.setAttribute('height',(68*frac).toFixed(1));
+    n.bed.setAttribute('fill', dry?'var(--sand)':'var(--surface)');
+    n.ring.setAttribute('stroke-dasharray', dry?'5 4':'none');
+    n.label.textContent = dry ? 'dry' : (act==='sig' ? (a>0.97||a<0.03 ? (a>0.5?'brimming':'nearly empty') : 'pool') : 'pool');
+    n.num.textContent = S.numbers ? fmt(a,3) : '';
+  });
+  // basins: water surface waves with the error
+  G.nodes[G.nl].forEach((n,k)=>{
+    const [lo,hi]=lv.range[lv.range.length-1], y0=n.y-n.h/2, x0=n.x-n.w/2;   // the last entry is the basins' scale
+    const yhat=F.a[G.nl][k], err=yhat-lv.t[k];
+    const frac=Math.max(0,Math.min(1,(yhat-lo)/(hi-lo))), level=y0+n.h*(1-frac);
+    const amp=reduceMotion?0:Math.min(7, Math.abs(err)*14);
+    let d=`M${x0} ${y0+n.h} L${x0} ${level}`;
+    for(let s=0;s<=14;s++){ const x=x0+n.w*s/14; d+=` L${x.toFixed(1)} ${(level+amp*Math.sin(s*0.9+tt*2.4)).toFixed(1)}`; }
+    n.water.setAttribute('d',d+` L${x0+n.w} ${y0+n.h} Z`);
+    const ty=y0+n.h*(1-Math.max(0,Math.min(1,(lv.t[k]-lo)/(hi-lo))));
+    n.target.setAttribute('y1',ty); n.target.setAttribute('y2',ty); n.tlabel.setAttribute('y',ty+4);
+    n.num.textContent = S.numbers ? `ŷ = ${fmt(yhat,3)}   y = ${fmt(lv.t[k],2)}` : '';
+    n.glow.setAttribute('opacity', S.done ? (0.4+0.3*Math.sin(tt*1.5)).toFixed(2) : 0);
+  });
+  // gates: value labels, arrows and halos when listening
+  const gRef=lv.gRef||1, since=(now-S.rippleT0)/1000;
+  G.edges.forEach(e=>{
+    const w=pget(S.P,e.key), g=gget(B,e.key), canMove=editable(lv,e.key);
+    e.wlab.textContent = S.numbers ? (e.isB?'b ':'')+fmt(w,2) : '';
+    const show = S.listening && canMove;
+    const m = Math.min(1, Math.sqrt(Math.abs(g)/gRef)), dir = -Math.sign(g);   // dir +1: open (raise w)
+    const settle = reduceMotion ? 1 : Math.max(0,Math.min(1,(since - 0.35*(G.nl-1-e.l))/0.6));
+    if(show && Math.abs(g)>5e-4){   // smaller ripples count as still
+      const len=(6+18*m)*settle, col=dir>0?'var(--rise)':'var(--fall)', ax=e.gx+18, y1=e.gy+dir*4, y2=y1-dir*len;
+      e.arrow.setAttribute('d',`M${ax} ${y1} L${ax} ${y2} M${ax-4.5} ${y2+dir*5.5} L${ax} ${y2} L${ax+4.5} ${y2+dir*5.5}`);
+      e.arrow.setAttribute('stroke',col); e.arrow.setAttribute('opacity',settle.toFixed(2));
+      const pulse=reduceMotion?0:Math.sin(tt*1.4+e.i)*1.5;
+      e.halo.setAttribute('r',(11+9*m+pulse).toFixed(1)); e.halo.setAttribute('stroke',col); e.halo.setAttribute('opacity',(0.45*settle).toFixed(2));
+    } else { e.arrow.setAttribute('opacity',0); e.halo.setAttribute('opacity',0); }
+    e.glab.textContent = (S.numbers && show) ? fmt(g,3) : '';
+    e.glab.setAttribute('fill', g<0?'var(--rise)':'var(--fall)');
+  });
+  // ripples travelling upstream after Listen or a breath
+  let ri=0;
+  if(S.listening && !reduceMotion && since<3.2){
+    G.edges.forEach(e=>{
+      const g=gget(B,e.key); if(Math.abs(g)<5e-4||!editable(lv,e.key)) return;
+      const start=0.35*(G.nl-1-e.l), p=(since-start)/0.9;   // later layers first
+      if(p<0||p>1) return;
+      const [px,py]=bez(e,1-p*(1-e.t)), m=Math.min(1,Math.sqrt(Math.abs(g)/gRef));
+      const c=G.ripples[ri++]; if(!c) return;
+      c.setAttribute('cx',px.toFixed(1)); c.setAttribute('cy',py.toFixed(1)); c.setAttribute('r',(4+14*m*p).toFixed(1));
+      c.setAttribute('stroke',-g>0?'var(--rise)':'var(--fall)'); c.setAttribute('opacity',(0.8*(1-p*0.6)).toFixed(2));
+    });
+  }
+  for(;ri<G.ripples.length;ri++) G.ripples[ri].setAttribute('opacity',0);
+  $('lossVal').textContent = fmt(F.L, F.L<0.01?4:3);
+}
+
+/* ================================================================ changes, breaths, stillness */
+function changed(reRipple){ compute(); if(reRipple) S.rippleT0=performance.now(); checkStill(); }
+function record(){ S.hist.push(F.L); if(S.hist.length>80) S.hist.shift(); drawSpark(); }
+function checkStill(){
+  const lv=LEVELS[S.li];
+  if(S.done || !(F.L<TOL)) return;
+  S.done=true;
+  const st = lv.par ? (S.breaths<=lv.par?3:S.breaths<=2*lv.par?2:1) : 3;
+  progress[S.li]=Math.max(progress[S.li]||0,st); saveProgress();
+  $('lessonText').textContent=lv.lesson; $('lessonMath').textContent=lv.math;
+  $('next').textContent = S.li===LEVELS.length-1 ? 'Begin again' : 'Next garden';
+  $('lesson').hidden=false; renderPanel();
+}
+function breathe(){
+  const lv=LEVELS[S.li]; if(S.anim||S.done) return;
+  const from=copyP(S.P), to=copyP(S.P);
+  G.edges.forEach(e=>{ if(editable(lv,e.key)){ const nv=pget(from,e.key)-S.eta*gget(B,e.key); pset(to,e.key,Math.max(-12,Math.min(12,nv))); } });
+  S.breaths++; renderPanel();
+  const t0=performance.now(), dur=reduceMotion?1:650;
+  S.anim={t0,dur,from,to};
+}
+function stepAnim(now){
+  if(!S.anim) return;
+  const {t0,dur,from,to}=S.anim, p=Math.min(1,(now-t0)/dur), q=p<.5?2*p*p:1-2*(1-p)*(1-p);
+  G.edges.forEach(e=>pset(S.P,e.key,pget(from,e.key)+(pget(to,e.key)-pget(from,e.key))*q));
+  compute();
+  if(p>=1){ S.P=to; S.anim=null; changed(true); record(); }
+}
+
+/* ================================================================ sparkline of the ripple height */
+function drawSpark(){
+  const sp=$('spark'); while(sp.firstChild) sp.removeChild(sp.firstChild);
+  const h=S.hist; if(h.length<2) return;   // a line needs two points
+  const mx=Math.max(...h,1e-9), X=i=>h.length<2?150:i*300/(h.length-1), Y=v=>36-32*Math.sqrt(v/mx);
+  const line=h.map((v,i)=>`${i?'L':'M'}${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join('');
+  const area=document.createElementNS(NS,'path'); area.setAttribute('d',`${line} L${X(h.length-1)} 40 L${X(0)} 40 Z`); area.setAttribute('fill','var(--water-soft)'); sp.appendChild(area);
+  const p=document.createElementNS(NS,'path'); p.setAttribute('d',line); p.setAttribute('fill','none'); p.setAttribute('stroke','var(--water)'); p.setAttribute('stroke-width','2'); p.setAttribute('vector-effect','non-scaling-stroke'); sp.appendChild(p);
+  const c=document.createElementNS(NS,'circle'); c.setAttribute('cx',X(h.length-1)); c.setAttribute('cy',Y(h[h.length-1])); c.setAttribute('r',3); c.setAttribute('fill','var(--ink)'); sp.appendChild(c);
+}
+
+/* ================================================================ panel */
+function renderPanel(){
+  const lv=LEVELS[S.li];
+  $('gNum').textContent=`Garden ${S.li+1} of ${LEVELS.length}`; $('gName').textContent=lv.name; $('gHint').textContent=lv.hint;
+  $('listen').disabled=!lv.allow.listen; $('listen').setAttribute('aria-pressed',S.listening?'true':'false');
+  $('listen').textContent=S.listening?'Listening':'Listen';
+  $('breathe').disabled=!lv.allow.breathe||S.done; $('breathe').hidden=!lv.allow.breathe;
+  $('depthRow').hidden=!lv.depth;
+  if(lv.depth){ const [a,b,s]=lv.depth; const r=$('depth'); r.min=a; r.max=b; r.step=s; r.value=S.eta; $('depthOut').textContent=fmt(S.eta,2); }
+  $('breaths').textContent=S.breaths;
+  $('par').parentElement.hidden=!lv.par; $('par').textContent=lv.par? `${lv.par} breath${lv.par>1?'s':''}`:'';
+  const st=progress[S.li]||0; [...$('stones').children].forEach((s,i)=>s.classList.toggle('on',i<st));
+  const nav=$('gardens'); [...nav.children].forEach((b,i)=>{ b.classList.toggle('cur',i===S.li); b.classList.toggle('done',!!progress[i]); b.setAttribute('aria-current',i===S.li?'step':'false'); });
+}
+function load(li,keep){
+  S.li=li; const lv=LEVELS[li];
+  S.P = keep&&keep.P ? keep.P : {W:lv.W.map(m=>m.map(r=>r.slice())), b:lv.b.map(r=>r.slice())};
+  S.breaths=keep?keep.breaths||0:0; S.hist=keep&&keep.hist?keep.hist:[]; S.done=false; S.anim=null;
+  S.listening = keep ? !!keep.listening : false;
+  S.eta = keep&&keep.eta ? keep.eta : (lv.eta||0.1);
+  $('lesson').hidden=true;
+  build(); compute(); if(!S.hist.length) record(); else drawSpark();
+  renderPanel(); checkStill();
+}
+// garden buttons
+LEVELS.forEach((lv,i)=>{ const b=document.createElement('button'); b.type='button'; b.textContent=i+1; b.title=lv.name; b.setAttribute('aria-label',`Garden ${i+1}: ${lv.name}`); b.addEventListener('click',()=>load(i)); $('gardens').appendChild(b); });
+$('listen').addEventListener('click',()=>{ S.listening=!S.listening; S.rippleT0=performance.now(); renderPanel(); });
+$('breathe').addEventListener('click',breathe);
+$('reset').addEventListener('click',()=>load(S.li));
+$('next').addEventListener('click',()=>load((S.li+1)%LEVELS.length));
+$('depth').addEventListener('input',ev=>{ S.eta=+ev.target.value; $('depthOut').textContent=fmt(S.eta,2); });
+$('numbers').addEventListener('change',ev=>{ S.numbers=ev.target.checked; $('legend').hidden=!S.numbers; });
+
+function frame(now){ stepAnim(now); draw(now); requestAnimationFrame(frame); }
+
+// test hook and hot-reload state
+window.StillWater={LEVELS,forward,backward,state:S,load,breathe,TOL,get F(){return F;},get B(){return B;}};
+window.claude?.hot?.snapshot?.(()=>({li:S.li,P:S.P,breaths:S.breaths,hist:S.hist,listening:S.listening,eta:S.eta,numbers:S.numbers}));
+function start(data){
+  const d=data||{};
+  if(typeof d.li==='number' && d.li>=0 && d.li<LEVELS.length) load(d.li,d); else load(0);
+  if(d.numbers){ S.numbers=true; $('numbers').checked=true; $('legend').hidden=false; }
+  requestAnimationFrame(frame);
+}
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>
