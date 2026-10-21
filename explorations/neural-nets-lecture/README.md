@@ -47,6 +47,9 @@ cheap enough to run in the browser so the start point can be dragged.
 - `practice/fwdprop_practice_solution.tex` (and `.pdf`): the forward-propagation practice problem (sign
   hidden layer, softmax output, record (5, 10)) solved in the class convention, z = Wx + b with column
   vectors. Build with `pdflatex` in `practice/`.
+- `practice/backprop_practice_solution.tex` (and `.pdf`): the backprop practice problem (2-3-3-1: sigmoid,
+  ReLU, linear; squared error; adjust W(1)21) solved for both handout versions, which differ in the ReLU
+  slope at 0. C1 = 0 makes that matter: version 1 gives 1.73, version 2 (C1's input sum taken as 0) -2.2863.
 - `tests/`: Playwright scripts, run from `tests/` with `NODE_PATH=$(npm root -g) node <script>.js`:
   `steps.js <1|2> [slide-id ...]` (every step of every slide), `interact1.js` and `interact2.js`
   (dragging, replays, presenter view, dark mode, phone width), `recap2.js` (the live network on
