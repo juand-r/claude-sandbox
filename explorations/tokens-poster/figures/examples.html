@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Segmentation examples (Table 2)</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: transparent }
+#figure { position: relative; width: 965px; height: 419px; font-family: Archivo, 'Helvetica Neue', sans-serif; color: #14161A }
+.row { display: flex; align-items: center; box-sizing: border-box; border-bottom: 2px solid #C9CDD3 }
+.row:last-child { border-bottom: 0 }
+.head { border-bottom: 3px solid #14161A; font-size: 24px; font-weight: 700 }
+.w { width: 175px; flex: none; font-size: 26px; color: #4A4F57 }
+.c { flex: none; display: flex; gap: 4px; flex-wrap: nowrap }
+.head .c.ours { color: #2F5D9B }
+.chip { display: inline-block; font-size: 22px; line-height: 1; padding: 7px 4px; border-radius: 8px; border: 2px solid #9AA1AA; background: #FFFFFF; white-space: nowrap }
+.c.ours .chip { border-color: #2F5D9B }
+</style>
+</head>
+<body>
+<div id="figure">
+<div class="row head" style="height: 50px"><div class="w"></div><div class="c ours" style="width: 215px">Ours</div><div class="c" style="width: 180px">BPE</div><div class="c" style="width: 180px">Unigram</div><div class="c" style="width: 215px">MorphPiece (raw)</div></div>
+<div class="row" style="height: 61px"><div class="w">nutritious</div><div class="c ours" style="width: 215px"><span class="chip">nutrit</span><span class="chip">ous</span></div><div class="c" style="width: 180px"><span class="chip">nutritious</span></div><div class="c" style="width: 180px"><span class="chip">nutritio</span><span class="chip">u</span><span class="chip">s</span></div><div class="c" style="width: 215px"><span class="chip">nutrition</span><span class="chip">ous</span></div></div><div class="row" style="height: 61px"><div class="w">crier</div><div class="c ours" style="width: 215px"><span class="chip">cry</span><span class="chip">er</span></div><div class="c" style="width: 180px"><span class="chip">crier</span></div><div class="c" style="width: 180px"><span class="chip">crie</span><span class="chip">r</span></div><div class="c" style="width: 215px"><span class="chip">cry</span><span class="chip">er</span></div></div><div class="row" style="height: 61px"><div class="w">running</div><div class="c ours" style="width: 215px"><span class="chip">run</span><span class="chip">ing</span></div><div class="c" style="width: 180px"><span class="chip">running</span></div><div class="c" style="width: 180px"><span class="chip">running</span></div><div class="c" style="width: 215px"><span class="chip">run</span><span class="chip">er</span><span class="chip">ing</span></div></div><div class="row" style="height: 61px"><div class="w">werewolf</div><div class="c ours" style="width: 215px"><span class="chip">werewolf</span></div><div class="c" style="width: 180px"><span class="chip">werewolf</span></div><div class="c" style="width: 180px"><span class="chip">werewolf</span></div><div class="c" style="width: 215px"><span class="chip">were</span><span class="chip">wolf</span></div></div><div class="row" style="height: 61px"><div class="w">prehistoric</div><div class="c ours" style="width: 215px"><span class="chip">pre</span><span class="chip">history</span><span class="chip">ic</span></div><div class="c" style="width: 180px"><span class="chip">prehistoric</span></div><div class="c" style="width: 180px"><span class="chip">pre</span><span class="chip">historic</span></div><div class="c" style="width: 215px"><span class="chip">pre</span><span class="chip">history</span><span class="chip">ic</span></div></div><div class="row" style="height: 61px"><div class="w">nationalistic</div><div class="c ours" style="width: 215px"><span class="chip">nation</span><span class="chip">al</span><span class="chip">ist</span><span class="chip">ic</span></div><div class="c" style="width: 180px"><span class="chip">national</span><span class="chip">istic</span></div><div class="c" style="width: 180px"><span class="chip">national</span><span class="chip">istic</span></div><div class="c" style="width: 215px"><span class="chip">nation</span><span class="chip">al</span><span class="chip">ist</span><span class="chip">ic</span></div></div>
+</div>
+</body>
+</html>
