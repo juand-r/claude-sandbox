@@ -59,3 +59,10 @@ Results deliberately left off the poster (the user asked for the best results on
 
 - The QR code decodes to https://github.com/juand-r/morpheus-tokenizer, but `git ls-remote` without credentials asks for a login, so the repo is private or not yet created (checked 2026-10-20).
 - Chip colours in the cartoon (meaningful / misleading / kept whole) are our reading of the paper's argument, not labels from the paper.
+
+## Revision 2 (2026-10-21)
+
+- Results: the big "2nd / 3rd" and "+1.4" numbers are now body-size sentences. Reason: none of the 32 BabyLM 2025 posters (babylm.github.io/posters_2025.html) shows rankings in large type; the one that mentions the leaderboard does it in a bullet, and the tokenization posters use compact tables.
+- Title: middle dots mark morpheme boundaries, taken from the real tokenizer (HF repo juand-r/morpheus-10M-v5, `our_tokenizer.py`, run on each title word): token·s, mean·ing, semantic·ly (shown as Semantic·ally), inform·ed, morphology·ical (shown as Morpholog·ical), model·ing; tokenization, language, low, resource kept whole; low-resource split at the hyphen.
+- Method box 60 px taller, Results box 60 px shorter, to balance empty space.
+- Results chart: gridlines replaced by axis ticks. LibreOffice drew faint outlines wherever semi-transparent PNG pixels overlapped (label halos, gridlines); removing the overlap avoids depending on how Keynote composites them.

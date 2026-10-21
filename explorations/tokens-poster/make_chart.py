@@ -9,7 +9,6 @@ OUT = Path(__file__).parent / "figures" / "results.html"
 W, H = 1000, 600
 INK, MUTED, GRID, ORANGE, GREY = "#14161A", "#4A4F57", "#C9CDD3", "#D2601A", "#7A828C"
 FONT = "Archivo, 'Helvetica Neue', sans-serif"
-HALO = "#F2EAF6"                         # results box fill, so value labels mask gridlines
 
 # Table 6: Muon + MNTP@20%, same recipe as the submitted model. (label, BLiMP, style)
 ROWS = [
@@ -32,8 +31,9 @@ svg = []
 axis_y = TOP + len(ROWS) * ROW_H + 10
 for t in X_TICKS:
     x = x_of(t)
-    svg.append(f'<line x1="{x:.1f}" y1="{TOP}" x2="{x:.1f}" y2="{axis_y}" stroke="{GRID}" stroke-width="2"/>')
+    svg.append(f'<line x1="{x:.1f}" y1="{axis_y - 10}" x2="{x:.1f}" y2="{axis_y}" stroke="{MUTED}" stroke-width="2"/>')
     svg.append(f'<text x="{x:.1f}" y="{axis_y + 34}" font-size="24" fill="{MUTED}" text-anchor="middle">{t}</text>')
+svg.append(f'<line x1="{x_of(X_MIN):.1f}" y1="{axis_y}" x2="{x_of(X_MAX):.1f}" y2="{axis_y}" stroke="{MUTED}" stroke-width="2"/>')
 svg.append(f'<text x="{x_of((X_MIN + X_MAX) / 2):.1f}" y="{axis_y + 72}" font-size="26" fill="{MUTED}" text-anchor="middle">BLiMP accuracy</text>')
 for i, (label, v, style) in enumerate(ROWS):
     y = TOP + i * ROW_H + ROW_H / 2
@@ -47,8 +47,7 @@ for i, (label, v, style) in enumerate(ROWS):
     else:
         dot = f'<circle cx="{x_of(v):.1f}" cy="{y:.1f}" r="13" fill="{GREY}"/>'
     svg.append(dot)
-    svg.append(f'<text x="{x_of(v) + 26:.1f}" y="{y + 10:.1f}" font-size="30" font-weight="{bold}" fill="{ORANGE if style == "ours" else INK}" '
-               f'stroke="{HALO}" stroke-width="10" stroke-linejoin="round" paint-order="stroke">{v:.2f}</text>')
+    svg.append(f'<text x="{x_of(v) + 26:.1f}" y="{y + 10:.1f}" font-size="30" font-weight="{bold}" fill="{ORANGE if style == "ours" else INK}">{v:.2f}</text>')
 
 page = f"""<!doctype html>
 <html lang="en">
