@@ -44,6 +44,9 @@ cheap enough to run in the browser so the start point can be dragged.
   draws a label such as `x₁`, `wⱼᵢ` or `x_N` with italic variables and real subscripts.
 - `assets/`: the images (Pandemonium drawing, a photo of neurons, the neuron diagram by BruceBlaus
   (CC BY 3.0), Rosenblatt, Minsky, Papert, the Perceptrons cover).
+- `practice/fwdprop_practice_solution.tex` (and `.pdf`): the forward-propagation practice problem (sign
+  hidden layer, softmax output, record (5, 10)) solved in the class convention, z = Wx + b with column
+  vectors. Build with `pdflatex` in `practice/`.
 - `tests/`: Playwright scripts, run from `tests/` with `NODE_PATH=$(npm root -g) node <script>.js`:
   `steps.js <1|2> [slide-id ...]` (every step of every slide), `interact1.js` and `interact2.js`
   (dragging, replays, presenter view, dark mode, phone width), `recap2.js` (the live network on
