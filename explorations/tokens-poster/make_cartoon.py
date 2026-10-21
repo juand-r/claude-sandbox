@@ -13,7 +13,7 @@ OUT = Path(__file__).parent / "figures" / "cartoon.html"
 W, H = 2987, 860                        # px on the 3179 px wide A0 artboard (96 px/in)
 MARGIN = 6                              # keeps outer strokes from being clipped
 
-INK, MUTED, GREEN, RED, BLUE, ORANGE = "#14161A", "#4A4F57", "#2E8B57", "#C8483A", "#2F5D9B", "#D2601A"
+INK, MUTED, GREEN, RED, BLUE = "#14161A", "#4A4F57", "#2E8B57", "#C8483A", "#2F5D9B"
 GREEN_BG, RED_BG = "#E3F2E8", "#FBE4E1"
 FONT = "Archivo, 'Helvetica Neue', sans-serif"
 
@@ -22,7 +22,7 @@ WORD_NOTES = {"adder": "a snake"}
 
 # Each entry: list of (piece, kind) with kind in {"good", "bad", "whole"}.
 PANELS = [
-    dict(title="Statistical (BPE)", sub="splits to compress text",
+    dict(title="Statistical (e.g., BPE)", sub="splits to compress text",
          rows=[[("unhappiness", "whole")], [("happiness", "whole")], [("business", "whole")],
                [("ad", "bad"), ("der", "bad")], [("sing", "bad"), ("leton", "bad")]],
          caption=["Pieces ignore meaning, and", "related words share nothing"]),
@@ -55,7 +55,7 @@ def panel_html(k, P):
     title_color = BLUE if k == 2 else INK
     return f"""
 <div class="panel" style="left: {k * (PANEL_W + PANEL_GAP)}px">
-  <div class="ptitle" style="color: {title_color}"><span class="num">{k + 1}</span>{P['title']}</div>
+  <div class="ptitle" style="color: {title_color}">{P['title']}</div>
   <div class="psub">{P['sub']}</div>
   <div class="card">{''.join(rows)}{shared}</div>
   <div class="caption">{'<br>'.join(P['caption'])}</div>
@@ -63,7 +63,7 @@ def panel_html(k, P):
 
 
 LEGEND = (f'<div class="legend">{chip("meaningful morpheme", "good")}{chip("misleading piece", "bad")}'
-          f'{chip("kept whole", "whole")}<span class="src">Segmentations from Table 2 of the paper.</span></div>')
+          f'{chip("kept whole", "whole")}</div>')
 
 page = f"""<!doctype html>
 <html lang="en">
@@ -77,8 +77,6 @@ html, body {{ margin: 0; background: transparent }}
 .canvas {{ position: absolute; left: {MARGIN}px; top: {MARGIN}px; width: {W}px; height: {H}px }}
 .panel {{ position: absolute; top: 0; width: {PANEL_W}px }}
 .ptitle {{ font-size: 44px; font-weight: 700; line-height: 1.1; display: flex; gap: 18px; align-items: center; justify-content: center }}
-.num {{ width: 52px; height: 52px; border-radius: 26px; background: {ORANGE}; color: #FFFFFF; font-size: 32px;
-        display: inline-flex; align-items: center; justify-content: center; flex: none }}
 .psub {{ font-size: 30px; color: {MUTED}; text-align: center; margin-top: 8px; height: 40px }}
 .card {{ position: relative; margin-top: 22px; background: #FFFFFF; border: 4px solid {INK}; border-radius: 26px;
          padding: 26px 30px; display: flex; flex-direction: column; gap: 18px; height: 524px; box-sizing: border-box }}
@@ -95,7 +93,6 @@ html, body {{ margin: 0; background: transparent }}
 .caption {{ margin-top: 24px; font-size: 34px; font-weight: 700; text-align: center; line-height: 1.25 }}
 .legend {{ position: absolute; left: 0; bottom: 0; width: {W}px; display: flex; gap: 22px; align-items: center; justify-content: center }}
 .legend .chip {{ font-size: 26px; padding: 8px 12px; border-width: 3px }}
-.legend .src {{ font-size: 24px; color: {MUTED}; margin-left: 24px }}
 </style>
 </head>
 <body>
