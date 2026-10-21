@@ -22,4 +22,4 @@ node check_layout.js      # preview PNG + overflow report
 node build_pptx.js        # poster-a0.pptx
 ```
 
-Needs Playwright with Chromium (global install) and Archivo installed for the fonts to match.
+Needs Playwright with Chromium (global install). The poster loads Archivo from `assets/fonts/` (full font; the Google Fonts web subset lacks the ∙ used in the title). Install Archivo locally for Keynote and LibreOffice.
