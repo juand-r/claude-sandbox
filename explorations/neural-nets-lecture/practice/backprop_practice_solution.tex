@@ -3,7 +3,7 @@
 % version 2 with slope 1 at x = 0 (Backprop_Practice_Problem-1.pdf). Numbers checked in Python (2026-10-21).
 % Build: pdflatex backprop_practice_solution.tex
 \documentclass[11pt]{article}
-\usepackage[margin=0.85in,top=0.7in,bottom=0.7in]{geometry}
+\usepackage[margin=0.85in,top=0.6in,bottom=0.6in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,bm,tikz,array,xcolor}
@@ -13,7 +13,7 @@
 \setlength{\parskip}{4pt}
 \pagestyle{empty}
 \definecolor{path}{RGB}{200,90,20}
-\newtcolorbox{versionbox}{colback=orange!6,colframe=path,boxrule=0.8pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt}
+\newtcolorbox{versionbox}{colback=orange!6,colframe=path,boxrule=0.8pt,arc=2pt,left=6pt,right=6pt,top=2pt,bottom=2pt}
 
 \begin{document}
 
@@ -85,6 +85,9 @@ Version 2 & $f(x) = 0$ if $x < 0$; \ $f(x) = x$ if $x \ge 0$ & 0 if $x < 0$; \ 1
 Neither $B_3$ nor $A_3$ lies on a path from $W^{(1)}_{21}$ to the loss, so they do not change the answer.)
 
 \newpage
+% slightly tighter display spacing so the solution fits on one page
+\setlength{\abovedisplayskip}{5pt}\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}\setlength{\belowdisplayshortskip}{3pt}
 \subsection*{Solution}
 
 Work backwards from the loss, one layer at a time.
@@ -107,7 +110,7 @@ C2 and C3 output positive values (3.3 and 4), so their slope is 1 in both versio
 
 \begin{versionbox}
 \textbf{This is where the versions differ: C1.} C1 outputs 0, which happens at $z_{C_1} = 0$ or below.
-\begin{itemize}\setlength{\itemsep}{2pt}
+\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\topsep}{2pt}
 \item \textbf{Version 1:} an output of 0 means $z_{C_1} \le 0$, where the slope is 0. C1 passes
 nothing back:
 \[ \frac{\partial E}{\partial z_{C_1}} = -1.7 \cdot 0.3 \cdot 0 = 0 . \]
@@ -130,7 +133,7 @@ $W^{(2)}_{22} = 0.5$ and $W^{(2)}_{32} = 1.9$, so
 \text{Version 2:} \quad -0.357 - 0.51 + 0.646 = -0.221 .
 \]
 
-\textbf{Step 4: through B2's sigmoid.} The sigmoid's slope is $B_2(1 - B_2) = 2.5 \cdot (1 - 2.5) = -3.75$, so
+\textbf{Step 4: through B2's sigmoid.} The sigmoid's slope is $B_2(1 - B_2) = 2.5 \cdot (1 - 2.5) = -3.75$,$^{*}$ so
 \[
 \frac{\partial E}{\partial z_{B_2}} = \frac{\partial E}{\partial B_2} \cdot (-3.75) .
 \]
@@ -156,4 +159,7 @@ $\partial z_{B_2} / \partial W^{(1)}_{21} = A_1 = 3$:
 One node's slope, at C1, changes the sign of the update: in version 1 the path through C1 is switched
 off, and in version 2 it carries enough error to outweigh the other two paths.
 
+
+{\footnotesize $^{*}$The node values were made up for practice. A real sigmoid always outputs a value between 0
+and 1, so its slope $B(1 - B)$ is always positive.}
 \end{document}
