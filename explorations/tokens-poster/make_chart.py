@@ -1,12 +1,15 @@
 """Results dot plot: BLiMP under the submitted recipe, only the tokenizer varies (paper Table 6).
 
-Run:  python make_chart.py  -> figures/results.html
-Then: node render_figure.js figures/results.html  -> .pdf (vector) and .png (transparent)
+Run:  python make_chart.py         -> figures/results.html       (1000 x 600 px, generated poster)
+      python make_chart.py wide    -> figures/results-wide.html  (1000 x 420 px, user's Keynote layout)
+Then: node render_figure.js figures/results[-wide].html  -> .pdf (vector) and .png (transparent)
 """
+import sys
 from pathlib import Path
 
-OUT = Path(__file__).parent / "figures" / "results.html"
-W, H = 1000, 600
+WIDE = sys.argv[1:] == ["wide"]
+OUT = Path(__file__).parent / "figures" / ("results-wide.html" if WIDE else "results.html")
+W, H = (1000, 420) if WIDE else (1000, 600)
 INK, MUTED, GRID, ORANGE, GREY = "#14161A", "#4A4F57", "#C9CDD3", "#D2601A", "#7A828C"
 FONT = "Archivo, 'Helvetica Neue', sans-serif"
 
@@ -20,7 +23,7 @@ ROWS = [
     ("MorphPiece (raw MorphyNet)", 65.89, "other"),
 ]
 X_MIN, X_MAX, X_TICKS = 64, 74, (64, 66, 68, 70, 72, 74)
-LABEL_W, TOP, ROW_H, RIGHT_PAD = 470, 20, 80, 80
+LABEL_W, TOP, ROW_H, RIGHT_PAD = 470, 20, (50 if WIDE else 80), 80
 
 
 def x_of(v):

@@ -70,3 +70,12 @@ Results deliberately left off the poster (the user asked for the best results on
 - Google Fonts' Archivo "latin" subset lacks U+2219, so the preview fell back to another font's square dot. The poster now loads the full Archivo 2.001 TTFs from `assets/fonts/` (SIL OFL); the Google Fonts download zip has the same glyph, so Keynote shows the round dot.
 - Title reverted to plain text at the user's request. The ∙ dots moved to the banner, again from the real tokenizer: word·s, morpheme·s, piece·s, mean·ing; split, into, only, when, the, keep stay whole. Dots take the colour of their word (red inside the red words).
 - Examples table (`make_examples.py` → `figures/examples.*`, 965 × 419 px = 724 × 314 pt) for the empty space under "What we did" in the user's Keynote layout. Compact Table 2: six words not in the cartoon (nutritious, crier, running, werewolf, prehistoric, nationalistic) × Ours, BPE, Unigram, MorphPiece (raw); WordPiece and Morfessor dropped for space. Cells copied from Table 2. `babylm2026-with-table.pptx` is the user's file with the table placed at x 45, y 2968 pt.
+
+## Revision 3 (2026-10-21): additions to the user's Keynote file
+
+`edit_user_pptx.py IN OUT` edits the user's export (babylm2026.pptx, Oct 21) into `babylm2026-methods-added.pptx`:
+- Method box frame +220 pt, Results frame starts 220 pt lower (both 9-slice resized so the hand-drawn borders keep their thickness).
+- Method 4 "What curation changed" (`figures/curation.*`): 28,571 explicit decisions; 4,961 added, 3,933 re-segmented (kingdom), 1,114 rejected (business). Sec. 4.3, 5.1.
+- Method 5 "Quality checks" (`figures/quality.*`): LLM audit of 7,600 further MorphyNet words, ~11% errors in a 1,000-word sample, ~5% in a fresh 1,200-word sample after fixes (Sec. 4.3); MorphoLex, 68,617 words: agree 49.9% (identical 25.5 + same derivation 24.4), MorphoLex splits further 37.8%, we split further 1.0%, other 11.3% (convention 3.7 + we OOV 7.6) (App. H, Table 8).
+- Results: wider, shorter chart (`python make_chart.py wide` → `figures/results-wide.*`); Setup box (12 layers, 768 hidden, 10 epochs, 10M-word strict-small, Muon; only the tokenizer changes; submitted model ~135M parameters with MNTP). Sec. 4.1, 5.3.
+- Not added at the user's request: the COMPS controlled-comparison plot (MorphPiece leads it, 57.10 vs 56.91).

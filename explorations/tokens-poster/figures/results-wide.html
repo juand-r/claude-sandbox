@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tokenizer comparison (BLiMP)</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: transparent }
+#figure { position: relative; width: 1000px; height: 420px; font-family: Archivo, 'Helvetica Neue', sans-serif }
+</style>
+</head>
+<body>
+<div id="figure">
+<svg width="1000" height="420" viewBox="0 0 1000 420" font-family="Archivo, 'Helvetica Neue', sans-serif" role="img" aria-label="BLiMP accuracy by tokenizer under the submitted training recipe: Ours submitted 72.53, Unigram 67.97, Ours un-pruned 67.71, BPE 67.11, Morfessor 66.63, MorphPiece 65.89">
+<line x1="470.0" y1="320" x2="470.0" y2="330" stroke="#4A4F57" stroke-width="2"/>
+<text x="470.0" y="364" font-size="24" fill="#4A4F57" text-anchor="middle">64</text>
+<line x1="560.0" y1="320" x2="560.0" y2="330" stroke="#4A4F57" stroke-width="2"/>
+<text x="560.0" y="364" font-size="24" fill="#4A4F57" text-anchor="middle">66</text>
+<line x1="650.0" y1="320" x2="650.0" y2="330" stroke="#4A4F57" stroke-width="2"/>
+<text x="650.0" y="364" font-size="24" fill="#4A4F57" text-anchor="middle">68</text>
+<line x1="740.0" y1="320" x2="740.0" y2="330" stroke="#4A4F57" stroke-width="2"/>
+<text x="740.0" y="364" font-size="24" fill="#4A4F57" text-anchor="middle">70</text>
+<line x1="830.0" y1="320" x2="830.0" y2="330" stroke="#4A4F57" stroke-width="2"/>
+<text x="830.0" y="364" font-size="24" fill="#4A4F57" text-anchor="middle">72</text>
+<line x1="920.0" y1="320" x2="920.0" y2="330" stroke="#4A4F57" stroke-width="2"/>
+<text x="920.0" y="364" font-size="24" fill="#4A4F57" text-anchor="middle">74</text>
+<line x1="470.0" y1="330" x2="920.0" y2="330" stroke="#4A4F57" stroke-width="2"/>
+<text x="695.0" y="402" font-size="26" fill="#4A4F57" text-anchor="middle">BLiMP accuracy</text>
+<text x="446" y="54.0" font-size="31" font-weight="700" fill="#14161A" text-anchor="end">Ours, submitted (pruned)</text>
+<line x1="470.0" y1="45.0" x2="853.9" y2="45.0" stroke="#C9CDD3" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+<circle cx="853.9" cy="45.0" r="15" fill="#D2601A"/>
+<text x="879.9" y="55.0" font-size="30" font-weight="700" fill="#D2601A">72.53</text>
+<text x="446" y="104.0" font-size="31" font-weight="400" fill="#14161A" text-anchor="end">Unigram</text>
+<line x1="470.0" y1="95.0" x2="648.6" y2="95.0" stroke="#C9CDD3" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+<circle cx="648.6" cy="95.0" r="13" fill="#7A828C"/>
+<text x="674.6" y="105.0" font-size="30" font-weight="400" fill="#14161A">67.97</text>
+<text x="446" y="154.0" font-size="31" font-weight="400" fill="#14161A" text-anchor="end">Ours, un-pruned</text>
+<line x1="470.0" y1="145.0" x2="636.9" y2="145.0" stroke="#C9CDD3" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+<circle cx="636.9" cy="145.0" r="13" fill="#FFFFFF" stroke="#D2601A" stroke-width="5"/>
+<text x="662.9" y="155.0" font-size="30" font-weight="400" fill="#14161A">67.71</text>
+<text x="446" y="204.0" font-size="31" font-weight="400" fill="#14161A" text-anchor="end">BPE</text>
+<line x1="470.0" y1="195.0" x2="610.0" y2="195.0" stroke="#C9CDD3" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+<circle cx="610.0" cy="195.0" r="13" fill="#7A828C"/>
+<text x="636.0" y="205.0" font-size="30" font-weight="400" fill="#14161A">67.11</text>
+<text x="446" y="254.0" font-size="31" font-weight="400" fill="#14161A" text-anchor="end">Morfessor 2.0</text>
+<line x1="470.0" y1="245.0" x2="588.3" y2="245.0" stroke="#C9CDD3" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+<circle cx="588.3" cy="245.0" r="13" fill="#7A828C"/>
+<text x="614.3" y="255.0" font-size="30" font-weight="400" fill="#14161A">66.63</text>
+<text x="446" y="304.0" font-size="31" font-weight="400" fill="#14161A" text-anchor="end">MorphPiece (raw MorphyNet)</text>
+<line x1="470.0" y1="295.0" x2="555.1" y2="295.0" stroke="#C9CDD3" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+<circle cx="555.1" cy="295.0" r="13" fill="#7A828C"/>
+<text x="581.1" y="305.0" font-size="30" font-weight="400" fill="#14161A">65.89</text>
+</svg>
+</div>
+</body>
+</html>
