@@ -31,7 +31,7 @@
 
 #define MAXN 8
 
-typedef struct { int *word; int *child; int *start; int *count; int *size; int n_nodes; int n_edges; } Trie;
+typedef struct { int *word; int *child; int *start; int *count; int *size; int *mincost; int n_nodes; int n_edges; } Trie;
 
 static int g_len;
 static int cmp_sent(const void *a, const void *b) {
@@ -110,6 +110,19 @@ static unsigned next_rand(void) {
     return (unsigned)(rng >> 16);
 }
 
+/* mincost[node] = smallest total word cost of any completion below the node.
+ * The columns partition the unfilled cells, so the sum of mincost over the
+ * current column nodes is a lower bound on the cost still to come. */
+static int col_bound;
+static int fill_mincost(Trie *t, int node) {
+    int best = 0;
+    for (int e = t->start[node]; e < t->start[node] + t->count[node]; e++) {
+        int v = cost[t->word[e]] + fill_mincost(t, t->child[e]);
+        if (e == t->start[node] || v < best) best = v;
+    }
+    return t->mincost[node] = best;
+}
+
 static int stop(void) {
     return (max_solutions && n_solutions >= max_solutions) || (max_nodes && n_nodes >= max_nodes)
         || (restart_nodes && n_nodes >= restart_at);
@@ -167,7 +180,10 @@ static void fill(int r, int c, int row_node) {
         int w = cw[3 * i];
         if (r == 0 && c == 1 && ((unsigned)grid[0] * 2654435761u + (unsigned)w) % (unsigned)n_parts != (unsigned)part) continue;
         int rep = used[w] > 0;
-        if (repeats + rep > max_repeats || total_cost + cost[w] > max_cost) continue;
+        int new_bound = col_bound - C.mincost[cn] + C.mincost[cw[3 * i + 2]];
+        if (repeats + rep > max_repeats || total_cost + cost[w] + new_bound > max_cost) continue;
+        int old_bound = col_bound;
+        col_bound = new_bound;
         repeats += rep; used[w]++; total_cost += cost[w];
         grid[r * n_cols + c] = w;
         col_node[c] = cw[3 * i + 2];
@@ -175,6 +191,7 @@ static void fill(int r, int c, int row_node) {
         else fill(r + 1, 0, 0);
         col_node[c] = cn;
         used[w]--; repeats -= rep; total_cost -= cost[w];
+        col_bound = old_bound;
     }
 }
 
@@ -201,6 +218,9 @@ int main(int argc, char **argv) {
     for (int i = 0; i <= max_word; i++)
         if (fscanf(f, "%d", &cost[i]) != 1) { fprintf(stderr, "cost file too short\n"); return 1; }
     fclose(f);
+    C.mincost = malloc(sizeof(int) * C.n_nodes);
+    fill_mincost(&C, 0);
+    col_bound = n_cols * C.mincost[0];
     /* A cell has at most as many candidates as there are distinct words. */
     for (int i = 0; i < n_rows * n_cols; i++) {
         scratch[i] = malloc(sizeof(int) * 3 * (max_word + 1));

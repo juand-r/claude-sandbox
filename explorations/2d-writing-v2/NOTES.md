@@ -114,9 +114,8 @@ padding.
 Observations on the 8,030 distinct 4x4 grids at k = 20 (16,060 counting
 transposes):
 
-- "Uncommon" words (outside the 200 most frequent) are scarce: 3,9xx grids
-  have none and no grid has more than 3. (Exact split for the first 6,000
-  scored: 0: 3036, 1: 2262, 2: 628, 3: 74.)
+- "Uncommon" words (outside the 200 most frequent) are scarce. Number of
+  grids by count of uncommon words: 0: 4265, 1: 2907, 2: 766, 3: 91, 4: 1.
 - Coherence (PMI between lines) alone favours grids with unlikely sentences,
   because an unlikely sentence gains more from any context. Fluency alone
   favours bland grids. The sum of their z-scores, plus half the z-score of
@@ -165,3 +164,34 @@ The exhaustive run at k = 5 (1,593,694 sentences, all words distinct) was
 stopped after 30 of 600 parts (3.1e10 nodes, about 2 CPU hours): no grid
 found, 25,483 search nodes in the last row. Finished parts are kept in
 `data/runs/5x5_k5_rep0/` (old runner format).
+
+## 2026-11-14: 4x4 on the larger set with a floor on uncommon words
+
+Run: `run_exhaustive.py --rows 4 --cols 4 --min-count 10 --min-uncommon 4
+--n-common 300 --no-names` (sentences seen 10 or more times, no names, 16
+distinct words, at least 4 words outside the 300 most frequent). 528,874
+sentences, 3.6e10 nodes, 28 minutes on 4 cores, exhaustive: 730 grids (365 up
+to transpose).
+
+After scoring (`data/feat_4x4_k10_u4.pkl`), these read better than the k = 20
+list. Examples from the top 10:
+
+```
+but      he       never    did            which  i      don't  get
+i        wouldn't forget   you            we     won't  lose   them
+didn't   have     a        name           can't  see    your   legs
+dare     to       face     him            do     you    mind   moving
+```
+
+Down, left: "But I didn't dare. He wouldn't have to. Never forget a face. Did
+you name him?" Down, right: "Which we can't do. I won't see you. Don't lose
+your mind. Get them legs moving!"
+
+Lower bound on remaining cost in `solver.c` (sum over columns of the cheapest
+completion): identical results, 17 percent fewer nodes on a test run (4x4,
+k = 30, at least 3 uncommon words). Small gain, because almost every column
+prefix has some completion made of uncommon words.
+
+Cost projection: nodes grow about as (number of sentences)^2.8, so the same
+run at k = 5 (1.45 million sentences) would need about 6e11 nodes, around 8
+hours on 4 cores. Extrapolation, not measured.

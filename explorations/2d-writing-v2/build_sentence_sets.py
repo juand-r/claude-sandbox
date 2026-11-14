@@ -2,12 +2,19 @@
 
 Writes data/opensub_len{n}.tsv with lines "count<TAB>punct<TAB>words", for
 sentences of n words whose total count is at least MIN_COUNT.
+
+Also writes data/word_counts.pkl: a Counter of word frequencies over the
+sentences of WORD_COUNT_LENGTHS words, each weighted by its count. rank.py
+uses it to define the "common" words.
 """
 
+import pickle
 import re
+from collections import Counter
 
 MIN_COUNT = 3
 LENGTHS = range(2, 8)
+WORD_COUNT_LENGTHS = (3, 4, 5, 6)
 WORD_RE = re.compile(r"[a-z]+(?:'[a-z]+)*")
 
 
@@ -36,6 +43,19 @@ def main():
     for f in out.values():
         f.close()
     print(kept)
+    write_word_counts()
+
+
+def write_word_counts():
+    counts = Counter()
+    for n in WORD_COUNT_LENGTHS:
+        with open(f"data/opensub_len{n}.tsv", encoding="ascii") as f:
+            for line in f:
+                count, _, text = line.rstrip("\n").split("\t")
+                for w in text.split(" "):
+                    counts[w] += int(count)
+    with open("data/word_counts.pkl", "wb") as f:
+        pickle.dump(counts, f)
 
 
 if __name__ == "__main__":
