@@ -23,7 +23,7 @@ import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor
 
-from grids import SOLVERS, decode, write_inputs
+from grids import SOLVERS, decode, make_vocab, write_inputs
 from ngrams import load_names
 from rank import N_COMMON, load_common_words
 from sentences import load_opensub
@@ -43,6 +43,8 @@ def parse_args():
     p.add_argument("--no-names", action="store_true")
     p.add_argument("--procs", type=int, default=4)
     p.add_argument("--parts", type=int, default=64)
+    p.add_argument("--collect-only", action="store_true",
+                   help="do not search; write grids_partial.pkl from the finished parts")
     return p.parse_args()
 
 
@@ -77,6 +79,17 @@ def main():
         col_set = row_set
     else:
         col_set = load_lines(n_rows, min_count_cols, args, common, names)
+    if args.collect_only:
+        vocab = make_vocab(row_set, col_set)
+        done = [p for p in range(n_parts) if os.path.exists(os.path.join(run_dir, f"part_{p}.txt"))]
+        grids = set()
+        for part in done:
+            with open(os.path.join(run_dir, f"part_{part}.txt")) as f:
+                grids |= {decode(line, vocab, n_rows, n_cols) for line in f}
+        with open(os.path.join(run_dir, "grids_partial.pkl"), "wb") as f:
+            pickle.dump({"grids": sorted(grids), "args": vars(args), "parts_done": len(done)}, f)
+        print(f"{len(grids)} grids from {len(done)} of {n_parts} parts -> {run_dir}/grids_partial.pkl")
+        return
     vocab, paths = write_inputs(run_dir, row_set, col_set, {w: 1 for w in common})
     max_cost = n_rows * n_cols - args.min_uncommon
     print(f"{len(row_set)} row sentences, {len(col_set)} column sentences", flush=True)

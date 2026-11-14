@@ -15,12 +15,17 @@ SOLVERS = {"fill": os.path.join(HERE, "fill"), "trie": os.path.join(HERE, "solve
 NGRAM_SOLVER = os.path.join(HERE, "ngram")
 
 
+def make_vocab(row_keys, col_keys):
+    """Word list that defines the word ids used in the solver files."""
+    return sorted({w for k in row_keys for w in k} | {w for k in col_keys for w in k})
+
+
 def write_inputs(directory, row_keys, col_keys, costs=None):
     """Write the solver input files into `directory`.
 
     Returns (vocab, [rows_path, cols_path, costs_path])."""
     row_keys, col_keys = set(row_keys), set(col_keys)
-    vocab = sorted({w for k in row_keys for w in k} | {w for k in col_keys for w in k})
+    vocab = make_vocab(row_keys, col_keys)
     ids = {w: i for i, w in enumerate(vocab)}
     costs = costs or {}
     paths = []
