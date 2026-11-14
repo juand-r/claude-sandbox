@@ -1,10 +1,26 @@
 # 2D Writing v2
 
-Second attempt at two-dimensional writing: word grids that read as coherent
-English both along rows and along columns. Successor to `../2d-writing`.
+Word grids that read as English both along rows and along columns. Successor
+to `../2d-writing`. Here every row and every column is a real, attested
+sentence: we collect a large set of short sentences and search exactly for
+grids built from them.
 
-Status: scaffold only. Goals are not yet decided; see `PLAN.md`.
+```
+what  would you   take
+did   tom   see   this
+i     like  that  stuff
+do    it    right away
+```
 
-## How to run
+Status: in progress. See `PLAN.md` for the plan and `NOTES.md` for findings.
 
-Nothing to run yet.
+## Setup
+
+```bash
+python3 -m venv venv && ./venv/bin/pip install -r requirements.txt
+gcc -O2 -o solver solver.c
+./venv/bin/python test_solver.py
+```
+
+Data goes in `data/` (not in git). Sources and download commands are in
+`NOTES.md` and `extract_opensub.sh`.

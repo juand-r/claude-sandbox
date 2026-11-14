@@ -27,13 +27,42 @@ re-run the v1 code in this session.
   passage, each column is an independent sentence. Its results are not
   recorded in v1's notes.
 
-## Open questions for v2 (to be decided with the user)
+## Goal of v2 (set by the user, 2026-11-14)
 
-- [ ] What is the goal of v2? (larger grids, non-symmetric grids, content
-      words, a different reading scheme, a different model, ...)
-- [ ] How do we measure success?
+Build the best system we can for generating good 2D writing.
+
+My working definition of "good" (my choice, open to revision):
+
+1. Every row and every column is a complete, natural English sentence.
+   v1's lines were fragments ("is the way to").
+2. The grid is not symmetric and repeats few or no words.
+3. Content words appear, not only function words.
+4. Larger grids are better, as long as 1-3 hold.
+5. Read as a short text, the rows (and the columns) hang together.
+
+## Approach
+
+v1 generated word by word with a language model and hoped that lines came out
+well formed. v2 turns this around.
+
+1. Collect a large set of attested short sentences, with frequencies
+   (Tatoeba, OpenSubtitles).
+2. Search exactly for grids whose rows and columns all belong to the set.
+   This is a word square problem with sentences in place of words and words in
+   place of letters. Every line of every grid found is then a real sentence.
+3. Rank the grids found: sentence frequency, word variety, and fluency and
+   coherence under a neural language model.
 
 ## Tasks
 
 - [x] Create project directory, README, PLAN
-- [ ] Decide goals
+- [x] Decide goals
+- [x] Sentence loader and normalizer (`sentences.py`)
+- [x] Reference solver in Python (`search.py`)
+- [x] Fast solver in C (`solver.c`, wrapper `grids.py`), tested against the
+      reference (`test_solver.py`)
+- [x] First results on Tatoeba (see `NOTES.md`)
+- [ ] Larger sentence set from OpenSubtitles (`extract_opensub.sh`)
+- [ ] Ranking of grids
+- [ ] Larger grids (5x5 and beyond), rectangles
+- [ ] Evaluation and report
