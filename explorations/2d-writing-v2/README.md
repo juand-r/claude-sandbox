@@ -17,8 +17,10 @@ Status: in progress. See `PLAN.md` for the plan and `NOTES.md` for findings.
 ## Setup
 
 ```bash
-python3 -m venv venv && ./venv/bin/pip install -r requirements.txt
-gcc -O2 -o solver solver.c
+python3 -m venv venv && ./venv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu
+./venv/bin/pip install -r requirements.txt
+gcc -O2 -o solver solver.c -lm
+gcc -O2 -o fill fill.c
 ./venv/bin/python test_solver.py
 ```
 

@@ -62,7 +62,13 @@ well formed. v2 turns this around.
 - [x] Fast solver in C (`solver.c`, wrapper `grids.py`), tested against the
       reference (`test_solver.py`)
 - [x] First results on Tatoeba (see `NOTES.md`)
-- [ ] Larger sentence set from OpenSubtitles (`extract_opensub.sh`)
-- [ ] Ranking of grids
-- [ ] Larger grids (5x5 and beyond), rectangles
+- [x] Larger sentence set from OpenSubtitles (`extract_opensub.sh`,
+      `build_sentence_sets.py`)
+- [x] Exhaustive 4x4 with distinct words at count >= 20: 16,060 grids
+- [x] Exhaustive 5x5 with distinct words at count >= 10: none exist
+- [ ] Ranking of grids (`rank.py`, `lm.py`): fluency and coherence under a
+      language model, number of uncommon words
+- [ ] 5x5 on a larger sentence set (long run), or with a few repeated words
+- [ ] Grids with more content words (cost budget in the solver)
+- [ ] Rectangles
 - [ ] Evaluation and report
