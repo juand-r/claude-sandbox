@@ -2,6 +2,175 @@
 
 Best grids of each scored set, chosen by `make_gallery.py` (combined score of `rank.py`, near duplicates removed). Every row and every column is a sentence from the OpenSubtitles corpus; all words in a grid are distinct. Sentences are shown with the punctuation they most often have in the corpus.
 
+## 4x4, sentences seen 7+ times, at least 5 uncommon words
+
+265 grids scored; no names; uncommon = outside the 300 most frequent words.
+
+```
+oh       but      i        couldn't
+no       it       cannot   be
+you      can't    trust    anyone
+don't    hurt     anybody  else
+```
+
+Across: Oh, but I couldn't. No, it cannot be. You can't trust anyone. Don't hurt anybody else.
+
+Down: Oh, no, you don't. But it can't hurt. I cannot trust anybody. Couldn't be anyone else.
+
+```
+um        actually  uh        hey
+no        i         can't     move
+we        shouldn't do        it
+don't     drink     that      asshole
+```
+
+Across: Um, actually, uh, hey. No, I can't move. We shouldn't do it. Don't drink that, asshole.
+
+Down: Um, no, we don't. Actually, I shouldn't drink. Uh, can't do that. Hey, move it, asshole!
+
+```
+here's  what    we      found
+where   exactly were    you
+it      was     quite   easy
+is      that    close   enough
+```
+
+Across: Here's what we found. Where exactly were you? It was quite easy. Is that close enough?
+
+Down: Here's where it is. What exactly was that? We were quite close. Found you easy enough.
+
+```
+oh      and     you're  welcome
+yeah    i'm     trying  to
+it's    not     too     soon
+me      working hard    enough
+```
+
+Across: Oh, and you're welcome. Yeah, I'm trying to. It's not too soon. Me, working hard enough?
+
+Down: Oh, yeah, it's me. And I'm not working. You're trying too hard. Welcome to soon enough.
+
+```
+that's what   i      wish
+where  d'you  want   me
+you    call   this   luck
+cut    it     out    dude
+```
+
+Across: That's what I wish. Where d'you want me? You call this luck? Cut it out, dude.
+
+Down: That's where you cut. What d'you call it? I want this out. Wish me luck, dude.
+
+```
+oh        but       you       shouldn't
+no        mom       don't     be
+i         won't     accept    this
+wouldn't  go        that      far
+```
+
+Across: Oh, but you shouldn't! No, mom, don't be. I won't accept this. Wouldn't go that far.
+
+Down: Oh, no, I wouldn't. But mom won't go. You don't accept that? Shouldn't be this far.
+
+```
+it's    that    i       won't
+what    happens will    happen
+he      doesn't teach   anymore
+is      it      him     though
+```
+
+Across: It's that I won't. What happens, will happen. He doesn't teach anymore. Is it him, though?
+
+Down: It's what he is. That happens, doesn't it? I will teach him. Won't happen anymore, though.
+
+```
+ah      i       hear    you
+i'd     hate    me      too
+like    being   a       teacher
+that    poor    little  boy
+```
+
+Across: Ah, I hear you. I'd hate me, too. Like being a teacher. That poor little boy.
+
+Down: Ah, I'd like that. I hate being poor. Hear me a little. You too teacher boy.
+
+```
+and      now      it's     you
+so       what     about    children
+i        have     to       run
+shall    we       start    upstairs
+```
+
+Across: And now it's you. So, what about children? I have to run. Shall we start upstairs?
+
+Down: And so I shall. Now what have we? It's about to start. You children run upstairs.
+
+```
+but    i'm    no     fool
+you    gonna  charge me
+don't  answer at     once
+forget it     all    right
+```
+
+Across: But I'm no fool. You gonna charge me? Don't answer at once. Forget it, all right?
+
+Down: But you don't forget. I'm gonna answer it. No charge at all. Fool me once, right?
+
+```
+if      i       can't   sleep
+you     cannot  go      inside
+don't   lose    it      tonight
+leave   him     alone   okay
+```
+
+Across: If I can't sleep. You cannot go inside. Don't lose it tonight. Leave him alone, okay?
+
+Down: If you don't leave. I cannot lose him. Can't go it alone. Sleep inside tonight, okay?
+
+```
+well       apparently it         is
+maybe      neither    was        he
+they       are        all        gone
+aren't     you        finished   yet
+```
+
+Across: Well, apparently it is. Maybe neither was he. They are all gone. Aren't you finished yet?
+
+Down: Well, maybe they aren't. Apparently, neither are you. It was all finished. Is he gone yet?
+
+```
+but      i        don't    shoot
+you      wouldn't push     him
+never    touch    me       again
+forget   it       right    now
+```
+
+Across: But I don't shoot. You wouldn't push him? Never touch me again. Forget it right now.
+
+Down: But you never forget. I wouldn't touch it. Don't push me, right? Shoot him again now!
+
+```
+well      actually  you       can't
+maybe     i         could     win
+we        shouldn't eat       them
+don't     drink     it        all
+```
+
+Across: Well, actually, you can't. Maybe I could win. We shouldn't eat them. Don't drink it all.
+
+Down: Well, maybe we don't. Actually, I shouldn't drink. You could eat it. Can't win them all.
+
+```
+but      i        wouldn't anyway
+what     do       you      wish
+are      not      like     me
+we       drink    to       luck
+```
+
+Across: But I wouldn't anyway. What do you wish? Are not like me. We drink to luck.
+
+Down: But what are we? I do not drink. Wouldn't you like to? Anyway, wish me luck.
+
 ## 4x4, sentences seen 10+ times, at least 4 uncommon words
 
 365 grids scored; no names; uncommon = outside the 300 most frequent words.

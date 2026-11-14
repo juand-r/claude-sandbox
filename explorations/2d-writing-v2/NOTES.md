@@ -308,3 +308,16 @@ Started `run_exhaustive.py --rows 4 --cols 4 --min-count 7 --min-uncommon 5
 --n-common 300 --no-names --parts 240` (832,981 sentences). After 5 parts:
 3.5e9 nodes, 4 grids. At that rate the whole run needs about 1.7e11 nodes,
 4 to 5 hours on 4 cores.
+
+Finished 09:23 UTC, 2 h 18 min wall, 32,523 CPU s, 1.40e11 nodes, all 240
+parts exhaustive. 530 grids (265 after removing transposes). Verified with
+`verify_grids.py` (1,215 distinct sentences, all count >= 7). Scored to
+`data/feat_4x4_k7_u5.pkl`. Uncommon words (top 200): 5: 205 grids, 6: 37,
+7: 23. Only 12 grids have all lines with count >= 10. Median fluency -4.96.
+Cost exponent from the k = 10 run: ln(1.40e11/3.6e10)/ln(832981/528874) = 3.0
+(the floors on uncommon words differ: 4 vs 5).
+
+Top grids are the most varied so far: "oh but i couldn't / no it cannot be /
+you can't trust anyone / don't hurt anybody else"; "here's what we found /
+where exactly were you / it was quite easy / is that close enough". Some
+k = 7 lines are poor ("me working hard enough", "welcome to soon enough").

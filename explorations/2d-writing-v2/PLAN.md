@@ -66,9 +66,9 @@ well formed. v2 turns this around.
       `build_sentence_sets.py`)
 - [x] Exhaustive 4x4 with distinct words at count >= 20: 16,060 grids
 - [x] Exhaustive 5x5 with distinct words at count >= 10: none exist
-- [ ] Ranking of grids (`rank.py`, `lm.py`): fluency and coherence under a
+- [x] Ranking of grids (`rank.py`, `lm.py`): fluency and coherence under a
       language model, number of uncommon words
-- [ ] 5x5 on a larger sentence set (long run), or with a few repeated words
-- [ ] Grids with more content words (cost budget in the solver)
-- [ ] Rectangles
-- [ ] Evaluation and report
+- [x] 5x5 on a larger sentence set (long run), or with a few repeated words
+- [x] Grids with more content words: cost budget and per-line floors did not help (see `NOTES.md`); a whole-grid floor on uncommon words at lower k did
+- [x] Rectangles
+- [x] Evaluation and report

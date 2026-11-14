@@ -161,6 +161,7 @@ transposes, so the number of distinct pieces is half.
 | k = 50 | none | 63,499 | 6 | 3.5e7 | 5 s, 1 core |
 | k = 20 | none | 227,462 | 16,060 | 2.0e9 | 291 s, 1 core |
 | k = 10, no names | at least 4 uncommon words (top 300) | 528,874 | 730 | 3.6e10 | 28 min, 4 cores |
+| k = 7, no names | at least 5 uncommon words (top 300) | 832,981 | 530 | 1.4e11 | 2 h 18 min, 4 cores |
 
 Observation: between k = 50 and k = 20 the sentence set grows 3.6 times and
 the number of grids grows about 2,700 times. A grid needs eight sentences to
@@ -225,8 +226,65 @@ Interpretation: lowering k adds rarer sentences, which carry the rarer words.
 The floor on uncommon words then selects the grids that use them. The cost is
 search time (Section 7).
 
-[A further run at k = 7 with a floor of 5 uncommon words is reported in
-Section 4.4.]
+### 4.4 The run at k = 7
+
+The largest 4x4 search used the 832,981 sentences seen at least 7 times,
+without names, and kept only grids with at least 5 uncommon words (outside
+the 300 most frequent). It ran to completion in 240 parts and found 530
+grids, which is 265 distinct pieces after removing transposes. All 1,215
+sentences that appear in them were checked against the corpus counts.
+
+Observation: of the 265 grids, 205 have exactly 5 uncommon words by the
+ranking's count (outside the top 200), 37 have 6 and 23 have 7. Only 12 of
+them use sentences that are all seen 10 or more times, so almost all of
+these grids were out of reach of the k = 10 run. The median fluency is
+-4.96, against -4.87 for the k = 10 set and -4.61 for the k = 20 set.
+
+The three top-ranked grids:
+
+```
+oh       but      i        couldn't
+no       it       cannot   be
+you      can't    trust    anyone
+don't    hurt     anybody  else
+```
+
+Down: "Oh no you don't. But it can't hurt. I cannot trust anybody. Couldn't
+be anyone else."
+
+```
+here's  what     we     found
+where   exactly  were   you
+it      was      quite  easy
+is      that     close  enough
+```
+
+Down: "Here's where it is. What exactly was that? We were quite close. Found
+you easy enough."
+
+```
+but    i'm     no      fool
+you    gonna   charge  me
+don't  answer  at      once
+forget it      all     right
+```
+
+Down: "But you don't forget. I'm gonna answer it. No charge at all. Fool me
+once right?"
+
+(The second and third are ranks 3 and 10; rank 2 contains profanity and is
+in the gallery.)
+
+Interpretation: this set has the most varied vocabulary of the 4x4 runs, and
+its best grids read to me as the best 4x4 grids the system has produced. The
+price is a lower floor of sentence quality. At k = 7 more lines are
+fragments or transcription oddities, for example "Me working hard enough?"
+and "Welcome to soon enough" in the grid ranked fourth. The fluency score
+catches some of these and misses others, so the top of the list still needs
+a human reader.
+
+Caveat: the comparison of "best grids" across runs is my reading of the top
+15 or so of each list, not a measurement.
 
 ## 5. Other shapes
 
@@ -337,7 +395,8 @@ Observation: for 5x5 with distinct words, the search visited 4.0e7 nodes at
 87,257 sentences and 1.7e10 nodes at 572,554 sentences. That is a growth
 exponent of about 3.2. For 4x4, the step from k = 50 to k = 20 gives 3.2 and
 the step from k = 20 to k = 10 gives 3.4; the last pair of runs differ
-slightly in their constraints (Table 2). In the 4x4 run at k = 10, 90 percent
+slightly in their constraints (Table 2). The step from k = 10 to k = 7 gives
+3.0, again with a different floor on uncommon words. In the 4x4 run at k = 10, 90 percent
 of the nodes are spent in the third row: the first two rows are easy to
 stack, and most stacks cannot be continued.
 
@@ -397,6 +456,8 @@ See `README.md` for setup and data download. The runs in this report:
 ./venv/bin/python run_exhaustive.py --rows 4 --cols 4 --min-count 20
 ./venv/bin/python run_exhaustive.py --rows 4 --cols 4 --min-count 10 \
     --min-uncommon 4 --n-common 300 --no-names --parts 120
+./venv/bin/python run_exhaustive.py --rows 4 --cols 4 --min-count 7 \
+    --min-uncommon 5 --n-common 300 --no-names --parts 240
 ./venv/bin/python run_exhaustive.py --rows 5 --cols 5 --min-count 10 \
     --max-repeats 3 --no-names --parts 120
 ./venv/bin/python run_exhaustive.py --rows 4 --cols 5 --min-count 10 --no-names --parts 120

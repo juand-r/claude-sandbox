@@ -16,7 +16,7 @@ Across: Oh but you can't. No I never do. They didn't believe it. Don't ask me
 anymore. Down: Oh no they don't. But I didn't ask. You never believe me. Can't
 do it anymore.
 
-Status: in progress. `PLAN.md` has the plan, `NOTES.md` the findings so far.
+Status: complete as of 2026-11-14. Results are in `docs/report.md` and `docs/gallery.md` (PDFs alongside). `PLAN.md` has the plan, `NOTES.md` the chronological findings.
 
 ## Setup
 
