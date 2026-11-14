@@ -4,11 +4,12 @@ Each step adds a few columns or a few rows to the current grid, keeping all
 earlier cells. The solver samples several ways to do it; the language model
 picks one (fluency plus a bonus for uncommon words). Steps alternate between
 columns and rows and the run stops when no tried step size works in either
-direction. A step that the random search cannot do is tried exhaustively, so
+direction; then the next level of sentences (rarer ones) is admitted, until
+the last level is exhausted. A step that the random search cannot do is tried exhaustively, so
 a stop can be a proof that no extension exists (for these sentences).
 
 Usage:
-  grow.py SEED_FILE OUT_JSON [--min-counts "{3:50,4:10,...}"] [--steps 3 4 5]
+  grow.py SEED_FILE OUT_JSON [--levels "{3:50,4:10,...}" ...] [--steps 3 4 2 5]
           [--samples 10] [--max-nodes N] [--exhaustive-nodes N]
           [--restart-nodes N] [--max-repeats 0] [--ban-file FILE]
 
@@ -31,6 +32,11 @@ from sentences import load_opensub
 N_PROCS = 4
 SEED_MIN_COUNT = 3   # the seed's own sentences are accepted from this count
 W_UNCOMMON = 1.0     # weight of the share of uncommon words among new cells
+# Minimum corpus count by sentence length. Lengths not listed are not used.
+DEFAULT_LEVELS = ["{3: 50, 4: 10, 5: 10, 6: 10, 7: 10}",
+                  "{2: 500, 3: 20, 4: 7, 5: 7, 6: 7, 7: 7}",
+                  "{2: 200, 3: 10, 4: 5, 5: 5, 6: 5, 7: 5}",
+                  "{2: 50, 3: 5, 4: 3, 5: 3, 6: 3, 7: 3}"]
 
 
 def line_text(line, sentences, caps):
@@ -99,12 +105,14 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("seed_file")
     p.add_argument("out_json")
-    p.add_argument("--min-counts", default="{3: 50, 4: 10, 5: 10, 6: 10, 7: 10}")
-    p.add_argument("--steps", type=int, nargs="+", default=[3, 4, 5])
+    p.add_argument("--levels", nargs="+", default=DEFAULT_LEVELS,
+                   help="minimum counts by sentence length, strictest first; the next "
+                        "level is used when the grid cannot grow at the current one")
+    p.add_argument("--steps", type=int, nargs="+", default=[3, 4, 2, 5])
     p.add_argument("--samples", type=int, default=10, help="solutions per process and step")
     p.add_argument("--max-nodes", type=int, default=100_000_000,
                    help="node limit of the random search, per process and step")
-    p.add_argument("--exhaustive-nodes", type=int, default=20_000_000_000,
+    p.add_argument("--exhaustive-nodes", type=int, default=3_000_000_000,
                    help="node limit of the exhaustive search that follows a failed random search")
     p.add_argument("--restart-nodes", type=int, default=200_000)
     p.add_argument("--max-repeats", type=int, default=0)
@@ -114,22 +122,41 @@ def main():
 
     with open(args.seed_file) as f:
         grid = tuple(tuple(line.split()) for line in f if line.strip())
-    sentences = load_sentences(ast.literal_eval(args.min_counts))
+    levels = [ast.literal_eval(text) for text in args.levels]
+    loosest = {n: min(lv[n] for lv in levels if n in lv) for lv in levels for n in lv}
+    sentences = load_sentences(loosest)
     if args.ban_file:
         with open(args.ban_file) as f:
             banned = set(f.read().split())
         sentences = {k: v for k, v in sentences.items() if banned.isdisjoint(k)}
     add_seed_sentences(grid, sentences)
     caps, scorer, common = load_caps(), Scorer(), load_common_words()
-    print(f"{len(sentences)} sentences", flush=True)
+    seed_keys = {key for line in tuple(grid) + columns(grid) for key in cuttings(line, sentences)}
+
+    def level_sentences(level):
+        """Sentences allowed at a level; all lines of the grid stay valid
+        because each level contains the one before it."""
+        counts = levels[level]
+        return {k: v for k, v in sentences.items()
+                if k in seed_keys or v[0] >= counts.get(len(k), float("inf"))}
+
+    level, current = 0, level_sentences(0)
+    print(f"level 0: {len(current)} sentences", flush=True)
 
     stages = [stage_record(grid, sentences, caps, fluency(grid, sentences, caps, scorer), {})]
     failures = []
     direction, failed, rng_seed = "cols", set(), args.rng_seed
-    while len(failed) < 2:
+    while True:
+        if len(failed) == 2:
+            if level + 1 == len(levels):
+                break
+            level, failed = level + 1, set()
+            current = level_sentences(level)
+            print(f"level {level}: {len(current)} sentences", flush=True)
         found = False
         for step in args.steps:
-            grids, info = try_step(grid, direction, step, sentences, args, rng_seed)
+            grids, info = try_step(grid, direction, step, current, args, rng_seed)
+            info["level"] = level
             rng_seed += N_PROCS
             print(f"{len(grid)}x{len(grid[0])} + {step} {direction}: {info}", flush=True)
             if not grids:
@@ -140,10 +167,10 @@ def main():
             def score(g):
                 added = new_cells(g, grid)
                 uncommon = sum(w not in common for w in added) / len(added)
-                return fluency(g, sentences, caps, scorer) + W_UNCOMMON * uncommon
+                return fluency(g, current, caps, scorer) + W_UNCOMMON * uncommon
             grid = max(grids, key=score)
-            stages.append(stage_record(grid, sentences, caps,
-                                       fluency(grid, sentences, caps, scorer), info))
+            stages.append(stage_record(grid, current, caps,
+                                       fluency(grid, current, caps, scorer), info))
             for row in stages[-1]["rows_text"]:
                 print("   ", row, flush=True)
             found = True

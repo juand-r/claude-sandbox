@@ -321,3 +321,46 @@ Top grids are the most varied so far: "oh but i couldn't / no it cannot be /
 you can't trust anyone / don't hurt anybody else"; "here's what we found /
 where exactly were you / it was quite easy / is that close enough". Some
 k = 7 lines are poor ("me working hard enough", "welcome to soon enough").
+
+## 2026-11-14: lines as sequences of sentences (user request)
+
+User request: allow punctuation, so that a line can hold several sentences,
+and grow a grid step by step to be as large as possible.
+
+Definition used: a line (row or column) is valid if it can be cut into
+consecutive attested sentences. Cuts of different lines are independent. All
+words of the grid are still distinct.
+
+Code: `extend.c` (solver; keeps for every line the set of trie nodes reachable
+under any cutting), `multi.py` (front end, independent check, display
+cutting), `grow.py` (growth loop), `test_extend.py` (solver against brute
+force on 40 small cases, including seeded extension and the sentence filter).
+
+Findings so far:
+
+- With 2-word sentences at count >= 200 the 4x4 seed extends to 6x6 in
+  seconds, but the new cells are fragments ("because what", "man up down
+  there"). Dropped 2-word sentences for the first level.
+- Adding 3 full rows by filling cells row by row did not finish in 12 CPU
+  minutes per process. Fix: transpose, add columns, transpose back, so the
+  new block is always filled along its short side. 4x7 -> 7x7 then takes
+  about 80 s.
+- Run 1 (3-word count >= 50, longer >= 10) stopped at 7x10 with a budget of
+  2e7 nodes per process. Cause: all words must be new, and the grid has used
+  up the common words. Most sentences contain a used word and are dead.
+- Fix: before each step remove the sentences that cannot occur any more
+  (`multi.usable_sentences`; exactness tested). At 10x10 only 58,213 of
+  1,794,185 sentences remain usable. Steps now take seconds to minutes and
+  an exhaustive search of a step is feasible.
+- Run 2 (`data/grow/run2.json`, seed "oh but i couldn't / ...", profanity
+  list `banned_words.txt` removed from the sentence set): 4x4 -> 4x7 -> 7x7
+  -> 7x10 -> 10x10 in about 3 minutes. At 10x10 the exhaustive search proved
+  that no 3, 4 or 5 columns and no 3, 4 or 5 rows can be added (steps of 6
+  and 7 were not tried). So this grid is maximal for this sentence set and
+  these steps. Fluency -4.48.
+- The new block of a step hardly interacts with the old grid: old lines are
+  complete sentences, so a new sentence usually starts at the old edge. The
+  only coupling is that words must be new. Growth is therefore limited by
+  the supply of words, not by the fit of sentences.
+- Added levels to `grow.py`: when no step works, rarer sentences (and
+  frequent 2-word ones) are admitted. Run 3 uses the default four levels.
