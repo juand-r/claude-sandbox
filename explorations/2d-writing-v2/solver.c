@@ -16,8 +16,8 @@
  *   restart_nodes: with seed != 0 and restart_nodes > 0, abandon the current
  *     search after this many nodes and start again from the empty grid with
  *     fresh randomness. Grids may then be output more than once.
- *   part, n_parts: only try the candidates for the top-left cell whose index
- *     is congruent to part modulo n_parts (to split the search over processes)
+ *   part, n_parts: only search the grids whose first two words (row 0) hash
+ *     to part modulo n_parts (to split the search over processes)
  * Output: one grid per line, n_rows*n_cols word ids in row-major order.
  *
  * Cells are filled in row-major order. Rows and columns are stored as tries;
@@ -164,8 +164,8 @@ static void fill(int r, int c, int row_node) {
         for (int i = 0; i < k; i++) memcpy(cw + 3 * i, cd[i].v, sizeof cd[i].v);
     }
     for (int i = 0; i < k && !stop(); i++) {
-        if (r == 0 && c == 0 && i % n_parts != part) continue;
         int w = cw[3 * i];
+        if (r == 0 && c == 1 && ((unsigned)grid[0] * 2654435761u + (unsigned)w) % (unsigned)n_parts != (unsigned)part) continue;
         int rep = used[w] > 0;
         if (repeats + rep > max_repeats || total_cost + cost[w] > max_cost) continue;
         repeats += rep; used[w]++; total_cost += cost[w];

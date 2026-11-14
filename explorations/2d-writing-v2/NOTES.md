@@ -102,3 +102,66 @@ extrapolation from two points.
   reference and as an independent check; both solvers return identical grids
   on the test inputs. (Timing was taken while another job used a core, so the
   factor is rough.)
+
+## 2026-11-14: ranking 4x4 grids with a language model
+
+`score_grids.py` computes the features in `rank.py` for each grid, using
+SmolLM2-360M on CPU (`lm.py`). On one core, with other jobs running, it scores
+about 250 4x4 grids per minute. The model must be loaded in float32; the
+default bfloat16 load gave scores that changed by 0.15 nats with batch
+padding.
+
+Observations on the 8,030 distinct 4x4 grids at k = 20 (16,060 counting
+transposes):
+
+- "Uncommon" words (outside the 200 most frequent) are scarce: 3,9xx grids
+  have none and no grid has more than 3. (Exact split for the first 6,000
+  scored: 0: 3036, 1: 2262, 2: 628, 3: 74.)
+- Coherence (PMI between lines) alone favours grids with unlikely sentences,
+  because an unlikely sentence gains more from any context. Fluency alone
+  favours bland grids. The sum of their z-scores, plus half the z-score of
+  the number of uncommon words, gives a top list that I judge good by
+  reading. The weights are a judgment call (`rank.WEIGHTS`).
+- The top of the list is dominated by families of grids that differ in one
+  or two words, so `gallery.py` skips a grid that shares more than half its
+  words with one already shown.
+
+Top of the list (`gallery.py data/feat_4x4_k20.pkl`):
+
+```
+oh       and      you      don't          yeah   but    you    can't
+no       it       couldn't be             well   it     might  be
+she      didn't   do       this           i      didn't say    that
+doesn't  work     that     way            don't  work   so     hard
+```
+
+Down, left grid: "Oh no she doesn't. And it didn't work. You couldn't do
+that. Don't be this way." Down, right grid: "Yeah well I don't. But it didn't
+work. You might say so. Can't be that hard."
+
+## 2026-11-14: attempts to get more content words
+
+- Sentences with at most 2 common words (top 200), k = 5: 744,703 sentences.
+  No 4x4 grid found in 2e9 nodes (search not completed).
+- Every line must have at least one uncommon word (top 200):
+  k = 20: 188,583 sentences, 0 grids (exhaustive). So every one of the 16,060
+  grids at k = 20 has a line made only of common words.
+  k = 10: 528,702 sentences, 368 grids (exhaustive, 8.5 min on 4 cores). The
+  "uncommon" words are mostly words like "uh", "told", "brought"; the grids
+  are not more interesting.
+- N-gram generalization (`ngram.c`, `ngrams.py`): accept a 4-word line if its
+  first 3 words begin an attested sentence and its last 3 words end one. This
+  admits about 296 million 4-word lines (2.5 million are attested). Grids with
+  10 or more uncommon words are then easy to find, but most contain lines
+  that are not sentences ("you of the day", "to not be now"). Raising the
+  n-gram count threshold from 5 to 20 did not fix this. The rule is too
+  loose: the first and last word of a line never have to fit each other.
+  The solver is tested against brute force (`test_ngram.py`) and kept, but
+  its output is not used in the results.
+
+## 2026-11-14: 5x5 status
+
+The exhaustive run at k = 5 (1,593,694 sentences, all words distinct) was
+stopped after 30 of 600 parts (3.1e10 nodes, about 2 CPU hours): no grid
+found, 25,483 search nodes in the last row. Finished parts are kept in
+`data/runs/5x5_k5_rep0/` (old runner format).

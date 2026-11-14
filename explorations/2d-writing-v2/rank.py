@@ -79,3 +79,36 @@ def features(grids, sentence_sets, scorer, caps, common):
             "cols_text": passages[2 * i + 1],
         })
     return result
+
+
+# Weights of the standardized features in the combined score. Chosen by
+# reading the top of the 4x4 list under a few settings (see NOTES.md); they
+# are a judgment call, not fitted to data.
+WEIGHTS = {"fluency": 1.0, "coherence": 1.0, "n_content": 0.5}
+
+
+def combined_scores(feats, weights=WEIGHTS):
+    """Weighted sum of z-scores of the features, one score per grid."""
+    scores = [0.0] * len(feats)
+    for key, weight in weights.items():
+        values = [f[key] for f in feats]
+        mean = sum(values) / len(values)
+        sd = (sum((v - mean) ** 2 for v in values) / len(values)) ** 0.5
+        if sd > 0:
+            scores = [s + weight * (v - mean) / sd for s, v in zip(scores, values)]
+    return scores
+
+
+def diverse_top(feats, scores, n, max_shared):
+    """Best-scoring grids, skipping any that shares more than max_shared
+    words with a grid already chosen. Without this the top of the list is one
+    grid repeated with single-word changes."""
+    chosen, chosen_words = [], []
+    for i in sorted(range(len(feats)), key=lambda i: -scores[i]):
+        words = {w for row in feats[i]["grid"] for w in row}
+        if all(len(words & other) <= max_shared for other in chosen_words):
+            chosen.append(i)
+            chosen_words.append(words)
+            if len(chosen) == n:
+                break
+    return chosen
