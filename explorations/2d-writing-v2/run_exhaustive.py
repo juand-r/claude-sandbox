@@ -43,8 +43,8 @@ def parse_args():
     p.add_argument("--no-names", action="store_true")
     p.add_argument("--no-mirror", action="store_true",
                    help="no cell may hold the same word as its mirror cell (no symmetric grids)")
-    p.add_argument("--line-distinct", action="store_true",
-                   help="no word occurs twice in the same row or the same column")
+    p.add_argument("--max-per-line", type=int, default=0,
+                   help="a word occurs at most this many times in one row and in one column")
     p.add_argument("--max-solutions", type=int, default=0,
                    help="stop each part after this many grids (0 = no limit)")
     p.add_argument("--procs", type=int, default=4)
@@ -69,7 +69,7 @@ def main():
     name = (f"{n_rows}x{n_cols}_{count_tag}_rep{args.max_repeats}"
             f"_ul{args.min_uncommon_line}_u{args.min_uncommon}_c{args.n_common}"
             + ("_nonames" if args.no_names else "") + ("_nomirror" if args.no_mirror else "")
-            + ("_linedistinct" if args.line_distinct else "")
+            + (f"_perline{args.max_per_line}" if args.max_per_line else "")
             + (f"_max{args.max_solutions}" if args.max_solutions else ""))
     run_dir = f"data/runs/{name}"
     os.makedirs(run_dir, exist_ok=True)
@@ -109,7 +109,7 @@ def main():
         start = time.time()
         cmd = [SOLVERS["trie"], *paths, n_rows, n_cols, args.max_repeats, max_cost,
                args.max_solutions, 0, 0, -1, 0, part, n_parts, 0,
-               int(args.no_mirror) + 2 * int(args.line_distinct)]
+               int(args.no_mirror), args.max_per_line]
         with open(out + ".tmp", "w") as f:
             proc = subprocess.run([str(a) for a in cmd], stdout=f, stderr=subprocess.PIPE,
                                   text=True, check=True)

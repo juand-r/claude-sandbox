@@ -2,7 +2,7 @@
  *
  * Usage: solver ROWS COLS COSTS n_rows n_cols max_repeats max_cost
  *               max_solutions max_nodes seed temp restart_nodes part n_parts
- *               [block [rules]]
+ *               [block [no_mirror [max_per_line]]]
  *   ROWS: file with one sentence per line as n_cols space-separated word ids
  *   COLS: file with one sentence per line as n_rows space-separated word ids
  *   COSTS: file with one integer cost per word id (line i = cost of word i)
@@ -22,12 +22,11 @@
  *   block (optional, default 0): cell order. 0 = row by row. 1 = grow a
  *     top-left square block (2x2, then 3x3, ...), which applies row and
  *     column constraints evenly and fails earlier.
- *   rules (optional, default 0): sum of
- *     1 = a cell may not hold the same word as its mirror cell (row and
- *         column swapped). This excludes symmetric grids, where row i equals
- *         column i.
- *     2 = no word may occur twice in the same row or the same column.
- *     Needs block = 0.
+ *   no_mirror (optional, default 0): 1 = a cell may not hold the same word
+ *     as its mirror cell (row and column swapped). This excludes symmetric
+ *     grids, where row i equals column i. Needs block = 0.
+ *   max_per_line (optional, default 0 = no limit): a word may occur at most
+ *     this many times in one row and in one column. Needs block = 0.
  * Output: one grid per line, n_rows*n_cols word ids in row-major order.
  *
  * Rows and columns are stored as tries. Cells are filled in a fixed order (row
@@ -98,7 +97,7 @@ static Trie load(const char *path, int len, int *max_word) {
 }
 
 static Trie R, C;
-static int n_rows, n_cols, max_repeats, no_mirror, line_distinct;
+static int n_rows, n_cols, max_repeats, no_mirror, max_per_line;
 static long max_solutions, max_nodes, n_solutions, n_nodes;
 static long nodes_at_row[MAXN]; /* search nodes per row, for diagnostics */
 static int grid[MAXN * MAXN], col_node[MAXN], *used, repeats;
@@ -213,11 +212,11 @@ static void fill(int idx) {
         /* Row-major order: the mirror cell (c, r) is already filled if c < r. */
         if (no_mirror && c < r && r < n_cols && grid[c * n_cols + r] == w) continue;
         int rep = used[w] > 0;
-        if (rep && line_distinct) {
-            int clash = 0;
-            for (int j = 0; j < c; j++) clash |= grid[r * n_cols + j] == w;
-            for (int i2 = 0; i2 < r; i2++) clash |= grid[i2 * n_cols + c] == w;
-            if (clash) continue;
+        if (rep && max_per_line) {
+            int in_row = 0, in_col = 0;
+            for (int j = 0; j < c; j++) in_row += grid[r * n_cols + j] == w;
+            for (int i2 = 0; i2 < r; i2++) in_col += grid[i2 * n_cols + c] == w;
+            if (in_row >= max_per_line || in_col >= max_per_line) continue;
         }
         int new_bound = col_bound - C.mincost[cn] + C.mincost[cw[3 * i + 2]];
         if (repeats + rep > max_repeats || total_cost + cost[w] + new_bound > max_cost) continue;
@@ -236,9 +235,9 @@ static void fill(int idx) {
 }
 
 int main(int argc, char **argv) {
-    if (argc < 15 || argc > 17) {
+    if (argc < 15 || argc > 18) {
         fprintf(stderr, "usage: solver ROWS COLS COSTS n_rows n_cols max_repeats max_cost "
-                        "max_solutions max_nodes seed temp restart_nodes part n_parts [block [rules]]\n");
+                        "max_solutions max_nodes seed temp restart_nodes part n_parts [block [no_mirror [max_per_line]]]\n");
         return 1;
     }
     n_rows = atoi(argv[4]); n_cols = atoi(argv[5]);
@@ -248,9 +247,9 @@ int main(int argc, char **argv) {
     temp = atof(argv[11]); restart_nodes = seed ? atol(argv[12]) : 0;
     part = atoi(argv[13]); n_parts = atoi(argv[14]);
     int block = argc >= 16 && atoi(argv[15]);
-    int rules = argc == 17 ? atoi(argv[16]) : 0;
-    no_mirror = rules & 1; line_distinct = rules & 2;
-    if (block && rules) { fprintf(stderr, "rules need block = 0\n"); return 1; }
+    no_mirror = argc >= 17 && atoi(argv[16]);
+    max_per_line = argc >= 18 ? atoi(argv[17]) : 0;
+    if (block && (no_mirror || max_per_line)) { fprintf(stderr, "rules need block = 0\n"); return 1; }
     make_order(block);
     shuffle = seed != 0; rng = 0x9E3779B97F4A7C15ULL ^ (unsigned long long)seed;
     int max_word = 0;

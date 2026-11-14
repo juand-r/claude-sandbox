@@ -50,7 +50,7 @@ def decode(line, vocab, n_rows, n_cols):
 def run_solver(row_keys, col_keys, n_rows, n_cols, max_repeats=0, costs=None,
                max_cost=0, max_solutions=0, max_nodes=0, seed=0, temp=-1.0,
                restart_nodes=0, n_procs=1, verbose=False, algorithm="fill", no_mirror=False,
-               line_distinct=False):
+               max_per_line=0):
     """Return (grids, exhaustive). Each grid is a tuple of row tuples of words.
 
     row_keys: iterable of word tuples of length n_cols; col_keys: length n_rows.
@@ -62,15 +62,15 @@ def run_solver(row_keys, col_keys, n_rows, n_cols, max_repeats=0, costs=None,
     temp, restart_nodes: only for algorithm="trie"; see solver.c.
     no_mirror: only for algorithm="trie". No cell may hold the same word as
         its mirror cell (row and column swapped); this excludes symmetric grids.
-    line_distinct: only for algorithm="trie". No word occurs twice in the same
-        row or the same column.
+    max_per_line: only for algorithm="trie". A word occurs at most this many
+        times in one row and in one column (0 = no limit).
     Duplicate grids are removed.
     """
     solver = SOLVERS[algorithm]
     if not os.path.exists(solver):
         raise FileNotFoundError("compile first; see README.md")
-    if (no_mirror or line_distinct) and algorithm != "trie":
-        raise ValueError("no_mirror and line_distinct need algorithm='trie'")
+    if (no_mirror or max_per_line) and algorithm != "trie":
+        raise ValueError("no_mirror and max_per_line need algorithm='trie'")
     with tempfile.TemporaryDirectory() as tmp:
         vocab, paths = write_inputs(tmp, row_keys, col_keys, costs)
         procs = []
@@ -81,8 +81,8 @@ def run_solver(row_keys, col_keys, n_rows, n_cols, max_repeats=0, costs=None,
             if algorithm == "trie":
                 args += [temp, restart_nodes]
             args += [part, n_parts]
-            if no_mirror or line_distinct:
-                args += [0, int(no_mirror) + 2 * int(line_distinct)]
+            if no_mirror or max_per_line:
+                args += [0, int(no_mirror), max_per_line]
             procs.append(subprocess.Popen([str(a) for a in args], stdout=subprocess.PIPE,
                                           stderr=subprocess.PIPE, text=True))
         outputs = [p.communicate() for p in procs]
