@@ -37,6 +37,19 @@ def surface(key, punct, caps):
     return " ".join(words) + punct
 
 
+def recase(raw, caps):
+    """Fix the capitals of a raw corpus line, keeping its punctuation: the
+    first word and normally capitalized words get a capital, the rest none."""
+    tokens = []
+    for i, token in enumerate(raw.split(" ")):
+        core = token.rstrip(",.?!")
+        word = caps.get(core.lower(), core.lower())
+        if i == 0:
+            word = word[0].upper() + word[1:]
+        tokens.append(word + token[len(core):])
+    return " ".join(tokens)
+
+
 def canonical(grid):
     """A square grid and its transpose are the same piece of writing; pick
     one. Rectangular grids are returned unchanged, to keep one orientation."""

@@ -1,16 +1,19 @@
 """Print the best grids from a feature file (output of score_grids.py).
 
 Usage: gallery.py FEATURES_PKL [-n N] [--max-shared M] [--forms FORMS_PKL]
+                  [--contains WORD ...]
 
 N grids are shown (default 20). Two shown grids share at most M words
 (default: half the cells). With --forms (output of surface_forms.py) the
 sentences are printed as they were written in the corpus, with commas.
+With --contains only grids that include all the given words are considered
+(scores are still standardized over the whole set).
 """
 
 import argparse
 import pickle
 
-from rank import combined_scores, diverse_top
+from rank import combined_scores, diverse_top, load_caps, recase
 from search import columns, show
 
 
@@ -20,6 +23,7 @@ def main():
     p.add_argument("-n", type=int, default=20)
     p.add_argument("--max-shared", type=int)
     p.add_argument("--forms")
+    p.add_argument("--contains", nargs="+", default=[])
     args = p.parse_args()
     with open(args.features, "rb") as f:
         feats = pickle.load(f)
@@ -27,9 +31,14 @@ def main():
     if args.forms:
         with open(args.forms, "rb") as f:
             forms = pickle.load(f)
+        caps = load_caps()
+        forms = {k: recase(v, caps) for k, v in forms.items()}
     cells = len(feats[0]["grid"]) * len(feats[0]["grid"][0])
     max_shared = args.max_shared if args.max_shared is not None else cells // 2
     scores = combined_scores(feats)
+    keep = [i for i, f in enumerate(feats)
+            if set(args.contains) <= {w for row in f["grid"] for w in row}]
+    feats, scores = [feats[i] for i in keep], [scores[i] for i in keep]
     for rank, i in enumerate(diverse_top(feats, scores, args.n, max_shared), 1):
         f = feats[i]
         across, down = f["rows_text"], f["cols_text"]
