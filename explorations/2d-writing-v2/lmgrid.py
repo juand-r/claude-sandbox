@@ -9,9 +9,11 @@ to continue both lines well. The beam keeps the best partial grids.
 Nothing is looked up in a sentence list: a line is judged only by its
 probability under the model. Lines need not end a sentence.
 
-Wrap-around (--wrap): the rows are read as one running text (row 2 continues
+Wrap-around (--wrap rows, or both for rows and columns): the rows are read as
+one running text (row 2 continues
 row 1) and so are the columns (column 2 continues column 1).
   rows: the row context of a cell is all earlier cells in reading order.
+    Cells are filled row by row, so every earlier row is complete by then.
   columns: the column context of a cell is the earlier columns down to the
     row above, then the cells above it. While the grid is being filled the
     lower part of the earlier columns does not exist yet, so the context
@@ -32,7 +34,8 @@ Cells hold single tokens of the model that are whole lowercase words
 (contractions such as "don't" are several tokens and are not available yet).
 
 Usage:
-  lmgrid.py N_ROWS N_COLS [--beam 32] [--top 40] [--wrap] [--out FILE.json]
+  lmgrid.py N_ROWS N_COLS [--beam 32] [--top 40] [--wrap none|rows|both]
+            [--out FILE.json]
 """
 
 import argparse
@@ -202,6 +205,8 @@ def junction_scores(model, candidates, n_rows, n_cols):
 
 
 def beam_search(model, n_rows, n_cols, beam, top, wrap, repeat_penalty, start=None, verbose=True):
+    # wrap: "none", "rows" (rows form one text, columns stand alone) or "both"
+    wrap_rows, wrap_cols = wrap in ("rows", "both"), wrap == "both"
     """Return the final beam: list of (score, cells) with cells in row order.
 
     start: optional list of beams (score, cells) to continue from, e.g. the
@@ -210,24 +215,24 @@ def beam_search(model, n_rows, n_cols, beam, top, wrap, repeat_penalty, start=No
     first = len(beams[0][1])
     for cell in range(first, n_rows * n_cols):
         r, c = divmod(cell, n_cols)
-        row_lp = model.next_word_logprobs([row_context(cells, n_cols, wrap) for _, cells in beams])
-        col_lp = model.next_word_logprobs([col_context(cells, n_cols, wrap) for _, cells in beams])
+        row_lp = model.next_word_logprobs([row_context(cells, n_cols, wrap_rows) for _, cells in beams])
+        col_lp = model.next_word_logprobs([col_context(cells, n_cols, wrap_cols) for _, cells in beams])
         combined = row_lp + col_lp
         expansions = []
         for b, (score, cells) in enumerate(beams):
-            seen = trigrams(cells, n_cols, wrap)
+            seen = trigrams(cells, n_cols, wrap_rows)
             kept = 0
             for word in torch.argsort(combined[b], descending=True).tolist():
                 if kept == top:
                     break
                 if allowed(cells, n_cols, word) and seen.isdisjoint(
-                        new_trigrams(cells, n_cols, wrap, word)):
+                        new_trigrams(cells, n_cols, wrap_rows, word)):
                     # Soft limit on repeats: each earlier use of the word costs.
                     penalty = repeat_penalty * cells.count(word)
                     expansions.append((score + combined[b, word].item() - penalty, cells + [word]))
                     kept += 1
         expansions.sort(key=lambda e: -e[0])
-        if wrap and r == n_rows - 1 and c < n_cols - 1 and n_rows > 1:
+        if wrap_cols and r == n_rows - 1 and c < n_cols - 1 and n_rows > 1:
             # Rescore a wider shortlist with the look-ahead term.
             shortlist = expansions[:beam * 4]
             extra = junction_scores(model, [cells for _, cells in shortlist], n_rows, n_cols)
@@ -251,7 +256,7 @@ def main():
     p.add_argument("n_cols", type=int)
     p.add_argument("--beam", type=int, default=32)
     p.add_argument("--top", type=int, default=40, help="candidate words per beam and cell")
-    p.add_argument("--wrap", action="store_true")
+    p.add_argument("--wrap", choices=["none", "rows", "both"], default="none")
     p.add_argument("--repeat-penalty", type=float, default=2.0,
                    help="cost in nats for each earlier use of a word in the grid")
     p.add_argument("--show", type=int, default=3)

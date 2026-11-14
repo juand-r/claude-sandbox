@@ -409,3 +409,21 @@ far) + log P(word | column so far) under SmolLM2-360M, renormalized over
   rest of in that you to". The column text weakens toward the end.
 - Observation: the grids consist almost only of function words. A word must
   be likely in two contexts at once, which favors generic words.
+
+Row-only wrap (`--wrap rows`; user request after seeing that wrap in both
+directions was not fluent). Rows form one text, each column stands alone.
+Cells are filled row by row, so the row context always consists of complete
+earlier rows. Beam 32, top 30.
+
+- 6x6: 122 s, -3.39 (`data/lm/6x6_wraprows.json`). Rows: "and so on to the
+  end of it all the time of course is the place for this in a world where
+  everything is a question and there is a lot that we are not very". Columns:
+  "and of course in a lot", "so it is a question that", "on all the world and
+  we", "to the place where there are", "the time for everything is not",
+  "end of this is a very".
+- 8x8: 275 s, -3.58 (`data/lm/8x8_wraprows.json`). Rows: "and so on for a
+  while and then there is this one line in it that is the very last of its
+  kind in the whole day time long history of the text world as we know it
+  goes back to when we have not had something of which you are to be made
+  like me you can now say but no this was". Weak spots: "day time long
+  history", column "a line of long know not be but".
