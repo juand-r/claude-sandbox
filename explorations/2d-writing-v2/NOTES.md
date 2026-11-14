@@ -364,3 +364,48 @@ Findings so far:
   the supply of words, not by the fit of sentences.
 - Added levels to `grow.py`: when no step works, rarer sentences (and
   frequent 2-word ones) are admitted. Run 3 uses the default four levels.
+
+## 2026-11-14: change of direction (user): language model with beam search
+
+User feedback: the sentence lookup is not what was wanted. Wanted: build the
+grid incrementally with a language model and beam search. Further decisions
+by the user: repeats allowed but limited; no word equal to its mirror cell;
+a word at most twice per row or column; punctuation is to be a token in a
+cell (off for now); lines must be fluent but need not end a sentence; next
+step is wrap-around (row 2 continues row 1, same for columns).
+
+Lookup experiments under the new repeat rules, before the change: 5x5 at
+count >= 20 with unlimited repeats and no mirrored words gives 180 grids, all
+degenerate (identical rows, columns like "come come come come come"). With
+"at most 2 per line" added: 0 grids at count >= 20. The count >= 10 run was
+stopped. The grown 10x10 and 13x13 grids (lines cut into several sentences)
+used a reading of "punctuation" that the user did not intend.
+
+`lmgrid.py`: cells filled row by row; candidate score = log P(word | row so
+far) + log P(word | column so far) under SmolLM2-360M, renormalized over
+13,487 single-token lowercase words; beam search.
+
+- Without a prefix the model reads a lowercase start as code ("void main
+  function void function"). A one-line prefix saying the text is lowercase
+  prose fixes that.
+- Without a cost on repeats one word floods the grid ("function" 6 times in
+  5x5). Added 2 nats per earlier use of a word.
+- 5x5, beam 16: 28 s. "and then there is the / so he was a man / it took a
+  lot of / was the time of the / that two in one house"; down "and so it was
+  that / then he took the two / there was a time in / is a lot of one / the
+  man of the house".
+- 8x8, beam 32, no wrap: 167 s, -3.71 nats per word and direction
+  (`data/lm/8x8.json`). Rows such as "the idea had been floating around in
+  my", columns such as "then the world was made to my will".
+- 8x8 with wrap, first try: degenerate. Each row was the previous row
+  shifted by one word ("on to the end of it all" repeated), which makes
+  copying cheap in both directions. Fix: no three-word sequence may occur
+  twice, along rows or down columns.
+- 6x6 with wrap and that rule: 235 s (`data/lm/6x6_wrap.json`). Rows read as
+  one text: "and so on for the rest of it until the next of course is the
+  last one in there at end time and that is all of it then you just put that
+  in there to". Columns: "and of course there is just so it is at all put on
+  until the end of that for the last time it in the next one and then there
+  rest of in that you to". The column text weakens toward the end.
+- Observation: the grids consist almost only of function words. A word must
+  be likely in two contexts at once, which favors generic words.

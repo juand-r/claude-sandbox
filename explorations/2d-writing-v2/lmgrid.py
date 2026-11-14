@@ -24,6 +24,8 @@ Rules on repeated words (always on):
   - no cell holds the same word as its mirror cell (row and column swapped),
     which excludes symmetric grids;
   - a word occurs at most MAX_PER_LINE times in a row and in a column;
+  - no three-word sequence occurs twice, along rows or down columns (this
+    stops the model from copying an earlier line with a shift);
   - each earlier use of a word anywhere in the grid costs --repeat-penalty.
 
 Cells hold single tokens of the model that are whole lowercase words
@@ -154,6 +156,28 @@ def allowed(cells, n_cols, word):
     return in_row < MAX_PER_LINE and in_col < MAX_PER_LINE
 
 
+def trigrams(cells, n_cols, wrap):
+    """All three-word sequences of the partial grid, read along rows (across
+    row ends if wrap) and down columns."""
+    found = set()
+    rows = [cells] if wrap else [cells[i:i + n_cols] for i in range(0, len(cells), n_cols)]
+    cols = [cells[c::n_cols] for c in range(n_cols)]
+    for line in rows + cols:
+        found.update(zip(line, line[1:], line[2:]))
+    return found
+
+
+def new_trigrams(cells, n_cols, wrap, word):
+    """The three-word sequences that `word` in the next cell would complete."""
+    r, c = divmod(len(cells), n_cols)
+    result = []
+    if (wrap and len(cells) >= 2) or c >= 2:
+        result.append((cells[-2], cells[-1], word))
+    if r >= 2:
+        result.append((cells[(r - 2) * n_cols + c], cells[(r - 1) * n_cols + c], word))
+    return result
+
+
 def junction_scores(model, candidates, n_rows, n_cols):
     """Look-ahead for the last row with wrap-around: how well does the top of
     column c+1 follow once column c is complete?
@@ -191,11 +215,13 @@ def beam_search(model, n_rows, n_cols, beam, top, wrap, repeat_penalty, start=No
         combined = row_lp + col_lp
         expansions = []
         for b, (score, cells) in enumerate(beams):
+            seen = trigrams(cells, n_cols, wrap)
             kept = 0
             for word in torch.argsort(combined[b], descending=True).tolist():
                 if kept == top:
                     break
-                if allowed(cells, n_cols, word):
+                if allowed(cells, n_cols, word) and seen.isdisjoint(
+                        new_trigrams(cells, n_cols, wrap, word)):
                     # Soft limit on repeats: each earlier use of the word costs.
                     penalty = repeat_penalty * cells.count(word)
                     expansions.append((score + combined[b, word].item() - penalty, cells + [word]))
