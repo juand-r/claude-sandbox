@@ -7,6 +7,7 @@ cat > /tmp/report_style.css <<'CSS'
 body { font-family: Georgia, serif; max-width: 46em; margin: 2em auto; line-height: 1.45; font-size: 11pt; }
 pre, code { font-family: "DejaVu Sans Mono", monospace; font-size: 9pt; }
 pre { background: #f5f5f5; padding: 0.6em; white-space: pre-wrap; }
+pre.wide { font-size: 6.5pt; white-space: pre; }
 table { border-collapse: collapse; font-size: 10pt; }
 td, th { border: 1px solid #999; padding: 3px 8px; }
 h1 { font-size: 18pt; } h2 { font-size: 14pt; } h3 { font-size: 12pt; }

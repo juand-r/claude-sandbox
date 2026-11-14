@@ -1,6 +1,105 @@
 # Gallery
 
-Best grids of each scored set, chosen by `make_gallery.py` (combined score of `rank.py`, near duplicates removed). Every row and every column is a sentence from the OpenSubtitles corpus; all words in a grid are distinct. Sentences are shown with the punctuation they most often have in the corpus.
+The first section shows grids grown step by step, where a line may hold several sentences. The other sections show the best grids of each scored set, chosen by `make_gallery.py` (combined score of `rank.py`, near duplicates removed). Every row and every column of those is a single sentence from the OpenSubtitles corpus; all words in a grid are distinct. Sentences are shown with the punctuation they most often have in the corpus.
+
+## Grown grids: each line is a sequence of sentences
+
+One growth run of `grow.py` from a 4x4 grid (4x4 -> 4x7 -> 7x7 -> 7x10 -> 10x10 -> 10x13 -> 13x13). All words of a grid are distinct. When the grid could not grow any more, rarer sentences were admitted (the next level). Shown: the largest grid of each level.
+
+### 10x10, level 0
+
+Sentences admitted at this level, by minimum corpus count: 3-word 50+, 4-word 10+, 5-word 10+, 6-word 10+, 7-word 10+. Fluency -4.48.
+
+<pre class="wide">
+oh     but    i       couldn't um     it's   okay  how'd they      do
+no     it     cannot  be       well   not    all   we    saw       that
+you    can't  trust   anyone   that's bad    right get   him       again
+don't  hurt   anybody else     good   luck   then  there what      is
+sure   come   in      what's   he     want   now   he's  a         she
+you're on     the     inside   got    to     move  so    beautiful here
+ok     kiddo  fire    me       better watch  out   big   day       today
+just   like   his     daddy    she's  my     mom   i'll  find      one
+call   your   father  i'm      too    young  let's have  another   beer
+her    mother died    sorry    old    friend go    this  way       please
+</pre>
+
+Across:
+
+- Oh, but I couldn't. Um, it's okay. How'd they do?
+- No, it cannot be. Well, not all. We saw that.
+- You can't trust anyone. That's bad, right? Get him again.
+- Don't hurt anybody else. Good luck, then. There what is?
+- Sure, come in. What's he want now? He's a she.
+- You're on the inside. Got to move. So beautiful here.
+- Ok, kiddo, fire me. Better watch out. Big day today.
+- Just like his daddy. She's my mom. I'll find one.
+- Call your father. I'm too young. Let's have another beer.
+- Her mother died. Sorry, old friend. Go this way, please.
+
+Down:
+
+- Oh, no, you don't. Sure you're ok? Just call her.
+- But it can't hurt. Come on, kiddo. Like your mother.
+- I cannot trust anybody. In the fire. His father died.
+- Couldn't be anyone else. What's inside me? Daddy, I'm sorry.
+- Um, well that's good. He got better. She's too old.
+- It's not bad luck. Want to watch? My young friend.
+- Okay, all right then. Now move out! Mom, let's go!
+- How'd we get there? He's so big. I'll have this.
+- They saw him. What a beautiful day. Find another way.
+- Do that again. Is she here today? One beer, please.
+
+### 13x13, level 1
+
+Sentences admitted at this level, by minimum corpus count: 2-word 500+, 3-word 20+, 4-word 7+, 5-word 7+, 6-word 7+, 7-word 7+. Fluency -4.72.
+
+<pre class="wide">
+oh       but         i            couldn't um      it's   okay       how'd    they      do     where's  everybody going
+no       it          cannot       be       well    not    all        we       saw       that   dad      sit       down
+you      can't       trust        anyone   that's  bad    right      get      him       again  hang     tight     everyone
+don't    hurt        anybody      else     good    luck   then       there    what      is     up       and       back
+sure     come        in           what's   he      want   now        he's     a         she    they're  cut       off
+you're   on          the          inside   got     to     move       so       beautiful here   really   very      nice
+ok       kiddo       fire         me       better  watch  out        big      day       today  pretty   hot       huh
+just     like        his          daddy    she's   my     mom        i'll     find      one    two      four      six
+call     your        father       i'm      too     young  let's      have     another   beer   maybe    five      minutes
+her      mother      died         sorry    old     friend go         this     way       please three    months    ago
+he'll    say         yes          we're    waiting yeah   we'll      see      uh        hey    stop     at        nothing
+eat      something   everything's ready    for     who    hear       ye       last      man    standing which     was
+anything interesting fine         sir      someone knew   everything tomorrow night     look   around   point     taken
+</pre>
+
+Across:
+
+- Oh, but I couldn't. Um, it's okay. How'd they do? Where's everybody going?
+- No, it cannot be. Well, not all. We saw that. Dad, sit down.
+- You can't trust anyone. That's bad, right? Get him again. Hang tight, everyone.
+- Don't hurt anybody else. Good luck, then. There what is? Up and back.
+- Sure, come in. What's he want now? He's a she. They're cut off!
+- You're on the inside. Got to move. So beautiful here. Really, very nice.
+- Ok, kiddo, fire me. Better watch out. Big day today. Pretty hot, huh?
+- Just like his daddy. She's my mom. I'll find one. Two, four, six.
+- Call your father. I'm too young. Let's have another beer. Maybe five minutes.
+- Her mother died. Sorry, old friend. Go this way, please. Three months ago.
+- He'll say yes. We're waiting. Yeah, we'll see. Uh, hey. Stop at nothing.
+- Eat something. Everything's ready. For who? Hear ye! Last man standing. Which was?
+- Anything interesting? Fine, sir. Someone knew everything. Tomorrow night. Look around. Point taken.
+
+Down:
+
+- Oh, no, you don't. Sure you're ok? Just call her. He'll eat anything.
+- But it can't hurt. Come on, kiddo. Like your mother. Say something interesting.
+- I cannot trust anybody. In the fire. His father died. Yes, everything's fine.
+- Couldn't be anyone else. What's inside me? Daddy, I'm sorry. We're ready, sir.
+- Um, well that's good. He got better. She's too old. Waiting for someone?
+- It's not bad luck. Want to watch? My young friend. Yeah, who knew?
+- Okay, all right then. Now move out! Mom, let's go! We'll hear everything.
+- How'd we get there? He's so big. I'll have this. See ye tomorrow.
+- They saw him. What a beautiful day. Find another way. Uh, last night.
+- Do that again. Is she here today? One beer, please. Hey, man, look.
+- Where's dad? Hang up. They're really pretty. Two, maybe three. Stop standing around!
+- Everybody sit tight. And cut. Very hot. Four, five months? At which point?
+- Going down. Everyone, back off! Nice, huh? Six minutes ago. Nothing was taken.
 
 ## 4x4, sentences seen 7+ times, at least 5 uncommon words
 
