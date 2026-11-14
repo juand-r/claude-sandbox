@@ -192,9 +192,12 @@ completion): identical results, 17 percent fewer nodes on a test run (4x4,
 k = 30, at least 3 uncommon words). Small gain, because almost every column
 prefix has some completion made of uncommon words.
 
-Cost projection: nodes grow about as (number of sentences)^2.8, so the same
-run at k = 5 (1.45 million sentences) would need about 6e11 nodes, around 8
-hours on 4 cores. Extrapolation, not measured.
+Cost projection: from k = 20 (2.0e9 nodes, 227k sentences) to this run
+(3.6e10 nodes, 529k sentences) the growth exponent is about 3.4 (the two runs
+differ slightly in constraints). At that rate the same run at k = 5 (1.45
+million sentences) would need about 1e12 nodes, around a day on 4 cores.
+Extrapolation, not measured. (An earlier version of this note used an
+exponent of 2.8, which was too low.)
 
 ## 2026-11-14: block cell order (negative result)
 
@@ -241,9 +244,11 @@ All runs: no names, all words distinct, exhaustive, `run_exhaustive.py`.
 | 3x5 | 20 | 168,181 | 166,688 | 14,908 | 4.7e8 | 104 |
 | 3x6 | 10 | 413,854 | 361,547 | 1,096 | 3.4e9 | 928 |
 | 4x5 | 10 | 512,942 | 528,874 | 752 | 1.8e10 | 4,199 |
-| 3x7 | 10 | 310,584 | 361,547 | 0 | (see log) | |
-
-(4x6 pending.) Earlier quick tests with names allowed: at k = 20 there are 5
+| 3x7 | 10 | 310,584 | 361,547 | 0 | 1.4e9 | 486 |
+| 4x6 | 10 | 413,854 | 528,874 | 0 | 4.2e9 | 1,260 |
+| 3x5 | rows 10, columns 100 | 512,942 | 30,399 | 873 | 2.2e8 | 72 |
+| 3x6 | rows 5, columns 100 | 1,267,371 | 30,399 | 4 | 5.6e8 | 178 |
+ Earlier quick tests with names allowed: at k = 20 there are 5
 grids for 3x6, 4 for 4x5, none for 3x7 and 4x6.
 
 3x5 at k = 20: scored the 2,278 grids with at least 2 uncommon words
@@ -282,3 +287,24 @@ Fluency alone does not separate the v1 intersection grid from the lower half
 of the v2 grids: a fragment such as "it was the only" is locally very
 probable. The difference that matters is that v2 lines are complete
 sentences, which the language model score does not measure well.
+
+## 2026-11-14: stricter threshold for short columns
+
+`run_exhaustive.py --min-count-cols` sets a separate count threshold for the
+column sentences. With columns at k = 100 the 3-word fragments mostly
+disappear. The four 3x6 grids (rows k = 5) are clean, for example
+"yeah well i think you're right / we are just about here now / can you do
+that again please" with columns "yeah we can", "well are you", "i just do",
+"think about that", "you're here again", "right now please".
+
+4x5 at k = 10 (`data/feat_4x5_k10.pkl`, 752 grids): top grids are as good as
+the 4x4 ones, e.g. "why don't we all go / do you have the right / i know
+another way in / try that one over there", down: "Why do I try? Don't you
+know that? We have another one. All the way over. Go right in there."
+
+## 2026-11-14: long 4x4 run at k = 7
+
+Started `run_exhaustive.py --rows 4 --cols 4 --min-count 7 --min-uncommon 5
+--n-common 300 --no-names --parts 240` (832,981 sentences). After 5 parts:
+3.5e9 nodes, 4 grids. At that rate the whole run needs about 1.7e11 nodes,
+4 to 5 hours on 4 cores.

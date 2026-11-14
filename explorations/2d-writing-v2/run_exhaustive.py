@@ -13,6 +13,7 @@ Options that restrict the grids:
                          --n-common most frequent words
   --min-uncommon N       the whole grid has at least N such words
   --no-names             drop sentences containing a normally capitalized word
+  --min-count-cols K     stricter (or looser) count threshold for the columns
 """
 
 import argparse
@@ -33,6 +34,8 @@ def parse_args():
     p.add_argument("--rows", type=int, required=True)
     p.add_argument("--cols", type=int, required=True)
     p.add_argument("--min-count", type=int, required=True)
+    p.add_argument("--min-count-cols", type=int,
+                   help="minimum count for column sentences (default: --min-count)")
     p.add_argument("--max-repeats", type=int, default=0)
     p.add_argument("--min-uncommon-line", type=int, default=0)
     p.add_argument("--min-uncommon", type=int, default=0)
@@ -43,9 +46,9 @@ def parse_args():
     return p.parse_args()
 
 
-def load_lines(n, args, common, names):
+def load_lines(n, min_count, args, common, names):
     """Sentences of n words that satisfy the per-line restrictions."""
-    return {s for s in load_opensub(n, args.min_count)
+    return {s for s in load_opensub(n, min_count)
             if sum(w not in common for w in s) >= args.min_uncommon_line
             and (not args.no_names or names.isdisjoint(s))}
 
@@ -53,7 +56,9 @@ def load_lines(n, args, common, names):
 def main():
     args = parse_args()
     n_rows, n_cols, n_parts = args.rows, args.cols, args.parts
-    name = (f"{n_rows}x{n_cols}_k{args.min_count}_rep{args.max_repeats}"
+    min_count_cols = args.min_count_cols or args.min_count
+    count_tag = f"k{args.min_count}" + (f"_kc{min_count_cols}" if args.min_count_cols else "")
+    name = (f"{n_rows}x{n_cols}_{count_tag}_rep{args.max_repeats}"
             f"_ul{args.min_uncommon_line}_u{args.min_uncommon}_c{args.n_common}"
             + ("_nonames" if args.no_names else ""))
     run_dir = f"data/runs/{name}"
@@ -67,8 +72,11 @@ def main():
             f.write(str(n_parts))
     common = load_common_words(n=args.n_common)
     names = load_names() if args.no_names else set()
-    row_set = load_lines(n_cols, args, common, names)
-    col_set = row_set if n_rows == n_cols else load_lines(n_rows, args, common, names)
+    row_set = load_lines(n_cols, args.min_count, args, common, names)
+    if n_rows == n_cols and min_count_cols == args.min_count:
+        col_set = row_set
+    else:
+        col_set = load_lines(n_rows, min_count_cols, args, common, names)
     vocab, paths = write_inputs(run_dir, row_set, col_set, {w: 1 for w in common})
     max_cost = n_rows * n_cols - args.min_uncommon
     print(f"{len(row_set)} row sentences, {len(col_set)} column sentences", flush=True)
