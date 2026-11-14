@@ -210,3 +210,23 @@ grids but visits more nodes:
 | 5x5, k = 20 | 3.3e8 | 1.3e9 |
 
 Row by row stays the default.
+
+## 2026-11-14: a 5x5 grid
+
+Run: `run_exhaustive.py --rows 5 --cols 5 --min-count 10 --max-repeats 3
+--no-names` (512,942 sentences, at most 3 cells may repeat a word). 7.4e10
+nodes, 12,566 CPU seconds (about 52 minutes on 4 cores, shared with another
+job), exhaustive. Result: one grid and its transpose.
+
+```
+and     what    did     i       get
+where   have    you     put     him
+do      you     want    them    back
+you     brought her     in      here
+go      back    to      bed     now
+```
+
+Down: "and where do you go", "what have you brought back", "did you want her
+to", "i put them in bed", "get him back here now". All ten lines occur at
+least 10 times in the corpus. "you" appears three times and "back" twice, so
+22 of the 25 words are distinct.

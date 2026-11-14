@@ -1,6 +1,10 @@
 """Compute ranking features (rank.py) for a file of grids.
 
-Usage: score_grids.py GRIDS_PKL MIN_COUNT OUT_PKL
+Usage: score_grids.py GRIDS_PKL MIN_COUNT OUT_PKL [MIN_UNCOMMON]
+
+With MIN_UNCOMMON, only grids with at least that many words outside the
+common-word list are scored (the language model is slow, so large sets need a
+cheap first cut).
 
 GRIDS_PKL holds {"grids": [...]} (output of run_exhaustive.py) or a plain
 list of grids. Sentences are looked up in the OpenSubtitles sets with the
@@ -29,13 +33,18 @@ def main():
         data = pickle.load(f)
     grids = data["grids"] if isinstance(data, dict) else data
     grids = sorted({canonical(g) for g in grids})
+    common = load_common_words()
+    if len(sys.argv) > 4:
+        min_uncommon = int(sys.argv[4])
+        grids = [g for g in grids if sum(w not in common for row in g for w in row) >= min_uncommon]
+    print(f"{len(grids)} grids to score", flush=True)
     lengths = {len(grids[0]), len(grids[0][0])}
     sentence_sets = {n: load_opensub(n, min_count) for n in lengths}
     done = []
     if os.path.exists(out_path):
         with open(out_path, "rb") as f:
             done = pickle.load(f)
-    scorer, caps, common = Scorer(), load_caps(), load_common_words()
+    scorer, caps = Scorer(), load_caps()
     for start in range(len(done), len(grids), CHUNK):
         done += features(grids[start:start + CHUNK], sentence_sets, scorer, caps, common)
         with open(out_path + ".tmp", "wb") as f:

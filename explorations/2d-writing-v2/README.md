@@ -50,7 +50,7 @@ cd ..
 # 2. language-model features for each grid (slow: ~250 grids/min on one core)
 ./venv/bin/python score_grids.py data/runs/<run>/grids.pkl 20 data/feat.pkl
 # 3. best grids, with near-duplicates removed
-./venv/bin/python gallery.py data/feat.pkl 20
+./venv/bin/python gallery.py data/feat.pkl -n 20
 ```
 
 ## Files

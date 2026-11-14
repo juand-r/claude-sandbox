@@ -38,7 +38,10 @@ def surface(key, punct, caps):
 
 
 def canonical(grid):
-    """A grid and its transpose are the same piece of writing; pick one."""
+    """A square grid and its transpose are the same piece of writing; pick
+    one. Rectangular grids are returned unchanged, to keep one orientation."""
+    if len(grid) != len(grid[0]):
+        return grid
     return min(grid, columns(grid))
 
 
