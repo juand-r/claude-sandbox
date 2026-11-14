@@ -230,3 +230,55 @@ Down: "and where do you go", "what have you brought back", "did you want her
 to", "i put them in bed", "get him back here now". All ten lines occur at
 least 10 times in the corpus. "you" appears three times and "back" twice, so
 22 of the 25 words are distinct.
+
+## 2026-11-14: rectangles
+
+All runs: no names, all words distinct, exhaustive, `run_exhaustive.py`.
+"rows x cols": a 3x5 grid has 3 rows of 5 words and 5 columns of 3 words.
+
+| grid | k | row sentences | column sentences | grids | nodes | CPU s |
+|---|---|---|---|---|---|---|
+| 3x5 | 20 | 168,181 | 166,688 | 14,908 | 4.7e8 | 104 |
+| 3x6 | 10 | 413,854 | 361,547 | 1,096 | 3.4e9 | 928 |
+| 4x5 | 10 | 512,942 | 528,874 | 752 | 1.8e10 | 4,199 |
+| 3x7 | 10 | 310,584 | 361,547 | 0 | (see log) | |
+
+(4x6 pending.) Earlier quick tests with names allowed: at k = 20 there are 5
+grids for 3x6, 4 for 4x5, none for 3x7 and 4x6.
+
+3x5 at k = 20: scored the 2,278 grids with at least 2 uncommon words
+(`data/feat_3x5_k20.pkl`). Top grid:
+
+```
+because he      didn't  do      it
+i       can     have    you     killed
+don't   try     to      follow  me
+```
+
+Down: "Because I don't. He can try. Didn't have to. Do you follow? It killed
+me."
+
+3x6 at k = 10 (`data/feat_3x6_k10.pkl`): rows are good, but many 3-word
+columns are fragments rather than sentences ("we have me", "that be me",
+"here right there"). Three-word subtitle lines with count 10 are often pieces
+of longer utterances. The sentence filter (capital first letter, final
+mark) does not catch this. A higher count threshold for short lines would
+help; not done yet.
+
+## 2026-11-14: v1 grids under the same measures
+
+Fluency (mean log-probability per token of each line written as a sentence,
+SmolLM2-360M):
+
+- v1 intersection grid ("but it is not / it was the only / is the way to /
+  not only to the"): -5.02. One of its 4 distinct lines occurs as a sentence
+  in the corpus with count >= 3 ("but it is not", 76).
+- v1 category grid ("i know a man / we have the world / ..."): rows -4.58,
+  columns -8.20. Two of 4 rows are attested, no column is.
+- v2 4x4 grids: median -4.61 (k = 20 set), best -3.73; every line attested
+  by construction.
+
+Fluency alone does not separate the v1 intersection grid from the lower half
+of the v2 grids: a fragment such as "it was the only" is locally very
+probable. The difference that matters is that v2 lines are complete
+sentences, which the language model score does not measure well.
