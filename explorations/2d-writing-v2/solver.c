@@ -1,7 +1,7 @@
 /* Exact search for word grids whose rows and columns are all listed sentences.
  *
  * Usage: solver ROWS COLS COSTS n_rows n_cols max_repeats max_cost
- *               max_solutions max_nodes seed temp restart_nodes part n_parts
+ *               max_solutions max_nodes seed temp restart_nodes part n_parts [block]
  *   ROWS: file with one sentence per line as n_cols space-separated word ids
  *   COLS: file with one sentence per line as n_rows space-separated word ids
  *   COSTS: file with one integer cost per word id (line i = cost of word i)
@@ -18,11 +18,14 @@
  *     fresh randomness. Grids may then be output more than once.
  *   part, n_parts: only search the grids whose first two words (row 0) hash
  *     to part modulo n_parts (to split the search over processes)
+ *   block (optional, default 0): cell order. 0 = row by row. 1 = grow a
+ *     top-left square block (2x2, then 3x3, ...), which applies row and
+ *     column constraints evenly and fails earlier.
  * Output: one grid per line, n_rows*n_cols word ids in row-major order.
  *
- * Cells are filled in row-major order. Rows and columns are stored as tries;
- * the candidates for a cell are the words that are children of both the row's
- * trie node and the column's trie node.
+ * Rows and columns are stored as tries. Cells are filled in a fixed order (row
+ * by row, or growing a top-left block); the candidates for a cell are the
+ * words that are children of both its row's trie node and its column's.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -132,15 +135,36 @@ static int finished(void) {
     return (max_solutions && n_solutions >= max_solutions) || (max_nodes && n_nodes >= max_nodes);
 }
 
-static void fill(int r, int c, int row_node) {
-    if (r == n_rows) {
+/* Cell order. seq_r[i], seq_c[i] is the i-th cell to fill. Any order works in
+ * which each cell comes after the cells to its left and above it. */
+static int seq_r[MAXN * MAXN], seq_c[MAXN * MAXN], row_node[MAXN];
+
+static void make_order(int block) {
+    int n = 0;
+    if (!block) {
+        for (int r = 0; r < n_rows; r++) for (int c = 0; c < n_cols; c++) { seq_r[n] = r; seq_c[n++] = c; }
+        return;
+    }
+    /* Grow a top-left block: after the k x k block, add column k (top to
+       bottom), then row k (left to right, including the corner). Once one
+       dimension is exhausted, the remaining columns or rows follow. */
+    int big = n_rows > n_cols ? n_rows : n_cols;
+    for (int k = 0; k < big; k++) {
+        if (k < n_cols) for (int r = 0; r < k && r < n_rows; r++) { seq_r[n] = r; seq_c[n++] = k; }
+        if (k < n_rows) for (int c = 0; c <= k && c < n_cols; c++) { seq_r[n] = k; seq_c[n++] = c; }
+    }
+}
+
+static void fill(int idx) {
+    if (idx == n_rows * n_cols) {
         for (int i = 0; i < n_rows * n_cols; i++) printf("%d%c", grid[i], i + 1 == n_rows * n_cols ? '\n' : ' ');
         n_solutions++;
         return;
     }
+    int r = seq_r[idx], c = seq_c[idx], rn = row_node[r];
     n_nodes++; nodes_at_row[r]++;
     int cn = col_node[c];
-    int ra = R.start[row_node], rb = ra + R.count[row_node];
+    int ra = R.start[rn], rb = ra + R.count[rn];
     int ca = C.start[cn], cb = ca + C.count[cn];
     if (ra == rb || ca == cb) return;
     /* Intersect two sorted child lists: walk the shorter one and binary-search
@@ -178,7 +202,7 @@ static void fill(int r, int c, int row_node) {
     }
     for (int i = 0; i < k && !stop(); i++) {
         int w = cw[3 * i];
-        if (r == 0 && c == 1 && ((unsigned)grid[0] * 2654435761u + (unsigned)w) % (unsigned)n_parts != (unsigned)part) continue;
+        if (idx == 1 && ((unsigned)grid[0] * 2654435761u + (unsigned)w) % (unsigned)n_parts != (unsigned)part) continue;
         int rep = used[w] > 0;
         int new_bound = col_bound - C.mincost[cn] + C.mincost[cw[3 * i + 2]];
         if (repeats + rep > max_repeats || total_cost + cost[w] + new_bound > max_cost) continue;
@@ -186,9 +210,10 @@ static void fill(int r, int c, int row_node) {
         col_bound = new_bound;
         repeats += rep; used[w]++; total_cost += cost[w];
         grid[r * n_cols + c] = w;
+        row_node[r] = cw[3 * i + 1];
         col_node[c] = cw[3 * i + 2];
-        if (c + 1 < n_cols) fill(r, c + 1, cw[3 * i + 1]);
-        else fill(r + 1, 0, 0);
+        fill(idx + 1);
+        row_node[r] = rn;
         col_node[c] = cn;
         used[w]--; repeats -= rep; total_cost -= cost[w];
         col_bound = old_bound;
@@ -196,7 +221,7 @@ static void fill(int r, int c, int row_node) {
 }
 
 int main(int argc, char **argv) {
-    if (argc != 15) {
+    if (argc != 15 && argc != 16) {
         fprintf(stderr, "usage: solver ROWS COLS COSTS n_rows n_cols max_repeats max_cost "
                         "max_solutions max_nodes seed temp restart_nodes part n_parts\n");
         return 1;
@@ -207,6 +232,7 @@ int main(int argc, char **argv) {
     long seed = atol(argv[10]);
     temp = atof(argv[11]); restart_nodes = seed ? atol(argv[12]) : 0;
     part = atoi(argv[13]); n_parts = atoi(argv[14]);
+    make_order(argc == 16 && atoi(argv[15]));
     shuffle = seed != 0; rng = 0x9E3779B97F4A7C15ULL ^ (unsigned long long)seed;
     int max_word = 0;
     R = load(argv[1], n_cols, &max_word);
@@ -229,7 +255,7 @@ int main(int argc, char **argv) {
     long restarts = 0;
     do {
         restart_at = n_nodes + restart_nodes;
-        fill(0, 0, 0);
+        fill(0);
         restarts++;
     } while (restart_nodes && !finished());
     fprintf(stderr, "nodes per row:");

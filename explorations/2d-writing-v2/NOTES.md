@@ -195,3 +195,18 @@ prefix has some completion made of uncommon words.
 Cost projection: nodes grow about as (number of sentences)^2.8, so the same
 run at k = 5 (1.45 million sentences) would need about 6e11 nodes, around 8
 hours on 4 cores. Extrapolation, not measured.
+
+## 2026-11-14: block cell order (negative result)
+
+`solver.c` can fill cells by growing a top-left square block (2x2, 3x3, ...)
+instead of row by row (optional last argument). I expected it to fail
+earlier, since rows and columns get constrained evenly. It returns the same
+grids but visits more nodes:
+
+| grid, k | row by row | block |
+|---|---|---|
+| 4x4, k = 30 | 2.9e8 nodes | 5.4e8 |
+| 5x5, k = 30 | 4.0e7 | 1.2e8 |
+| 5x5, k = 20 | 3.3e8 | 1.3e9 |
+
+Row by row stays the default.
