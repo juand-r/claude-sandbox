@@ -1,7 +1,8 @@
 /* Exact search for word grids whose rows and columns are all listed sentences.
  *
  * Usage: solver ROWS COLS COSTS n_rows n_cols max_repeats max_cost
- *               max_solutions max_nodes seed temp restart_nodes part n_parts [block]
+ *               max_solutions max_nodes seed temp restart_nodes part n_parts
+ *               [block [rules]]
  *   ROWS: file with one sentence per line as n_cols space-separated word ids
  *   COLS: file with one sentence per line as n_rows space-separated word ids
  *   COSTS: file with one integer cost per word id (line i = cost of word i)
@@ -21,6 +22,12 @@
  *   block (optional, default 0): cell order. 0 = row by row. 1 = grow a
  *     top-left square block (2x2, then 3x3, ...), which applies row and
  *     column constraints evenly and fails earlier.
+ *   rules (optional, default 0): sum of
+ *     1 = a cell may not hold the same word as its mirror cell (row and
+ *         column swapped). This excludes symmetric grids, where row i equals
+ *         column i.
+ *     2 = no word may occur twice in the same row or the same column.
+ *     Needs block = 0.
  * Output: one grid per line, n_rows*n_cols word ids in row-major order.
  *
  * Rows and columns are stored as tries. Cells are filled in a fixed order (row
@@ -91,7 +98,7 @@ static Trie load(const char *path, int len, int *max_word) {
 }
 
 static Trie R, C;
-static int n_rows, n_cols, max_repeats;
+static int n_rows, n_cols, max_repeats, no_mirror, line_distinct;
 static long max_solutions, max_nodes, n_solutions, n_nodes;
 static long nodes_at_row[MAXN]; /* search nodes per row, for diagnostics */
 static int grid[MAXN * MAXN], col_node[MAXN], *used, repeats;
@@ -203,7 +210,15 @@ static void fill(int idx) {
     for (int i = 0; i < k && !stop(); i++) {
         int w = cw[3 * i];
         if (idx == 1 && ((unsigned)grid[0] * 2654435761u + (unsigned)w) % (unsigned)n_parts != (unsigned)part) continue;
+        /* Row-major order: the mirror cell (c, r) is already filled if c < r. */
+        if (no_mirror && c < r && r < n_cols && grid[c * n_cols + r] == w) continue;
         int rep = used[w] > 0;
+        if (rep && line_distinct) {
+            int clash = 0;
+            for (int j = 0; j < c; j++) clash |= grid[r * n_cols + j] == w;
+            for (int i2 = 0; i2 < r; i2++) clash |= grid[i2 * n_cols + c] == w;
+            if (clash) continue;
+        }
         int new_bound = col_bound - C.mincost[cn] + C.mincost[cw[3 * i + 2]];
         if (repeats + rep > max_repeats || total_cost + cost[w] + new_bound > max_cost) continue;
         int old_bound = col_bound;
@@ -221,9 +236,9 @@ static void fill(int idx) {
 }
 
 int main(int argc, char **argv) {
-    if (argc != 15 && argc != 16) {
+    if (argc < 15 || argc > 17) {
         fprintf(stderr, "usage: solver ROWS COLS COSTS n_rows n_cols max_repeats max_cost "
-                        "max_solutions max_nodes seed temp restart_nodes part n_parts\n");
+                        "max_solutions max_nodes seed temp restart_nodes part n_parts [block [rules]]\n");
         return 1;
     }
     n_rows = atoi(argv[4]); n_cols = atoi(argv[5]);
@@ -232,7 +247,11 @@ int main(int argc, char **argv) {
     long seed = atol(argv[10]);
     temp = atof(argv[11]); restart_nodes = seed ? atol(argv[12]) : 0;
     part = atoi(argv[13]); n_parts = atoi(argv[14]);
-    make_order(argc == 16 && atoi(argv[15]));
+    int block = argc >= 16 && atoi(argv[15]);
+    int rules = argc == 17 ? atoi(argv[16]) : 0;
+    no_mirror = rules & 1; line_distinct = rules & 2;
+    if (block && rules) { fprintf(stderr, "rules need block = 0\n"); return 1; }
+    make_order(block);
     shuffle = seed != 0; rng = 0x9E3779B97F4A7C15ULL ^ (unsigned long long)seed;
     int max_word = 0;
     R = load(argv[1], n_cols, &max_word);

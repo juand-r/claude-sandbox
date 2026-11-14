@@ -41,6 +41,12 @@ def parse_args():
     p.add_argument("--min-uncommon", type=int, default=0)
     p.add_argument("--n-common", type=int, default=N_COMMON)
     p.add_argument("--no-names", action="store_true")
+    p.add_argument("--no-mirror", action="store_true",
+                   help="no cell may hold the same word as its mirror cell (no symmetric grids)")
+    p.add_argument("--line-distinct", action="store_true",
+                   help="no word occurs twice in the same row or the same column")
+    p.add_argument("--max-solutions", type=int, default=0,
+                   help="stop each part after this many grids (0 = no limit)")
     p.add_argument("--procs", type=int, default=4)
     p.add_argument("--parts", type=int, default=64)
     p.add_argument("--collect-only", action="store_true",
@@ -62,7 +68,9 @@ def main():
     count_tag = f"k{args.min_count}" + (f"_kc{min_count_cols}" if args.min_count_cols else "")
     name = (f"{n_rows}x{n_cols}_{count_tag}_rep{args.max_repeats}"
             f"_ul{args.min_uncommon_line}_u{args.min_uncommon}_c{args.n_common}"
-            + ("_nonames" if args.no_names else ""))
+            + ("_nonames" if args.no_names else "") + ("_nomirror" if args.no_mirror else "")
+            + ("_linedistinct" if args.line_distinct else "")
+            + (f"_max{args.max_solutions}" if args.max_solutions else ""))
     run_dir = f"data/runs/{name}"
     os.makedirs(run_dir, exist_ok=True)
     with open(os.path.join(run_dir, "n_parts"), "a+") as f:
@@ -99,8 +107,9 @@ def main():
         if os.path.exists(out):
             return
         start = time.time()
-        cmd = [SOLVERS["trie"], *paths, n_rows, n_cols, args.max_repeats, max_cost, 0, 0, 0, -1, 0,
-               part, n_parts]
+        cmd = [SOLVERS["trie"], *paths, n_rows, n_cols, args.max_repeats, max_cost,
+               args.max_solutions, 0, 0, -1, 0, part, n_parts, 0,
+               int(args.no_mirror) + 2 * int(args.line_distinct)]
         with open(out + ".tmp", "w") as f:
             proc = subprocess.run([str(a) for a in cmd], stdout=f, stderr=subprocess.PIPE,
                                   text=True, check=True)

@@ -1022,6 +1022,50 @@
    "candidates": 0,
    "seconds": 604,
    "level": 0
+  },
+  {
+   "n_rows": 13,
+   "n_cols": 13,
+   "direction": "cols",
+   "step": 3,
+   "usable_sentences": 53167,
+   "proved_none": true,
+   "candidates": 0,
+   "seconds": 81,
+   "level": 1
+  },
+  {
+   "n_rows": 13,
+   "n_cols": 13,
+   "direction": "cols",
+   "step": 4,
+   "usable_sentences": 53167,
+   "proved_none": false,
+   "candidates": 0,
+   "seconds": 1531,
+   "level": 1
+  },
+  {
+   "n_rows": 13,
+   "n_cols": 13,
+   "direction": "cols",
+   "step": 2,
+   "usable_sentences": 53167,
+   "proved_none": true,
+   "candidates": 0,
+   "seconds": 157,
+   "level": 1
+  },
+  {
+   "n_rows": 13,
+   "n_cols": 13,
+   "direction": "cols",
+   "step": 5,
+   "usable_sentences": 53167,
+   "proved_none": false,
+   "candidates": 0,
+   "seconds": 1397,
+   "level": 1
   }
  ]
 }

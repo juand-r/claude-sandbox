@@ -60,6 +60,27 @@ def check_matches_reference(algorithm):
             rand, _ = run_solver(row_set, col_set, n_rows, n_cols, max_repeats=99, seed=5,
                                  max_nodes=200000, **extra)
             assert rand and set(rand) <= ref_all
+        if algorithm == "trie":
+            # no cell equal to its mirror cell (excludes symmetric grids)
+            def mirror_free(g):
+                return all(g[r][c] != g[c][r] for r in range(n_rows) for c in range(n_cols)
+                           if r != c and c < n_rows and r < n_cols)
+            ref_free = {g for g in ref_all if mirror_free(g)}
+            got_free, exhaustive = run_solver(row_set, col_set, n_rows, n_cols, max_repeats=99,
+                                              no_mirror=True)
+            assert exhaustive and set(got_free) == ref_free
+            assert ref_free and ref_free != ref_all, "test would be vacuous"
+            # no word twice in a row or a column
+            def lines_distinct(g):
+                return all(len(set(line)) == len(line) for line in g + columns(g))
+            ref_ld = {g for g in ref_all if lines_distinct(g)}
+            got_ld, exhaustive = run_solver(row_set, col_set, n_rows, n_cols, max_repeats=99,
+                                            line_distinct=True)
+            assert exhaustive and set(got_ld) == ref_ld
+            assert ref_ld and ref_ld != ref_all, "test would be vacuous"
+            got_both, exhaustive = run_solver(row_set, col_set, n_rows, n_cols, max_repeats=99,
+                                              line_distinct=True, no_mirror=True)
+            assert exhaustive and set(got_both) == ref_ld & ref_free
         assert ref_all, "test is vacuous if no grids exist"
         for grid in got_all:
             assert set(grid) <= row_set and set(columns(grid)) <= col_set
